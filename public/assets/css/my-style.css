@@ -1,0 +1,6 @@
+a.header-bar__logo {
+    text-decoration: none !important;
+}
+a.header-bar__logo h2 {
+    color: white !important;
+}
