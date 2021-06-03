@@ -17,7 +17,7 @@ function Loginfunction() {
               email: email,             
               password: password,              
           }).then(res=>{
-            alert('Success')
+            // alert('Success')
           }).catch(err=>{
             alert(err)
           })

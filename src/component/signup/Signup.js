@@ -3,31 +3,27 @@ import Header from '../menubar/Header'
 import Footer from '../footer/Footer'
 import '../../assets2/signup.css';
 import Cookies from 'universal-cookie';
-// import BASE_URL from './base';
-
 import { NavLink } from 'react-router-dom';
+import BASE_URL from '../base';
 
 const axios = require('axios');
 const cookies = new Cookies();
-var userTypeTitle = cookies.get('userType').charAt(0).toUpperCase()+cookies.get('userType').slice(1);
-// alert(cookies.get('userType'));
-// var userTypeTitle=cookies.get('userType')
-async function Func() {
-  debugger
-  var first_name = document.getElementById('first_name').value;
-  var last_name = document.getElementById('last_name').value;
-  var email = document.getElementById('email').value;
-  var mobile = document.getElementById('mobile').value;
-  var password = document.getElementById('password1').value;
-  var comp_name = document.getElementById('comp_name').value;
-  var userType = cookies.get('userType');
+// var userTypeTitle = cookies.get('userType').charAt(0).toUpperCase()+cookies.get('userType').slice(1);
+var userTypeTitle=cookies.get('userType')
+
+ function Func() {
+
+    var first_name = document.getElementById('first_name').value;
+    var last_name = document.getElementById('last_name').value;
+    var email = document.getElementById('email').value;
+    var mobile = document.getElementById('mobile').value;
+    var password = document.getElementById('password').value;
+    var comp_name = document.getElementById('comp_name').value;
+    var userType = cookies.get('userType');
  
  
-  try {
-      
-      // $(".laoder").show();
-      debugger
-      const resp = await axios.post('http://127.0.0.1:8000/authentication/signup/',
+
+      axios.post( BASE_URL + "authentication/signup/",
           {
               user_type : userType,
               first_name: first_name,
@@ -36,30 +32,18 @@ async function Func() {
               mobile: mobile,
               password: password,
               comp_name:comp_name,
-          });
+
+          }).then(res=>{
+            // alert('Success')
+            window.location = "/login";
+          }).catch(err=>{
+            alert(err)
+          })
           
-      if (resp.status === 200) {
-          debugger
-          console.log(resp.status);
-          console.log(resp.data);
-          cookies.set('email', email, { path: '/' });
-          cookies.set('uuid', resp.data.data.uuid, { path: '/' })
-          cookies.set('token', resp.data.dataaccessToken, { path: '/' });
-         
-          // $(".laoder").hide();
-      }  window.location = "/login"// var userTypeTitle = cookies.get('userType').charAt(0).toUpperCase()+cookies.get('userType').slice(1);
-// alert(cookies.get('userType'));
-      return resp.data
+      
 
-  } catch (err) {
-      // alert()
-      console.error(err.data);
+  } 
 
-      // window.location = "/signup"
-      window.location = "/login"
-
-  }
-}
 
 
 function Signup(){ 
@@ -78,7 +62,7 @@ function Signup(){
             <h2 className="wrappers__wrapper___1B_Ho signup-layout__sub-heading___2C1YE"><span className="text__text___2g-Dv text__medium-heading___298Cf text__display-block___1CZnH">Setup your free {userTypeTitle} profile</span></h2></div>
           <div className="grid-container__container___2ffxE">
             <div className="signup-layout__main___ofSWU">
-              <form>
+              {/* <form> */}
                 <div className="side-by-side-above-mobile__container___3GNAI">
                   <div className="side-by-side-above-mobile__field___1u_TX">
                     <div className="validated-field__container___1zNgS">
@@ -106,7 +90,7 @@ function Signup(){
                 <div className="password-input__wrapper___QSbdy">
                   <div className="validated-field__container___1zNgS password-input__full-width-input___3FfgD">
                     <div className="input-with-floating-label__wrapper___368i9">
-                      <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U password-input__input___oDHJw" data-tname="PasswordInput" id="password1" placeholder="Password " type="password"  />
+                      <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U password-input__input___oDHJw" data-tname="PasswordInput" id="password" placeholder="Password " type="password"  />
                       <label className="input-with-floating-label__label___4HdSN" htmlFor="password"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Password</span></label>
                     </div>
                   </div>
@@ -134,7 +118,7 @@ function Signup(){
                   </div>
                 </div>
                 <button className="button__button___2LnOX signup-layout__button___1rN0b button__primary___3hlTY" type="submit" onClick={Func}><span className>Continue</span></button>
-              </form>
+              {/* </form> */}
               <div className="go-home-main ">
                 <a href="/"> Go to Home</a>
               </div>
