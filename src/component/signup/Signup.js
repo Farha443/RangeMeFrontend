@@ -6,14 +6,14 @@ import Cookies from 'universal-cookie';
 // import BASE_URL from './base';
 
 import { NavLink } from 'react-router-dom';
+import BASE_URL from '../base';
 
 const axios = require('axios');
 const cookies = new Cookies();
-var userTypeTitle = cookies.get('userType').charAt(0).toUpperCase()+cookies.get('userType').slice(1);
+// var userTypeTitle = cookies.get('userType').charAt(0).toUpperCase()+cookies.get('userType').slice(1);
 // alert(cookies.get('userType'));
-// var userTypeTitle=cookies.get('userType')
+var userTypeTitle=cookies.get('userType')
 async function Func() {
-  debugger
   var first_name = document.getElementById('first_name').value;
   var last_name = document.getElementById('last_name').value;
   var email = document.getElementById('email').value;
@@ -25,9 +25,7 @@ async function Func() {
  
   try {
       
-      // $(".laoder").show();
-      debugger
-      const resp = await axios.post('http://127.0.0.1:8000/authentication/signup/',
+      const resp = await axios.post(BASE_URL+'authentication/signup/',
           {
               user_type : userType,
               first_name: first_name,
@@ -39,23 +37,16 @@ async function Func() {
           });
           
       if (resp.status === 200) {
-          debugger
-          console.log(resp.status);
-          console.log(resp.data);
+          
           cookies.set('email', email, { path: '/' });
           cookies.set('uuid', resp.data.data.uuid, { path: '/' })
           cookies.set('token', resp.data.dataaccessToken, { path: '/' });
          
-          // $(".laoder").hide();
       }  window.location = "/login"// var userTypeTitle = cookies.get('userType').charAt(0).toUpperCase()+cookies.get('userType').slice(1);
-// alert(cookies.get('userType'));
       return resp.data
 
   } catch (err) {
-      // alert()
       console.error(err.data);
-
-      // window.location = "/signup"
       window.location = "/login"
 
   }
