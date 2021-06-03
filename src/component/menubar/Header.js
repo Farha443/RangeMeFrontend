@@ -1,8 +1,12 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import useState from 'react-hook-use-state';
+import SignupModal from '../admin/element/SignupModal';
+
 const axios = require('axios');
 const cookies = new Cookies();
+
 
 
 var userType = '';
@@ -26,10 +30,13 @@ function Click1(){
   window.location = "signup"
   }
 
-class Header extends React.Component{
-  render(){
-    return(
-        <>
+  function Header(){
+    const [modalShow, setModalShow] = useState(false);
+      return(
+          <>
+     
+<SignupModal show={modalShow} onHide={() => setModalShow(false)} />
+
 <div id="header-bar" className="header-bar  with-banner-offset ">
 <div className="header-bar__inner">
   <nav id="nav" className="header-bar__nav"> 
@@ -57,7 +64,7 @@ class Header extends React.Component{
         </div>
       </div>
       <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">Log in</NavLink>
-      <button className="header-bar__cta button button--green button--compact signup-modal-trigger">Sign Up
+      <button className="header-bar__cta button button--green" onClick={() => setModalShow(true)}> Sign Up
         For Free</button>
       <button id="menu-toggle" className="menu__button">
         <svg xmlns="http://www.w3.org/2000/svg" className="svg" width={24} height={24}>
@@ -105,6 +112,9 @@ class Header extends React.Component{
     </nav>
   </div>
 </div>
+
+
+
 <div className="signup-modal signup-modal--is-hidden">
   <div className="signup-modal__overlay" />
   <div className="signup-modal__inner">
@@ -118,9 +128,10 @@ class Header extends React.Component{
     </div>
     <div className="signup-modal__subtitle">
       Choose your account type:
+  
     </div>
     <div className="signup-modal__account-types">
-      <a href="#" onClick={Click}  className="signup-modal__account-type signup-modal__account-type--supplier" data-signup="supplier">
+      <NavLink to=""  className="signup-modal__account-type signup-modal__account-type--supplier" data-signup="supplier" >
         <svg xmlns="http://www.w3.org/2000/svg" width={100} height={100} viewBox="0 0 100 100" fill="none" className="signup-modal__icon">
           <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x={32} y={89} width={41} height={5}>
             <path fillRule="evenodd" clipRule="evenodd" d="M32.2959 89.8169H72.7915V93.1972H32.2959" fill="white" />
@@ -149,8 +160,8 @@ class Header extends React.Component{
           <div className="signup-modal__account-name">Supplier</div>
           <div className="signup-modal__account-description">I sell products to wholesale buyers</div>
         </div>
-      </a> 
-      <a  href="#" onClick={Click1} className="signup-modal__account-type signup-modal__account-type--buyer" data-signup="buyer" >
+      </NavLink>
+      <NavLink to="/signup" className="signup-modal__account-type signup-modal__account-type--buyer" data-signup="buyer" >
         <svg xmlns="http://www.w3.org/2000/svg" width={100} height={100} viewBox="0 0 100 100" fill="none" className="signup-modal__icon">
           <rect x={21} y={40} width={58} height={47} rx={1} fill="white" stroke="#163968" strokeWidth={2} />
           <path d="M54 73L66 61" stroke="#22304F" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
@@ -173,8 +184,7 @@ class Header extends React.Component{
           <div className="signup-modal__account-name">Buyer</div>
           <div className="signup-modal__account-description">I purchase products at wholesale</div>
         </div>
-      </a>
-
+      </NavLink>
       {/* <NavLink to="/signup" className="signup-modal__account-type signup-modal__account-type--service-provider">
         <svg xmlns="http://www.w3.org/2000/svg" width={100} height={100} viewBox="0 0 100 100" fill="none" className="signup-modal__icon">
           <mask id="path-1-inside-1" fill="white">
@@ -196,10 +206,15 @@ class Header extends React.Component{
     </div>
   </div>
 </div>
+
+
 </div>
+
+
+
+
 
 </>
     );
-}
 }
 export default Header

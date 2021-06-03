@@ -9,9 +9,9 @@ import { NavLink } from 'react-router-dom';
 
 const axios = require('axios');
 const cookies = new Cookies();
-// var userTypeTitle = cookies.get('userType').charAt(0).toUpperCase()+cookies.get('userType').slice(1);
+var userTypeTitle = cookies.get('userType').charAt(0).toUpperCase()+cookies.get('userType').slice(1);
 // alert(cookies.get('userType'));
-var userTypeTitle=cookies.get('userType')
+// var userTypeTitle=cookies.get('userType')
 async function Func() {
   debugger
   var first_name = document.getElementById('first_name').value;

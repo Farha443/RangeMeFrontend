@@ -2293,7 +2293,7 @@ a.header-bar__logo h1 {
 }
 
 div#root {
-    width: 95%;
+    width: 100%;
 }
 .header-bar__logo {
     display: inherit !important;

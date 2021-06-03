@@ -261,31 +261,31 @@ body{
     background-color:#F2F4F7;
     counter-reset:step
 }
-.my-container{
+.container{
     position:relative;
     display:flex;
     flex-direction:column;
     flex-grow:1;
     width:100%;
-    max-width:100%;
+    max-width:1800px;
     overflow:hidden;
     background-color:#FFFFFF
 }
-.my-container__inner,.footer__inner,.header-bar__inner,.header__inner,.image-slider__inner,.rich-text__inner,.section__inner,.video-modal__inner{
+.container__inner,.footer__inner,.header-bar__inner,.header__inner,.image-slider__inner,.rich-text__inner,.section__inner,.video-modal__inner{
     width:calc(100% - 48px);
     float:left;
     margin-left:24px;
     max-width:1600px
 }
 @media only screen and (min-width: 768px){
-    .my-container__inner,.footer__inner,.header-bar__inner,.header__inner,.image-slider__inner,.rich-text__inner,.section__inner,.video-modal__inner{
+    .container__inner,.footer__inner,.header-bar__inner,.header__inner,.image-slider__inner,.rich-text__inner,.section__inner,.video-modal__inner{
         float:none;
         width:calc(100% - 48px);
         margin:0
     }
 }
 @media only screen and (min-width: 1025px){
-    .my-container__inner,.footer__inner,.header-bar__inner,.header__inner,.image-slider__inner,.rich-text__inner,.section__inner,.video-modal__inner{
+    .container__inner,.footer__inner,.header-bar__inner,.header__inner,.image-slider__inner,.rich-text__inner,.section__inner,.video-modal__inner{
         width:calc(100% - 96px)
     }
 }
@@ -680,7 +680,7 @@ strong{
 }
 .button--compact{
     position: relative;
-    top: 0px;
+    top: -7px;
     height:40px
 }
 
@@ -2052,8 +2052,7 @@ form .button-hidden{
 .header-bar__actions{
     display:flex;
     justify-content:flex-end;
-    flex-grow:1;
-    align-items: center;
+    flex-grow:1
 }
 .header-bar__cta{
     display:none;
@@ -3918,7 +3917,7 @@ a.plyr__control::after,a.plyr__control::before{
     border-left-color:var(--plyr-menu-arrow-color, #728197);
     right:calc((calc(16px * 0.7) * 1.5) - var(--plyr-menu-item-arrow-size, 4px))
 }
-.plyr__menu__container .plyr__control--forward.plyr__tab-focus::after,.plyr__menu__my-container .plyr__control--forward:hover::after{
+.plyr__menu__container .plyr__control--forward.plyr__tab-focus::after,.plyr__menu__container .plyr__control--forward:hover::after{
     border-left-color:currentColor
 }
 .plyr__menu__container .plyr__control--back{
@@ -5652,8 +5651,7 @@ a.plyr__control::after,a.plyr__control::before{
 .signup-modal__account-types{
     display:flex;
     flex-direction:column;
-    margin-top:20px;
-    margin-bottom: 20px;
+    margin-top:30px
 }
 @media only screen and (min-width: 768px){
     .signup-modal__account-types{
@@ -6138,7 +6136,7 @@ a.plyr__control::after,a.plyr__control::before{
         position:relative;
         display:flex;
         padding-right:0;
-        padding-bottom:0px;
+        padding-bottom:8px;
         margin-top:0px;
         background:none
     }
@@ -6841,19 +6839,3 @@ font-weight: 600;
 font-size: 50px;
 margin-bottom: 15px;
 }
-.content-block--pad-bottom .content-block__inner p.large-copy {
-    margin-top: 0;
-}
-section.bg {
-    width: 100%;
-    background: #d6d6d6;
-}
-
-.signup-modal__account-types a {
-    text-decoration: none !important;
-}
-
-.signup-modal-main.signup-modal__account-types {
-    justify-content: center;
-}
-

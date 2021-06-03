@@ -1,21 +1,27 @@
 import React from 'react';
 import Header from '../menubar/Header'
 import Footer from '../footer/Footer'
+import SignupModal from '../admin/element/SignupModal';
+import useState from 'react-hook-use-state';
+
+
+
 
 function Home(){
+  const [modalShow, setModalShow] = useState(false);
     return(
         <>
 
-
+<SignupModal show={modalShow} onHide={() => setModalShow(false)} />
          <Header/>   
 
-          <div className="container" id="container">
+          <div className="my-container" id="container">
             <main className="content" id="content">
               <header className="header header--left">
                 <div className="header__inner">
                   <div className="header__content">
                     <h1 className="header__title">Get discovered by the&nbsp;<br />world's leading retailers</h1>
-                    <button className="header__cta button button--large button--green signup-modal-trigger" data-signup="supplier">Sign Up For Free</button>
+                    <button className="header__cta button button--large button--green" onClick={() => setModalShow(true)}>Sign Up For Free</button>
                   </div>
                 </div>
                 <div className="header__background" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
