@@ -29,7 +29,7 @@ var userTypeTitle=cookies.get('userType');
 // alert(token)
 
  function Func() {
-    debugger
+    // debugger
     var comp_type = document.getElementById('comp_type').value;
     var job_title = document.getElementById('job_title').value;
     var buyers = document.getElementById('buyers').value;
@@ -64,7 +64,7 @@ var userTypeTitle=cookies.get('userType');
     
       };
       console.log(config)
-      debugger
+    //   debugger
       axios(config).then(res=>{
           console.log(res.status)
         cookies.set('uuid1', res.data.data.uuid, { path: '/company_form_two' })

@@ -25,7 +25,7 @@ var userTypeTitle=cookies.get('userType');
 
 
  function Func() {
-    debugger
+    // debugger
     var company_logo = document.getElementById('comp_logo').value;
     var company_description = document.getElementById('comp_desc').value;
     var url = BASE_URL + "authentication/createbuyer/";
