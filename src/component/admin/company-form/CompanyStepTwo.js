@@ -29,9 +29,9 @@ var userTypeTitle=cookies.get('userType');
     var company_logo = document.getElementById('comp_logo').value;
     var company_description = document.getElementById('comp_desc').value;
     var url = BASE_URL + "authentication/createbuyer/";
-    var token = cookies.get('token');
+    // var token = cookies.get('token');
     var uuid = cookies.get('uuid1');
-    
+    alert(uuid)
     var userType = cookies.get('userType');
     var config = {
         method: 'put',
@@ -43,7 +43,7 @@ var userTypeTitle=cookies.get('userType');
           }
       };
       axios(config).then(res=>{
-
+          console.log(res.data.data)
         window.location = '/company_form_three'
       }
       

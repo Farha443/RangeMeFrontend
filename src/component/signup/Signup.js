@@ -40,14 +40,14 @@ var userTypeTitle=cookies.get('userType')
           }).then(res=>{
             // alert('Success')
             cookies.set('uuid', res.data.data.uuid, { path: '/' })
-            cookies.set('token', res.data.data.access, { path: '/company_form_one' })
+            cookies.set('token', res.data.data.access, { path: '/' })
             // alert(res.data.data.uuid);
             // alert(res.data.data.access)
             if (userType === "buyer"){
               window.location="/company_form_one";
             }
             else{
-              window.location = "/login";
+              window.location = "/supplier_step_one";
             }
             
           }).catch(err=>{

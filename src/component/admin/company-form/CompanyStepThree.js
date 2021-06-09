@@ -24,20 +24,26 @@ import BASE_URL from '../../base';
 const cookies = new Cookies();
 
 function SelectCategory(){
-    var b_category = document.getElementById("category").value;
-    var token = cookies.get('token');
+    debugger
+    // var b_category = document.getElementById("category").value;
+    var array = []
+    var b_category = document.querySelectorAll('input[type=checkbox]:checked')
+    for (var i = 0; i < b_category.length; i++) {
+        array.push(b_category[i].value)
+    }
     var uuid = cookies.get('uuid1');
+    // alert(uuid)
     var url = BASE_URL + "authentication/createbuyer/";
     var config = {
         method: 'put',
         url: url,
         data:{
             uuid : uuid,
-            b_category : b_category,
+            b_category : array,
           }
       };
       axios(config).then(res=>{
-
+        console.log(res.data )
         window.location = '/login'
       }
       
@@ -101,12 +107,42 @@ function CompanyStepThree(){
                                               
                                           <Col md="3">
                                                 <div className="step-three-category-box">
-                                                    
+                                                <input type="checkbox" id="category" name="type" value={cat.uuid}/>
                                                         <img src="assets/images/tshirt.png" />
-                                                        <p id="category">{cat.name} </p>
+                                                        <p>{cat.name} </p>
                                                         
                                                 </div>
                                             </Col>))}
+
+                                            <Col md="12">
+                                                <div className="company-form-btn-main text-center">
+                                               
+                                                    <button class="admin-add-btn" onClick={SelectCategory}> Continue </button>
+                                                </div>
+                                            </Col>
+                                           
+                                           </Row>
+                                            
+                                        </div>
+
+                                    </div>
+
+                                </Card.Body>
+                            </Card>
+
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+
+        </> 
+    );
+}
+
+export default CompanyStepThree
+
+
+
 
                                             {/* <Col md="3">
                                                 <div className="step-three-category-box">
@@ -210,39 +246,3 @@ function CompanyStepThree(){
                                                     </NavLink>
                                                 </div>
                                             </Col> */}
-
-                                            
-
-                                            <Col md="12">
-                                                <div className="company-form-btn-main text-center">
-                                               
-                                                    <button class="admin-add-btn" onClick={SelectCategory}> Continue </button>
-                                                </div>
-                                            </Col>
-                                           
-
-                                           </Row>
-                                            
-                                        </div>
-
-                                    </div>
-
-                                </Card.Body>
-                            </Card>
-
-                        </Col>
-
-
-
-
-
-                    </Row>
-                </Container>
-            </section>
-
-
-        </> 
-    );
-}
-
-export default CompanyStepThree

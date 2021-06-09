@@ -17,6 +17,7 @@ import Login from './component/login/Login';
 import Signup from './component/signup/Signup';
 import base from './component/base';
 import SignupModal from './component/element/SignupModal';
+import SupplierStepOne from './component/admin/company-form/SupplierStepOne';
 
 
 
@@ -44,6 +45,8 @@ function Routes(){
                 <Route exact path="/preview" component={Preview}></Route>
                 <Route exact path="/distribution" component={Distribution}></Route>
                 <Route exact path="/marketing" component={Marketing}></Route>
+                <Route exact path="/supplier_step_one" component={SupplierStepOne}></Route>
+                
 
             </Switch>
         </> 
