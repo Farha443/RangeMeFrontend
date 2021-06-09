@@ -24,6 +24,13 @@ var userTypeTitle=cookies.get('userType')
  
 
       axios.post( BASE_URL + "authentication/signup/",
+<<<<<<< HEAD
+=======
+          //  {
+          //   "Authorization": "Bearer " + token,
+          //   "Content-Type": "application/json",
+          //   },
+>>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
           {
               user_type : userType,
               first_name: first_name,
@@ -35,17 +42,36 @@ var userTypeTitle=cookies.get('userType')
 
           }).then(res=>{
             // alert('Success')
+<<<<<<< HEAD
             window.location = "/login";
+=======
+            cookies.set('uuid', res.data.data.uuid, { path: '/' })
+            cookies.set('token', res.data.data.access, { path: '/company_form_one' })
+            // alert(res.data.data.uuid);
+            // alert(res.data.data.access)
+            if (userType === "buyer"){
+              window.location="/company_form_one";
+            }
+            else{
+              window.location = "/login";
+            }
+            
+>>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
           }).catch(err=>{
             alert(err)
           })
           
+<<<<<<< HEAD
       
 
   } 
 
 
 
+=======
+  } 
+
+>>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
 function Signup(){ 
     return(
         <>

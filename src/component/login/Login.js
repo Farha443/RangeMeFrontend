@@ -18,6 +18,10 @@ function Loginfunction() {
               password: password,              
           }).then(res=>{
             // alert('Success')
+<<<<<<< HEAD
+=======
+            window.location = "/"
+>>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
           }).catch(err=>{
             alert(err)
           })

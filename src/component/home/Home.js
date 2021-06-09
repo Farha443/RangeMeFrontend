@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../menubar/Header'
 import Footer from '../footer/Footer'
+<<<<<<< HEAD
 import SignupModal from '../admin/element/SignupModal';
 import useState from 'react-hook-use-state';
 
@@ -13,6 +14,23 @@ function Home(){
         <>
 
 <SignupModal show={modalShow} onHide={() => setModalShow(false)} />
+=======
+import { NavLink } from 'react-bootstrap';
+import useState from 'react-hook-use-state';
+import SignupModal from '../element/SignupModal';
+
+function Start(){
+  alert('Hello');
+}
+
+function Home(){
+  const [modalShow, setModalShow] = useState(false);
+
+    return(
+        <>
+        {/* <SignupModal/> */}
+        <SignupModal show={modalShow} onHide={() => setModalShow(false)} />
+>>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
          <Header/>   
 
           <div className="my-container" id="container">
@@ -21,7 +39,11 @@ function Home(){
                 <div className="header__inner">
                   <div className="header__content">
                     <h1 className="header__title">Get discovered by the&nbsp;<br />world's leading retailers</h1>
+<<<<<<< HEAD
                     <button className="header__cta button button--large button--green" onClick={() => setModalShow(true)}>Sign Up For Free</button>
+=======
+                    <button className="header__cta button button--large button--green"  onClick={() => setModalShow(true)}>Sign Up For Free</button>
+>>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
                   </div>
                 </div>
                 <div className="header__background" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
@@ -102,7 +124,13 @@ function Home(){
                                 sheet that highlights key product, brand, and company details all in a
                                 single place.</p>
                               <div className="hw-it-btn">
+<<<<<<< HEAD
                                 <button className=" button button--green button--compact signup-modal-trigger"> Show More</button>
+=======
+                                <button className="show-more-btn"> Show More</button>
+
+                                <NavLink to="" onClick={()=>Start()}> Click Here  </NavLink>
+>>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
                               </div>
                             </div>
                           </div>
