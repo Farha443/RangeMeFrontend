@@ -14,7 +14,7 @@ import {
   Card,
   Row
 } from 'react-bootstrap';
-
+import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import Cookies from 'universal-cookie';
@@ -61,6 +61,8 @@ var userTypeTitle=cookies.get('userType');
        
     }
 
+  
+
     async Submit(){
         // debugger
         var year_founded = document.getElementById('year').value;
@@ -101,7 +103,7 @@ var userTypeTitle=cookies.get('userType');
           console.log(res.data.data)
         // cookies.set('uuid1', res.data.data.uuid, { path: '/' })
         // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
-        window.location = '/login'
+        window.location = '/admin_home'
       }
       
       ).catch(err=>{
@@ -164,6 +166,20 @@ var userTypeTitle=cookies.get('userType');
                                             </Col>
                                             
                                             <Col md="12">
+                                              
+                                            {/* <Form.Group controlId="exampleForm.ControlSelect1">
+                                                <Form.Label>Specify States or regions </Form.Label>
+                                                <Select
+                                                // defaultValue={[colourOptions[2], colourOptions[3]]}
+                                                isMulti
+                                                name="colors"
+                                                options=
+                                                {this.state.data.map(cat=>(  
+                                                  <option value={cat.uuid}>{cat.name}</option>))}
+                                                className="basic-multi-select"
+                                                classNamePrefix="select"
+                                            />
+                                            </Form.Group> */}
                                             <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label> Select the Department(s) that best describes your industry. </Form.Label>
                                                 <Form.Control as="select" multiple="true" id="department">

@@ -8,8 +8,8 @@ import SignupModal from '../element/SignupModal';
 const axios = require('axios');
 const cookies = new Cookies();
 
-
-
+var logintoken = cookies.get("logintoken")
+alert(logintoken)
 var userType = '';
 
 function Click(){
@@ -61,7 +61,7 @@ function Click1(){
           <a href="#" className="sub-nav__link">Webinars</a>
         </div>
       </div>
-      <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">Log in</NavLink>
+      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">Log in</NavLink>:<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">Dashboard</NavLink>}
       <button className="header-bar__cta button button--green" onClick={() => setModalShow(true)}> Sign Up
         For Free</button>
       <button id="menu-toggle" className="menu__button">
