@@ -17,7 +17,7 @@ function Loginfunction() {
               email: email,             
               password: password,              
           }).then(res=>{
-            debugger
+            // debugger
             console.log(res.data.data.accessToken)
             cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
             window.location = "/"

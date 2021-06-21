@@ -29,7 +29,7 @@ function skip(){
 }
 
  function Func() {
-    debugger
+    // debugger
     var company_logo = document.getElementById('comp_logo').files[0];
     var company_description = document.getElementById('comp_desc').value;
     var url = BASE_URL + "authentication/createbuyer/";

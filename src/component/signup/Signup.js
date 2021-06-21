@@ -77,7 +77,7 @@ function Toggle1() {
 
         }).then(res=>{
           // alert('Success')
-          debugger
+          // debugger
           if (res.data.message === "Email id is required"){
             alert("Email id is required");
           }
@@ -99,7 +99,7 @@ function Toggle1() {
           }
           
         }).catch(err=>{
-          debugger
+          // debugger
           console.log(err)
         })
       }

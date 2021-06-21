@@ -24,7 +24,7 @@ import BASE_URL from '../../base';
 const cookies = new Cookies();
 
 function SelectCategory(){
-    debugger
+    // debugger
     // var b_category = document.getElementById("category").value;
     var array = []
     var b_category = document.querySelectorAll('input[type=checkbox]:checked')

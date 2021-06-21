@@ -37,7 +37,7 @@ const colourOptions=[
 
 async function distribution() {
  
-    debugger
+    // debugger
 
       var country = document.getElementById('country').value;
       var state = document.getElementById('state').value;
@@ -75,7 +75,7 @@ async function distribution() {
               })
               
               if (res.status === 200) {
-                debugger
+                // debugger
                   // test for status you want, etc
                   console.log(res.status);
                   console.log(res.data);
