@@ -37,12 +37,9 @@ var userTypeTitle=cookies.get('userType');
     var comp_website = document.getElementById('comp_website').value;
     var buss_address = document.getElementById('buss_address').value;
     var sample_instruction = document.getElementById('sample_instruction').value;
-    // var buss_address = document.getElementById('buss_address').value;
-    // var buss_address = document.getElementById('buss_address').value;
     var url = BASE_URL + "authentication/createbuyer/";
     var token = cookies.get('token');
     var uuid = cookies.get('uuid');
-    
     var userType = cookies.get('userType');
     var config = {
         method: 'post',
@@ -67,13 +64,14 @@ var userTypeTitle=cookies.get('userType');
     //   debugger
       axios(config).then(res=>{
           console.log(res.status)
-        cookies.set('uuid1', res.data.data.uuid, { path: '/company_form_two' })
+        cookies.set('uuid1', res.data.data.uuid, { path: '/' })
+        alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
         window.location = '/company_form_two'
       }
       
       ).catch(err=>{
         console.error(err);
-      window.location = "company_form_";
+      window.location = "company_form_one";
       })
     //   axios.post( BASE_URL + "authentication/createbuyer/",
     

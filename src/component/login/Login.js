@@ -17,9 +17,15 @@ function Loginfunction() {
               email: email,             
               password: password,              
           }).then(res=>{
+<<<<<<< HEAD
             // alert('Success')
 <<<<<<< HEAD
 =======
+=======
+            // debugger
+            console.log(res.data.data.accessToken)
+            cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
+>>>>>>> 33da3459d3ae8127079b1e3ccc223bd01006e45a
             window.location = "/"
 >>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
           }).catch(err=>{
@@ -64,16 +70,16 @@ function Login(){
                       </div>
                       <div className="sign-in-form__log-in-button-container___2r6lo">
                         <button className="button__button___2LnOX sign-in-form__primary-button___3edbD button__primary___3hlTY" data-tname="LoginButton" type="submit" onClick={Loginfunction}><span className>Log in</span></button>
-                        <div className="sign-in-form__remember-me-container___3ibWe">
+                        {/* <div className="sign-in-form__remember-me-container___3ibWe">
                         <input className="sign-check" type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                                 <label for="vehicle1"> Remember me</label>
-                        </div>
+                        </div> */}
                       </div>
                     {/* </form> */}
                   </div>
                 </div>
                 <div className="auth-form-wrapper__footer___1Zu1V">
-                  <div><a href="#"><span className="text__text___2g-Dv text__small-copy___bgT96">Forgot password</span></a><span className="text__text___2g-Dv text__small-copy___bgT96 sign-in-form-with-wrapper__get-started-link___DfPbs">Don’t have an account? 
+                  <div><a href="/request_forgotpass"><span className="text__text___2g-Dv text__small-copy___bgT96">Forgot password</span></a><span className="text__text___2g-Dv text__small-copy___bgT96 sign-in-form-with-wrapper__get-started-link___DfPbs">Don’t have an account? 
                   <NavLink to="/Signup" >Get started</NavLink></span></div>
                 </div>
               </div>

@@ -11,6 +11,25 @@ const cookies = new Cookies();
 // var userTypeTitle = cookies.get('userType').charAt(0).toUpperCase()+cookies.get('userType').slice(1);
 var userTypeTitle=cookies.get('userType')
 
+function Toggle() {
+  var temp = document.getElementById("password");
+  if (temp.type === "password") {
+      temp.type = "text";
+  }
+  else {
+      temp.type = "password";
+  }
+}
+function Toggle1() {
+  var temp = document.getElementById("password1");
+  if (temp.type === "password") {
+      temp.type = "text";
+  }
+  else {
+      temp.type = "password";
+  }
+}
+
  function Func() {
 
     var first_name = document.getElementById('first_name').value;
@@ -18,11 +37,21 @@ var userTypeTitle=cookies.get('userType')
     var email = document.getElementById('email').value;
     var mobile = document.getElementById('mobile').value;
     var password = document.getElementById('password').value;
+    var confirm_password = document.getElementById('password1').value;
     var comp_name = document.getElementById('comp_name').value;
+    var terms =  document.querySelector('input[type=checkbox]:checked')
     var userType = cookies.get('userType');
- 
- 
 
+ 
+    if (typeof password !== "undefined" && typeof confirm_password !== "undefined") {
+      if (password!= confirm_password) {
+        // isValid = false;
+        // errors["password"] = "Passwords don't match.";
+        alert("Passwords do not match.")
+      }
+  } 
+
+<<<<<<< HEAD
       axios.post( BASE_URL + "authentication/signup/",
 <<<<<<< HEAD
 =======
@@ -70,6 +99,61 @@ var userTypeTitle=cookies.get('userType')
 
 =======
   } 
+=======
+    if (typeof email !== "undefined") {
+      var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    
+      if (!pattern.test(email)) {
+        // isValid = false;
+        // errors["email"] = "Please enter valid email address.";
+          alert("Enter a valid email")
+      }
+    
+    }
+    if(terms==null){
+      alert("Please agree to the terms and conditions first. ");
+    }
+    else{
+    axios.post( BASE_URL + "authentication/signup/",
+        {
+            user_type : userType,
+            first_name: first_name,
+            last_name: last_name,
+            email: email,
+            mobile: mobile,
+            password: password,
+            comp_name:comp_name,
+
+        }).then(res=>{
+          // alert('Success')
+          // debugger
+          if (res.data.message === "Email id is required"){
+            alert("Email id is required");
+          }
+          else if (res.data.message === "Email id already exists"){
+            alert("Email id already exists");
+          }
+          else if (res.data.message === "Password is required"){
+            alert("Password is required");
+          }
+          cookies.set('uuid', res.data.data.uuid, { path: '/' })
+          cookies.set('token', res.data.data.access, { path: '/' })
+        
+         
+          if (userType === "buyer"){
+            window.location="/company_form_one";
+          }
+          else{
+            window.location = "/supplier_step_one";
+          }
+          
+        }).catch(err=>{
+          // debugger
+          console.log(err)
+        })
+      }
+} 
+>>>>>>> 33da3459d3ae8127079b1e3ccc223bd01006e45a
 
 >>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
 function Signup(){ 
@@ -120,7 +204,16 @@ function Signup(){
                       <label className="input-with-floating-label__label___4HdSN" htmlFor="password"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Password</span></label>
                     </div>
                   </div>
-                  <button className="password-input__toggle-button___2A3QJ" data-tname="togglePasswordVisibility" tabIndex={-1} type="button"><span className="text__text___2g-Dv text__small-copy___bgT96 password-input__toggle-button-text___1PpgB">Show</span></button>
+                  <button className="password-input__toggle-button___2A3QJ" onClick = {Toggle} data-tname="togglePasswordVisibility" tabIndex={-1} type="button"><span className="text__text___2g-Dv text__small-copy___bgT96 password-input__toggle-button-text___1PpgB">Show</span></button>
+                </div>
+                <div className="password-input__wrapper___QSbdy">
+                  <div className="validated-field__container___1zNgS password-input__full-width-input___3FfgD">
+                    <div className="input-with-floating-label__wrapper___368i9">
+                      <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U password-input__input___oDHJw" data-tname="PasswordInput" id="password1" placeholder="Password " type="password"  />
+                      <label className="input-with-floating-label__label___4HdSN" htmlFor="password"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Confirm Password</span></label>
+                    </div>
+                  </div>
+                  <button className="password-input__toggle-button___2A3QJ" onClick = {Toggle1}data-tname="togglePasswordVisibility" tabIndex={-1} type="button"><span className="text__text___2g-Dv text__small-copy___bgT96 password-input__toggle-button-text___1PpgB">Show</span></button>
                 </div>
                 <div className="validated-field__container___1zNgS">
                   <div className="input-with-floating-label__wrapper___368i9">
