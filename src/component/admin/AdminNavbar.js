@@ -16,6 +16,21 @@ import {
 } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+cookies.get('uuid')
+cookies.get('logintoken')
+cookies.get('userType')
+function logout() {
+
+  var allCookies = document.cookie.split(";");
+  
+ for (var i = 0; i < allCookies.length; i++)
+ document.cookie = allCookies[i] + "=;expires="
+ + new Date(0).toUTCString();
+  
+  window.location.href = '/';
+}
 
 function AdminNavbar(){
     return(
@@ -40,10 +55,10 @@ function AdminNavbar(){
       <NavDropdown id="basic-nav-dropdown" className="header-profile-drop" style={{backgroundImage: 'url("../../assets/images/3.jpg")'}}>
        
         <NavDropdown.Item href="#action/3.1">hi. John doe</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2"> Settings</NavDropdown.Item>
+        <NavDropdown.Item href="/admin_profile"> Settings</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.3">Help</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
+        <NavDropdown.Item  onClick={logout}>Logout</NavDropdown.Item>
       </NavDropdown>
     </Nav>
     {/* <Form inline>

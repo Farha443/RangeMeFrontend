@@ -15,6 +15,7 @@ import {
   Row
 } from 'react-bootstrap';
 
+// import ImageUploader from 'react-images-upload';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
 import BASE_URL from '../../base';
@@ -23,25 +24,47 @@ const axios = require('axios');
 const cookies = new Cookies();
 var userTypeTitle=cookies.get('userType');
 
+function skip(){
+    window.location='/company_form_three';
+}
 
  function Func() {
     // debugger
-    var company_logo = document.getElementById('comp_logo').value;
+    var company_logo = document.getElementById('comp_logo').files[0];
     var company_description = document.getElementById('comp_desc').value;
     var url = BASE_URL + "authentication/createbuyer/";
     // var token = cookies.get('token');
     var uuid = cookies.get('uuid1');
     alert(uuid)
     var userType = cookies.get('userType');
-    var config = {
+    var data = new FormData();
+    data.append('company_logo', company_logo);
+    data.append('uuid', uuid);
+    data.append('company_description', company_description);
+    var token = cookies.get("token")
+      
+      var config = {
+  
         method: 'put',
         url: url,
-        data:{
-            uuid : uuid,
-            company_logo : company_logo,
-            company_description: company_description,
-          }
+        headers: {
+          'content-type': `multipart/form-data; boundary=${data._boundary}`,
+          "Authorization": "Bearer " + token,
+        },
+        data: data
       };
+    // var config = {
+    //     method: 'put',
+    //     url: url,
+    //     // headers: {
+    //     //     'content-type': `multipart/form-data;`,
+    //     // },
+    //     data:{
+    //         uuid : uuid1,
+    //         company_logo : company_logo,
+    //         company_description: company_description,
+    //       }
+    //   };
       axios(config).then(res=>{
           console.log(res.data.data)
         window.location = '/company_form_three'
@@ -96,7 +119,9 @@ function CompanyStepTwo(){
                                            <Col md="5">
                                            <div className="logo-right-text-01">
                                            <Form.Group>
-                                                <Form.File
+                                               <input type="file" id="comp_logo" ></input>
+                                                {/* <Form.File
+
                                                 className="position-relative"
                                                 required
                                                 name="file"
@@ -106,7 +131,7 @@ function CompanyStepTwo(){
                                                 // feedback={errors.file}
                                                 id="comp_logo"
                                                 feedbackTooltip
-                                                />
+                                                /> */}
                                             </Form.Group>
                                             </div>
                                             </Col>
@@ -131,7 +156,7 @@ function CompanyStepTwo(){
 
                                             <Col md="12">
                                                 <div className="company-form-btn-main text-center">
-                                                <button class="skip-btn"> Skip This Step </button>
+                                                <button class="skip-btn" onClick={skip}> Skip This Step </button>
                                                     <button class="admin-add-btn" onClick={Func}> Continue </button>
                                                 </div>
                                             </Col>

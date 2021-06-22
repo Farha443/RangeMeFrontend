@@ -19,6 +19,11 @@ import base from './component/base';
 import SignupModal from './component/element/SignupModal';
 import SupplierStepOne from './component/admin/company-form/SupplierStepOne';
 
+import RequestForgotPassword from './component/forgotpassword/RequestForgotPass';
+import ForgotPassOTP from './component/forgotpassword/ForgotPassOTP';
+import FcPassword from './component/forgotpassword/FcPassword';
+import AdminProfile from './component/admin/AdminProfile';
+import ChangePassword from './component/admin/ChangePassword';
 
 
 function Routes(){
@@ -46,7 +51,11 @@ function Routes(){
                 <Route exact path="/distribution" component={Distribution}></Route>
                 <Route exact path="/marketing" component={Marketing}></Route>
                 <Route exact path="/supplier_step_one" component={SupplierStepOne}></Route>
-                
+                <Route exact path="/request_forgotpass" component={RequestForgotPassword}></Route>
+                <Route exact path="/validate-otp" component={ForgotPassOTP}></Route>
+                <Route exact path="/change-password" component={FcPassword}></Route>
+                <Route exact path="/admin_profile" component={AdminProfile}></Route>
+                <Route exact path="/change_password" component={ChangePassword}></Route>
 
             </Switch>
         </> 

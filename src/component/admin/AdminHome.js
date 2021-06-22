@@ -17,6 +17,12 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+
+cookies.get('uuid')
+cookies.get('logintoken')
+cookies.get('userType')
 
 function AdminHome(){
     return(

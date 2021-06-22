@@ -1,8 +1,4 @@
 import React from 'react';
-import '../../assets2/admin.css';
-import AdminNavbar from './AdminNavbar'
-import { NavLink } from 'react-router-dom';
-
 import {
     Jumbotron,
     Button,
@@ -17,15 +13,88 @@ import {
     Row,
     InputGroup
 } from 'react-bootstrap';
+import '../../assets2/admin.css';
+import AdminNavbar from './AdminNavbar'
+import { NavLink } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import BASE_URL from '../base';
 import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import context from 'react-bootstrap/esm/AccordionContext';
+const axios = require('axios');
+const cookies = new Cookies();
+
+
+
 const colourOptions=[
     { value: 'Red', label: 'Red' },
     { value: 'Black', label: 'Black' },
     { value: 'Blue', label: 'Blue' },
     { value: 'Green', label: 'Green' },
 ]
+
+
+
+async function distribution() {
+ 
+    // debugger
+
+      var country = document.getElementById('country').value;
+      var state = document.getElementById('state').value;
+      var distributors = document.getElementById('distributors').value;
+      var selling_Platform = document.getElementById('selling_Platform').value;
+      var distribution_location = document.getElementById('distribution_location').value;
+      var global_distribution = document.getElementById('global_distribution').value;
+      var drop_ship = document.getElementById('drop_ship').value;
+      var private_label = document.getElementById('drop_ship').value;
+      var storage_required = document.getElementById('storage_required').value;
+      
+
+
+    //   cookies.set('email',email,{path:'/'});
+    //   console.log(cookies.get('email'));
+ 
+         
+          console.log('Trying to send request');
+
+          try {
+              // alert('err')
+              // let loader = `<div><div class="loader centered"/></div>`;
+              // document.getElementById('trial').innerHTML = loader;
+              console.log('Trying')
+              let res = await axios.post(BASE_URL + 'user/', {
+                country : country,
+                state:state,
+                distributors: distributors,
+                selling_Platform: selling_Platform,
+                distribution_location: distribution_location,
+                global_distribution: global_distribution,
+                drop_ship:drop_ship,
+                private_label:private_label,
+                storage_required: storage_required,
+              })
+              
+              if (res.status === 200) {
+                // debugger
+                  // test for status you want, etc
+                  console.log(res.status);
+                  console.log(res.data);
+                  // alert(res.data.message);
+    
+                  window.location='/marketing';
+                 
+    
+              }
+              // Don't forget to return something
+              return res.data
+          }
+          catch (err) {
+              console.error('Signup Failed , Please try again.');
+              window.location='/distribution'
+              alert(err)
+          }
+      }
+    
 
 function Distribution() {
     return (
