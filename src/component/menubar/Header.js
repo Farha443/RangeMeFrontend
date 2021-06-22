@@ -9,7 +9,7 @@ const axios = require('axios');
 const cookies = new Cookies();
 
 var logintoken = cookies.get("logintoken")
-alert(logintoken)
+// alert(logintoken)
 var userType = '';
 
 function Click(){

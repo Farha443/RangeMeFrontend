@@ -11,25 +11,28 @@ const cookies = new Cookies();
 function Loginfunction() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
-      
       axios.post(BASE_URL+"authentication/login/",
           {              
               email: email,             
               password: password,              
           }).then(res=>{
             // debugger
+            if (res.data.message === "Password is incorrect"){
+              alert("Password is incorrect");
+            }
+            else if (res.data.message === "User does not exist"){
+              alert("User does not exist");
+            }
             console.log(res.data.data.accessToken)
             cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
+            cookies.set('uuid', res.data.data.uuid, { path: '/' })
             window.location = "/"
           }).catch(err=>{
-            alert(err)
+            // alert(err)
           })
-          
-
+        
 }
 function Login(){
-
-
     return(
         <>
 
@@ -88,15 +91,7 @@ function Login(){
           </div>
         </div>
       </div>
-           
-
-      
-
-
-
-        
-        
-
+          
         </>
     );
 }

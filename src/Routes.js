@@ -23,7 +23,7 @@ import RequestForgotPassword from './component/forgotpassword/RequestForgotPass'
 import ForgotPassOTP from './component/forgotpassword/ForgotPassOTP';
 import ChangePassword from './component/forgotpassword/ChangePassword';
 import AdminProfile from './component/admin/AdminProfile';
-
+import ChangePasswordProfile from './component/admin/ChangePasswordProfile';
 
 function Routes(){
     return(
@@ -36,7 +36,8 @@ function Routes(){
                 <Route exact path="/signup" component={Signup}></Route>
                 <Route exact path="/base" component={base}></Route>
                 <Route exact path="/signupmodal" component={SignupModal}></Route>
-
+                <Route exact path="/ChangePasswordProfile" component={ChangePasswordProfile}></Route>
+                
                 {/* Admin Routes */}
                 <Route exact path="/company_form_one" component={CompanyStepOne}></Route>
                 <Route exact path="/company_form_two" component={CompanyStepTwo}></Route>

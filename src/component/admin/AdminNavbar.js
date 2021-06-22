@@ -1,7 +1,8 @@
 import React from 'react';
 import '../../assets2/admin.css';
 import {NavLink} from 'react-router-dom';
-
+import Cookies from 'universal-cookie';
+import BASE_URL from '../base';
 import {
   Jumbotron,
   Button,
@@ -14,9 +15,25 @@ import {
   Container,
   Row
 } from 'react-bootstrap';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const cookies = new Cookies();
+var first_name= cookies.get("first_name")
+var user_pic= cookies.get("user_pic")
+
+var nn = BASE_URL.slice(0,-1)+ user_pic
+
+function logout() {
+
+  var allCookies = document.cookie.split(";");
+  
+ for (var i = 0; i < allCookies.length; i++)
+ document.cookie = allCookies[i] + "=;expires="
+ + new Date(0).toUTCString();
+  
+ 
+  window.location.href = '/';
+}
 function AdminNavbar(){
     return(
         <>
@@ -36,14 +53,14 @@ function AdminNavbar(){
       <Nav.Link href="#home"><i class="fa fa-comments" aria-hidden="true"></i></Nav.Link>
      
       <Nav.Link href="#home"><i class="fa fa-bell-o" aria-hidden="true"></i></Nav.Link>
-
-      <NavDropdown id="basic-nav-dropdown" className="header-profile-drop" style={{backgroundImage: 'url("../../assets/images/3.jpg")'}}>
+      {/* <img src={BASE_URL.slice(0,-1)+ this.state.user_pic} width="70px" /> */}
+      <NavDropdown id="basic-nav-dropdown" className="header-profile-drop"  >
        
-        <NavDropdown.Item href="#action/3.1">hi. John doe</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2"> Settings</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.1">{first_name}</NavDropdown.Item>
+        <NavDropdown.Item href="/admin_profile"> Settings</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.3">Help</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
+        <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
       </NavDropdown>
     </Nav>
     {/* <Form inline>
