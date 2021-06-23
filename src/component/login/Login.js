@@ -26,6 +26,8 @@ function Loginfunction() {
             console.log(res.data.data.accessToken)
             cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
             cookies.set('uuid', res.data.data.uuid, { path: '/' })
+            cookies.set('first_name', res.data.data.first_name, { path: '/' })
+            cookies.set('user_pic', res.data.data.user_pic, { path: '/' })
             window.location = "/"
           }).catch(err=>{
             // alert(err)
