@@ -6,7 +6,6 @@ import useState from 'react-hook-use-state';
 import SignupModal from '../element/SignupModal';
 
 function Start(){
-  alert('Hello');
 }
 
 function Home(){

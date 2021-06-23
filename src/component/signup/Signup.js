@@ -89,7 +89,7 @@ function Toggle1() {
           }
           cookies.set('uuid', res.data.data.uuid, { path: '/' })
           cookies.set('token', res.data.data.access, { path: '/' })
-        
+          // cookies.set('firstname', res.data.data.first_name, {path:'/'})
          
           if (userType === "buyer"){
             window.location="/company_form_one";

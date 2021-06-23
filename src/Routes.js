@@ -24,6 +24,7 @@ import ForgotPassOTP from './component/forgotpassword/ForgotPassOTP';
 import FcPassword from './component/forgotpassword/FcPassword';
 import AdminProfile from './component/admin/AdminProfile';
 import ChangePassword from './component/admin/ChangePassword';
+import Notification from './component/admin/Notification';
 
 
 function Routes(){
@@ -46,6 +47,7 @@ function Routes(){
                 <Route exact path="/email_confirmation" component={EmailConfirmation}></Route>
                 <Route exact path="/products_detail" component={ProductDetail}></Route>
                 <Route exact path="/admin_home" component={AdminHome}></Route>
+                <Route exact path="/admin_navbar" component={AdminNavbar}></Route>
                 <Route exact path="/product_form" component={ProductForm}></Route>
                 <Route exact path="/preview" component={Preview}></Route>
                 <Route exact path="/distribution" component={Distribution}></Route>
@@ -56,6 +58,7 @@ function Routes(){
                 <Route exact path="/change-password" component={FcPassword}></Route>
                 <Route exact path="/admin_profile" component={AdminProfile}></Route>
                 <Route exact path="/change_password" component={ChangePassword}></Route>
+                <Route exact path="/notification" component={Notification}></Route>
 
             </Switch>
         </> 

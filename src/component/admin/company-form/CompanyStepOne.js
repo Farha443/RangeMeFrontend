@@ -84,7 +84,7 @@ var userTypeTitle=cookies.get('userType');
     //         sample_instruction:sample_instruction,
 
     //       }).then(res=>{
-    //         // alert('Success')
+            // alert('Success')
     //         // cookies.set('uuid', res.data, { path: '/' });
             
     //         window.location = "/company_form_two";

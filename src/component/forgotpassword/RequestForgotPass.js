@@ -28,7 +28,7 @@ async function request_forgot_pass() {
       // debugger
       if (res.data === "Email Does Not Exist"){
         // debugger
-        alert(res.data)
+        // alert(res.data)
         window.location = '/request_forgotpass'
       }
       else{

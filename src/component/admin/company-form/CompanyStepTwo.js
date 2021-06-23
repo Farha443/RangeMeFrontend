@@ -35,7 +35,7 @@ function skip(){
     var url = BASE_URL + "authentication/createbuyer/";
     // var token = cookies.get('token');
     var uuid = cookies.get('uuid1');
-    alert(uuid)
+    // alert(uuid)
     var userType = cookies.get('userType');
     var data = new FormData();
     data.append('company_logo', company_logo);

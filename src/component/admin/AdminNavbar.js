@@ -31,6 +31,11 @@ function logout() {
   
   window.location.href = '/';
 }
+var first_name = cookies.get('firstname');
+
+// alert(first_name);
+
+
 
 function AdminNavbar(){
     return(
@@ -54,7 +59,7 @@ function AdminNavbar(){
 
       <NavDropdown id="basic-nav-dropdown" className="header-profile-drop" style={{backgroundImage: 'url("../../assets/images/3.jpg")'}}>
        
-        <NavDropdown.Item href="#action/3.1">hi. John doe</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.1">hi.{first_name}</NavDropdown.Item>
         <NavDropdown.Item href="/admin_profile"> Settings</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.3">Help</NavDropdown.Item>
         <NavDropdown.Divider />

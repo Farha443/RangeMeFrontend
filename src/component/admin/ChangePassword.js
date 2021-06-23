@@ -49,7 +49,7 @@ async function ChangecurrentPassword() {
         data:{
             old_password:current_password,
             new_password:password,
-            
+            // password:password,
         }
 
     };
