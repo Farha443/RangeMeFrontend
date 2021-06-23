@@ -33,62 +33,101 @@ const colourOptions=[
 ]
 const cookies = new Cookies();
 const axios = require('axios');
-async function save(){
-    // debugger
-    var first_name = document.getElementById('first_name').value;
-    var last_name = document.getElementById('last_name').value;
-    var email = document.getElementById('email').value;
-    var mobile = document.getElementById('phone').value;
-    var user_pic = document.getElementById('user_pic').files[0];
-    var url = BASE_URL+'authentication/signup/'
-    
-    var uuid = cookies.get('uuid');
-    var userType = cookies.get('userType');
-    var data = new FormData();
-    data.append('first_name', first_name);
-    data.append('last_name', last_name);
-    data.append('email', email);
-    data.append('mobile', mobile);
-    data.append('user_pic', user_pic);
-    var token = cookies.get('logintoken');
-    // data.append('last_name', last_name);
-        var config = {
-            method: 'put',
-            url: url,
-            headers: {
-                'content-type': `multipart/form-data; boundary=${data._boundary}`,
-                "Authorization": "Bearer " + token,
-              },
-            data:{
-                data:data,
-            }
-
-        };
-        console.log(config)
-        //   debugger
-        axios(config).then(res=>{
-            console.log(res.data.data)
-            // alert("success")
-            // cookies.set('uuid1', res.data.data.uuid, { path: '/' })
-            // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
-            window.location = '/admin_home'
-        }
-        
-        ).catch(err=>{
-            console.error(err);
-            window.location = "/admin_profile";
-        })
-}
+// alert(cookies.get("logintoken"))
+ 
 class AdminProfile extends React.Component {
+    state = {
+    user_pic:null,
+    first_name: null,
+    last_name: null,
+    email: null,
+    mobile: null,
+    email: null,
+     };
 
+  save(){
+        debugger
+        var first_name = document.getElementById('first_name').value;
+        var last_name = document.getElementById('last_name').value;
+        var email = document.getElementById('email').value;
+        var mobile = document.getElementById('phone').value;
+        var user_pic = document.getElementById('user_pic').files[0];
+        var url = BASE_URL+'authentication/signup/'
+        var uuid = cookies.get('uuid');
+        var userType = cookies.get('userType');
+        var data = new FormData();
+        data.append('first_name', first_name);
+        data.append('last_name', last_name);
+        data.append('email', email);
+        data.append('mobile', mobile);
+        data.append('user_pic', user_pic);
+        data.append('uuid', uuid);
+        var token = cookies.get('logintoken');
+        // data.append('last_name', last_name);
+            var config = {
+                method: 'patch',
+                url: url,
+                headers: {
+                    'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                    // "Authorization": "Bearer" + token,
+                  },
+                data:data,
+            };
+            console.log(config)
+            //   debugger
+         axios(config)
+         .then(res=>{
+                console.log(res.data.data)
+                alert("success")
+                // cookies.set('uuid1', res.data.data.uuid, { path: '/' })
+                // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+                window.location = '/admin_home'
+            }
+            
+            ).catch(err=>{
+                console.error(err);
+            window.location = "/admin_profile";
+            })
+    }
 
+    componentDidMount() {
+        // cookies.remove('pro_pic');
+        debugger
+        var uuid = cookies.get('uuid');
+        
+        var url = BASE_URL + 'authentication/getuser/' + uuid + '/';
+        var config = {
+            method: 'get',
+            url: url,
+            
+        };
+    
+        axios(config).then(re => {
+            debugger
+            console.log(re.data)
+            this.setState({
+              first_name: re.data.data[0].first_name,
+              last_name: re.data.data[0].last_name,
+              user_pic:re.data.data[0].user_pic,
+              mobile: re.data.data[0].mobile,
+              email: re.data.data[0].email,
+             
+    
+            });
+            // alert(BASE_URL.slice(0,-1)+ this.state.user_pic)
+            cookies.set('user_pic',re.data.data[0].user_pic,{path:'/'})
+            cookies.set('first_name',re.data.data[0].first_name,{path:'/'})
+          })
+          .catch(err => {
+            // alert(err);
+            alert('Something went wrong')
+          })
+    
+      }
     render() {
     return (
         <>
             <AdminNavbar />
-
-
-
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
@@ -107,7 +146,7 @@ class AdminProfile extends React.Component {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/change_password"
+                                            <NavLink to="/ChangePasswordProfile"
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
@@ -157,6 +196,8 @@ class AdminProfile extends React.Component {
 
                                         <div className="p-inside-title">
                                             <h5> Your Profile </h5>
+                                            
+                                            <img src={BASE_URL.slice(0,-1)+ this.state.user_pic} width="70px" />
                                             <input type="file" id="user_pic"></input>
                                         </div>
 
@@ -169,7 +210,7 @@ class AdminProfile extends React.Component {
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>First Name</Form.Label>
-                                                <Form.Control id='first_name' type="text" placeholder="Enter email" />
+                                                <Form.Control defaultValue={this.state.first_name} id='first_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
 
@@ -178,7 +219,7 @@ class AdminProfile extends React.Component {
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Last Name</Form.Label>
-                                                <Form.Control id='last_name' type="text" placeholder="Enter email" />
+                                                <Form.Control defaultValue={this.state.last_name} id='last_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
 
@@ -187,7 +228,7 @@ class AdminProfile extends React.Component {
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Email</Form.Label>
-                                                <Form.Control type="email" id="email" placeholder="Enter email" />
+                                                <Form.Control  defaultValue={this.state.email} type="email" id="email" placeholder="Enter email" />
 
                                             </Form.Group>
 
@@ -197,26 +238,14 @@ class AdminProfile extends React.Component {
 
                                             <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>Phone</Form.Label>
-                                                <Form.Control type="text" id="phone" >
+                                                <Form.Control defaultValue={this.state.mobile} type="text" id="phone" >
                                                 
                                                 </Form.Control>
                                             </Form.Group>
-
                                             </Col>
-
-                                            <Col md="6">
-                                            <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Job Title</Form.Label>
-                                                <Form.Control type="email" placeholder="Enter email" />
-
-                                            </Form.Group>
-
-                                            </Col>    
-
-                                            
-                                    
+                                             
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={save}>  Save Changes  </button>
+                                            <button class="admin-add-btn" onClick={()=>this.save()}>  Save Changes  </button>
                                             </Col>
 
                                            </Row>
@@ -229,15 +258,9 @@ class AdminProfile extends React.Component {
                             </Card>
 
                         </Col>
-
-
-
                     </Row>
                 </Container>
             </section>
-
-
-
         </>
     );
 }

@@ -8,19 +8,19 @@ import BASE_URL from '../base';
 
 const axios = require('axios');
 const cookies = new Cookies();
+debugger
 cookies.get('uuid')
 // cookies.get('firstname')
 cookies.get('userType')
 function Loginfunction() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
-      
       axios.post(BASE_URL+"authentication/login/",
           {              
               email: email,             
               password: password,              
           }).then(res=>{
-            
+            // debugger
             if (res.data.message === "Password is incorrect"){
               alert("Password is incorrect");
             }
@@ -31,7 +31,7 @@ function Loginfunction() {
             cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
             cookies.set('uuid', res.data.data.uuid, { path: '/' })
             cookies.set('userType', res.data.data.user_type, { path: '/' })
-            debugger
+            // debugger
             if (cookies.get('userType')=== "buyer"){
               window.location = "/"
             }
@@ -42,12 +42,9 @@ function Loginfunction() {
             // alert(err)
             
           })
-          
-
+        
 }
 function Login(){
-
-
     return(
         <>
 
@@ -106,15 +103,7 @@ function Login(){
           </div>
         </div>
       </div>
-           
-
-      
-
-
-
-        
-        
-
+          
         </>
     );
 }

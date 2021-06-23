@@ -38,7 +38,8 @@ function Routes(){
                 <Route exact path="/signup" component={Signup}></Route>
                 <Route exact path="/base" component={base}></Route>
                 <Route exact path="/signupmodal" component={SignupModal}></Route>
-
+                {/* <Route exact path="/ChangePasswordProfile" component={ChangePasswordProfile}></Route> */}
+                
                 {/* Admin Routes */}
                 <Route exact path="/company_form_one" component={CompanyStepOne}></Route>
                 <Route exact path="/company_form_two" component={CompanyStepTwo}></Route>

@@ -182,7 +182,7 @@ function ChangePassword() {
                                         
                                     
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={ChangecurrentPassword}>   Change Password </button>
+                                            <button class="admin-add-btn" onClick={ChangecurrentPassword}>Change Password </button>
                                             </Col>
 
                                            </Row>

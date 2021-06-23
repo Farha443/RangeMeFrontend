@@ -25,12 +25,14 @@ const cookies = new Cookies();
 
 function SelectCategory(){
     // debugger
+    // var b_category = document.getElementById("category").value;
     var array = []
     var b_category = document.querySelectorAll('input[type=checkbox]:checked')
     for (var i = 0; i < b_category.length; i++) {
         array.push(b_category[i].value)
     }
     var uuid1 = cookies.get('uuid1');
+    // alert(uuid)
     var url = BASE_URL + "authentication/createbuyer/";
     var config = {
         method: 'put',
