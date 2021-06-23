@@ -57,7 +57,7 @@ function AdminNavbar(){
               
 <Navbar expand="lg">
   <Container>
-  <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> <h3> Vaniver </h3> </Navbar.Brand>
+  <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> <h3> Veniver </h3> </Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav" className="admin-nav-collapse">
     <Nav className="ml-auto">

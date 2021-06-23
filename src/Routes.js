@@ -18,13 +18,14 @@ import Signup from './component/signup/Signup';
 import base from './component/base';
 import SignupModal from './component/element/SignupModal';
 import SupplierStepOne from './component/admin/company-form/SupplierStepOne';
-
+import CompanyDetails from './component/admin/CompanyDetails';
 import RequestForgotPassword from './component/forgotpassword/RequestForgotPass';
 import ForgotPassOTP from './component/forgotpassword/ForgotPassOTP';
 import FcPassword from './component/forgotpassword/FcPassword';
 import AdminProfile from './component/admin/AdminProfile';
 import ChangePassword from './component/admin/ChangePassword';
 import Notification from './component/admin/Notification';
+import AdminNewPage from './component/admin/AdminNewPage';
 
 
 function Routes(){
@@ -60,7 +61,8 @@ function Routes(){
                 <Route exact path="/admin_profile" component={AdminProfile}></Route>
                 <Route exact path="/change_password" component={ChangePassword}></Route>
                 <Route exact path="/notification" component={Notification}></Route>
-
+                <Route exact path="/company_details" component={CompanyDetails}></Route>
+                <Route exact path="/admin/home" component={AdminNewPage}></Route>
             </Switch>
         </> 
     )

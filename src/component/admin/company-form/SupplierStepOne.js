@@ -64,11 +64,11 @@ var userTypeTitle=cookies.get('userType');
   
 
     async Submit(){
-        // debugger
+        debugger
         var year_founded = document.getElementById('year').value;
         var annual_revenue = document.getElementById('revenue').value;
         var array = []
-        var department = document.querySelectorAll('#department');
+        var department = document.querySelector('#department');
         for (var i = 0; i < department.length; i++) {
             array.push(department[i].value)
         }

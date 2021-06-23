@@ -1,15 +1,60 @@
-import React from 'react';
+import React, {useEffect, userEffect, useState} from 'react';
 import Header from '../menubar/Header'
 import Footer from '../footer/Footer'
 import { NavLink } from 'react-bootstrap';
-import useState from 'react-hook-use-state';
 import SignupModal from '../element/SignupModal';
+import axios from 'axios';
+import BASE_URL from '../base';
 
 function Start(){
+
 }
 
 function Home(){
   const [modalShow, setModalShow] = useState(false);
+  const [indexheading, setIndexheading]= useState({})
+  const [stats, setStats]= useState([])
+  const [works, setWorks]= useState([])
+  const [succestory, setSuccestory]= useState([])
+  const [blogs, setBlogs]= useState([])
+  
+  useEffect(() => {
+    axios.get(BASE_URL+'home/indexheading/').then(res=>{
+      setIndexheading(res.data.data)
+    }).catch(err=>{
+        console.log(err)            
+    })
+    console.log(indexheading)
+
+    axios.get(BASE_URL+'home/stats/').then(res=>{
+      setStats(res.data.data)
+  }).catch(err=>{
+      console.log(err)            
+  })
+  console.log(stats)
+
+    axios.get(BASE_URL+'home/works/').then(res=>{
+      setWorks(res.data.data)
+  }).catch(err=>{
+      console.log(err)            
+  })
+  console.log(works)
+
+    axios.get(BASE_URL+'home/succestory/').then(res=>{
+      setSuccestory(res.data.data)
+  }).catch(err=>{
+      console.log(err)            
+  })
+  console.log(succestory)
+
+    axios.get(BASE_URL+'home/blogs/').then(res=>{
+      setBlogs(res.data.data)
+  }).catch(err=>{
+      console.log(err)            
+  })
+  console.log(blogs)
+
+},[])
 
     return(
         <>
@@ -20,13 +65,16 @@ function Home(){
           <div className="my-container" id="container">
             <main className="content" id="content">
               <header className="header header--left">
+                
                 <div className="header__inner">
                   <div className="header__content">
-                    <h1 className="header__title">Get discovered by the&nbsp;<br />world's leading retailers</h1>
+                  
+                    <h1 className="header__title">{indexheading.heading}</h1>
+                    
                     <button className="header__cta button button--large button--green"  onClick={() => setModalShow(true)}>Sign Up For Free</button>
                   </div>
                 </div>
-                <div className="header__background" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
+                <div className="header__background" style={{backgroundImage: 'url("'+BASE_URL.slice(0,-5)+ indexheading.bg_img+'")'}}>
                 </div>
               </header>
               <section className="section counter-section">
@@ -34,34 +82,25 @@ function Home(){
                   <div className="section__sub-section">
                     <div className="layout-block layout-block--12">
                       <div className="layout-block__inner">
+                        
                         <div className="layout-block__cell">
+                        
                           <p className="small-heading dark-text" style={{color: 'white'}}>Veniver is the leading product discovery and
                             sourcing platform where retailers and suppliers discover, connect, and grow
                             their business.</p>
                         </div>
                         <div className="layout-block__cell">
                           <div className="stats">
+                            {stats.map(stats=>(
                             <div className="stats__item">
+                            
                               <div className="count-icn stats__description">
                                 <i className="fa fa-user-o" aria-hidden="true" />
                               </div>
-                              <span className="stats__value blue-text">10,000+</span>
-                              <p className="stats__description">Retail buyers</p>
-                            </div>
-                            <div className="stats__item">
-                              <div className="count-icn stats__description">
-                                <i className="fa fa-archive" aria-hidden="true" />
-                              </div>
-                              <span className="stats__value blue-text">175,000+</span>
-                              <p className="stats__description">Suppliers</p>
-                            </div>
-                            <div className="stats__item">
-                              <div className="count-icn stats__description">
-                                <i className="fa fa-product-hunt" aria-hidden="true" />
-                              </div>
-                              <span className="stats__value blue-text">700,000+</span>
-                              <p className="stats__description">Products being discovered</p>
-                            </div>
+                              <span className="stats__value blue-text">{stats.num}</span>
+                              <p className="stats__description">{stats.content}</p>
+                            </div>))}
+                            
                           </div>
                         </div>
                       </div>
@@ -79,75 +118,89 @@ function Home(){
                         </div>
                       </div>
                     </div>
-                    <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay
-    ">
-                      <div className="layout-block__inner">
-                        <div className="layout-block__cell">
-                          <div className="content-block content-block--centre content-block--pad-bottom">
-                            <div className="content-block__inner">
-                              <div className="image-frame image-frame--desktop">
-                                <div className="image-frame__inner">
-                                  <img src="assets/images/h2.jpg" />
+                    
+                      {works.map(function(work, index){
+                        if(index%2===0){
+                          return  <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay">
+                          <div className="layout-block__inner">
+                            <div className="layout-block__cell">
+                              <div className="content-block content-block--centre content-block--pad-bottom">
+                                <div className="content-block__inner">
+                                  <div className="image-frame image-frame--desktop">
+                                    <div className="image-frame__inner">
+                                      {/* <img src="assets/images/h2.jpg" /> */}
+                                      <img src={BASE_URL.slice(0,-5)+ work.image}/>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="layout-block__cell cell-right">
+                              <div className="content-block content-block--pad-bottom content-block--v-aligncontent-block--pad-right">
+                                <div className="content-block__inner">
+                                  <h3 className="content-block__heading blue-text word-reveal">{work.title}Showcase your
+                                    products</h3>
+                                  <p className="large-copy">Your brand profile is a customizable digital sell
+                                    sheet that highlights key product, brand, and company details all in a
+                                    single place.</p>
+                                  <div className="hw-it-btn">
+                                    <button className="show-more-btn"> Show More</button>
+    
+                                    <NavLink to="" onClick={()=>Start()}> Click Here  </NavLink>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div className="layout-block__cell cell-right">
-                          <div className="content-block content-block--pad-bottom content-block--v-align
-           content-block--pad-right
-          ">
-                            <div className="content-block__inner">
-                              <h3 className="content-block__heading blue-text word-reveal">Showcase your
-                                products</h3>
-                              <p className="large-copy">Your brand profile is a customizable digital sell
-                                sheet that highlights key product, brand, and company details all in a
-                                single place.</p>
-                              <div className="hw-it-btn">
-                                <button className="show-more-btn"> Show More</button>
+                        
+                        
+                        }
+                        else{
+                          return  <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay layout-block--reversed">
+                          <div className="layout-block__inner">
+                            <div className="layout-block__cell">
+                              <div className="content-block content-block--centre content-block--pad-bottom">
+                                <div className="content-block__inner">
+                                  <div className="image-frame image-frame--desktop">
+                                    <div className="image-frame__inner">
+                                      <canvas className="animation__spacer" width={456} height={307} />
+                                      {/* <img src="assets/images/h1.jpg" /> */}
+                                      <img src={BASE_URL.slice(0,-5)+ work.image}/>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+    
+                            <div className="layout-block__cell  cell-right">
+                              <div className="content-block content-block--pad-bottom content-block--v-align content-block--pad-left">
+                                <div className="content-block__inner">
+                                  <h3 className="content-block__heading blue-text word-reveal">Get discovered</h3>
+                                  <p className="large-copy">Buyers use Veniver to discover new products and manage
+                                    their inbound submissions. Your products are placed in front of relevant
+                                    buyers in your category.</p>
+                                  <div className="hw-it-btn">
+                                    <button className=" button button--green button--compact signup-modal-trigger"> Show More</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      
+                        }
+                      })}
+                      
+                   
+                    
+                    
+                   
 
-                                <NavLink to="" onClick={()=>Start()}> Click Here  </NavLink>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay
-     layout-block--reversed
-    ">
-                      <div className="layout-block__inner">
-                        <div className="layout-block__cell">
-                          <div className="content-block content-block--centre content-block--pad-bottom">
-                            <div className="content-block__inner">
-                              <div className="image-frame image-frame--desktop">
-                                <div className="image-frame__inner">
-                                  <canvas className="animation__spacer" width={456} height={307} />
-                                  <img src="assets/images/h1.jpg" />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="layout-block__cell  cell-right">
-                          <div className="content-block content-block--pad-bottom content-block--v-align
-           content-block--pad-left
-          ">
-                            <div className="content-block__inner">
-                              <h3 className="content-block__heading blue-text word-reveal">Get discovered</h3>
-                              <p className="large-copy">Buyers use Veniver to discover new products and manage
-                                their inbound submissions. Your products are placed in front of relevant
-                                buyers in your category.</p>
-                              <div className="hw-it-btn">
-                                <button className=" button button--green button--compact signup-modal-trigger"> Show More</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay
-    ">
+
+
+{/* 
+                    <div className="layout-block layout-block--8-8 layout-block--animated     layout-block--compact layout-block--nodelay">
                       <div className="layout-block__inner">
                         <div className="layout-block__cell ">
                           <div className="content-block content-block--centre content-block--pad-bottom">
@@ -161,10 +214,11 @@ function Home(){
                             </div>
                           </div>
                         </div>
+                       
+                      </div>
+                        
                         <div className="layout-block__cell cell-right">
-                          <div className="content-block content-block--pad-bottom content-block--v-align
-           content-block--pad-right
-          ">
+                          <div className="content-block content-block--pad-bottom content-block--v-aligncontent-block--pad-right">
                             <div className="content-block__inner">
                               <h3 className="content-block__heading blue-text word-reveal">Connect and do
                                 business</h3>
@@ -177,7 +231,11 @@ function Home(){
                           </div>
                         </div>
                       </div>
-                    </div>
+
+ */}
+
+
+                    
                     <div className="cta">
                       <p><a href="#" className="cta__link link link--arrow blue-text">Learn more about
                           Veniver Features
@@ -196,6 +254,7 @@ function Home(){
                   </div>
                 </div>
               </section>
+
               <section className="section section--full section--blue">
                 <div className="section__side-panel">
                   <div className="image-slider image-slider--stories image-slider--blue">
@@ -298,22 +357,28 @@ function Home(){
                   <div className="section__intro">
                     <h2 className="section__heading">Letest Blog</h2>
                   </div>
+                  
                   <div className="section__sub-section">
+                  
                     <div className="stories">
                       <div className="stories__grid load-more">
+                      {blogs.map(blog=>(
                         <a href="#" className="story-item">
+                        
                           <div className="story-item__image-container">
-                            <img className="story-item__image" src="assets/images/blog1.jpg" alt="blog1" />
+                          
+                            {/* <img className="story-item__image" src="assets/images/blog1.jpg" alt="blog1" /> */}
+                            <img src={BASE_URL.slice(0,-5)+ blog.image} width='90%'/>
                           </div>
                           <div className="blog-title">
-                            <h6 className="story-item__title dark-text left-t">Spinster Sisters</h6>
+                            <h6 className="story-item__title dark-text left-t">{blog.title}</h6>
                             <span className="date right-t">May 25, 2021</span>
                           </div>
-                          <div className="story-item__category">Beauty</div>
-                          <p className="story-item__description">See how Spinster Sisters fused passion with a greater mission to create clean and sustainable products for consumers nationwide.</p>
+                          <div className="story-item__category">{blog.category}</div>
+                          <p className="story-item__description">{blog.story}</p>
                           <div className="story-item__cta">Read their story</div>
-                        </a>
-                        <a href="#" className="story-item">
+                        </a>))}
+                        {/* <a href="#" className="story-item">
                           <div className="story-item__image-container">
                             <img className="story-item__image" src="assets/images/blog2.jpeg" alt="blog2" />
                           </div>
@@ -324,8 +389,8 @@ function Home(){
                           <div className="story-item__category">Consumer Goods</div>
                           <p className="story-item__description">Discover how this FDA approved health and wellness brand leveraged RangeMe to land a deal with a prominent online retailer.</p>
                           <div className="story-item__cta">Read their story</div>
-                        </a>
-                        <a href="#" className="story-item">
+                        </a> */}
+                        {/* <a href="#" className="story-item">
                           <div className="story-item__image-container">
                             <img className="story-item__image" src="assets/images/blog3.jpg" alt="blog4" />
                           </div>
@@ -336,7 +401,8 @@ function Home(){
                           <div className="story-item__category">Beauty</div>
                           <p className="story-item__description">Learn how Zoha Fragrances got their indie brand of oil-based, clean ingredient perfumes into Drug Emporium stores with the help of RangeMe.</p>
                           <div className="story-item__cta">Read their story</div>
-                        </a>
+                        </a> */}
+                        
                       </div>
                     </div>
                   </div>
