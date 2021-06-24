@@ -45,6 +45,7 @@ class AdminProfile extends React.Component {
     email: null,
      };
 
+    
   save(){
         debugger
         var first_name = document.getElementById('first_name').value;
@@ -198,7 +199,8 @@ class AdminProfile extends React.Component {
                                             <h5> Your Profile </h5>
                                             
                                             <img src={BASE_URL.slice(0,-1)+ this.state.user_pic} width="70px" />
-                                            <input type="file" id="user_pic"></input>
+                                            <input  type="file" id="user_pic" />
+                                            {/* <img id="frame" src="" width="100px" height="100px"/> */}
                                         </div>
 
                                         <div className="overview-form">

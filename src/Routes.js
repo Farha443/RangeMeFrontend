@@ -25,6 +25,7 @@ import ChangePassword from './component/forgotpassword/ChangePassword';
 import AdminProfile from './component/admin/AdminProfile';
 import ChangePasswordProfile from './component/admin/ChangePasswordProfile';
 import TeamAccess from './component/admin/TeamAccess';
+import CompanyDetails from './component/admin/CompanyDetails';
 function Routes(){
     return(
         <>
@@ -37,7 +38,7 @@ function Routes(){
                 <Route exact path="/base" component={base}></Route>
                 <Route exact path="/signupmodal" component={SignupModal}></Route>
                 <Route exact path="/ChangePasswordProfile" component={ChangePasswordProfile}></Route>
-                
+                <Route exact path="/company_details" component={CompanyDetails}></Route>
                 {/* Admin Routes */}
                 <Route exact path="/company_form_one" component={CompanyStepOne}></Route>
                 <Route exact path="/company_form_two" component={CompanyStepTwo}></Route>
