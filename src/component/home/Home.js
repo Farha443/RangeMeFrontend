@@ -6,12 +6,12 @@ import SignupModal from '../element/SignupModal';
 import axios from 'axios';
 import BASE_URL from '../base';
 
-function Start(){
 
-}
 
 function Home(){
+  // var xxx = '';
   const [modalShow, setModalShow] = useState(false);
+  const [home, setHome] = useState([])
   const [indexheading, setIndexheading]= useState({})
   const [stats, setStats]= useState([])
   const [works, setWorks]= useState([])
@@ -19,40 +19,47 @@ function Home(){
   const [blogs, setBlogs]= useState([])
   
   useEffect(() => {
-    axios.get(BASE_URL+'home/indexheading/').then(res=>{
-      setIndexheading(res.data.data)
+   
+    axios.get(BASE_URL+'home/homeview/')
+    .then(res=>{
+      setHome(res.data)
+      debugger
+      console.log(res.data)
+      // xxx =res.data.blogs
+      // console.log(xxx)
+      // console.log(res.data.data.heading)
     }).catch(err=>{
         console.log(err)            
     })
-    console.log(indexheading)
+    console.log(home)
 
-    axios.get(BASE_URL+'home/stats/').then(res=>{
-      setStats(res.data.data)
-  }).catch(err=>{
-      console.log(err)            
-  })
-  console.log(stats)
+  //   axios.get(BASE_URL+'home/stats/').then(res=>{
+  //     setStats(res.data.data)
+  // }).catch(err=>{
+  //     console.log(err)            
+  // })
+  // console.log(stats)
 
-    axios.get(BASE_URL+'home/works/').then(res=>{
-      setWorks(res.data.data)
-  }).catch(err=>{
-      console.log(err)            
-  })
-  console.log(works)
+  //   axios.get(BASE_URL+'home/works/').then(res=>{
+  //     setWorks(res.data.data)
+  // }).catch(err=>{
+  //     console.log(err)            
+  // })
+  // console.log(works)
 
-    axios.get(BASE_URL+'home/succestory/').then(res=>{
-      setSuccestory(res.data.data)
-  }).catch(err=>{
-      console.log(err)            
-  })
-  console.log(succestory)
+  //   axios.get(BASE_URL+'home/succestory/').then(res=>{
+  //     setSuccestory(res.data.data)
+  // }).catch(err=>{
+  //     console.log(err)            
+  // })
+  // console.log(succestory)
 
-    axios.get(BASE_URL+'home/blogs/').then(res=>{
-      setBlogs(res.data.data)
-  }).catch(err=>{
-      console.log(err)            
-  })
-  console.log(blogs)
+  //   axios.get(BASE_URL+'home/blogs/').then(res=>{
+  //     setBlogs(res.data.data)
+  // }).catch(err=>{
+  //     console.log(err)            
+  // })
+  // console.log(blogs)
 
 },[])
 
@@ -69,12 +76,14 @@ function Home(){
                 <div className="header__inner">
                   <div className="header__content">
                   
-                    <h1 className="header__title">{indexheading.heading}</h1>
+                    <h1 className="header__title">{home.heading.heading}</h1>
                     
                     <button className="header__cta button button--large button--green"  onClick={() => setModalShow(true)}>Sign Up For Free</button>
                   </div>
                 </div>
-                <div className="header__background" style={{backgroundImage: 'url("'+BASE_URL.slice(0,-5)+ indexheading.bg_img+'")'}}>
+                {/* <div className="header__background" style={{backgroundImage: 'url("'+BASE_URL.slice(0,-5)+ indexheading.bg_img+'")'}}>
+                </div> */}
+                <div className="header__background" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
                 </div>
               </header>
               <section className="section counter-section">
@@ -128,8 +137,8 @@ function Home(){
                                 <div className="content-block__inner">
                                   <div className="image-frame image-frame--desktop">
                                     <div className="image-frame__inner">
-                                      {/* <img src="assets/images/h2.jpg" /> */}
-                                      <img src={BASE_URL.slice(0,-5)+ work.image}/>
+                                      <img src="assets/images/h2.jpg" />
+                                      {/* <img src={BASE_URL.slice(0,-5)+ work.image}/> */}
                                     </div>
                                   </div>
                                 </div>
@@ -138,16 +147,13 @@ function Home(){
                             <div className="layout-block__cell cell-right">
                               <div className="content-block content-block--pad-bottom content-block--v-aligncontent-block--pad-right">
                                 <div className="content-block__inner">
-                                  <h3 className="content-block__heading blue-text word-reveal">{work.title}Showcase your
-                                    products</h3>
-                                  <p className="large-copy">Your brand profile is a customizable digital sell
-                                    sheet that highlights key product, brand, and company details all in a
-                                    single place.</p>
+                                  <h3 className="content-block__heading blue-text word-reveal">{work.title}</h3>
+                                  <p className="large-copy">{work.description}</p>
                                   <div className="hw-it-btn">
-                                    <button className="show-more-btn"> Show More</button>
+                                  {/* <button className=" button button--green "> Show More</button> */}
+                                  <a href={work.redirect_link}>Show More </a>
     
-                                    <NavLink to="" onClick={()=>Start()}> Click Here  </NavLink>
-                                  </div>
+                                   </div>
                                 </div>
                               </div>
                             </div>
@@ -165,8 +171,8 @@ function Home(){
                                   <div className="image-frame image-frame--desktop">
                                     <div className="image-frame__inner">
                                       <canvas className="animation__spacer" width={456} height={307} />
-                                      {/* <img src="assets/images/h1.jpg" /> */}
-                                      <img src={BASE_URL.slice(0,-5)+ work.image}/>
+                                      <img src="assets/images/h1.jpg" />
+                                      {/* <img src={BASE_URL.slice(0,-5)+ work.image}/> */}
                                     </div>
                                   </div>
                                 </div>
@@ -176,12 +182,11 @@ function Home(){
                             <div className="layout-block__cell  cell-right">
                               <div className="content-block content-block--pad-bottom content-block--v-align content-block--pad-left">
                                 <div className="content-block__inner">
-                                  <h3 className="content-block__heading blue-text word-reveal">Get discovered</h3>
-                                  <p className="large-copy">Buyers use Veniver to discover new products and manage
-                                    their inbound submissions. Your products are placed in front of relevant
-                                    buyers in your category.</p>
+                                  <h3 className="content-block__heading blue-text word-reveal">{work.title}</h3>
+                                  <p className="large-copy">{work.description}</p>
                                   <div className="hw-it-btn">
-                                    <button className=" button button--green button--compact signup-modal-trigger"> Show More</button>
+                                    {/* <button className=" button button--green button--compact signup-modal-trigger"> Show More</button> */}
+                                    <a href={work.redirect_link}>Show More </a>
                                   </div>
                                 </div>
                               </div>
@@ -255,19 +260,22 @@ function Home(){
                 </div>
               </section>
 
-              <section className="section section--full section--blue">
+              {/* {succestory.map(story=>( */}
+                <section className="section section--full section--blue">
+                
                 <div className="section__side-panel">
                   <div className="image-slider image-slider--stories image-slider--blue">
                     <div className="image-slider__track">
                       <div className="image-slider__slide">
-                        <img className="image-slider__image" loading="lazy" src="assets/images/product01.jpg" alt="Veniver2" />
+                      {succestory.map(story=>(
+                        <img className="image-slider__image" loading="lazy" src={BASE_URL.slice(0,-5)+ story.image} alt="Veniver2" />))}
                       </div>
-                      <div className="image-slider__slide">
+                      {/* <div className="image-slider__slide">
                         <img className="image-slider__image" loading="lazy" src="assets/images/product02.jpg" alt="Veniver3" />
-                      </div>
-                      <div className="image-slider__slide">
+                      </div> */}
+                      {/* <div className="image-slider__slide">
                         <img className="image-slider__image" loading="lazy" src="assets/images/product03.jpg" alt="Veniver1" />
-                      </div>
+                      </div> */}
                     </div>
                     <button className="image-slider__button image-slider__button--prev">
                       <img src="public_site_assets/svg/icon__arrow--left-c9cc4ee0515feeaafac5cd0d277723132f8abedbbd9c7b1e141192e9a3239d74.svg" alt="Icon  arrow  left" />
@@ -285,25 +293,22 @@ function Home(){
                           <div className="content-block__inner">
                             <div className="image-slider__track image-slider__track--captions">
                               <div className="image-slider__slide image-slider__slide--caption image-slider__slide--with_footer">
+                              {/* {succestory.map(story=>( */}
                                 <div className="image-slider__slide_text">
                                   <div className="content-block__logo">
                                     <img loading="lazy" src="assets/images/barrelhouselogo.png" alt="Veniver4" />
                                   </div>
-                                  <p className="customer-stories__quote">“What would have normally taken
-                                    us four to eight weeks of emailing, calling, or trying to get
-                                    people to return an email, happened within seven days on
-                                    Veniver.”</p>
+                                  <p className="customer-stories__quote"></p>
                                   <div className="customer-profile">
                                     <div className="customer-profile__avatar">
                                       <img src="assets/images/2.jpg" alt="" className="customer-profile__image" loading="lazy" />
                                     </div>
-                                    <span className="customer-profile__name">Chis Vaughn</span>
-                                    <span className="customer-profile__role">Founder, Marketing
-                                      Director</span>
+                                    <span className="customer-profile__name"></span>
+                                    <span className="customer-profile__role"></span>
                                   </div>
                                 </div>
                               </div>
-                              <div className="image-slider__slide image-slider__slide--caption image-slider__slide--with_footer">
+                              {/* <div className="image-slider__slide image-slider__slide--caption image-slider__slide--with_footer">
                                 <div className="image-slider__slide_text">
                                   <div className="content-block__logo">
                                     <img loading="lazy" src="assets/images/barrelhouselogo.png" alt="logo-white" />
@@ -319,14 +324,14 @@ function Home(){
                                     <span className="customer-profile__role">Co-Founder, CEO </span>
                                   </div>
                                 </div>
-                              </div>
-                              <div className="image-slider__slide image-slider__slide--caption image-slider__slide--with_footer">
+                              </div> */}
+                              {/* <div className="image-slider__slide image-slider__slide--caption image-slider__slide--with_footer">
                                 <div className="image-slider__slide_text">
                                   <div className="content-block__logo">
                                     <img loading="lazy" src="assets/images/barrelhouselogo.png" alt="Nerv logo" />
                                   </div>
                                   <p className="customer-stories__quote">“We’re in a place where we’re
-                                    ready to move to those larger-scale accounts and distribute this
+                                    ready to move to those larger-scale accounts and distribute this{succestory.map(story=>(
                                     product that we know people love — and Veniver helps us make our
                                     product accessible to more people.”</p>
                                   <div className="customer-profile">
@@ -337,7 +342,7 @@ function Home(){
                                     <span className="customer-profile__role">Co-Founder, Co-CEO</span>
                                   </div>
                                 </div>
-                              </div>
+                              </div> */}
                               <a href="#" className="image-slider__link button button--full">Read the customer
                                 story <svg xmlns="http://www.w3.org/2000/svg" className="svg" width={20} height={12}>
                                   <path className="svg__fill" d="M14 0l-1.06 1.06 4.19 4.19H0v1.5h17.13l-4.19 4.19L14 12l6-6z">
@@ -367,14 +372,14 @@ function Home(){
                         
                           <div className="story-item__image-container">
                           
-                            {/* <img className="story-item__image" src="assets/images/blog1.jpg" alt="blog1" /> */}
-                            <img src={BASE_URL.slice(0,-5)+ blog.image} width='90%'/>
+                            <img className="story-item__image" src="assets/images/blog1.jpg" alt="blog1" />
+                            {/* <img src={BASE_URL.slice(0,-5)+ blog.image} width='90%'/> */}
                           </div>
                           <div className="blog-title">
                             <h6 className="story-item__title dark-text left-t">{blog.title}</h6>
                             <span className="date right-t">May 25, 2021</span>
                           </div>
-                          <div className="story-item__category">{blog.category}</div>
+                          <div className="story-item__category">{blog.blog_category}</div>
                           <p className="story-item__description">{blog.story}</p>
                           <div className="story-item__cta">Read their story</div>
                         </a>))}

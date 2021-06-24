@@ -8,7 +8,7 @@ import BASE_URL from '../base';
 
 const axios = require('axios');
 const cookies = new Cookies();
-debugger
+// debugger
 cookies.get('uuid')
 // cookies.get('firstname')
 cookies.get('userType')

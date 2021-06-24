@@ -52,14 +52,14 @@ function Banner(){
 }
 
 function Works(){
-  // debugger
-  var heading = document.getElementById('heading').value;
+  
+  var title = document.getElementById("title").value;
   var description = document.getElementById('description').value;
   var redirect_link = document.getElementById('redirect_link').value;
   var image = document.getElementById('image').files[0];
   var url = BASE_URL+'home/works/';
   var data = new FormData();
-      data.append('heading', heading);
+      data.append('title', title);
       data.append('description', description);
       data.append('redirect_link', redirect_link);
       data.append('image', image);
@@ -83,7 +83,35 @@ function Works(){
       })
 }
 
+function Stats(){
+  debugger
+  var num = document.getElementById("num").value;
+  var content = document.getElementById('text').value;
+  var icon = document.getElementById('icon').value;
+  var url = BASE_URL+'home/stats/';
+  var data = new FormData();
+      data.append('num', num);
+      data.append('content', content);
+      data.append('icon', icon);
 
+  var config = {
+    method:'post',
+    url:url,
+    headers: {
+      'content-type': `multipart/form-data; boundary=${data._boundary}`,
+    },
+    data : data,
+  }
+        axios(config).then(res=>{
+          console.log(res.data.data)
+
+      }
+
+      ).catch(err=>{
+        console.error(err);
+
+      })
+}
 
 class AdminNewPage extends React.Component {
 
@@ -211,7 +239,7 @@ class AdminNewPage extends React.Component {
                 <Form.Control
                     type="text"
                     name="text"
-                    id="heading"
+                    id="title"
                     placeholder="text"
                 />
                     </Col>
@@ -291,7 +319,8 @@ class AdminNewPage extends React.Component {
             
             {/* <div className="col-md-12">
                           <div className="temp-list-main">
-                            
+                            <Form.Label for="exampleFile" >Redirect Link</Form.Label>
+                  <Form.Control id="redirect_link" type="text" name="text" />
                                 <ul>
                             
                                <li> 
@@ -344,7 +373,7 @@ class AdminNewPage extends React.Component {
                 <Form.Control
                     type="number"
                     name="text"
-                    id="step_no"
+                    id="num"
                     placeholder="text"
                 />
                     </Col>
@@ -354,7 +383,7 @@ class AdminNewPage extends React.Component {
                 <Form.Control
                     type="text"
                     name="text"
-                    id="step_desc"
+                    id="text"
                     placeholder="text"
                 />
                     </Col>
@@ -365,8 +394,10 @@ class AdminNewPage extends React.Component {
               <Row>
               <Col sm="6" className="up-right-main">
                     <div class="form-group">
-                    <Form.Label for="exampleFile" >icon </Form.Label>
-                    <Form.Control id="service_image" type="file" name="file" />
+                    {/* <Form.Label for="exampleFile" >icon </Form.Label>
+                    <Form.Control id="icon" type="file" name="file" /> */}
+                    {/* <Form.Label for="exampleFile" >Icon</Form.Label>
+                  <Form.Control id="icon" type="text" name="text" /> */}
                     </div>
                     <div className="icn121">
                     {/* <span className="right-icn"> <i class="fa fa-check-square-o" aria-hidden="true"></i> </span> */}
@@ -385,7 +416,7 @@ class AdminNewPage extends React.Component {
 
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
-                    <Button >Submit</Button>
+                    <Button onClick={Stats}>Submit</Button>
                   </Col>
                 </Form.Group>
               

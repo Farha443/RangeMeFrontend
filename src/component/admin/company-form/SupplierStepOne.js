@@ -67,11 +67,13 @@ var userTypeTitle=cookies.get('userType');
         debugger
         var year_founded = document.getElementById('year').value;
         var annual_revenue = document.getElementById('revenue').value;
-        var array = []
-        var department = document.querySelector('#department');
-        for (var i = 0; i < department.length; i++) {
-            array.push(department[i].value)
-        }
+        // var array = []
+        // var department = document.querySelector('#department');
+        // for (var i = 0; i < department.length; i++) {
+        //     array.push(department[i].value)
+        // }
+        const selected = document.querySelectorAll('#department option:checked');
+        var array = Array.from(selected).map(el => el.value);
         var busiess_type = document.getElementById('buss_type').value;
         var brand_name = document.getElementById('brand_name').value;
         var comp_location = document.getElementById('city').value;
