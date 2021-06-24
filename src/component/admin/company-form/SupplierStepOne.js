@@ -64,7 +64,7 @@ var userTypeTitle=cookies.get('userType');
   
 
     async Submit(){
-        // debugger
+        debugger
         var year_founded = document.getElementById('year').value;
         var annual_revenue = document.getElementById('revenue').value;
         var array = []

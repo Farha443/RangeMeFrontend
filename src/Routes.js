@@ -24,13 +24,13 @@ import ForgotPassOTP from './component/forgotpassword/ForgotPassOTP';
 import ChangePassword from './component/forgotpassword/ChangePassword';
 import AdminProfile from './component/admin/AdminProfile';
 import ChangePasswordProfile from './component/admin/ChangePasswordProfile';
-
+import TeamAccess from './component/admin/TeamAccess';
 function Routes(){
     return(
         <>
          
             <Switch>
-           
+                <Route exact path="/team_access" component={TeamAccess}></Route>
                 <Route exact path="/" component={Home}></Route>
                 <Route exact path="/login" component={Login}></Route>
                 <Route exact path="/signup" component={Signup}></Route>

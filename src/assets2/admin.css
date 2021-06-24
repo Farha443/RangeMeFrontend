@@ -501,3 +501,55 @@ label.lb p {
 a.rounded-sm.text-gray-200.bg-blue-gray-dark {
     color: #00cdae;
 }
+
+
+
+
+.invite-user-modal__permission-header___DvkVU {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 2.5rem;
+    border-bottom: 1px solid #ced4da;
+    padding-bottom: 1rem;
+    line-height: 2;
+}
+.invite-user-modal__permission-description___3XMpQ {
+    margin-bottom: 1rem;
+}
+
+.inv-user-pop-right p {
+    margin-top: 0;
+}
+
+
+.invite-user-modal__permission-header___DvkVU .d12 {
+    width: 45%;
+    float: left;
+}
+
+.invite-user-modal__permission-header___DvkVU .d11 {
+    width: 50%;
+    float: left;
+}
+
+.invite-user-modal__permission-header___DvkVU .d12 .dropdown button#dropdown-custom-components {
+    background: none;
+    color: black;
+    width: auto !important;
+    border: none;
+    line-height: 0;
+    outline: none !important;
+    box-shadow: none !important;
+    text-align: right;
+    margin-right: 1rem;
+}
+.invite-user-modal__permission-header___DvkVU .d12 .dropdown {
+    width: 100%;
+    top: -10px;
+}
+.invite-user-modal__permission-header___DvkVU .d12 .dropdown button#dropdown-custom-components p {
+    display: contents;
+    margin: 0;
+}
