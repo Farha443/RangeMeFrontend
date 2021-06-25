@@ -28,7 +28,16 @@ function Loginfunction() {
             cookies.set('uuid', res.data.data.uuid, { path: '/' })
             cookies.set('first_name', res.data.data.first_name, { path: '/' })
             cookies.set('user_pic', res.data.data.user_pic, { path: '/' })
-            window.location = "/"
+            cookies.set('user_type', res.data.data.user_type, { path: '/' })
+            // window.location = "/"
+            if(res.data.data.superuser===true){
+              alert("is superuser")
+              window.location = "/product_form"
+            }
+            else{
+              window.location = "/"
+            }
+            
           }).catch(err=>{
             // alert(err)
           })

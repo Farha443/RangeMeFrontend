@@ -11,8 +11,9 @@ export default class CompanyLogo extends Component {
                      File formats JPG, PNG, GIF.</p>
                 </div>
                 <ImageUploader
+                id="company_logo"
                 withIcon={true}
-                buttonText='Choose Profile'
+                buttonText='Change'
                 onChange={this.onDrop}
                 imgExtension={['.jpg', '.gif', '.png', '.gif']}
                 maxFileSize={5242880}

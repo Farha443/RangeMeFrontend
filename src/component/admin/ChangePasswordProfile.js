@@ -80,7 +80,7 @@ function ChangePassword() {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                    <Col md="2">
+                    <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <p className="p1"> Account Setting </p>

@@ -319,7 +319,7 @@ section.product-form-section {
 
 .admin-sidebar-main ul li a .sidebar-title {
     margin-right: 0.7rem;
-    font-size: 18px;
+    font-size: 16px;
 }
 .product-form-main .p-inside-title {
     margin-bottom: 0rem;
@@ -553,3 +553,46 @@ a.rounded-sm.text-gray-200.bg-blue-gray-dark {
     display: contents;
     margin: 0;
 }
+
+
+/************** subham css ***********/
+
+
+.change-img-maind {
+    width: 100%;
+    float: left;
+    padding-top: 20px;
+}
+.pic202 img {
+     width: 70px;
+    height: 70px;
+    border: none;
+}
+.pic202 {
+    display: grid;
+    width: 40%;
+    float: left;
+}
+
+.pic-1101 {
+    float: left;
+    width: 50%;
+}
+
+.upload-imf-direction-text {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.upload-imf-direction-text p {
+    margin-top: 0;
+}
+.profile-up-main.jio22 .fileUploader .fileContainer {
+    padding: 0;
+    margin-top: 0;
+}
+
+.profile-up-main.jio22 .fileUploader .fileContainer p{
+    margin-top: 0;
+}
+/******************************************/

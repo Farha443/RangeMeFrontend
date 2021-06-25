@@ -34,7 +34,7 @@ const colourOptions=[
 const cookies = new Cookies();
 const axios = require('axios');
 // alert(cookies.get("logintoken"))
- 
+
 class AdminProfile extends React.Component {
     state = {
     user_pic:null,
@@ -44,8 +44,20 @@ class AdminProfile extends React.Component {
     mobile: null,
     email: null,
      };
+     Preview(id){
+        console.log(id)
+        console.log("hhhhhhh")
 
-    
+    }
+    handleChange(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+              var output = document.getElementById('output');
+              output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+    }
+     
   save(){
         debugger
         var first_name = document.getElementById('first_name').value;
@@ -132,7 +144,7 @@ class AdminProfile extends React.Component {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                        <Col md="2">
+                        <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <p className="p1"> Account Setting </p>
@@ -197,10 +209,22 @@ class AdminProfile extends React.Component {
 
                                         <div className="p-inside-title">
                                             <h5> Your Profile </h5>
-                                            
+                                          
+                                              
+                                        </div>
+
+                                        <div className="change-img-maind">
+                                            <div className="pic-1101">
                                             <img src={BASE_URL.slice(0,-1)+ this.state.user_pic} width="70px" />
-                                            <input  type="file" id="user_pic" />
-                                            {/* <img id="frame" src="" width="100px" height="100px"/> */}
+                                           
+                                            </div>
+                                            <div className="pic202">
+                                            <img className="" id="output" src=""/>
+                                            <input  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
+                                        
+                                          
+                                            </div>
+
                                         </div>
 
                                         <div className="overview-form">

@@ -101,7 +101,7 @@ var userTypeTitle=cookies.get('userType');
     //   debugger
       axios(config).then(res=>{
           console.log(res.data.data)
-        // cookies.set('uuid1', res.data.data.uuid, { path: '/' })
+        cookies.set('uuid2', res.data.data.uuid, { path: '/' })
         // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
         window.location = '/admin_home'
       }
