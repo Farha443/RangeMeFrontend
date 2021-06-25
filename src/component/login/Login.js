@@ -8,6 +8,10 @@ import BASE_URL from '../base';
 
 const axios = require('axios');
 const cookies = new Cookies();
+// debugger
+cookies.get('uuid')
+// cookies.get('firstname')
+cookies.get('userType')
 function Loginfunction() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
@@ -40,10 +44,18 @@ function Loginfunction() {
             
           }).catch(err=>{
             // alert(err)
+            
           })
         
 }
-function Login(){
+// function Login(){
+  class Login extends React.Component {
+    handleKeypress = (event) => {
+      if(event.key === 'Enter'){
+        Loginfunction();
+      }
+    }
+    render(){
     return(
         <>
 
@@ -72,7 +84,7 @@ function Login(){
                       <div className="sign-in-form__field-container___3Zlii">
                         <div className="input__wrapper___1b5oN" data-tname="InputWrapper">
                           <div className data-tname="Inset" />
-                          <input id="password" name="password" placeholder="Password" type="password" className="input__input___1QUbp" data-tname="PasswordField" />
+                          <input id="password" name="password" placeholder="Password" onKeyPress={this.handleKeypress} type="password" className="input__input___1QUbp" data-tname="PasswordField" />
                         </div>
                       </div>
                       <div className="sign-in-form__log-in-button-container___2r6lo">
@@ -105,6 +117,7 @@ function Login(){
           
         </>
     );
+                      }
 }
 
 export default Login

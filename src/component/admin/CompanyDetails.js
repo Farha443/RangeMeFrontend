@@ -53,7 +53,7 @@ class CompanyDetails extends React.Component {
     }
     
 save(){
-        debugger
+        // debugger
         var product_name = document.getElementById('product_name').value;
         var email = document.getElementById('email').value;
         var comp_location = document.getElementById('comp_location').value;
@@ -75,7 +75,7 @@ save(){
         data.append('company_logo', company_logo);
         data.append('uuid', uuid);
         var token = cookies.get('logintoken');
-            debugger
+            // debugger
             var config = {
                 method: 'patch',
                 url: url,
@@ -86,7 +86,7 @@ save(){
                 data:data,
             };
             console.log(config)
-              debugger
+            //   debugger
          axios(config)
          .then(res=>{
                 console.log(res.data.data)

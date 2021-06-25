@@ -64,7 +64,7 @@ async function ChangecurrentPassword() {
     
     ).catch(err=>{
         console.error(err);
-    window.location = "/";
+    window.location = "/change_password";
     })
    
 }
@@ -182,7 +182,7 @@ function ChangePassword() {
                                         
                                     
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={ChangecurrentPassword}>   Change Password </button>
+                                            <button class="admin-add-btn" onClick={ChangecurrentPassword}>Change Password </button>
                                             </Col>
 
                                            </Row>

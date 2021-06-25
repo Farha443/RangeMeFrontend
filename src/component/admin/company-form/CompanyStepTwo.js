@@ -35,7 +35,7 @@ function skip(){
     var url = BASE_URL + "authentication/createbuyer/";
     // var token = cookies.get('token');
     var uuid = cookies.get('uuid1');
-    alert(uuid)
+    // alert(uuid)
     var userType = cookies.get('userType');
     var data = new FormData();
     data.append('company_logo', company_logo);
@@ -77,7 +77,13 @@ function skip(){
 
   }
 
-function CompanyStepTwo(){
+  class CompanyStepTwo extends React.Component {
+    handleKeypress = (event) => {
+      if(event.key === 'Enter'){
+        Func();
+      }
+    }
+    render(){
     return(
         <>
         <AdminNavbar/>
@@ -148,7 +154,7 @@ function CompanyStepTwo(){
                                             <Col md="11">
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                                 <Form.Label>company description</Form.Label>
-                                                <Form.Control as="textarea" rows={3} id="comp_desc" />
+                                                <Form.Control as="textarea" rows={3} onKeyPress={this.handleKeypress} id="comp_desc" />
                                             </Form.Group>
                                             </Col>
                                             
@@ -185,5 +191,7 @@ function CompanyStepTwo(){
         </> 
     );
 }
+  }
+
 
 export default CompanyStepTwo

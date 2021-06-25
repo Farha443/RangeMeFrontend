@@ -59,7 +59,7 @@ class AdminProfile extends React.Component {
     }
      
   save(){
-        debugger
+        // debugger
         var first_name = document.getElementById('first_name').value;
         var last_name = document.getElementById('last_name').value;
         var email = document.getElementById('email').value;
@@ -105,7 +105,7 @@ class AdminProfile extends React.Component {
 
     componentDidMount() {
         // cookies.remove('pro_pic');
-        debugger
+        // debugger
         var uuid = cookies.get('uuid');
         
         var url = BASE_URL + 'authentication/getuser/' + uuid + '/';
@@ -116,7 +116,7 @@ class AdminProfile extends React.Component {
         };
     
         axios(config).then(re => {
-            debugger
+            // debugger
             console.log(re.data)
             this.setState({
               first_name: re.data.data[0].first_name,
@@ -215,7 +215,7 @@ class AdminProfile extends React.Component {
 
                                         <div className="change-img-maind">
                                             <div className="pic-1101">
-                                            <img src={BASE_URL.slice(0,-1)+ this.state.user_pic} width="70px" />
+                                            <img src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="70px" />
                                            
                                             </div>
                                             <div className="pic202">

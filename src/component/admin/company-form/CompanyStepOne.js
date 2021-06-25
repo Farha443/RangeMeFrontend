@@ -65,7 +65,7 @@ var userTypeTitle=cookies.get('userType');
       axios(config).then(res=>{
           console.log(res.status)
         cookies.set('uuid1', res.data.data.uuid, { path: '/' })
-        alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+        // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
         window.location = '/company_form_two'
       }
       
@@ -84,7 +84,7 @@ var userTypeTitle=cookies.get('userType');
     //         sample_instruction:sample_instruction,
 
     //       }).then(res=>{
-    //         // alert('Success')
+            // alert('Success')
     //         // cookies.set('uuid', res.data, { path: '/' });
             
     //         window.location = "/company_form_two";
@@ -94,7 +94,13 @@ var userTypeTitle=cookies.get('userType');
   }
 
 
-function CompanyStepOne(){
+  class CompanyStepOne extends React.Component {
+    handleKeypress = (event) => {
+      if(event.key === 'Enter'){
+        Func();
+      }
+    }
+    render(){
     return(
         <>
         <AdminNavbar/>
@@ -127,7 +133,7 @@ function CompanyStepOne(){
                                                 <Form.Control as="select" id="comp_type">
                                                 <option value="company owned">Company Owened</option>
                                                 <option value="distributor">Distributor</option>
-                                                <option value="franchiser">Franchiser</option>
+                                                <option value=" franchisor"> franchisor</option>
                                                 <option value="importer">Importer</option>
                                                 </Form.Control>
                                             </Form.Group>
@@ -191,7 +197,7 @@ function CompanyStepOne(){
                                             <Col md="12">
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                                 <Form.Label>Sample instruction</Form.Label>
-                                                <Form.Control as="textarea" rows={3} id="sample_instruction"/>
+                                                <Form.Control as="textarea" rows={3} id="sample_instruction" onKeyPress={this.handleKeypress}/>
                                             </Form.Group>
                                             </Col>
 
@@ -225,5 +231,6 @@ function CompanyStepOne(){
         </> 
     );
 }
+  }
 
 export default CompanyStepOne

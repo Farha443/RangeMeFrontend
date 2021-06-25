@@ -7,7 +7,9 @@ import SignupModal from '../element/SignupModal';
 
 const axios = require('axios');
 const cookies = new Cookies();
-
+cookies.get('uuid')
+cookies.get('logintoken')
+cookies.get('userType')
 var logintoken = cookies.get("logintoken")
 // alert(logintoken)
 var userType = '';

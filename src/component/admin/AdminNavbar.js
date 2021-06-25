@@ -16,8 +16,23 @@ import {
   Row
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 const cookies = new Cookies();
+// cookies.get('uuid')
+// cookies.get('logintoken')
+// cookies.get('userType')
+// function logout() {
+
+//   var allCookies = document.cookie.split(";");
+  
+//  for (var i = 0; i < allCookies.length; i++)
+//  document.cookie = allCookies[i] + "=;expires="
+//  + new Date(0).toUTCString();
+  
+//   window.location.href = '/';
+// }
+var first_name = cookies.get('firstname');
+
+// alert(first_name);
 var first_name= cookies.get("first_name")
 var user_pic= cookies.get("user_pic")
 
@@ -42,7 +57,7 @@ function AdminNavbar(){
               
 <Navbar expand="lg">
   <Container>
-  <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> <h3> Vaniver </h3> </Navbar.Brand>
+  <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> <h3> Veniver </h3> </Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav" className="admin-nav-collapse">
     <Nav className="ml-auto">

@@ -817,10 +817,10 @@ strong{
 }
 @media only screen and (min-width: 1025px){
     .content-block--centre .content-block__inner{
-        width:calc(95% - 42px);
+        width:calc(75% - 42px);
         float:left;
-        margin-left:25px;
-       
+        margin-left:24px;
+        margin-left:calc(12.5% - 27px + 48px)
     }
 }
 @media only screen and (min-width: 768px){
@@ -2203,10 +2203,10 @@ form .button-hidden{
     color:#FFFFFF
 }
 @media only screen and (min-width: 768px){
-    .header{
-        align-items:center;
-        min-height:660px;
-        padding-top:88px
+    .header {
+        align-items: center;
+        min-height: 660px;
+        padding-top: 88px;
     }
 }
 .header--center .header__content{
@@ -2516,8 +2516,7 @@ form .button-hidden{
 }
 .image-frame__inner img{
     object-fit:contain;
-    max-width:100%;
-    width: 100%;
+    max-width:100%
 }
 .image-slider{
     position:relative;
@@ -5554,7 +5553,7 @@ a.plyr__control::after,a.plyr__control::before{
 .signup-modal--is-hidden{
     display:none
 }
-/* .signup-modal__close{
+.signup-modal__close{
     min-width:0;
     padding:0;
     border:0;
@@ -5569,22 +5568,22 @@ a.plyr__control::after,a.plyr__control::before{
     right:8px;
     top:8px;
     width:14px
-} */
-/* .signup-modal__close:focus{
+}
+.signup-modal__close:focus{
     outline:none
-} */
-/* @media only screen and (min-width: 768px){
+}
+@media only screen and (min-width: 768px){
     .signup-modal__close{
         top:28px;
         right:29px
     }
-} */
-/* @media only screen and (min-width: 1025px){
+}
+@media only screen and (min-width: 1025px){
     .signup-modal__close{
         top:28px;
         right:29px
     }
-} */
+}
 .signup-modal__inner{
     align-items:center;
     background-color:#FFFFFF;
@@ -6068,13 +6067,21 @@ a.plyr__control::after,a.plyr__control::before{
 }
 /* .ie11 .story-item__image{
     font-family:'object-fit: cover;
-    '
-}
-.story-item__image-container{
-    position:relative;
-    padding-bottom:56.25%;
-    margin-bottom:16px
 } */
+.story-item__image-container{
+    position: relative;
+    padding-bottom: 0;
+    margin-bottom: 16px;
+    width: 100%;
+    height: 200px;
+}
+
+.story-item__image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .sub-nav{
     margin:0;
     padding:0;
@@ -6302,14 +6309,14 @@ a.plyr__control::after,a.plyr__control::before{
     }
 
     .layout-block__cell.cell-right {
-        /* background: white; */
-        /* height: 65%; */
+        background: white;
+        height: 65%;
         padding: 15px 20px;
         position: relative;
         /* left: -122px; */
         z-index: 999;
-        /* top: 20%; */
-        /* box-shadow: 0px 0px 5px 0px #e8e8e89e; */
+        top: 20%;
+        box-shadow: 0px 0px 5px 0px #e8e8e89e;
     }
 
 
@@ -6832,6 +6839,7 @@ padding: 20px 0px;
 span.stats__value.blue-text {
 color: white;
 }
+
 .stats__item p {
     font-size: 18px;
     font-weight: 500;
@@ -6858,22 +6866,8 @@ section.bg {
 .signup-modal-main.signup-modal__account-types {
     justify-content: center;
 }
-a.story-item {
-    text-decoration: none !important;
-    color: #1e2432 !important;
-}
-section.section.blog-section.success-section {
-    padding: 140px 0px;
-}
 
-
-
-/************************* fcss**********************/
-
-
-.image-frame__inner {
-    height: 360px;
-}
+/******************* f css****************/
 
 .content-block {
     height: 350px;
@@ -6895,17 +6889,3 @@ a.story-item p {
     margin-bottom: 0.5rem;
 }
 
-
-.story-item__image-container{
-    position: relative;
-    padding-bottom: 0;
-    margin-bottom: 16px;
-    width: 100%;
-    height: 200px;
-}
-
-.story-item__image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
