@@ -105,7 +105,14 @@ function Toggle1() {
       }
 } 
 
-function Signup(){ 
+// function Signup(){ 
+class Signup extends React.Component {
+    handleKeypress = (event) => {
+      if(event.key === 'Enter'){
+        Func();
+      }
+    }
+    render(){
     return(
         <>
 
@@ -179,7 +186,7 @@ function Signup(){
                 <div className="validated-field__container___1zNgS">
                   <div className="checkbox-large__wrapper___2i1Pl signup-layout__terms-and-conditions___1mfPt">
                     <div className="checkbox-large__inner-wrapper___3jgqh" data-tname="TermsAndConditionsCheckbox">
-                      <input type="checkbox" id="vehicle1" name="vehicle1" className="sign-check" />
+                      <input onKeyPress={this.handleKeypress} type="checkbox" id="vehicle1" name="vehicle1" className="sign-check" />
                       <span className="text__text___2g-Dv text__small-copy___bgT96 checkbox-large__label___1i8a0" data-tname="CheckboxLargeLabel"><span className="signup-layout__terms-and-conditions-label___csiGB">
                           I have read and I agree to the&nbsp;<a className="link__link___3oFUb link__no-bottom-border___3RpRE" href="#" rel="noreferrer noopener" target="_blank">terms of service</a>&nbsp;and&nbsp;<a className="link__link___3oFUb link__no-bottom-border___3RpRE" href="#" rel="noreferrer noopener" target="_blank">privacy policy</a></span></span>
                     </div>
@@ -197,6 +204,7 @@ function Signup(){
 
         </>
     );
+}
 }
 
 export default Signup

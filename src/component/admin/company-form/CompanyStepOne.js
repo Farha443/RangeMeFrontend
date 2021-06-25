@@ -94,7 +94,13 @@ var userTypeTitle=cookies.get('userType');
   }
 
 
-function CompanyStepOne(){
+  class CompanyStepOne extends React.Component {
+    handleKeypress = (event) => {
+      if(event.key === 'Enter'){
+        Func();
+      }
+    }
+    render(){
     return(
         <>
         <AdminNavbar/>
@@ -191,7 +197,7 @@ function CompanyStepOne(){
                                             <Col md="12">
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                                 <Form.Label>Sample instruction</Form.Label>
-                                                <Form.Control as="textarea" rows={3} id="sample_instruction"/>
+                                                <Form.Control as="textarea" rows={3} id="sample_instruction" onKeyPress={this.handleKeypress}/>
                                             </Form.Group>
                                             </Col>
 
@@ -225,5 +231,6 @@ function CompanyStepOne(){
         </> 
     );
 }
+  }
 
 export default CompanyStepOne
