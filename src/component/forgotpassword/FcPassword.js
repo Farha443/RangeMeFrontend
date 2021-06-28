@@ -72,19 +72,9 @@ async function ChangePasswordd() {
     }
   }
 }
-
-const handleKeypress = (event) => {
-  if(event.key === 'Enter'){
-    ChangePasswordd();
-  }
-}
 function NewPassword(){
 
-  // handleKeypress = (event) => {
-  //   if(event.key === 'Enter'){
-  //     this.Submit();
-  //   }
-  // }
+
   return(
       <>
        <div data-tname="SignInContainer" className="w-100">
@@ -112,7 +102,7 @@ function NewPassword(){
                     <div className="sign-in-form__field-container___3Zlii">
                       <div className="input__wrapper___1b5oN" data-tname="InputWrapper">
                         <div className data-tname="Inset" />
-                        <input id="confirm_password" name="confirm_password" placeholder="Confirm Password" onKeyPress={handleKeypress} type="password" className="input__input___1QUbp" data-tname="PasswordInput"  />
+                        <input id="confirm_password" name="confirm_password" placeholder="Confirm Password" type="password" className="input__input___1QUbp" data-tname="PasswordInput"  />
                        <button className="button__button___2LnOX sign-in-form__primary-button___3edbD button__primary___3hlTY" data-tname="LoginButton" type="submit" onClick={ChangePasswordd}><span className>Submit</span></button>
                       </div>
                     </div>

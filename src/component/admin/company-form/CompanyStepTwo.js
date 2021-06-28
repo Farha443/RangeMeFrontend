@@ -77,13 +77,7 @@ function skip(){
 
   }
 
-  class CompanyStepTwo extends React.Component {
-    handleKeypress = (event) => {
-      if(event.key === 'Enter'){
-        Func();
-      }
-    }
-    render(){
+function CompanyStepTwo(){
     return(
         <>
         <AdminNavbar/>
@@ -154,7 +148,7 @@ function skip(){
                                             <Col md="11">
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                                 <Form.Label>company description</Form.Label>
-                                                <Form.Control as="textarea" rows={3} onKeyPress={this.handleKeypress} id="comp_desc" />
+                                                <Form.Control as="textarea" rows={3} id="comp_desc" />
                                             </Form.Group>
                                             </Col>
                                             
@@ -191,7 +185,5 @@ function skip(){
         </> 
     );
 }
-  }
-
 
 export default CompanyStepTwo

@@ -84,7 +84,7 @@ function Works(){
 }
 
 function Stats(){
-
+  debugger
   var num = document.getElementById("num").value;
   var content = document.getElementById('text').value;
   var icon = document.getElementById('icon').value;

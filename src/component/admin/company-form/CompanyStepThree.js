@@ -51,11 +51,6 @@ function SelectCategory(){
       window.location = "company_form_three";
       })  
 }
-const handleKeypress = (event) => {
-    if(event.key === 'Enter'){
-    SelectCategory();
-    }
-  }
 
 function CompanyStepThree(){
     const [category, setCategory]= useState([])
@@ -111,7 +106,7 @@ function CompanyStepThree(){
                                               
                                           <Col md="3">
                                                 <div className="step-three-category-box">
-                                                <input type="checkbox" id="category" name="type" onKeyPress={handleKeypress} value={cat.uuid}/>
+                                                <input type="checkbox" id="category" name="type" value={cat.uuid}/>
                                                         <img src="assets/images/tshirt.png" />
                                                         <p>{cat.name} </p>
                                                         

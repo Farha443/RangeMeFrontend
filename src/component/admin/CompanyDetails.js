@@ -32,29 +32,19 @@ const colourOptions=[
 ]
 // alert(cookies.get("uuid2"))
 class CompanyDetails extends React.Component {
-     constructor(props) {
-        super(props);
-        this.state = { pictures: [],
-            user_pic:null,
-            first_name: null,
-            last_name: null,
-            email: null,
-            mobile: null,
-            email: null,
-            getsupplierdata:[],
-            getcat:[], };
-            this.onDrop = this.onDrop.bind(this);
-    }
+    state = {
+    user_pic:null,
+    first_name: null,
+    last_name: null,
+    email: null,
+    mobile: null,
+    email: null,
+     };
 
-    onDrop(pictureFiles, pictureDataURLs) {
-        this.setState({
-            pictures: pictureFiles
-        });
-    }
-    
-save(){
-        // debugger
+  save(){
+        debugger
         var product_name = document.getElementById('product_name').value;
+        var last_name = document.getElementById('last_name').value;
         var email = document.getElementById('email').value;
         var comp_location = document.getElementById('comp_location').value;
         // var department = document.getElementById('department').value;
@@ -100,52 +90,42 @@ save(){
             })
     }
 
-
-
-    async componentDidMount(){
-        var url = BASE_URL+'authentication/getcategory/';
+    componentDidMount() {
+        // cookies.remove('pro_pic');
+        debugger
+        var uuid = cookies.get('uuid');
+        
+        var url = BASE_URL + 'authentication/getuser/' + uuid + '/';
         var config = {
             method: 'get',
             url: url,
-      
-          };
-          axios(config)
-
-      .then(res => {
-        this.setState({
-          getcat: res.data.data
-        });
-        
-        console.log(res.data.data);
-      })
-      .catch(err => {
-        alert(err);
-      })
-       
-
-
-      var url1 = BASE_URL+'authentication/getcategory/';
-        var config1 = {
-            method: 'get',
-            url: url1,
-      
-          };
-          axios(config1)
-
-      .then(res => {
-        this.setState({
-          getsupplierdata: res.data.data
-        });
-        
-        console.log(res.data.data);
-      })
-      .catch(err => {
-        alert(err);
-      })
-
-    }
-     render() {
-        return (
+            
+        };
+    
+        axios(config).then(re => {
+            debugger
+            console.log(re.data)
+            this.setState({
+              first_name: re.data.data[0].first_name,
+              last_name: re.data.data[0].last_name,
+              user_pic:re.data.data[0].user_pic,
+              mobile: re.data.data[0].mobile,
+              email: re.data.data[0].email,
+             
+    
+            });
+            // alert(BASE_URL.slice(0,-1)+ this.state.user_pic)
+            cookies.set('user_pic',re.data.data[0].user_pic,{path:'/'})
+            cookies.set('first_name',re.data.data[0].first_name,{path:'/'})
+          })
+          .catch(err => {
+            // alert(err);
+            alert('Something went wrong')
+          })
+    
+      }
+    render() {
+    return (
         <>
             <AdminNavbar />
 

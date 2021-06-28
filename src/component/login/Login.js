@@ -30,32 +30,21 @@ function Loginfunction() {
             console.log(res.data.data.accessToken)
             cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
             cookies.set('uuid', res.data.data.uuid, { path: '/' })
-            cookies.set('first_name', res.data.data.first_name, { path: '/' })
-            cookies.set('user_pic', res.data.data.user_pic, { path: '/' })
-            cookies.set('user_type', res.data.data.user_type, { path: '/' })
-            // window.location = "/"
-            if(res.data.data.superuser===true){
-              alert("is superuser")
-              window.location = "/product_form"
-            }
-            else{
+            cookies.set('userType', res.data.data.user_type, { path: '/' })
+            // debugger
+            if (cookies.get('userType')=== "buyer"){
               window.location = "/"
             }
-            
+            else{
+              window.location = "/admin_home"
+            }
           }).catch(err=>{
             // alert(err)
             
           })
         
 }
-// function Login(){
-  class Login extends React.Component {
-    handleKeypress = (event) => {
-      if(event.key === 'Enter'){
-        Loginfunction();
-      }
-    }
-    render(){
+function Login(){
     return(
         <>
 
@@ -84,7 +73,7 @@ function Loginfunction() {
                       <div className="sign-in-form__field-container___3Zlii">
                         <div className="input__wrapper___1b5oN" data-tname="InputWrapper">
                           <div className data-tname="Inset" />
-                          <input id="password" name="password" placeholder="Password" onKeyPress={this.handleKeypress} type="password" className="input__input___1QUbp" data-tname="PasswordField" />
+                          <input id="password" name="password" placeholder="Password" type="password" className="input__input___1QUbp" data-tname="PasswordField" />
                         </div>
                       </div>
                       <div className="sign-in-form__log-in-button-container___2r6lo">
@@ -117,7 +106,6 @@ function Loginfunction() {
           
         </>
     );
-                      }
 }
 
 export default Login

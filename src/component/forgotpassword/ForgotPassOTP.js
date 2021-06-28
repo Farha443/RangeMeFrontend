@@ -68,11 +68,6 @@ async function Forgott() {
     //   }, 2000);
   }
 }
-const handleKeypress = (event) => {
-  if(event.key === 'Enter'){
-    Forgott();
-  }
-}
 
 
 function ForgotPasdOTP(){
@@ -99,7 +94,7 @@ function ForgotPasdOTP(){
                     <div className="sign-in-form__field-container___3Zlii">
                       <div className="input__wrapper___1b5oN" data-tname="InputWrapper">
                         <div className data-tname="Inset" />
-                        <input id="code" name="code" placeholder="code" type="text" onKeyPress={handleKeypress} className="input__input___1QUbp" data-tname="TextField"  />
+                        <input id="code" name="code" placeholder="code" type="text" className="input__input___1QUbp" data-tname="TextField"  />
                       </div>
                     </div>
                     <div className="sign-in-form__log-in-button-container___2r6lo">

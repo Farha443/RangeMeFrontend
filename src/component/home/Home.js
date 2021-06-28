@@ -5,24 +5,8 @@ import { NavLink } from 'react-bootstrap';
 import SignupModal from '../element/SignupModal';
 import axios from 'axios';
 import BASE_URL from '../base';
-// import Moment from 'moment';
-// function getdate(d_str){
-//   var months=['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
-//   var day = d_str.split('-')[0];
-//   var month = d_str.split('-')[1];
-//   return day+
-  
-  
-// }
-function get_date(dt_string){
-  var dt = dt_string.split('_')[0]
-  // var dtt = dt_string.split('_')[2]
-  var dtt = dt_string.split('-')[2].split('T')[0]
-  var month_list=['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec']
-  var date_parts = dt.split('-');
-  // dtt = dtt + ' ' + ((dtt.split(':')[0] >= 12) ? "PM" : "AM");
-  return date_parts[0]+' '+month_list[parseInt(date_parts[1])-1] +' '+ dtt;
-}
+
+
 
 function Home(){
   // var xxx = '';
@@ -39,7 +23,7 @@ function Home(){
     axios.get(BASE_URL+'home/homeview/')
     .then(res=>{
       setHome(res.data)
-      
+      debugger
       console.log(res.data)
       // xxx =res.data.blogs
       // console.log(xxx)
@@ -92,9 +76,7 @@ function Home(){
                 <div className="header__inner">
                   <div className="header__content">
                   
-                    {!home.heading && <h1 className="header__title">This is Heading</h1>}
-                    {home.heading && <h1 className="header__title">{home.heading.heading}</h1>}
-                    
+                    <h1 className="header__title">{home.heading.heading}</h1>
                     
                     <button className="header__cta button button--large button--green"  onClick={() => setModalShow(true)}>Sign Up For Free</button>
                   </div>
@@ -120,7 +102,7 @@ function Home(){
                         </div>
                         <div className="layout-block__cell">
                           <div className="stats">
-                            {home.stats && home.stats.map(stats=>(
+                            {stats.map(stats=>(
                             <div className="stats__item">
                             
                               <div className="count-icn stats__description">
@@ -129,16 +111,6 @@ function Home(){
                               <span className="stats__value blue-text">{stats.num}</span>
                               <p className="stats__description">{stats.content}</p>
                             </div>))}
-
-                            {!home.stats && 
-                            <div className="stats__item">
-                            
-                              <div className="count-icn stats__description">
-                                <i className="fa fa-user-o" aria-hidden="true" />
-                              </div>
-                              <span className="stats__value blue-text">100000</span>
-                              <p className="stats__description">Retail supplier</p>
-                            </div>}
                             
                           </div>
                         </div>
@@ -158,7 +130,7 @@ function Home(){
                       </div>
                     </div>
                     
-                      {home.works && home.works.map(function(work, index){
+                      {works.map(function(work, index){
                         if(index%2===0){
                           return  <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay">
                           <div className="layout-block__inner">
@@ -229,74 +201,7 @@ function Home(){
                       
                    
                     
-                      {!home.works && 
-                        
-                           <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay">
-                          <div className="layout-block__inner">
-                            <div className="layout-block__cell">
-                              <div className="content-block content-block--centre content-block--pad-bottom">
-                                <div className="content-block__inner">
-                                  <div className="image-frame image-frame--desktop">
-                                    <div className="image-frame__inner">
-                                      <img src="assets/images/h2.jpg" />
-                                      {/* <img src={BASE_URL.slice(0,-5)+ work.image}/> */}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="layout-block__cell cell-right">
-                              <div className="content-block content-block--pad-bottom content-block--v-aligncontent-block--pad-right">
-                                <div className="content-block__inner">
-                                  <h3 className="content-block__heading blue-text word-reveal">title</h3>
-                                  <p className="large-copy">description</p>
-                                  <div className="hw-it-btn">
-                                  {/* <button className=" button button--green "> Show More</button> */}
-                                  <a href="#">Show More </a>
-    
-                                   </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        
-                        }
-                        
-                           <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay layout-block--reversed">
-                          <div className="layout-block__inner">
-                            <div className="layout-block__cell">
-                              <div className="content-block content-block--centre content-block--pad-bottom">
-                                <div className="content-block__inner">
-                                  <div className="image-frame image-frame--desktop">
-                                    <div className="image-frame__inner">
-                                      <canvas className="animation__spacer" width={456} height={307} />
-                                      <img src="assets/images/h1.jpg" />
-                                      {/* <img src={BASE_URL.slice(0,-5)+ work.image}/> */}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-    
-                            <div className="layout-block__cell  cell-right">
-                              <div className="content-block content-block--pad-bottom content-block--v-align content-block--pad-left">
-                                <div className="content-block__inner">
-                                  <h3 className="content-block__heading blue-text word-reveal">title</h3>
-                                  <p className="large-copy">description</p>
-                                  <div className="hw-it-btn">
-                                    {/* <button className=" button button--green button--compact signup-modal-trigger"> Show More</button> */}
-                                    <a href="#">Show More </a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      
-                        
-                  
+                    
                    
 
 
@@ -418,14 +323,14 @@ function Home(){
               <section className="section blog-section">
                 <div className="section__inner stories-section__inner">
                   <div className="section__intro">
-                    <h2 className="section__heading">Latest Blog</h2>
+                    <h2 className="section__heading">Letest Blog</h2>
                   </div>
                   
                   <div className="section__sub-section">
                   
                     <div className="stories">
                       <div className="stories__grid load-more">
-                      {home.blogs && home.blogs.map(blog=>(
+                      {blogs.map(blog=>(
                         <a href="#" className="story-item">
                         
                           <div className="story-item__image-container">
@@ -435,35 +340,12 @@ function Home(){
                           </div>
                           <div className="blog-title">
                             <h6 className="story-item__title dark-text left-t">{blog.title}</h6>
-                            <span className="date right-t">{get_date(blog.created_at)}
-
-
-</span>
-                            {/* <span className="date right-t">{blog.created_at.split('T')[0]}</span> */}
-                            {/* <Moment format="D MMM YYYY">{blog.created_at}</Moment> */}
+                            <span className="date right-t">May 25, 2021</span>
                           </div>
                           <div className="story-item__category">{blog.blog_category}</div>
                           <p className="story-item__description">{blog.story}</p>
                           <div className="story-item__cta">Read their story</div>
                         </a>))}
-
-                        {!home.blogs && 
-                        <a href="#" className="story-item">
-                        
-                          <div className="story-item__image-container">
-                          
-                            <img className="story-item__image" src="assets/images/blog1.jpg" alt="blog1" />
-                            {/* <img src={BASE_URL.slice(0,-5)+ blog.image} width='90%'/> */}
-                          </div>
-                          <div className="blog-title">
-                            <h6 className="story-item__title dark-text left-t">title</h6>
-                            <span className="date right-t">May 25 2021</span>
-                          </div>
-                          <div className="story-item__category">beauty</div>
-                          <p className="story-item__description">Proin maximus sodales lectus, in feugiat massa consequat et. Nam in accumsan mi, non aliquam arcu.</p>
-                          <div className="story-item__cta">Read their story</div>
-                        </a>}
-
                         {/* <a href="#" className="story-item">
                           <div className="story-item__image-container">
                             <img className="story-item__image" src="assets/images/blog2.jpeg" alt="blog2" />
