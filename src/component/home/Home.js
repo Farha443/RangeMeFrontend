@@ -5,29 +5,51 @@ import { NavLink } from 'react-bootstrap';
 import SignupModal from '../element/SignupModal';
 import axios from 'axios';
 import BASE_URL from '../base';
-
-
+// import Moment from 'moment';
+// function getdate(d_str){
+//   var months=['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
+//   var day = d_str.split('-')[0];
+//   var month = d_str.split('-')[1];
+//   return day+
+  
+  
+// }
+function get_date(dt_string){
+  var dt = dt_string.split('_')[0]
+  // var dtt = dt_string.split('_')[2]
+  var dtt = dt_string.split('-')[2].split('T')[0]
+  var month_list=['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec']
+  var date_parts = dt.split('-');
+  // dtt = dtt + ' ' + ((dtt.split(':')[0] >= 12) ? "PM" : "AM");
+  return date_parts[0]+' '+month_list[parseInt(date_parts[1])-1] +' '+ dtt;
+}
 
 function Home(){
   // var xxx = '';
   const [modalShow, setModalShow] = useState(false);
-  const [home, setHome] = useState([])
-  const [indexheading, setIndexheading]= useState({})
+  const [home, setHome] = useState({})
+  // const [indexheading, setIndexheading]= useState({})
   const [stats, setStats]= useState([])
   const [works, setWorks]= useState([])
   const [succestory, setSuccestory]= useState([])
   const [blogs, setBlogs]= useState([])
-  
+  const [heading, setheading]= useState([])
   useEffect(() => {
    
     axios.get(BASE_URL+'home/homeview/')
     .then(res=>{
       setHome(res.data)
+      setheading(res.data.heading)
+      setWorks(res.data.works)
+      setBlogs(res.data.blogs)
+      setStats(res.data.stats)
+      // setheading(res.data.works)
+
       debugger
       console.log(res.data)
       // xxx =res.data.blogs
-      // console.log(xxx)
-      // console.log(res.data.data.heading)
+      console.log("xxx")
+      console.log(res.data)
     }).catch(err=>{
         console.log(err)            
     })
@@ -59,7 +81,8 @@ function Home(){
   // }).catch(err=>{
   //     console.log(err)            
   // })
-  // console.log(blogs)
+  console.log("hoja re")
+  console.log(home)
 
 },[])
 
@@ -76,15 +99,20 @@ function Home(){
                 <div className="header__inner">
                   <div className="header__content">
                   
-                    <h1 className="header__title">{home.heading.heading}</h1>
+                    {heading.heading != "" ? <h1 className="header__title">{heading.heading}</h1>:<h1 className="header__title">This is Heading</h1>}
+                   
                     
-                    <button className="header__cta button button--large button--green"  onClick={() => setModalShow(true)}>Sign Up For Free</button>
+                    
+                    <button className="header__cta button button--large button--green"  onClick={() => setModalShow(true)}>Ücretsiz Hesap Aç </button>
                   </div>
                 </div>
-               {! home.heading &&  <div className="header__background" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
+                {heading.bg_img != null ? <div className="header__background" style={{backgroundImage: 'url("'+BASE_URL.slice(0,-5)+ heading.bg_img+'")'}}>
+                </div>:<div className="header__background" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
                 </div>}
-                {home.heading &&  <div className="header__background" style={{backgroundImage: 'url("'+BASE_URL.slice(0,-5)+ home.heading.bg_img+'")'}}>
-                </div>}
+
+
+               
+            
                 {/* <div className="header__background" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
                 </div> */}
               </header>
@@ -96,13 +124,11 @@ function Home(){
                         
                         <div className="layout-block__cell">
                         
-                          <p className="small-heading dark-text" style={{color: 'white'}}>Veniver is the leading product discovery and
-                            sourcing platform where retailers and suppliers discover, connect, and grow
-                            their business.</p>
+                          <p className="small-heading dark-text" style={{color: 'white'}}>Tayuss.com, perakendecilerin tedarikçileri ve onların ürünlerini keşfettiği, karşılıklı iletişim kanalı ile ticaretin başlatıldığı lider “ÜRÜN KEŞFİ ve YENİ KAYNAK BULMA platformudur.</p>
                         </div>
                         <div className="layout-block__cell">
                           <div className="stats">
-                            {stats.map(stats=>(
+                            {home.stats && home.stats.map(stats=>(
                             <div className="stats__item">
                             
                               <div className="count-icn stats__description">
@@ -111,6 +137,16 @@ function Home(){
                               <span className="stats__value blue-text">{stats.num}</span>
                               <p className="stats__description">{stats.content}</p>
                             </div>))}
+
+                            {!home.stats && 
+                            <div className="stats__item">
+                            
+                              <div className="count-icn stats__description">
+                                <i className="fa fa-user-o" aria-hidden="true" />
+                              </div>
+                              <span className="stats__value blue-text">100000</span>
+                              <p className="stats__description">Retail supplier</p>
+                            </div>}
                             
                           </div>
                         </div>
@@ -130,7 +166,7 @@ function Home(){
                       </div>
                     </div>
                     
-                      {works.map(function(work, index){
+                      {works &&  works.map(function(work, index){
                         if(index%2===0){
                           return  <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay">
                           <div className="layout-block__inner">
@@ -152,8 +188,8 @@ function Home(){
                                   <h3 className="content-block__heading blue-text word-reveal">{work.title}</h3>
                                   <p className="large-copy">{work.description}</p>
                                   <div className="hw-it-btn">
-                                  {/* <button className=" button button--green "> Show More</button> */}
-                                  <a href={work.redirect_link}>Show More </a>
+                                  {/* <button className=" button button--green "> Şimdi İncele</button> */}
+                                  <a href={work.redirect_link}>Şimdi İncele</a>
     
                                    </div>
                                 </div>
@@ -187,8 +223,8 @@ function Home(){
                                   <h3 className="content-block__heading blue-text word-reveal">{work.title}</h3>
                                   <p className="large-copy">{work.description}</p>
                                   <div className="hw-it-btn">
-                                    {/* <button className=" button button--green button--compact signup-modal-trigger"> Show More</button> */}
-                                    <a href={work.redirect_link}>Show More </a>
+                                    {/* <button className=" button button--green button--compact signup-modal-trigger"> Şimdi İncele</button> */}
+                                    <a href={work.redirect_link}>Şimdi İncele </a>
                                   </div>
                                 </div>
                               </div>
@@ -201,7 +237,74 @@ function Home(){
                       
                    
                     
-                    
+                      {!home.works && 
+                        
+                           <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay">
+                          <div className="layout-block__inner">
+                            <div className="layout-block__cell">
+                              <div className="content-block content-block--centre content-block--pad-bottom">
+                                <div className="content-block__inner">
+                                  <div className="image-frame image-frame--desktop">
+                                    <div className="image-frame__inner">
+                                      <img src="assets/images/h2.jpg" />
+                                      {/* <img src={BASE_URL.slice(0,-5)+ work.image}/> */}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="layout-block__cell cell-right">
+                              <div className="content-block content-block--pad-bottom content-block--v-aligncontent-block--pad-right">
+                                <div className="content-block__inner">
+                                  <h3 className="content-block__heading blue-text word-reveal">title</h3>
+                                  <p className="large-copy">description</p>
+                                  <div className="hw-it-btn">
+                                  {/* <button className=" button button--green "> Şimdi İncele</button> */}
+                                  <a href="#">Şimdi İncele </a>
+    
+                                   </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        
+                        }
+                        
+                           <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay layout-block--reversed">
+                          <div className="layout-block__inner">
+                            <div className="layout-block__cell">
+                              <div className="content-block content-block--centre content-block--pad-bottom">
+                                <div className="content-block__inner">
+                                  <div className="image-frame image-frame--desktop">
+                                    <div className="image-frame__inner">
+                                      <canvas className="animation__spacer" width={456} height={307} />
+                                      <img src="assets/images/h1.jpg" />
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+    
+                            <div className="layout-block__cell  cell-right">
+                              <div className="content-block content-block--pad-bottom content-block--v-align content-block--pad-left">
+                                <div className="content-block__inner">
+                                  <h3 className="content-block__heading blue-text word-reveal">title</h3>
+                                  <p className="large-copy">description</p>
+                                  <div className="hw-it-btn">
+                                   
+                                    <a href="#">Şimdi İncele </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      
+                        
+                  
                    
 
 
@@ -232,7 +335,7 @@ function Home(){
                               <p className="large-copy">Buyers connect with you directly on Veniver to start
                                 conversations, request samples, and discuss next steps.</p>
                               <div className="hw-it-btn">
-                                <button className=" button button--green button--compact signup-modal-trigger"> Show More</button>
+                                <button className=" button button--green button--compact signup-modal-trigger"> Şimdi İncele</button>
                               </div>
                             </div>
                           </div>
@@ -323,29 +426,52 @@ function Home(){
               <section className="section blog-section">
                 <div className="section__inner stories-section__inner">
                   <div className="section__intro">
-                    <h2 className="section__heading">Letest Blog</h2>
+                    <h2 className="section__heading">Latest Blog</h2>
                   </div>
                   
                   <div className="section__sub-section">
                   
                     <div className="stories">
                       <div className="stories__grid load-more">
-                      {blogs.map(blog=>(
+                      {home.blogs && home.blogs.map(blog=>(
                         <a href="#" className="story-item">
                         
                           <div className="story-item__image-container">
                           
                             {/* <img className="story-item__image" src="assets/images/blog1.jpg" alt="blog1" /> */}
-                            <img src={BASE_URL.slice(0,-5)+ blog.image} width='90%'/>
+                            <img src={BASE_URL.slice(0,-5)+ blog.b_image} width='90%'/>
                           </div>
                           <div className="blog-title">
-                            <h6 className="story-item__title dark-text left-t">{blog.title}</h6>
-                            <span className="date right-t">May 25, 2021</span>
+                            <h6 className="story-item__title dark-text left-t">{blog.b_title}</h6>
+                            <span className="date right-t">{get_date(blog.created_at)}
+
+
+</span>
+                            {/* <span className="date right-t">{blog.created_at.split('T')[0]}</span> */}
+                            {/* <Moment format="D MMM YYYY">{blog.created_at}</Moment> */}
                           </div>
-                          <div className="story-item__category">{blog.blog_category}</div>
-                          <p className="story-item__description">{blog.story}</p>
+                          <div className="story-item__category">{blog.b_category}</div>
+                          <p className="story-item__description">{blog.b_story}</p>
                           <div className="story-item__cta">Read their story</div>
                         </a>))}
+
+                        {!home.blogs && 
+                        <a href="#" className="story-item">
+                        
+                          <div className="story-item__image-container">
+                          
+                            <img className="story-item__image" src="assets/images/blog1.jpg" alt="blog1" />
+                            {/* <img src={BASE_URL.slice(0,-5)+ blog.image} width='90%'/> */}
+                          </div>
+                          <div className="blog-title">
+                            <h6 className="story-item__title dark-text left-t">title</h6>
+                            <span className="date right-t">May 25 2021</span>
+                          </div>
+                          <div className="story-item__category">beauty</div>
+                          <p className="story-item__description">Proin maximus sodales lectus, in feugiat massa consequat et. Nam in accumsan mi, non aliquam arcu.</p>
+                          <div className="story-item__cta">Read their story</div>
+                        </a>}
+
                         {/* <a href="#" className="story-item">
                           <div className="story-item__image-container">
                             <img className="story-item__image" src="assets/images/blog2.jpeg" alt="blog2" />
@@ -388,7 +514,7 @@ function Home(){
                         <div className="layout-block__cell">
                           <div className="content-block content-block--v-align content-block--right">
                             <div className="content-block__inner">
-                              <a className="button button--large button--green" data-signup="supplier" href="#">Sign Up For Free</a>
+                              <a className="button button--large button--green" data-signup="supplier" href="#">Ücretsiz Hesap Aç</a>
                             </div>
                           </div>
                         </div>

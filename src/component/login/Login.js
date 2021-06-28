@@ -30,21 +30,32 @@ function Loginfunction() {
             console.log(res.data.data.accessToken)
             cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
             cookies.set('uuid', res.data.data.uuid, { path: '/' })
-            cookies.set('userType', res.data.data.user_type, { path: '/' })
-            // debugger
-            if (cookies.get('userType')=== "buyer"){
-              window.location = "/"
+            cookies.set('first_name', res.data.data.first_name, { path: '/' })
+            cookies.set('user_pic', res.data.data.user_pic, { path: '/' })
+            cookies.set('user_type', res.data.data.user_type, { path: '/' })
+            // window.location = "/"
+            if(res.data.data.superuser===true){
+              alert("is superuser")
+              window.location = "/admin/home"
             }
             else{
-              window.location = "/admin_home"
+              window.location = "/"
             }
+            
           }).catch(err=>{
             // alert(err)
             
           })
         
 }
-function Login(){
+// function Login(){
+  class Login extends React.Component {
+    handleKeypress = (event) => {
+      if(event.key === 'Enter'){
+        Loginfunction();
+      }
+    }
+    render(){
     return(
         <>
 
@@ -61,7 +72,7 @@ function Login(){
                   {/* {/ <img alt="Logo" src="/assets/range-me-logo.72d528cf4802493c2b76.svg"> /} */}
                 </div>
                 <div className="auth-form-wrapper__sign-in-modal___1WSWV" data-tname="form-wrapper">
-                  <h2 className="wrappers__wrapper___1B_Ho auth-form-wrapper__title___30WhP"><span className="text__text___2g-Dv text__large-heading___31LRE text__display-block___1CZnH">Log in to your Veniver Account</span></h2>
+                  <h2 className="wrappers__wrapper___1B_Ho auth-form-wrapper__title___30WhP"><span className="text__text___2g-Dv text__large-heading___31LRE text__display-block___1CZnH">GİRİŞ YAP </span></h2>
                   <div>
                     {/* <form> */}
                       <div className="sign-in-form__field-container___3Zlii">
@@ -73,7 +84,7 @@ function Login(){
                       <div className="sign-in-form__field-container___3Zlii">
                         <div className="input__wrapper___1b5oN" data-tname="InputWrapper">
                           <div className data-tname="Inset" />
-                          <input id="password" name="password" placeholder="Password" type="password" className="input__input___1QUbp" data-tname="PasswordField" />
+                          <input id="password" name="password" placeholder="Password" onKeyPress={this.handleKeypress} type="password" className="input__input___1QUbp" data-tname="PasswordField" />
                         </div>
                       </div>
                       <div className="sign-in-form__log-in-button-container___2r6lo">
@@ -106,6 +117,7 @@ function Login(){
           
         </>
     );
+                      }
 }
 
 export default Login

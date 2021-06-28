@@ -27,6 +27,7 @@ var userTypeTitle=cookies.get('userType');
 
 
   class CompanyStepOne extends React.Component{
+  
    
     state = {
         data: [],
@@ -61,10 +62,13 @@ var userTypeTitle=cookies.get('userType');
        
     }
 
+
+
   
 
     async Submit(){
-        debugger
+
+       
         var year_founded = document.getElementById('year').value;
         var annual_revenue = document.getElementById('revenue').value;
         // var array = []
@@ -113,8 +117,13 @@ var userTypeTitle=cookies.get('userType');
       window.location = "/supplier_step_one";
       })
     }
-
+    handleKeypress = (event) => {
+      if(event.key === 'Enter'){
+        this.Submit();
+      }
+    }
   render() {
+   
    
     return(
         <>
@@ -219,7 +228,7 @@ var userTypeTitle=cookies.get('userType');
                                             <Col md="12">
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                                 <Form.Label>In Which city is your company located.</Form.Label>
-                                                <Form.Control type="text"  id="city"/>
+                                                <Form.Control type="text"  onKeyPress={this.handleKeypress} id="city"/>
                                             </Form.Group>
                                             </Col>
 

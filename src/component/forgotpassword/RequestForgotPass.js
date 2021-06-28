@@ -58,6 +58,12 @@ async function request_forgot_pass() {
   }
 }
 
+const handleKeypress = (event) => {
+  if(event.key === 'Enter'){
+    request_forgot_pass();
+  }
+}
+
 function Email(){
 
 
@@ -82,7 +88,7 @@ function Email(){
                     <div className="sign-in-form__field-container___3Zlii">
                       <div className="input__wrapper___1b5oN" data-tname="InputWrapper">
                         <div className data-tname="Inset" />
-                        <input id="email" name="email" placeholder="Email" type="email" className="input__input___1QUbp" data-tname="EmailField"  />
+                        <input id="email" name="email" placeholder="Email" type="email" onKeyPress={handleKeypress} className="input__input___1QUbp" data-tname="EmailField"  />
                       </div>
                     </div>
                     <div className="sign-in-form__log-in-button-container___2r6lo">
