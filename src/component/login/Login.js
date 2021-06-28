@@ -39,7 +39,7 @@ function Loginfunction() {
               window.location = "/admin/home"
             }
             else{
-              window.location = "/"
+              window.location = "/admin_home"
             }
             
           }).catch(err=>{
