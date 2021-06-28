@@ -42,7 +42,7 @@ function Banner(){
   }
         axios(config).then(res=>{
           console.log(res.data.data)
-
+          window.location = '/admin_home'
       }
 
       ).catch(err=>{
@@ -74,7 +74,7 @@ function Works(){
   }
         axios(config).then(res=>{
           console.log(res.data.data)
-
+          window.location = '/admin_home'
       }
 
       ).catch(err=>{
@@ -104,7 +104,7 @@ function Stats(){
   }
         axios(config).then(res=>{
           console.log(res.data.data)
-
+          window.location = '/admin_home'
       }
 
       ).catch(err=>{
