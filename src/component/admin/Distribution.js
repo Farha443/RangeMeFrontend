@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import ImageUploader from 'react-images-upload';
 import {
@@ -38,9 +37,6 @@ const colourOptions=[
 
 
 async function distribution() {
- 
-    // debugger
-
       var country = document.getElementById('country').value;
       var state = document.getElementById('state').value;
       var distributors = document.getElementById('distributors').value;
@@ -77,7 +73,6 @@ async function distribution() {
               })
               
               if (res.status === 200) {
-                // debugger
                   // test for status you want, etc
                   console.log(res.status);
                   console.log(res.data);

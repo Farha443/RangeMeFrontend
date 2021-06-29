@@ -78,8 +78,6 @@ function Toggle1() {
             comp_name:comp_name,
 
         }).then(res=>{
-          // alert('Success')
-          // debugger
           if (res.data.message === "Email id is required"){
             alert("Email id is required");
           }
@@ -104,8 +102,6 @@ function Toggle1() {
           }
           
         }).catch(err=>{
-          // debugger
-          
           window.location = "/signup"
           console.log(err)
         })

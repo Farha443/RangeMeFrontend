@@ -32,7 +32,6 @@ cookies.get("uuid")
 cookies.get("userType")
 
 async function ChangecurrentPassword() {
-    // debugger
     $(".laoder").show(); 
     var current_password = document.getElementById('current_pass').value; 
     var password = document.getElementById('new_pass').value; 
@@ -58,7 +57,7 @@ async function ChangecurrentPassword() {
 
     };
     console.log(config)
-    //   debugger
+ 
     axios(config).then(res=>{
         console.log(res.data.data)
         // cookies.set('uuid1', res.data.data.uuid, { path: '/' })

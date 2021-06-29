@@ -58,7 +58,6 @@ class AdminProfile extends React.Component {
     }
      
   save(){
-        // debugger
         var first_name = document.getElementById('first_name').value;
         var last_name = document.getElementById('last_name').value;
         var email = document.getElementById('email').value;
@@ -86,7 +85,7 @@ class AdminProfile extends React.Component {
                 data:data,
             };
             console.log(config)
-            //   debugger
+
          axios(config)
          .then(res=>{
                 console.log(res.data.data)
@@ -104,7 +103,7 @@ class AdminProfile extends React.Component {
 
     componentDidMount() {
         // cookies.remove('pro_pic');
-        // debugger
+
         var uuid = cookies.get('uuid');
         
         var url = BASE_URL + 'authentication/getuser/' + uuid + '/';
@@ -115,7 +114,7 @@ class AdminProfile extends React.Component {
         };
     
         axios(config).then(re => {
-            // debugger
+ 
             console.log(re.data)
             this.setState({
               first_name: re.data.data[0].first_name,

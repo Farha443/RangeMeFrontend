@@ -1,5 +1,4 @@
 import React from 'react';
-// import {CButton,CTextarea,CCollapse,Form.Label,Form.Control, CCard, CCard.Body, CCard.Header, CCol, Form.Group, Row, CCardFooter } from '@coreui/react';
 import {
     Jumbotron,
     Button,
@@ -22,10 +21,14 @@ import ImageUploader from 'react-images-upload';
 import { NavLink } from 'react-router-dom';
 import BASE_URL from '../base';
 import AdminNavbar from './AdminNavbar';
-// import CKEditor from 'ckeditor4-react';
+import {CKEditor} from 'ckeditor4-react';
+import Cookies from 'universal-cookie';
 
-
+const cookies = new Cookies();
 const axios = require('axios');
+var token = cookies.get("logintoken")
+
+
 
 function Banner(){
   var heading = document.getElementById('heading').value;
@@ -40,6 +43,7 @@ function Banner(){
     url:url,
     headers: {
       'content-type': `multipart/form-data; boundary=${data._boundary}`,
+      "Authorization": "Bearer" + token,
     },
     data : data,
   }
@@ -72,6 +76,7 @@ function Works(){
     url:url,
     headers: {
       'content-type': `multipart/form-data; boundary=${data._boundary}`,
+      "Authorization": "Bearer " + token,
     },
     data : data,
   }
@@ -102,6 +107,7 @@ function Stats(){
     url:url,
     headers: {
       'content-type': `multipart/form-data; boundary=${data._boundary}`,
+      "Authorization": "Bearer " + token,
     },
     data : data,
   }
@@ -116,14 +122,42 @@ function Stats(){
       })
 }
 
-function Blogs(){
+class AdminNewPage extends React.Component {
+  constructor( props ) {
+    super( props );
+
+    this.state = {
+        data: [],
+        content :'This is a test',
+    };
+
+    this.handleChange = this.handleChange.bind( this );
+    this.onEditorChange = this.onEditorChange.bind( this );
+}
+
+onEditorChange( evt ) {
+    this.setState( {
+      content: evt.editor.getData()
+    } );
+}
+
+handleChange( changeEvent ) {
+    this.setState( {
+      content: changeEvent.target.value
+    } );
+}
+
+Blogs(){
+  console.clear()
+  console.log(this.state.content)
   var b_title = document.getElementById("b_title").value;
   var b_image = document.getElementById('b_image').files[0];
   var arr =[]
   var b_category = document.getElementById('b_category').value;
   arr.push(b_category)
   var b_story = document.getElementById('b_story').value;
-  var b_content = document.getElementById('b_content').value;
+  var b_content = this.state.content;
+
   if(document.getElementById('visible').checked == true) {   
     var visible = "True";   
 } else {  
@@ -143,6 +177,7 @@ function Blogs(){
     url:url,
     headers: {
       'content-type': `multipart/form-data; boundary=${data._boundary}`,
+      "Authorization": "Bearer " + token,
     },
     data : data,
   }
@@ -157,14 +192,11 @@ function Blogs(){
       })
 }
 
-class AdminNewPage extends React.Component {
+  // state = {
+  //   data: [],
+  //   message1: "message"
 
-
-  state = {
-    data: [],
-    message1: "message"
-
-  };
+  // };
 
   async componentDidMount(){
     var url = BASE_URL+'authentication/getcategory/';
@@ -188,6 +220,7 @@ class AdminNewPage extends React.Component {
    
 }
     render(){
+
   return (
     <>
 
@@ -417,7 +450,7 @@ class AdminNewPage extends React.Component {
                 </Form.Group>
                 </Card.Body>
           </Card>
-
+                
           <Card>
             <Card.Header> <h5>Blogs data</h5> </Card.Header>
             <Card.Body>
@@ -462,14 +495,20 @@ class AdminNewPage extends React.Component {
                 />
                     </Col>
 
-                    <Col sm="6">
+                    <Col sm="12">
+                    
                     <Form.Label for="exampleEmail">Content</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="text"
-                    id="b_content"
-                    placeholder="text"
-                />
+                    <CKEditor
+                    data={this.state.content}
+                    onChange={this.onEditorChange} />
+                    {/* <label>
+                        Change value:
+                        <textarea defaultValue={this.state.content} onChange={this.handleChange} />
+
+                        </label> */}
+                        {/* <EditorPreview data={this.state.content} /> */}
+                      
+
                     </Col>
                     <Col sm="6">
                       <div className="mb-3 cust-rd mt-5">
@@ -503,7 +542,7 @@ class AdminNewPage extends React.Component {
                 </Row>
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
-                    <Button onClick={Blogs}>Submit</Button>
+                    <Button onClick={()=>this.Blogs()}>Submit</Button>
                   </Col>
                 </Form.Group>
             </Card.Body>

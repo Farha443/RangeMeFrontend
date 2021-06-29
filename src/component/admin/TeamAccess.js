@@ -37,7 +37,6 @@ const cookies = new Cookies();
 //  alert(cookies.get("uuid"))
 
 function Func() {
-    // debugger
     var email = document.getElementById('email').value;
     var sender = cookies.get("uuid")
     var role = document.getElementById('Role').value;
