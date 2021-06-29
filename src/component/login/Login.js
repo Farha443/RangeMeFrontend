@@ -8,9 +8,8 @@ import BASE_URL from '../base';
 
 const axios = require('axios');
 const cookies = new Cookies();
-// debugger
+
 cookies.get('uuid')
-// cookies.get('firstname')
 cookies.get('userType')
 function Loginfunction() {
   var email = document.getElementById('email').value;
@@ -35,7 +34,6 @@ function Loginfunction() {
             cookies.set('user_type', res.data.data.user_type, { path: '/' })
             // window.location = "/"
             if(res.data.data.superuser===true){
-              alert("is superuser")
               window.location = "/admin/home"
             }
             else{

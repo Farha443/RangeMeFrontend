@@ -367,52 +367,6 @@ class AdminNewPage extends React.Component {
             <Card.Body>
 
             <div className="row">
-            {/* <div className="col-md-12">
-                          <div className="temp-list-main">
-                            <Form.Label for="exampleFile" >Redirect Link</Form.Label>
-                  <Form.Control id="redirect_link" type="text" name="text" />
-                                <ul>
-                            
-                               <li> 
-                                      
-
-                                <div className="temp-second">
-                                    <div className="temp-second-img">
-                                    <img src="avatars/6.jpg" />
-                                       </div>
-                                </div> 
-
-                                <div className="temp-third">
-                                <div class="grid-meta">
-                                    <h4>
-                                    <NavLink to="#" ></NavLink></h4>
-                                        <h3><strong>  </strong> </h3>
-                                        <h4> </h4>
-                                         </div>
-                                </div>
-
-                                <div className="temp-btn">
-                        
-
-
-                                <ButtonGroup>
-                                    <Button  >Options</Button>
-
-                                    <DropdownButton as={ButtonGroup}  id="bg-nested-dropdown">
-                                        <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-                                        <Dropdown.Item >Delete</Dropdown.Item>
-                                    </DropdownButton>
-                                </ButtonGroup>
-                                
-
-                                </div>  
-                            </li>
-                        
-                       
-                                  </ul> 
-                              
-                          </div>
-                      </div> */}
 
             </div>
 
