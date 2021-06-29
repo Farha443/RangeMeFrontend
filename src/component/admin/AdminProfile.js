@@ -33,6 +33,7 @@ const colourOptions=[
 ]
 const cookies = new Cookies();
 const axios = require('axios');
+var token = cookies.get('logintoken');
 // alert(cookies.get("logintoken"))
 
 class AdminProfile extends React.Component {
@@ -80,12 +81,12 @@ class AdminProfile extends React.Component {
                 url: url,
                 headers: {
                     'content-type': `multipart/form-data; boundary=${data._boundary}`,
-                    // "Authorization": "Bearer" + token,
+                    // "Authorization": "Bearer " + token,
                   },
                 data:data,
             };
             console.log(config)
-
+            //   debugger
          axios(config)
          .then(res=>{
                 console.log(res.data.data)
@@ -103,31 +104,32 @@ class AdminProfile extends React.Component {
 
     componentDidMount() {
         // cookies.remove('pro_pic');
-
+        // alert(cookies.get('logintoken'))
+        debugger
         var uuid = cookies.get('uuid');
+        // var token = cookies.get('logintoken');
         
-        var url = BASE_URL + 'authentication/getuser/' + uuid + '/';
+        var url = BASE_URL + 'authentication/getuser/' + uuid+'/';
         var config = {
             method: 'get',
             url: url,
             
+            
         };
     
         axios(config).then(re => {
- 
-            console.log(re.data)
             this.setState({
-              first_name: re.data.data[0].first_name,
-              last_name: re.data.data[0].last_name,
-              user_pic:re.data.data[0].user_pic,
-              mobile: re.data.data[0].mobile,
-              email: re.data.data[0].email,
+              first_name: re.data.data.first_name,
+              last_name: re.data.data.last_name,
+              user_pic:re.data.data.user_pic,
+              mobile: re.data.data.mobile,
+              email: re.data.data.email,
              
     
             });
             // alert(BASE_URL.slice(0,-1)+ this.state.user_pic)
-            cookies.set('user_pic',re.data.data[0].user_pic,{path:'/'})
-            cookies.set('first_name',re.data.data[0].first_name,{path:'/'})
+            cookies.set('user_pic',re.data.data.user_pic,{path:'/'})
+            cookies.set('first_name',re.data.data.first_name,{path:'/'})
           })
           .catch(err => {
             // alert(err);
@@ -212,15 +214,15 @@ class AdminProfile extends React.Component {
                                         </div>
 
                                         <div className="change-img-maind">
-                                            <div className="pic-1101">
+                                        {this.state.user_pic ?   <div className="pic-1101">
                                             <img src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="180px" height="120px" />
                                            
                                             </div>
+                                            : <img src="/assets/images/megaphone.png" width="180px" height="120px" />}
                                             <div className="pic202">
                                             <img className="" id="output" src=""/>
                                             <input  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
                                         
-                                          
                                             </div>
 
                                         </div>

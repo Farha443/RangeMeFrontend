@@ -6861,10 +6861,9 @@ section.bg {
 }
 
 
-}
 
 
-}
+
 a.story-item {
     text-decoration: none !important;
     color: #1e2432 !important;
@@ -6922,10 +6921,9 @@ a.story-item p {
     width: 100%;
     height: 200px;
 }
-
 .story-item__image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
->>>>>>> 0a7303958308aadbf2f1485a8d0f4bdc2a572f71
+

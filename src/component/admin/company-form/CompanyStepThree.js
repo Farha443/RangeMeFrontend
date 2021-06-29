@@ -25,7 +25,6 @@ import $ from "jquery";
 const cookies = new Cookies();
 
 function SelectCategory(){
-    // debugger
     $(".laoder").show();
     var array = []
     var b_category = document.querySelectorAll('input[type=checkbox]:checked')

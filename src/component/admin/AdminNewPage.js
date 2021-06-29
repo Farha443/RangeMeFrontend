@@ -30,6 +30,7 @@ var token = cookies.get("logintoken")
 
 
 
+
 function Banner(){
   var heading = document.getElementById('heading').value;
   var bg_img = document.getElementById('bg_img').files[0];
@@ -43,7 +44,7 @@ function Banner(){
     url:url,
     headers: {
       'content-type': `multipart/form-data; boundary=${data._boundary}`,
-      "Authorization": "Bearer" + token,
+      "Authorization": "Bearer " + token,
     },
     data : data,
   }
@@ -147,57 +148,21 @@ handleChange( changeEvent ) {
     } );
 }
 
-Blogs(){
-  console.clear()
-  console.log(this.state.content)
-  var b_title = document.getElementById("b_title").value;
-  var b_image = document.getElementById('b_image').files[0];
-  var arr =[]
-  var b_category = document.getElementById('b_category').value;
-  arr.push(b_category)
-  var b_story = document.getElementById('b_story').value;
-  var b_content = this.state.content;
 
-  if(document.getElementById('visible').checked == true) {   
-    var visible = "True";   
-} else {  
-  var visible = "False";   
-}  
-
-  var url = BASE_URL+'home/blogs/';
-  var data = new FormData();
-      data.append('b_title', b_title);
-      data.append('b_image', b_image);
-      data.append('b_category', arr);
-      data.append('b_story', b_story);
-      data.append('b_content', b_content);
-      data.append('visible_on_home', visible);
-  var config = {
-    method:'post',
-    url:url,
-    headers: {
-      'content-type': `multipart/form-data; boundary=${data._boundary}`,
-      "Authorization": "Bearer " + token,
-    },
-    data : data,
-  }
-        axios(config).then(res=>{
-          console.log(res.data.data)
-          window.location="/admin/home"
-      }
-
-      ).catch(err=>{
-        console.error(err);
-
-      })
-}
 
   // state = {
   //   data: [],
   //   message1: "message"
 
   // };
-
+  handleChange(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('output');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
   async componentDidMount(){
     var url = BASE_URL+'authentication/getcategory/';
     var config = {
@@ -230,12 +195,45 @@ Blogs(){
         
       <Container>
           <Row>
-      <Col md={12}>
-          <Card>
+
+       
+          <Col md="3">
+                        <aside>
+                                <div className="admin-sidebar-main">
+                                    <p className="p1"> Account Setting </p>
+                                    <ul>
+                                 
+                                        <li>
+                                            <NavLink to="/admin/home"
+                                            inactiveClassName="text-gray-800"
+                                            >
+                                                <img src="/assets/images/image-gallery.png" />
+                                                <div className="sidebar-title">Add Banner </div>
+                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/add-blog"
+                                            inactiveClassName="text-gray-800"
+                                            activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
+                                                <img src="/assets/images/blog.png" />
+                                                <div className="sidebar-title"> Add Blogs  </div>
+                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                              </NavLink>
+                                        </li>
+                                      
+                                      
+                                    </ul>
+                                </div>
+                            </aside>
+                        </Col>              
+
+        <Col md={9}>
+          <Card className="">
             <Card.Header><h5 className="ad-h5" >Banner Settings</h5></Card.Header>
             <Card.Body>
               <Row>
-              <Col sm="6">
+              <Col sm="5">
                     <Form.Label for="exampleEmail" >Banner Tagline</Form.Label>
                 <Form.Control
                     type="text"
@@ -245,33 +243,38 @@ Blogs(){
                     placeholder="Add Tagline"
                 />
                     </Col>
-                    <Col sm="6" className="up-right-main">
+                    <Col sm="4" className="up-right-main">
                     <div class="form-group">
                     <Form.Label for="exampleFile" >Banner Image </Form.Label>
-                    <Form.Control id="bg_img" type="file" name="file" /> 
+                    {/* <Form.Control id="bg_img" type="file" name="file" />  */}
                     </div>
+                      {/* <img src="/assets/images/megaphone.png" width="180px" height="120px" /> */}
+                      <div className="pic202">
+                      <img className="" id="output" src=""/>
+                      <input  type="file" id="bg_img" onChange={this.handleChange} placeholder="Change"/>
+                  
+                      </div>
+                    
                 </Col>
+
+                {/* <Col md="3">
+                    <div className="banner-upload-img-show">
+                      <img className="img-responsive" src="/assets/images/h3.jpg"/>
+                    </div>
+                </Col> */}
                 </Row>
 
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
-                    <Button onClick={Banner}>Submit</Button>
+                   
+                    <button className="admin-add-btn" onClick={Banner}> Submit </button>
                   </Col>
                 </Form.Group>
               
             </Card.Body>
           </Card>
-        </Col>
-        </Row>
-    </Container>     
 
-    </section>
-
-    <section className="ad-pad-sec">
-    <Container>
-          <Row>
-      <Col md={12}>
-          <Card>
+          <Card className="mt-4"> 
             <Card.Header><h5 className="ad-h5">How it works section</h5></Card.Header>
             <Card.Body>
             <div className="row">
@@ -357,18 +360,23 @@ Blogs(){
                 <Col sm="6" className="up-right-main">
                     <div class="form-group">
                     <Form.Label for="exampleFile" >Tile Image </Form.Label>
-                    <Form.Control id="image"  type="file" name="file" />
+                    {/* <Form.Control id="image"  type="file" name="file" /> */}
                     </div>
-                    {/* <div className="icn121">
-                    <span className="right-icn"> <i class="fa fa-check-square-o" aria-hidden="true"></i> </span>
+                   
+                    {/* <div className="banner-upload-img-show img-21421">
+                      <img className="img-responsive" src="/assets/images/h3.jpg"/>
                     </div> */}
-                   <br/>
-                {/* <div className="up-01">
-                <Button onClick={()=>this.ToolImage()} className="up-btn">Upload</Button>
-                
-                </div> */}
+                    <div className="pic202">
+                      <img className="" id="output" src=""/>
+                      <input  type="file" id="bg_img" onChange={this.handleChange} placeholder="Change"/>
+                  
+                      </div>
+              
+        
 
                 </Col>
+
+                
 
                 <Col cm="6">
                   <Form.Label for="exampleFile" >Redirect Link</Form.Label>
@@ -378,30 +386,20 @@ Blogs(){
 
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
-                    <Button onClick={Works}>Submit</Button>
+               
+                    <button className="admin-add-btn" onClick={Works}> Submit </button>
+                  
                   </Col>
                 </Form.Group>
               
             </Card.Body>
           </Card>
-        </Col>
-        
-      </Row>
-      </Container>  
 
-    </section>
-    
-    <section className="ad-pad-sec">
-      <Container>
-          <Row>
-        <Col xl={12} lg={12} md={12}>
-          <Card>
+          <Card className="mt-4">
             <Card.Header> <h5>Stats data</h5> </Card.Header>
             <Card.Body>
 
-            <div className="row">
-
-            </div>
+  
 
               <Row>
               <Col sm="6">
@@ -437,7 +435,7 @@ Blogs(){
                     <div className="icn121">
                     {/* <span className="right-icn"> <i class="fa fa-check-square-o" aria-hidden="true"></i> </span> */}
                     </div>
-                   <br/>
+              
                 
 
                 </Col>
@@ -445,112 +443,24 @@ Blogs(){
                 </Row>
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
-                    <Button onClick={Stats}>Submit</Button>
+              
+                    
+                    <button className="admin-add-btn" onClick={Stats}> Submit </button>
+                  
                   </Col>
                 </Form.Group>
                 </Card.Body>
           </Card>
                 
-          <Card>
-            <Card.Header> <h5>Blogs data</h5> </Card.Header>
-            <Card.Body>
-            <div className="row">
-            </div>
-              <Row>
-              <Col sm="6">
-                    <Form.Label for="exampleEmail">Title</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="text"
-                    id="b_title"
-                    placeholder="text"
-                />
-                    </Col>
+     
 
-                    <Col sm="6">
-                    <Form.Label for="exampleEmail">Image</Form.Label>
-                <Form.Control
-                    type="file"
-                    name="text"
-                    id="b_image"
-                    placeholder="text"
-                />
-                    </Col>
-
-                    <Col md="6">
-                        <Form.Label> Category</Form.Label>
-                        <Form.Control as="select"  id="b_category">
-                        {this.state.data.map(cat=>(  
-                        <option value={cat.uuid}>{cat.name}</option>))}
-                        </Form.Control>
-                    </Col>
-
-                    <Col sm="6">
-                    <Form.Label for="exampleEmail">Story</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="text"
-                    id="b_story"
-                    placeholder="text"
-                />
-                    </Col>
-
-                    <Col sm="12">
-                    
-                    <Form.Label for="exampleEmail">Content</Form.Label>
-                    <CKEditor
-                    data={this.state.content}
-                    onChange={this.onEditorChange} />
-                    {/* <label>
-                        Change value:
-                        <textarea defaultValue={this.state.content} onChange={this.handleChange} />
-
-                        </label> */}
-                        {/* <EditorPreview data={this.state.content} /> */}
-                      
-
-                    </Col>
-                    <Col sm="6">
-                      <div className="mb-3 cust-rd mt-5">
-                            <Form.Check className="custrd "
-                              type="radio"
-                              id="visible"
-                              label="Visible on Home"
-                              defaultValue='off'
-                            />
-                          </div>
-                        </Col>
-                </Row>
-              <Row>
-              <Col sm="6" className="up-right-main">
-                    <div class="form-group">
-                    {/* <Form.Label for="exampleFile" >icon </Form.Label>
-                    <Form.Control id="icon" type="file" name="file" /> */}
-                    {/* <Form.Label for="exampleFile" >Icon</Form.Label>
-                  <Form.Control id="icon" type="text" name="text" /> */}
-                    </div>
-                    <div className="icn121">
-                    {/* <span className="right-icn"> <i class="fa fa-check-square-o" aria-hidden="true"></i> </span> */}
-                    </div>
-                   <br/>
-                {/* <div className="up-01">
-                <Button onClick={()=>this.ServImage()} className="up-btn">Upload</Button>
-                
-                </div> */}
-
-                </Col>
-                </Row>
-                <Form.Group check row>
-                  <Col sm="12" className="text-center">
-                    <Button onClick={()=>this.Blogs()}>Submit</Button>
-                  </Col>
-                </Form.Group>
-            </Card.Body>
-          </Card>
         </Col>
-        </Row>
-    </Container>  
+      
+      </Row>
+    </Container>     
+
     </section>
+
 
     </>
 

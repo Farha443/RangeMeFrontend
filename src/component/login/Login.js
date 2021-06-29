@@ -21,7 +21,6 @@ function Loginfunction() {
               email: email,             
               password: password,              
           }).then(res=>{
-            // debugger
             if (res.data.message === "Password is incorrect"){
               alert("Password is incorrect");
             }
@@ -44,6 +43,8 @@ function Loginfunction() {
             }
             
           }).catch(err=>{
+            $(".laoder").hide();
+            window.location = "/login"
             // alert(err)
           })
         

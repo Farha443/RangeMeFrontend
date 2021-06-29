@@ -105,7 +105,6 @@ var userTypeTitle=cookies.get('userType');
     
       };
       console.log(config)
-    //   debugger
       axios(config).then(res=>{
           console.log(res.data.data)
         cookies.set('uuid2', res.data.data.uuid, { path: '/' })

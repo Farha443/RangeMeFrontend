@@ -27,9 +27,7 @@ async function request_forgot_pass() {
       email: email_ip,
     })
     if (res.status === 200) {
-      // debugger
       if (res.data === "Email Does Not Exist"){
-        // debugger
         // alert(res.data)
         $(".laoder").hide(); 
         window.location = '/request_forgotpass'

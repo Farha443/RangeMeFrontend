@@ -217,7 +217,7 @@ save(){
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5> <img src="assets/images/office.png" /> Company Details </h5>
+                                            <h5> Company Details </h5>
 
                                         </div>
 
@@ -240,6 +240,7 @@ save(){
                                             imgExtension={['.jpg', '.gif', '.png', '.gif']}
                                             maxFileSize={5242880}
                                             withPreview="true"
+                                            
                                             />
                                             </div>
                                             

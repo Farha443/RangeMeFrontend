@@ -30,7 +30,6 @@ function skip(){
 }
 
  function Func() {
-    // debugger
     $(".laoder").show();
     var company_logo = document.getElementById('comp_logo').files[0];
     var company_description = document.getElementById('comp_desc').value;

@@ -29,6 +29,7 @@ import TeamAccess from './component/admin/TeamAccess';
 import ChangePassword from './component/admin/ChangePassword';
 import Notification from './component/admin/Notification';
 import AdminNewPage from './component/admin/AdminNewPage';
+import AddBlogs from './component/admin/AddBlogs';
 function Routes(){
     return(
         <>
@@ -64,6 +65,7 @@ function Routes(){
                 <Route exact path="/notification" component={Notification}></Route>
                 <Route exact path="/company_details" component={CompanyDetails}></Route>
                 <Route exact path="/admin/home" component={AdminNewPage}></Route>
+                <Route exact path="/add-blog" component={AddBlogs}></Route>
             </Switch>
         </> 
     )

@@ -68,7 +68,7 @@ function AdminNavbar(){
       <Nav.Link href="#home"><i class="fa fa-comments" aria-hidden="true"></i></Nav.Link>
      
       <Nav.Link href="#home"><i class="fa fa-bell-o" aria-hidden="true"></i></Nav.Link>
-      {/* <img src={BASE_URL.slice(0,-1)+ this.state.user_pic} width="70px" /> */}
+      <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" />
       <NavDropdown id="basic-nav-dropdown" className="header-profile-drop"  >
        
         <NavDropdown.Item href="#action/3.1">{first_name}</NavDropdown.Item>
