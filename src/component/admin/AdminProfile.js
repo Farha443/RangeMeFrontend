@@ -46,7 +46,6 @@ class AdminProfile extends React.Component {
      };
      Preview(id){
         console.log(id)
-        console.log("hhhhhhh")
 
     }
     handleChange(event) {
@@ -159,7 +158,7 @@ class AdminProfile extends React.Component {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/ChangePasswordProfile"
+                                            <NavLink to="/change_password"
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />

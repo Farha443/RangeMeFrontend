@@ -25,7 +25,6 @@ function get_date(dt_string){
 }
 
 function Home(){
-  // var xxx = '';
   const [modalShow, setModalShow] = useState(false);
   const [home, setHome] = useState({})
   // const [indexheading, setIndexheading]= useState({})
@@ -43,46 +42,12 @@ function Home(){
       setWorks(res.data.works)
       setBlogs(res.data.blogs)
       setStats(res.data.stats)
-      // setheading(res.data.works)
-
-      debugger
-      console.log(res.data)
-      // xxx =res.data.blogs
-      console.log("xxx")
-      console.log(res.data)
+      console.log(res.data)  
     }).catch(err=>{
         console.log(err)            
     })
     console.log(home)
 
-  //   axios.get(BASE_URL+'home/stats/').then(res=>{
-  //     setStats(res.data.data)
-  // }).catch(err=>{
-  //     console.log(err)            
-  // })
-  // console.log(stats)
-
-  //   axios.get(BASE_URL+'home/works/').then(res=>{
-  //     setWorks(res.data.data)
-  // }).catch(err=>{
-  //     console.log(err)            
-  // })
-  // console.log(works)
-
-  //   axios.get(BASE_URL+'home/succestory/').then(res=>{
-  //     setSuccestory(res.data.data)
-  // }).catch(err=>{
-  //     console.log(err)            
-  // })
-  // console.log(succestory)
-
-  //   axios.get(BASE_URL+'home/blogs/').then(res=>{
-  //     setBlogs(res.data.data)
-  // }).catch(err=>{
-  //     console.log(err)            
-  // })
-  console.log("hoja re")
-  console.log(home)
 
 },[])
 
@@ -341,7 +306,6 @@ function Home(){
                           </div>
                         </div>
                       </div>
-
  */}
 
 

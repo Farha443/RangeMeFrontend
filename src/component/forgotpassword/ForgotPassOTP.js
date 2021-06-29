@@ -11,7 +11,7 @@ console.log(cookies.get('email'));
 
 
 async function Forgott() {
-  
+  $(".laoder").show();
   var code = document.getElementById('code').value;
 
   var modal = document.getElementById("myModal");
@@ -62,6 +62,7 @@ async function Forgott() {
     // $(".modal").show();
     // alert(err);
     alert("Something Went to Wrong")
+    $(".laoder").hide();
     window.location = '/validate-otp';
     // setTimeout(function(){
     //   window.location = '/forgotpassotp';
@@ -76,12 +77,13 @@ const handleKeypress = (event) => {
 
 
 function ForgotPasdOTP(){
-
+  $(".laoder").show(); 
 
   return(
       <>
        <div data-tname="SignInContainer" className="w-100">
       <div className="with-advertisement__container___2Y-i4">
+      <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
         <div className="with-advertisement__form___1Tp6K">
           <div className="center-aligned__container___3lBR4">
             <div>

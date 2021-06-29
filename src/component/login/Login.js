@@ -4,6 +4,7 @@ import Footer from '../footer/Footer'
 import Cookies from 'universal-cookie';
 import '../../assets2/login.css';
 import { NavLink } from 'react-router-dom';
+import $ from "jquery";  
 import BASE_URL from '../base';
 
 const axios = require('axios');
@@ -12,6 +13,7 @@ const cookies = new Cookies();
 cookies.get('uuid')
 cookies.get('userType')
 function Loginfunction() {
+  $(".laoder").show(); 
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
       axios.post(BASE_URL+"authentication/login/",
@@ -26,6 +28,7 @@ function Loginfunction() {
             else if (res.data.message === "User does not exist"){
               alert("User does not exist");
             }
+            
             console.log(res.data.data.accessToken)
             cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
             cookies.set('uuid', res.data.data.uuid, { path: '/' })
@@ -42,23 +45,27 @@ function Loginfunction() {
             
           }).catch(err=>{
             // alert(err)
-            
           })
         
 }
-// function Login(){
-  class Login extends React.Component {
-    handleKeypress = (event) => {
-      if(event.key === 'Enter'){
-        Loginfunction();
-      }
+class Login extends React.Component {
+  handleKeypress = (event) => {
+    if(event.key === 'Enter'){
+      Loginfunction();
     }
-    render(){
+  }
+
+  componentDidMount(){
+    $(".laoder").hide(); 
+  }
+
+  render(){
     return(
         <>
 
          <div data-tname="SignInContainer" className="w-100">
         <div className="with-advertisement__container___2Y-i4">
+        <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
           <div className="with-advertisement__form___1Tp6K">
             <div className="center-aligned__container___3lBR4">
               <div>
@@ -82,11 +89,11 @@ function Loginfunction() {
                       <div className="sign-in-form__field-container___3Zlii">
                         <div className="input__wrapper___1b5oN" data-tname="InputWrapper">
                           <div className data-tname="Inset" />
-                          <input id="password" name="password" placeholder="Password" onKeyPress={this.handleKeypress} type="password" className="input__input___1QUbp" data-tname="PasswordField" />
+                          <input id="password" name="password" placeholder="Password" type="password" onKeyPress={this.handleKeypress} className="input__input___1QUbp" data-tname="PasswordField" />
                         </div>
                       </div>
                       <div className="sign-in-form__log-in-button-container___2r6lo">
-                        <button className="button__button___2LnOX sign-in-form__primary-button___3edbD button__primary___3hlTY" data-tname="LoginButton" type="submit" onClick={Loginfunction}><span className>Log in</span></button>
+                        <button className="button__button___2LnOX sign-in-form__primary-button___3edbD button__primary___3hlTY" data-tname="LoginButton" type="submit"  onClick={Loginfunction}><span className>Log in</span></button>
                         {/* <div className="sign-in-form__remember-me-container___3ibWe">
                         <input className="sign-check" type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                                 <label for="vehicle1"> Remember me</label>

@@ -4,12 +4,14 @@ import Footer from '../footer/Footer'
 import Cookies from 'universal-cookie';
 import '../../assets2/login.css';
 import { NavLink } from 'react-router-dom';
+import $ from "jquery";  
 import BASE_URL from '../base';
 
 const axios = require('axios');
 const cookies = new Cookies();
 
 function request_forgot_pass() {
+  $(".laoder").show(); 
   
     var email = document.getElementById('email').value;
 
@@ -25,12 +27,13 @@ function request_forgot_pass() {
   
 
 function Email(){
-
+  $(".laoder").show(); 
 
     return(
         <>
          <div data-tname="SignInContainer" className="w-100">
         <div className="with-advertisement__container___2Y-i4">
+        <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
           <div className="with-advertisement__form___1Tp6K">
             <div className="center-aligned__container___3lBR4">
               <div>
