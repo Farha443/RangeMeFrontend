@@ -124,13 +124,6 @@ function Blogs(){
   arr.push(b_category)
   var b_story = document.getElementById('b_story').value;
   var b_content = document.getElementById('b_content').value;
-  // var oo = document.getElementById('visible').value;
-  // if(oo==="on" ){
-  //   var visible = "True";
-  // }
-  // else{
-  //   var visible = "False";
-  // }
   if(document.getElementById('visible').checked == true) {   
     var visible = "True";   
 } else {  
@@ -208,8 +201,6 @@ class AdminNewPage extends React.Component {
           <Card>
             <Card.Header><h5 className="ad-h5" >Banner Settings</h5></Card.Header>
             <Card.Body>
-              
-
               <Row>
               <Col sm="6">
                     <Form.Label for="exampleEmail" >Banner Tagline</Form.Label>
@@ -221,25 +212,13 @@ class AdminNewPage extends React.Component {
                     placeholder="Add Tagline"
                 />
                     </Col>
-
-                
                     <Col sm="6" className="up-right-main">
                     <div class="form-group">
                     <Form.Label for="exampleFile" >Banner Image </Form.Label>
-                    
-                   
-           
-                  <Form.Control id="bg_img" type="file" name="file" /> 
+                    <Form.Control id="bg_img" type="file" name="file" /> 
                     </div>
-                   
-                
-
                 </Col>
-
-                
                 </Row>
-
-
 
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
@@ -331,8 +310,6 @@ class AdminNewPage extends React.Component {
                     placeholder="text"
                 />
                     </Col>
-                
-                
                 </Row>
 
               <Row>
@@ -361,14 +338,10 @@ class AdminNewPage extends React.Component {
                 </Col>
 
                 <Col cm="6">
-                    
                   <Form.Label for="exampleFile" >Redirect Link</Form.Label>
                   <Form.Control id="redirect_link" type="text" name="text" />
                 </Col>
-                  
-               
                 </Row>
-
 
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
@@ -394,7 +367,6 @@ class AdminNewPage extends React.Component {
             <Card.Body>
 
             <div className="row">
-            
             {/* <div className="col-md-12">
                           <div className="temp-list-main">
                             <Form.Label for="exampleFile" >Redirect Link</Form.Label>
@@ -441,7 +413,6 @@ class AdminNewPage extends React.Component {
                               
                           </div>
                       </div> */}
-            
 
             </div>
 
@@ -466,7 +437,6 @@ class AdminNewPage extends React.Component {
                 />
                     </Col>
                 
-                
                 </Row>
 
               <Row>
@@ -485,32 +455,20 @@ class AdminNewPage extends React.Component {
 
                 </Col>
        
-               
                 </Row>
-
-
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
                     <Button onClick={Stats}>Submit</Button>
                   </Col>
                 </Form.Group>
-              
-                
-
-
-
-            </Card.Body>
+                </Card.Body>
           </Card>
-
 
           <Card>
             <Card.Header> <h5>Blogs data</h5> </Card.Header>
             <Card.Body>
-
             <div className="row">
-            
             </div>
-
               <Row>
               <Col sm="6">
                     <Form.Label for="exampleEmail">Title</Form.Label>
@@ -533,14 +491,11 @@ class AdminNewPage extends React.Component {
                     </Col>
 
                     <Col md="6">
-                      
                         <Form.Label> Category</Form.Label>
                         <Form.Control as="select"  id="b_category">
                         {this.state.data.map(cat=>(  
                         <option value={cat.uuid}>{cat.name}</option>))}
-                        
                         </Form.Control>
-                    
                     </Col>
 
                     <Col sm="6">
@@ -561,30 +516,18 @@ class AdminNewPage extends React.Component {
                     id="b_content"
                     placeholder="text"
                 />
-                
                     </Col>
-                
                     <Col sm="6">
-               
-
-<div className="mb-3 cust-rd mt-5">
-      <Form.Check className="custrd "
-        type="radio"
-        id="visible"
-        label="Visible on Home"
-        defaultValue='off'
-      />
-     </div>
-   </Col>
-{/* <div class="radio cst-rd">
-  <label className="col-md-12">Option 1</label>
-  <input type="radio" name="optradio" className="col-md-12" />  
-</div> */}
-
-                 
-                
+                      <div className="mb-3 cust-rd mt-5">
+                            <Form.Check className="custrd "
+                              type="radio"
+                              id="visible"
+                              label="Visible on Home"
+                              defaultValue='off'
+                            />
+                          </div>
+                        </Col>
                 </Row>
-
               <Row>
               <Col sm="6" className="up-right-main">
                     <div class="form-group">
@@ -603,38 +546,18 @@ class AdminNewPage extends React.Component {
                 </div> */}
 
                 </Col>
-       
-               
                 </Row>
-
-
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
                     <Button onClick={Blogs}>Submit</Button>
                   </Col>
                 </Form.Group>
-              
-                
-
-
-
             </Card.Body>
           </Card>
-
-
-
-
-
-
-
-
-
         </Col>
         </Row>
     </Container>  
     </section>
-
-
 
     </>
 
