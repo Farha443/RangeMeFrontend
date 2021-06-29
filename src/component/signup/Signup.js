@@ -4,6 +4,7 @@ import Footer from '../footer/Footer'
 import '../../assets2/signup.css';
 import Cookies from 'universal-cookie';
 import { NavLink } from 'react-router-dom';
+import $ from "jquery";  
 import BASE_URL from '../base';
 
 const axios = require('axios');
@@ -31,7 +32,8 @@ function Toggle1() {
 }
 
  function Func() {
-
+    debugger
+    $(".laoder").show(); 
     var first_name = document.getElementById('first_name').value;
     var last_name = document.getElementById('last_name').value;
     var email = document.getElementById('email').value;
@@ -51,55 +53,6 @@ function Toggle1() {
       }
   } 
 
-<<<<<<< HEAD
-      axios.post( BASE_URL + "authentication/signup/",
-<<<<<<< HEAD
-=======
-          //  {
-          //   "Authorization": "Bearer " + token,
-          //   "Content-Type": "application/json",
-          //   },
->>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
-          {
-              user_type : userType,
-              first_name: first_name,
-              last_name: last_name,
-              email: email,
-              mobile: mobile,
-              password: password,
-              comp_name:comp_name,
-
-          }).then(res=>{
-            // alert('Success')
-<<<<<<< HEAD
-            window.location = "/login";
-=======
-            cookies.set('uuid', res.data.data.uuid, { path: '/' })
-            cookies.set('token', res.data.data.access, { path: '/company_form_one' })
-            // alert(res.data.data.uuid);
-            // alert(res.data.data.access)
-            if (userType === "buyer"){
-              window.location="/company_form_one";
-            }
-            else{
-              window.location = "/login";
-            }
-            
->>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
-          }).catch(err=>{
-            alert(err)
-          })
-          
-<<<<<<< HEAD
-      
-
-  } 
-
-
-
-=======
-  } 
-=======
     if (typeof email !== "undefined") {
       var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
     
@@ -114,6 +67,7 @@ function Toggle1() {
       alert("Please agree to the terms and conditions first. ");
     }
     else{
+     
     axios.post( BASE_URL + "authentication/signup/",
         {
             user_type : userType,
@@ -136,34 +90,42 @@ function Toggle1() {
           else if (res.data.message === "Password is required"){
             alert("Password is required");
           }
+         
           cookies.set('uuid', res.data.data.uuid, { path: '/' })
           cookies.set('token', res.data.data.access, { path: '/' })
         
          
           if (userType === "buyer"){
+            $(".laoder").hide(); 
             window.location="/company_form_one";
           }
           else{
+            $(".laoder").hide();
             window.location = "/supplier_step_one";
           }
           
         }).catch(err=>{
           // debugger
+          
+          window.location = "/signup"
           console.log(err)
         })
       }
 } 
->>>>>>> 33da3459d3ae8127079b1e3ccc223bd01006e45a
 
->>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
 function Signup(){ 
+  
+ 
     return(
+      
         <>
-
+  <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
 
 <div className="layout__layout___2Opq_">
+
         <div className="signup-layout__layout___39T41">
           <div className="signup-layout__header___IeCtN">
+          
             <a href="/" className="header-bar__logo">
               {/* <img src="assets/images/Logo.png"> */}
               <h1> Veniver </h1>

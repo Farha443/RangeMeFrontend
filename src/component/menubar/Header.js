@@ -2,18 +2,16 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import useState from 'react-hook-use-state';
-<<<<<<< HEAD
-import SignupModal from '../admin/element/SignupModal';
-=======
 import SignupModal from '../element/SignupModal';
 // import SignupModal from './element/SignupModal';
->>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
 
 const axios = require('axios');
 const cookies = new Cookies();
-
+cookies.get('uuid')
+cookies.get('logintoken')
+cookies.get('userType')
 var logintoken = cookies.get("logintoken")
-alert(logintoken)
+// alert(logintoken)
 var userType = '';
 
 function Click(){

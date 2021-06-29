@@ -7,7 +7,9 @@ import $, { removeData } from 'jquery';
 // import { toastr } from 'react-redux-toastr';
 const axios = require('axios');
 const cookies = new Cookies();
+
 async function request_forgot_pass() {
+  $(".laoder").show(); 
   var email_ip = document.getElementById('email').value;
   var modal = document.getElementById("myModal");
     window.onclick = function(event) {
@@ -28,7 +30,8 @@ async function request_forgot_pass() {
       // debugger
       if (res.data === "Email Does Not Exist"){
         // debugger
-        alert(res.data)
+        // alert(res.data)
+        $(".laoder").hide(); 
         window.location = '/request_forgotpass'
       }
       else{
@@ -47,14 +50,11 @@ async function request_forgot_pass() {
   }
   catch (err) {
     console.error(err);
-    // $(".modal-body").empty().html("Something Went to Wrong");
-    // $(".modal").show();
+    
     alert("Something Went to Wrong")
     // alert(err);
     window.location = '/request_forgotpass';
-    // setTimeout(function(){
-    //   window.location = '/RequestForgotpass';
-    //   }, 2000);
+  
   }
 }
 
@@ -63,8 +63,10 @@ function Email(){
 
   return(
       <>
+      
        <div data-tname="SignInContainer" className="w-100">
       <div className="with-advertisement__container___2Y-i4">
+      <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
         <div className="with-advertisement__form___1Tp6K">
           <div className="center-aligned__container___3lBR4">
             <div>
@@ -87,10 +89,10 @@ function Email(){
                     </div>
                     <div className="sign-in-form__log-in-button-container___2r6lo">
                       <button className="button__button___2LnOX sign-in-form__primary-button___3edbD button__primary___3hlTY" data-tname="LoginButton" type="submit" onClick={request_forgot_pass}><span className>Submit</span></button>
-                      <div className="sign-in-form__remember-me-container___3ibWe">
+                      {/* <div className="sign-in-form__remember-me-container___3ibWe">
                       <input className="sign-check" type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                               <label for="vehicle1"> Remember me</label>
-                      </div>
+                      </div> */}
                     </div>
                     
                   {/* </form> */}

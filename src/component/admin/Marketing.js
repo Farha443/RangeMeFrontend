@@ -68,7 +68,7 @@ function Marketing() {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                        <Col md="2">
+                        <Col md="3">
                             <aside>
                                 <div className="admin-sidebar-main">
                                     <ul>
@@ -175,7 +175,7 @@ function Marketing() {
                         </Col>
 
 
-                        <Col md="2">
+                        <Col md="3">
                             <div className="right-bar-main">
                                 <div className="right-cont-img-d">
                                     <img src="assets/images/blog1.jpg" />

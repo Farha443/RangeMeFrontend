@@ -19,7 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import BASE_URL from '../../base';
-
+import $ from "jquery";  
 
 const axios = require('axios');
 const cookies = new Cookies();
@@ -30,6 +30,7 @@ var userTypeTitle=cookies.get('userType');
 
  function Func() {
     // debugger
+    $(".laoder").show();
     var comp_type = document.getElementById('comp_type').value;
     var job_title = document.getElementById('job_title').value;
     var buyers = document.getElementById('buyers').value;
@@ -65,12 +66,14 @@ var userTypeTitle=cookies.get('userType');
       axios(config).then(res=>{
           console.log(res.status)
         cookies.set('uuid1', res.data.data.uuid, { path: '/' })
-        alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+        // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+        $(".laoder").hide();
         window.location = '/company_form_two'
       }
       
       ).catch(err=>{
         console.error(err);
+        $(".laoder").hide();
       window.location = "company_form_one";
       })
     //   axios.post( BASE_URL + "authentication/createbuyer/",
@@ -84,7 +87,7 @@ var userTypeTitle=cookies.get('userType');
     //         sample_instruction:sample_instruction,
 
     //       }).then(res=>{
-    //         // alert('Success')
+            // alert('Success')
     //         // cookies.set('uuid', res.data, { path: '/' });
             
     //         window.location = "/company_form_two";
@@ -97,6 +100,7 @@ var userTypeTitle=cookies.get('userType');
 function CompanyStepOne(){
     return(
         <>
+         <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
         <AdminNavbar/>
         
         <section className="company-form-section">
@@ -127,7 +131,7 @@ function CompanyStepOne(){
                                                 <Form.Control as="select" id="comp_type">
                                                 <option value="company owned">Company Owened</option>
                                                 <option value="distributor">Distributor</option>
-                                                <option value="franchiser">Franchiser</option>
+                                                <option value=" franchisor"> franchisor</option>
                                                 <option value="importer">Importer</option>
                                                 </Form.Control>
                                             </Form.Group>

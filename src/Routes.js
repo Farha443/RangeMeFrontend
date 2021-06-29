@@ -18,25 +18,30 @@ import Signup from './component/signup/Signup';
 import base from './component/base';
 import SignupModal from './component/element/SignupModal';
 import SupplierStepOne from './component/admin/company-form/SupplierStepOne';
-
+import CompanyDetails from './component/admin/CompanyDetails';
 import RequestForgotPassword from './component/forgotpassword/RequestForgotPass';
 import ForgotPassOTP from './component/forgotpassword/ForgotPassOTP';
-import ChangePassword from './component/forgotpassword/ChangePassword';
+import FcPassword from './component/forgotpassword/FcPassword';
 import AdminProfile from './component/admin/AdminProfile';
-
-
+// import ChangePasswordProfile from './component/admin/ChangePasswordProfile';
+import TeamAccess from './component/admin/TeamAccess';
+// import CompanyDetails from './component/admin/CompanyDetails';
+import ChangePassword from './component/admin/ChangePassword';
+import Notification from './component/admin/Notification';
+import AdminNewPage from './component/admin/AdminNewPage';
 function Routes(){
     return(
         <>
          
             <Switch>
-           
+                <Route exact path="/team_access" component={TeamAccess}></Route>
                 <Route exact path="/" component={Home}></Route>
                 <Route exact path="/login" component={Login}></Route>
                 <Route exact path="/signup" component={Signup}></Route>
                 <Route exact path="/base" component={base}></Route>
                 <Route exact path="/signupmodal" component={SignupModal}></Route>
-
+                <Route exact path="/ChangePassword" component={ChangePassword}></Route>
+                <Route exact path="/company_details" component={CompanyDetails}></Route>
                 {/* Admin Routes */}
                 <Route exact path="/company_form_one" component={CompanyStepOne}></Route>
                 <Route exact path="/company_form_two" component={CompanyStepTwo}></Route>
@@ -45,6 +50,7 @@ function Routes(){
                 <Route exact path="/email_confirmation" component={EmailConfirmation}></Route>
                 <Route exact path="/products_detail" component={ProductDetail}></Route>
                 <Route exact path="/admin_home" component={AdminHome}></Route>
+                <Route exact path="/admin_navbar" component={AdminNavbar}></Route>
                 <Route exact path="/product_form" component={ProductForm}></Route>
                 <Route exact path="/preview" component={Preview}></Route>
                 <Route exact path="/distribution" component={Distribution}></Route>
@@ -52,10 +58,12 @@ function Routes(){
                 <Route exact path="/supplier_step_one" component={SupplierStepOne}></Route>
                 <Route exact path="/request_forgotpass" component={RequestForgotPassword}></Route>
                 <Route exact path="/validate-otp" component={ForgotPassOTP}></Route>
-                <Route exact path="/change-password" component={ChangePassword}></Route>
+                <Route exact path="/change-password" component={FcPassword}></Route>
                 <Route exact path="/admin_profile" component={AdminProfile}></Route>
-                
-
+                <Route exact path="/change_password" component={ChangePassword}></Route>
+                <Route exact path="/notification" component={Notification}></Route>
+                <Route exact path="/company_details" component={CompanyDetails}></Route>
+                <Route exact path="/admin/home" component={AdminNewPage}></Route>
             </Switch>
         </> 
     )

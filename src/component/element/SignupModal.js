@@ -17,7 +17,7 @@ import {
 } from 'react-bootstrap';
 
 function Start(){
-  alert('Hello');
+  // alert('Hello');
 }
 
 function SignupModal(props){

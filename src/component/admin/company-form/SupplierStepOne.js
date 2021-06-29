@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../assets2/admin.css';
 import AdminNavbar from '../AdminNavbar'
+import $ from "jquery";  
 import {
   Jumbotron,
   Button,
@@ -56,6 +57,7 @@ var userTypeTitle=cookies.get('userType');
         console.log(res.data.data);
       })
       .catch(err => {
+        $(".laoder").hide(); 
         alert(err);
       })
        
@@ -64,14 +66,17 @@ var userTypeTitle=cookies.get('userType');
   
 
     async Submit(){
-        // debugger
+        debugger
+        $(".laoder").show(); 
         var year_founded = document.getElementById('year').value;
         var annual_revenue = document.getElementById('revenue').value;
-        var array = []
-        var department = document.querySelectorAll('#department');
-        for (var i = 0; i < department.length; i++) {
-            array.push(department[i].value)
-        }
+        // var array = []
+        // var department = document.querySelector('#department');
+        // for (var i = 0; i < department.length; i++) {
+        //     array.push(department[i].value)
+        // }
+        const selected = document.querySelectorAll('#department option:checked');
+        var array = Array.from(selected).map(el => el.value);
         var busiess_type = document.getElementById('buss_type').value;
         var brand_name = document.getElementById('brand_name').value;
         var comp_location = document.getElementById('city').value;
@@ -101,13 +106,15 @@ var userTypeTitle=cookies.get('userType');
     //   debugger
       axios(config).then(res=>{
           console.log(res.data.data)
-        // cookies.set('uuid1', res.data.data.uuid, { path: '/' })
+        cookies.set('uuid2', res.data.data.uuid, { path: '/' })
         // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+        $(".laoder").hide(); 
         window.location = '/admin_home'
       }
       
       ).catch(err=>{
         console.error(err);
+        $(".laoder").hide(); 
       window.location = "/supplier_step_one";
       })
     }
@@ -117,7 +124,8 @@ var userTypeTitle=cookies.get('userType');
     return(
         <>
         <AdminNavbar/>
-        
+        <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div> 
+
         <section className="company-form-section">
                 <Container fluid>
                     <Row className="justify">                
@@ -223,7 +231,7 @@ var userTypeTitle=cookies.get('userType');
 
                                             <Col md="12">
                                                 <div className="company-form-btn-main text-center">
-                                                    <button class="admin-add-btn" onClick={() => this.Submit()}> <NavLink to="/company_form_two"> Continue </NavLink>  </button>
+                                                    <button class="admin-add-btn" onClick={() => this.Submit()}> <NavLink to="/company_form_two"> Continue</NavLink>  </button>
                                                 </div>
                                             </Col>
                                            

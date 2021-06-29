@@ -20,12 +20,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import BASE_URL from '../../base';
+import $ from "jquery";  
 
 const cookies = new Cookies();
 
 function SelectCategory(){
     // debugger
-    // var b_category = document.getElementById("category").value;
+    $(".laoder").show();
     var array = []
     var b_category = document.querySelectorAll('input[type=checkbox]:checked')
     for (var i = 0; i < b_category.length; i++) {
@@ -44,11 +45,13 @@ function SelectCategory(){
       };
       axios(config).then(res=>{
         console.log(res.data )
+        $(".laoder").hide();
         window.location = '/login'
       }
       
       ).catch(err=>{
         console.error(err);
+        $(".laoder").hide();
       window.location = "company_form_three";
       })  
 }
@@ -59,6 +62,7 @@ function CompanyStepThree(){
         axios.get(BASE_URL+'authentication/getcategory/').then(res=>{
             setCategory(res.data.data)
         }).catch(err=>{
+            $(".laoder").hide();
             console.log(err)            
         })
         console.log(category)
@@ -67,6 +71,8 @@ function CompanyStepThree(){
     return(
         <>
         <AdminNavbar/>
+        <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
+
         
         <section className="company-form-section">
                 <Container fluid>

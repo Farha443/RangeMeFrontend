@@ -2,7 +2,7 @@ import React from 'react';
 import '../../assets2/admin.css';
 import AdminNavbar from './AdminNavbar'
 import { NavLink } from 'react-router-dom';
-
+import Cookies from 'universal-cookie';
 import {
     Jumbotron,
     Button,
@@ -21,65 +21,129 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import context from 'react-bootstrap/esm/AccordionContext';
 import MyEditor from './MyEditor';
 import ImgUploader from './ImgUpload';
+
 import ProfileUploader from './ProfileUploader';
+import BASE_URL from '../base';
 const colourOptions=[
     { value: 'Red', label: 'Red' },
     { value: 'Black', label: 'Black' },
     { value: 'Blue', label: 'Blue' },
     { value: 'Green', label: 'Green' },
+    
 ]
-// async save(){
-//     // debugger
-//     var first_name = document.getElementById('first_name').value;
-//     var last_name = document.getElementById('last_name').value;
-//     var email = document.getElementById('email').value;
-//     var user_pic = document.getElementById('user_pic').value;
+const cookies = new Cookies();
+const axios = require('axios');
+// alert(cookies.get("logintoken"))
 
-//     var token = cookies.get('token');
-//     var uuid = cookies.get('uuid');
-//     var userType = cookies.get('userType');
-// var config = {
-//     method: 'post',
-//     url: url,
-//     headers: {
-//       "Authorization": "Bearer " + token,
-//     },
-//     data:{
-//         first_name : first_name,
-//         last_name : last_name,
-//         email: email,
-//         user_pic: user_pic,
-
-
-//       }
-
-//   };
-//   console.log(config)
-// //   debugger
-//   axios(config).then(res=>{
-//       console.log(res.data.data)
-//     // cookies.set('uuid1', res.data.data.uuid, { path: '/' })
-//     // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
-//     window.location = '/admin_home'
-//   }
-  
-//   ).catch(err=>{
-//     console.error(err);
-//   window.location = "/supplier_step_one";
-//   })
-// }
 class AdminProfile extends React.Component {
+    state = {
+    user_pic:null,
+    first_name: null,
+    last_name: null,
+    email: null,
+    mobile: null,
+    email: null,
+     };
+     Preview(id){
+        console.log(id)
+        console.log("hhhhhhh")
+
+    }
+    handleChange(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+              var output = document.getElementById('output');
+              output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+    }
+     
+  save(){
+        var first_name = document.getElementById('first_name').value;
+        var last_name = document.getElementById('last_name').value;
+        var email = document.getElementById('email').value;
+        var mobile = document.getElementById('phone').value;
+        var user_pic = document.getElementById('user_pic').files[0];
+        var url = BASE_URL+'authentication/signup/'
+        var uuid = cookies.get('uuid');
+        var userType = cookies.get('userType');
+        var data = new FormData();
+        data.append('first_name', first_name);
+        data.append('last_name', last_name);
+        data.append('email', email);
+        data.append('mobile', mobile);
+        data.append('user_pic', user_pic);
+        data.append('uuid', uuid);
+        var token = cookies.get('logintoken');
+        // data.append('last_name', last_name);
+            var config = {
+                method: 'patch',
+                url: url,
+                headers: {
+                    'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                    // "Authorization": "Bearer" + token,
+                  },
+                data:data,
+            };
+            console.log(config)
+            //   debugger
+         axios(config)
+         .then(res=>{
+                console.log(res.data.data)
+                alert("success")
+                // cookies.set('uuid1', res.data.data.uuid, { path: '/' })
+                // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+                window.location = '/admin_home'
+            }
+            
+            ).catch(err=>{
+                console.error(err);
+            window.location = "/admin_profile";
+            })
+    }
+
+    componentDidMount() {
+        // cookies.remove('pro_pic');
+        // debugger
+        var uuid = cookies.get('uuid');
+        
+        var url = BASE_URL + 'authentication/getuser/' + uuid + '/';
+        var config = {
+            method: 'get',
+            url: url,
+            
+        };
+    
+        axios(config).then(re => {
+            // debugger
+            console.log(re.data)
+            this.setState({
+              first_name: re.data.data[0].first_name,
+              last_name: re.data.data[0].last_name,
+              user_pic:re.data.data[0].user_pic,
+              mobile: re.data.data[0].mobile,
+              email: re.data.data[0].email,
+             
+    
+            });
+            // alert(BASE_URL.slice(0,-1)+ this.state.user_pic)
+            cookies.set('user_pic',re.data.data[0].user_pic,{path:'/'})
+            cookies.set('first_name',re.data.data[0].first_name,{path:'/'})
+          })
+          .catch(err => {
+            // alert(err);
+            alert('Something went wrong')
+          })
+    
+      }
     render() {
     return (
         <>
             <AdminNavbar />
-
-
-
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                        <Col md="2">
+                        <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <p className="p1"> Account Setting </p>
@@ -94,7 +158,7 @@ class AdminProfile extends React.Component {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/change_password"
+                                            <NavLink to="/ChangePasswordProfile"
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
@@ -143,7 +207,22 @@ class AdminProfile extends React.Component {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5> <img src="assets/images/user.png" /> Your Profile </h5>
+                                            <h5> Your Profile </h5>
+                                          
+                                              
+                                        </div>
+
+                                        <div className="change-img-maind">
+                                            <div className="pic-1101">
+                                            <img src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="70px" />
+                                           
+                                            </div>
+                                            <div className="pic202">
+                                            <img className="" id="output" src=""/>
+                                            <input  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
+                                        
+                                          
+                                            </div>
 
                                         </div>
 
@@ -151,16 +230,12 @@ class AdminProfile extends React.Component {
 
                                            <Row>
 
-                                           <Col md="12">
-
-                                              
-                                                <ProfileUploader/>
-                                            </Col>
+                                           
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>First Name</Form.Label>
-                                                <Form.Control id='first_name' type="text" placeholder="Enter email" />
+                                                <Form.Control defaultValue={this.state.first_name} id='first_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
 
@@ -169,7 +244,7 @@ class AdminProfile extends React.Component {
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Last Name</Form.Label>
-                                                <Form.Control type="email" placeholder="Enter email" />
+                                                <Form.Control defaultValue={this.state.last_name} id='last_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
 
@@ -178,7 +253,7 @@ class AdminProfile extends React.Component {
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Email</Form.Label>
-                                                <Form.Control type="email" placeholder="Enter email" />
+                                                <Form.Control  defaultValue={this.state.email} type="email" id="email" placeholder="Enter email" />
 
                                             </Form.Group>
 
@@ -188,43 +263,14 @@ class AdminProfile extends React.Component {
 
                                             <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>Phone</Form.Label>
-                                                <Form.Control as="select">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                                <Form.Control defaultValue={this.state.mobile} type="text" id="phone" >
+                                                
                                                 </Form.Control>
                                             </Form.Group>
-
                                             </Col>
-
-                                            <Col md="6">
-                                            <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Job Title</Form.Label>
-                                                <Form.Control type="email" placeholder="Enter email" />
-
-                                            </Form.Group>
-
-                                            </Col>    
-
-                                            <Col md="6">
-
-                                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Time Zone</Form.Label>
-                                                <Form.Control as="select">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                </Form.Control>
-                                            </Form.Group>
-
-                                            </Col>
-                                    
+                                             
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn">  Save Changes  </button>
+                                            <button class="admin-add-btn" onClick={()=>this.save()}>  Save Changes  </button>
                                             </Col>
 
                                            </Row>
@@ -237,15 +283,9 @@ class AdminProfile extends React.Component {
                             </Card>
 
                         </Col>
-
-
-
                     </Row>
                 </Container>
             </section>
-
-
-
         </>
     );
 }

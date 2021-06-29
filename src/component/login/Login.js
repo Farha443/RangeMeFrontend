@@ -4,44 +4,62 @@ import Footer from '../footer/Footer'
 import Cookies from 'universal-cookie';
 import '../../assets2/login.css';
 import { NavLink } from 'react-router-dom';
+import $ from "jquery";  
 import BASE_URL from '../base';
 
 const axios = require('axios');
 const cookies = new Cookies();
 function Loginfunction() {
+  $(".laoder").show(); 
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
-      
       axios.post(BASE_URL+"authentication/login/",
           {              
               email: email,             
               password: password,              
           }).then(res=>{
-<<<<<<< HEAD
-            // alert('Success')
-<<<<<<< HEAD
-=======
-=======
             // debugger
+            if (res.data.message === "Password is incorrect"){
+              alert("Password is incorrect");
+            }
+            else if (res.data.message === "User does not exist"){
+              alert("User does not exist");
+            }
+            
             console.log(res.data.data.accessToken)
             cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
->>>>>>> 33da3459d3ae8127079b1e3ccc223bd01006e45a
-            window.location = "/"
->>>>>>> 1183bc83fb0514d4e7e4e895cc0c81ed47dc48e2
+            cookies.set('uuid', res.data.data.uuid, { path: '/' })
+            cookies.set('first_name', res.data.data.first_name, { path: '/' })
+            cookies.set('user_pic', res.data.data.user_pic, { path: '/' })
+            // window.location = "/"
+            $(".laoder").hide(); 
+            if(res.data.data.superuser===true){
+              alert("is superuser")
+              window.location = "/product_form"
+            }
           }).catch(err=>{
-            alert(err)
+            // alert(err)
           })
-          
-
+        
 }
-function Login(){
+class Login extends React.Component {
+  handleKeypress = (event) => {
+    if(event.key === 'Enter'){
+      Loginfunction();
+    }
+  }
 
+  componentDidMount(){
+    $(".laoder").hide(); 
+  }
 
+  render(){
     return(
         <>
 
          <div data-tname="SignInContainer" className="w-100">
         <div className="with-advertisement__container___2Y-i4">
+        <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
           <div className="with-advertisement__form___1Tp6K">
             <div className="center-aligned__container___3lBR4">
               <div>
@@ -65,11 +83,11 @@ function Login(){
                       <div className="sign-in-form__field-container___3Zlii">
                         <div className="input__wrapper___1b5oN" data-tname="InputWrapper">
                           <div className data-tname="Inset" />
-                          <input id="password" name="password" placeholder="Password" type="password" className="input__input___1QUbp" data-tname="PasswordField" />
+                          <input id="password" name="password" placeholder="Password" type="password" onKeyPress={this.handleKeypress} className="input__input___1QUbp" data-tname="PasswordField" />
                         </div>
                       </div>
                       <div className="sign-in-form__log-in-button-container___2r6lo">
-                        <button className="button__button___2LnOX sign-in-form__primary-button___3edbD button__primary___3hlTY" data-tname="LoginButton" type="submit" onClick={Loginfunction}><span className>Log in</span></button>
+                        <button className="button__button___2LnOX sign-in-form__primary-button___3edbD button__primary___3hlTY" data-tname="LoginButton" type="submit"  onClick={Loginfunction}><span className>Log in</span></button>
                         {/* <div className="sign-in-form__remember-me-container___3ibWe">
                         <input className="sign-check" type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                                 <label for="vehicle1"> Remember me</label>
@@ -95,17 +113,9 @@ function Login(){
           </div>
         </div>
       </div>
-           
-
-      
-
-
-
-        
-        
-
+          
         </>
     );
 }
-
+}
 export default Login
