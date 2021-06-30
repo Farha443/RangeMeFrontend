@@ -212,7 +212,7 @@ handleChange(event) {
           <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
-                                    <p className="p1"> Account Setting </p>
+                                    <p className="p1"> Home Setting </p>
                                     <ul>
                                  
                                         <li>
@@ -220,7 +220,7 @@ handleChange(event) {
                                             inactiveClassName="text-gray-800"
                                             >
                                                 <img src="/assets/images/image-gallery.png" />
-                                                <div className="sidebar-title">Add Banner </div>
+                                                <div className="sidebar-title">Home Settings </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>

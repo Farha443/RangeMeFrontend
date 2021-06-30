@@ -16,6 +16,7 @@ import {
   Row
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import useState from 'react-hook-use-state';
 const cookies = new Cookies();
 // cookies.get('uuid')
 // cookies.get('logintoken')
@@ -30,7 +31,7 @@ const cookies = new Cookies();
   
 //   window.location.href = '/';
 // }
-var first_name = cookies.get('firstname');
+// var first_name = cookies.get('firstname');
 
 // alert(first_name);
 var first_name= cookies.get("first_name")
@@ -50,6 +51,11 @@ function logout() {
   window.location.href = '/';
 }
 function AdminNavbar(){
+
+  const [isActive, setActive] = useState("false");
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
     return(
         <>
 
@@ -57,7 +63,9 @@ function AdminNavbar(){
               
 <Navbar expand="lg">
   <Container>
-  <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> <h3> Veniver </h3> </Navbar.Brand>
+  <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> 
+      <img src="/assets/images/logo.svg" />
+   </Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav" className="admin-nav-collapse">
     <Nav className="ml-auto">
@@ -68,15 +76,35 @@ function AdminNavbar(){
       <Nav.Link href="#home"><i class="fa fa-comments" aria-hidden="true"></i></Nav.Link>
      
       <Nav.Link href="#home"><i class="fa fa-bell-o" aria-hidden="true"></i></Nav.Link>
-      <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" />
-      <NavDropdown id="basic-nav-dropdown" className="header-profile-drop"  >
+      {!cookies.get("user_pic")==null ? <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" />:
+      <img src=" "  />
+      }
+
+      {/* <NavDropdown id="basic-nav-dropdown" className="header-profile-drop"  >
        
         <NavDropdown.Item href="#action/3.1">{first_name}</NavDropdown.Item>
         <NavDropdown.Item href="/admin_profile"> Settings</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.3">Help</NavDropdown.Item>
         <NavDropdown.Divider />
         <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
-      </NavDropdown>
+      </NavDropdown> */}
+
+    <Nav.Link href="#home" className="drop-menu"  onClick={handleToggle}>
+      <div className="menu-profile-img-main">
+      <img src="/assets/images/user64x64.png"  />
+      </div>
+      <i class="fa fa-angle-down" aria-hidden="true"></i>
+
+      <div className={isActive ? "dropmenu-profile-img " : "dropmenu-profile-img dropmenu-profile-open"}>
+          <ul>
+            <li> <NavLink to="">{first_name} </NavLink> </li>
+            <li> <NavLink to="/admin_profile">Settings </NavLink> </li>
+            <li> <NavLink to="" onClick={logout}> Logout </NavLink> </li>
+          </ul>
+      </div>
+     </Nav.Link>
+     
+
     </Nav>
     {/* <Form inline>
       <FormControl type="text" placeholder="Search" className="mr-sm-2" />

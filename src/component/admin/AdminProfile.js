@@ -213,15 +213,18 @@ class AdminProfile extends React.Component {
                                         </div>
 
                                         <div className="change-img-maind">
-                                        {this.state.user_pic ?   <div className="pic-1101">
-                                            <img src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="180px" height="120px" />
-                                           
-                                            </div>
-                                            : <img src="/assets/images/megaphone.png" width="180px" height="120px" />}
-                                            <div className="pic202">
-                                            <img className="" id="output" src=""/>
-                                            <input  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
-                                        
+                                            {this.state.user_pic ?   
+                                            <div className="pic-1101">
+                                                <img src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="180px" height="120px" />
+                                            
+                                                </div>
+                                                : <div className="img-coose-pic">
+                                                    <img id="output" src="/assets/images/user64x64.png"  />
+                                                </div> }
+                                                <div className="pic202">
+                                                {/* <img className=""  src=""/> */}
+                                                <input  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
+                                            
                                             </div>
 
                                         </div>

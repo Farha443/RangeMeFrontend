@@ -13,7 +13,7 @@ cookies.get('userType')
 var logintoken = cookies.get("logintoken")
 // alert(logintoken)
 var userType = '';
-
+cookies.get('uuid2')
 function Click(){
   cookies.remove("userType");
   var supplier = "supplier";
@@ -64,8 +64,7 @@ function Click1(){
         </div>
       </div>
       {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">Dashboard</NavLink>}
-      <button className="header-bar__cta button button--green" onClick={() => setModalShow(true)}> Sign Up
-        For Free</button>
+      <button className="header-bar__cta button button--green" onClick={() => setModalShow(true)}>Ücretsiz Hesap Aç </button>
       <button id="menu-toggle" className="menu__button">
         <svg xmlns="http://www.w3.org/2000/svg" className="svg" width={24} height={24}>
           <g className="nc-icon-wrapper svg__fill svg__stroke" strokeLinecap="square" strokeWidth={2} stroke="#000">

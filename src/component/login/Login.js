@@ -10,7 +10,9 @@ import BASE_URL from '../base';
 const axios = require('axios');
 const cookies = new Cookies();
 
-cookies.get('uuid')
+// cookies.get('uuid')
+// cookies.get('sup_uuid')
+// cookies.get('buy_uuid')
 cookies.get('userType')
 function Loginfunction() {
   $(".laoder").show(); 
@@ -34,13 +36,25 @@ function Loginfunction() {
             cookies.set('first_name', res.data.data.first_name, { path: '/' })
             cookies.set('user_pic', res.data.data.user_pic, { path: '/' })
             cookies.set('user_type', res.data.data.user_type, { path: '/' })
+            if(res.data.data.supplier){
+              cookies.set('sup_uuid',res.data.data.supplier, { path: '/' } )
+            }
+            else if(res.data.data.buyer){
+              cookies.set('buy_uuid',res.data.data.buyer, { path: '/' } )
+            }
+            
+            
             // window.location = "/"
             if(res.data.data.superuser===true){
               window.location = "/admin/home"
             }
+            else if(cookies.get('user_type')==="supplier"){
+              window.location = "/admin_home"
+            }
             else{
               window.location = "/"
             }
+
             
           }).catch(err=>{
             $(".laoder").hide();
