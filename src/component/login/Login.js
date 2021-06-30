@@ -42,7 +42,8 @@ function Loginfunction() {
             else if(res.data.data.buyer){
               cookies.set('buy_uuid',res.data.data.buyer, { path: '/' } )
             }
-            
+            cookies.set('superuser',res.data.data.superuser,{ path: '/' })
+            alert()
             
             // window.location = "/"
             if(res.data.data.superuser===true){
