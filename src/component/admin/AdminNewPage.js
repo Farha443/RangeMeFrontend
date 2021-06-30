@@ -162,7 +162,19 @@ handleChange( changeEvent ) {
       output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
+    
 }
+
+handleChange(event) {
+  var reader = new FileReader();
+  reader.onload = function(){
+    var output = document.getElementById('output1');
+    output.src = reader.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+  
+}
+
   async componentDidMount(){
     var url = BASE_URL+'authentication/getcategory/';
     var config = {
@@ -367,8 +379,8 @@ handleChange( changeEvent ) {
                       <img className="img-responsive" src="/assets/images/h3.jpg"/>
                     </div> */}
                     <div className="pic202">
-                      <img className="" id="output" src=""/>
-                      <input  type="file" id="bg_img" onChange={this.handleChange} placeholder="Change"/>
+                      <img className="" id="output1" src=""/>
+                      <input  type="file" id="image" onChange={this.handleChange} placeholder="Change"/>
                   
                       </div>
               

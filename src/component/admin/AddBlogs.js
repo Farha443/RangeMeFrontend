@@ -54,6 +54,16 @@ handleChange( changeEvent ) {
     } );
 }
 
+handleChange(event) {
+  var reader = new FileReader();
+  reader.onload = function(){
+    var output = document.getElementById('output');
+    output.src = reader.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+  
+}
+
 Blogs(){
   console.clear()
   console.log(this.state.content)
@@ -196,15 +206,15 @@ Blogs(){
                 /> */}
                 <div className="pic202">
                       <img className="" id="output" src=""/>
-                      <input  type="file" id="bg_img" onChange={this.handleChange} placeholder="Change"/>
+                      <input  type="file" id="b_image" onChange={this.handleChange} placeholder="Change"/>
                   
                       </div>
                     </Col>
 
                     <Col md="3">
-                    <div className="banner-upload-img-show">
+                    {/* <div className="banner-upload-img-show">
                       <img className="img-responsive" src="/assets/images/h3.jpg"/>
-                    </div>
+                    </div> */}
                 </Col>
 
                     <Col md="6">

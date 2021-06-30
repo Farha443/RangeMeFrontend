@@ -86,7 +86,7 @@ class AdminProfile extends React.Component {
                 data:data,
             };
             console.log(config)
-            //   debugger
+
          axios(config)
          .then(res=>{
                 console.log(res.data.data)
@@ -105,7 +105,6 @@ class AdminProfile extends React.Component {
     componentDidMount() {
         // cookies.remove('pro_pic');
         // alert(cookies.get('logintoken'))
-        debugger
         var uuid = cookies.get('uuid');
         // var token = cookies.get('logintoken');
         
