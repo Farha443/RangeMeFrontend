@@ -17,7 +17,7 @@
 }
 
 header.admin-header nav.navbar.navbar-expand-lg.navbar-light {
-    background: #00cdae;
+    background: #38B5E6;
     padding: 1rem 1rem;
 }
 
@@ -173,7 +173,7 @@ section.admin-home-section2 {
     color: #003c71;
 }
 button.admin-add-btn {
-    background: #00cdae;
+    background: #38B5E6;
     color: white;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -236,7 +236,7 @@ section.product-header-section {
 
 .p-right-content .p-icn-01 i {
     font-size: 20px;
-    color: #00cdae;
+    color: #38B5E6;
 }
 
 .p-right-content .p-icn-01 {
@@ -254,7 +254,7 @@ section.product-header-section {
     border: 1px solid #e8e8e8;
     padding: 7px 20px;
     border-radius: 3px;
-    background: #00cdae;
+    background: #38B5E6;
     color: white;
     outline: none;
 }
@@ -291,7 +291,7 @@ section.product-form-section {
 }
 
 .admin-sidebar-main ul li a:hover {
-    color: #00cdae;
+    color: #38B5E6;
     transition: 0.2s;
 }
 .admin-sidebar-main ul li a {
@@ -347,7 +347,7 @@ section.product-form-section {
     margin-bottom: 0.2rem;
 }
 button.prev-prod-btn {
-    background: #00cdae;
+    background: #38B5E6;
     color: white;
     padding: 8px 10px;
     border-radius: 3px;
@@ -356,7 +356,7 @@ button.prev-prod-btn {
 }
 
 .prod-help p a {
-    color: #00cdae;
+    color: #38B5E6;
     font-weight: 500;
 }
 
@@ -419,7 +419,7 @@ button.admin-add-btn a {
 }
 
 .step-three-category-box a:hover {
-    color: #00cdae;
+    color: #38B5E6;
     transition: 0.3s;
     text-decoration: none;
 }
@@ -433,7 +433,7 @@ button.admin-add-btn a {
     margin: 0;
 }
 .email-confirm-main button {
-    background: #00cdae;
+    background: #38B5E6;
     color: white;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
@@ -451,7 +451,7 @@ button.admin-add-btn a {
 
 
 .admin-sidebar-main ul li a.active {
-    color: #00cdae;
+    color: #38B5E6;
 }
 
 a.rounded-sm.text-gray-200.bg-blue-gray-dark {
@@ -465,7 +465,7 @@ a.rounded-sm.text-gray-200.bg-blue-gray-dark {
 
 .prod-img-011 {
     width: 120px;
-    border: 2px solid #00cdae;
+    border: 2px solid #38B5E6;
     border-style: dashed;
 }       
 label.lb p {
@@ -499,7 +499,7 @@ label.lb p {
     margin: 0;
 }
 a.rounded-sm.text-gray-200.bg-blue-gray-dark {
-    color: #00cdae;
+    color: #38B5E6;
 }
 
 

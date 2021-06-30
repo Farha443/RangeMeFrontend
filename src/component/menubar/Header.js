@@ -41,9 +41,12 @@ function Click1(){
 <div className="header-bar__inner">
   <nav id="nav" className="header-bar__nav"> 
     <NavLink to="/Home" className="header-bar__logo">
-      {/* <img src="Logo.png"> */}
-      <h2> <span> V</span>eniver </h2>
+     
+      <h2> <span style={{"color":"#38B5E6"}}> T</span>ayuss </h2>
     </NavLink>
+    {/* <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> 
+      <img src="/assets/images/logo.svg" />
+   </Navbar.Brand> */}
     <div className="header-bar__actions">
       <a href="#" onClick={Click} className="header-bar__link" >Satıcılar İçin</a>
       <a href="#" onClick={Click1} className="header-bar__link" >Alıcılar İçin</a>
