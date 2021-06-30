@@ -71,53 +71,104 @@ class CompanyDetails extends React.Component {
         });
     }
     
-// savechange(){
-//      debugger
-//         var comp_name = document.getElementById('comp_name').value;
-//         var email = document.getElementById('email').value;
-//         var comp_location = document.getElementById('comp_location').value;
-//         // var department = document.getElementById('department').value;
+savechange(){
+        var comp_name = document.getElementById('comp_name').value;
+        var email = document.getElementById('email').value;
+        var comp_location = document.getElementById('comp_location').value;
+        // var department = document.getElementById('department').value;
     
-//         const selected = document.querySelectorAll('#department option:checked');
-//         var array = Array.from(selected).map(el => el.value);
-//         var busiess_type = document.getElementById('busiess_type').value;
-//         var company_logo = document.getElementById('company_logo').files[0];
-//         var url = BASE_URL+'authentication/createsupplier/'
-//         var uuid = cookies.get('sup_uuid');
-//         var userType = cookies.get('user_type');
-//         var data = new FormData();
-//         data.append('comp_name', comp_name);
-//         data.append('email', email);
-//         data.append('comp_location', comp_location);
-//         data.append('department', array);
-//         data.append('busiess_type', busiess_type);
-//         data.append('company_logo', company_logo);
-//         data.append('uuid', uuid);
-//         var token = cookies.get('logintoken');
-//             var config = {
-//                 method: 'patch',
-//                 url: url,
-//                 headers: {
-//                     'content-type': `multipart/form-data; boundary=${data._boundary}`,
-//                     "Authorization": "Bearer " + token,
-//                   },
-//                 data:data,
-//             };
-//             console.log(config)
+        const selected = document.querySelectorAll('#department option:checked');
+        var array = Array.from(selected).map(el => el.value);
+        var busiess_type = document.getElementById('busiess_type').value;
+        var company_logo = document.getElementById('company_logo').files[0];
+        var url = BASE_URL+'authentication/createsupplier/'
+        var uuid = cookies.get('sup_uuid');
+        var userType = cookies.get('user_type');
+        var data = new FormData();
+        data.append('comp_name', comp_name);
+        data.append('email', email);
+        data.append('comp_location', comp_location);
+        data.append('department', array);
+        data.append('busiess_type', busiess_type);
+        // data.append('company_logo', company_logo);
+        if(company_logo){
+            data.append('company_logo', company_logo);
+        }
+        data.append('uuid', uuid);
+        var token = cookies.get('logintoken');
+            var config = {
+                method: 'patch',
+                url: url,
+                headers: {
+                    'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                    "Authorization": "Bearer " + token,
+                  },
+                data:data,
+            };
+            console.log(config)
     
-//          axios(config)
-//          .then(res=>{
-//                 console.log(res.data.data)
-//                 alert("success")
-//                 window.location = '/admin_home'
-//             }
+         axios(config)
+         .then(res=>{
+                console.log(res.data.data)
+                alert("success")
+                window.location = '/admin_home'
+            }
             
-//             ).catch(err=>{
-//                 console.error(err);
-//             window.location = "/company_details";
-//             })
-//     }
+            ).catch(err=>{
+                console.error(err);
+            window.location = "/company_details";
+            })
+    }
 
+
+    savebuyer(){
+
+    var comp_name = document.getElementById('comp_name').value;
+    var email = document.getElementById('email').value;
+    var comp_location = document.getElementById('comp_location').value;
+    // var department = document.getElementById('department').value;
+
+    const selected = document.querySelectorAll('#department option:checked');
+    var array = Array.from(selected).map(el => el.value);
+    var busiess_type = document.getElementById('busiess_type').value;
+    var company_logo = document.querySelector('#company_logo');
+    var url = BASE_URL+'authentication/createbuyer/'
+    var uuid = cookies.get('buy_uuid');
+    var userType = cookies.get('user_type');
+    var data = new FormData();
+    data.append('comp_name', comp_name);
+    data.append('email', email);
+    data.append('comp_location', comp_location);
+    data.append('department', array);
+    data.append('busiess_type', busiess_type);
+    if(company_logo.files[0]){
+        data.append('company_logo', company_logo.files[0]);
+    }
+    data.append('uuid', uuid);
+    var token = cookies.get('logintoken');
+        var config = {
+            method: 'patch',
+            url: url,
+            headers: {
+                'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                "Authorization": "Bearer " + token,
+              },
+            data:data,
+        };
+        console.log(config)
+
+     axios(config)
+     .then(res=>{
+            console.log(res.data.data)
+            alert("success")
+            window.location = '/admin_home'
+        }
+        
+        ).catch(err=>{
+            console.error(err);
+        window.location = "/company_details";
+        })
+}
 
 
     async componentDidMount(){
@@ -158,7 +209,6 @@ class CompanyDetails extends React.Component {
             };
                 axios(config1).then(re => {
                     console.log(re.data.data)
-                    // debugger
                     this.setState({
                     comp_location:re.data.data.comp_location,
                     comp_category: re.data.data.department,
@@ -394,7 +444,7 @@ class CompanyDetails extends React.Component {
                                         
                                     
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={()=>this.savechange()}>   Save Changes  </button>
+                                            <button class="admin-add-btn" onClick={cookies.get('sup_uuid')?()=>this.savechange():()=>this.savebuyer()}>   Save Changes  </button>
                                             </Col>
 
                                            </Row>

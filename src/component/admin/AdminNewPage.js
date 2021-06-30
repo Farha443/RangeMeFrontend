@@ -133,6 +133,8 @@ class AdminNewPage extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind( this );
+    this.handleChange1 = this.handleChange1.bind( this );
+    this.handleChange2 = this.handleChange2.bind( this );
     this.onEditorChange = this.onEditorChange.bind( this );
 }
 
@@ -155,7 +157,7 @@ handleChange( changeEvent ) {
   //   message1: "message"
 
   // };
-  handleChange(event) {
+  handleChange1(event) {
     var reader = new FileReader();
     reader.onload = function(){
       var output = document.getElementById('output');
@@ -165,7 +167,7 @@ handleChange( changeEvent ) {
     
 }
 
-handleChange(event) {
+handleChange2(event) {
   var reader = new FileReader();
   reader.onload = function(){
     var output = document.getElementById('output1');
@@ -263,7 +265,7 @@ handleChange(event) {
                       {/* <img src="/assets/images/megaphone.png" width="180px" height="120px" /> */}
                       <div className="pic202">
                       <img className="" id="output" src=""/>
-                      <input  type="file" id="bg_img" onChange={this.handleChange} placeholder="Change"/>
+                      <input  type="file" id="bg_img" onChange={this.handleChange1} placeholder="Change"/>
                   
                       </div>
                     
@@ -380,7 +382,7 @@ handleChange(event) {
                     </div> */}
                     <div className="pic202">
                       <img className="" id="output1" src=""/>
-                      <input  type="file" id="image" onChange={this.handleChange} placeholder="Change"/>
+                      <input  type="file" id="image" onChange={this.handleChange2} placeholder="Change"/>
                   
                       </div>
               
