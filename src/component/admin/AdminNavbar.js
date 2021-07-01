@@ -32,23 +32,15 @@ const cookies = new Cookies();
 //   window.location.href = '/';
 // }
 // var first_name = cookies.get('firstname');
-
-// alert(first_name);
 var first_name= cookies.get("first_name")
 var user_pic= cookies.get("user_pic")
 
-var nn = BASE_URL.slice(0,-1)+ user_pic
-
 function logout() {
-
   var allCookies = document.cookie.split(";");
-  
- for (var i = 0; i < allCookies.length; i++)
+   for (var i = 0; i < allCookies.length; i++)
  document.cookie = allCookies[i] + "=;expires="
  + new Date(0).toUTCString();
-  
- 
-  window.location.href = '/';
+   window.location.href = '/';
 }
 function AdminNavbar(){
 
@@ -76,9 +68,6 @@ function AdminNavbar(){
       <Nav.Link href="#home"><i class="fa fa-comments" aria-hidden="true"></i></Nav.Link>
      
       <Nav.Link href="#home"><i class="fa fa-bell-o" aria-hidden="true"></i></Nav.Link>
-      {!cookies.get("user_pic")==null ? <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" />:
-      <img src=" "  />
-      }
 
       {/* <NavDropdown id="basic-nav-dropdown" className="header-profile-drop"  >
        
@@ -91,7 +80,9 @@ function AdminNavbar(){
 
     <Nav.Link href="#home" className="drop-menu"  onClick={handleToggle}>
       <div className="menu-profile-img-main">
+      {!user_pic==="undefined" ? <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" />:
       <img src="/assets/images/user64x64.png"  />
+      }
       </div>
       <i class="fa fa-angle-down" aria-hidden="true"></i>
 

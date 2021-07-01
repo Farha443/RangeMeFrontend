@@ -37,11 +37,11 @@ function ProductForm() {
                         <Col md="12">
                             <div className="p-header-main">
 
-                                <div className="p-header-left">
+                                {/* <div className="p-header-left">
                                     <div className="p-title">
                                         <h4> Headphone </h4> <span> Product </span>
                                     </div>
-                                </div>
+                                </div> */}
 
                                 <div className="p-header-right">
                                     <div className="p-right-content">

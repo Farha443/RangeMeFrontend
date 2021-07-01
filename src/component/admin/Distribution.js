@@ -14,6 +14,7 @@ import {
     Row,
     InputGroup
 } from 'react-bootstrap';
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector'
 import '../../assets2/admin.css';
 import AdminNavbar from './AdminNavbar'
 import { NavLink } from 'react-router-dom';
@@ -27,73 +28,88 @@ const cookies = new Cookies();
 
 
 
-const colourOptions=[
-    { value: 'Red', label: 'Red' },
-    { value: 'Black', label: 'Black' },
-    { value: 'Blue', label: 'Blue' },
-    { value: 'Green', label: 'Green' },
-]
 
 
-
-async function distribution() {
-      var country = document.getElementById('country').value;
-      var state = document.getElementById('state').value;
-      var distributors = document.getElementById('distributors').value;
-      var selling_Platform = document.getElementById('selling_Platform').value;
-      var distribution_location = document.getElementById('distribution_location').value;
-      var global_distribution = document.getElementById('global_distribution').value;
-      var drop_ship = document.getElementById('drop_ship').value;
-      var private_label = document.getElementById('drop_ship').value;
-      var storage_required = document.getElementById('storage_required').value;
+// async function distribution() {
+//       var country = document.getElementById('country').value;
+//       var state = document.getElementById('state').value;
+//       var distributors = document.getElementById('distributors').value;
+//       var selling_Platform = document.getElementById('selling_Platform').value;
+//       var distribution_location = document.getElementById('distribution_location').value;
+//       var global_distribution = document.getElementById('global_distribution').value;
+//       var drop_ship = document.getElementById('drop_ship').value;
+//       var private_label = document.getElementById('drop_ship').value;
+//       var storage_required = document.getElementById('storage_required').value;
       
 
 
-    //   cookies.set('email',email,{path:'/'});
-    //   console.log(cookies.get('email'));
+//     //   cookies.set('email',email,{path:'/'});
+//     //   console.log(cookies.get('email'));
  
          
-          console.log('Trying to send request');
+//           console.log('Trying to send request');
 
-          try {
-              // alert('err')
-              // let loader = `<div><div class="loader centered"/></div>`;
-              // document.getElementById('trial').innerHTML = loader;
-              console.log('Trying')
-              let res = await axios.post(BASE_URL + 'user/', {
-                country : country,
-                state:state,
-                distributors: distributors,
-                selling_Platform: selling_Platform,
-                distribution_location: distribution_location,
-                global_distribution: global_distribution,
-                drop_ship:drop_ship,
-                private_label:private_label,
-                storage_required: storage_required,
-              })
+//           try {
+//               // alert('err')
+//               // let loader = `<div><div class="loader centered"/></div>`;
+//               // document.getElementById('trial').innerHTML = loader;
+//               console.log('Trying')
+//               let res = await axios.post(BASE_URL + 'user/', {
+//                 country : country,
+//                 state:state,
+//                 distributors: distributors,
+//                 selling_Platform: selling_Platform,
+//                 distribution_location: distribution_location,
+//                 global_distribution: global_distribution,
+//                 drop_ship:drop_ship,
+//                 private_label:private_label,
+//                 storage_required: storage_required,
+//               })
               
-              if (res.status === 200) {
-                  // test for status you want, etc
-                  console.log(res.status);
-                  console.log(res.data);
-                  // alert(res.data.message);
+//               if (res.status === 200) {
+//                   // test for status you want, etc
+//                   console.log(res.status);
+//                   console.log(res.data);
+//                   // alert(res.data.message);
     
-                  window.location='/marketing';
+//                   window.location='/marketing';
                  
     
-              }
-              // Don't forget to return something
-              return res.data
-          }
-          catch (err) {
-              console.error('Signup Failed , Please try again.');
-              window.location='/distribution'
-              alert(err)
-          }
-      }
+//               }
+//               // Don't forget to return something
+//               return res.data
+//           }
+//           catch (err) {
+//               console.error('Signup Failed , Please try again.');
+//               window.location='/distribution'
+//               alert(err)
+//           }
+//       }
     
 
-function Distribution() {
+class Distribution extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state = { 
+            country: '', 
+            region: '' };
+      }
+    
+      selectCountry (val) {
+        this.setState({ country: val });
+      }
+    
+      selectRegion (val) {
+        this.setState({ region: val });
+      }
+    render() {
+        const { country, region } = this.state;
+        const colourOptions=[
+                { value: 'Red', label: 'Red' },
+                { value: 'Black', label: 'Black' },
+                { value: 'Blue', label: 'Blue' },
+                { value: 'Green', label: 'Green' },
+            ]
     return (
         <>
             <AdminNavbar />
@@ -104,11 +120,11 @@ function Distribution() {
                         <Col md="12">
                             <div className="p-header-main">
 
-                                <div className="p-header-left">
+                                {/* <div className="p-header-left">
                                     <div className="p-title">
                                         <h4> Headphone </h4> <span> Product </span>
                                     </div>
-                                </div>
+                                </div> */}
 
                                 <div className="p-header-right">
                                     <div className="p-right-content">
@@ -197,27 +213,23 @@ function Distribution() {
                                            <Col md="6">
                                            <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>What country/region is your product manufactured in?</Form.Label>
-                                                <Form.Control as="select">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                </Form.Control>
-                                            </Form.Group>
+                                                
+                                                <CountryDropdown className="form-control"
+                                                    value={country}
+                                                    onChange={(val) => this.selectCountry(val)} />
+                                        </Form.Group>                                
                                             </Col>
 
                                             <Col md="6">
                                            <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>What state is your product manufactured in?</Form.Label>
-                                                <Form.Control as="select">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                </Form.Control>
-                                            </Form.Group>
+                                                
+                                                <RegionDropdown className = "form-control"
+                                                    country={country}
+                                                    value={region}
+                                                    onChange={(val) => this.selectRegion(val)} />
+                                                    </Form.Group>
+                                            
                                             </Col>
 
                                             <Col md="6" className="" >
@@ -383,6 +395,7 @@ function Distribution() {
 
         </>
     );
+}
 }
 
 export default Distribution

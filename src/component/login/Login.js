@@ -30,12 +30,13 @@ function Loginfunction() {
               alert("User does not exist");
             }
             
-            console.log(res.data.data.accessToken)
-            cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
-            cookies.set('uuid', res.data.data.uuid, { path: '/' })
-            cookies.set('first_name', res.data.data.first_name, { path: '/' })
-            cookies.set('user_pic', res.data.data.user_pic, { path: '/' })
-            cookies.set('user_type', res.data.data.user_type, { path: '/' })
+            // console.log(res.data.data.accessToken)
+            cookies.set('logintoken', res.data.data.accessToken, { path: '/' });
+            cookies.set('uuid', res.data.data.uuid, { path: '/' });
+            cookies.set('first_name', res.data.data.user, {path:'/'});
+            cookies.set('first_name', res.data.data.first_name, { path: '/' });
+            cookies.set('user_pic', res.data.data.user_pic, { path: '/' });
+            cookies.set('user_type', res.data.data.user_type, { path: '/' }); 
             if(res.data.data.supplier){
               cookies.set('sup_uuid',res.data.data.supplier, { path: '/' } )
             }
@@ -43,7 +44,6 @@ function Loginfunction() {
               cookies.set('buy_uuid',res.data.data.buyer, { path: '/' } )
             }
             cookies.set('superuser',res.data.data.superuser,{ path: '/' })
-            alert()
             
             // window.location = "/"
             if(res.data.data.superuser===true){
