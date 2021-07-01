@@ -135,7 +135,7 @@ section.admin-home-section2 {
 
 .process__number {
     font-size: 55px;
-    -webkit-text-stroke: 1px #003c71;
+    -webkit-text-stroke: 1px #38B5E6 ;
     display: block;
     color: transparent;
     font-family: "Roboto Condensed";
@@ -150,7 +150,7 @@ section.admin-home-section2 {
     font-weight: 700;
     letter-spacing: 1.5px;
     font-size: 18px;
-    color: #003c71;
+    color: #38B5E6 ;
     text-transform: uppercase;
     margin-top: 30px;
 }
@@ -158,7 +158,7 @@ section.admin-home-section2 {
 .process__subtitle {
     display: block;
     font-family: "Josefin Slab";
-    font-size: 16px;
+    font-size: 13px;
     color: #8c8c8c;
     margin-top: 0.5rem;
     line-height: 1.5;
@@ -170,7 +170,7 @@ section.admin-home-section2 {
 
 .process__item:hover .process__number {
     transform: translateY(5px);
-    color: #003c71;
+    color: #38B5E6 ;
 }
 button.admin-add-btn {
     background: #38B5E6;
@@ -189,7 +189,7 @@ button.admin-add-btn {
 
 .process__item.active .process__number {
     transform: translateY(5px);
-    color: #003c71;
+    color: #38B5E6 ;
 }
 
 .p-title h4  {
@@ -319,7 +319,7 @@ section.product-form-section {
 
 .admin-sidebar-main ul li a .sidebar-title {
     margin-right: 0.7rem;
-    font-size: 16px;
+    font-size: 13px;
 }
 .product-form-main .p-inside-title {
     margin-bottom: 0rem;

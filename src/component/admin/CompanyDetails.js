@@ -23,15 +23,9 @@ import Cookies from 'universal-cookie';
 import BASE_URL from '../base';
 const cookies = new Cookies();
 const axios = require('axios');
-
-const colourOptions=[
-    { value: 'Red', label: 'Red' },
-    { value: 'Black', label: 'Black' },
-    { value: 'Blue', label: 'Blue' },
-    { value: 'Green', label: 'Green' },
-]
 cookies.get('sup_uuid')
 cookies.get('buy_uuid')
+
 class CompanyDetails extends React.Component {
      constructor(props) {
         super(props);

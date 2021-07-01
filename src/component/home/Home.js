@@ -321,16 +321,16 @@ function Home(){
                   </div>
                 </div>
               </section>
-              {/* <section className="section section--slim">
+              <section className="section section--slim">
                 <div className="section__inner">
                   <div className="section__intro">
                     <h2 className="section__heading">Supplier Success Stories</h2>
                   </div>
                 </div>
-              </section> */}
+              </section>
 
               {/* {succestory.map(story=>( */}
-                {/* <section className="section section--full section--blue">
+                 <section className="section section--full section--blue">
                 
                 <div className="section__side-panel">
                   <div className="image-slider image-slider--stories image-slider--blue">
@@ -386,7 +386,7 @@ function Home(){
                     </div>
                   </div>
                 </div>
-              </section> */}
+              </section> 
               <section className="section blog-section">
                 <div className="section__inner stories-section__inner">
                   <div className="section__intro">

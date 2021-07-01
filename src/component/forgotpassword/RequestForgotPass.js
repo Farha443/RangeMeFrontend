@@ -77,7 +77,7 @@ function Email(){
               <div className="auth-form-wrapper__header___3fzg5">
                 <a href="/" className="header-bar__logo">
                   {/* {/ <img src="Logo.png"> /} */}
-                  <h1> Veniver </h1>
+                  <h1> Tayuss </h1>
                 </a>
                 {/* {/ <img alt="Logo" src="/assets/range-me-logo.72d528cf4802493c2b76.svg"> /} */}
               </div>

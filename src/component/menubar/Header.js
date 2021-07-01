@@ -60,7 +60,7 @@ function Click1(){
           </svg>
         </div>
         <div className="sub-nav" id="resources-sub-nav">
-          <a href="#" className="sub-nav__link">Success Stories</a>
+          <NavLink to="" className="sub-nav__link">Success Stories</NavLink>
           <a href="#" className="sub-nav__link">Blog</a>
           <a href="#" className="sub-nav__link">In The News</a>
           <a href="#" className="sub-nav__link">Webinars</a>
