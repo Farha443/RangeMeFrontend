@@ -18,20 +18,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import useState from 'react-hook-use-state';
 const cookies = new Cookies();
-// cookies.get('uuid')
-// cookies.get('logintoken')
-// cookies.get('userType')
-// function logout() {
 
-//   var allCookies = document.cookie.split(";");
-  
-//  for (var i = 0; i < allCookies.length; i++)
-//  document.cookie = allCookies[i] + "=;expires="
-//  + new Date(0).toUTCString();
-  
-//   window.location.href = '/';
-// }
-// var first_name = cookies.get('firstname');
 var first_name= cookies.get("first_name")
 var user_pic= cookies.get("user_pic")
 
@@ -80,9 +67,10 @@ function AdminNavbar(){
 
     <Nav.Link href="#home" className="drop-menu"  onClick={handleToggle}>
       <div className="menu-profile-img-main">
-      {!user_pic==="undefined" ? <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" />:
+      {!cookies.get("user_pic")==="undefined" ? <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" />:
       <img src="/assets/images/user64x64.png"  />
       }
+       {/* <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" /> */}
       </div>
       <i class="fa fa-angle-down" aria-hidden="true"></i>
 

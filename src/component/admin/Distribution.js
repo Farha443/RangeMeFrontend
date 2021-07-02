@@ -39,19 +39,20 @@ class Distribution extends React.Component {
             region: '' ,
             dis_country : '',
             product_dis:'',
-            ProductSel_country: '',
+            // ProductSel_country: '',
             storage:'',
             storage1:'',
             drop_ship:'',
             private_label : '',
             productAvailable: '',
-            productAvailabe_date:'',
+           
             }
 
             this.storageChange = this.storageChange.bind(this);
             this.storage1 = this.storage1.bind(this);
             this.productAvailable = this.productAvailable.bind(this);
-            this.ProductSel_country = this.ProductSel_country.bind(this);
+            // this.productAvailable11 = this.productAvailable11.bind(this);
+            // this.ProductSel_country = this.ProductSel_country.bind(this);
             this.product_dis = this.product_dis.bind(this);
             this.private_label = this.private_label.bind(this);
             this.drop_ship = this.drop_ship.bind(this)
@@ -65,7 +66,9 @@ class Distribution extends React.Component {
         this.setState({ storage1 : e.target.value });
       }
       productAvailable(f){
+        //   alert(f.target.value)
           this.setState({ productAvailable : f.target.value })
+         
       }
 
       selectCountry (val) {
@@ -82,12 +85,13 @@ class Distribution extends React.Component {
       DistributionCountry (val1) {
         this.setState({ dis_country: val1 });
       }
+
       product_dis(e){
         this.setState({ product_dis : e.target.value });
       }
-      ProductSel_country(val2){
-          this.setState({ ProductSel_country : val2})
-      }
+    //   ProductSel_country(val2){
+    //       this.setState({ ProductSel_country : val2})
+    //   }
     
       selectRegion (val) {
         this.setState({ region: val });
@@ -141,26 +145,21 @@ class Distribution extends React.Component {
     }
 
     async Submit(){
-        $(".laoder").show(); 
-        var country = document.getElementById('year').value;
-        var state = document.getElementById('revenue').value;
-        // var array = []
-        // var department = document.querySelector('#department');
-        // for (var i = 0; i < department.length; i++) {
-        //     array.push(department[i].value)
-        // }
+        // $(".laoder").show(); 
+        debugger
+        var country = this.state.country;
+        var state = this.state.region;
         const selected = document.querySelectorAll('#distributors option:checked');
         var distributors = Array.from(selected).map(el => el.value);
         const selected1 = document.querySelectorAll('#selling_Platform option:checked');
         var selling_Platform = Array.from(selected1).map(elv => elv.value);
-        var all_stores = document.getElementById('all_stores').value;
-        var no_of_stores = document.getElementById('no_of_stores').value;
-        var distribution_location = document.getElementById('distribution_location').value;
-        var global_distribution = document.getElementById('global_distribution').value;
+        // var all_stores = document.getElementById('all_stores').value;
+        // var no_of_stores = document.getElementById('no_of_stores').value;
+        var drop_ship = this.state.drop_ship;
         var product_availability =  document.getElementById('product_availability').value;
-        var drop_ship = document.getElementById('drop_ship').value;
-        var distribution_location = document.getElementById('distribution_location').value;
-        var private_label = document.getElementById('private_label').value;
+        var distribution_location = this.state.dis_country;
+        var global_distribution = document.querySelector('input[type=checkbox]:checked')
+        var private_label = this.state.private_label;
         var storage_required = this.state.storage1
 
         var url2 = BASE_URL+ 'product/create_product_distribution/';
@@ -178,8 +177,6 @@ class Distribution extends React.Component {
             state: state,
             distributors: distributors,
             selling_Platform: selling_Platform,
-            all_stores: all_stores,
-            no_of_stores:no_of_stores,
             drop_ship : drop_ship,
             product_availability:product_availability,
             distribution_location:distribution_location,
@@ -344,8 +341,8 @@ class Distribution extends React.Component {
                                                 <option value={sell.uuid}>{sell.name}</option>))}
                                                 
                                                 </Form.Control>
-                                            </Form.Group>:
-                                        <input class="form-control" id="product_availability" type="date"></input>}
+                                            </Form.Group>: ""}
+                                            {this.state.productAvailable === "false" ? <input class="form-control" id="product_availability" type="date"></input>:""}
                                             </Col>
 
                                             <Col md="12" className="" >
@@ -378,6 +375,16 @@ class Distribution extends React.Component {
                                                 <CountryDropdown  id = "distribution_location" className="form-control"
                                                     value={dis_country}
                                                     onChange={(val1) => this.DistributionCountry(val1)} />
+                                                    <label>If you can distribute to an entire country, add that country. Otherwise, please add the specific states or provinces (Texas, Quebec, etc.).</label>
+                                                    <div className="validated-field__container___1zNgS">
+                  <div className="checkbox-large__wrapper___2i1Pl signup-layout__terms-and-conditions___1mfPt">
+                    <div className="checkbox-large__inner-wrapper___3jgqh" data-tname="TermsAndConditionsCheckbox">
+                      <input onKeyPress={this.GlobalCheck} type="checkbox" id="vehicle1" name="vehicle1" className="sign-check" />
+                      <span className="text__text___2g-Dv text__small-copy___bgT96 checkbox-large__label___1i8a0" data-tname="CheckboxLargeLabel"><span className="signup-layout__terms-and-conditions-label___csiGB">
+                      I can distribute to all countries globally.</span></span>
+                    </div>
+                  </div>
+                </div>
                                         </Form.Group>                                
                                             </Col>
                                             
@@ -390,8 +397,8 @@ class Distribution extends React.Component {
                                                         <div>
                                                         <label htmlFor="basic-url" className="lb">Can you drop-ship this product to consumers? </label>
                                                         </div>
-                                                        <Form.Check inline label="Yes" name="group9" type="radio" value="true" onClick={this.product_dis}  />
-                                                        <Form.Check inline label="No" name="group9" type="radio" value="false" onClick={this.product_dis}  />
+                                                        <Form.Check inline label="Yes" name="group9" type="radio" value="true" onClick={this.drop_ship}  />
+                                                        <Form.Check inline label="No" name="group9" type="radio" value="false" onClick={this.drop_ship}  />
                                                     </div>
                                                 </Col>
                                             </Row>
@@ -439,7 +446,7 @@ class Distribution extends React.Component {
 
                             <Col md="12" className="text-center mt-4 two-btn-main">
                             <button class="admin-add-btn"> <NavLink to="/products_detail"> Back </NavLink>    </button>
-                                 <button class="admin-add-btn"> <NavLink to=""> Next </NavLink>  </button>
+                                 <button class="admin-add-btn"> <NavLink to="" onClick={() => this.Submit()}> Next </NavLink>  </button>
                             </Col>
 
                         </Col>

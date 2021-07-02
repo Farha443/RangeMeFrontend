@@ -117,7 +117,7 @@ function skip(){
                                                     <div className="step-form-pera">
                                                         <p className="text-center"> Get started with your company profile by uploading your logo and adding a description
                                                             <br/>
-                                                            this information will be available to all supplier on Veniver.
+                                                            this information will be available to all supplier on Tayuss.
                                                         </p>
                                                         
                                                     </div>

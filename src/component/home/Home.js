@@ -5,15 +5,7 @@ import { NavLink } from 'react-bootstrap';
 import SignupModal from '../element/SignupModal';
 import axios from 'axios';
 import BASE_URL from '../base';
-// import Moment from 'moment';
-// function getdate(d_str){
-//   var months=['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
-//   var day = d_str.split('-')[0];
-//   var month = d_str.split('-')[1];
-//   return day+
-  
-  
-// }
+
 function get_date(dt_string){
   var dt = dt_string.split('_')[0]
   // var dtt = dt_string.split('_')[2]
@@ -27,10 +19,9 @@ function get_date(dt_string){
 function Home(){
   const [modalShow, setModalShow] = useState(false);
   const [home, setHome] = useState({})
-  // const [indexheading, setIndexheading]= useState({})
   const [stats, setStats]= useState([])
   const [works, setWorks]= useState([])
-  const [succestory, setSuccestory]= useState([])
+  // const [succestory, setSuccestory]= useState([])
   const [blogs, setBlogs]= useState([])
   const [heading, setheading]= useState([])
   useEffect(() => {
@@ -312,7 +303,7 @@ function Home(){
                     
                     <div className="cta">
                       <p><a href="#" className="cta__link link link--arrow blue-text">Learn more about
-                          Veniver Features
+                          Tayuss Features
                           <svg xmlns="http://www.w3.org/2000/svg" className="svg" width={20} height={12}>
                             <path className="svg__fill" d="M14 0l-1.06 1.06 4.19 4.19H0v1.5h17.13l-4.19 4.19L14 12l6-6z" />
                           </svg>
@@ -330,7 +321,7 @@ function Home(){
               </section>
 
               {/* {succestory.map(story=>( */}
-                 <section className="section section--full section--blue">
+                 {/* <section className="section section--full section--blue">
                 
                 <div className="section__side-panel">
                   <div className="image-slider image-slider--stories image-slider--blue">
@@ -386,7 +377,7 @@ function Home(){
                     </div>
                   </div>
                 </div>
-              </section> 
+              </section>  */}
               <section className="section blog-section">
                 <div className="section__inner stories-section__inner">
                   <div className="section__intro">

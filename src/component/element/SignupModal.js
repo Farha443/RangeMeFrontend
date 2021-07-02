@@ -53,7 +53,7 @@ function SignupModal(props){
          centered>
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-        Sign up for Veniver
+        Sign up for Tayuss
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="show-grid">

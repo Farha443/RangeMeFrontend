@@ -10,7 +10,7 @@ function Footer(){
 <div className="footer__inner">
   <div className="footer__main">
     <a href="index.html" className="footer__logo">
-      <h2> <span> V</span>eniver </h2>
+      <h2> <span> T</span>ayuss </h2>
     </a>
     <select id="language-switcher">
       <option value="au">Australia</option>

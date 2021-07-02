@@ -66,7 +66,7 @@ function Click1(){
           <a href="#" className="sub-nav__link">Webinars</a>
         </div>
       </div>
-      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">Dashboard</NavLink>}
+      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">Log In</NavLink>}
       <button className="header-bar__cta button button--green" onClick={() => setModalShow(true)}>Ücretsiz Hesap Aç </button>
       <button id="menu-toggle" className="menu__button">
         <svg xmlns="http://www.w3.org/2000/svg" className="svg" width={24} height={24}>
@@ -126,7 +126,7 @@ function Click1(){
       </svg>
     </button>
     <div className="signup-modal__header">
-      Sign up for Veniver
+      Sign up for Tayuss
     </div>
     <div className="signup-modal__subtitle">
       Choose your account type:

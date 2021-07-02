@@ -128,7 +128,7 @@ class Signup extends React.Component {
           
             <a href="/" className="header-bar__logo">
               {/* <img src="assets/images/Logo.png"> */}
-              <h1> Veniver </h1>
+              <h1> Tayuss </h1>
             </a>
             <h1 className="wrappers__wrapper___1B_Ho signup-layout__heading___1SCdF"><span className="text__text___2g-Dv text__xl-heading___59enD text__display-block___1CZnH">Get access to the world's leading {userTypeTitle}s</span></h1>
             <h2 className="wrappers__wrapper___1B_Ho signup-layout__sub-heading___2C1YE"><span className="text__text___2g-Dv text__medium-heading___298Cf text__display-block___1CZnH">Setup your free {userTypeTitle} profile</span></h2></div>

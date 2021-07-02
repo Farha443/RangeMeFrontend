@@ -34,7 +34,7 @@ function Loginfunction() {
             cookies.set('logintoken', res.data.data.accessToken, { path: '/' });
             cookies.set('uuid', res.data.data.uuid, { path: '/' });
             cookies.set('first_name', res.data.data.user, {path:'/'});
-            cookies.set('first_name', res.data.data.first_name, { path: '/' });
+            // cookies.set('first_name', res.data.data.first_name, { path: '/' });
             cookies.set('user_pic', res.data.data.user_pic, { path: '/' });
             cookies.set('user_type', res.data.data.user_type, { path: '/' }); 
             if(res.data.data.supplier){
