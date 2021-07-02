@@ -41,7 +41,8 @@ var userTypeTitle=cookies.get('userType');
       }
       
     async componentDidMount(){
-        var url = BASE_URL+'authentication/getcategory/';
+      debugger
+        var url = BASE_URL+'authentication/GetCategorysignup/';
         var config = {
             method: 'get',
             url: url,
@@ -50,11 +51,15 @@ var userTypeTitle=cookies.get('userType');
           axios(config)
 
       .then(res => {
+        debugger
+        console.log("hoga jald hi");
+        console.log(res.data.data);
         this.setState({
           data: res.data.data
-        });
+          
+        })
+        debugger
         
-        console.log(res.data.data);
       })
       .catch(err => {
         alert(err);

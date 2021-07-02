@@ -10,7 +10,7 @@ import EmailConfirmation from './component/admin/company-form/EmailConfirmaton';
 import Distribution from './component/admin/Distribution';
 import Marketing from './component/admin/Marketing';
 import Preview from './component/admin/Preview';
-import ProductDetail from './component/admin/ProductDetail';
+import ProductDetail from './component/admin/ProductDetail ';
 import ProductForm from './component/admin/ProductForm';
 import Home from './component/home/Home';
 import Login from './component/login/Login';

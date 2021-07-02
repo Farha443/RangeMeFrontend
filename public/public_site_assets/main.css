@@ -6909,3 +6909,9 @@ a.story-item p {
     height: 100%;
     object-fit: cover;
 }
+
+
+.choose_pp .fileUploader .fileContainer p {
+    display: none !important;
+    opacity: 0;
+}

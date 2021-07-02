@@ -215,7 +215,7 @@ class AdminProfile extends React.Component {
 
                                         <div className="change-img-maind">
                                             <div className="pic-1101">
-                                            <img src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="70px" />
+                                            <img src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="180px" height="120px" />
                                            
                                             </div>
                                             <div className="pic202">

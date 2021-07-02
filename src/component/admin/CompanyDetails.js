@@ -49,11 +49,12 @@ class CompanyDetails extends React.Component {
     onDrop(pictureFiles, pictureDataURLs) {
         this.setState({
             pictures: pictureFiles
+            
         });
     }
     
 save(){
-        // debugger
+        debugger
         var product_name = document.getElementById('product_name').value;
         var email = document.getElementById('email').value;
         var comp_location = document.getElementById('comp_location').value;
@@ -285,9 +286,9 @@ save(){
                                                 <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>Select the department(s) that best describe your industry. </Form.Label>
                                                 <Form.Control as="select" multiple="true" id="department">
-                                                {this.state.getcat.map(cat=>(  
-                                                <option value={cat.uuid}>{cat.name}</option>))}
-                                                
+                                                {/* {this.state.getcat.map(cat=>{  
+                                                return <option value={cat.uuid}>{cat.name}</option>})}
+                                                 */}
                                                 </Form.Control>
                                                 {/* <Select
                                                 id="department"
