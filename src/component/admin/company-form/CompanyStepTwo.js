@@ -19,6 +19,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
 import BASE_URL from '../../base';
+import $ from "jquery";  
 
 const axios = require('axios');
 const cookies = new Cookies();
@@ -29,7 +30,7 @@ function skip(){
 }
 
  function Func() {
-    // debugger
+    $(".laoder").show();
     var company_logo = document.getElementById('comp_logo').files[0];
     var company_description = document.getElementById('comp_desc').value;
     var url = BASE_URL + "authentication/createbuyer/";
@@ -67,11 +68,13 @@ function skip(){
     //   };
       axios(config).then(res=>{
           console.log(res.data.data)
+          $(".laoder").hide();
         window.location = '/company_form_three'
       }
       
       ).catch(err=>{
         console.error(err);
+        $(".laoder").hide();
       window.location = "company_form_two";
       })    
 
@@ -86,6 +89,8 @@ function skip(){
     render(){
     return(
         <>
+                 <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
+
         <AdminNavbar/>
         
         <section className="company-form-section">
@@ -112,7 +117,7 @@ function skip(){
                                                     <div className="step-form-pera">
                                                         <p className="text-center"> Get started with your company profile by uploading your logo and adding a description
                                                             <br/>
-                                                            this information will be available to all supplier on Veniver.
+                                                            this information will be available to all supplier on Tayuss.
                                                         </p>
                                                         
                                                     </div>

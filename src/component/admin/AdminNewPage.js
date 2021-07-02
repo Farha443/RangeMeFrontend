@@ -1,5 +1,4 @@
 import React from 'react';
-// import {CButton,CTextarea,CCollapse,Form.Label,Form.Control, CCard, CCard.Body, CCard.Header, CCol, Form.Group, Row, CCardFooter } from '@coreui/react';
 import {
     Jumbotron,
     Button,
@@ -22,10 +21,15 @@ import ImageUploader from 'react-images-upload';
 import { NavLink } from 'react-router-dom';
 import BASE_URL from '../base';
 import AdminNavbar from './AdminNavbar';
-// import CKEditor from 'ckeditor4-react';
+import {CKEditor} from 'ckeditor4-react';
+import Cookies from 'universal-cookie';
 
-
+const cookies = new Cookies();
 const axios = require('axios');
+var token = cookies.get("logintoken")
+
+
+
 
 function Banner(){
   var heading = document.getElementById('heading').value;
@@ -40,6 +44,7 @@ function Banner(){
     url:url,
     headers: {
       'content-type': `multipart/form-data; boundary=${data._boundary}`,
+      "Authorization": "Bearer " + token,
     },
     data : data,
   }
@@ -72,6 +77,7 @@ function Works(){
     url:url,
     headers: {
       'content-type': `multipart/form-data; boundary=${data._boundary}`,
+      "Authorization": "Bearer " + token,
     },
     data : data,
   }
@@ -102,54 +108,7 @@ function Stats(){
     url:url,
     headers: {
       'content-type': `multipart/form-data; boundary=${data._boundary}`,
-    },
-    data : data,
-  }
-        axios(config).then(res=>{
-          console.log(res.data.data)
-          window.location="/admin/home"
-      }
-
-      ).catch(err=>{
-        console.error(err);
-
-      })
-}
-
-function Blogs(){
-  var b_title = document.getElementById("b_title").value;
-  var b_image = document.getElementById('b_image').files[0];
-  var arr =[]
-  var b_category = document.getElementById('b_category').value;
-  arr.push(b_category)
-  var b_story = document.getElementById('b_story').value;
-  var b_content = document.getElementById('b_content').value;
-  // var oo = document.getElementById('visible').value;
-  // if(oo==="on" ){
-  //   var visible = "True";
-  // }
-  // else{
-  //   var visible = "False";
-  // }
-  if(document.getElementById('visible').checked == true) {   
-    var visible = "True";   
-} else {  
-  var visible = "False";   
-}  
-
-  var url = BASE_URL+'home/blogs/';
-  var data = new FormData();
-      data.append('b_title', b_title);
-      data.append('b_image', b_image);
-      data.append('b_category', arr);
-      data.append('b_story', b_story);
-      data.append('b_content', b_content);
-      data.append('visible_on_home', visible);
-  var config = {
-    method:'post',
-    url:url,
-    headers: {
-      'content-type': `multipart/form-data; boundary=${data._boundary}`,
+      "Authorization": "Bearer " + token,
     },
     data : data,
   }
@@ -165,13 +124,58 @@ function Blogs(){
 }
 
 class AdminNewPage extends React.Component {
+  constructor( props ) {
+    super( props );
+
+    this.state = {
+        data: [],
+        content :'This is a test',
+    };
+
+    this.handleChange = this.handleChange.bind( this );
+    this.handleChange1 = this.handleChange1.bind( this );
+    this.handleChange2 = this.handleChange2.bind( this );
+    this.onEditorChange = this.onEditorChange.bind( this );
+}
+
+onEditorChange( evt ) {
+    this.setState( {
+      content: evt.editor.getData()
+    } );
+}
+
+handleChange( changeEvent ) {
+    this.setState( {
+      content: changeEvent.target.value
+    } );
+}
 
 
-  state = {
-    data: [],
-    message1: "message"
 
+  // state = {
+  //   data: [],
+  //   message1: "message"
+
+  // };
+  handleChange1(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('output');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+    
+}
+
+handleChange2(event) {
+  var reader = new FileReader();
+  reader.onload = function(){
+    var output = document.getElementById('output1');
+    output.src = reader.result;
   };
+  reader.readAsDataURL(event.target.files[0]);
+  
+}
 
   async componentDidMount(){
     var url = BASE_URL+'authentication/getcategory/';
@@ -195,6 +199,7 @@ class AdminNewPage extends React.Component {
    
 }
     render(){
+      
   return (
     <>
 
@@ -204,14 +209,45 @@ class AdminNewPage extends React.Component {
         
       <Container>
           <Row>
-      <Col md={12}>
-          <Card>
+
+       
+          <Col md="3">
+                        <aside>
+                                <div className="admin-sidebar-main">
+                                    <p className="p1"> Home Setting </p>
+                                    <ul>
+                                 
+                                        <li>
+                                            <NavLink to="/admin/home"
+                                            inactiveClassName="text-gray-800"
+                                            >
+                                                <img src="/assets/images/image-gallery.png" />
+                                                <div className="sidebar-title">Home Settings </div>
+                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/add-blog"
+                                            inactiveClassName="text-gray-800"
+                                            activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
+                                                <img src="/assets/images/blog.png" />
+                                                <div className="sidebar-title"> Add Blogs  </div>
+                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                              </NavLink>
+                                        </li>
+                                      
+                                      
+                                    </ul>
+                                </div>
+                            </aside>
+                        </Col>              
+
+        <Col md={9}>
+          <Card className="">
             <Card.Header><h5 className="ad-h5" >Banner Settings</h5></Card.Header>
             <Card.Body>
-              
-
               <Row>
-              <Col sm="6">
+              <Col sm="5">
                     <Form.Label for="exampleEmail" >Banner Tagline</Form.Label>
                 <Form.Control
                     type="text"
@@ -221,45 +257,38 @@ class AdminNewPage extends React.Component {
                     placeholder="Add Tagline"
                 />
                     </Col>
-
-                
-                    <Col sm="6" className="up-right-main">
+                    <Col sm="4" className="up-right-main">
                     <div class="form-group">
                     <Form.Label for="exampleFile" >Banner Image </Form.Label>
-                    
-                   
-           
-                  <Form.Control id="bg_img" type="file" name="file" /> 
+                    {/* <Form.Control id="bg_img" type="file" name="file" />  */}
                     </div>
-                   
-                
-
+                      {/* <img src="/assets/images/megaphone.png" width="180px" height="120px" /> */}
+                      <div className="pic202">
+                      <img className="" id="output" width="180px" height="120px" src=""/>
+                      <input  type="file" id="bg_img" onChange={this.handleChange1} placeholder="Change"/>
+                  
+                      </div>
+                    
                 </Col>
 
-                
+                {/* <Col md="3">
+                    <div className="banner-upload-img-show">
+                      <img className="img-responsive" src="/assets/images/h3.jpg"/>
+                    </div>
+                </Col> */}
                 </Row>
-
-
 
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
-                    <Button onClick={Banner}>Submit</Button>
+                   
+                    <button className="admin-add-btn" onClick={Banner}> Submit </button>
                   </Col>
                 </Form.Group>
               
             </Card.Body>
           </Card>
-        </Col>
-        </Row>
-    </Container>     
 
-    </section>
-
-    <section className="ad-pad-sec">
-    <Container>
-          <Row>
-      <Col md={12}>
-          <Card>
+          <Card className="mt-4"> 
             <Card.Header><h5 className="ad-h5">How it works section</h5></Card.Header>
             <Card.Body>
             <div className="row">
@@ -331,8 +360,6 @@ class AdminNewPage extends React.Component {
                     placeholder="text"
                 />
                     </Col>
-                
-                
                 </Row>
 
               <Row>
@@ -347,103 +374,46 @@ class AdminNewPage extends React.Component {
                 <Col sm="6" className="up-right-main">
                     <div class="form-group">
                     <Form.Label for="exampleFile" >Tile Image </Form.Label>
-                    <Form.Control id="image"  type="file" name="file" />
+                    {/* <Form.Control id="image"  type="file" name="file" /> */}
                     </div>
-                    {/* <div className="icn121">
-                    <span className="right-icn"> <i class="fa fa-check-square-o" aria-hidden="true"></i> </span>
+                   
+                    {/* <div className="banner-upload-img-show img-21421">
+                      <img className="img-responsive" src="/assets/images/h3.jpg"/>
                     </div> */}
-                   <br/>
-                {/* <div className="up-01">
-                <Button onClick={()=>this.ToolImage()} className="up-btn">Upload</Button>
-                
-                </div> */}
+                    <div className="pic202">
+                      <img className="" id="output1" width="180px" height="120px" src=""/>
+                      <input  type="file" id="image" onChange={this.handleChange2} placeholder="Change"/>
+                  
+                      </div>
+              
+        
 
                 </Col>
 
+                
+
                 <Col cm="6">
-                    
                   <Form.Label for="exampleFile" >Redirect Link</Form.Label>
                   <Form.Control id="redirect_link" type="text" name="text" />
                 </Col>
-                  
-               
                 </Row>
-
 
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
-                    <Button onClick={Works}>Submit</Button>
+               
+                    <button className="admin-add-btn" onClick={Works}> Submit </button>
+                  
                   </Col>
                 </Form.Group>
               
             </Card.Body>
           </Card>
-        </Col>
-        
-      </Row>
-      </Container>  
 
-    </section>
-    
-    <section className="ad-pad-sec">
-      <Container>
-          <Row>
-        <Col xl={12} lg={12} md={12}>
-          <Card>
+          <Card className="mt-4">
             <Card.Header> <h5>Stats data</h5> </Card.Header>
             <Card.Body>
 
-            <div className="row">
-            
-            {/* <div className="col-md-12">
-                          <div className="temp-list-main">
-                            <Form.Label for="exampleFile" >Redirect Link</Form.Label>
-                  <Form.Control id="redirect_link" type="text" name="text" />
-                                <ul>
-                            
-                               <li> 
-                                      
-
-                                <div className="temp-second">
-                                    <div className="temp-second-img">
-                                    <img src="avatars/6.jpg" />
-                                       </div>
-                                </div> 
-
-                                <div className="temp-third">
-                                <div class="grid-meta">
-                                    <h4>
-                                    <NavLink to="#" ></NavLink></h4>
-                                        <h3><strong>  </strong> </h3>
-                                        <h4> </h4>
-                                         </div>
-                                </div>
-
-                                <div className="temp-btn">
-                        
-
-
-                                <ButtonGroup>
-                                    <Button  >Options</Button>
-
-                                    <DropdownButton as={ButtonGroup}  id="bg-nested-dropdown">
-                                        <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-                                        <Dropdown.Item >Delete</Dropdown.Item>
-                                    </DropdownButton>
-                                </ButtonGroup>
-                                
-
-                                </div>  
-                            </li>
-                        
-                       
-                                  </ul> 
-                              
-                          </div>
-                      </div> */}
-            
-
-            </div>
+  
 
               <Row>
               <Col sm="6">
@@ -466,7 +436,6 @@ class AdminNewPage extends React.Component {
                 />
                     </Col>
                 
-                
                 </Row>
 
               <Row>
@@ -480,160 +449,31 @@ class AdminNewPage extends React.Component {
                     <div className="icn121">
                     {/* <span className="right-icn"> <i class="fa fa-check-square-o" aria-hidden="true"></i> </span> */}
                     </div>
-                   <br/>
+              
                 
 
                 </Col>
        
-               
                 </Row>
-
-
                 <Form.Group check row>
                   <Col sm="12" className="text-center">
-                    <Button onClick={Stats}>Submit</Button>
-                  </Col>
-                </Form.Group>
               
-                
-
-
-
-            </Card.Body>
-          </Card>
-
-
-          <Card>
-            <Card.Header> <h5>Blogs data</h5> </Card.Header>
-            <Card.Body>
-
-            <div className="row">
-            
-            </div>
-
-              <Row>
-              <Col sm="6">
-                    <Form.Label for="exampleEmail">Title</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="text"
-                    id="b_title"
-                    placeholder="text"
-                />
-                    </Col>
-
-                    <Col sm="6">
-                    <Form.Label for="exampleEmail">Image</Form.Label>
-                <Form.Control
-                    type="file"
-                    name="text"
-                    id="b_image"
-                    placeholder="text"
-                />
-                    </Col>
-
-                    <Col md="6">
-                      
-                        <Form.Label> Category</Form.Label>
-                        <Form.Control as="select"  id="b_category">
-                        {this.state.data.map(cat=>(  
-                        <option value={cat.uuid}>{cat.name}</option>))}
-                        
-                        </Form.Control>
                     
-                    </Col>
-
-                    <Col sm="6">
-                    <Form.Label for="exampleEmail">Story</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="text"
-                    id="b_story"
-                    placeholder="text"
-                />
-                    </Col>
-
-                    <Col sm="6">
-                    <Form.Label for="exampleEmail">Content</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="text"
-                    id="b_content"
-                    placeholder="text"
-                />
-                
-                    </Col>
-                
-                    <Col sm="6">
-               
-
-<div className="mb-3 cust-rd mt-5">
-      <Form.Check className="custrd "
-        type="radio"
-        id="visible"
-        label="Visible on Home"
-        defaultValue='off'
-      />
-     </div>
-   </Col>
-{/* <div class="radio cst-rd">
-  <label className="col-md-12">Option 1</label>
-  <input type="radio" name="optradio" className="col-md-12" />  
-</div> */}
-
-                 
-                
-                </Row>
-
-              <Row>
-              <Col sm="6" className="up-right-main">
-                    <div class="form-group">
-                    {/* <Form.Label for="exampleFile" >icon </Form.Label>
-                    <Form.Control id="icon" type="file" name="file" /> */}
-                    {/* <Form.Label for="exampleFile" >Icon</Form.Label>
-                  <Form.Control id="icon" type="text" name="text" /> */}
-                    </div>
-                    <div className="icn121">
-                    {/* <span className="right-icn"> <i class="fa fa-check-square-o" aria-hidden="true"></i> </span> */}
-                    </div>
-                   <br/>
-                {/* <div className="up-01">
-                <Button onClick={()=>this.ServImage()} className="up-btn">Upload</Button>
-                
-                </div> */}
-
-                </Col>
-       
-               
-                </Row>
-
-
-                <Form.Group check row>
-                  <Col sm="12" className="text-center">
-                    <Button onClick={Blogs}>Submit</Button>
+                    <button className="admin-add-btn" onClick={Stats}> Submit </button>
+                  
                   </Col>
                 </Form.Group>
-              
-                
-
-
-
-            </Card.Body>
+                </Card.Body>
           </Card>
-
-
-
-
-
-
-
-
+                
+     
 
         </Col>
-        </Row>
-    </Container>  
-    </section>
+      
+      </Row>
+    </Container>     
 
+    </section>
 
 
     </>

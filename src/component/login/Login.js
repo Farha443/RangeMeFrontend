@@ -4,15 +4,18 @@ import Footer from '../footer/Footer'
 import Cookies from 'universal-cookie';
 import '../../assets2/login.css';
 import { NavLink } from 'react-router-dom';
+import $ from "jquery";  
 import BASE_URL from '../base';
 
 const axios = require('axios');
 const cookies = new Cookies();
-// debugger
-cookies.get('uuid')
-// cookies.get('firstname')
+
+// cookies.get('uuid')
+// cookies.get('sup_uuid')
+// cookies.get('buy_uuid')
 cookies.get('userType')
 function Loginfunction() {
+  $(".laoder").show(); 
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
       axios.post(BASE_URL+"authentication/login/",
@@ -20,54 +23,73 @@ function Loginfunction() {
               email: email,             
               password: password,              
           }).then(res=>{
-            // debugger
             if (res.data.message === "Password is incorrect"){
               alert("Password is incorrect");
             }
             else if (res.data.message === "User does not exist"){
               alert("User does not exist");
             }
-            console.log(res.data.data.accessToken)
-            cookies.set('logintoken', res.data.data.accessToken, { path: '/' })
-            cookies.set('uuid', res.data.data.uuid, { path: '/' })
-            cookies.set('first_name', res.data.data.first_name, { path: '/' })
-            cookies.set('user_pic', res.data.data.user_pic, { path: '/' })
-            cookies.set('user_type', res.data.data.user_type, { path: '/' })
+            
+            // console.log(res.data.data.accessToken)
+            cookies.set('logintoken', res.data.data.accessToken, { path: '/' });
+            cookies.set('uuid', res.data.data.uuid, { path: '/' });
+            cookies.set('first_name', res.data.data.user, {path:'/'});
+            // cookies.set('first_name', res.data.data.first_name, { path: '/' });
+            cookies.set('user_pic', res.data.data.user_pic, { path: '/' });
+            cookies.set('user_type', res.data.data.user_type, { path: '/' }); 
+            // alert(res.data.data.user_pic)?
+            if(res.data.data.supplier){
+              cookies.set('sup_uuid',res.data.data.supplier, { path: '/' } )
+            }
+            else if(res.data.data.buyer){
+              cookies.set('buy_uuid',res.data.data.buyer, { path: '/' } )
+            }
+            cookies.set('superuser',res.data.data.superuser,{ path: '/' })
+            
             // window.location = "/"
             if(res.data.data.superuser===true){
-              alert("is superuser")
               window.location = "/admin/home"
+            }
+            else if(cookies.get('user_type')==="supplier"){
+              window.location = "/admin_home"
             }
             else{
               window.location = "/admin_home"
             }
+
             
           }).catch(err=>{
+            $(".laoder").hide();
+            window.location = "/login"
             // alert(err)
-            
           })
         
 }
-// function Login(){
-  class Login extends React.Component {
-    handleKeypress = (event) => {
-      if(event.key === 'Enter'){
-        Loginfunction();
-      }
+class Login extends React.Component {
+  handleKeypress = (event) => {
+    if(event.key === 'Enter'){
+      Loginfunction();
     }
-    render(){
+  }
+
+  componentDidMount(){
+    $(".laoder").hide(); 
+  }
+
+  render(){
     return(
         <>
 
          <div data-tname="SignInContainer" className="w-100">
         <div className="with-advertisement__container___2Y-i4">
+        <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
           <div className="with-advertisement__form___1Tp6K">
             <div className="center-aligned__container___3lBR4">
               <div>
                 <div className="auth-form-wrapper__header___3fzg5">
                   <a href="/" className="header-bar__logo">
                     {/* {/ <img src="Logo.png"> /} */}
-                    <h1> Veniver </h1>
+                    <h1> Tayuss </h1>
                   </a>
                   {/* {/ <img alt="Logo" src="/assets/range-me-logo.72d528cf4802493c2b76.svg"> /} */}
                 </div>
@@ -84,11 +106,11 @@ function Loginfunction() {
                       <div className="sign-in-form__field-container___3Zlii">
                         <div className="input__wrapper___1b5oN" data-tname="InputWrapper">
                           <div className data-tname="Inset" />
-                          <input id="password" name="password" placeholder="Password" onKeyPress={this.handleKeypress} type="password" className="input__input___1QUbp" data-tname="PasswordField" />
+                          <input id="password" name="password" placeholder="Password" type="password" onKeyPress={this.handleKeypress} className="input__input___1QUbp" data-tname="PasswordField" />
                         </div>
                       </div>
                       <div className="sign-in-form__log-in-button-container___2r6lo">
-                        <button className="button__button___2LnOX sign-in-form__primary-button___3edbD button__primary___3hlTY" data-tname="LoginButton" type="submit" onClick={Loginfunction}><span className>Log in</span></button>
+                        <button className="button__button___2LnOX sign-in-form__primary-button___3edbD button__primary___3hlTY" data-tname="LoginButton" type="submit"  onClick={Loginfunction}><span className>Log in</span></button>
                         {/* <div className="sign-in-form__remember-me-container___3ibWe">
                         <input className="sign-check" type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                                 <label for="vehicle1"> Remember me</label>

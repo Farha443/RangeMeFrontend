@@ -25,7 +25,9 @@ async function ChangePasswordd() {
 
 
     if (password !== confirmPassword) {
+      $(".laoder").hide(); 
       alert("Passwords don't match");
+      
   } else {
       // make API call
     
@@ -64,6 +66,7 @@ async function ChangePasswordd() {
       // $(".modal-body").empty().html("Something Went To Wrong");
       // $(".modal").show();
       alert("Something Went To Wrong")
+      $(".laoder").hide();
       // alert(err);
       window.location = '/change-password';
       // setTimeout(function(){
@@ -72,6 +75,8 @@ async function ChangePasswordd() {
     }
   }
 }
+function NewPassword(){
+  $(".laoder").show();
 
 const handleKeypress = (event) => {
   if(event.key === 'Enter'){
@@ -89,13 +94,15 @@ function NewPassword(){
       <>
        <div data-tname="SignInContainer" className="w-100">
       <div className="with-advertisement__container___2Y-i4">
+      <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
+
         <div className="with-advertisement__form___1Tp6K">
           <div className="center-aligned__container___3lBR4">
             <div>
               <div className="auth-form-wrapper__header___3fzg5">
                 <a href="/" className="header-bar__logo">
                   {/* {/ <img src="Logo.png"> /} */}
-                  <h1> Veniver </h1>
+                  <h1> Tayuss </h1>
                 </a>
                 {/* {/ <img alt="Logo" src="/assets/range-me-logo.72d528cf4802493c2b76.svg"> /} */}
               </div>
@@ -141,5 +148,5 @@ function NewPassword(){
       </>
   );
 }
-
+}
 export default NewPassword

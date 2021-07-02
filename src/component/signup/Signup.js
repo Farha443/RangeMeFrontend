@@ -4,6 +4,7 @@ import Footer from '../footer/Footer'
 import '../../assets2/signup.css';
 import Cookies from 'universal-cookie';
 import { NavLink } from 'react-router-dom';
+import $ from "jquery";  
 import BASE_URL from '../base';
 
 const axios = require('axios');
@@ -31,7 +32,7 @@ function Toggle1() {
 }
 
  function Func() {
-
+    $(".laoder").show(); 
     var first_name = document.getElementById('first_name').value;
     var last_name = document.getElementById('last_name').value;
     var email = document.getElementById('email').value;
@@ -65,6 +66,7 @@ function Toggle1() {
       alert("Please agree to the terms and conditions first. ");
     }
     else{
+     
     axios.post( BASE_URL + "authentication/signup/",
         {
             user_type : userType,
@@ -76,8 +78,6 @@ function Toggle1() {
             comp_name:comp_name,
 
         }).then(res=>{
-          // alert('Success')
-          // debugger
           if (res.data.message === "Email id is required"){
             alert("Email id is required");
           }
@@ -87,19 +87,22 @@ function Toggle1() {
           else if (res.data.message === "Password is required"){
             alert("Password is required");
           }
+         
           cookies.set('uuid', res.data.data.uuid, { path: '/' })
           cookies.set('token', res.data.data.access, { path: '/' })
         
          
           if (userType === "buyer"){
+            $(".laoder").hide(); 
             window.location="/company_form_one";
           }
           else{
+            $(".laoder").hide();
             window.location = "/supplier_step_one";
           }
           
         }).catch(err=>{
-          // debugger
+          window.location = "/signup"
           console.log(err)
         })
       }
@@ -114,15 +117,18 @@ class Signup extends React.Component {
     }
     render(){
     return(
+      
         <>
-
+  <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
 
 <div className="layout__layout___2Opq_">
+
         <div className="signup-layout__layout___39T41">
           <div className="signup-layout__header___IeCtN">
+          
             <a href="/" className="header-bar__logo">
               {/* <img src="assets/images/Logo.png"> */}
-              <h1> Veniver </h1>
+              <h1> Tayuss </h1>
             </a>
             <h1 className="wrappers__wrapper___1B_Ho signup-layout__heading___1SCdF"><span className="text__text___2g-Dv text__xl-heading___59enD text__display-block___1CZnH">Get access to the world's leading {userTypeTitle}s</span></h1>
             <h2 className="wrappers__wrapper___1B_Ho signup-layout__sub-heading___2C1YE"><span className="text__text___2g-Dv text__medium-heading___298Cf text__display-block___1CZnH">Setup your free {userTypeTitle} profile</span></h2></div>

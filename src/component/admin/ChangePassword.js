@@ -3,6 +3,7 @@ import '../../assets2/admin.css';
 import AdminNavbar from './AdminNavbar'
 import { NavLink } from 'react-router-dom';
 
+
 import {
     Jumbotron,
     Button,
@@ -31,14 +32,16 @@ cookies.get("uuid")
 cookies.get("userType")
 
 async function ChangecurrentPassword() {
-    // debugger
+    $(".laoder").show(); 
     var current_password = document.getElementById('current_pass').value; 
     var password = document.getElementById('new_pass').value; 
     var confirmPassword = document.getElementById('confirm_new').value;
     var url = BASE_URL+"authentication/changepassword/"
     var token = cookies.get('logintoken')
     if (password !== confirmPassword) {
+        
         alert("Passwords don't match");
+        $(".laoder").hide(); 
     } else {
     var config = {
         method: 'put',
@@ -54,17 +57,19 @@ async function ChangecurrentPassword() {
 
     };
     console.log(config)
-    //   debugger
+ 
     axios(config).then(res=>{
         console.log(res.data.data)
         // cookies.set('uuid1', res.data.data.uuid, { path: '/' })
         // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+        $(".laoder").hide(); 
         window.location = '/admin_home'
     }
     
     ).catch(err=>{
         console.error(err);
-    window.location = "/change_password";
+        $(".laoder").hide(); 
+        window.location = "/change_password";
     })
    
 }
@@ -76,7 +81,7 @@ function ChangePassword() {
             <AdminNavbar />
 
 
-
+            <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">

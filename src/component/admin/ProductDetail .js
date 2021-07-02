@@ -71,7 +71,6 @@ function ProductDetail() {
 
 
     function onDrop(pictureFiles, pictureDataURLs) {
-        debugger
         // alert(pictureFiles)
         setImage({
             pictureFiles
@@ -83,7 +82,7 @@ function ProductDetail() {
 
 
     function onDrop1(pictureFiles, pictureDataURLs) {
-            debugger
+            // debugger
             setImage1({
                 pictureFiles
             });
@@ -146,7 +145,7 @@ function ProductDetail() {
         var life_type = array[0]
         var life_disc = life_type ? document.getElementById('life_disc').value : ""
         
-        debugger
+        // debugger
         if(selflife === "true"){
         var ingredients = document.getElementById('ingredients').value ? document.getElementById('ingredients').value : ''
         }
@@ -567,9 +566,10 @@ function ProductDetail() {
                                                     <option value="cm">cm</option>
                                                     
                                                     </Form.Control>
-                                                    <FormControl id="product_d_width" className="col-md-3" aria-describedby="basic-addon1" defaultValue="Width"/>
-                                                    <FormControl id="product_d_height" className="col-md-3" aria-describedby="basic-addon1" defaultValue="Hight"/>
-                                                    <FormControl id="product_d_depth" className="col-md-3" aria-describedby="basic-addon1" defaultValue="Depth"/>
+                                                    <FormControl id="product_d_width" className="col-md-3" aria-describedby="basic-addon1" placeholder="Width"/>
+                                                    <FormControl id="product_d_height" className="col-md-3" aria-describedby="basic-addon1" placeholder="Hight"/>
+                                                    <FormControl id="product_d_depth" className="col-md-3" aria-describedby="basic-addon1" 
+                                                    type='number'placeholder="Depth"/>
 
                                                  
 
@@ -590,7 +590,7 @@ function ProductDetail() {
                                                     <option value="cm3">cm3</option>
                                                    
                                                     </Form.Control>
-                                                    <FormControl id="product_volume" className="col-md-8" aria-describedby="basic-addon1" defaultValue="Width"/>
+                                                    <FormControl id="product_volume" className="col-md-8" type='number' aria-describedby="basic-addon1" placeholder="Width"/>
                                                   
                                                  
 
@@ -609,7 +609,7 @@ function ProductDetail() {
                                                     <option value="oz">oz</option>
                                                     <option value="fl oz">fl oz</option>
                                                     </Form.Control>
-                                                    <FormControl id="product_weight" className="col-md-8" aria-describedby="basic-addon1" defaultValue="Width"/>
+                                                    <FormControl id="product_weight" className="col-md-8" type='number' aria-describedby="basic-addon1" placeholder="Width"/>
                                                   
                                                  
 
@@ -630,7 +630,7 @@ function ProductDetail() {
                                                     <option value="fl oz"> fl oz</option>
                                                     <option value="unit count">unit count</option>
                                                     </Form.Control>
-                                                    <FormControl id="product_size" className="col-md-8" aria-describedby="basic-addon1" defaultValue="Width"/>
+                                                    <FormControl id="product_size" className="col-md-8" aria-describedby="basic-addon1" placeholder="Width"/>
                                                   
                                                  
 

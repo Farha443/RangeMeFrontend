@@ -13,7 +13,7 @@ cookies.get('userType')
 var logintoken = cookies.get("logintoken")
 // alert(logintoken)
 var userType = '';
-
+cookies.get('uuid2')
 function Click(){
   cookies.remove("userType");
   var supplier = "supplier";
@@ -41,9 +41,12 @@ function Click1(){
 <div className="header-bar__inner">
   <nav id="nav" className="header-bar__nav"> 
     <NavLink to="/Home" className="header-bar__logo">
-      {/* <img src="Logo.png"> */}
-      <h2> <span> V</span>eniver </h2>
+     
+      <h2> <span style={{"color":"#38B5E6"}}> T</span>ayuss </h2>
     </NavLink>
+    {/* <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> 
+      <img src="/assets/images/logo.svg" />
+   </Navbar.Brand> */}
     <div className="header-bar__actions">
       <a href="#" onClick={Click} className="header-bar__link" >Satıcılar İçin</a>
       <a href="#" onClick={Click1} className="header-bar__link" >Alıcılar İçin</a>
@@ -57,15 +60,14 @@ function Click1(){
           </svg>
         </div>
         <div className="sub-nav" id="resources-sub-nav">
-          <a href="#" className="sub-nav__link">Success Stories</a>
+          <NavLink to="" className="sub-nav__link">Success Stories</NavLink>
           <a href="#" className="sub-nav__link">Blog</a>
           <a href="#" className="sub-nav__link">In The News</a>
           <a href="#" className="sub-nav__link">Webinars</a>
         </div>
       </div>
-      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">Dashboard</NavLink>}
-      <button className="header-bar__cta button button--green" onClick={() => setModalShow(true)}> Sign Up
-        For Free</button>
+      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">Log In</NavLink>}
+      <button className="header-bar__cta button button--green" onClick={() => setModalShow(true)}>Ücretsiz Hesap Aç </button>
       <button id="menu-toggle" className="menu__button">
         <svg xmlns="http://www.w3.org/2000/svg" className="svg" width={24} height={24}>
           <g className="nc-icon-wrapper svg__fill svg__stroke" strokeLinecap="square" strokeWidth={2} stroke="#000">
@@ -124,7 +126,7 @@ function Click1(){
       </svg>
     </button>
     <div className="signup-modal__header">
-      Sign up for Veniver
+      Sign up for Tayuss
     </div>
     <div className="signup-modal__subtitle">
       Choose your account type:

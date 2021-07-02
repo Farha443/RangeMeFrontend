@@ -66,7 +66,7 @@ function Marketing() {
      
     
     function onDrop(pictureFiles, pictureDataURLs) {
-        debugger
+        // debugger
         // alert(pictureFiles)
         setImage({
             pictureFiles
@@ -74,7 +74,7 @@ function Marketing() {
     }
 
    function save(){
-        debugger
+        // debugger
         var product_marketing = cookies.get("product_uuid")
 
 
@@ -108,8 +108,8 @@ function Marketing() {
         axios(config)
         .then(res=>{
                  
-                    alert("product marketing is created");
-                 
+                    // alert("product marketing is created");
+                 window.location = "admin_home"
                 }).catch(err=>{
                   // alert(err)
                 })

@@ -7,7 +7,9 @@ import $, { removeData } from 'jquery';
 // import { toastr } from 'react-redux-toastr';
 const axios = require('axios');
 const cookies = new Cookies();
+
 async function request_forgot_pass() {
+  $(".laoder").show(); 
   var email_ip = document.getElementById('email').value;
   var modal = document.getElementById("myModal");
     window.onclick = function(event) {
@@ -25,10 +27,9 @@ async function request_forgot_pass() {
       email: email_ip,
     })
     if (res.status === 200) {
-      // debugger
       if (res.data === "Email Does Not Exist"){
-        // debugger
         // alert(res.data)
+        $(".laoder").hide(); 
         window.location = '/request_forgotpass'
       }
       else{
@@ -47,14 +48,11 @@ async function request_forgot_pass() {
   }
   catch (err) {
     console.error(err);
-    // $(".modal-body").empty().html("Something Went to Wrong");
-    // $(".modal").show();
+    
     alert("Something Went to Wrong")
     // alert(err);
     window.location = '/request_forgotpass';
-    // setTimeout(function(){
-    //   window.location = '/RequestForgotpass';
-    //   }, 2000);
+  
   }
 }
 
@@ -69,15 +67,17 @@ function Email(){
 
   return(
       <>
+      
        <div data-tname="SignInContainer" className="w-100">
       <div className="with-advertisement__container___2Y-i4">
+      <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
         <div className="with-advertisement__form___1Tp6K">
           <div className="center-aligned__container___3lBR4">
             <div>
               <div className="auth-form-wrapper__header___3fzg5">
                 <a href="/" className="header-bar__logo">
                   {/* {/ <img src="Logo.png"> /} */}
-                  <h1> Veniver </h1>
+                  <h1> Tayuss </h1>
                 </a>
                 {/* {/ <img alt="Logo" src="/assets/range-me-logo.72d528cf4802493c2b76.svg"> /} */}
               </div>

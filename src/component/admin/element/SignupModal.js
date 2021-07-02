@@ -15,18 +15,23 @@ import {
   Card,
   Row
 } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
+
+const axios = require('axios');
 const cookies = new Cookies();
-function Start(){
-  // alert('Hello');
-}
+
+
+
 var userType = '';
 
 function Click(){
   cookies.remove("userType");
   var supplier = "supplier";
   cookies.set('userType', supplier, { path: '/' });
+  // console.log(cookies.get('userType'));
   userType=cookies.get('userType');                                          
+  alert(userType);
   window.location = "/signup"
   }
 
@@ -35,8 +40,13 @@ function Click1(){
   var buyer = "buyer";
   cookies.set('userType', buyer, { path: '/' });
   userType=cookies.get('userType');
-  window.location = "signup"
+  alert(userType);
+  window.location = "/signup"
   }
+
+// function Start(){
+//   alert('Hello');
+// }
 
 function SignupModal(props){
   const [show, setShow] = useState(false);
@@ -59,7 +69,7 @@ function SignupModal(props){
       <Modal.Body className="show-grid">
       <div className="signup-modal-main signup-modal__account-types">
 
-<NavLink to=""  className="signup-modal__account-type signup-modal__account-type--supplier" data-signup="supplier" onClick={Click}>
+<NavLink to=""  className="signup-modal__account-type signup-modal__account-type--supplier" data-signup="supplier" onClick={()=>Click()}>
   <svg xmlns="http://www.w3.org/2000/svg" width={100} height={100} viewBox="0 0 100 100" fill="none" className="signup-modal__icon">
     <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x={32} y={89} width={41} height={5}>
       <path fillRule="evenodd" clipRule="evenodd" d="M32.2959 89.8169H72.7915V93.1972H32.2959" fill="white" />
@@ -85,11 +95,11 @@ function SignupModal(props){
     </path>
   </svg>
   <div className="signup-modal__account-text">
-    <div className="signup-modal__account-name">Satıcılar İçin</div>
+    <div className="signup-modal__account-name">Supplier</div>
     <div className="signup-modal__account-description">I sell products to wholesale buyers</div>
   </div>
 </NavLink>
-<NavLink to="/signup" className="signup-modal__account-type signup-modal__account-type--buyer" data-signup="buyer" onClick={Click1} >
+<NavLink to="/signup" className="signup-modal__account-type signup-modal__account-type--buyer" data-signup="buyer" onClick={()=>Click1()} >
   <svg xmlns="http://www.w3.org/2000/svg" width={100} height={100} viewBox="0 0 100 100" fill="none" className="signup-modal__icon">
     <rect x={21} y={40} width={58} height={47} rx={1} fill="white" stroke="#163968" strokeWidth={2} />
     <path d="M54 73L66 61" stroke="#22304F" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
@@ -109,7 +119,7 @@ function SignupModal(props){
     <path d="M6 87H94.1053" stroke="#163968" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
   </svg>
   <div className="signup-modal__account-text">
-    <div className="signup-modal__account-name">Alıcılar İçin</div>
+    <div className="signup-modal__account-name">Buyer</div>
     <div className="signup-modal__account-description">I purchase products at wholesale</div>
   </div>
 </NavLink>
@@ -132,9 +142,7 @@ function SignupModal(props){
 
 
   </div>
-</NavLink>
-     */}
-    
+</NavLink> */}
     </div>
       </Modal.Body>
     

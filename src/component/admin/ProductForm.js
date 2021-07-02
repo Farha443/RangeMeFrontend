@@ -97,7 +97,7 @@ function ProductForm() {
     // console.log(certi)
 
         function Step1(){
-            debugger
+            // debugger
             var product_name = document.getElementById('product_name').value;
             var select_category = cat;
             const selected = document.querySelectorAll('#approvals_certifications option:checked');
@@ -163,11 +163,11 @@ function ProductForm() {
                         <Col md="12">
                             <div className="p-header-main">
 
-                                <div className="p-header-left">
+                                {/* <div className="p-header-left">
                                     <div className="p-title">
                                         <h4> Headphone </h4> <span> Product </span>
                                     </div>
-                                </div>
+                                </div> */}
 
                                 <div className="p-header-right">
                                     <div className="p-right-content">

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../assets2/admin.css';
 import AdminNavbar from '../AdminNavbar'
+import $ from "jquery";  
 import {
   Jumbotron,
   Button,
@@ -41,7 +42,7 @@ var userTypeTitle=cookies.get('userType');
       }
       
     async componentDidMount(){
-      debugger
+      // debugger
         var url = BASE_URL+'authentication/GetCategorysignup/';
         var config = {
             method: 'get',
@@ -51,17 +52,18 @@ var userTypeTitle=cookies.get('userType');
           axios(config)
 
       .then(res => {
-        debugger
+        // debugger
         console.log("hoga jald hi");
         console.log(res.data.data);
         this.setState({
           data: res.data.data
           
         })
-        debugger
+        
         
       })
       .catch(err => {
+        $(".laoder").hide(); 
         alert(err);
       })
        
@@ -72,8 +74,7 @@ var userTypeTitle=cookies.get('userType');
   
 
     async Submit(){
-
-       
+        $(".laoder").show(); 
         var year_founded = document.getElementById('year').value;
         var annual_revenue = document.getElementById('revenue').value;
         // var array = []
@@ -109,16 +110,17 @@ var userTypeTitle=cookies.get('userType');
     
       };
       console.log(config)
-    //   debugger
       axios(config).then(res=>{
           console.log(res.data.data)
         cookies.set('uuid2', res.data.data.uuid, { path: '/' })
         // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
-        window.location = '/admin_home'
+        $(".laoder").hide(); 
+        window.location = '/login'
       }
       
       ).catch(err=>{
         console.error(err);
+        $(".laoder").hide(); 
       window.location = "/supplier_step_one";
       })
     }
@@ -133,7 +135,8 @@ var userTypeTitle=cookies.get('userType');
     return(
         <>
         <AdminNavbar/>
-        
+        <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div> 
+
         <section className="company-form-section">
                 <Container fluid>
                     <Row className="justify">                
@@ -239,7 +242,7 @@ var userTypeTitle=cookies.get('userType');
 
                                             <Col md="12">
                                                 <div className="company-form-btn-main text-center">
-                                                    <button class="admin-add-btn" onClick={() => this.Submit()}> <NavLink to="/company_form_two"> Continue </NavLink>  </button>
+                                                    <button class="admin-add-btn" onClick={() => this.Submit()}> <NavLink to="/company_form_two"> Continue</NavLink>  </button>
                                                 </div>
                                             </Col>
                                            

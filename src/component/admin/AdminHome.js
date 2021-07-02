@@ -27,7 +27,7 @@ const cookies = new Cookies();
 
 
 async function AddProduct(){
-    debugger
+    // debugger
     var product_name = document.getElementById("addproduct").value;
     var token = cookies.get("logintoken");
     try {
@@ -138,7 +138,7 @@ function AdminHome(){
                                     <span class="process__title">Add product</span>
                                     <span class="process__subtitle">Add your first product to attract interest from buyers</span>
 
-                                    <button class="admin-add-btn" onClick={() => setShow2(true)}>Add Prodoct</button>
+                                    <button class="admin-add-btn" onClick={() => setShow2(true)}>Add Product</button>
 
                                 </li>
 

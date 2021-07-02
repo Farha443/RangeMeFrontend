@@ -19,7 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import BASE_URL from '../../base';
-
+import $ from "jquery";  
 
 const axios = require('axios');
 const cookies = new Cookies();
@@ -29,7 +29,7 @@ var userTypeTitle=cookies.get('userType');
 // alert(token)
 
  function Func() {
-    // debugger
+    $(".laoder").show();
     var comp_type = document.getElementById('comp_type').value;
     var job_title = document.getElementById('job_title').value;
     var buyers = document.getElementById('buyers').value;
@@ -61,16 +61,18 @@ var userTypeTitle=cookies.get('userType');
     
       };
       console.log(config)
-    //   debugger
+
       axios(config).then(res=>{
           console.log(res.status)
         cookies.set('uuid1', res.data.data.uuid, { path: '/' })
         // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+        $(".laoder").hide();
         window.location = '/company_form_two'
       }
       
       ).catch(err=>{
         console.error(err);
+        $(".laoder").hide();
       window.location = "company_form_one";
       })
     //   axios.post( BASE_URL + "authentication/createbuyer/",
@@ -103,6 +105,7 @@ var userTypeTitle=cookies.get('userType');
     render(){
     return(
         <>
+         <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
         <AdminNavbar/>
         
         <section className="company-form-section">

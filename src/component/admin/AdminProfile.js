@@ -33,6 +33,7 @@ const colourOptions=[
 ]
 const cookies = new Cookies();
 const axios = require('axios');
+var token = cookies.get('logintoken');
 // alert(cookies.get("logintoken"))
 
 class AdminProfile extends React.Component {
@@ -43,28 +44,31 @@ class AdminProfile extends React.Component {
     email: null,
     mobile: null,
     email: null,
+    
      };
      Preview(id){
         console.log(id)
-        console.log("hhhhhhh")
 
     }
     handleChange(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-              var output = document.getElementById('output');
-              output.src = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
+        debugger
+        
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('output');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);    
+        
     }
      
   save(){
-        // debugger
+      debugger
         var first_name = document.getElementById('first_name').value;
         var last_name = document.getElementById('last_name').value;
         var email = document.getElementById('email').value;
         var mobile = document.getElementById('phone').value;
-        var user_pic = document.getElementById('user_pic').files[0];
+        var user_pic = document.getElementById('user_pic').files[0]
         var url = BASE_URL+'authentication/signup/'
         var uuid = cookies.get('uuid');
         var userType = cookies.get('userType');
@@ -73,7 +77,9 @@ class AdminProfile extends React.Component {
         data.append('last_name', last_name);
         data.append('email', email);
         data.append('mobile', mobile);
-        data.append('user_pic', user_pic);
+        if(user_pic){
+            data.append('user_pic', user_pic);
+        }
         data.append('uuid', uuid);
         var token = cookies.get('logintoken');
         // data.append('last_name', last_name);
@@ -82,12 +88,12 @@ class AdminProfile extends React.Component {
                 url: url,
                 headers: {
                     'content-type': `multipart/form-data; boundary=${data._boundary}`,
-                    // "Authorization": "Bearer" + token,
+                    // "Authorization": "Bearer " + token,
                   },
                 data:data,
             };
             console.log(config)
-            //   debugger
+
          axios(config)
          .then(res=>{
                 console.log(res.data.data)
@@ -105,31 +111,31 @@ class AdminProfile extends React.Component {
 
     componentDidMount() {
         // cookies.remove('pro_pic');
-        // debugger
+        // alert(cookies.get('logintoken'))
         var uuid = cookies.get('uuid');
+        // var token = cookies.get('logintoken');
         
-        var url = BASE_URL + 'authentication/getuser/' + uuid + '/';
+        var url = BASE_URL + 'authentication/getuser/' + uuid+'/';
         var config = {
             method: 'get',
             url: url,
             
+            
         };
     
         axios(config).then(re => {
-            // debugger
-            console.log(re.data)
             this.setState({
-              first_name: re.data.data[0].first_name,
-              last_name: re.data.data[0].last_name,
-              user_pic:re.data.data[0].user_pic,
-              mobile: re.data.data[0].mobile,
-              email: re.data.data[0].email,
+              first_name: re.data.data.first_name,
+              last_name: re.data.data.last_name,
+              user_pic:re.data.data.user_pic,
+              mobile: re.data.data.mobile,
+              email: re.data.data.email,
              
     
             });
             // alert(BASE_URL.slice(0,-1)+ this.state.user_pic)
-            cookies.set('user_pic',re.data.data[0].user_pic,{path:'/'})
-            cookies.set('first_name',re.data.data[0].first_name,{path:'/'})
+            cookies.set('user_pic',re.data.data.user_pic,{path:'/'})
+            cookies.set('first_name',re.data.data.first_name,{path:'/'})
           })
           .catch(err => {
             // alert(err);
@@ -159,7 +165,7 @@ class AdminProfile extends React.Component {
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/ChangePasswordProfile"
+                                            <NavLink to="/change_password"
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
@@ -214,15 +220,16 @@ class AdminProfile extends React.Component {
                                         </div>
 
                                         <div className="change-img-maind">
+                                            {this.state.user_pic ?   
                                             <div className="pic-1101">
-                                            <img src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="180px" height="120px" />
-                                           
-                                            </div>
-                                            <div className="pic202">
-                                            <img className="" id="output" src=""/>
-                                            <input  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
-                                        
-                                          
+                                                <img id="output" src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="180px" height="120px" />
+                                            
+                                                </div>
+                                                : <img className="" id="output" width="180px" height="120px" src=""/>}
+                                                <div className="pic202">
+                                                
+                                                <input  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
+                                            
                                             </div>
 
                                         </div>
