@@ -2106,6 +2106,12 @@ section.ad-pad-sec {
 
 
   /**************** f css **************/
+  .signup-layout__terms-and-conditions-label___csiGB {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+    margin-left: -0.4rem;
+}
 
   label {
     margin-top: 1.5rem;

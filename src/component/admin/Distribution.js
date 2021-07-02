@@ -30,6 +30,7 @@ const cookies = new Cookies();
 
 
 class Distribution extends React.Component {
+    
     constructor (props) {
         super(props);
         this.state = {
@@ -51,8 +52,6 @@ class Distribution extends React.Component {
             this.storageChange = this.storageChange.bind(this);
             this.storage1 = this.storage1.bind(this);
             this.productAvailable = this.productAvailable.bind(this);
-            // this.productAvailable11 = this.productAvailable11.bind(this);
-            // this.ProductSel_country = this.ProductSel_country.bind(this);
             this.product_dis = this.product_dis.bind(this);
             this.private_label = this.private_label.bind(this);
             this.drop_ship = this.drop_ship.bind(this)
@@ -66,9 +65,7 @@ class Distribution extends React.Component {
         this.setState({ storage1 : e.target.value });
       }
       productAvailable(f){
-        //   alert(f.target.value)
           this.setState({ productAvailable : f.target.value })
-         
       }
 
       selectCountry (val) {
@@ -146,7 +143,7 @@ class Distribution extends React.Component {
 
     async Submit(){
         // $(".laoder").show(); 
-        debugger
+        // debugger
         var country = this.state.country;
         var state = this.state.region;
         const selected = document.querySelectorAll('#distributors option:checked');
@@ -156,22 +153,26 @@ class Distribution extends React.Component {
         // var all_stores = document.getElementById('all_stores').value;
         // var no_of_stores = document.getElementById('no_of_stores').value;
         var drop_ship = this.state.drop_ship;
-        var product_availability =  document.getElementById('product_availability').value;
+        var product_availability,
+            element = document.getElementById('product_availability');
+            if (element != null) {
+                product_availability = element.value;
+            }
+            else {
+                product_availability = null;
+            }
         var distribution_location = this.state.dis_country;
         var global_distribution = document.querySelector('input[type=checkbox]:checked')
         var private_label = this.state.private_label;
         var storage_required = this.state.storage1
-
+        // debugger
         var url2 = BASE_URL+ 'product/create_product_distribution/';
-        var token = cookies.get('token');
+        // var token = cookies.get('token');
         var uuid = cookies.get('sup_uuid');
-        var userType = cookies.get('userType');
+        var userType = cookies.get('user_type');
     var config = {
         method: 'post',
         url: url2,
-        headers: {
-          "Authorization": "Bearer " + token,
-        },
         data:{
             country : country,
             state: state,
@@ -186,18 +187,19 @@ class Distribution extends React.Component {
           }
     
       };
+      console.log('ggggggggggggg')
       console.log(config)
-      axios(config).then(res=>{
+      axios(config)
+      .then(res=>{
+          console.log('-----------------------')
           console.log(res.data.data)
-        cookies.set('uuid2', res.data.data.uuid, { path: '/' })
-        // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
-        $(".laoder").hide(); 
+        // $(".laoder").hide(); 
         window.location = '/marketing'
       }
       
       ).catch(err=>{
         console.error(err);
-        $(".laoder").hide(); 
+        // $(".laoder").hide(); 
       window.location = "/distribution";
       })
     }
