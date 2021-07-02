@@ -45,8 +45,8 @@ function Click1(){
       <h2> <span> V</span>eniver </h2>
     </NavLink>
     <div className="header-bar__actions">
-      <a href="#" onClick={Click} className="header-bar__link" >For Suppliers</a>
-      <a href="#" onClick={Click1} className="header-bar__link" >For Buyers</a>
+      <a href="#" onClick={Click} className="header-bar__link" >Satıcılar İçin</a>
+      <a href="#" onClick={Click1} className="header-bar__link" >Alıcılar İçin</a>
       {/* <a href="#" className="header-bar__link">For Service Providers</a> */}
       <div className="header-bar__divider" />
       <div className="header-bar__link sub-nav__toggle">
@@ -63,7 +63,7 @@ function Click1(){
           <a href="#" className="sub-nav__link">Webinars</a>
         </div>
       </div>
-      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">Log in</NavLink>:<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">Dashboard</NavLink>}
+      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">Dashboard</NavLink>}
       <button className="header-bar__cta button button--green" onClick={() => setModalShow(true)}> Sign Up
         For Free</button>
       <button id="menu-toggle" className="menu__button">
@@ -108,7 +108,7 @@ function Click1(){
         </div>
       </div>
       <a href="#" data-signup="supplier" className="nav__signup button button--blue">Get Started</a>
-      <NavLink to="/login"  className="nav__login button button--border">Log in</NavLink>
+      <NavLink to="/login"  className="nav__login button button--border">GİRİŞ YAP</NavLink>
     </nav>
   </div>
 </div>
@@ -131,7 +131,7 @@ function Click1(){
   
     </div>
     <div className="signup-modal__account-types">
-      <NavLink to=""  className="signup-modal__account-type signup-modal__account-type--supplier" data-signup="supplier" >
+      <NavLink onClick={Click} to="/signup"  className="signup-modal__account-type signup-modal__account-type--supplier" data-signup="supplier" >
         <svg xmlns="http://www.w3.org/2000/svg" width={100} height={100} viewBox="0 0 100 100" fill="none" className="signup-modal__icon">
           <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x={32} y={89} width={41} height={5}>
             <path fillRule="evenodd" clipRule="evenodd" d="M32.2959 89.8169H72.7915V93.1972H32.2959" fill="white" />
@@ -161,7 +161,7 @@ function Click1(){
           <div className="signup-modal__account-description">I sell products to wholesale buyers</div>
         </div>
       </NavLink>
-      <NavLink to="/signup" className="signup-modal__account-type signup-modal__account-type--buyer" data-signup="buyer" >
+      <NavLink onClick={Click1} to="" className="signup-modal__account-type signup-modal__account-type--buyer" data-signup="buyer" >
         <svg xmlns="http://www.w3.org/2000/svg" width={100} height={100} viewBox="0 0 100 100" fill="none" className="signup-modal__icon">
           <rect x={21} y={40} width={58} height={47} rx={1} fill="white" stroke="#163968" strokeWidth={2} />
           <path d="M54 73L66 61" stroke="#22304F" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />

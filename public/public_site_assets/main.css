@@ -6869,6 +6869,18 @@ section.section.blog-section.success-section {
 
 
 /************************* fcss**********************/
+.cust-rd.form-check input {
+    height: 20px !important;
+    width: 16px !important;
+    margin-top: 24px !important;
+}
+
+.custrd.form-check label {
+    margin-top: 0 !important;
+}
+.custrd.form-check label {
+    margin: 0 !important; 
+}
 
 
 .image-frame__inner {

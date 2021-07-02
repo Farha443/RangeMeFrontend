@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "ckeditor4-react": "^2.0.0-rc.2",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "movement": "0.0.13",

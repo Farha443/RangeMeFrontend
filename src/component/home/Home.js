@@ -27,23 +27,29 @@ function get_date(dt_string){
 function Home(){
   // var xxx = '';
   const [modalShow, setModalShow] = useState(false);
-  const [home, setHome] = useState([])
-  const [indexheading, setIndexheading]= useState({})
+  const [home, setHome] = useState({})
+  // const [indexheading, setIndexheading]= useState({})
   const [stats, setStats]= useState([])
   const [works, setWorks]= useState([])
   const [succestory, setSuccestory]= useState([])
   const [blogs, setBlogs]= useState([])
-  
+  const [heading, setheading]= useState([])
   useEffect(() => {
    
     axios.get(BASE_URL+'home/homeview/')
     .then(res=>{
       setHome(res.data)
-      
+      setheading(res.data.heading)
+      setWorks(res.data.works)
+      setBlogs(res.data.blogs)
+      setStats(res.data.stats)
+      // setheading(res.data.works)
+
+      debugger
       console.log(res.data)
       // xxx =res.data.blogs
-      // console.log(xxx)
-      // console.log(res.data.data.heading)
+      console.log("xxx")
+      console.log(res.data)
     }).catch(err=>{
         console.log(err)            
     })
@@ -75,7 +81,8 @@ function Home(){
   // }).catch(err=>{
   //     console.log(err)            
   // })
-  // console.log(blogs)
+  console.log("hoja re")
+  console.log(home)
 
 },[])
 
@@ -92,17 +99,20 @@ function Home(){
                 <div className="header__inner">
                   <div className="header__content">
                   
-                    {!home.heading && <h1 className="header__title">This is Heading</h1>}
-                    {home.heading && <h1 className="header__title">{home.heading.heading}</h1>}
+                    {heading.heading != "" ? <h1 className="header__title">{heading.heading}</h1>:<h1 className="header__title">This is Heading</h1>}
+                   
                     
                     
-                    <button className="header__cta button button--large button--green"  onClick={() => setModalShow(true)}>Sign Up For Free</button>
+                    <button className="header__cta button button--large button--green"  onClick={() => setModalShow(true)}>Ücretsiz Hesap Aç </button>
                   </div>
                 </div>
-               {! home.heading &&  <div className="header__background" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
+                {heading.bg_img != null ? <div className="header__background" style={{backgroundImage: 'url("'+BASE_URL.slice(0,-5)+ heading.bg_img+'")'}}>
+                </div>:<div className="header__background" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
                 </div>}
-                {home.heading &&  <div className="header__background" style={{backgroundImage: 'url("'+BASE_URL.slice(0,-5)+ home.heading.bg_img+'")'}}>
-                </div>}
+
+
+               
+            
                 {/* <div className="header__background" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
                 </div> */}
               </header>
@@ -114,9 +124,7 @@ function Home(){
                         
                         <div className="layout-block__cell">
                         
-                          <p className="small-heading dark-text" style={{color: 'white'}}>Veniver is the leading product discovery and
-                            sourcing platform where retailers and suppliers discover, connect, and grow
-                            their business.</p>
+                          <p className="small-heading dark-text" style={{color: 'white'}}>Tayuss.com, perakendecilerin tedarikçileri ve onların ürünlerini keşfettiği, karşılıklı iletişim kanalı ile ticaretin başlatıldığı lider “ÜRÜN KEŞFİ ve YENİ KAYNAK BULMA platformudur.</p>
                         </div>
                         <div className="layout-block__cell">
                           <div className="stats">
@@ -158,7 +166,7 @@ function Home(){
                       </div>
                     </div>
                     
-                      {home.works && home.works.map(function(work, index){
+                      {works &&  works.map(function(work, index){
                         if(index%2===0){
                           return  <div className="layout-block layout-block--8-8 layout-block--animated layout-block--compact layout-block--nodelay">
                           <div className="layout-block__inner">
@@ -180,8 +188,8 @@ function Home(){
                                   <h3 className="content-block__heading blue-text word-reveal">{work.title}</h3>
                                   <p className="large-copy">{work.description}</p>
                                   <div className="hw-it-btn">
-                                  {/* <button className=" button button--green "> Show More</button> */}
-                                  <a href={work.redirect_link}>Show More </a>
+                                  {/* <button className=" button button--green "> Şimdi İncele</button> */}
+                                  <a href={work.redirect_link}>Şimdi İncele</a>
     
                                    </div>
                                 </div>
@@ -215,8 +223,8 @@ function Home(){
                                   <h3 className="content-block__heading blue-text word-reveal">{work.title}</h3>
                                   <p className="large-copy">{work.description}</p>
                                   <div className="hw-it-btn">
-                                    {/* <button className=" button button--green button--compact signup-modal-trigger"> Show More</button> */}
-                                    <a href={work.redirect_link}>Show More </a>
+                                    {/* <button className=" button button--green button--compact signup-modal-trigger"> Şimdi İncele</button> */}
+                                    <a href={work.redirect_link}>Şimdi İncele </a>
                                   </div>
                                 </div>
                               </div>
@@ -251,8 +259,8 @@ function Home(){
                                   <h3 className="content-block__heading blue-text word-reveal">title</h3>
                                   <p className="large-copy">description</p>
                                   <div className="hw-it-btn">
-                                  {/* <button className=" button button--green "> Show More</button> */}
-                                  <a href="#">Show More </a>
+                                  {/* <button className=" button button--green "> Şimdi İncele</button> */}
+                                  <a href="#">Şimdi İncele </a>
     
                                    </div>
                                 </div>
@@ -273,7 +281,7 @@ function Home(){
                                     <div className="image-frame__inner">
                                       <canvas className="animation__spacer" width={456} height={307} />
                                       <img src="assets/images/h1.jpg" />
-                                      {/* <img src={BASE_URL.slice(0,-5)+ work.image}/> */}
+                                      
                                     </div>
                                   </div>
                                 </div>
@@ -286,8 +294,8 @@ function Home(){
                                   <h3 className="content-block__heading blue-text word-reveal">title</h3>
                                   <p className="large-copy">description</p>
                                   <div className="hw-it-btn">
-                                    {/* <button className=" button button--green button--compact signup-modal-trigger"> Show More</button> */}
-                                    <a href="#">Show More </a>
+                                   
+                                    <a href="#">Şimdi İncele </a>
                                   </div>
                                 </div>
                               </div>
@@ -327,7 +335,7 @@ function Home(){
                               <p className="large-copy">Buyers connect with you directly on Veniver to start
                                 conversations, request samples, and discuss next steps.</p>
                               <div className="hw-it-btn">
-                                <button className=" button button--green button--compact signup-modal-trigger"> Show More</button>
+                                <button className=" button button--green button--compact signup-modal-trigger"> Şimdi İncele</button>
                               </div>
                             </div>
                           </div>
@@ -431,10 +439,10 @@ function Home(){
                           <div className="story-item__image-container">
                           
                             {/* <img className="story-item__image" src="assets/images/blog1.jpg" alt="blog1" /> */}
-                            <img src={BASE_URL.slice(0,-5)+ blog.image} width='90%'/>
+                            <img src={BASE_URL.slice(0,-5)+ blog.b_image} width='90%'/>
                           </div>
                           <div className="blog-title">
-                            <h6 className="story-item__title dark-text left-t">{blog.title}</h6>
+                            <h6 className="story-item__title dark-text left-t">{blog.b_title}</h6>
                             <span className="date right-t">{get_date(blog.created_at)}
 
 
@@ -442,8 +450,8 @@ function Home(){
                             {/* <span className="date right-t">{blog.created_at.split('T')[0]}</span> */}
                             {/* <Moment format="D MMM YYYY">{blog.created_at}</Moment> */}
                           </div>
-                          <div className="story-item__category">{blog.blog_category}</div>
-                          <p className="story-item__description">{blog.story}</p>
+                          <div className="story-item__category">{blog.b_category}</div>
+                          <p className="story-item__description">{blog.b_story}</p>
                           <div className="story-item__cta">Read their story</div>
                         </a>))}
 
@@ -506,7 +514,7 @@ function Home(){
                         <div className="layout-block__cell">
                           <div className="content-block content-block--v-align content-block--right">
                             <div className="content-block__inner">
-                              <a className="button button--large button--green" data-signup="supplier" href="#">Sign Up For Free</a>
+                              <a className="button button--large button--green" data-signup="supplier" href="#">Ücretsiz Hesap Aç</a>
                             </div>
                           </div>
                         </div>

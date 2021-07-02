@@ -866,6 +866,33 @@ button.appro-btn a {
 .step-four-radio.noti-check .form-group {
     margin-bottom: 0.5rem;
 }
+.profile-up-main .fileContainer .uploadPicturesWrapper div .uploadPictureContainer img {
+    width: 100%;
+    height: 180px;
+}
+.profile-up-main .fileContainer .uploadPicturesWrapper div .uploadPictureContainer {
+    width: 100%;
+    height: 180px;
+    padding: 0;
+    margin: 0;
+}
+.step-four-radio.noti-check .form-check.form-check-inline input {
+    position: relative !important;
+    top: 4px;
+    margin-right: 0;
+    cursor: pointer;
+}
+
+.step-four-radio.noti-check .form-group {
+    margin-bottom: 0.5rem;
+}
+
+/* .profile-up-main .fileContainer .uploadPicturesWrapper div:after {
+    content: "Upload an image";
+    position: absolute;
+    bottom: 3.5rem;
+} */
+
 
 /* .profile-up-main .fileContainer .uploadPicturesWrapper div:after {
     content: "Upload an image";
@@ -2070,6 +2097,7 @@ section.share-tab-section-2 {
     margin: 0;
 }
 
+<<<<<<< HEAD
 
 /************** subham css ***********/
 .fileContainer .chooseFileButton {
@@ -2138,3 +2166,14 @@ section.ad-pad-sec {
     border-radius: 2px;
     height: 32px;
 }
+=======
+.custrd.form-check label {
+    margin: 0 !important; 
+}
+
+.cust-rd.form-check input {
+    height: 20px !important;
+    width: 16px !important;
+    margin-top: 24px !important;
+}
+>>>>>>> d3246433a7e51f7da04da88151703e93571b2272

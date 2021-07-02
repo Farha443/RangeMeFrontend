@@ -36,10 +36,10 @@ function Loginfunction() {
             // window.location = "/"
             if(res.data.data.superuser===true){
               alert("is superuser")
-              window.location = "/product_form"
+              window.location = "/admin/home"
             }
             else{
-              window.location = "/"
+              window.location = "/admin_home"
             }
             
           }).catch(err=>{
@@ -72,7 +72,7 @@ function Loginfunction() {
                   {/* {/ <img alt="Logo" src="/assets/range-me-logo.72d528cf4802493c2b76.svg"> /} */}
                 </div>
                 <div className="auth-form-wrapper__sign-in-modal___1WSWV" data-tname="form-wrapper">
-                  <h2 className="wrappers__wrapper___1B_Ho auth-form-wrapper__title___30WhP"><span className="text__text___2g-Dv text__large-heading___31LRE text__display-block___1CZnH">Log in to your Veniver Account</span></h2>
+                  <h2 className="wrappers__wrapper___1B_Ho auth-form-wrapper__title___30WhP"><span className="text__text___2g-Dv text__large-heading___31LRE text__display-block___1CZnH">GİRİŞ YAP </span></h2>
                   <div>
                     {/* <form> */}
                       <div className="sign-in-form__field-container___3Zlii">
