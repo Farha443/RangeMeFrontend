@@ -30,6 +30,7 @@ import ChangePassword from './component/admin/ChangePassword';
 import Notification from './component/admin/Notification';
 import AdminNewPage from './component/admin/AdminNewPage';
 import AddBlogs from './component/admin/AddBlogs';
+import ServiceStepTwo from './component/admin/company-form/ServiceStepTwo';
 function Routes(){
     return(
         <>
@@ -66,6 +67,7 @@ function Routes(){
                 <Route exact path="/company_details" component={CompanyDetails}></Route>
                 <Route exact path="/admin/home" component={AdminNewPage}></Route>
                 <Route exact path="/add-blog" component={AddBlogs}></Route>
+                <Route exact path="/service_step_two" component={ServiceStepTwo}></Route>
             </Switch>
         </> 
     )
