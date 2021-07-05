@@ -124,6 +124,7 @@ class AdminProfile extends React.Component {
         };
     
         axios(config).then(re => {
+            debugger
             this.setState({
               first_name: re.data.data.first_name,
               last_name: re.data.data.last_name,

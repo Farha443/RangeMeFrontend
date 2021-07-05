@@ -32,7 +32,7 @@ function EmailConfirmation(){
 
     return(
         <>
-        <AdminNavbar/>
+        
         
         <section className="company-form-section">
                 <Container fluid>

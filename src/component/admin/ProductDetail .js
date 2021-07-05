@@ -68,7 +68,7 @@ function ProductDetail() {
         })
         // console.log(category)
     },[])
-
+    cookies.set('Product_Name', productname, { path: '/' });
 
     function onDrop(pictureFiles, pictureDataURLs) {
         // alert(pictureFiles)
@@ -260,7 +260,7 @@ function ProductDetail() {
 
                                 <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> Headphone </h4> <span> Product </span>
+                                        <h4>  {productname.product_name } </h4> <span> Product </span>
                                     </div>
                                 </div>
 
@@ -340,6 +340,7 @@ function ProductDetail() {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
+                                    
                                             <h5>Product Details </h5>
 
                                         </div>
@@ -353,7 +354,7 @@ function ProductDetail() {
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Product name</Form.Label>
-                                                <Form.Control type="text" placeholder="Enter email" defaultValue={productname.product_name} id="product_name"/>
+                                                <Form.Control type="text" placeholder="Enter email" disabled defaultValue={productname.product_name} id="product_name"/>
                                                 <Form.Control type="hidden" placeholder="Enter email" defaultValue={productname.uuid} id="productkiuuid"/>
                                             </Form.Group>
 

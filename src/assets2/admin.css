@@ -2209,6 +2209,9 @@ section.ad-pad-sec {
     font-size: 12px;
     margin-left: -0.4rem;
 }
+a.admin-header-logo-main.navbar-brand img {
+    width: 100%;
+}
 .inp-disable {
     opacity: 0.6;
     pointer-events: none;
@@ -2259,6 +2262,8 @@ section.ad-pad-sec {
     width: 55px;
     height: 55px;
     margin-right: 5px;
+    overflow: hidden;
+    border-radius: 50%;
 }
 
 .menu-profile-img-main img {

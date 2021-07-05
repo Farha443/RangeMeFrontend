@@ -74,7 +74,7 @@ function CompanyStepThree(){
     
     return(
         <>
-        <AdminNavbar/>
+        
         <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
 
         

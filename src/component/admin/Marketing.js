@@ -36,7 +36,7 @@ const colourOptions=[
     { value: 'Blue', label: 'Blue' },
     { value: 'Green', label: 'Green' },
 ]
-
+var Product_Name = cookies.get("product_name")
 function Marketing() {
 
     const [image, setImage] = useState();
@@ -131,7 +131,7 @@ function Marketing() {
 
                                 <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> Headphone </h4> <span> Product </span>
+                                        <h4>{Product_Name} </h4> <span> Product </span>
                                     </div>
                                 </div>
 

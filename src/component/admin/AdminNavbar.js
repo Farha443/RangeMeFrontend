@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect, userEffect, useState} from 'react';
 import '../../assets2/admin.css';
 import {NavLink} from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import BASE_URL from '../base';
+import $ from "jquery";  
 import {
   Jumbotron,
   Button,
@@ -16,9 +17,9 @@ import {
   Row
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import useState from 'react-hook-use-state';
+// import useState from 'react-hook-use-state';
 const cookies = new Cookies();
-
+const axios = require('axios');
 var first_name= cookies.get("first_name")
 var user_pic= cookies.get("user_pic")
 
@@ -35,6 +36,29 @@ function AdminNavbar(){
   const handleToggle = () => {
     setActive(!isActive);
   };
+
+
+
+
+
+
+
+
+  const [profilephoto, setProfilephoto]= useState(null)
+    useEffect(() => {
+        axios.get(BASE_URL+'authentication/getuser/'+cookies.get("uuid")).then(res=>{
+          setProfilephoto(res.data.data.user_pic)
+          // debugger
+          // console.log(res.data.user_pic)
+        }).catch(err=>{
+            // $(".laoder").hide();
+            // debugger
+            console.log(err)            
+        })
+        
+    },[])
+    // console.log("photo")
+    // console.log(profilephoto)
     return(
         <>
 
@@ -43,7 +67,7 @@ function AdminNavbar(){
 <Navbar expand="lg">
   <Container>
   <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> 
-      <img src="/assets/images/logo.svg" />
+      <img src="/assets/images/Savas11.png" />
    </Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav" className="admin-nav-collapse">
@@ -67,7 +91,7 @@ function AdminNavbar(){
 
     <Nav.Link href="#home" className="drop-menu"  onClick={handleToggle}>
       <div className="menu-profile-img-main">
-      {user_pic != "null" ? <img src={BASE_URL.slice(0,-5)+user_pic}width="70px" />:
+      {profilephoto != "null" ? <img src={BASE_URL.slice(0,-5)+profilephoto} width="70px" />:
       <img src="/assets/images/user64x64.png"/>
       }
        {/* <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" /> */}
