@@ -1,6 +1,10 @@
 import React from 'react';
+import useState from 'react-hook-use-state';
 import '../../assets2/admin.css';
 import AdminNavbar from './AdminNavbar'
+import $ from 'jquery';
+import BASE_URL from '../base';
+import Cookies from "universal-cookie";
 import {
   Jumbotron,
   Button,
@@ -11,20 +15,49 @@ import {
   FormControl,
   Col,
   Container,
+  Modal,
   Card,
   Row
 } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
-import Cookies from 'universal-cookie';
+const axios = require('axios').default;
 const cookies = new Cookies();
 
-cookies.get('uuid')
-cookies.get('logintoken')
-cookies.get('userType')
+
+async function AddProduct(){
+    // debugger
+    var product_name = document.getElementById("addproduct").value;
+    var token = cookies.get("logintoken");
+    try {
+        const resp = await axios({
+            method: 'post',
+            url: BASE_URL + 'product/create_product/',
+            data: {
+               
+                product_name: product_name
+            },
+            headers: {
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json",
+            }
+        });
+        if (resp.status === 201) {
+            alert(resp.data.data.uuid)
+            cookies.set('productuuid', resp.data.data.uuid, { path: '/' })
+            window.location = "/product_form"
+        }
+        return resp.data
+        
+    } catch (err) {
+        // Handle Error Here
+        console.error(err);
+    }
+}
 
 function AdminHome(){
+    const [show2, setShow2] = useState(false);
     return(
         <>
             <AdminNavbar/>
@@ -105,7 +138,7 @@ function AdminHome(){
                                     <span class="process__title">Add product</span>
                                     <span class="process__subtitle">Add your first product to attract interest from buyers</span>
 
-                                    <button className="admin-add-btn"> <NavLink to="/product_form"> Complete Product </NavLink>  </button>
+                                    <button class="admin-add-btn" onClick={() => setShow2(true)}>Add Product</button>
 
                                 </li>
 
@@ -133,8 +166,50 @@ function AdminHome(){
                     </Col>
                 </Row>
             </Container>
+            
             </section>
-         
+            <Modal
+                size="lg"
+                centered
+                show={show2}
+                onHide={() => setShow2(false)}
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    <h5 style={{ marginBottom: '0px' }}> Add product </h5>
+                    {/* <p> Start with adding your product’s name </p> */}
+            </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
+
+                        <Row>
+                            <Col xs={12} md={10} className="m-auto">
+                         <div className="text-center mb-3">
+                         <h5> Add new product </h5>  
+                         <p style={{ marginTop: '0px' }}> Start with adding your product’s name </p>
+                         </div>
+                            <Col xs={12} md={10} className="m-auto"> 
+                                <Form.Group controlId="formBasicEmail">
+                                
+                                    <Form.Control id="addproduct" type="text" placeholder="e.g. Corn Flakes"/>
+
+                                </Form.Group>
+                            </Col>
+                            </Col>
+
+                        </Row>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="col-md-12 text-center">
+                        <button className="admin-add-btn" onClick={AddProduct} >  Add product  </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+
+            
         </> 
     );
 }

@@ -134,7 +134,6 @@ var userTypeTitle=cookies.get('userType');
    
     return(
         <>
-        <AdminNavbar/>
         <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div> 
 
         <section className="company-form-section">
@@ -145,101 +144,51 @@ var userTypeTitle=cookies.get('userType');
                                <Card.Body>
                                     <div className="product-form-main">
                                         <div className="p-inside-title">
-                                            <p> Step 1 of 3 </p>
+                                            <p> Step 2 of 3 </p>
                                             <h5> Tell us about your company </h5>
                                         </div>
                                         <div className="overview-form">
                                            <Row>
-                                           <Col md="6">
-                                            <Form.Group controlId="exampleForm.ControlSelect1" >
-                                                <Form.Label>Year Founded</Form.Label>
-                                                <Form.Control as="select" id="year">
-                                                {/* <select> */}
-                                                    
-                                                    {this.years.map((year, index) => {
-                                                            return <option key={`year${index}`} value={year}>{year}</option>
-                                                        })
-                                                        }
-                                                        {/* </select> */}
-                                                </Form.Control>
-                                                {/* <select>
-                                                    
-                                                {this.years.map((year, index) => {
-                                                        return <option key={`year${index}`} value={year}>{year}</option>
-                                                    })
-                                                    }
-                                                    </select> */}
-                                            </Form.Group>
-                                            </Col>
+                                          
                                             
                                             
-                                            <Col md="6">
-                                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label> Annual Gross Revenue </Form.Label>
-                                                <Form.Control as="select" id="revenue">
-                                                <option value="0M$-5M$">0M$-5M$</option>
-                                                <option value="6M$-10M$">6M$-10M$</option>
-                                                <option value="11M$-15M$">11M$-15M$</option>
-                                                </Form.Control>
-                                            </Form.Group>
-                                            </Col>
+                                           
                                             
+                                           
+
+                                            
+
+
                                             <Col md="12">
-                                              
-                                            {/* <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Specify States or regions </Form.Label>
-                                                <Select
-                                                // defaultValue={[colourOptions[2], colourOptions[3]]}
-                                                isMulti
-                                                name="colors"
-                                                options=
-                                                {this.state.data.map(cat=>(  
-                                                  <option value={cat.uuid}>{cat.name}</option>))}
-                                                className="basic-multi-select"
-                                                classNamePrefix="select"
-                                            />
-                                            </Form.Group> */}
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label> Select the Department(s) that best describes your industry. </Form.Label>
+                                                <Form.Label> Select your service Category. </Form.Label>
                                                 <Form.Control as="select" multiple="true" id="department">
                                                 {this.state.data.map(cat=>(  
                                                 <option value={cat.uuid}>{cat.name}</option>))}
                                                 
                                                 </Form.Control>
                                             </Form.Group>
+
                                             </Col>
 
                                             <Col md="12">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Which best describes your business type.</Form.Label>
-                                                <Form.Control as="select" id="buss_type">
-                                                <option value="manufacturer">Manufacturer</option>
-                                                <option value="broker">Broker</option>
-                                                <option value="reseller">Reseller</option>
-                                                <option value="other">Other</option>
-                                                </Form.Control>
-
-                                            </Form.Group>
-
-                                            </Col>
-
-
-                                            <Col md="12">
-                                            <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Brand name</Form.Label>
-                                                <Form.Control type="text"  id="brand_name"/>
-
-                                            </Form.Group>
-
-                                            </Col>
-
-                                            <Col md="12">
-                                            <Form.Group controlId="exampleForm.ControlTextarea1">
-                                                <Form.Label>In Which city is your company located.</Form.Label>
-                                                <Form.Control type="text"  onKeyPress={this.handleKeypress} id="city"/>
+                                                <Form.Label>We Specialize in:</Form.Label>
+                                                <Form.Control type="email"  id="brand_name"/>
                                             </Form.Group>
                                             </Col>
-
+                                            <Col md="12" className="" >
+                                                    <div className="step-four-radio">
+                                                        <div>
+                                                        <label htmlFor="basic-url" className="lb">Is this product available for private label? </label>
+                                                        </div>
+                                                        <Form.Check inline label="National" name="group10" type="radio" value="true"/>
+                                                        <Form.Check inline label="State" name="group10" type="radio" value="false" />
+                                                        <Form.Check inline label="
+                                                        Global" name="group10" type="radio" value="true"/>
+                                                    </div>
+                                                </Col>
+                                           
                                             <Col md="12">
                                                 <div className="company-form-btn-main text-center">
                                                     <button class="admin-add-btn" onClick={() => this.Submit()}> <NavLink to="/company_form_two"> Continue</NavLink>  </button>

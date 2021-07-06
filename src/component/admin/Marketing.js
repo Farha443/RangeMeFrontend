@@ -1,7 +1,9 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import '../../assets2/admin.css';
 import AdminNavbar from './AdminNavbar'
 import { NavLink } from 'react-router-dom';
+import ImageUploader from 'react-images-upload';
+import $ from 'jquery';
 
 import {
     Jumbotron,
@@ -17,9 +19,17 @@ import {
     Row,
     InputGroup
 } from 'react-bootstrap';
+
 import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import context from 'react-bootstrap/esm/AccordionContext';
+// import ImageUploader from 'react-images-upload';
+
+import Cookies from 'universal-cookie';
+import BASE_URL from '../base';
+const cookies = new Cookies();
+
+const axios = require('axios');
 const colourOptions=[
     { value: 'Red', label: 'Red' },
     { value: 'Black', label: 'Black' },
@@ -28,6 +38,87 @@ const colourOptions=[
 ]
 
 function Marketing() {
+
+    const [image, setImage] = useState();
+
+    // $("button").click(function() {
+    //     debugger
+    //     var op = $(this).val();
+    //     var element = document.getElementsByClassName(op);
+    //     $(element).remove();
+    //     // $("button").remove();
+        
+       
+    // });
+
+
+    //   function handleAdd() {
+    //     debugger
+    //     var inputtag = "<input  class='"+counter+"'/>" 
+    //     // var buttontag = "<button className='admin-add-btn' type='button' onClick={() => handleremove(counter)}>"+remove+"</button>"
+    //     document.getElementById('inputDiv').innerHTML += inputtag;
+    //     var button = "<button class='"+counter+"' value='"+counter+"'>remove</button>" 
+    //     document.getElementById('inputDiv').innerHTML += button;
+    //     setCounter(counter + 1);
+
+    //   }
+
+     
+    
+    function onDrop(pictureFiles, pictureDataURLs) {
+        // debugger
+        // alert(pictureFiles)
+        setImage({
+            pictureFiles
+        });
+    }
+
+   function save(){
+        // debugger
+        var product_marketing = cookies.get("product_uuid")
+
+
+        const selected = document.querySelectorAll('#promotional_budget option:checked');
+        var array = Array.from(selected).map(el => el.value);
+
+        var promotional_budget = array[0]
+        var product_images =  image ? (image.pictureFiles)[0] : "";
+        var product_videos = document.getElementById('product_videos').value;
+
+        var url = BASE_URL+"product/product_marketing/"
+        var token = cookies.get("token")
+
+        var data= new FormData();
+        data.append('product_marketing', product_marketing);
+        data.append('promotional_budget', promotional_budget);
+        data.append('product_images', product_images);
+        data.append('product_videos', product_videos);
+        
+
+        var config = {
+            method: 'post',
+            url: url,
+            headers: {
+                'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                "Authorization": "Bearer" + token,
+              },
+            data:data
+        }
+
+        axios(config)
+        .then(res=>{
+                 
+                    // alert("product marketing is created");
+                 window.location = "admin_home"
+                }).catch(err=>{
+                  // alert(err)
+                })
+
+
+    }
+
+
+
     return (
         <>
             <AdminNavbar />
@@ -130,29 +221,53 @@ function Marketing() {
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Product name</Form.Label>
-                                                <Form.Control type="email" placeholder="Enter email" />
+                                                <Form.Label>Promotional budget</Form.Label>
+                                                <Form.Control as="select" id="promotional_budget" className="" >
+                                               <option value="Zero">Zero</option>
+                                                    <option value="$25k - $50k">$25k - $50k</option>
+                                                    <option value="$50k - $200k">$50k - $200k</option>
+                                                                
+                                                    </Form.Control>
 
                                             </Form.Group>
 
                                             </Col>
 
+                                            <Col md="6" >
+                                            <Form.Label>Product Image</Form.Label>
+                                               
+                                                <ImageUploader
+                                                        id="id"
+                                                        withIcon={false}
+                                                        buttonText='Add Image'
+                                                        onChange={onDrop}
+                                                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                                        maxFileSize={5242880}
+                                                        withPreview={true}
+                                                />
+                                            </Col>
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Variant SKU/Style number (optional)</Form.Label>
-                                                <Form.Control type="email" placeholder="Enter email" />
+                                               
+                                            <Form.Label>Product video URL </Form.Label>
+                                            <Form.Control id="product_videos" type="text" placeholder="https://www.youtube.com/watch?v=bLdq28CmERY" />
+
+                                                {/* <button className="admin-add-btn" type="button" onClick={() => handleAdd()}>Add Video</button>
+                                                <div class="input-group-m" id="inputDiv">
+
+                                                
+                                                </div> */}
+                                                  
+                                                    {/* </Form.Control> */}
 
                                             </Form.Group>
 
-                                            </Col>
-
-                                            <Col md="6">
-                                                <div className="prod-img-011" >
-                                                    <img src="assets/images/product03.jpg" />
-                                                </div>
                                             </Col>
                             
                                     
+                                            <Col md="12" className="text-center">
+                                            <button class="admin-add-btn" onClick={save}>   Save Changes  </button>
+                                            </Col>
 
                                 
 
@@ -167,11 +282,7 @@ function Marketing() {
                             </Card>
 
 
-                            <Col md="12" className="text-center mt-4 two-btn-main">
-                            <button class="admin-add-btn"> <NavLink to="/product_form"> Back </NavLink>    </button>
-                                 <button class="admin-add-btn"> <NavLink to="/distribution"> Next </NavLink>  </button>
-                            </Col>
-
+                          
                         </Col>
 
 

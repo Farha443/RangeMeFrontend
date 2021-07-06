@@ -54,7 +54,7 @@ function Loginfunction() {
               window.location = "/admin_home"
             }
             else{
-              window.location = "/"
+              window.location = "/admin_home"
             }
 
             

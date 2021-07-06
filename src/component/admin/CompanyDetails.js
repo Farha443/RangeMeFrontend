@@ -62,6 +62,7 @@ class CompanyDetails extends React.Component {
     onDrop(pictureFiles, pictureDataURLs) {
         this.setState({
             pictures: pictureFiles
+            
         });
     }
     
@@ -166,7 +167,7 @@ savechange(){
 
 
     async componentDidMount(){
-        var url = BASE_URL+'authentication/getcategory/';
+        var url = BASE_URL+'authentication/GetCategorysignup/';
         if(cookies.get('sup_uuid')){
             var uuid = cookies.get('sup_uuid');
             var url1 = BASE_URL + 'authentication/getsupplier/' + uuid +'/';
@@ -340,7 +341,7 @@ savechange(){
                                                 <img id="output" src={BASE_URL.slice(0,-5)+ this.state.company_logo} width="180px" height="120px" />
                                             
                                                 </div>
-                                                : <img className="" id="output" src=""/>}
+                                                : <img className="" id="output" width="180px" height="120px" src=""/>}
                                                 <div className="pic202">
                                                 
                                                 <input  type="file" id="company_logo" onChange={this.handleChange2} placeholder="Change"/>

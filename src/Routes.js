@@ -10,7 +10,7 @@ import EmailConfirmation from './component/admin/company-form/EmailConfirmaton';
 import Distribution from './component/admin/Distribution';
 import Marketing from './component/admin/Marketing';
 import Preview from './component/admin/Preview';
-import ProductDetail from './component/admin/ProductDetail';
+import ProductDetail from './component/admin/ProductDetail ';
 import ProductForm from './component/admin/ProductForm';
 import Home from './component/home/Home';
 import Login from './component/login/Login';
@@ -18,6 +18,8 @@ import Signup from './component/signup/Signup';
 import base from './component/base';
 import SignupModal from './component/element/SignupModal';
 import SupplierStepOne from './component/admin/company-form/SupplierStepOne';
+import ServiceStepOne from './component/admin/company-form/ServiceStepOne';
+import ServiceStepTwo from './component/admin/company-form/ServiceStepTwo';
 import CompanyDetails from './component/admin/CompanyDetails';
 import RequestForgotPassword from './component/forgotpassword/RequestForgotPass';
 import ForgotPassOTP from './component/forgotpassword/ForgotPassOTP';
@@ -30,6 +32,12 @@ import ChangePassword from './component/admin/ChangePassword';
 import Notification from './component/admin/Notification';
 import AdminNewPage from './component/admin/AdminNewPage';
 import AddBlogs from './component/admin/AddBlogs';
+import Blogs from './component/blogs/Blogs';
+import BlogsDetails from './component/blogs/BlogsDetails';
+
+
+
+
 function Routes(){
     return(
         <>
@@ -39,6 +47,8 @@ function Routes(){
                 <Route exact path="/" component={Home}></Route>
                 <Route exact path="/login" component={Login}></Route>
                 <Route exact path="/signup" component={Signup}></Route>
+                <Route exact path="/service_step_one" component={ServiceStepOne}></Route>
+                <Route exact path="/service_step_two" component={ServiceStepTwo}></Route>
                 <Route exact path="/base" component={base}></Route>
                 <Route exact path="/signupmodal" component={SignupModal}></Route>
                 <Route exact path="/ChangePassword" component={ChangePassword}></Route>
@@ -66,6 +76,8 @@ function Routes(){
                 <Route exact path="/company_details" component={CompanyDetails}></Route>
                 <Route exact path="/admin/home" component={AdminNewPage}></Route>
                 <Route exact path="/add-blog" component={AddBlogs}></Route>
+                <Route exact path="/blogs" component={Blogs}></Route>
+                <Route exact path="/blog_detail/:uuid" component={BlogsDetails}></Route>
             </Switch>
         </> 
     )

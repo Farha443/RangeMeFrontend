@@ -205,7 +205,7 @@ Blogs(){
                     placeholder="text"
                 /> */}
                 <div className="pic202">
-                      <img className="" id="output" src=""/>
+                      <img className="" width="180px" height="120px" id="output" src=""/>
                       <input  type="file" id="b_image" onChange={this.handleChange} placeholder="Change"/>
                   
                       </div>

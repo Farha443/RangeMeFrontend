@@ -264,7 +264,7 @@ handleChange2(event) {
                     </div>
                       {/* <img src="/assets/images/megaphone.png" width="180px" height="120px" /> */}
                       <div className="pic202">
-                      <img className="" id="output" src=""/>
+                      <img className="" id="output" width="180px" height="120px" src=""/>
                       <input  type="file" id="bg_img" onChange={this.handleChange1} placeholder="Change"/>
                   
                       </div>
@@ -381,7 +381,7 @@ handleChange2(event) {
                       <img className="img-responsive" src="/assets/images/h3.jpg"/>
                     </div> */}
                     <div className="pic202">
-                      <img className="" id="output1" src=""/>
+                      <img className="" id="output1" width="180px" height="120px" src=""/>
                       <input  type="file" id="image" onChange={this.handleChange2} placeholder="Change"/>
                   
                       </div>

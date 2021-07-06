@@ -67,8 +67,8 @@ function AdminNavbar(){
 
     <Nav.Link href="#home" className="drop-menu"  onClick={handleToggle}>
       <div className="menu-profile-img-main">
-      {user_pic != "undefined" ? <img src={BASE_URL.slice(0,-5)+'/media/' +user_pic} width="70px" />:
-      <img src="/assets/images/user64x64.png"  />
+      {user_pic != "null" ? <img src={BASE_URL.slice(0,-4)+user_pic}width="70px" />:
+      <img src="/assets/images/user64x64.png"/>
       }
        {/* <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" /> */}
       </div>

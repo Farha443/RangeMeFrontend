@@ -96,9 +96,13 @@ function Toggle1() {
             $(".laoder").hide(); 
             window.location="/company_form_one";
           }
-          else{
+          else if (userType === "supplier"){
             $(".laoder").hide();
             window.location = "/supplier_step_one";
+          }
+          else {
+            $(".laoder").hide();
+            window.location = "/service_step_one";
           }
           
         }).catch(err=>{

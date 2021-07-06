@@ -34,7 +34,6 @@ function CompanyStepFour(){
 
     return(
         <>
-        <AdminNavbar/>
         
         <section className="company-form-section">
                 <Container fluid>

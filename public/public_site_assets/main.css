@@ -6927,3 +6927,11 @@ a.story-item p {
     object-fit: cover;
 }
 
+<<<<<<< HEAD
+
+.choose_pp .fileUploader .fileContainer p {
+    display: none !important;
+    opacity: 0;
+}
+=======
+>>>>>>> 4b92a09fe70492c7dac6e112db3f4e9d812582ab

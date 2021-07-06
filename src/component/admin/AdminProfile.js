@@ -44,26 +44,31 @@ class AdminProfile extends React.Component {
     email: null,
     mobile: null,
     email: null,
+    
      };
      Preview(id){
         console.log(id)
 
     }
     handleChange(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-              var output = document.getElementById('output');
-              output.src = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
+
+        
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('output');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);    
+        
     }
      
   save(){
+
         var first_name = document.getElementById('first_name').value;
         var last_name = document.getElementById('last_name').value;
         var email = document.getElementById('email').value;
         var mobile = document.getElementById('phone').value;
-        var user_pic = document.getElementById('user_pic').files[0];
+        var user_pic = document.getElementById('user_pic').files[0]
         var url = BASE_URL+'authentication/signup/'
         var uuid = cookies.get('uuid');
         var userType = cookies.get('userType');
@@ -72,7 +77,9 @@ class AdminProfile extends React.Component {
         data.append('last_name', last_name);
         data.append('email', email);
         data.append('mobile', mobile);
-        data.append('user_pic', user_pic);
+        if(user_pic){
+            data.append('user_pic', user_pic);
+        }
         data.append('uuid', uuid);
         var token = cookies.get('logintoken');
         // data.append('last_name', last_name);
@@ -215,14 +222,12 @@ class AdminProfile extends React.Component {
                                         <div className="change-img-maind">
                                             {this.state.user_pic ?   
                                             <div className="pic-1101">
-                                                <img src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="180px" height="120px" />
+                                                <img id="output" src={BASE_URL.slice(0,-5)+ this.state.user_pic} width="180px" height="120px" />
                                             
                                                 </div>
-                                                : <div className="img-coose-pic">
-                                                    <img id="output" src="/assets/images/user64x64.png"  />
-                                                </div> }
+                                                : <img className="" id="output" width="180px" height="120px" src=""/>}
                                                 <div className="pic202">
-                                                {/* <img className=""  src=""/> */}
+                                                
                                                 <input  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
                                             
                                             </div>
