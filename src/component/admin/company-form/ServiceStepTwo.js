@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../assets2/admin.css';
 import AdminNavbar from '../AdminNavbar'
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector'
 import $ from "jquery";  
 import {
   Jumbotron,
@@ -25,25 +26,58 @@ import BASE_URL from '../../base';
 const axios = require('axios');
 const cookies = new Cookies();
 var userTypeTitle=cookies.get('userType');
-
+var value_tested = '';//global variable  
+var country_value = ''
+var region_value = ''
 
   class CompanyStepOne extends React.Component{
-  
-   
-    state = {
-        data: [],
-        message1: "message"
     
-      };
+ 
     constructor(props){
         super(props);
-        const year = (new Date()).getFullYear()-50;
-        this.years = Array.from(new Array(80),(val, index) => index + year);
+    
+          this.state = {
+            data: [],
+          data2: [],
+          message1: "message",
+          country: '', 
+          storage:'',
+          region: '' ,
+          
+      
+            // Note: think carefully before initializing
+            // state based on props!
+            someInitialValue: this.props.initialValue
+            
+          }
+
+          this.ChangeSelect = this.ChangeSelect.bind(this);
+          this.servicechnge = this.servicechnge.bind(this);
+          this.selectCountry = this.selectCountry.bind(this);
+          this.selectRegion = this.selectRegion.bind(this)
+      }
+      
+      selectCountry (val) {
+        this.setState({ country: val });
+        country_value = val
+        return country_value
+      }
+      selectRegion (val) {
+        this.setState({ region: val });
+        region_value = val
+        return region_value
+      }
+     async servicechnge(f){
+        debugger
+      var val = f.target.value
+      await this.setState({ storage : val });
+      value_tested = this.state.storage
+      return value_tested
       }
       
     async componentDidMount(){
       // debugger
-        var url = BASE_URL+'authentication/GetCategorysignup/';
+        var url = BASE_URL+'authentication/service-category/';
         var config = {
             method: 'get',
             url: url,
@@ -53,7 +87,7 @@ var userTypeTitle=cookies.get('userType');
 
       .then(res => {
         // debugger
-        console.log("hoga jald hi");
+     
         console.log(res.data.data);
         this.setState({
           data: res.data.data
@@ -69,42 +103,64 @@ var userTypeTitle=cookies.get('userType');
        
     }
 
-
-
   
+  async ChangeSelect(e){
+    $('input:checked').prop('checked',false);
+    var url1 = BASE_URL+'authentication/service-category/?uuid='+e.target.value;
+    var config1 = {
+            method: 'get',
+            url: url1,
+          };
+    await axios(config1)
+      .then(rr => {
+        this.setState({
+          data2: rr.data.data
+        })
+      }
+      )
+      .catch(err => {
+        console.log(err);
+      })
+    }
+
+      
+      
 
     async Submit(){
-        $(".laoder").show(); 
-        var year_founded = document.getElementById('year').value;
-        var annual_revenue = document.getElementById('revenue').value;
-        // var array = []
-        // var department = document.querySelector('#department');
-        // for (var i = 0; i < department.length; i++) {
-        //     array.push(department[i].value)
-        // }
-        const selected = document.querySelectorAll('#department option:checked');
-        var array = Array.from(selected).map(el => el.value);
-        var busiess_type = document.getElementById('buss_type').value;
-        var brand_name = document.getElementById('brand_name').value;
-        var comp_location = document.getElementById('city').value;
-        var url = BASE_URL + "authentication/createsupplier/";
+        debugger
+        var array = []
+        var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+        for (var i = 0; i < checkboxes.length; i++) {
+            array.push(checkboxes[i].value)
+        }
+        // console.log(value_tested)
+        // var service_area = value_tested
+
+
+        if (value_tested === "true"){
+          var service_area = country_value+"/"+region_value 
+        }
+        else{
+          var service_area = value_tested
+        }
+        var url = BASE_URL + "authentication/createserprovider/";
         var token = cookies.get('token');
-        var uuid = cookies.get('uuid');
+        var uuid = cookies.get('serviceuuid');
         var userType = cookies.get('userType');
-    var config = {
-        method: 'post',
-        url: url,
-        headers: {
-          "Authorization": "Bearer " + token,
-        },
+        var user_uuid = cookies.get('uuid');
+        var config = {
+          method: 'patch',
+          url: url,
+          headers: {
+            "Authorization": "Bearer " + token,
+          },
         data:{
-            user_s : uuid,
-            year_founded : year_founded,
-            annual_revenue: annual_revenue,
-            department: array,
-            busiess_type: busiess_type,
-            brand_name: brand_name,
-            comp_location:comp_location,
+          service :uuid,
+          user_sv:user_uuid,
+          service_area:service_area,
+          s_category : array,
+            
+            
 
           }
     
@@ -129,8 +185,11 @@ var userTypeTitle=cookies.get('userType');
         this.Submit();
       }
     }
+
+
+    
   render() {
-   
+    const { country, region,dis_country } = this.state;
    
     return(
         <>
@@ -162,36 +221,67 @@ var userTypeTitle=cookies.get('userType');
                                             <Col md="12">
                                             <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label> Select your service Category. </Form.Label>
-                                                <Form.Control as="select" multiple="true" id="department">
+                                                <Form.Control  onClick={this.ChangeSelect} as="select" id="department">
                                                 {this.state.data.map(cat=>(  
-                                                <option value={cat.uuid}>{cat.name}</option>))}
+                                                <option  value={cat.uuid}>{cat.categoryname}</option>
+                                                ))}
                                                 
                                                 </Form.Control>
                                             </Form.Group>
 
                                             </Col>
 
-                                            <Col md="12">
-                                            <Form.Group controlId="formBasicEmail">
+                                            {/* <Col md="12">
+                                             {(this.state.data2).length != 0   ?   <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>We Specialize in:</Form.Label>
-                                                <Form.Control type="email"  id="brand_name"/>
-                                            </Form.Group>
+                                           <Form.Control as="select" multiple="true" id="department">
+                                                {this.state.data2.map(subcat=>(  
+                                                <option value={subcat.uuid}>{subcat.categoryname}</option>))}
+                                                
+                                                </Form.Control> 
+                                            </Form.Group>: ''}
+                                            </Col> */}
+
+                                              <Col md="12">
+                                             {(this.state.data2).length != 0   ?   <Form.Group controlId="formBasicEmail">
+                                                <Form.Label>We Specialize in:</Form.Label>
+                                                <tbody className="text-left" >
+                                {this.state.data2.map(contact => {
+                                    return <tr>
+                                    <td><label className="tabl-check"><input type="checkbox" value={contact.uuid}/></label></td>
+                                    <td>{contact.categoryname ? contact.categoryname : "Unlisted"}</td>
+                                    </tr>
+                                })}
+                                </tbody>
+                                            </Form.Group>: ''}
                                             </Col>
                                             <Col md="12" className="" >
-                                                    <div className="step-four-radio">
+                                            {(this.state.data2).length != 0   ?    <div className="step-four-radio">
                                                         <div>
-                                                        <label htmlFor="basic-url" className="lb">Is this product available for private label? </label>
+                                                        <label htmlFor="basic-url" className="lb">What areas can you service?</label>
                                                         </div>
-                                                        <Form.Check inline label="National" name="group10" type="radio" value="true"/>
-                                                        <Form.Check inline label="State" name="group10" type="radio" value="false" />
+                                                        <Form.Check inline label="National" onClick={this.servicechnge}  value="National" name="group10" type="radio" />
+                                                        <Form.Check inline label="State" name="group10" type="radio"
+                                                        onClick={this.servicechnge}  value="true" />
                                                         <Form.Check inline label="
-                                                        Global" name="group10" type="radio" value="true"/>
-                                                    </div>
+                                                        Global" name="group10" type="radio" onClick={this.servicechnge} value="Global"/>
+                                                    </div>:''}
+                                                    {this.state.storage === "true" ?<div>
+                                                    <CountryDropdown id="country" className="form-control"
+                                                    value={country}
+                                                    onChange={(val) => this.selectCountry(val)} />
+                                                    </div> : ""}
+                                                    {this.state.storage === "true" ? <div>
+                                                    <RegionDropdown  id ="state" className = "form-control"
+                                                    country={country}
+                                                    value={region}
+                                                    onChange={(val) => this.selectRegion(val)} />
+                                                    </div>:""}
                                                 </Col>
                                            
                                             <Col md="12">
                                                 <div className="company-form-btn-main text-center">
-                                                    <button class="admin-add-btn" onClick={() => this.Submit()}> <NavLink to="/company_form_two"> Continue</NavLink>  </button>
+                                                    <button class="admin-add-btn" onClick={this.Submit}> Continue </button>
                                                 </div>
                                             </Col>
                                            
