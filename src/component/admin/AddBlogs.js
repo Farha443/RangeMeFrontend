@@ -207,7 +207,7 @@ Blogs(){
                 <div className="pic202">
                       <img className="" width="180px" height="120px" id="output" src=""/>
                       <input  type="file" id="b_image" onChange={this.handleChange} placeholder="Change"/>
-                  
+                     
                       </div>
                     </Col>
 

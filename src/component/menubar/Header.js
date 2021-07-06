@@ -29,7 +29,13 @@ function Click1(){
   userType=cookies.get('userType');
   window.location = "signup"
   }
-
+function Click2(){
+  cookies.remove('userType');
+  var service = "service provider";
+  cookies.set('userType', service, { path: '/' });
+  userType=cookies.get('userType');
+  window.location = "signup"
+  }
   function Header(){
     const [modalShow, setModalShow] = useState(false);
       return(
@@ -50,7 +56,7 @@ function Click1(){
     <div className="header-bar__actions">
       <a href="#" onClick={Click} className="header-bar__link" >Satıcılar İçin</a>
       <a href="#" onClick={Click1} className="header-bar__link" >Alıcılar İçin</a>
-      {/* <a href="#" className="header-bar__link">For Service Providers</a> */}
+      <a href="#" onClick={Click2} className="header-bar__link">For Service Providers</a>
       <div className="header-bar__divider" />
       <div className="header-bar__link sub-nav__toggle">
         <span>Resources</span>
@@ -87,7 +93,7 @@ function Click1(){
     <nav className="nav nav--menu">
       <a href="#" onClick={Click} className="nav__link">For Suppliers</a>
       <a href="#" onClick={Click1}className="nav__link">For Buyers</a>
-      {/* <a href="#" className="nav__link">For Service Providers</a> */}
+      <a href="#" onClick={Click2} className="nav__link">For Service Providers</a>
       <div className="nav__divider" />
       <div className="nav__link nav__link--sub-nav">
         <span className="sub-nav__toggle">Resources</span>
