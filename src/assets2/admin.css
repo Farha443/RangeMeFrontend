@@ -2113,6 +2113,12 @@ section.ad-pad-sec {
     margin-left: -0.4rem;
 }
 
+.inp-disable {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: not-allowed ;
+}
+
   label {
     margin-top: 1.5rem;
     font-size: 14px;

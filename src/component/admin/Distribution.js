@@ -46,9 +46,9 @@ class Distribution extends React.Component {
             drop_ship:'',
             private_label : '',
             productAvailable: '',
+            isActive: 'false',
            
             }
-
             this.storageChange = this.storageChange.bind(this);
             this.storage1 = this.storage1.bind(this);
             this.productAvailable = this.productAvailable.bind(this);
@@ -203,9 +203,15 @@ class Distribution extends React.Component {
       window.location = "/distribution";
       })
     }
-      
+    
+    
+  handleToggle = () => {
+    this.setState({ isActive: !this.state.isActive });
+  };
+
     render() {
         const { country, region,dis_country } = this.state;
+        const isActive = this.state.isActive;
     return (
         <>
             <AdminNavbar />
@@ -374,14 +380,14 @@ class Distribution extends React.Component {
                                            <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>Where can you Distribute the Products?</Form.Label>
                                                 
-                                                <CountryDropdown  id = "distribution_location" className="form-control"
+                                                <CountryDropdown id = "distribution_location"  className={isActive ? "form-control " : "form-control inp-disable    "}
                                                     value={dis_country}
                                                     onChange={(val1) => this.DistributionCountry(val1)} />
                                                     <label>If you can distribute to an entire country, add that country. Otherwise, please add the specific states or provinces (Texas, Quebec, etc.).</label>
                                                     <div className="validated-field__container___1zNgS">
                   <div className="checkbox-large__wrapper___2i1Pl signup-layout__terms-and-conditions___1mfPt">
                     <div className="checkbox-large__inner-wrapper___3jgqh" data-tname="TermsAndConditionsCheckbox">
-                      <input onKeyPress={this.GlobalCheck} type="checkbox" id="vehicle1" name="vehicle1" className="sign-check" />
+                      <input onClick={this.handleToggle} onKeyPress={this.GlobalCheck} type="checkbox" id="vehicle1" name="vehicle1" className="sign-check" />
                       <span className="text__text___2g-Dv text__small-copy___bgT96 checkbox-large__label___1i8a0" data-tname="CheckboxLargeLabel"><span className="signup-layout__terms-and-conditions-label___csiGB">
                       I can distribute to all countries globally.</span></span>
                     </div>
