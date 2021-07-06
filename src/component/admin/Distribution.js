@@ -28,10 +28,10 @@ import context from 'react-bootstrap/esm/AccordionContext';
 const axios = require('axios');
 const cookies = new Cookies();
 
- var Product_Name = cookies.get("product_name") 
+
 class Distribution extends React.Component {
-     
-        constructor (props) {
+    
+    constructor (props) {
         super(props);
         this.state = {
             data: [],
@@ -65,10 +65,12 @@ class Distribution extends React.Component {
         this.setState({ storage1 : e.target.value });
       }
       productAvailable(f){
+          alert(f.target.value)
           this.setState({ productAvailable : f.target.value })
       }
 
       selectCountry (val) {
+          
         this.setState({ country: val });
       }
       drop_ship(e){
@@ -76,7 +78,9 @@ class Distribution extends React.Component {
       }
 
       private_label(e){
+        console.clear()
         this.setState({ private_label : e.target.value})
+        console.log(this.state.private_label)
       }
 
       DistributionCountry (val1) {
@@ -143,7 +147,7 @@ class Distribution extends React.Component {
 
     async Submit(){
         // $(".laoder").show(); 
-        // debugger
+    
         var country = this.state.country;
         var state = this.state.region;
         const selected = document.querySelectorAll('#distributors option:checked');
@@ -189,8 +193,9 @@ class Distribution extends React.Component {
       };
       console.log('ggggggggggggg')
       console.log(config)
-      axios(config)
+      await axios(config)
       .then(res=>{
+    
           console.log('-----------------------')
           console.log(res.data.data)
         // $(".laoder").hide(); 
@@ -206,10 +211,9 @@ class Distribution extends React.Component {
     handleToggle = () => {
         this.setState({ isActive: !this.state.isActive });
       };
-        
+      
     render() {
         const { country, region,dis_country } = this.state;
-        
         const isActive = this.state.isActive;
     return (
         <>
@@ -221,11 +225,12 @@ class Distribution extends React.Component {
                         <Col md="12">
                             <div className="p-header-main">
 
-                                <div className="p-header-left">
+                                {/* <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> {Product_Name} </h4> <span> Product </span>
+                                        <h4> Headphone </h4> <span> Product </span>
                                     </div>
-                                </div>
+                                </div> */}
+
                                 <div className="p-header-right">
                                     <div className="p-right-content">
                                         <div className="p-icn-01">
@@ -385,7 +390,7 @@ class Distribution extends React.Component {
                                                     <div className="validated-field__container___1zNgS">
                   <div className="checkbox-large__wrapper___2i1Pl signup-layout__terms-and-conditions___1mfPt">
                     <div className="checkbox-large__inner-wrapper___3jgqh" data-tname="TermsAndConditionsCheckbox">
-                      <input onKeyPress={this.GlobalCheck} type="checkbox" id="vehicle1" name="vehicle1" className="sign-check" />
+                      <input onClick={this.handleToggle} onKeyPress={this.GlobalCheck} type="checkbox" id="vehicle1" name="vehicle1" className="sign-check" />
                       <span className="text__text___2g-Dv text__small-copy___bgT96 checkbox-large__label___1i8a0" data-tname="CheckboxLargeLabel"><span className="signup-layout__terms-and-conditions-label___csiGB">
                       I can distribute to all countries globally.</span></span>
                     </div>

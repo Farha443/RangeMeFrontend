@@ -295,7 +295,7 @@ function ProductForm() {
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Unique selling propositions (USPs)</Form.Label>
-                                                <Form.Control id="usp" type="text" placeholder="Enter email" />
+                                                <Form.Control id="usp" type="text" placeholder="Enter USP" />
 
                                             </Form.Group>
 

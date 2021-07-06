@@ -44,9 +44,13 @@ function Click1(){
   window.location = "/signup"
   }
 
-// function Start(){
-//   alert('Hello');
-// }
+  function Click2(){
+    cookies.remove('userType');
+    var service = "service_provider";
+    cookies.set('userType', service, { path: '/' });
+    userType=cookies.get('userType');
+    window.location = "signup"
+    }
 
 function SignupModal(props){
   const [show, setShow] = useState(false);
@@ -123,7 +127,7 @@ function SignupModal(props){
     <div className="signup-modal__account-description">I purchase products at wholesale</div>
   </div>
 </NavLink>
-{/* <NavLink to="/signup" className="signup-modal__account-type signup-modal__account-type--service-provider">
+<NavLink to="/signup" className="signup-modal__account-type signup-modal__account-type--service-provider" onClick={()=>Click2()}>
   <svg xmlns="http://www.w3.org/2000/svg" width={100} height={100} viewBox="0 0 100 100" fill="none" className="signup-modal__icon">
     <mask id="path-1-inside-1" fill="white">
       <path fillRule="evenodd" clipRule="evenodd" d="M28.2503 20.0648L22.2736 14.0881C23.7091 13.3983 25.3083 13 27 13C33.05 13 38 17.95 38 24C38 25.32 37.7644 26.5876 37.3331 27.7629L74.7018 66.0124C75.4673 66.796 75.46 68.0496 74.6854 68.8242L71.8242 71.6854C71.0496 72.46 69.796 72.4674 69.0124 71.7018L30.7629 34.3331C29.5876 34.7644 28.32 35 27 35C20.95 35 16 30.05 16 24C16 22.3084 16.3983 20.7091 17.0881 19.2736L23.0648 25.2503L28.2503 20.0648Z">
@@ -142,7 +146,7 @@ function SignupModal(props){
 
 
   </div>
-</NavLink> */}
+</NavLink>
     </div>
       </Modal.Body>
     

@@ -33,7 +33,7 @@ function Toggle1() {
 
  function Func() {
     $(".laoder").show(); 
-    debugger
+    // debugger
     var first_name = document.getElementById('first_name').value;
     var last_name = document.getElementById('last_name').value;
     var email = document.getElementById('email').value;
@@ -67,7 +67,7 @@ function Toggle1() {
       alert("Please agree to the terms and conditions first. ");
     }
     else{
-     debugger
+    //  debugger
     axios.post( BASE_URL + "authentication/signup/",
         {
             user_type : userType,

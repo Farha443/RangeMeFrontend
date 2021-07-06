@@ -259,11 +259,6 @@ function Home(){
                           </div>
                         </div>
                       
-                        
-                  
-                   
-
-
 
 {/* 
                     <div className="layout-block layout-block--8-8 layout-block--animated     layout-block--compact layout-block--nodelay">
