@@ -2209,6 +2209,9 @@ section.ad-pad-sec {
     font-size: 12px;
     margin-left: -0.4rem;
 }
+a.admin-header-logo-main.navbar-brand img {
+    width: 100%;
+}
 .inp-disable {
     opacity: 0.6;
     pointer-events: none;
@@ -2259,6 +2262,8 @@ section.ad-pad-sec {
     width: 55px;
     height: 55px;
     margin-right: 5px;
+    overflow: hidden;
+    border-radius: 50%;
 }
 
 .menu-profile-img-main img {
@@ -2385,6 +2390,212 @@ section.ad-pad-sec {
     justify-content: space-between;
     text-decoration: none;
     transition: all ease 0.3s;
+}
+/*************************************** service provider css *********************/
+.rgm-right-bar.serv-p-side-left {
+    margin-top: 2rem;
+    height: auto;
+    position: sticky;
+    top: 0;
+}
+.serv-p-dash-box-main ul li {
+    text-align: center;
+}
+.serv-p-dash-box-main ul li p {
+    margin-top: 0rem;
+}
+.serv-p-dash-box-main ul li h2 {
+    margin-bottom: 0;
+}
+.serv-p-dash-box-main ul {
+    list-style: none;
+}
+.serv-p-dash-box-main ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.serv-p-dash-box-main ul li {
+    text-align: center;
+    width: 100%;
+}
+
+.servi-welcome-main {
+    overflow: hidden;
+    background: #fff;
+    padding: 35px 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.125);
+    margin-bottom: 2rem;
+    height: 220px;
+    align-items: center;
+    display: flex;
+}
+.servi-welcome-main p {
+    margin-top: 0.6rem;
+}
+.servi-welcome-main .wel-text {
+    width: 80%;
+}
+.servi-welcome-main .wel-img {
+    width: 20%;
+}
+.servi-welcome-main .wel-text p a {
+    color: #006fcf;
+}
+
+.serv-comp-leftbar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    border: 2px solid #38b5e6;
+}
+
+.serv-comp-leftbar img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.serv-comp-title {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+.p-text-45878 span.span-1 {
+    color: #737373;
+}
+.p-text-45878 span.span-2 a {
+    margin-left: 0.4rem;
+    color: #006fcf;
+}
+.serv-com-btn-m button {
+    width: 100%;
+}
+
+
+
+section.service-pro-title-sction {
+    padding: 2rem 0px;
+}
+.service-p-title h5 {
+    margin: 0;
+    font-weight: 400;
+}
+.profile-up-main .fileUploader .fileContainer {
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.css-1yn2e29-InputColor {
+    width: 50px;
+    height: 35px !important;
+ }
+ .color-pic-div {
+    width: 40px;
+    height: 35px;
+    margin-top: 0px;
+    margin-left: 1rem;
+}
+
+.p-text-45878.text-center p i {
+    color: #38b5e6;
+}
+.p-text-45878.text-center p {
+    margin-top: 0;
+}
+
+.color-pick-inp-m label {
+    margin: 0;
+    margin-right: 0.5rem;
+}
+.color-pick-inp-m {
+    display: flex;
+    width: 100%;
+}
+
+
+.profile-up-main.service-logo .fileContainer .uploadPicturesWrapper div .uploadPictureContainer {
+    width: 100%;
+    height: 174px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+}
+
+.profile-up-main.service-logo .fileContainer .uploadPicturesWrapper div .uploadPictureContainer img {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+}
+
+.profile-up-main.service-logo .fileContainer .uploadPicturesWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 40%;
+    position: absolute;
+    top: -60px;
+    right: 0;
+    left: 0;
+    height: 80%;
+    bottom: 0;
+    margin: auto;
+    border: 1px solid #38B5E6;
+    border-style: dashed;
+}
+.fileContainer .chooseFileButton:hover {
+    background: #31adde !important;
+}
+
+section.serv-com-details-section-2 {
+    margin-top: 1.5rem;
+}
+.abt-tet125.form-group p {
+    margin: 0;
+    margin-bottom: 0.2rem;
+    font-size: 14px;
+    color: grey;
+}
+.abt-tet125.form-group label.form-label {
+    margin-bottom: 0;
+}
+
+.gallery-choose-inp .fileUploader .fileContainer p {
+    display: none !important;
+}
+.gallery-choose-inp .fileUploader .fileContainer button{
+    width: 100%;
+    border-radius: 0px;
+    background: transparent !important;
+    color: #656565;
+    font-weight: 400;
+    border: 1px solid #e4e4e4;
+    font-size: 16px;
+}
+
+.gallery-choose-inp .fileUploader .fileContainer{
+    margin-top: 0;
+    padding-top: 10px;
+}
+.embed-link-d button {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 0px;
+}
+
+.gallery-choose-inp .fileUploader .fileContainer .uploadPictureContainer img.uploadPicture {
+    width: 100%;
+    height: 100% !important;
+}
+
+.fileContainer .uploadPictureContainer {
+    width: 25%;
+    height: 120px !important;
+    padding: 5px !important;
+
 }
 
 

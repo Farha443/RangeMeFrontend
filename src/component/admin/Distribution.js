@@ -65,6 +65,7 @@ class Distribution extends React.Component {
         this.setState({ storage1 : e.target.value });
       }
       productAvailable(f){
+          alert(f.target.value)
           this.setState({ productAvailable : f.target.value })
       }
 
@@ -77,7 +78,6 @@ class Distribution extends React.Component {
       }
 
       private_label(e){
-        debugger
         console.clear()
         this.setState({ private_label : e.target.value})
         console.log(this.state.private_label)
@@ -147,7 +147,7 @@ class Distribution extends React.Component {
 
     async Submit(){
         // $(".laoder").show(); 
-        debugger
+    
         var country = this.state.country;
         var state = this.state.region;
         const selected = document.querySelectorAll('#distributors option:checked');
@@ -193,8 +193,9 @@ class Distribution extends React.Component {
       };
       console.log('ggggggggggggg')
       console.log(config)
-      axios(config)
+      await axios(config)
       .then(res=>{
+    
           console.log('-----------------------')
           console.log(res.data.data)
         // $(".laoder").hide(); 

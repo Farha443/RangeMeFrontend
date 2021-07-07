@@ -106,6 +106,7 @@ var userTypeTitle=cookies.get('userType');
     return(
         <>
          <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
+       
         
         <section className="company-form-section">
                 <Container fluid>

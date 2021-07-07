@@ -68,7 +68,7 @@ var region_value = ''
         return region_value
       }
      async servicechnge(f){
-        // debugger
+        debugger
       var val = f.target.value
       await this.setState({ storage : val });
       value_tested = this.state.storage
@@ -127,7 +127,7 @@ var region_value = ''
       
 
     async Submit(){
-        // debugger
+        debugger
         var array = []
         var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
         for (var i = 0; i < checkboxes.length; i++) {
@@ -143,22 +143,19 @@ var region_value = ''
         else{
           var service_area = value_tested
         }
-        var url = BASE_URL + "authentication/createserprovider/";
+        var url = BASE_URL + "authentication/createsupplier/";
         var token = cookies.get('token');
-        var uuid = cookies.get('serviceuuid');
+        var uuid = cookies.get('uuid');
         var userType = cookies.get('userType');
-        var user_uuid = cookies.get('uuid');
         var config = {
-          method: 'patch',
+          method: 'post',
           url: url,
           headers: {
             "Authorization": "Bearer " + token,
           },
         data:{
-          service :uuid,
-          user_sv:user_uuid,
-          service_area:service_area,
-          s_category : array,
+          // service_area:service_area,
+          service_category : array,
             
             
 

@@ -65,6 +65,7 @@ class Distribution extends React.Component {
         this.setState({ storage1 : e.target.value });
       }
       productAvailable(f){
+          alert(f.target.value)
           this.setState({ productAvailable : f.target.value })
       }
 

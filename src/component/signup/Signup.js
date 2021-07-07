@@ -33,6 +33,7 @@ function Toggle1() {
 
  function Func() {
     $(".laoder").show(); 
+    // debugger
     var first_name = document.getElementById('first_name').value;
     var last_name = document.getElementById('last_name').value;
     var email = document.getElementById('email').value;
@@ -43,7 +44,7 @@ function Toggle1() {
     var terms =  document.querySelector('input[type=checkbox]:checked')
     var userType = cookies.get('userType');
 
- 
+  
     if (typeof password !== "undefined" && typeof confirm_password !== "undefined") {
       if (password!= confirm_password) {
         // isValid = false;
@@ -66,7 +67,7 @@ function Toggle1() {
       alert("Please agree to the terms and conditions first. ");
     }
     else{
-     
+    //  debugger
     axios.post( BASE_URL + "authentication/signup/",
         {
             user_type : userType,

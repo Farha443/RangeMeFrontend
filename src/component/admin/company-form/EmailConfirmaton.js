@@ -33,6 +33,7 @@ function EmailConfirmation(){
     return(
         <>
         
+        
         <section className="company-form-section">
                 <Container fluid>
                     <Row className="justify">

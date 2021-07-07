@@ -51,7 +51,6 @@ class AdminProfile extends React.Component {
 
     }
     handleChange(event) {
-
         
         var reader = new FileReader();
         reader.onload = function(){
@@ -63,7 +62,6 @@ class AdminProfile extends React.Component {
     }
      
   save(){
-
         var first_name = document.getElementById('first_name').value;
         var last_name = document.getElementById('last_name').value;
         var email = document.getElementById('email').value;
@@ -124,6 +122,7 @@ class AdminProfile extends React.Component {
         };
     
         axios(config).then(re => {
+        
             this.setState({
               first_name: re.data.data.first_name,
               last_name: re.data.data.last_name,

@@ -163,11 +163,11 @@ function ProductForm() {
                         <Col md="12">
                             <div className="p-header-main">
 
-                                {/* <div className="p-header-left">
+                                 <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> Headphone </h4> <span> Product </span>
+                                        <h4> {productname.product_name} </h4> <span> Product </span>
                                     </div>
-                                </div> */}
+                                </div> 
 
                                 <div className="p-header-right">
                                     <div className="p-right-content">
@@ -200,7 +200,8 @@ function ProductForm() {
                                             inactiveClassName="text-gray-800"
                                             >
                                                 <img src="assets/images/list-searching-variant.png" />
-                                                <div className="sidebar-title"> Product Overview  </div>
+                                                <div className="sidebar-title">
+                                                Product Overview  </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -243,7 +244,8 @@ function ProductForm() {
                                     <div className="product-form-main">
                                    
                                         <div className="p-inside-title">
-                                            <h5> Product Overview </h5>
+                                        
+                                            <h5>{productname.product_name} Product Overview </h5>
 
                                         </div>
 
@@ -254,7 +256,7 @@ function ProductForm() {
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Product name</Form.Label>
-                                                <Form.Control id="product_name" type="text"  defaultValue={productname.product_name}/>
+                                                <Form.Control id="product_name" type="text" disabled defaultValue={productname.product_name}/>
                                                 
                                             </Form.Group>
 
@@ -293,7 +295,7 @@ function ProductForm() {
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Unique selling propositions (USPs)</Form.Label>
-                                                <Form.Control id="usp" type="text" placeholder="Enter email" />
+                                                <Form.Control id="usp" type="text" placeholder="Enter USP" />
 
                                             </Form.Group>
 
