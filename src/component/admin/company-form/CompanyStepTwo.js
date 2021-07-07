@@ -46,7 +46,7 @@ function skip(){
       
       var config = {
   
-        method: 'put',
+        method: 'patch',
         url: url,
         headers: {
           'content-type': `multipart/form-data; boundary=${data._boundary}`,

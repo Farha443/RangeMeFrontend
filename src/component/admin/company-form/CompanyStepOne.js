@@ -190,7 +190,7 @@ var userTypeTitle=cookies.get('userType');
                                             <Col md="12">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Business address (requested sample will be sent to this address)</Form.Label>
-                                                <Form.Control type="text" placeholder="abc@domain.com" id="buss_address"/>
+                                                <Form.Control type="text" id="buss_address"/>
 
                                             </Form.Group>
 

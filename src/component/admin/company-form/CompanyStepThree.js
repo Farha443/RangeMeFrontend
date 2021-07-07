@@ -34,9 +34,13 @@ function SelectCategory(){
     var uuid1 = cookies.get('uuid1');
     // alert(uuid)
     var url = BASE_URL + "authentication/createbuyer/";
+    var token = cookies.get("token")
     var config = {
-        method: 'put',
+        method: 'patch',
         url: url,
+        headers: {
+            "Authorization": "Bearer " + token,
+          },
         data:{
             uuid : uuid1,
             b_category : array,
@@ -63,7 +67,7 @@ const handleKeypress = (event) => {
 function CompanyStepThree(){
     const [category, setCategory]= useState([])
     useEffect(() => {
-        axios.get(BASE_URL+'authentication/getcategory/').then(res=>{
+        axios.get(BASE_URL+'authentication/GetCategorysignup/').then(res=>{
             setCategory(res.data.data)
         }).catch(err=>{
             $(".laoder").hide();
