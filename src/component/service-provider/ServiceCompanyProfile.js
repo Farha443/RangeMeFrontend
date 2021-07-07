@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../../assets2/admin.css';
-import AdminNavbar from '../AdminNavbar'
-import BrandLogoHome from '../BrandLogoHome';
+import '../../assets2/admin.css';
+// import AdminNavbar from '../AdminNavbar'
+// import BrandLogoHome from '../BrandLogoHome';
 import ServiceComLogo from './ServiceComLogo';
 import GalleryPhotoUpload from './GalleryPhotoUpload';
 import InputColor from 'react-input-color';
@@ -25,15 +25,41 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import useState from 'react-hook-use-state';
+import ServiceNavbar from './ServiceNavbar';
+import BASE_URL from '../base';
 
 
 function ServiceProfile(){
-    const [color, setColor] = React.useState({});
+    const [color, setColor] = React.useState([]);
     const [isActive, setActive] = useState("false");
-   
+    const [user_pic, setUser_pic] = useState([]);
+
+   function handleChange(event) {
+        
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('output');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);    
+        
+    }
+
+    function SaveSection1(){
+        debugger
+        var brandcolor = color.hex
+        var company_name = document.getElementById('company-name').value; 
+        var website_url = document.getElementById('website-url').value; 
+        var company_logo = document.getElementById('user_pic').files[0]
+        var short_des = document.getElementById('short_des').value;
+        var full_des = document.getElementById('full_des').value;
+
+    }
+
+
     return(
         <>
-            <AdminNavbar/>
+            <ServiceNavbar/>
 
            
             <div className="admin-container">
@@ -60,22 +86,37 @@ function ServiceProfile(){
                     <div className="product-form-main">
 
                         <div className="p-inside-title">
-                            <h5> <img src="assets/images/office.png" /> Company Details </h5>
+                            <h5> Company Details </h5>
 
                         </div>
 
                         <div className="overview-form">
-
                         <Row>
-
                             <Col md="12">    
-                                <ServiceComLogo/>
+                            
+                            <div className="change-img-maind">
+                            <h6>Company Logo</h6>
+                                            {user_pic ?   
+                                            <div className="pic-1101">
+                                                
+                                                <img  id="output" src={BASE_URL.slice(0,-5)+ user_pic} width="180px" height="120px" />
+                                                </div>
+                                                : <img className="" id="output" width="180px" height="120px" src=""/>}
+                                                <div className="pic202">
+                                            </div>
+                                        </div>
+                                <div>
+                                <label for="user_pic" class="btn btn-primary">Choose Picture</label>
+                                <input style={{display:'none'}} type="file"  id="user_pic" onChange={handleChange} placeholder="Change"/>
+                                </div>
+
+
                             </Col>
 
                                 <Col md="6">
                                     <Form.Group controlId="formBasicEmail">
                                         <Form.Label>Company Name</Form.Label>
-                                        <Form.Control type="email" placeholder="Enter email" />
+                                        <Form.Control id="company-name"type="text" placeholder="xyz" />
 
                                     </Form.Group>
 
@@ -84,7 +125,7 @@ function ServiceProfile(){
                                     <Col md="6">
                                     <Form.Group controlId="formBasicEmail">
                                         <Form.Label>Website URL</Form.Label>
-                                        <Form.Control type="email" placeholder="abc.com" />
+                                        <Form.Control id="website-url" type="Email" placeholder="abc.com" />
 
                                     </Form.Group>
 
@@ -94,23 +135,24 @@ function ServiceProfile(){
                                         <div className="color-pick-inp-m">
                                         <Form.Label>Brand color</Form.Label>
                                         <InputColor
+                                            id="brandcolor"
                                             initialValue="#38B5E6"
                                             onChange={setColor}
                                             placement="right"
                                         />
                                          <div className="color-pic-div"
-                                            style={{
-                                            backgroundColor: color.rgba
+                                          
+                                          style={{
+                                            backgroundColor: color.hex
                                             }}
                                         />
+                                        <input defaultValue={color.hex}>
+                                        </input>
                                         </div>
                                     </Col>
+                                    
 
-                           
-                                    <Col md="12" className="text-center">
-                                    <button class="admin-add-btn">   Save Changes  </button>
-                                    </Col>
-
+                                  
                                 </Row>
                                     
                                 </div>
@@ -143,8 +185,9 @@ function ServiceProfile(){
                                 <Col md="12">
                                     <Form.Group className="abt-tet125" controlId="exampleForm.ControlTextarea1">
                                         <Form.Label>Short description</Form.Label>
-                                        <p> Provide a short introduction to your company that will be at the top of your profile and visible in your profile preview. </p>
-                                        <Form.Control as="textarea" rows={3} />
+                                        <p> Provide a short introduction to your company that will be at the top of your profile and visible in your profile preview.
+</p>
+                                        <Form.Control id="short_des" as="textarea" rows={3} />
                                     </Form.Group>
                                  </Col>
 
@@ -152,12 +195,12 @@ function ServiceProfile(){
                                     <Form.Group className="abt-tet125" controlId="exampleForm.ControlTextarea1">
                                         <Form.Label>Full description</Form.Label>
                                         <p> Share details about your company and what you specialize in. </p>
-                                        <Form.Control as="textarea" rows={5} />
+                                        <Form.Control id="full_des" as="textarea" rows={5} />
                                     </Form.Group>
                                  </Col>
 
                                 <Col md="12" className="text-center">
-                                <button class="admin-add-btn">   Save Changes  </button>
+                                <button class="admin-add-btn" >   Save Changes  </button>
                                 </Col>
 
                                 </Row>
@@ -181,7 +224,7 @@ function ServiceProfile(){
                     <div className="product-form-main">
 
                         <div className="p-inside-title">
-                            <h5>  About </h5>
+                            <h5>Gallery (optional)</h5>
 
                         </div>
 

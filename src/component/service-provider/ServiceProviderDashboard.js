@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../../assets2/admin.css';
-import AdminNavbar from '../AdminNavbar'
-import BrandLogoHome from '../BrandLogoHome';
+import '../../assets2/admin.css';
+// import AdminNavbar from '../admin/AdminNavbar'
+// import BrandLogoHome from '../BrandLogoHome';
 import {
   Jumbotron,
   Button,
@@ -21,6 +21,8 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import useState from 'react-hook-use-state';
+import ServiceNavbar from './ServiceNavbar';
+
 
 
 function ServiceProviderDashboard(){
@@ -29,7 +31,7 @@ function ServiceProviderDashboard(){
    
     return(
         <>
-            <AdminNavbar/>
+            <ServiceNavbar/>
 
            
                 <div className="admin-container">
@@ -52,7 +54,7 @@ function ServiceProviderDashboard(){
                 <div className="p-text-45878">
                     <span className="span-1"> Preview :</span>
                     <span className="span-2">
-                        <NavLink to=""> Profile </NavLink>
+                        <NavLink to="/service-company-profile"> Profile </NavLink>
                         <NavLink to=""> search Listing </NavLink>
                     </span>
                 </div>

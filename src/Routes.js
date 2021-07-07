@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 import AdminHome from './component/admin/AdminHome';
 import AdminNavbar from './component/admin/AdminNavbar';
+
 import CompanyStepFour from './component/admin/company-form/CompanyStepFour';
 import CompanyStepOne from './component/admin/company-form/CompanyStepOne';
 import CompanyStepThree from './component/admin/company-form/CompanyStepThree';
@@ -34,10 +35,11 @@ import AdminNewPage from './component/admin/AdminNewPage';
 import AddBlogs from './component/admin/AddBlogs';
 import Blogs from './component/blogs/Blogs';
 import BlogsDetails from './component/blogs/BlogsDetails';
-// import ServiceProviderDashboard from './component/service-provider/ServiceProviderDashboard'
-
-
-
+import ServiceProviderDashboard from './component/service-provider/ServiceProviderDashboard'
+import ServiceProviderProfile from './component/service-provider/ServiceProviderProfile';
+import ServiceNavbar from './component/service-provider/ServiceNavbar';
+import Changepassword from './component/service-provider/Changepassword';
+import ServiceCompanyProfile from './component/service-provider/ServiceCompanyProfile';
 function Routes(){
     return(
         <>
@@ -78,7 +80,11 @@ function Routes(){
                 <Route exact path="/add-blog" component={AddBlogs}></Route>
                 <Route exact path="/blogs" component={Blogs}></Route>
                 <Route exact path="/blog_detail/:uuid" component={BlogsDetails}></Route>
-                {/* <Route exact path="/service-dashboard" component={ServiceProviderDashboard}></Route> */}
+                <Route exact path="/service-dashboard" component={ServiceProviderDashboard}></Route>
+                <Route exact path="/service-provider-profile" component={ServiceProviderProfile}></Route>
+                <Route exact path="/ServiceNavbar" component={ServiceNavbar}></Route>
+                <Route exact path="/change-password-service" component={Changepassword}></Route>
+                <Route exact path="/service-company-profile" component={ServiceCompanyProfile}></Route>
             </Switch>
         </> 
     )

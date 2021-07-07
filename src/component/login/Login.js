@@ -52,6 +52,13 @@ function Loginfunction() {
             }
             else if(cookies.get('user_type')==="supplier"){
               window.location = "/admin_home"
+
+            
+            }
+            else if(cookies.get('user_type')==="service provider"){
+              window.location = "/service-dashboard"
+
+            
             }
             else{
               window.location = "/admin_home"
