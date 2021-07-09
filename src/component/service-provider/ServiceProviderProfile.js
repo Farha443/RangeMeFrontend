@@ -51,7 +51,6 @@ class AdminProfile extends React.Component {
 
     }
     handleChange(event) {
-        
         var reader = new FileReader();
         reader.onload = function(){
             var output = document.getElementById('output');

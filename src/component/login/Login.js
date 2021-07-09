@@ -38,11 +38,16 @@ function Loginfunction() {
             cookies.set('user_pic', res.data.data.user_pic, { path: '/' });
             cookies.set('user_type', res.data.data.user_type, { path: '/' }); 
             // alert(res.data.data.user_pic)?
+            debugger
             if(res.data.data.supplier){
               cookies.set('sup_uuid',res.data.data.supplier, { path: '/' } )
             }
             else if(res.data.data.buyer){
               cookies.set('buy_uuid',res.data.data.buyer, { path: '/' } )
+            }
+            else if(res.data.data.user_type==='service provider'){
+              
+              cookies.set('serviceuuid',res.data.data.uuid, { path: '/' } )
             }
             cookies.set('superuser',res.data.data.superuser,{ path: '/' })
             
