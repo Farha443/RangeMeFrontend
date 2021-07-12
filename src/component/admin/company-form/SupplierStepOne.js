@@ -53,7 +53,6 @@ var userTypeTitle=cookies.get('userType');
 
       .then(res => {
         // debugger
-        console.log("hoga jald hi");
         console.log(res.data.data);
         this.setState({
           data: res.data.data

@@ -92,10 +92,6 @@ function ProductForm() {
     },{}
     )
 
-    // console.log()
-    // console.log("SHUBHAMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM")
-    // console.log(certi)
-
         function Step1(){
             // debugger
             var product_name = document.getElementById('product_name').value;
@@ -109,7 +105,7 @@ function ProductForm() {
             var productuuid = cookies.get('productuuid');
             var userType = cookies.get('user_type');          
             var token = cookies.get('logintoken');
-            
+            var uuid = cookies.get('get_brand');
             var config = {
                 method: 'patch',
                 url: url,
@@ -118,6 +114,7 @@ function ProductForm() {
                   "Content-Type": "application/json",
                 },
                 data:{
+                    p_user : uuid,
                     product_name:product_name,
                     select_category:[select_category],
                     approvals_certifications:approvals_certifications,

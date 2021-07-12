@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import ImageUploader from 'react-images-upload';
 import {
@@ -46,7 +47,9 @@ class Distribution extends React.Component {
             drop_ship:'',
             private_label : '',
             productAvailable: '',
-           
+            value: 'coconut',
+            already:[],
+            options: [],
             }
 
             this.storageChange = this.storageChange.bind(this);
@@ -57,6 +60,9 @@ class Distribution extends React.Component {
             this.drop_ship = this.drop_ship.bind(this)
             this.handleChange = this.handleChange.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
+
+            this.handleChange1 = this.handleChange1.bind(this);
+            this.handleSubmit1 = this.handleSubmit1.bind(this);
       }
       storageChange(e){
         this.setState({ storage : e.target.value });
@@ -65,7 +71,7 @@ class Distribution extends React.Component {
         this.setState({ storage1 : e.target.value });
       }
       productAvailable(f){
-          alert(f.target.value)
+        //   alert(f.target.value)
           this.setState({ productAvailable : f.target.value })
       }
 
@@ -109,7 +115,34 @@ class Distribution extends React.Component {
         let main = this.state.startDate
         console.log(main.format('L'));
       }
+      handleChange1(event) {
+        var id = event.target.value;
+        if(this.state.already.includes(id)){
+          alert('Already selected');
+        }
+        else{
+          this.state.already.push(id);
+          this.setState({value: event.target.value});
+          console.log({value: event.target.value})
+        }
+      }
+      removeId(id){
+        // alert(id)
+        for( var i = 0; i < this.state.already.length; i++){ 
+    
+          if ( this.state.already[i] === id) { 
+      
+            this.state.already.splice(i, 1); 
+          }
+      
+      }
+            // $('#'+id).remove();
+      }
 
+      handleSubmit1(event) {
+        // alert('Your favorite flavor is: ' + this.state.value);
+        event.preventDefault();
+      }
       async componentDidMount(){
         var url = BASE_URL+'product/getsellPlatform/';
         var url1 = BASE_URL + 'product/get_distributors/';
@@ -121,7 +154,7 @@ class Distribution extends React.Component {
           axios(config)
       .then(res => {
         this.setState({
-          data: res.data.data
+            options: res.data.data
         });
         console.log(res.data.data);
       })
@@ -146,16 +179,36 @@ class Distribution extends React.Component {
     }
 
     async Submit(){
-        // $(".laoder").show(); 
-    
+        // $(".laoder").show()
         var country = this.state.country;
         var state = this.state.region;
         const selected = document.querySelectorAll('#distributors option:checked');
         var distributors = Array.from(selected).map(el => el.value);
-        const selected1 = document.querySelectorAll('#selling_Platform option:checked');
-        var selling_Platform = Array.from(selected1).map(elv => elv.value);
-        // var all_stores = document.getElementById('all_stores').value;
-        // var no_of_stores = document.getElementById('no_of_stores').value;
+        var selling_Platform =this.state.already;
+        var array = []
+        var checkboxes = document.querySelectorAll(' input#all_stores:checked')
+        for (var i = 0; i < checkboxes.length; i++) {
+            array.push(checkboxes[i].value)
+        }
+
+        var array1 = []
+        var checkboxes1 = document.querySelectorAll('input[type=number]')
+        for (var i = 0; i < checkboxes1.length; i++) {
+           array1.push(checkboxes1[i].value)
+        
+        //    array1.push(checkboxes1[i].parentElement.id)
+            // array1.push({
+            //     key: valuee ,
+            //     value: keyy
+            // })
+        }
+        debugger
+        var finalarray=[];
+        finalarray.push(selling_Platform)
+        finalarray.push(array)
+        finalarray.push(array1)
+        console.clear()
+        console.log(finalarray)
         var drop_ship = this.state.drop_ship;
         var product_availability,
             element = document.getElementById('product_availability');
@@ -166,23 +219,34 @@ class Distribution extends React.Component {
                 product_availability = null;
             }
         var distribution_location = this.state.dis_country;
-        var global_distribution = document.querySelector('input[type=checkbox]:checked')
+        // var global_distribution = document.querySelector('.vehicle1 input[type=checkbox]:checked')
+        var global_distribution =  document.querySelector('#vehicle1:checked').value;
+        var check = document.querySelector('#vehicle1:checked').value;
+        if (check != null) {
+            product_availability = check.value;
+        }
+        else {
+            product_availability = null;
+        }
         var private_label = this.state.private_label;
         var storage_required = this.state.storage1
-        // debugger
         var url2 = BASE_URL+ 'product/create_product_distribution/';
-        // var token = cookies.get('token');
         var uuid = cookies.get('sup_uuid');
         var userType = cookies.get('user_type');
+        var product = cookies.get('product_uuid');
+
     var config = {
         method: 'post',
         url: url2,
         data:{
+            productName : product,
             country : country,
             state: state,
             distributors: distributors,
-            selling_Platform: selling_Platform,
+            selling_Platform: finalarray,
             drop_ship : drop_ship,
+            // allStorescheck: array,
+            // noOfstores : array1,
             product_availability:product_availability,
             distribution_location:distribution_location,
             global_distribution:global_distribution,
@@ -191,8 +255,7 @@ class Distribution extends React.Component {
           }
     
       };
-      console.log('ggggggggggggg')
-      console.log(config)
+      
       await axios(config)
       .then(res=>{
     
@@ -203,7 +266,7 @@ class Distribution extends React.Component {
       }
       
       ).catch(err=>{
-        console.error(err);
+        alert(err);
         // $(".laoder").hide(); 
       window.location = "/distribution";
       })
@@ -347,11 +410,37 @@ class Distribution extends React.Component {
                                                 </div>
                                                 {this.state.productAvailable === "true" ?<Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>Where is the product currently sold? </Form.Label>
-                                                <Form.Control as="select" multiple="true" id="selling_Platform">
+                                                <select className="form-control" value={this.state.value} onChange={this.handleChange1} onClick={this.appendData}>
+                                                    <option value={0}>Select</option>
+                                                    {this.state.options.map(opt=>{
+                                                        //  if(!this.state.already.includes(opt.id)){
+                                                        
+                                                        return <option value={opt.uuid}>{opt.name}</option>
+                                                        //  }
+                                                    })}
+                                                </select>
+                                                    <div id="ddc">
+                                                    {this.state.options.map(op=>{
+                                                    if(this.state.already.includes(op.uuid)){
+                                                    return <div class="div-app-main" id={op.uuid} > 
+                                                    <div class="ap-div-first-cont-m"> 
+                                                    <div class="d-item-1"> 
+                                                    <p> {op.name} </p> 
+                                                    </div>
+                                                    <div class="all-store">  
+                                                    <label> <input id="all_stores"type="checkbox"/> All Store </label>  
+                                                    <span id={op.uuid} ><input type="number" class="form-control"  id="no_of_stores"/></span> 
+                                                    
+                                                     </div> 
+                                                    </div> <button onClick={()=>this.removeId(op.uuid)} > X </button>  </div>
+                                                    }
+                                                })}
+                                                    </div>
+                                                {/* <Form.Control as="select" multiple="true" id="selling_Platform">
                                                 {this.state.data.map(sell=>(  
                                                 <option value={sell.uuid}>{sell.name}</option>))}
                                                 
-                                                </Form.Control>
+                                                </Form.Control> */}
                                             </Form.Group>: ""}
                                             {this.state.productAvailable === "false" ? <input class="form-control" id="product_availability" type="date"></input>:""}
                                             </Col>
@@ -431,7 +520,7 @@ class Distribution extends React.Component {
                                                         <label htmlFor="basic-url" className="lb">Does your product require cold storage?</label>
                                                         </div>
                                                         <Form.Check inline label="yes" name="group3" type="radio" value="true" onClick={this.storageChange}  />
-                                                        <Form.Check inline label="NO" name="group3" type="radio" value="false" onClick={this.storageChange}  />
+                                                        <Form.Check inline label="No" name="group3" type="radio" value="false" onClick={this.storageChange}  />
                                                     </div>
                                                    {this.state.storage === "true" ?<div className="step-four-radio">
                                                         <div>

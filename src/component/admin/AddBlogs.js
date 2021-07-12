@@ -116,7 +116,7 @@ Blogs(){
   // };
 
   async componentDidMount(){
-    var url = BASE_URL+'authentication/getcategory/';
+    var url = BASE_URL+'authentication/GetCategorysignup/';
         var config = {
             method: 'get',
             url: url,

@@ -77,10 +77,6 @@ function ProductDetail() {
         });
     }
 
-   
-
-
-
     function onDrop1(pictureFiles, pictureDataURLs) {
             // debugger
             setImage1({
@@ -92,9 +88,7 @@ function ProductDetail() {
    
   
 
-    function productdetail() {
-
-        
+    function productdetail() {  
         var image =  proimage ? (proimage.pictureFiles)[0] : "";
         
         var Product = document.getElementById('productkiuuid').value;
@@ -363,7 +357,7 @@ function ProductDetail() {
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Variant SKU/Style number</Form.Label>
-                                                <Form.Control type="text" placeholder="Enter number" id="variant_style_no"/>
+                                                <Form.Control type="number" placeholder="Enter number" id="variant_style_no"/>
 
                                             </Form.Group>
 
@@ -377,7 +371,7 @@ function ProductDetail() {
                                                         withIcon={false}
                                                         buttonText='Choose Image'
                                                         onChange={onDrop}
-                                                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                                        imgExtension={['.jpg', '.gif', '.png', '.gif', 'jpeg']}
                                                         maxFileSize={5242880}
                                                         withPreview={true}
                                                 />

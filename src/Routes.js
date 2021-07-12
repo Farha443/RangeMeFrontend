@@ -34,6 +34,8 @@ import AdminNewPage from './component/admin/AdminNewPage';
 import AddBlogs from './component/admin/AddBlogs';
 import Blogs from './component/blogs/Blogs';
 import BlogsDetails from './component/blogs/BlogsDetails';
+import BrandProfile from './component/admin/BrandProfile';
+
 // import ServiceProviderDashboard from './component/service-provider/ServiceProviderDashboard'
 
 
@@ -78,6 +80,7 @@ function Routes(){
                 <Route exact path="/add-blog" component={AddBlogs}></Route>
                 <Route exact path="/blogs" component={Blogs}></Route>
                 <Route exact path="/blog_detail/:uuid" component={BlogsDetails}></Route>
+                <Route exact path="/brand-profile" component={BrandProfile}></Route>
                 {/* <Route exact path="/service-dashboard" component={ServiceProviderDashboard}></Route> */}
             </Switch>
         </> 

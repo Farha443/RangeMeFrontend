@@ -45,12 +45,12 @@ a.admin-header-logo-main.navbar-brand h3 {
     background-size: 100%;
 }
 
-.dropdown-toggle {
+/* .dropdown-toggle {
     position: absolute !important;
     right: -25px !important;
     display: block !important;
     width: 150% !important;
-}
+} */
 
 
 section.admin-home-section {
@@ -2599,3 +2599,60 @@ section.serv-com-details-section-2 {
 }
 
 
+
+
+/**************distribution*******************/
+.div-app-main {
+    background: #efefef;
+    width: 100%;
+    float: left;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    border-radius: 5px;
+}
+.ap-div-first-cont-m {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.d-item-1 {
+    float: left;
+    width: 50%;
+}
+.d-item-1 p {
+    margin: 0;
+}
+.all-store {
+    float: right;
+    width: 50%;
+}
+.all-store label {
+    width: 40%;
+    float: left;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.all-store input {
+    width: 25%;
+    float: left;
+    margin-top: 0.3rem;
+}
+
+
+
+/************** dropdown****************/
+.menu-drop-1245.nav-item.dropdown {
+    display: flex;
+}
+
+
+a.dropdown-item .itm-drop-bt button.admin-add-btn {
+    margin: 0;
+    padding: 5px 15px;
+    font-size: 14px;
+}

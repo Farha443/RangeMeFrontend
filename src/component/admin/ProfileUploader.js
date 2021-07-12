@@ -14,7 +14,7 @@ export default class ProfileUploader extends Component {
                 withIcon={true}
                 buttonText='Choose Profile'
                 onChange={this.onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                imgExtension={['.jpg', '.gif', '.png', '.gif', 'jpeg']}
                 maxFileSize={5242880}
                 withPreview="true"
     />

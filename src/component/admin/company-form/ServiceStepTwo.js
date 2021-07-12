@@ -68,7 +68,7 @@ var region_value = ''
         return region_value
       }
      async servicechnge(f){
-        // debugger
+        debugger
       var val = f.target.value
       await this.setState({ storage : val });
       value_tested = this.state.storage
@@ -127,7 +127,7 @@ var region_value = ''
       
 
     async Submit(){
-        // debugger
+        debugger
         var array = []
         var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
         for (var i = 0; i < checkboxes.length; i++) {
@@ -159,8 +159,6 @@ var region_value = ''
           user_sv:user_uuid,
           service_area:service_area,
           s_category : array,
-            
-            
 
           }
     

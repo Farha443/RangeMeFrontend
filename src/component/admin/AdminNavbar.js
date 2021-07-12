@@ -14,6 +14,7 @@ import {
   FormControl,
   Col,
   Container,
+  Modal,
   Row
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,6 +23,7 @@ const cookies = new Cookies();
 const axios = require('axios');
 var first_name= cookies.get("first_name")
 var user_pic= cookies.get("user_pic")
+var user_uuid = cookies.get("uuid")
 
 function logout() {
   var allCookies = document.cookie.split(";");
@@ -30,20 +32,25 @@ function logout() {
  + new Date(0).toUTCString();
    window.location.href = '/';
 }
-function AdminNavbar(){
 
+function GetBrand(id){
+  debugger
+  var id = id;
+  cookies.set("get_brand", id.uuid , {path:"/"})
+  cookies.set("brand_name", id.brand_name , {path:"/"})
+  cookies.set("brand_cover", id.brand_cover,{path:"/"})
+  cookies.set("brand_logo", id.brand_logo,{path:"/"})
+  window.location="/brand-profile";
+}
+
+function AdminNavbar(){
+  const [show4, setShow4] = useState(false);
   const [isActive, setActive] = useState("false");
+  const[brands, setBrands] = useState([])
   const handleToggle = () => {
     setActive(!isActive);
   };
-
-
-
-
-
-
-
-
+  
   const [profilephoto, setProfilephoto]= useState(null)
     useEffect(() => {
         axios.get(BASE_URL+'authentication/getuser/'+cookies.get("uuid")).then(res=>{
@@ -55,10 +62,18 @@ function AdminNavbar(){
             // debugger
             console.log(err)            
         })
+
+        axios.get(BASE_URL+'authentication/getsupplier/'+ user_uuid )
+        .then(res=>{
+            setBrands(res.data.data)
+            console.log("------brands------")
+            console.log(res.data.data)
+        }).catch(err=>{
+            // $(".laoder").hide();
+            console.log(err)            
+        })
         
     },[])
-    // console.log("photo")
-    // console.log(profilephoto)
     return(
         <>
 
@@ -72,9 +87,18 @@ function AdminNavbar(){
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav" className="admin-nav-collapse">
     <Nav className="ml-auto">
-      <Nav.Link href="/admin_home">Home</Nav.Link>
 
-      <Nav.Link href="#home">My Brand</Nav.Link>
+    
+      <Nav.Link href="/admin_home">Home</Nav.Link>
+      
+      <NavDropdown title="My Brand" id="basic-nav-dropdown" className="menu-drop-1245">
+      {brands.map(brand=>(
+        <NavDropdown.Item onClick={()=>GetBrand(brand)} >{brand.brand_name}</NavDropdown.Item>))}
+        <NavDropdown.Divider />
+        <NavDropdown.Item href="" className="itm-drop-bt">  <button className="admin-add-btn"  onClick={() => setShow4(true)}> <i class="fa fa-plus" aria-hidden="true"></i> Add Brand </button> </NavDropdown.Item>
+      </NavDropdown>
+      {/* <Nav.Link href="/brand-profile">My Brand</Nav.Link> */}
+     
 
       <Nav.Link href="#home"><i class="fa fa-comments" aria-hidden="true"></i></Nav.Link>
      
@@ -88,6 +112,7 @@ function AdminNavbar(){
         <NavDropdown.Divider />
         <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
       </NavDropdown> */}
+      
 
     <Nav.Link href="#home" className="drop-menu"  onClick={handleToggle}>
       <div className="menu-profile-img-main">
@@ -119,7 +144,77 @@ function AdminNavbar(){
 
           </header>
 
+          <Modal
+        size="lg"
+        // dialogClassName="modal-90w"
+        show={show4}
+        onHide={() => setShow4(false)}
+        aria-labelledby="example-custom-modal-styling-title"
+        >
+            <Modal.Header closeButton>
+            <Modal.Title id="example-custom-modal-styling-title">
+            Add new brand
+            </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            <Container>
+                
+                <Row>
+                <Col xs={12} md={12}>
+                
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label  style={{marginTop: '0px'}}>Brand Name</Form.Label>
+                        <Form.Control type="text" id="brand_name" placeholder="abc" />
 
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label  style={{marginTop: '0px'}}>Location</Form.Label>
+                        <Form.Control type="text" id="brand_location" placeholder="abc" />
+
+                    </Form.Group>
+
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label  style={{marginTop: '0px'}}>Year founded</Form.Label>
+                      <Form.Control as="select" id="year">
+                        <option> 1 </option>
+                      {/* {years.map((year, index) => {
+                            return <option key={`year${index}`} value={year}>{year}</option>
+                        })
+                        } */}
+                      {/* <option>Select</option>
+                      <option>brand 1</option>
+                      <option>brand 2</option>
+                      <option>brand 3</option>
+                      <option>brand 3</option> */}
+                      </Form.Control>
+                  </Form.Group>
+
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label  style={{marginTop: '0px'}}>Revenue</Form.Label>
+                      <Form.Control as="select" id='revenue'>
+                      <option value="0M$-5M$">0M$-5M$</option>
+                      <option value="6M$-10M$">6M$-10M$</option>
+                      <option value="11M$-15M$">11M$-15M$</option>
+                      </Form.Control>
+                    
+                    {/* <p className="mt-2"> Buyers use this information to search for products </p> */}
+                  </Form.Group>
+
+                    
+                </Col>
+                {/* <Col xs={6} md={6}>
+                .col-xs-6 .col-md-4
+                </Col> */}
+            </Row>
+            </Container>
+            </Modal.Body>
+            <Modal.Footer>
+                <div className="col-md-12 text-center">
+                <button class="admin-add-btn f-w-500" >  <i class="fa fa-plus" aria-hidden="true"></i> Add Brand </button>
+                </div>
+            </Modal.Footer>
+      </Modal>
 
         </> 
     );
