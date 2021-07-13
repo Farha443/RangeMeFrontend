@@ -153,9 +153,9 @@ function BrandProfile() {
     }
         axios.get(url )
         .then(res=>{
-            setProducts(res.data.data.product)
+            // setProducts(res.data.data.product)
             setDetails(res.data.data)
-            // console.log(res.data.data.product)
+            console.log(res.data.data)
             // console.log("-------detail--------")
             // console.log(res.data.data.details)
         }).catch(err=>{
@@ -172,6 +172,7 @@ function BrandProfile() {
     }
 
     function DeleteProduct(id){
+        alert(id)
         var id = id
         var url = BASE_URL + 'product/delete_product/' + id;
         var config={
@@ -453,28 +454,28 @@ function BrandProfile() {
                                                                 </tr>
                                                             </thead>
 
-                                                            <tbody>{details.details ? details.details.map(product=>(
+                                                            <tbody>{details.details ? details.details.map(pd=>(
                                                                 <tr>
                                                                 
                                                                     <td>
                                                                         <NavLink to="/product_form" className="p-img-a">
                                                                         
                                                                             <div className="tbl-prod-img">
-                                                                                <img src={BASE_URL.slice(0,-5)+product.image} />
+                                                                                <img src={BASE_URL.slice(0,-5)+pd.image} />
                                                                             </div>
                                                                             
-                                                               {product.Product}
+                                                               {pd.Product}
                                                                </NavLink>
                                                                     </td>
                                                                     <td> <button className="border-btn"> Drafted </button> </td>
                                                                     <td className="pd-last-td">
                                                                         <button className="border-btn"> <NavLink to="/product_form"> Edit </NavLink>  </button>
-                                                                        <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(details.product.uuid)}> Delete </NavLink>  </button>
+                                                                         <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.pd_uuid)}> Delete </NavLink>  </button>
                                                                         <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
                                                                         <div className={isAct ? "drop-d-101 " : "drop-d-101 open-drop"}> 
                                                                             <ul>
-                                                                                <li> <NavLink to="/brand-profile">View product statistics </NavLink> </li>
-                                                                                <li> <NavLink to="/preview">Preview product</NavLink> </li>
+                                                                                <li> <NavLink to="/brand-profile">View product statistics 1 </NavLink> </li>
+                                                                                <li> <NavLink to="/preview">Preview product 1</NavLink> </li>
                                                                                 <li> <NavLink to="/brand-profile">Make a copy</NavLink> </li>
                                                                                 <li> <NavLink to="/brand-profile"> Delete product</NavLink> </li>
                                                                                
@@ -494,7 +495,7 @@ function BrandProfile() {
                                                                             Headphone
                                                                         </NavLink>
                                                                     </td> */}
-                                                                    {/* <td> <button className="border-btn"> Drafted </button> </td>
+                                                                    {/* <td> <button details.className="border-btn"> Drafted </button> </td>
                                                                     <td className="pd-last-td">
                                                                         <button className="border-btn"> <NavLink to="/product_form"> Edit </NavLink> </button>
                                                                         <button className="border-btn"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>

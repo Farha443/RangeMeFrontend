@@ -202,7 +202,7 @@ class Distribution extends React.Component {
             //     value: keyy
             // })
         }
-        debugger
+  
         var finalarray=[];
         finalarray.push(selling_Platform)
         finalarray.push(array)
@@ -243,7 +243,7 @@ class Distribution extends React.Component {
             country : country,
             state: state,
             distributors: distributors,
-            selling_Platform: finalarray,
+            // selling_Platform: finalarray,
             drop_ship : drop_ship,
             // allStorescheck: array,
             // noOfstores : array1,

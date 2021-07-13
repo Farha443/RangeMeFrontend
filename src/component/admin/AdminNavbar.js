@@ -34,7 +34,6 @@ function logout() {
 }
 
 function GetBrand(id){
-  debugger
   var id = id;
   cookies.set("get_brand", id.uuid , {path:"/"})
   cookies.set("brand_name", id.brand_name , {path:"/"})
