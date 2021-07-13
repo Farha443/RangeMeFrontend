@@ -104,6 +104,7 @@ function BrandProfile() {
     const[brands, setBrands] = useState([])
     const [cover, setCover] = useState(false);
     const [logo, setLogo] = useState(false);
+
     // const [search, setSearch] = useState("");
     const [filteredproduct, setFilteredProduct] = useState([]);
     // const [loading, setLoading] = useState(false);
@@ -137,6 +138,7 @@ function BrandProfile() {
             // $(".laoder").hide();
             console.log(err)            
         })
+        
         
     }
     ,[])
@@ -224,7 +226,7 @@ function BrandProfile() {
           })  
     }
 
-    function AddCover(){
+    async function AddCover(){
        var brand_cover = cover ? (cover.pictureFiles)[0] : "";
        var uuid = cookies.get('get_brand')
        var data= new FormData();
@@ -241,11 +243,13 @@ function BrandProfile() {
              },
            data:data,
        };
-       axios(config)
+      await axios(config)
          .then(res=>{
                 console.log(res.data.data)
-                alert("success")
+                // alert("success")
+                //
                 window.location = '/brand-profile'
+                setShow(false)
             }
             
             ).catch(err=>{
@@ -254,7 +258,7 @@ function BrandProfile() {
             })
     }
 
-    function AddLogo(){
+    async function AddLogo(){
        var brand_logo = logo ? (logo.pictureFiles)[0] : "";
        var uuid = cookies.get('get_brand')
        var data= new FormData();
@@ -271,10 +275,10 @@ function BrandProfile() {
              },
            data:data,
        };
-       axios(config)
+      await axios(config)
          .then(res=>{
                 console.log(res.data.data)
-                alert("success")
+                // alert("success")
                 window.location = '/brand-profile'
             }
             
@@ -292,11 +296,17 @@ function BrandProfile() {
 
                 <div className="clickable-cover-image__clickable-cover-image___Agsbi" data-tname="CoverImage">
                     <div className="cover-image__image-container___2tnKs">
-                        <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+cookies.get('brand_cover')} />
+                        {/* <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+cookies.get('brand_cover')} /> */}
+                        {brands.map(img=>(
+                            img.uuid===cookies.get('get_brand')?
+                        <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+ img.brand_cover} />:""
+                        ))}
+                        
                     </div>
                     <div className="clickable-cover-image__container___1Y72X">
                         <button className="clickable-cover-image__change-image___JnYhU" type="button" onClick={() => setShow(true)}>
-                            <div className="clickable-cover-image__change-image-hint___3NLUs"><img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src={BASE_URL.slice(0,-5)+cookies.get('brand_logo')}/>
+                            <div className="clickable-cover-image__change-image-hint___3NLUs">
+                                <img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src={BASE_URL.slice(0,-5)+cookies.get('brand_logo')}/>
                                 <div className="clickable-cover-image__change-image-text___1kIxy">Change cover image</div>
                             </div>
                         </button>
@@ -312,7 +322,9 @@ function BrandProfile() {
                             <div className="cover-md-01">
                                 <div className="cover-md-left-cont">
                                     <div className="cover-circle-img-d">
-                                        <img src={BASE_URL.slice(0,-5)+cookies.get('brand_logo')} />
+                                    {brands.map(img=>(
+                                      img.uuid===cookies.get('get_brand')?
+                                        <img src={BASE_URL.slice(0,-5)+img.brand_logo} />:""))}
                                         <div className="prof-img-btn">
                                             <button className="clickable-cover-image__change-image___JnYhU" type="button" onClick={() => setShow3(true)}>
                                                 <div className="clickable-cover-image__change-image-hint___3NLUs"><img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src="" />

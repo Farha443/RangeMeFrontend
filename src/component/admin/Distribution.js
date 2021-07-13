@@ -179,6 +179,7 @@ class Distribution extends React.Component {
     }
 
     async Submit(){
+        
         // $(".laoder").show()
         var country = this.state.country;
         var state = this.state.region;
@@ -220,13 +221,14 @@ class Distribution extends React.Component {
             }
         var distribution_location = this.state.dis_country;
         // var global_distribution = document.querySelector('.vehicle1 input[type=checkbox]:checked')
-        var global_distribution =  document.querySelector('#vehicle1:checked').value;
-        var check = document.querySelector('#vehicle1:checked').value;
+        // var global_distribution =  document.querySelector('#vehicle1:checked').value;
+
+        var check = document.querySelector('#vehicle1:checked');
         if (check != null) {
-            product_availability = check.value;
+            var global_distribution = check.value;
         }
         else {
-            product_availability = null;
+           var global_distribution = null;
         }
         var private_label = this.state.private_label;
         var storage_required = this.state.storage1

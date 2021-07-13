@@ -25,6 +25,10 @@ var first_name= cookies.get("first_name")
 var user_pic= cookies.get("user_pic")
 var user_uuid = cookies.get("uuid")
 
+
+const year = (new Date()).getFullYear()-50;
+const years = Array.from(new Array(80),(val, index) => index + year);
+
 function logout() {
   var allCookies = document.cookie.split(";");
    for (var i = 0; i < allCookies.length; i++)
@@ -176,11 +180,11 @@ function AdminNavbar(){
                     <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label  style={{marginTop: '0px'}}>Year founded</Form.Label>
                       <Form.Control as="select" id="year">
-                        <option> 1 </option>
-                      {/* {years.map((year, index) => {
+                        
+                      {years.map((year, index) => {
                             return <option key={`year${index}`} value={year}>{year}</option>
                         })
-                        } */}
+                        }
                       {/* <option>Select</option>
                       <option>brand 1</option>
                       <option>brand 2</option>
@@ -210,13 +214,58 @@ function AdminNavbar(){
             </Modal.Body>
             <Modal.Footer>
                 <div className="col-md-12 text-center">
-                <button class="admin-add-btn f-w-500" >  <i class="fa fa-plus" aria-hidden="true"></i> Add Brand </button>
+                <button class="admin-add-btn f-w-500" onClick={Submit}>  <i class="fa fa-plus" aria-hidden="true"></i> Add Brand </button>
                 </div>
             </Modal.Footer>
       </Modal>
 
         </> 
     );
+}
+
+function Submit(){
+  // $(".laoder").show(); 
+  // debugger
+  var brand_name = document.getElementById('brand_name').value;
+  var brand_location = document.getElementById('brand_location').value;
+  var year_founded = document.getElementById('year').value;
+  var annual_revenue = document.getElementById('revenue').value;
+  var url = BASE_URL + "authentication/createsupplier/";
+  var token = cookies.get('logintoken');
+  var uuid = cookies.get('sup_uuid');
+  var product_uuid = cookies.get('productuuid')
+  var userType = cookies.get('user_type');
+var config = {
+  method: 'post',
+  url: url,
+  headers: {
+    "Authorization": "Bearer " + token,
+  },
+  data:{
+      user_s : uuid,
+      product_name : product_uuid,
+      year_founded : year_founded,
+      annual_revenue: annual_revenue,
+      brand_name : brand_name,
+      comp_location : brand_location,
+
+    }
+
+};
+console.log(config)
+axios(config).then(res=>{
+    console.log(res.data.data)
+  cookies.set('uuid2', res.data.data.uuid, { path: '/' })
+  // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+  $(".laoder").hide(); 
+  window.location = '/admin_home'
+}
+
+).catch(err=>{
+  console.error(err);
+  $(".laoder").hide(); 
+window.location = "/brand-profile";
+})
 }
 
 export default AdminNavbar
