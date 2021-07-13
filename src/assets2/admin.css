@@ -2456,6 +2456,7 @@ a.admin-header-logo-main.navbar-brand img {
 .serv-comp-leftbar img {
     width: 100%;
     object-fit: cover;
+    height: 100%;
 }
 
 .serv-comp-title {

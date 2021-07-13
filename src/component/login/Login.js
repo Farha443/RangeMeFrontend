@@ -38,7 +38,7 @@ function Loginfunction() {
             cookies.set('user_pic', res.data.data.user_pic, { path: '/' });
             cookies.set('user_type', res.data.data.user_type, { path: '/' }); 
             // alert(res.data.data.user_pic)?
-            debugger
+            // debugger
             if(res.data.data.supplier){
               cookies.set('sup_uuid',res.data.data.supplier, { path: '/' } )
             }

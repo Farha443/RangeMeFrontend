@@ -53,6 +53,7 @@ var pictures = {}
 var ll = ''
 var addstate = ''
 // var val='';
+var childcategoryuuid =''
 function ServiceProfile(){
     const [show2, setShow2] = useState(false);
     
@@ -62,6 +63,7 @@ function ServiceProfile(){
     const [country, setCountry] = useState('');
     const [region, setRegion] = useState('');
     const [show4, setShow4] = useState(false);
+    const [show5, setShow5] = useState(false);
     const [color, setColor] = React.useState([]);
     const [isActive, setActive] = useState("false");
     const [user_pic, setUser_pic] = useState([]);
@@ -69,15 +71,42 @@ function ServiceProfile(){
     const [CategoryData, setCategoryData] = useState([]);
     const [SubCategoryData, setSubCategoryData] = useState([]);
     const [storage, setStorage] = useState('');
+    const [defaultCategoryData, setDefaultCategoryData] = useState([]);
+    const [promotionData, setPromotionData] = useState([]);
     
+    // var company_logo = cookies.set("comapnyLogo",ProfileData.company_logo,"/service-dashboard")
     useEffect(() => {
+        var url6 = BASE_URL+'authentication/promotion/';
         var url = BASE_URL+'authentication/createserprovider/';
-        var url1 = BASE_URL+'authentication/service-category/';
+        var url1 = BASE_URL+'authentication/service-category/' ;
         var config1 = {
             method: 'get',
             url: url1,
       
           };
+
+          var config6 = {
+            method: 'get',
+            url: url6,
+      
+          };
+          axios(config6).then(res=>{
+            // debugger
+            console.log("haroooooom")
+            // console.log(promotionData)
+            console.log(res.data)
+            if(res.data[0] === undefined){
+                setPromotionData([])
+            }
+            else{
+                setPromotionData(res.data[0])
+            }
+            
+            
+          }).catch(err=>{
+              console.log(err)            
+          })
+
         var config = {
           url:url,
           method:'get',
@@ -87,9 +116,34 @@ function ServiceProfile(){
         }
       }
           axios(config).then(res=>{
+          
+            //   console.log("debugger")
               setProfileData(res.data.data[0])
+              cookies.set('companyProfile', res.data.data[0].company_logo, { path: '/service-dashboard' }); 
+              
+            //   *************************************
+            
+            // debugger
+            var url1 = BASE_URL+'authentication/get-default-category/?childcategoryuuid='+res.data.data[0].s_category[0] ;
+            var config1 = {
+                method: 'get',
+                url: url1,
+              };
+              axios(config1).then(res=>{
+            //   debugger
+              setDefaultCategoryData(res.data.data)
+              console.log("yha dekh lo subcategoy")
+              console.log(res.data.data)
+            }).catch(err=>{
+                console.log(err)            
+            })
+          
+            
+            // **********************************
+
               setColor(res.data.data[0].brandcolor)
-            debugger
+            // debugger
+            
             console.log(res.data.data[0])
           }).catch(err=>{
               console.log(err)            
@@ -98,17 +152,19 @@ function ServiceProfile(){
       
           axios(config1).then(res=>{
             
-          debugger
+        //   debugger
           setCategoryData(res.data.data)
           console.log(res.data.data)
         }).catch(err=>{
             console.log(err)            
         })
+
+        
+        
       
         },{})
 
 
-    
 
 
    const selectCountry  = val => {
@@ -121,15 +177,109 @@ function ServiceProfile(){
       }
     
 
+    function EditPromotion(){
+        // debugger
+        var uuid = promotionData.uuid
+        const selected = document.querySelectorAll('#promotion_type option:checked');
+        var type_of_promotion = Array.from(selected).map(el => el.value);
+        var amount = document.getElementById("promotion_amount").value;
+        var description = document.getElementById("promotion_description").value;
+        var url5 = BASE_URL+'authentication/promotion/' + uuid + "/";
+
+        var data = {
+                "description":description,
+                "amount":amount,
+                "amount_type":type_of_promotion[0],
+                "promotion_user":cookies.get("uuid")
+
+            }
+        
+        var config5 = {
+                method: 'put',
+                url: url5,
+                data:data
+              };
+        axios(config5)
+          .then(pro => {
+            // alert("success")
+            
+            window.location = "/service-company-profile"
+            setShow5(false)
+            
+          }
+          )
+          .catch(err => {
+            console.log(err);
+          })
+        
+
+    }
+
+    function DeletePromotion(){
+        debugger
+        var uuid = promotionData.uuid
+        var url7 = BASE_URL+'authentication/promotion/'+uuid +"/";
+        var config7 = {
+            method: 'delete',
+            url: url7,
+           
+          };
+       
+        axios(config7)
+        .then(pr => {
+          // alert("success")
+          
+          window.location = "/service-company-profile"
+          setShow5(false)
+          
+        }
+        )
+        .catch(err => {
+          console.log(err);
+        })
+
+    }
 
 
-   
+    function CreatePromotion(){
+        // debugger
+        const selected = document.querySelectorAll('#promotion_type option:checked');
+        var type_of_promotion = Array.from(selected).map(el => el.value);
+        var amount = document.getElementById("promotion_amount").value;
+        var description = document.getElementById("promotion_description").value;
+        var url5 = BASE_URL+'authentication/promotion/';
+
+        var data = {
+                "description":description,
+                "amount":amount,
+                "amount_type":type_of_promotion[0],
+                "promotion_user":cookies.get("uuid")
+
+            }
+        
+        var config5 = {
+                method: 'post',
+                url: url5,
+                data:data
+              };
+        axios(config5)
+          .then(pro => {
+            // alert("success")
+            setPromotionData(pro.data)
+            setShow3(false)
+            
+          }
+          )
+          .catch(err => {
+            console.log(err);
+          })
+    }
 
 
 
     function ChangeSelect(e){
         $('input:checked').prop('checked',false);
-        debugger
+        // debugger
         var url4 = BASE_URL+'authentication/service-category/?uuid='+e.target.value;
         var config1 = {
                 method: 'get',
@@ -145,11 +295,8 @@ function ServiceProfile(){
           })
         }
 
-    
-
-
     const servicechnge  = val =>{ 
-       debugger
+    //    debugger
        console.log(storage)
         setStorage(val.target.value)
         console.log(storage)
@@ -168,14 +315,12 @@ function ServiceProfile(){
 
 
     function chhosePhotos(pictureFiles){
-        debugger
+        // debugger
         pictures = {}
         for (let i = 0; i < pictureFiles.length; i++) {
             pictures[i] = pictureFiles[i]
           }
     }
-
-
 
     function setLink(){
        
@@ -186,31 +331,20 @@ function ServiceProfile(){
     }
 
 
-    
-   
     function SaveSection1(){
-
         debugger
-
-        
-        
         var brandcolor = color
         var company_name = document.getElementById('company-name').value; 
         var website_url = document.getElementById('website-url').value; 
         var company_logo = document.getElementById('user_pic').files[0] ? document.getElementById('user_pic').files[0] : '';
         var short_des = document.getElementById('short_des').value;
         var full_des = document.getElementById('full_des').value;
-
-
         var array22 = []
         var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
         for (var i = 0; i < checkboxes.length; i++) {
             array22.push(checkboxes[i].value)
         }
-        // console.log(value_tested)
-        // var service_area = value_tested
-
-
+       
         if (storage === "true"){
           var service_area = country+"/"+region 
         }
@@ -218,10 +352,8 @@ function ServiceProfile(){
           var service_area = storage
         }
 
-        
-
         var url = BASE_URL +'authentication/createserprovider/'
-        debugger
+        // debugger
         var video_link = ll;
         var data = new FormData();
         $.each(pictures, function(index, value) {
@@ -263,14 +395,6 @@ function ServiceProfile(){
             })
 
     }
-
-
-
-
-   
-
-  
-
 
 
       
@@ -495,7 +619,7 @@ function ServiceProfile(){
                         <Col md="12">
                         <Card>
 
-                {/* <Card.Body>
+                <Card.Body>
                     <div className="product-form-main">
 
                         <div className="p-inside-title">
@@ -505,26 +629,29 @@ function ServiceProfile(){
 
                         <div className="overview-form">
 
-                        <Row>
+                    <Row>
                             <Col xs={12} md={12} className="m-auto">
                              
                                 <Form.Label>Offer a promotion to attract more views and incentivize customers.</Form.Label>      
+                              <br></br>{promotionData.length === 0 ? <InputGroup.Text class="btn btn-success"  onClick={() => setShow3(true)}>Add Promotion</InputGroup.Text>:''}
                                
-                                <InputGroup className="mb-3">
+                               
+                              {promotionData.length !== 0  ? <InputGroup className="mb-3">
                                     <InputGroup.Prepend>
-                                        <InputGroup.Text>20%</InputGroup.Text>
+                                       {promotionData.amount_type === "percent" ? <InputGroup.Text>{promotionData.amount}% off</InputGroup.Text>:<InputGroup.Text>${promotionData.amount} off</InputGroup.Text>}
                                       
                                     </InputGroup.Prepend>
                                    
                                     <FormControl
+                                    defaultValue={promotionData.description}
                                     placeholder="Recipient's username"
                                     aria-label="Amount (to the nearest dollar)"
                                     />
                                     <InputGroup.Append>
-                                    <InputGroup.Text className="curs" onClick={() => setShow3(true)}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></InputGroup.Text>
+                                    <InputGroup.Text className="curs" onClick={() => setShow5(true)}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></InputGroup.Text>
                                     <InputGroup.Text className="curs" onClick={() => setShow4(true)}><i class="fa fa-trash-o" aria-hidden="true"></i></InputGroup.Text>
                                     </InputGroup.Append>
-                                </InputGroup>
+                                </InputGroup>:''}
                             </Col>
 
                         </Row>
@@ -533,7 +660,7 @@ function ServiceProfile(){
 
                             </div>
 
-                        </Card.Body> */}
+                        </Card.Body>
                         </Card>
                         </Col>
                     </Row>
@@ -549,15 +676,22 @@ function ServiceProfile(){
 
                         <div className="p-inside-title">
                             <h5> Services  </h5>
-
                         </div>
 
+                        <div>your selected catetory
+                            <div>
+
+
+                            -->Category : {defaultCategoryData.category_name}
+                            <br></br>------->Sub_Category : {defaultCategoryData.sub_category_name}
+                            
+                            </div>
+                            
+                        </div>
                         <div className="overview-form">
 
                         <Row>
                             <Col xs={12} md={12} className="m-auto">
-                             
-                            
                                 <Form.Group controlId="exampleForm.ControlSelect1">
                                     <Form.Label>Select your service category</Form.Label>
                                     <Form.Control onClick={ChangeSelect} as="select" id="department">
@@ -685,7 +819,7 @@ function ServiceProfile(){
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-custom-modal-styling-title">
-                    <h5 style={{ marginBottom: '0px' }}> Edit a promotion </h5>
+                    <h5 style={{ marginBottom: '0px' }}>Promotion </h5>
                     
             </Modal.Title>
                 </Modal.Header>
@@ -703,13 +837,12 @@ function ServiceProfile(){
                             
                             <Col xs={12} md={6} className="m-auto">
                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                <Form.Label>Example select</Form.Label>
-                                <Form.Control as="select">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <Form.Label>Type of promotion</Form.Label>
+                                <Form.Control id="promotion_type" defaultValue={promotionData.amount_type ? promotionData.amount_type : ''} as="select">
+                                   
+                                <option value="percent" >%Discount</option>
+                                <option value="doller">$ Discount</option>
+                                
                                 </Form.Control>
                             </Form.Group>
                                
@@ -717,16 +850,16 @@ function ServiceProfile(){
 
                             <Col xs={12} md={6} className="m-auto">
                             <Form.Group controlId="formBasicEmail"> 
-                                <Form.Label >Video URL</Form.Label>      
-                                    <Form.Control type="text" placeholder=""/>
+                                <Form.Label>Amount</Form.Label>      
+                                    <Form.Control id="promotion_amount" defaultValue={promotionData.amount ? promotionData.amount : '' } type="number" min="0" max="99" placeholder=""/>
                                 </Form.Group>
                             </Col>
 
 
                             <Col xs={12} md={12} className="m-auto">
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                                    <Form.Label style={{marginTop: '0.5rem'}}>Example textarea</Form.Label>
-                                    <Form.Control as="textarea" rows={3} />
+                                    <Form.Label style={{marginTop: '0.5rem'}}>Description (optional)</Form.Label>
+                                    <Form.Control id="promotion_description" defaultValue={promotionData.description ? promotionData.description : ''}  as="textarea" rows={3} />
                                 </Form.Group>
                             </Col>
 
@@ -735,10 +868,78 @@ function ServiceProfile(){
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button class="admin-add-btn "> Save promotion </button>
+                        <button class="admin-add-btn " onClick={CreatePromotion}> Save promotion </button>
                     </div>
                 </Modal.Footer>
             </Modal>
+
+
+            {/* ****************************************** */}
+            <Modal
+                size="lg"
+                centered
+                show={show5}
+                onHide={() => setShow5(false)}
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    <h5 style={{ marginBottom: '0px' }}>Promotion </h5>
+                    
+            </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
+
+                        <Row>
+                            <Col md={12} className="text-center">
+                            <p style={{margin: '0px'}}> Offer a promotion to get more visibility and attract customers.
+                        Promotions are only available to Premium and Pro suppliers </p>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            
+                            <Col xs={12} md={6} className="m-auto">
+                            <Form.Group controlId="exampleForm.ControlSelect1">
+                                <Form.Label>Type of promotion</Form.Label>
+                                <Form.Control id="promotion_type" defaultValue={promotionData.amount_type ? promotionData.amount_type : ''} as="select">
+                                   
+                                <option value="percent" >%Discount</option>
+                                <option value="doller">$ Discount</option>
+                                
+                                </Form.Control>
+                            </Form.Group>
+                               
+                            </Col>
+
+                            <Col xs={12} md={6} className="m-auto">
+                            <Form.Group controlId="formBasicEmail"> 
+                                <Form.Label>Amount</Form.Label>      
+                                    <Form.Control id="promotion_amount" defaultValue={promotionData.amount ? promotionData.amount : '' } type="number" min="0" max="99" placeholder=""/>
+                                </Form.Group>
+                            </Col>
+
+
+                            <Col xs={12} md={12} className="m-auto">
+                                <Form.Group controlId="exampleForm.ControlTextarea1">
+                                    <Form.Label style={{marginTop: '0.5rem'}}>Description (optional)</Form.Label>
+                                    <Form.Control id="promotion_description" defaultValue={promotionData.description ? promotionData.description : ''}  as="textarea" rows={3} />
+                                </Form.Group>
+                            </Col>
+
+                        </Row>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="col-md-12 text-center">
+                        <button class="admin-add-btn " onClick={EditPromotion}> Save promotion </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+            {/* *********************************************** */}
+
+
 
             <Modal
                 size="md"
@@ -799,7 +1000,7 @@ Promotions get you more visibility and attract customers. </p>
                             </Col>
 
                             <div className="col-md-12 mt-3 text-center">
-                        <button class="btn btn-danger mr-3"> Delete</button>
+                        <button class="btn btn-danger mr-3" onClick={DeletePromotion}> Delete</button>
                         <button class="border-btn ">Cancel</button>
                     </div>
                         </Row>
