@@ -116,7 +116,7 @@ function ServiceProfile(){
         }
       }
           axios(config).then(res=>{
-            debugger
+            
               console.log("debugger")
               console.log(res.data.data[0])
 
@@ -218,7 +218,6 @@ function ServiceProfile(){
     }
 
     function DeletePromotion(){
-        debugger
         var uuid = promotionData.uuid
         var url7 = BASE_URL+'authentication/promotion/'+uuid +"/";
         var config7 = {
@@ -334,7 +333,7 @@ function ServiceProfile(){
 
 
     function SaveSection1(){
-        debugger
+        
         var brandcolor = color.hex;
         var company_name = document.getElementById('company-name').value; 
         var website_url = document.getElementById('website-url').value; 

@@ -25,7 +25,7 @@ const cookies = new Cookies();
 const axios = require('axios');
 cookies.get('sup_uuid')
 cookies.get('buy_uuid')
-
+var busssiness_type = ""
 class CompanyDetails extends React.Component {
      constructor(props) {
         super(props);
@@ -207,7 +207,7 @@ savechange(){
                 axios(config1).then(re => {
                     console.log(re.data.data)
                     this.setState({
-                    comp_location:re.data.data.comp_location,
+                    
                     comp_category: re.data.data.department,
                     // buss_type: re.data.data.busiess_type, 
                     // company_logo : re.data.data.company_logo,  
@@ -228,16 +228,17 @@ savechange(){
             axios(config2).then(re => {
                 // console.log('hello')
                 console.log(re.data.data)
-                debugger
+                busssiness_type=re.data.data.busiess_type
                 this.setState({
+                    
                     email: re.data.data.email,
                     comp_name: re.data.data.comp_name,
                     company_logo:re.data.data.company_logo,
-                    buss_type:re.data.data.buss_type,
+                    comp_location:re.data.data.comp_location,
                     
                 
                  });
-                 console.log("buss_type");
+                 console.log(this.state.busiess_type);
                     
                 })
                 .catch(err => {
@@ -348,7 +349,7 @@ savechange(){
                                             <div className="change-img-maind">
                                             {this.state.company_logo ?   
                                             <div className="pic-1101">
-                                                <img id="output" src={BASE_URL.slice(0,-5)+ this.state.getcat.company_logo} width="180px" height="120px" />
+                                                <img id="output" src={BASE_URL.slice(0,-5)+ this.state.company_logo} width="180px" height="120px" />
                                             
                                                 </div>
                                                 : <img className="" id="output" width="180px" height="120px" src=""/>}
@@ -402,7 +403,7 @@ savechange(){
                                             
                                             
                                                 <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Category</Form.Label>
+                                                {/* <Form.Label>Category</Form.Label> */}
                                                 {/* <Form.Control as="select" multiple="true" 
                                                 value={this.state.comp_category}
                                                 id="department" onChange={this.handleChange}>
@@ -421,25 +422,27 @@ savechange(){
 
                                             <Col md="6">
 
-                                                <Form.Group controlId="exampleForm.ControlSelect1">
+                                                <Form.Group  controlId="exampleForm.ControlSelect1">
                                                     <Form.Label>busiess_type</Form.Label>
-                                                    {/* <Form.Control id="busiess_type" as="select"
+                                                    <Form.Control id="busiess_type" as="select"
+                                                    
                                                     onChange={this.handleChange1}>
                                                     <option value="none">None</option>
                                                     <option value="manufacturer">manufacturer</option>
                                                     <option value="broker">broker</option>
                                                     <option value="reseller">reseller</option>
                                                     <option value="other">other</option>
-                                                    </Form.Control> */}
-                                                    <div className="select-container">
-                                                <select defaultValue={this.state.buss_type} onChange={this.handleChange1} id="busiess_type">
+                                                    </Form.Control>
+                                                    {/* <div className="select-container">
+                                                    
+                                                <select  onChange={this.handleChange1} id="busiess_type">
                                                 <option value="none">None</option>
                                                     <option value="manufacturer">manufacturer</option>
                                                     <option value="broker">broker</option>
                                                     <option value="reseller">reseller</option>
                                                     <option value="other">other</option>
                                                 </select>
-                                                </div>
+                                                </div> */}
                                                 </Form.Group>
 
                                                 </Col>
