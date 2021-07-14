@@ -1,12 +1,12 @@
 import React from 'react';
-
+import { Link,NavLink } from "react-router-dom";
 
 function Footer(){
     return(
         <>
 
 
-<footer id="footer" className="footer">
+<footer id="footer" className="footer" style={{display: "none"}}>
 <div className="footer__inner">
   <div className="footer__main">
     <a href="index.html" className="footer__logo">
@@ -74,6 +74,58 @@ function Footer(){
   </div>
 </div>
 </footer>
+
+<footer className="mn-footer footer">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-3 col-xs-12">
+                      <div className="ft-logo-mn">
+                      <img src="assets/images/footer-logo.png" />
+                      </div>
+                  </div>
+
+                  <div className="col-md-9 col-xs-12">
+                    <div className="ft-link-text-mn"> 
+                        <ul>
+                          <li> <NavLink to=""> anasayfa  </NavLink> </li>
+                          <li> <NavLink to=""> tedarikçiler   </NavLink> </li>
+                          <li> <NavLink to=""> alıcı firmalar   </NavLink> </li>
+                          <li> <NavLink to=""> hizmet sağlayıcılar   </NavLink> </li>
+                          <li> <NavLink to=""> blog    </NavLink> </li>
+                          <li> <NavLink to=""> hakkımızda  </NavLink> </li>
+                          <li> <NavLink to=""> gizlilik politikası   </NavLink> </li>
+                          <li> <NavLink to=""> iletişim   </NavLink> </li>
+
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div className="row">
+                  <div className="col-md-4 col-xs-12">
+                      <div className="ft-logo-mn cop-ft">
+                          <p> Copyright © 2021 <strong> TAYUSS </strong>  Tüm Hakları Saklıdır. </p>
+                      </div>
+                  </div>
+
+                  <div className="col-md-8 col-xs-12">
+                    <div className="ft-link-text-mn ft-scocial"> 
+                        <ul>
+                          <li> <NavLink to=""> <i class="fab fa-instagram"></i>  </NavLink> </li>
+                          <li> <NavLink to=""> <i class="fab fa-twitter"></i>  </NavLink> </li>
+                          <li> <NavLink to=""> <i class="fab fa-facebook-f"></i>  </NavLink> </li>
+                          <li> <NavLink to=""><i class="fab fa-youtube"></i>  </NavLink> </li>
+
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </footer>
 
 </>
     );

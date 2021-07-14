@@ -683,8 +683,8 @@ function ServiceProfile(){
                             <div>
 
 
-                            -->Category : {defaultCategoryData.category_name}
-                            <br></br>------->Sub_Category : {defaultCategoryData.sub_category_name}
+                            <h5>Category : {defaultCategoryData.category_name}</h5>
+                            <br></br><h6>Sub_Category : {defaultCategoryData.sub_category_name}</h6>
                             
                             </div>
                             

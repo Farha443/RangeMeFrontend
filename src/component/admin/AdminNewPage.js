@@ -203,7 +203,7 @@ handleChange2(event) {
   return (
     <>
 
-<AdminNavbar />
+{/* <AdminNavbar /> */}
 
     <section className="ad-pad-sec">
         

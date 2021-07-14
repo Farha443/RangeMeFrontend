@@ -75,24 +75,6 @@ var userTypeTitle=cookies.get('userType');
         $(".laoder").hide();
       window.location = "company_form_one";
       })
-    //   axios.post( BASE_URL + "authentication/createbuyer/",
-    
-    //       {
-    //         comp_type : comp_type,
-    //         job_title: job_title,
-    //         store_count: store_count,
-    //         comp_website: comp_website,
-    //         buss_address: buss_address,
-    //         sample_instruction:sample_instruction,
-
-    //       }).then(res=>{
-            // alert('Success')
-    //         // cookies.set('uuid', res.data, { path: '/' });
-            
-    //         window.location = "/company_form_two";
-    //       }).catch(err=>{
-    //         alert(err)
-    //       })
   }
 
 
