@@ -243,7 +243,7 @@ var config = {
   },
   data:{
       user_s : uuid,
-      product_name : product_uuid,
+      // product_name : product_uuid,
       year_founded : year_founded,
       annual_revenue: annual_revenue,
       brand_name : brand_name,

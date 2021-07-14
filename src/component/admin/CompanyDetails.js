@@ -188,7 +188,9 @@ savechange(){
           axios(config)
 
       .then(res => {
+        //   debugger
         this.setState({
+            
           getcat: res.data.data
         });
         
@@ -207,8 +209,8 @@ savechange(){
                     this.setState({
                     comp_location:re.data.data.comp_location,
                     comp_category: re.data.data.department,
-                    buss_type: re.data.data.busiess_type, 
-                    company_logo : re.data.data.company_logo,  
+                    // buss_type: re.data.data.busiess_type, 
+                    // company_logo : re.data.data.company_logo,  
                     });
                 })
                 .catch(err => {
@@ -226,9 +228,17 @@ savechange(){
             axios(config2).then(re => {
                 // console.log('hello')
                 console.log(re.data.data)
+                debugger
                 this.setState({
                     email: re.data.data.email,
-                    comp_name: re.data.data.comp_name, });
+                    comp_name: re.data.data.comp_name,
+                    company_logo:re.data.data.company_logo,
+                    buss_type:re.data.data.buss_type,
+                    
+                
+                 });
+                 console.log("buss_type");
+                    
                 })
                 .catch(err => {
                 // alert(err);
@@ -338,7 +348,7 @@ savechange(){
                                             <div className="change-img-maind">
                                             {this.state.company_logo ?   
                                             <div className="pic-1101">
-                                                <img id="output" src={BASE_URL.slice(0,-5)+ this.state.company_logo} width="180px" height="120px" />
+                                                <img id="output" src={BASE_URL.slice(0,-5)+ this.state.getcat.company_logo} width="180px" height="120px" />
                                             
                                                 </div>
                                                 : <img className="" id="output" width="180px" height="120px" src=""/>}
@@ -399,12 +409,12 @@ savechange(){
                                                 {this.state.getcat.map(cat=>(  
                                                 <option value={cat.uuid}>{cat.name}</option>))}
                                                 </Form.Control> */}
-                                                <div className="select-container">
+                                                {/* <div className="select-container">
                                                 <select value={this.state.comp_category} onChange={this.handleChange}  id = "department">
-                                                {this.state.getcat.map(cat=>( 
+                                                {this.state.map(cat=>( 
                                                    <option value={cat.uuid}>{cat.name}</option>))}
                                                 </select>
-                                                </div>
+                                                </div> */}
                                                 
                                             </Form.Group>
                                             </Col>
@@ -422,7 +432,7 @@ savechange(){
                                                     <option value="other">other</option>
                                                     </Form.Control> */}
                                                     <div className="select-container">
-                                                <select value={this.state.buss_type} onChange={this.handleChange1} id="busiess_type">
+                                                <select defaultValue={this.state.buss_type} onChange={this.handleChange1} id="busiess_type">
                                                 <option value="none">None</option>
                                                     <option value="manufacturer">manufacturer</option>
                                                     <option value="broker">broker</option>

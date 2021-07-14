@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../../assets2/admin.css';
-import AdminNavbar from '../AdminNavbar'
-import BrandLogoHome from '../BrandLogoHome';
+import '../../assets2/admin.css';
+// import AdminNavbar from '../admin/AdminNavbar'
+// import BrandLogoHome from '../BrandLogoHome';
 import {
   Jumbotron,
   Button,
@@ -21,15 +21,17 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import useState from 'react-hook-use-state';
-
-
+import ServiceNavbar from './ServiceNavbar';
+import Cookies from 'universal-cookie';
+import BASE_URL from '../base';
+const cookies = new Cookies();
 function ServiceProviderDashboard(){
    
     const [isActive, setActive] = useState("false");
    
     return(
         <>
-            <AdminNavbar/>
+            <ServiceNavbar/>
 
            
                 <div className="admin-container">
@@ -42,23 +44,23 @@ function ServiceProviderDashboard(){
             <div className="rgm-right-bar serv-p-side-left">
 
                 <div className="serv-comp-leftbar">
-                    <img src="assets/images/brand-logo.jpg" />
+                    <img src={BASE_URL.slice(0,-5)+cookies.get('companyProfile')}   />
                 </div> 
 
                 <div className="serv-comp-title">
                     <h5> Company Name  </h5>
                 </div>
-
+                {/* <img src={BASE_URL.slice(0,-5)+cookies.get('companyProfile')} width="150px" height='200px'/> */}
                 <div className="p-text-45878">
                     <span className="span-1"> Preview :</span>
                     <span className="span-2">
-                        <NavLink to=""> Profile </NavLink>
+                        <NavLink to="/service-company-profile"> Profile </NavLink>
                         <NavLink to=""> search Listing </NavLink>
                     </span>
                 </div>
 
                 <div className="serv-com-btn-m">
-                    <button className="admin-add-btn"> Complete Profile </button>
+                    <button className="admin-add-btn"> <NavLink to="/service-company-profile">Complete Profile  </NavLink></button>
                 </div>
 
                 <div className="p-text-45878 text-center">

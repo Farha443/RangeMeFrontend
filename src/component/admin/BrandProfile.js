@@ -156,10 +156,11 @@ function BrandProfile() {
         axios.get(url )
         .then(res=>{
             // setProducts(res.data.data.product)
+            // debugger
             setDetails(res.data.data)
             console.log(res.data.data)
-            // console.log("-------detail--------")
-            // console.log(res.data.data.details)
+            console.log("-------detail--------")
+            console.log(res.data.data.details)
         }).catch(err=>{
             // $(".laoder").hide();
             console.log(err)            

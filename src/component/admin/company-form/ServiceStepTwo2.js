@@ -126,6 +126,7 @@ var region_value = ''
       
 
     async Submit(){
+      debugger
         var array = []
         var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
         for (var i = 0; i < checkboxes.length; i++) {
