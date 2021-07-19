@@ -7324,7 +7324,7 @@ a.header-bar__logo.active {
 
 section.banner-section {
     padding: 120px 0px;
-    /* background-image: url(../assets/images/banner-1.jpg); */
+   
     background-size: 100% 100%;
     position: relative;
     height: 620px;
@@ -7632,7 +7632,7 @@ section.mid-banner-section:before {
 
 section.mid-banner-section {
     padding: 4rem 0px;
-    background-image: url(../assets/images/midd-banner.jpg);
+    /* background-image: url(../assets/images/midd-banner.jpg); */
     height: 300px;
     background-size: 100%;
     position: relative;
@@ -7766,13 +7766,24 @@ section.btm-banner-section:before {
     background: #ffc536a1;
 }
 
+.hm-slider-section .two-sliders {
+    width: 50%;
+    display: inline-block;
+}
+
+.hm-slider-section .slick-slide.slick-active.slick-current {
+    width: 100% !important;
+}
+.hm-slider-section .slick-track {
+    width: 100% !important;
+}
 section.btm-banner-section {
     padding: 1rem 0px;
     height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../assets/images/btm-banner.jpg);
+    /* background-image: url(../assets/images/btm-banner.jpg); */
     background-size: cover;
     position: relative;
 }

@@ -14,6 +14,8 @@ import Preview from './component/admin/Preview';
 import ProductDetail from './component/admin/ProductDetail ';
 import ProductForm from './component/admin/ProductForm';
 import Home from './component/home/Home';
+import Homeold from './component/home/Homeold';
+
 import Login from './component/login/Login';
 import Signup from './component/signup/Signup';
 import base from './component/base';
@@ -50,6 +52,7 @@ function Routes(){
             <Switch>
                 <Route exact path="/team_access" component={TeamAccess}></Route>
                 <Route exact path="/" component={Home}></Route>
+                <Route exact path="/homeold" component={Homeold}></Route>
                 <Route exact path="/login" component={Login}></Route>
                 <Route exact path="/signup" component={Signup}></Route>
                 <Route exact path="/service_step_one" component={ServiceStepOne}></Route>
