@@ -25,7 +25,7 @@ const cookies = new Cookies();
 const axios = require('axios');
 cookies.get('sup_uuid')
 cookies.get('buy_uuid')
-var busssiness_type = ""
+// var busssiness_type = ""
 class CompanyDetails extends React.Component {
      constructor(props) {
         super(props);
@@ -76,7 +76,8 @@ savechange(){
         var array = Array.from(selected).map(el => el.value);
         var busiess_type = document.getElementById('busiess_type').value;
         var company_logo = document.getElementById('company_logo').files[0];
-        var url = BASE_URL+'authentication/createsupplier/'
+        // var url = BASE_URL+'authentication/createsupplier/'
+        var url = BASE_URL+'authentication/signup/';
         var uuid = cookies.get('sup_uuid');
         var userType = cookies.get('user_type');
         var data = new FormData();
@@ -178,7 +179,6 @@ savechange(){
         }
         
         var user_uuid = cookies.get('uuid')
-        
         var url3 = BASE_URL + 'authentication/getuser/' + user_uuid+'/';
         var config = {
             method: 'get',
@@ -224,21 +224,21 @@ savechange(){
                 url: url3,     
                 
             };
-        
+            
             axios(config2).then(re => {
-                // console.log('hello')
+                console.log('hello')
                 console.log(re.data.data)
-                busssiness_type=re.data.data.busiess_type
                 this.setState({
                     
                     email: re.data.data.email,
                     comp_name: re.data.data.comp_name,
                     company_logo:re.data.data.company_logo,
                     comp_location:re.data.data.comp_location,
+                    buss_type:re.data.data.busiess_type,
                     
                 
                  });
-                 console.log(this.state.busiess_type);
+                //  alert(this.state.buss_type)
                     
                 })
                 .catch(err => {
@@ -424,7 +424,7 @@ savechange(){
 
                                                 <Form.Group  controlId="exampleForm.ControlSelect1">
                                                     <Form.Label>busiess_type</Form.Label>
-                                                    <Form.Control id="busiess_type" as="select"
+                                                    <Form.Control id="busiess_type" as="select" value={this.state.buss_type}
                                                     
                                                     onChange={this.handleChange1}>
                                                     <option value="none">None</option>
@@ -446,10 +446,6 @@ savechange(){
                                                 </Form.Group>
 
                                                 </Col>
-
-                                          
-
-                                        
                                     
                                             <Col md="12" className="text-center">
                                             <button class="admin-add-btn" onClick={cookies.get('sup_uuid')?()=>this.savechange():()=>this.savebuyer()}>   Save Changes  </button>

@@ -37,34 +37,14 @@ const colourOptions=[
     { value: 'Green', label: 'Green' },
 ]
 var Product_Name = cookies.get("product_name")
+// var tt = {}
+
 function Marketing() {
 
     const [image, setImage] = useState();
+    const[market, setMarket] = useState([]);
+    const[budget, setBudget] = useState([]);
 
-    // $("button").click(function() {
-    //     debugger
-    //     var op = $(this).val();
-    //     var element = document.getElementsByClassName(op);
-    //     $(element).remove();
-    //     // $("button").remove();
-        
-       
-    // });
-
-
-    //   function handleAdd() {
-    //     debugger
-    //     var inputtag = "<input  class='"+counter+"'/>" 
-    //     // var buttontag = "<button className='admin-add-btn' type='button' onClick={() => handleremove(counter)}>"+remove+"</button>"
-    //     document.getElementById('inputDiv').innerHTML += inputtag;
-    //     var button = "<button class='"+counter+"' value='"+counter+"'>remove</button>" 
-    //     document.getElementById('inputDiv').innerHTML += button;
-    //     setCounter(counter + 1);
-
-    //   }
-
-     
-    
     function onDrop(pictureFiles, pictureDataURLs) {
         // debugger
         // alert(pictureFiles)
@@ -72,6 +52,20 @@ function Marketing() {
             pictureFiles
         });
     }
+
+
+    // ----------get product marketing--------------//
+    var url1 = BASE_URL+'product/get_pmarket/'+ cookies.get('productuuid');    
+
+    useEffect(() => {
+        axios.get(url1).then(res=>{
+           setMarket(res.data.data)
+        }).catch(err=>{
+            console.log(err)            
+        })
+    },[])
+   
+
 
    function save(){
         // debugger
@@ -85,7 +79,8 @@ function Marketing() {
         var product_images =  image ? (image.pictureFiles)[0] : "";
         var product_videos = document.getElementById('product_videos').value;
 
-        var url = BASE_URL+"product/product_marketing/"
+        var url = BASE_URL+"product/product_marketing/";
+        
         var token = cookies.get("token")
 
         var data= new FormData();
@@ -94,7 +89,7 @@ function Marketing() {
         data.append('product_images', product_images);
         data.append('product_videos', product_videos);
         
-
+// ------- post product marketing ------------//
         var config = {
             method: 'post',
             url: url,
@@ -107,15 +102,56 @@ function Marketing() {
 
         axios(config)
         .then(res=>{
-                 
-                    // alert("product marketing is created");
-                 window.location = "admin_home"
-                }).catch(err=>{
-                  // alert(err)
-                })
-
-
+            window.location = "admin_home"
+        }).catch(err=>{
+        })
     }
+
+
+    function Edit(){
+        // debugger
+        var product_marketing = cookies.get("product_uuid")
+
+
+        const selected = document.querySelectorAll('#promotional_budget option:checked');
+        var array = Array.from(selected).map(el => el.value);
+
+        var promotional_budget = array[0]
+        var product_images =  image ? (image.pictureFiles)[0] : "";
+        var product_videos = document.getElementById('product_videos').value;
+
+        var url = BASE_URL+"product/product_marketing/";
+        
+        var token = cookies.get("token")
+
+        var data= new FormData();
+        data.append('product_marketing', product_marketing);
+        data.append('promotional_budget', promotional_budget);
+        data.append('product_images', product_images);
+        data.append('product_videos', product_videos);
+        
+// ------- Edit product marketing ------------//
+        var config = {
+            method: 'post',
+            url: url,
+            headers: {
+                'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                "Authorization": "Bearer" + token,
+              },
+            data:data
+        }
+
+        axios(config)
+        .then(res=>{
+            window.location = "admin_home"
+        }).catch(err=>{
+        })
+    }
+
+    // function handleChange1(v) {
+    //     setBudget({ budget: v.target.value });
+    // }
+    const handleChange = e => setBudget({...budget, [e.target.name]: e.target.value})
 
 
 
@@ -222,7 +258,7 @@ function Marketing() {
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Promotional budget</Form.Label>
-                                                <Form.Control as="select" id="promotional_budget" className="" >
+                                                <Form.Control as="select" id="promotional_budget" value={market.promotional_budget} onChange={e => handleChange(e)} className=""  >
                                                <option value="Zero">Zero</option>
                                                     <option value="$25k - $50k">$25k - $50k</option>
                                                     <option value="$50k - $200k">$50k - $200k</option>
@@ -235,16 +271,16 @@ function Marketing() {
 
                                             <Col md="6" >
                                             <Form.Label>Product Image</Form.Label>
-                                               
-                                                <ImageUploader
+                                               <img src={BASE_URL.slice(0,-5)+ market.product_images} />
+                                                {/* <ImageUploader
                                                         id="id"
                                                         withIcon={false}
                                                         buttonText='Add Image'
                                                         onChange={onDrop}
-                                                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                                        imgExtension={['.jpg', '.gif', '.png', '.gif','jpeg']}
                                                         maxFileSize={5242880}
                                                         withPreview={true}
-                                                />
+                                                /> */}
                                             </Col>
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">

@@ -356,7 +356,8 @@ function Home(){
                   </div>
               </section>
               
-              <section className="mid-banner-section">
+              <section className="mid-banner-section" style={{}}>
+              
                   <div className="container">
                     <div className="row">
                       <div className="col-md-12 col-xs-12"> 

@@ -97,7 +97,7 @@ function Home(){
                                 <i className="fa fa-user-o" aria-hidden="true" />
                               </div>
                               <span className="stats__value blue-text">{stats.num}</span>
-                              <p className="stats__description">{stats.content}</p>
+                              {/* <p className="stats__description">{stats.content}</p> */}
                             </div>))}
 
                             {!home.stats && 

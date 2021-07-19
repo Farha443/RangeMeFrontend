@@ -34,105 +34,24 @@ const colourOptions=[
 
 const axios = require('axios');
 const cookies = new Cookies();
-//  alert(cookies.get("uuid"))
-
-function Func() {
-    var email = document.getElementById('email').value;
-    var sender = cookies.get("uuid")
-    var role = document.getElementById('Role').value;
-    // var tt = document.getElementById('text1').text;
-    if (role === "custom"){
-    if (document.getElementById('text1').textContent === "undefined"){
-        var brands_products = "null"
-    }
-    else{
-        var brands_products = document.getElementById('text1').textContent ;
-    }
-
-    if (document.getElementById('text2').textContent  === "undefined"){
-        var messaging = "null"
-    }
-    else{
-        var messaging = document.getElementById('text2').textContent ;
-    }
-
-    if (document.getElementById('text3').textContent  === "undefined"){
-        var company_setting = "null"
-    }
-    else{
-        var company_setting = document.getElementById('text3').textContent ;
-    }
-    if (document.getElementById('text4').textContent  === "undefined"){
-        var lead_tracker = "null"
-    }
-    else{
-        var lead_tracker = document.getElementById('text4').textContent ;
-    }
-    }
-   
-    
-    var custom_message=document.getElementById('custom_message').value;
-    if (document.getElementById("specific").checked === true){
-        const selected = document.querySelectorAll('#accessand option:checked');
-        var array = Array.from(selected).map(el => el.value);
-        
-    };
-    if(document.getElementById("all").checked === true){
-        var array= "all"
-    }
-    
-       
-    // var array1 = []
-    //     var department = document.querySelectorAll('#role');
-    //     for (var i = 0; i < department.length; i++) {
-    //         array1.push(department[i].value)
-    // }
- 
-    console.log(array)
-    axios.post( BASE_URL + "authentication/useraccess/",
-        {
-            email : email,
-            access_brand :array,
-            role: role,
-            custom_message:custom_message,
-            brands_products: brands_products,
-            messaging: messaging,
-            company_setting: company_setting,
-            lead_tracker:lead_tracker,
-            sender:sender
-        })
-          
-         
-      
-}
-
 
 function TeamAccess() {
 
     function change1(id){        
-     
         document.getElementById('text1').textContent= id;
-      
     }
-    function change2(id){        
-        
-       
+
+    function change2(id){            
         document.getElementById('text2').textContent= id;
-        
     }
-    function change3(id){        
-        
-       
+
+    function change3(id){          
         document.getElementById('text3').textContent= id;
-        
     }
-    function change4(id){        
-        
+
+    function change4(id){           
         document.getElementById('text4').textContent= id;
-        
     }
-
-
 
     const [selectedClient,setSelectedClient] = useState([""]);
 
@@ -143,8 +62,10 @@ function TeamAccess() {
 
     const [show, setShow] = useState(false);
     const [showfield, setShowField] = useState(false);
-    // const onClick = () => setShowField(!showfield)
-    const [category, setCategory]= useState([])
+    const [category, setCategory]= useState([]);
+    const[brands, setBrands] = useState([]);
+    var user_uuid = cookies.get("uuid");
+
     useEffect(() => {
         axios.get(BASE_URL+'authentication/useraccess/').then(res=>{
             setCategory(res.data.data)
@@ -152,8 +73,91 @@ function TeamAccess() {
         }).catch(err=>{
             console.log(err)            
         })
-        console.log(category)
+
+        axios.get(BASE_URL+'authentication/getsupplier/'+ user_uuid )
+        .then(res=>{
+            setBrands(res.data.data)
+            console.log("------brands------")
+            console.log(res.data.data)
+        }).catch(err=>{
+            console.log(err)            
+        })
     },[])
+
+    function Func() {
+    
+        var email = document.getElementById('email').value;
+        var sender = cookies.get("uuid")
+        var role = document.getElementById('Role').value;
+        // var tt = document.getElementById('text1').text;
+        if (role === "custom"){
+        if (document.getElementById('text1').textContent === "undefined"){
+            var brands_products = "null"
+        }
+        else{
+            var brands_products = document.getElementById('text1').textContent ;
+        }
+    
+        if (document.getElementById('text2').textContent  === "undefined"){
+            var messaging = "null"
+        }
+        else{
+            var messaging = document.getElementById('text2').textContent ;
+        }
+    
+        if (document.getElementById('text3').textContent  === "undefined"){
+            var company_setting = "null"
+        }
+        else{
+            var company_setting = document.getElementById('text3').textContent ;
+        }
+        if (document.getElementById('text4').textContent  === "undefined"){
+            var lead_tracker = "null"
+        }
+        else{
+            var lead_tracker = document.getElementById('text4').textContent ;
+        }
+        }
+       
+        
+        var custom_message=document.getElementById('custom_message').value;
+        if (document.getElementById("specific").checked === true){
+            const selected = document.querySelectorAll('#accessand option:checked');
+            var array = Array.from(selected).map(el => el.value);
+            
+        };
+        if(document.getElementById("all").checked === true){
+            var array= "all"
+        }
+     
+        console.log(array)
+        var url = BASE_URL + "authentication/useraccess/";
+        var config = {
+            method : 'post',
+            url : url,
+            data : {
+                email : email,
+                access_brand :array,
+                role: role,
+                custom_message:custom_message,
+                brands_products: brands_products,
+                messaging: messaging,
+                company_setting: company_setting,
+                lead_tracker:lead_tracker,
+                sender:sender
+            }
+        };
+        axios(config).then(res=>{
+            console.log("---- User Access Data-----");
+            console.log(res.data.data);
+            setShow(!show); 
+        }
+        
+        ).catch(err=>{
+          console.error(err);
+        window.location = "/team_access";
+        })
+    }
     return (
         <>
             <AdminNavbar />
@@ -458,9 +462,9 @@ function TeamAccess() {
                       {showfield && <Form.Control as="select" id="accessand" multiple="true">
                     
                      
-                      {category.map(cat=>( 
-                    
-                       <option value={cat.uuid}>{cat.brands_name}</option>))}
+                      {/* {category.map(cat=>(  */}
+                        {brands.map(brand=>(    
+                       <option value={brand.uuid}>{brand.brand_name}</option>))}
                      
                       </Form.Control>}
                             

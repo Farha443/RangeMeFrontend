@@ -194,6 +194,10 @@ function BrandProfile() {
           })  
     }
     
+    function Redirect(uuid){
+        cookies.set('productuuid',uuid,{path:'/'});
+        window.location='/product_form/';
+      }
 
     function AddProduct(){
         // debugger
@@ -482,7 +486,8 @@ function BrandProfile() {
                                                                     </td>
                                                                     <td> <button className="border-btn"> Drafted </button> </td>
                                                                     <td className="pd-last-td">
-                                                                        <button className="border-btn"> <NavLink to="/product_form"> Edit </NavLink>  </button>
+                                                                        <button className="border-btn"> <NavLink to=""
+                                                                        onClick={()=>Redirect(pd.pd_uuid)}> Edit </NavLink>  </button>
                                                                          <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.pd_uuid)}> Delete </NavLink>  </button>
                                                                         <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
                                                                         <div className={isAct ? "drop-d-101 " : "drop-d-101 open-drop"}> 

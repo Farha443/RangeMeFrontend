@@ -65,8 +65,8 @@ function Header(){
      
     </NavLink>
     <div className="header-bar__actions">
-      <NavLink to="/admin_home" onClick={Click} className="header-bar__link">Satıcılar İçin</NavLink>
-      <a href="/admin_profile"  onClick={Click1} className="header-bar__link">Alıcılar İçin</a>
+      <a to="" onClick={Click} className="header-bar__link">Satıcılar İçin</a>
+      <a href="#"  onClick={Click1} className="header-bar__link">Alıcılar İçin</a>
       <a href="#"  onClick={Click2} className="header-bar__link">For Service Providers</a>
       {/* <div className="header-bar__divider" /> */}
       <div className="header-bar__link sub-nav__toggle">

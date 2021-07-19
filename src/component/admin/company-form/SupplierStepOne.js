@@ -67,11 +67,7 @@ var userTypeTitle=cookies.get('userType');
       })
        
     }
-
-
-
   
-
     async Submit(){
         $(".laoder").show(); 
         var year_founded = document.getElementById('year').value;

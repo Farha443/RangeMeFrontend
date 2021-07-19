@@ -50,6 +50,7 @@ class Distribution extends React.Component {
             value: 'coconut',
             already:[],
             options: [],
+            data2:[],
             }
 
             this.storageChange = this.storageChange.bind(this);
@@ -60,7 +61,6 @@ class Distribution extends React.Component {
             this.drop_ship = this.drop_ship.bind(this)
             this.handleChange = this.handleChange.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
-
             this.handleChange1 = this.handleChange1.bind(this);
             this.handleSubmit1 = this.handleSubmit1.bind(this);
       }
@@ -132,7 +132,8 @@ class Distribution extends React.Component {
     
           if ( this.state.already[i] === id) { 
       
-            this.state.already.splice(i, 1); 
+            this.state.already.splice(i, 1);
+            this.setState({already:this.state.already}) 
           }
       
       }
@@ -140,13 +141,14 @@ class Distribution extends React.Component {
       }
 
       handleSubmit1(event) {
-        // alert('Your favorite flavor is: ' + this.state.value);
         event.preventDefault();
       }
       async componentDidMount(){
         var url = BASE_URL+'product/getsellPlatform/';
         var url1 = BASE_URL + 'product/get_distributors/';
+        var url2 = BASE_URL+'product/get_pdis'+ "/"+cookies.get('productuuid');
         
+// ----------- get selling platforms----------// 
         var config = {
             method: 'get',
             url: url,
@@ -156,30 +158,52 @@ class Distribution extends React.Component {
         this.setState({
             options: res.data.data
         });
+        console.log("-----selling platforms-------")
         console.log(res.data.data);
       })
       .catch(err => {
         alert(err);
       })
-       
+
+
+    //----------- get distributors ----------//    
       var config1 = {
         method: 'get',
         url: url1,
     };
       axios(config1)
-  .then(res => {
+    .then(res => {
+        this.setState({
+        data1: res.data.data
+        });
+        console.log("------get distributors------")
+        console.log(res.data.data);
+    })
+    .catch(err => {
+        alert(err);
+    })
+
+// ---------- get product distrbution------------//
+    var config2 = {
+        method: 'get',
+        url: url2,
+    };
+    axios(config2)
+    .then(res => {
     this.setState({
-      data1: res.data.data
+    data2: res.data.data
     });
-    console.log(res.data.data);
-  })
-  .catch(err => {
+    console.log("------pd distribution-----")
+    console.clear()
+    console.log(this.state.data2);
+    // alert(this.state.data2.country)
+    })
+    .catch(err => {
     alert(err);
-  })
+    })
     }
 
     async Submit(){
-        
         // $(".laoder").show()
         var country = this.state.country;
         var state = this.state.region;
@@ -273,6 +297,104 @@ class Distribution extends React.Component {
       window.location = "/distribution";
       })
     }
+
+
+    async Edit(){
+        // $(".laoder").show()
+        var country = this.state.country;
+        var state = this.state.region;
+        const selected = document.querySelectorAll('#distributors option:checked');
+        var distributors = Array.from(selected).map(el => el.value);
+        var selling_Platform =this.state.already;
+        var array = []
+        var checkboxes = document.querySelectorAll(' input#all_stores:checked')
+        for (var i = 0; i < checkboxes.length; i++) {
+            array.push(checkboxes[i].value)
+        }
+
+        var array1 = []
+        var checkboxes1 = document.querySelectorAll('input[type=number]')
+        for (var i = 0; i < checkboxes1.length; i++) {
+           array1.push(checkboxes1[i].value)
+        
+        //    array1.push(checkboxes1[i].parentElement.id)
+            // array1.push({
+            //     key: valuee ,
+            //     value: keyy
+            // })
+        }
+  
+        var finalarray=[];
+        finalarray.push(selling_Platform)
+        finalarray.push(array)
+        finalarray.push(array1)
+        console.clear()
+        console.log(finalarray)
+        var drop_ship = this.state.drop_ship;
+        var product_availability,
+            element = document.getElementById('product_availability');
+            if (element != null) {
+                product_availability = element.value;
+            }
+            else {
+                product_availability = null;
+            }
+        var distribution_location = this.state.dis_country;
+        // var global_distribution = document.querySelector('.vehicle1 input[type=checkbox]:checked')
+        // var global_distribution =  document.querySelector('#vehicle1:checked').value;
+
+        var check = document.querySelector('#vehicle1:checked');
+        if (check != null) {
+            var global_distribution = check.value;
+        }
+        else {
+           var global_distribution = null;
+        }
+        var private_label = this.state.private_label;
+        var storage_required = this.state.storage1
+        var url2 = BASE_URL+ 'product/create_product_distribution/';
+        var uuid = cookies.get('sup_uuid');
+        var userType = cookies.get('user_type');
+        var product = cookies.get('product_uuid');
+
+    var config = {
+        method: 'patch',
+        url: url2,
+        data:{
+            productName : product,
+            country : country,
+            state: state,
+            distributors: distributors,
+            // selling_Platform: finalarray,
+            drop_ship : drop_ship,
+            // allStorescheck: array,
+            // noOfstores : array1,
+            product_availability:product_availability,
+            distribution_location:distribution_location,
+            global_distribution:global_distribution,
+            private_label:private_label,
+            storage_required:storage_required,
+          }
+    
+      };
+      
+      await axios(config)
+      .then(res=>{
+    
+          console.log('-----------------------')
+          console.log(res.data.data)
+        // $(".laoder").hide(); 
+        window.location = '/marketing'
+      }
+      
+      ).catch(err=>{
+        alert(err);
+        // $(".laoder").hide(); 
+      window.location = "/distribution";
+      })
+    }
+
+
     handleToggle = () => {
         this.setState({ isActive: !this.state.isActive });
       };
@@ -384,9 +506,12 @@ class Distribution extends React.Component {
                                            <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>What country/region is your product manufactured in?</Form.Label>
                                                 
-                                                <CountryDropdown id="country" className="form-control"
-                                                    value={country}
+                                                <CountryDropdown id="country" 
+                                                className="form-control"
+                                                    value={this.state.data2.country ? this.state.data2.country : country}
+                                                    // defaultValue={this.state.data2.country ? this.state.data2.country : ''}
                                                     onChange={(val) => this.selectCountry(val)} />
+                                                   
                                         </Form.Group>                                
                                             </Col>
 
@@ -444,7 +569,8 @@ class Distribution extends React.Component {
                                                 
                                                 </Form.Control> */}
                                             </Form.Group>: ""}
-                                            {this.state.productAvailable === "false" ? <input class="form-control" id="product_availability" type="date"></input>:""}
+                                            {this.state.productAvailable === "false" ? <input class="form-control" id="product_availability" defaultValue={this.state.data2.product_availability}
+                                            type="date"></input>:""}
                                             </Col>
 
                                             <Col md="12" className="" >
@@ -499,8 +625,12 @@ class Distribution extends React.Component {
                                                         <div>
                                                         <label htmlFor="basic-url" className="lb">Can you drop-ship this product to consumers? </label>
                                                         </div>
-                                                        <Form.Check inline label="Yes" name="group9" type="radio" value="true" onClick={this.drop_ship}  />
-                                                        <Form.Check inline label="No" name="group9" type="radio" value="false" onClick={this.drop_ship}  />
+                                                        {this.state.data2.drop_ship === true ?
+                                                       <Form.Check inline label="Yes" name="group9" type="radio" value="true" defaultChecked onClick={this.drop_ship}  />: <Form.Check inline label="Yes" name="group9" type="radio" value="true"  onClick={this.drop_ship}  />}
+
+                                                        {this.state.data2.drop_ship === false ? <Form.Check inline label="No" name="group9" type="radio" value="false" defaultChecked onClick={this.drop_ship}  /> : <Form.Check inline label="No" name="group9" type="radio" value="false" onClick={this.drop_ship}  /> }
+                                                        
+                                                        
                                                     </div>
                                                 </Col>
                                             </Row>
@@ -511,8 +641,13 @@ class Distribution extends React.Component {
                                                         <div>
                                                         <label htmlFor="basic-url" className="lb">Is this product available for private label? </label>
                                                         </div>
-                                                        <Form.Check inline label="yes" name="group10" type="radio" value="true" onClick={this.private_label}  />
-                                                        <Form.Check inline label="No" name="group10" type="radio" value="false" onClick={this.private_label}  />
+                                                        {this.state.data2.private_label === true ?
+                                                        <Form.Check inline label="yes" name="group10" type="radio" value="true" defaultChecked onClick={this.private_label}  />:
+                                                        <Form.Check inline label="yes" name="group10" type="radio" value="true" onClick={this.private_label}  />}
+                                                         {this.state.data2.private_label === false ?
+                                                        <Form.Check inline label="No" name="group10" type="radio" value="false" defaultChecked onClick={this.private_label}  />:
+                                                        <Form.Check inline label="No" name="group10" type="radio" value="false" onClick={this.private_label}  />}
+
                                                     </div>
                                                 </Col>
          
@@ -523,13 +658,19 @@ class Distribution extends React.Component {
                                                         </div>
                                                         <Form.Check inline label="yes" name="group3" type="radio" value="true" onClick={this.storageChange}  />
                                                         <Form.Check inline label="No" name="group3" type="radio" value="false" onClick={this.storageChange}  />
+
                                                     </div>
                                                    {this.state.storage === "true" ?<div className="step-four-radio">
                                                         <div>
                                                         <label htmlFor="basic-url" className="lb">What type of storage is required?</label>
                                                         </div>
-                                                        <Form.Check inline label="Refrigerated" name="group6" type="radio" value="Refrigerated" onClick={this.storage1}  />
-                                                        <Form.Check inline label="Frozen" name="group6" type="radio" value="Frozen" onClick={this.storage1}  />
+                                                        {this.state.data2.storage_required === "Refrigerated" ?
+                                                        <Form.Check inline label="Refrigerated" name="group6" type="radio" defaultchecked value="Refrigerated" onClick={this.storage1}  />:<Form.Check inline label="Refrigerated" name="group6" type="radio"  value="Refrigerated" onClick={this.storage1}  />
+                                                        }
+                                                         {this.state.data2.storage_required === "Frozen" ?<Form.Check inline label="Frozen" defaultchecked name="group6" type="radio" value="Frozen" onClick={this.storage1}  />:
+                                                        <Form.Check inline label="Frozen" name="group6" type="radio" value="Frozen" onClick={this.storage1}  />}
+
+
                                                     </div>:""}
                                                 </Col>
                                                     
@@ -548,7 +689,9 @@ class Distribution extends React.Component {
 
                             <Col md="12" className="text-center mt-4 two-btn-main">
                             <button class="admin-add-btn"> <NavLink to="/products_detail"> Back </NavLink>    </button>
-                                 <button class="admin-add-btn"> <NavLink to="" onClick={() => this.Submit()}> Next </NavLink>  </button>
+                            {this.state.data2.length === 0  ? 
+                                 <button class="admin-add-btn"> <NavLink to="" onClick={() => this.Submit()}> Next </NavLink>  </button>:
+                                 <button class="admin-add-btn"> <NavLink to="" onClick={() => this.Edit()}> Update&Next </NavLink>  </button>}
                             </Col>
 
                         </Col>
