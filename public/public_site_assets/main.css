@@ -7459,19 +7459,24 @@ p.sect-2-t-2 {
 .logo-main-d ul li {
     display: inline-block;
     width: 16.2%;
+    height: 75px;
     position: relative;
 }
 
 .log-d-14254 {
     padding: 0px 15px;
+    width: 100%;
+    height: 100%;
 }
 
 .logo-main-d ul li .log-d-14254 img {
     width: 100%;
-    filter: grayscale(100%);
+    /* filter: grayscale(100%); */
+    height: 100%;
+    object-fit: contain;
 }
 
-.logo-main-d ul li:after {
+/* .logo-main-d ul li:after {
     content: "";
     position: absolute;
     top: 0;
@@ -7479,7 +7484,7 @@ p.sect-2-t-2 {
     width: 2px;
     height: 30px;
     background: #dce3ec;
-}
+} */
 
 .logo-main-d ul li:nth-last-child(1):after {
     content: "";
@@ -7707,10 +7712,10 @@ section.hm-slider-section {
 .slider-box-main {
     float: left;
     width: 100%;
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem;
     background: #ffff;
     box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
-    padding: 12px;
+    padding: 12px; */
 }
 
 .hm-slider-img-d {
@@ -7767,8 +7772,13 @@ section.btm-banner-section:before {
 }
 
 .hm-slider-section .two-sliders {
-    width: 50%;
+    width: 47%;
     display: inline-block;
+    margin-bottom: 10px;
+    background: #ffff;
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    padding: 10px;
+    margin-left: 15px;
 }
 
 .hm-slider-section .slick-slide.slick-active.slick-current {
@@ -7921,7 +7931,7 @@ footer.mn-footer {
 }
 p.slide-count {
     position: absolute;
-    top: -18px;
+    top: -30px;
     right: 75px;
     font-weight: 600;
     color: #7c96a0;
@@ -7935,4 +7945,27 @@ button.header-bar__cta.button.button--green {
 button.header-bar__cta.button.button--green i {
     font-size: 22px;
     padding-left: 0.8rem;
+}
+
+
+/************************* sk ************************/
+button.slide-prev i {
+    font-size: 32px;
+    margin-right: 5px;
+}
+button.slide-next i {
+    font-size: 32px;
+    margin-left: 5px;
+}
+span.sl-value {
+    position: relative;
+    top: -7px;
+}
+
+button.slide-prev {
+    cursor: pointer;
+}
+
+button.slide-next {
+    cursor: pointer;
 }

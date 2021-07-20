@@ -26,6 +26,7 @@ var mid_img = ""
 var b_head = ""
 var indexing =""
 var inner_index =""
+var sm =""
 function Home(){ 
   const [modalShow, setModalShow] = useState(false);
   const [home, setHome] = useState({})
@@ -39,11 +40,13 @@ function Home(){
   const [heading, setheading]= useState([])
   const [serviceprovider, setserviceprovider,]= useState([])
   const [bottombanner, setbottombanner,]= useState([])
+  const [smallheading, setsmallheading,]= useState([])
+  const [link, setlink,]= useState([])
 
 
 
   function NextList(){
-    debugger
+    // debugger
     var myStringArray = blogs;
     var arrayLength = myStringArray.length;
     for (var i = 0; i < arrayLength; i++) {
@@ -64,7 +67,7 @@ function Home(){
 
 
   function PrevList(){
-    debugger
+    // debugger
     var myStringArray = blogs;
     var arrayLength = myStringArray.length;
     for (var i = 0; i < arrayLength; i++) {
@@ -89,8 +92,11 @@ function Home(){
    
     axios.get(BASE_URL+'home/homeview/')
     .then(res=>{
-      debugger
-      console.log("help")
+      // debugger
+      console.log("help")      
+      setlink(res.data.link)
+      setsmallheading(res.data)
+      console.log(res.data)
       setBlogs(res.data.blogs)
       setList(res.data.blogs[0])
       setBlogLength(res.data.blogs.length)
@@ -106,6 +112,7 @@ function Home(){
       td= res.data.srb[0].description
       tr =res.data.btm_banner[0].description
       btmimg=res.data.btm_banner[0].image
+      sm=res.data.small_head[0].heading
       console.log(res.data)
       setHome(res.data)
       setheading(res.data.heading)
@@ -116,10 +123,7 @@ function Home(){
       setBlogs(res.data.blogs)
       setStats(res.data.stats)
       console.log(res.data.serviceprovider)  
-      // console.log('url("'+BASE_URL.slice(0,-5)+ heading.bg_img+'")')
-      // alert(BASE_URL.slice(0)+ 'heading.bg_img')
-
-      // {blogs.map(sub=>{blogs[0].b_title })}
+     
 
 
     }).catch(err=>{
@@ -129,7 +133,6 @@ function Home(){
 
 
 },[])
-
 
  function Redirect(uuid){
   // cookies.set('blog',uuid,{path:'/'});
@@ -200,7 +203,7 @@ function Home(){
 
                         <div className="col-md-6 col-xs-12">
                             <div className="banner-right-cont">
-                                <img className="" src="assets/images/—Pngtree—laptop modern frameless with blank_5566734.png" />
+                                <img className="" src={heading.logo?BASE_URL.slice(0,-5)+ heading.logo :"assets/images/—Pngtree—laptop modern frameless with blank_5566734"} />
                                 {/* <img src=""></img> */}
                             </div>
                         </div>
@@ -211,8 +214,20 @@ function Home(){
               <section className="section counter-section">
 
                 <div className="logo-main-d">
-                  <ul>
-                    <li>
+                   <ul>
+                   {link.map(img =>{
+                    return<li>
+                    
+                      <div className="log-d-14254">
+                      
+                          {/* <img src="assets/images/640px-MiGROS_Logo.png" /> */}
+                          <img src={img.link_image?BASE_URL.slice(0,-5)+ img.link_image :"assets/images/640px-MiGROS_Logo.png"}/>
+                       
+                      </div>
+ 
+                    </li>
+})}
+                    {/* <li>
                       <div className="log-d-14254">
                           <img src="assets/images/640px-MiGROS_Logo.png" />
                       </div>
@@ -235,20 +250,15 @@ function Home(){
                           <img src="assets/images/640px-MiGROS_Logo.png" />
                       </div>
                     </li>
-
                     <li>
                       <div className="log-d-14254">
                           <img src="assets/images/640px-MiGROS_Logo.png" />
                       </div>
-                    </li>
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
+                    </li> */}
 
 
                   </ul>
+                
                 </div>
 
                 <div className="section__inner">
@@ -257,11 +267,12 @@ function Home(){
                       <div className="layout-block__inner">
                         <div className="layout-block__cell">
                           <p className="sect-2-t-1 small-heading dark-text"> 
-                          Tedarikçilerin ürünlerini alıcı firmalar tarafından keşfettiği, <span className="span-1204"> Lorem ipsum dollar site ameat. </span>
+                          
+                          {sm}<span className="span-1204"> Lorem ipsum dollar site ameat. </span>
                           </p>
-                          <p className="sect-2-t-2">
+                          {/* <p className="sect-2-t-2">
                           Tayuss İle İlİşkİlerİnİzİ güçlendİrerek <span className="span-1204"> satışlarınızı arttırın! </span>
-                          </p>
+                          </p> */}
                         </div>
                         <div className="layout-block__cell">
                           <div className="stats">
@@ -495,15 +506,15 @@ function Home(){
                         <div className="row">
                     <div className="col-md-12 col-xs-12 h-slider-slick">
 
-                      <p className="slide-count"><span> <button onClick={NextList}>next</button> <nbsp></nbsp><button onClick={PrevList}>prev</button></span>
-                       ------{current}/{bloglength} 
+                      <p className="slide-count"><span> <button className="slide-prev" onClick={PrevList}><i class="fal fa-long-arrow-left"></i></button>  <span className="sl-value">{current}/{bloglength}</span>  <button className="slide-next" onClick={NextList}><i class="fal fa-long-arrow-right"></i></button> <nbsp></nbsp></span>
+                      
                       
                         
                         </p>
                     <Slider {...settings}>
                      
                     {/* {blogs.map(function(wo, inner_index){ */}
-                        <div className="col-md-12">
+                        <div className="">
 
 
                         
