@@ -92,7 +92,6 @@ function ServiceProfile(){
           };
           axios(config6).then(res=>{
             // debugger
-            console.log("haroooooom")
             // console.log(promotionData)
             console.log(res.data)
             if(res.data[0] === undefined){
@@ -101,8 +100,6 @@ function ServiceProfile(){
             else{
                 setPromotionData(res.data[0])
             }
-            
-            
           }).catch(err=>{
               console.log(err)            
           })
@@ -116,8 +113,7 @@ function ServiceProfile(){
         }
       }
           axios(config).then(res=>{
-            
-              console.log("debugger")
+
               console.log(res.data.data[0])
 
               setProfileData(res.data.data[0])
@@ -134,7 +130,7 @@ function ServiceProfile(){
               axios(config1).then(res=>{
             //   debugger
               setDefaultCategoryData(res.data.data)
-              console.log("yha dekh lo subcategoy")
+              console.log("-------subcategoy-------")
               console.log(res.data.data)
             }).catch(err=>{
                 console.log(err)            
@@ -294,7 +290,7 @@ function ServiceProfile(){
           .catch(err => {
             console.log(err);
           })
-        }
+    }
 
     const servicechnge  = val =>{ 
     //    debugger

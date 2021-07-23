@@ -29,8 +29,6 @@ const axios = require('axios');
 var token = cookies.get("logintoken")
 
 
-
-
 function Banner(){
   var heading = document.getElementById('heading').value;
   var bg_img = document.getElementById('bg_img').files[0];
@@ -62,15 +60,43 @@ function Banner(){
 function Works(){
   
   var title = document.getElementById("title").value;
-  var description = document.getElementById('description').value;
-  var redirect_link = document.getElementById('redirect_link').value;
+  var works =[]
+  var array = document.getElementById('works').value;
+  works.push(array)
   var image = document.getElementById('image').files[0];
   var url = BASE_URL+'home/works/';
   var data = new FormData();
       data.append('title', title);
-      data.append('description', description);
-      data.append('redirect_link', redirect_link);
+      data.append('works', works);
       data.append('image', image);
+
+  var config = {
+    method:'post',
+    url:url,
+    headers: {
+      'content-type': `multipart/form-data; boundary=${data._boundary}`,
+      "Authorization": "Bearer " + token,
+    },
+    data : data,
+  }
+        axios(config).then(res=>{
+          console.log(res.data.data)
+          window.location="/admin/home"
+      }
+
+      ).catch(err=>{
+        console.error(err);
+
+      })
+}
+
+function SubWorks(){
+  var heading = document.getElementById("title").value;
+  var description = document.getElementById('description').value;
+  var url = BASE_URL+'home/sub_works/';
+  var data = new FormData();
+      data.append('heading', heading);
+      data.append('description', description);
 
   var config = {
     method:'post',
@@ -130,6 +156,7 @@ class AdminNewPage extends React.Component {
     this.state = {
         data: [],
         content :'This is a test',
+        works:[]
     };
 
     this.handleChange = this.handleChange.bind( this );
@@ -150,14 +177,7 @@ handleChange( changeEvent ) {
     } );
 }
 
-
-
-  // state = {
-  //   data: [],
-  //   message1: "message"
-
-  // };
-  handleChange1(event) {
+handleChange1(event) {
     var reader = new FileReader();
     reader.onload = function(){
       var output = document.getElementById('output');
@@ -179,6 +199,7 @@ handleChange2(event) {
 
   async componentDidMount(){
     var url = BASE_URL+'authentication/getcategory/';
+    // var url1 = BASE_URL
     var config = {
         method: 'get',
         url: url,
@@ -208,15 +229,12 @@ handleChange2(event) {
     <section className="ad-pad-sec">
         
       <Container>
-          <Row>
-
-       
+          <Row>      
           <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <p className="p1"> Home Setting </p>
-                                    <ul>
-                                 
+                                    <ul>                                
                                         <li>
                                             <NavLink to="/admin/home"
                                             inactiveClassName="text-gray-800"
@@ -235,8 +253,6 @@ handleChange2(event) {
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                               </NavLink>
                                         </li>
-                                      
-                                      
                                     </ul>
                                 </div>
                             </aside>
@@ -289,55 +305,49 @@ handleChange2(event) {
           </Card>
 
           <Card className="mt-4"> 
+            <Card.Header><h5 className="ad-h5">How it works Sub section</h5></Card.Header>
+            <Card.Body>
+            <div className="row">
+            </div>
+
+              <Row>
+              <Col sm="6">
+                    <Form.Label for="exampleEmail">Heading</Form.Label>
+                <Form.Control
+                    type="text"
+                    name="text"
+                    id="title"
+                    placeholder="text"
+                />
+                    </Col>
+
+                    <Col sm="6">
+                    <Form.Label for="exampleEmail">Description</Form.Label>
+                <Form.Control
+                    type="text"
+                    name="text"
+                    id="description"
+                    placeholder="text"
+                />
+                    </Col>
+                </Row>
+
+                <Form.Group check row>
+                  <Col sm="12" className="text-center">
+               
+                    <button className="admin-add-btn" onClick={SubWorks}> Submit </button>
+                  
+                  </Col>
+                </Form.Group>
+              
+            </Card.Body>
+          </Card>
+                  
+
+          <Card className="mt-4"> 
             <Card.Header><h5 className="ad-h5">How it works section</h5></Card.Header>
             <Card.Body>
             <div className="row">
-            {/* <div className="col-md-12">
-                          <div className="temp-list-main">
-                            
-                                <ul>
-                            
-                      <li> 
-                                      
-
-                                <div className="temp-second">
-                                    <div className="temp-second-img">
-                                    <img src="avatars/6.jpg" />
-                                  
-                                    </div>
-                                </div> 
-
-                                <div className="temp-third">
-                                <div class="grid-meta">
-                                    <h4>
-                                    <NavLink to="#" ></NavLink></h4>
-                                        <p><strong> </strong> </p>
-                                        <p></p>
-                                          </div>
-                                </div>
-
-                                <div className="temp-btn">
-                        
-
-
-                                <ButtonGroup>
-                                    <Button  >Options</Button>
-
-                                    <DropdownButton as={ButtonGroup}  id="bg-nested-dropdown">
-                                        <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-                                        <Dropdown.Item>Delete</Dropdown.Item>
-                                    </DropdownButton>
-                                </ButtonGroup>
-                                
-
-                                </div>  
-                            </li>
-                        
-                    
-                                  </ul> 
-                              
-                          </div>
-                      </div> */}
             </div>
 
               <Row>
@@ -352,7 +362,7 @@ handleChange2(event) {
                     </Col>
 
                     <Col sm="6">
-                    <Form.Label for="exampleEmail">Tile Description</Form.Label>
+                    <Form.Label for="exampleEmail">Tile Works</Form.Label>
                 <Form.Control
                     type="text"
                     name="text"
@@ -360,6 +370,13 @@ handleChange2(event) {
                     placeholder="text"
                 />
                     </Col>
+                     {/* <Col md="6">
+                        <Form.Label> Category</Form.Label>
+                        <Form.Control as="select"  id="works">
+                        {this.state.works.map(cat=>(  
+                        <option value={cat.uuid}>{cat.name}</option>))}
+                        </Form.Control>
+                    </Col> */}
                 </Row>
 
               <Row>
@@ -389,13 +406,6 @@ handleChange2(event) {
         
 
                 </Col>
-
-                
-
-                <Col cm="6">
-                  <Form.Label for="exampleFile" >Redirect Link</Form.Label>
-                  <Form.Control id="redirect_link" type="text" name="text" />
-                </Col>
                 </Row>
 
                 <Form.Group check row>
@@ -409,6 +419,7 @@ handleChange2(event) {
             </Card.Body>
           </Card>
 
+          
           <Card className="mt-4">
             <Card.Header> <h5>Stats data</h5> </Card.Header>
             <Card.Body>

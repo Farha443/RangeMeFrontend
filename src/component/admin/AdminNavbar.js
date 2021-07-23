@@ -58,11 +58,8 @@ function AdminNavbar(){
     useEffect(() => {
         axios.get(BASE_URL+'authentication/getuser/'+cookies.get("uuid")).then(res=>{
           setProfilephoto(res.data.data.user_pic)
-          // debugger
-          // console.log(res.data.user_pic)
+
         }).catch(err=>{
-            // $(".laoder").hide();
-            // debugger
             console.log(err)            
         })
 

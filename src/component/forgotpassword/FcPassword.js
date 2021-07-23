@@ -13,10 +13,8 @@ async function ChangePasswordd() {
   
     var password = document.getElementById('password').value; 
     var confirmPassword = document.getElementById('confirm_password').value;
-    
     var modal = document.getElementById("myModal");
 
-  
     window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
@@ -75,13 +73,14 @@ async function ChangePasswordd() {
     }
   }
 }
-function NewPassword(){
-  $(".laoder").show();
-
 const handleKeypress = (event) => {
   if(event.key === 'Enter'){
     ChangePasswordd();
   }
+}
+function NewPassword1(){
+  $(".laoder").show();
+
 }
 function NewPassword(){
 
@@ -101,15 +100,15 @@ function NewPassword(){
             <div>
               <div className="auth-form-wrapper__header___3fzg5">
                 <a href="/" className="header-bar__logo">
-                  {/* {/ <img src="Logo.png"> /} */}
+                  {/* {/ {/ <img src="Logo.png"> /} /} */}
                   <h1> Tayuss </h1>
                 </a>
-                {/* {/ <img alt="Logo" src="/assets/range-me-logo.72d528cf4802493c2b76.svg"> /} */}
+                {/* {/ {/ <img alt="Logo" src="/assets/range-me-logo.72d528cf4802493c2b76.svg"> /} /} */}
               </div>
               <div className="auth-form-wrapper__sign-in-modal___1WSWV" data-tname="form-wrapper">
                 <h2 className="wrappers__wrapper___1B_Ho auth-form-wrapper__title___30WhP"><span className="text__text___2g-Dv text__large-heading___31LRE text__display-block___1CZnH">Enter New Password</span></h2>
                 <div>
-                  {/* <form> */}
+
                     <div className="sign-in-form__field-container___3Zlii">
                       <div className="input__wrapper___1b5oN" data-tname="InputWrapper">
                         <div className data-tname="Inset" />
@@ -125,7 +124,7 @@ function NewPassword(){
                     </div>
                     
               
-                  {/* </form> */}
+                  
                 </div>
               </div>
               <div className="auth-form-wrapper__footer___1Zu1V">
@@ -148,5 +147,5 @@ function NewPassword(){
       </>
   );
 }
-}
-export default NewPassword
+
+export default NewPassword;

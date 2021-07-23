@@ -37,34 +37,14 @@ const colourOptions=[
     { value: 'Green', label: 'Green' },
 ]
 var Product_Name = cookies.get("product_name")
+// var tt = {}
+
 function Marketing() {
 
     const [image, setImage] = useState();
+    const[market, setMarket] = useState([]);
+    const[budget, setBudget] = useState([]);
 
-    // $("button").click(function() {
-    //     debugger
-    //     var op = $(this).val();
-    //     var element = document.getElementsByClassName(op);
-    //     $(element).remove();
-    //     // $("button").remove();
-        
-       
-    // });
-
-
-    //   function handleAdd() {
-    //     debugger
-    //     var inputtag = "<input  class='"+counter+"'/>" 
-    //     // var buttontag = "<button className='admin-add-btn' type='button' onClick={() => handleremove(counter)}>"+remove+"</button>"
-    //     document.getElementById('inputDiv').innerHTML += inputtag;
-    //     var button = "<button class='"+counter+"' value='"+counter+"'>remove</button>" 
-    //     document.getElementById('inputDiv').innerHTML += button;
-    //     setCounter(counter + 1);
-
-    //   }
-
-     
-    
     function onDrop(pictureFiles, pictureDataURLs) {
         // debugger
         // alert(pictureFiles)
@@ -72,6 +52,21 @@ function Marketing() {
             pictureFiles
         });
     }
+
+
+    // ----------get product marketing--------------//
+    var url1 = BASE_URL+'product/get_pmarket/'+ cookies.get('productuuid');    
+
+    useEffect(() => {
+        axios.get(url1).then(res=>{
+           setMarket(res.data.data)
+        }).catch(err=>{
+            console.log(err)            
+        })
+    },[])
+
+    console.log("----market length------")
+    console.log(market.length)
 
    function save(){
         // debugger
@@ -85,7 +80,8 @@ function Marketing() {
         var product_images =  image ? (image.pictureFiles)[0] : "";
         var product_videos = document.getElementById('product_videos').value;
 
-        var url = BASE_URL+"product/product_marketing/"
+        var url = BASE_URL+"product/product_marketing/";
+        
         var token = cookies.get("token")
 
         var data= new FormData();
@@ -94,7 +90,7 @@ function Marketing() {
         data.append('product_images', product_images);
         data.append('product_videos', product_videos);
         
-
+// ------- post product marketing ------------//
         var config = {
             method: 'post',
             url: url,
@@ -107,15 +103,56 @@ function Marketing() {
 
         axios(config)
         .then(res=>{
-                 
-                    // alert("product marketing is created");
-                 window.location = "admin_home"
-                }).catch(err=>{
-                  // alert(err)
-                })
-
-
+            window.location = "admin_home"
+        }).catch(err=>{
+        })
     }
+
+
+    function Edit(){
+        // debugger
+        var product_marketing = cookies.get("product_uuid")
+
+
+        const selected = document.querySelectorAll('#promotional_budget option:checked');
+        var array = Array.from(selected).map(el => el.value);
+
+        var promotional_budget = array[0]
+        var product_images =  image ? (image.pictureFiles)[0] : "";
+        var product_videos = document.getElementById('product_videos').value;
+
+        var url = BASE_URL+"product/product_marketing/";
+        
+        var token = cookies.get("token")
+
+        var data= new FormData();
+        data.append('product_marketing', product_marketing);
+        data.append('promotional_budget', promotional_budget);
+        data.append('product_images', product_images);
+        data.append('product_videos', product_videos);
+        
+// ------- Edit product marketing ------------//
+        var config = {
+            method: 'patch',
+            url: url,
+            headers: {
+                'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                "Authorization": "Bearer" + token,
+              },
+            data:data
+        }
+
+        axios(config)
+        .then(res=>{
+            window.location = "/marketing"
+        }).catch(err=>{
+        })
+    }
+
+    function handleChange(v) {
+        setBudget({ budget: v.target.value });
+    }
+    // const handleChange = e => setBudget({...budget, [e.target.name]: e.target.value})
 
 
 
@@ -204,25 +241,19 @@ function Marketing() {
                             </aside>
                         </Col>
                         <Col md="6">
-
                             <Card>
-
                                 <Card.Body>
                                     <div className="product-form-main">
-
                                         <div className="p-inside-title">
                                             <h5>Marketing </h5>
-
                                         </div>
 
                                         <div className="overview-form">
-
                                            <Row>
-
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Promotional budget</Form.Label>
-                                                <Form.Control as="select" id="promotional_budget" className="" >
+                                                <Form.Control as="select" id="promotional_budget" value={market.promotional_budget} onChange={e => handleChange(e)} className=""  >
                                                <option value="Zero">Zero</option>
                                                     <option value="$25k - $50k">$25k - $50k</option>
                                                     <option value="$50k - $200k">$50k - $200k</option>
@@ -235,22 +266,22 @@ function Marketing() {
 
                                             <Col md="6" >
                                             <Form.Label>Product Image</Form.Label>
-                                               
-                                                <ImageUploader
+                                               <img src={BASE_URL.slice(0,-5)+ market.product_images} />
+                                                {/* <ImageUploader
                                                         id="id"
                                                         withIcon={false}
                                                         buttonText='Add Image'
                                                         onChange={onDrop}
-                                                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                                        imgExtension={['.jpg', '.gif', '.png', '.gif','jpeg']}
                                                         maxFileSize={5242880}
                                                         withPreview={true}
-                                                />
+                                                /> */}
                                             </Col>
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                
                                             <Form.Label>Product video URL </Form.Label>
-                                            <Form.Control id="product_videos" type="text" placeholder="https://www.youtube.com/watch?v=bLdq28CmERY" />
+                                            <Form.Control id="product_videos" defaultValue={market.product_videos} type="text" placeholder="Enter URL" />
 
                                                 {/* <button className="admin-add-btn" type="button" onClick={() => handleAdd()}>Add Video</button>
                                                 <div class="input-group-m" id="inputDiv">
@@ -266,23 +297,14 @@ function Marketing() {
                             
                                     
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={save}>   Save Changes  </button>
+                                            {market.length === 0 ? 
+                                            <button class="admin-add-btn" onClick={save}>   Save Changes  </button>:<button class="admin-add-btn" onClick={Edit}>Update Changes</button>}
                                             </Col>
-
-                                
-
-                                           
                                            </Row>
-                                            
                                         </div>
-
                                     </div>
-
                                 </Card.Body>
                             </Card>
-
-
-                          
                         </Col>
 
 
@@ -304,16 +326,11 @@ function Marketing() {
                                     <button className="prev-prod-btn"> <i class="fa fa-eye" aria-hidden="true"></i> Preview Product Profile </button>
                                     <p> We will help guide you along the process. <NavLink to=""> Need Help </NavLink> </p>
                                 </div>
-
                             </div>
                         </Col>
-
-
                     </Row>
                 </Container>
             </section>
-
-
 
         </>
     );

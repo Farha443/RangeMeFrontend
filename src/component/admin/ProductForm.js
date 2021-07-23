@@ -65,6 +65,7 @@ function ProductForm() {
 
         axios.get(BASE_URL +'product/ProductDetailView/'+cookies.get("productuuid")+'/').then(res=>{
             setproductname(res.data.data)
+            console.log(res.data.data)
             cookies.set('product_name', res.data.data.product_name, { path: '/products_detail' })
             cookies.set('product_uuid', res.data.data.uuid, { path: '/' })
             
@@ -281,7 +282,7 @@ function ProductForm() {
 
             <Col md="6">
             <Form.Group multiple controlId="exampleForm.ControlSelect1">    
-            <Form.Control as="select" id="approvals_certifications" multiple="true">
+            <Form.Control as="select" defaultValue={productname.approvals_certifications} id="approvals_certifications" multiple="true">
             {certi.map(cat=>( 
             <option value={cat.uuid}>{cat.name}</option>))}
             </Form.Control> 
@@ -292,7 +293,7 @@ function ProductForm() {
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Unique selling propositions (USPs)</Form.Label>
-                                                <Form.Control id="usp" type="text" placeholder="Enter USP" />
+                                                <Form.Control id="usp" type="text" placeholder="Enter USP" defaultValue={productname.usp} />
 
                                             </Form.Group>
 
@@ -301,7 +302,7 @@ function ProductForm() {
                                             <Col md="6">
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                                 <Form.Label>Short product description</Form.Label>
-                                                <Form.Control id="product_disc" as="textarea" rows={3} />
+                                                <Form.Control id="product_disc" as="textarea" defaultValue={productname.product_disc} rows={3} />
                                             </Form.Group>
                                             </Col>
 
