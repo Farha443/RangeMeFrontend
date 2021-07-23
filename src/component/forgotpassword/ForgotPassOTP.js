@@ -12,6 +12,8 @@ console.log(cookies.get('email'));
 
 async function Forgott() {
   $(".laoder").show();
+
+
   var code = document.getElementById('code').value;
 
   var modal = document.getElementById("myModal");
@@ -35,7 +37,6 @@ async function Forgott() {
       code:code
     })
     if (res.status === 200) {
-      
       // test for status you want, etc
       console.log(res.data);
       cookies.set('change_code',res.data.data,{path:'/'});

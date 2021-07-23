@@ -35,7 +35,9 @@ import BASE_URL from '../base';
 import $ from "jquery"; 
 
 const cookies = new Cookies();
-
+var prox = ""
+var proxuuid = ""
+var prodname = ""
 
 function Submit(){
     // $(".laoder").show(); 
@@ -99,16 +101,12 @@ function BrandProfile() {
         setAct(!isAct);
       };
     
-    const [products, setProducts]= useState([])
     const [details, setDetails]= useState([])
     const[brands, setBrands] = useState([])
     const [cover, setCover] = useState(false);
     const [logo, setLogo] = useState(false);
-    const[status,setStatus] = useState([]);
-
-    // const [search, setSearch] = useState("");
+    const [show11, setShow11] = useState(false);
     const [filteredproduct, setFilteredProduct] = useState([]);
-    // const [loading, setLoading] = useState(false);
 
     const year = (new Date()).getFullYear()-50;
     const years = Array.from(new Array(80),(val, index) => index + year);
@@ -192,12 +190,52 @@ function BrandProfile() {
           window.location = "/brand-profile";
           })  
     }
-    
-    // function GetStatus(id){
-    //     var id = id
-    //     var url = BASE_URL+'product/pd_status/' + id;
-    // }
 
+    function SaveMoveBrand(){  
+        debugger
+        var checked_brand = $("input[type='radio'][name='checked_brand']:checked").val();
+        if(checked_brand === undefined){
+            window.location = "/brand-profile"
+        }
+        var productuuid = proxuuid
+        var url = BASE_URL + "product/move_brand/" + productuuid
+        var config={
+            method:'patch',
+            data:{
+                "p_user":checked_brand
+            },
+            url:url,
+        };
+        axios(config).then(res=>{
+            console.log(res.data )
+            window.location = '/brand-profile'
+          }
+          ).catch(err=>{
+            console.error(err);
+          window.location = "/brand-profile";
+          })  
+
+
+    }
+
+    function CopyFunction(e){
+        var url = BASE_URL + "product/copy_product/"+ e
+        axios.post(url )
+        .then(res=>{
+            window.location = "/brand-profile"
+        }).catch(err=>{
+            console.log(err)            
+        })
+    }
+    
+    function MoveBrand(x,y){
+        debugger
+        console.log(x,y)
+        prox = y
+        proxuuid = x
+        setShow11(true)
+
+    }
 
     function Redirect(uuid){
         cookies.set('productuuid',uuid,{path:'/'});
@@ -494,9 +532,11 @@ function BrandProfile() {
                                                                         <button className="border-btn">Complete </button>: <button className="border-btn">Drafted </button>}
                                                                         </td>
                                                                     <td className="pd-last-td">
+                                                                    <button className="border-btn"  onClick={()=>CopyFunction(pd.pd_uuid)}>  Copy Product   </button>
                                                                         <button className="border-btn"> <NavLink to=""
                                                                         onClick={()=>Redirect(pd.pd_uuid)}> Edit </NavLink>  </button>
                                                                          <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.pd_uuid)}> Delete </NavLink>  </button>
+                                                                         <button className="border-btn" onClick={()=>MoveBrand(pd.pd_uuid,pd.Product)}>  Move To A Different Brand   </button>
                                                                         <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
                                                                         <div className={isAct ? "drop-d-101 " : "drop-d-101 open-drop"}> 
                                                                             <ul>
@@ -780,7 +820,6 @@ function BrandProfile() {
             </Modal>
 
 
-
 {/* Cover photo uplod modal  */}
             <Modal
                 size="lg"
@@ -829,7 +868,7 @@ function BrandProfile() {
             </Modal>
 
 
-
+{/* add product modal */}
             <Modal
                 size="lg"
                 centered
@@ -872,7 +911,7 @@ function BrandProfile() {
             </Modal>
 
             
-
+{/* add new brand modal */}
             <Modal
         size="lg"
         // dialogClassName="modal-90w"
@@ -943,6 +982,50 @@ function BrandProfile() {
                 </div>
             </Modal.Footer>
       </Modal>
+
+
+{/* move a product modal */}
+            <Modal
+                size="lg"
+                centered
+                show={show11}
+                onHide={() => setShow11(false)}
+                aria-labelledby="example-custom-modal-styling-title">
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    <h5 style={{ marginBottom: '0px' }}> </h5>
+                    {prox}
+            </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
+                        <Row>
+                            <Col xs={12} md={10} className="m-auto">
+                         <div className="text-center mb-3">
+                         <h5>Choose a brand for this product</h5>  
+                         
+                         </div>
+                            <Col xs={12} md={10} className="m-auto"> 
+                            {brands.map(brand=>( 
+                                <p>
+                             {brand.brand_name}<img src={BASE_URL.slice(0,-5)+brand.brand_logo} width="70px" />
+                             <input id="checked_brand" name="checked_brand" type="radio"  value={brand.uuid}/>  
+                               </p>
+                            ))}
+
+                           
+
+                            </Col>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="col-md-12 text-center">
+                        <button className="admin-add-btn" onClick={SaveMoveBrand} > Save </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
 
         </>
     );
