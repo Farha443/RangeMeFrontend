@@ -104,6 +104,7 @@ function BrandProfile() {
     const[brands, setBrands] = useState([])
     const [cover, setCover] = useState(false);
     const [logo, setLogo] = useState(false);
+    const[status,setStatus] = useState([]);
 
     // const [search, setSearch] = useState("");
     const [filteredproduct, setFilteredProduct] = useState([]);
@@ -138,8 +139,8 @@ function BrandProfile() {
             // $(".laoder").hide();
             console.log(err)            
         })
-        
-        
+             
+
     }
     ,[])
 
@@ -148,17 +149,16 @@ function BrandProfile() {
         if (query){
             var url = BASE_URL+'product/get_brands/'+ cookies.get("get_brand")+'/?search='+query    
         }
-        else{
-            
-        var url = BASE_URL+'product/get_brands/'+ cookies.get("get_brand")
-        
-    }
+        else{    
+        var url = BASE_URL+'product/get_brands/'+ cookies.get("get_brand")   
+        }
         axios.get(url )
         .then(res=>{
             // setProducts(res.data.data.product)
             // debugger
             setDetails(res.data.data)
-            console.log(res.data.data)
+            console.log("-------------all Products-------------")
+            console.log(res.data.data.product)
             console.log("-------detail--------")
             console.log(res.data.data.details)
         }).catch(err=>{
@@ -175,7 +175,6 @@ function BrandProfile() {
     }
 
     function DeleteProduct(id){
-        alert(id)
         var id = id
         var url = BASE_URL + 'product/delete_product/' + id;
         var config={
@@ -194,6 +193,12 @@ function BrandProfile() {
           })  
     }
     
+    // function GetStatus(id){
+    //     var id = id
+    //     var url = BASE_URL+'product/pd_status/' + id;
+    // }
+
+
     function Redirect(uuid){
         cookies.set('productuuid',uuid,{path:'/'});
         window.location='/product_form/';
@@ -484,7 +489,10 @@ function BrandProfile() {
                                                                {pd.Product}
                                                                </NavLink>
                                                                     </td>
-                                                                    <td> <button className="border-btn"> Drafted </button> </td>
+                                                                   
+                                                                    <td> {pd.productStatus==true? 
+                                                                        <button className="border-btn">Complete </button>: <button className="border-btn">Drafted </button>}
+                                                                        </td>
                                                                     <td className="pd-last-td">
                                                                         <button className="border-btn"> <NavLink to=""
                                                                         onClick={()=>Redirect(pd.pd_uuid)}> Edit </NavLink>  </button>

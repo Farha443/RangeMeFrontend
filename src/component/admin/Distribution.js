@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import ImageUploader from 'react-images-upload';
 import {
@@ -35,9 +34,12 @@ class Distribution extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
+            country:'',
+            state1:[],
+            disCountry:'',
             data: [],
             data1:[], 
-            country: '', 
+            country: [], 
             region: '' ,
             dis_country : '',
             product_dis:'',
@@ -67,38 +69,35 @@ class Distribution extends React.Component {
       storageChange(e){
         this.setState({ storage : e.target.value });
       }
+
       storage1(e){
         this.setState({ storage1 : e.target.value });
       }
+
       productAvailable(f){
-        //   alert(f.target.value)
           this.setState({ productAvailable : f.target.value })
       }
 
       selectCountry (val) {
-          
         this.setState({ country: val });
       }
+
       drop_ship(e){
           this.setState({ drop_ship : e.target.value})
       }
 
       private_label(e){
-        console.clear()
         this.setState({ private_label : e.target.value})
-        console.log(this.state.private_label)
       }
 
       DistributionCountry (val1) {
+
         this.setState({ dis_country: val1 });
       }
 
       product_dis(e){
         this.setState({ product_dis : e.target.value });
       }
-    //   ProductSel_country(val2){
-    //       this.setState({ ProductSel_country : val2})
-    //   }
     
       selectRegion (val) {
         this.setState({ region: val });
@@ -191,12 +190,15 @@ class Distribution extends React.Component {
     axios(config2)
     .then(res => {
     this.setState({
-    data2: res.data.data
+    data2: res.data.data,
+    country:res.data.data.country,
+    state1:res.data.data.state,
+    disCountry:res.data.data.distribution_location,
     });
     console.log("------pd distribution-----")
     console.clear()
-    console.log(this.state.data2);
-    // alert(this.state.data2.country)
+    console.log(res.data.data);
+    console.log("----------state-"+ this.state.state1)
     })
     .catch(err => {
     alert(err);
@@ -508,8 +510,8 @@ class Distribution extends React.Component {
                                                 
                                                 <CountryDropdown id="country" 
                                                 className="form-control"
-                                                    value={this.state.data2.country ? this.state.data2.country : country}
-                                                    // defaultValue={this.state.data2.country ? this.state.data2.country : ''}
+                                                    value={country}
+                                                    defaultValue={this.state.country}
                                                     onChange={(val) => this.selectCountry(val)} />
                                                    
                                         </Form.Group>                                
@@ -522,6 +524,7 @@ class Distribution extends React.Component {
                                                 <RegionDropdown  id ="state" className = "form-control"
                                                     country={country}
                                                     value={region}
+                                                    defaultValue={this.state.state1}
                                                     onChange={(val) => this.selectRegion(val)} />
                                                     </Form.Group>
                                             
@@ -602,6 +605,7 @@ class Distribution extends React.Component {
                                                 
                                                 <CountryDropdown  id = "distribution_location" className={isActive ? "form-control " : "form-control inp-disable    "}
                                                     value={dis_country}
+                                                    defaultValue={this.state.disCountry}
                                                     onChange={(val1) => this.DistributionCountry(val1)} />
                                                     <label>If you can distribute to an entire country, add that country. Otherwise, please add the specific states or provinces (Texas, Quebec, etc.).</label>
                                                     <div className="validated-field__container___1zNgS">

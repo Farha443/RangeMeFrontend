@@ -204,7 +204,7 @@ function ProductDetail() {
         // var y = respRepos.includes(usr)
         axios(config)
         .then(res=>{
-                  debugger
+                //   debugger
                   if (res.data.message === "product detail is created"){
                     alert("product detail is created");
                   }
@@ -319,7 +319,7 @@ function ProductDetail() {
         // var y = respRepos.includes(usr)
         axios(config)
         .then(res=>{
-                  debugger
+                //   debugger
                   if (res.data.message === "product detail is created"){
                     alert("product detail is created");
                   }

@@ -64,8 +64,9 @@ function Marketing() {
             console.log(err)            
         })
     },[])
-   
 
+    console.log("----market length------")
+    console.log(market.length)
 
    function save(){
         // debugger
@@ -132,7 +133,7 @@ function Marketing() {
         
 // ------- Edit product marketing ------------//
         var config = {
-            method: 'post',
+            method: 'patch',
             url: url,
             headers: {
                 'content-type': `multipart/form-data; boundary=${data._boundary}`,
@@ -143,15 +144,15 @@ function Marketing() {
 
         axios(config)
         .then(res=>{
-            window.location = "admin_home"
+            window.location = "/marketing"
         }).catch(err=>{
         })
     }
 
-    // function handleChange1(v) {
-    //     setBudget({ budget: v.target.value });
-    // }
-    const handleChange = e => setBudget({...budget, [e.target.name]: e.target.value})
+    function handleChange(v) {
+        setBudget({ budget: v.target.value });
+    }
+    // const handleChange = e => setBudget({...budget, [e.target.name]: e.target.value})
 
 
 
@@ -240,21 +241,15 @@ function Marketing() {
                             </aside>
                         </Col>
                         <Col md="6">
-
                             <Card>
-
                                 <Card.Body>
                                     <div className="product-form-main">
-
                                         <div className="p-inside-title">
                                             <h5>Marketing </h5>
-
                                         </div>
 
                                         <div className="overview-form">
-
                                            <Row>
-
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Promotional budget</Form.Label>
@@ -286,7 +281,7 @@ function Marketing() {
                                             <Form.Group controlId="formBasicEmail">
                                                
                                             <Form.Label>Product video URL </Form.Label>
-                                            <Form.Control id="product_videos" type="text" placeholder="https://www.youtube.com/watch?v=bLdq28CmERY" />
+                                            <Form.Control id="product_videos" defaultValue={market.product_videos} type="text" placeholder="Enter URL" />
 
                                                 {/* <button className="admin-add-btn" type="button" onClick={() => handleAdd()}>Add Video</button>
                                                 <div class="input-group-m" id="inputDiv">
@@ -302,23 +297,14 @@ function Marketing() {
                             
                                     
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={save}>   Save Changes  </button>
+                                            {market.length === 0 ? 
+                                            <button class="admin-add-btn" onClick={save}>   Save Changes  </button>:<button class="admin-add-btn" onClick={Edit}>Update Changes</button>}
                                             </Col>
-
-                                
-
-                                           
                                            </Row>
-                                            
                                         </div>
-
                                     </div>
-
                                 </Card.Body>
                             </Card>
-
-
-                          
                         </Col>
 
 
@@ -340,16 +326,11 @@ function Marketing() {
                                     <button className="prev-prod-btn"> <i class="fa fa-eye" aria-hidden="true"></i> Preview Product Profile </button>
                                     <p> We will help guide you along the process. <NavLink to=""> Need Help </NavLink> </p>
                                 </div>
-
                             </div>
                         </Col>
-
-
                     </Row>
                 </Container>
             </section>
-
-
 
         </>
     );
