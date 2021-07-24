@@ -107,6 +107,7 @@ function Toggle1() {
           }
           
         }).catch(err=>{
+          $(".laoder").hide();
           window.location = "/signup"
           console.log(err)
         })

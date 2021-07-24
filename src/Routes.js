@@ -41,6 +41,7 @@ import ServiceNavbar from './component/service-provider/ServiceNavbar';
 import Changepassword from './component/service-provider/Changepassword';
 import ServiceCompanyProfile from './component/service-provider/ServiceCompanyProfile';
 import BrandProfile from './component/admin/BrandProfile';
+import BrandProfile2 from './component/admin/BrandProfile2';
 
 
 function Routes(){
@@ -89,6 +90,7 @@ function Routes(){
                 <Route exact path="/change-password-service" component={Changepassword}></Route>
                 <Route exact path="/service-company-profile" component={ServiceCompanyProfile}></Route>
                 <Route exact path="/brand-profile" component={BrandProfile}></Route>
+                <Route exact path="/brand-profile2" component={BrandProfile2}></Route>
             </Switch>
         </> 
     )

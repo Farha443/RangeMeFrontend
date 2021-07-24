@@ -73,6 +73,7 @@ function ProductDetail() {
         // console.log(category)
         
         axios.get(BASE_URL +'product/get_pdetails/'+cookies.get("productuuid")).then(re=>{
+            debugger
             setPdetails(re.data.data)
             console.log("----product details-----")
             console.log(re.data.data)
@@ -811,7 +812,7 @@ function ProductDetail() {
 
                                         <Col md="12" className="text-center mt-4 two-btn-main">
                                         <button class="admin-add-btn"> <NavLink to="/product_form"> Back </NavLink>    </button>
-                                        {p_details.length === 0 || p_package.length === 0 ?  <button class="admin-add-btn" onClick={() => productdetail()}> <NavLink to="/distribution"> Next </NavLink>  </button> :
+                                        {p_details.Product === null || p_package.product_marketing=== null ?  <button class="admin-add-btn" onClick={() => productdetail()}> <NavLink to="/distribution"> Next </NavLink>  </button> :
                                             <button class="admin-add-btn" onClick={() => ProductDetailsUpdate()}> <NavLink to="/distribution"> Update&Next </NavLink>  </button>}
                                         </Col>
                         </Col>

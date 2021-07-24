@@ -40,9 +40,10 @@ function logout() {
 function GetBrand(id){
   var id = id;
   cookies.set("get_brand", id.uuid , {path:"/"})
-  cookies.set("brand_name", id.brand_name , {path:"/"})
-  cookies.set("brand_cover", id.brand_cover,{path:"/"})
-  cookies.set("brand_logo", id.brand_logo,{path:"/"})
+  // cookies.set("brand_name", id.brand_name , {path:"/"})
+  // cookies.set("brand_cover", id.brand_cover,{path:"/"})
+  // cookies.set("brand_logo", id.brand_logo,{path:"/"})
+
   window.location="/brand-profile";
 }
 
@@ -116,7 +117,7 @@ function AdminNavbar(){
 
     <Nav.Link href="#home" className="drop-menu"  onClick={handleToggle}>
       <div className="menu-profile-img-main">
-      {profilephoto != "null" ? <img src={BASE_URL.slice(0,-5)+profilephoto} width="70px" />:
+      {profilephoto != null ? <img src={BASE_URL.slice(0,-5)+profilephoto} width="70px" />:
       <img src="/assets/images/user64x64.png"/>
       }
        {/* <img src={BASE_URL.slice(0,-5)+user_pic} width="70px" /> */}
