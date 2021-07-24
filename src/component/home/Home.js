@@ -17,26 +17,115 @@ function get_date(dt_string){
   // dtt = dtt + ' ' + ((dtt.split(':')[0] >= 12) ? "PM" : "AM");
   return date_parts[0]+' '+month_list[parseInt(date_parts[1])-1] +' '+ dtt;
 }
-
-
+var current = 1
+var tt = ""
+var td = ""
+var tr = ""
+var btmimg =""
+var mid_img = ""
+var b_head = ""
+var indexing =""
+var inner_index =""
+var sm =""
 function Home(){ 
   const [modalShow, setModalShow] = useState(false);
   const [home, setHome] = useState({})
   const [stats, setStats]= useState([])
   const [works, setWorks]= useState([])
-  // const [succestory, setSuccestory]= useState([])
+  // const [subworks, setSubWorks]= useState([])
   const [blogs, setBlogs]= useState([])
+  const [bloglength, setBlogLength]= useState()
+  const [list, setList]= useState([])
+  const [ran, setran]= useState([])
   const [heading, setheading]= useState([])
+  const [serviceprovider, setserviceprovider,]= useState([])
+  const [bottombanner, setbottombanner,]= useState([])
+  const [smallheading, setsmallheading,]= useState([])
+  const [link, setlink,]= useState([])
+
+
+
+  function NextList(){
+    // debugger
+    var myStringArray = blogs;
+    var arrayLength = myStringArray.length;
+    for (var i = 0; i < arrayLength; i++) {
+    console.log(myStringArray[i]);
+    if (myStringArray[i]===list){
+      // setList(myStringArray[i+1])
+      if(arrayLength-1 === i){
+        setList(myStringArray[i])
+        current = i
+      }
+      else{
+        setList(myStringArray[i+1])
+        current = current+1
+      }
+    }
+}
+  }
+
+
+  function PrevList(){
+    // debugger
+    var myStringArray = blogs;
+    var arrayLength = myStringArray.length;
+    for (var i = 0; i < arrayLength; i++) {
+    console.log(myStringArray[i]);
+    if (myStringArray[i]===list){
+      if(i===0){
+        setList(myStringArray[0])
+        current = current
+      }
+      else{
+        setList(myStringArray[i-1])
+        current = current-1
+      }
+      
+    }
+}
+  }
+
+
+
   useEffect(() => {
    
     axios.get(BASE_URL+'home/homeview/')
     .then(res=>{
+      // debugger
+      console.log("help")      
+      setlink(res.data.link)
+      setsmallheading(res.data)
+      console.log(res.data)
+      setBlogs(res.data.blogs)
+      setList(res.data.blogs)
+      setBlogLength(res.data.blogs.length)
+      console.clear()
+      console.log(res.data.data)
+      var indexing=res.data.blogs.length
+      inner_index=res.data.blogs[0].length
+      console.log(res.data)
+      setbottombanner(res.data)
+      setserviceprovider(res.data)
+      tt = res.data.srb[0].heading
+      mid_img=res.data.srb[0].bg_image
+      td= res.data.srb[0].description
+      tr =res.data.btm_banner[0].description
+      btmimg=res.data.btm_banner[0].image
+      sm=res.data.small_head[0].heading
+      console.log(res.data)
       setHome(res.data)
       setheading(res.data.heading)
+      
+      
       setWorks(res.data.works)
+      // setSubWorks(res.data.sub_works)
       setBlogs(res.data.blogs)
       setStats(res.data.stats)
-      console.log(res.data)  
+      console.log(res.data.serviceprovider)  
+     
+
+
     }).catch(err=>{
         console.log(err)            
     })
@@ -45,7 +134,6 @@ function Home(){
 
 },[])
 
-
  function Redirect(uuid){
   // cookies.set('blog',uuid,{path:'/'});
   window.location='/blog_detail/'+uuid;
@@ -53,10 +141,12 @@ function Home(){
   const settings = {
     dots: false,
     Nav: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 3,
+    rows: 2,
+    slidesPerRow: 1,
     responsive: [
       {
         breakpoint: 1024,
@@ -91,29 +181,30 @@ function Home(){
          <Header/>   
           <div className="my-container" >    
             <main className="content" >
-              <section className="banner-section">
+              <section className="banner-section" style={{backgroundImage: 'url('+(heading.bg_img?BASE_URL.slice(0,-5)+heading.bg_img:"assets/images/banner-1.jpg")+')'}}>
                   <div className="container">
                       <div className="row">
                         <div className="col-md-6 col-xs-12">
                             <div className="banner-left-content">
                                 <div className="banner-text-left">
-                                <h6> SEKTÖRÜN ÖNCÜ </h6>
-                                <h1 className="f-t-1"> TEDARİKÇİLERİ <span> VE </span>  </h1>
+                                <h6> {heading.heading}</h6>
+                                {/* <h1 className="f-t-1"> TEDARİKÇİLERİ <span> VE </span>  </h1>
                                 <h1 className="f-t-2"> ALICI FİRMALARI   </h1>
                                 <h2 className="f-t-3"> BİR ARAYA GETİRİYORUZ!
-                                </h2>
+                                </h2> */}
                                 <button className="banner-btn"> ÜCRETSİZ KAYDOL <i class="fal fa-long-arrow-right"></i> </button>
                                 </div>
-                                {heading.bg_img != null ? <div className="banner-section" style={{backgroundImage: 'url("'+BASE_URL.slice(0,-5)+ heading.bg_img+'")'}}>
-                </div>:<div className="banner-section" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
+                                {/* {heading.bg_img && <div className="banner-section" style={{backgroundImage: 'url("'+BASE_URL.slice(0,-5)+ heading.bg_img+'")'}}>
                 </div>}
+                {!heading.bg_img &&<div className="banner-section" style={{backgroundImage: 'url("assets/images/banner1.jpg")'}}>
+                </div>} */}
                             </div>
                         </div>
 
                         <div className="col-md-6 col-xs-12">
                             <div className="banner-right-cont">
-                                {/* <img className="" src="assets/images/—Pngtree—laptop modern frameless with blank_5566734.png" /> */}
-                                <img src=""></img>
+                                <img className="" src={heading.logo?BASE_URL.slice(0,-5)+ heading.logo :"assets/images/—Pngtree—laptop modern frameless with blank_5566734"} />
+                                {/* <img src=""></img> */}
                             </div>
                         </div>
                       </div>
@@ -123,8 +214,20 @@ function Home(){
               <section className="section counter-section">
 
                 <div className="logo-main-d">
-                  <ul>
-                    <li>
+                   <ul>
+                   {link.map(img =>{
+                    return<li>
+                    
+                      <div className="log-d-14254">
+                      
+                          {/* <img src="assets/images/640px-MiGROS_Logo.png" /> */}
+                          <img src={img.link_image?BASE_URL.slice(0,-5)+ img.link_image :"assets/images/640px-MiGROS_Logo.png"}/>
+                       
+                      </div>
+ 
+                    </li>
+})}
+                    {/* <li>
                       <div className="log-d-14254">
                           <img src="assets/images/640px-MiGROS_Logo.png" />
                       </div>
@@ -147,20 +250,15 @@ function Home(){
                           <img src="assets/images/640px-MiGROS_Logo.png" />
                       </div>
                     </li>
-
                     <li>
                       <div className="log-d-14254">
                           <img src="assets/images/640px-MiGROS_Logo.png" />
                       </div>
-                    </li>
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
+                    </li> */}
 
 
                   </ul>
+                
                 </div>
 
                 <div className="section__inner">
@@ -169,11 +267,12 @@ function Home(){
                       <div className="layout-block__inner">
                         <div className="layout-block__cell">
                           <p className="sect-2-t-1 small-heading dark-text"> 
-                          Tedarikçilerin ürünlerini alıcı firmalar tarafından keşfettiği, <span className="span-1204"> Lorem ipsum dollar site ameat. </span>
+                          
+                          {sm}<span className="span-1204"> Lorem ipsum dollar site ameat. </span>
                           </p>
-                          <p className="sect-2-t-2">
+                          {/* <p className="sect-2-t-2">
                           Tayuss İle İlİşkİlerİnİzİ güçlendİrerek <span className="span-1204"> satışlarınızı arttırın! </span>
-                          </p>
+                          </p> */}
                         </div>
                         <div className="layout-block__cell">
                           <div className="stats">
@@ -225,14 +324,15 @@ function Home(){
                 </div>
                 </div>
               </section>
-
-              <section className="lr-section-main"> 
+              {works &&  works.map(function(work, index){
+              if(index%2===0){
+              return <section className="lr-section-main"> 
                   <div className="container">
                     <div className="row"> 
                         <div className="col-md-12 col-xs-12">
                             <div className="lr-title-1">
 
-                              <h3> TEDARİKÇİLER </h3>
+                              <h3> {work.title}</h3>
                               <NavLink to=""> Tüm Özellikler <i class="fal fa-long-arrow-right"></i> </NavLink>
                             </div>
                         </div>
@@ -242,19 +342,21 @@ function Home(){
                         <div className="col-md-6 co-xs-12">
                             <div className="d-one-12423">
                                 <ul>
-                                  <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248"> 
-                                         <i class="fas fa-id-card"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h5> Marka Profilinizi Oluşturun </h5>
-                                        <p> Alıcı firmaların ihtiyaç duyabileceği önemli marka bilgileriniz </p>
-                                      </div>
-                                    </div>
-                                  </li>
+{work.sub_works.map(sub=>{
+  return                                   <li>
+  <div className="ic-text-mn">
+    <div className="ic-5248"> 
+       <i class="fas fa-id-card"></i>
+    </div>
+    <div className="ic-text-6254">
+      <h5> {sub.heading} </h5>
+      <p> {sub.description}</p>
+    </div>
+  </div>
+</li>
 
-                                  <li>
+})}
+                                  {/* <li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248"> 
                                       <i class="fad fa-box-check"></i>
@@ -276,27 +378,28 @@ function Home(){
                                         <p> Alıcı firmaların ihtiyaç duyabileceği önemli marka bilgileriniz </p>
                                       </div>
                                     </div>
-                                  </li>
+                                  </li> */}
                                 </ul>
                             </div>
                         </div>
                         <div className="col-md-6 col-xs-12">
                             <div className="frame-main-d">
-                                <img src="assets/images/btn.png" />
+                                {/* <img src="assets/images/btn.png" /> */}
+                                <img src={BASE_URL.slice(0,-5)+ work.image}/>
                             </div>
                         </div>
                     </div>
 
                   </div>
-              </section>
-            
-              <section className="lr-section-main lr-2sec"> 
+              </section>}
+             else{
+              return <section className="lr-section-main lr-2sec"> 
                   <div className="container">
                     <div className="row"> 
                         <div className="col-md-12 col-xs-12">
                             <div className="lr-title-1">
 
-                              <h3> ALICI FİRMALAR </h3>
+                              <h3> {work.title }</h3>
                               <NavLink to=""> Tüm Özellikler <i class="fal fa-long-arrow-right"></i> </NavLink>
                             </div>
                         </div>
@@ -305,25 +408,28 @@ function Home(){
                     <div className="row"> 
                           <div className="col-md-6 col-xs-12">
                             <div className="frame-main-d">
-                                <img src="assets/images/btn.png" />
+                                {/* <img src="assets/images/btn.png" /> */}
+                                <img src={BASE_URL.slice(0,-5)+ work.image}/>
                             </div>
                         </div>
                         <div className="col-md-6 co-xs-12">
                             <div className="d-one-12423">
                                 <ul>
-                                  <li>
+                                {work.sub_works.map(sub=>{
+                              
+                              return <li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
                                       <i class="fas fa-user-plus"></i>
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h5> Hesap Oluşturun  </h5>
-                                        <p> Alıcı firmaların ihtiyaç duyabileceği önemli marka bilgileriniz </p>
+                                        <h5> {sub.heading} </h5>
+                                        <p> {sub.description} </p>
                                       </div>
                                     </div>
                                   </li>
-
-                                  <li>
+})}
+                                  {/* <li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
                                       <i class="far fa-hand-holding-box"></i>
@@ -345,7 +451,7 @@ function Home(){
                                         <p> Alıcı firmaların ihtiyaç duyabileceği önemli marka bilgileriniz </p>
                                       </div>
                                     </div>
-                                  </li>
+                                  </li> */}
                                 </ul>
                             </div>
                         </div>
@@ -354,23 +460,36 @@ function Home(){
                     </div>
 
                   </div>
+                
               </section>
+                }
+              })}
               
-              <section className="mid-banner-section" style={{}}>
-              
-                  <div className="container">
-                    <div className="row">
+              <section className="mid-banner-section" style={{backgroundImage: 'url('+(mid_img?BASE_URL.slice(0,-5)+mid_img:"assets/images/banner-1.jpg")+')'}}>
+                  <div className="container"> 
+                 
+                   <div className="row">
                       <div className="col-md-12 col-xs-12"> 
                           <div className="midd-banner-text">
-                            <h5 className="h-01-1"> HİZMET SAĞLAYICILAR </h5>
-                            <h6 className="h-01-2"> Tayuss ile binlerce ürün tedarikçisini keşfet ve <span> hizmetlerini  </span></h6>
-                            <p className="p-01-1"> Ürün tedarikçilerinin ihtiyaçlarını karşılayan hizmet sağlayıcı. Ürün tedarikçilerinin <br/> ihtiyaçlarını karşılayan hizmet sağlayıcı </p>
+                             
+                            {/* <h5 className="h-01-1"> HİZMET SAĞLAYICILAR </h5> */}
+                            <h5 className="h-01-1"> {tt}service provider</h5>
+
+                            {/* <h6 className="h-01-2"> Tayuss ile binlerce ürün tedarikçisini keşfet ve <span> hizmetlerini  </span></h6> */}
+                            <h6 className="h-01-2"> {td}</h6>
+                            {/* <p className="p-01-1"> Ürün tedarikçilerinin ihtiyaçlarını karşılayan hizmet sağlayıcı. Ürün tedarikçilerinin <br/> ihtiyaçlarını karşılayan hizmet sağlayıcı </p> */}
+                            {/* <p className="p-01-1"> Service provider that meets the needs of product suppliers. Service provider that meets the <br/> needs of product suppliers </p> */}
+                          
                             <NavLink to="" className="mid-banner-a"> Tüm Özellikler <i class="fal fa-long-arrow-right"></i> </NavLink>
                           </div>  
                       </div>
                     </div>
+                   
+
                   </div>
+                  
               </section>
+             
 
               <section className="hm-slider-section">
                   <div className="container">
@@ -387,122 +506,54 @@ function Home(){
                         <div className="row">
                     <div className="col-md-12 col-xs-12 h-slider-slick">
 
-                      <p className="slide-count"> 4/12 </p>
+                      <p className="slide-count"><span> <button className="slide-prev" onClick={PrevList}><i class="fal fa-long-arrow-left"></i></button>  <span className="sl-value">{current}/{bloglength}</span>  <button className="slide-next" onClick={NextList}><i class="fal fa-long-arrow-right"></i></button> <nbsp></nbsp></span>
+                      
+                      
+                        
+                        </p>
                     <Slider {...settings}>
-                        <div className="col-md-12">
+                     
+                    {/* {blogs.map(function(wo, inner_index){ */}
+                        <div className="">
+
+
+                        
+                        
+     
+                      
                           <div className="slider-box-main">
+                          {list.map((user) => (
+                            
+                                    
+                            <div className="two-sliders">
                                 <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
+                                    <img src= {user?BASE_URL.slice(0,-5)+user.b_image :"assets/images/banner-1.jpg"} 
+                                     />
+                                     </div>
+                                    <div className="hm-slider-tect-cont">
+                                      <h5>{user.b_title} </h5>
+                                      <p>
+                                      {user.b_story}
+                                      </p>
                                     <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
+                                  </div>
+                              </div> 
+                             
+                               
+                                
+                                
+                                ))}
+                                
+                            </div> 
+                           
+
+                        </div> 
+                         {/* })}  */}
 
 
-                            <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
-                        </div>
+                        
 
-                        <div className="col-md-12">
-                          <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
 
-                            <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-md-12">
-                          <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
-
-                            <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div className="col-md-12">
-                          <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
-                            <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
-
-                        </div>
-                       
                       </Slider>
 
 
@@ -517,13 +568,33 @@ function Home(){
                   </div>
               </section>
 
-              <section className="btm-banner-section"> 
+              {/* <section className="btm-banner-section" sstyle={{backgroundImage: 'url('+(heading.bg_img?BASE_URL.slice(0,-5)+heading.bg_img:"assets/images/banner-1.jpg")+')'}} > 
+                    <div className="container">
+                        <div className="row">
+                       
+                            <div className="col-md-12 col-xs-12">
+                                <div className="btm-banner-cont-m"> 
+                                <div className="btm-banner-text">
+                                  <h3> <span className="btm-banner-text-yl"> {tr}</span>  dolor sit amet, consetetur.  </h3>
+                              </div>
+                              <div className="btm-banner-btn">
+                                  <button className="bt254">
+                                  ÜCRETSİZ KAYDOL  <i class="fal fa-long-arrow-right"></i>
+                                  </button>
+                              </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+              </section> */}
+              <section className="btm-banner-section" style={{backgroundImage: 'url('+(btmimg?BASE_URL.slice(0,-5)+btmimg :"assets/images/banner-1.jpg")+')'}}> 
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl"> Lorem ipsum </span>  dolor sit amet, consetetur.  </h3>
+                                  <h3> <span className="btm-banner-text-yl"> {tr}</span>  dolor sit amet, consetetur.  </h3>
                               </div>
                               <div className="btm-banner-btn">
                                   <button className="bt254">
@@ -534,7 +605,7 @@ function Home(){
                             </div>
                         </div>
                     </div>
-              </section>
+              </section>  
 
 
               

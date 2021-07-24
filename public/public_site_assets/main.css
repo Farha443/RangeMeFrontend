@@ -7925,3 +7925,26 @@ button.header-bar__cta.button.button--green i {
     font-size: 22px;
     padding-left: 0.8rem;
 }
+
+
+/************************ sk ***********************/
+button.slide-prev i {
+    font-size: 32px;
+    margin-right: 5px;
+}
+button.slide-next i {
+    font-size: 32px;
+    margin-left: 5px;
+}
+span.sl-value {
+    position: relative;
+    top: -7px;
+}
+
+button.slide-prev {
+    cursor: pointer;
+}
+
+button.slide-next {
+    cursor: pointer;
+}

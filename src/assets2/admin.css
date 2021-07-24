@@ -84,9 +84,9 @@ section.admin-home-section {
     font-weight: 500;
 }
 .admin-count-box {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding:50px 15px;
+    margin-top: -1.5rem;
+    margin-bottom: -0.5rem;
+    padding:1px 1px;
     text-align: center;
     background: white;
     box-shadow: rgb(0 0 0 / 8%) 0px 4px 12px;

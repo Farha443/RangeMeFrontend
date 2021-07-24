@@ -116,6 +116,7 @@ function BrandProfile2() {
     const [show11, setShow11] = useState(false);
     const[sbrand, setSbrand]=useState([]);
     const[video, setVideo] = useState('')
+    const[count, setCount] = useState('')
 
     const year = (new Date()).getFullYear()-50;
     const years = Array.from(new Array(80),(val, index) => index + year);
@@ -148,7 +149,9 @@ function BrandProfile2() {
         })
         axios.get(BASE_URL+'authentication/singlebrand/'+ cookies.get("get_brand") )
         .then(res=>{
+            debugger
             setSbrand(res.data.data)
+            setCount(res.data.data.product_name.length)
             console.clear()
             console.log("------Single Brand------")
             console.log(res.data.data)
@@ -357,8 +360,8 @@ function BrandProfile2() {
     async function EditBrandStory(){
         var brand_story = content;
         var url = BASE_URL+'authentication/createsupplier/';
-        var uuid = cookies.get('uuid');
-        var token = cookies.get('token');
+        var uuid = cookies.get('get_brand');
+        var token = cookies.get('logintoken');
         var config = {
             method: 'patch',
             url: url,
@@ -366,7 +369,7 @@ function BrandProfile2() {
               "Authorization": "Bearer " + token,
             },
             data:{
-                user_s : uuid,
+                uuid : uuid,
                 brand_story:brand_story,
     
               }
@@ -383,6 +386,37 @@ function BrandProfile2() {
           window.location = "/brand-profile";
           })
     }
+
+    async function EditBrandVideo(){
+        var brand_video = document.getElementById('brand_video').value;
+        var url = BASE_URL+'authentication/createsupplier/';
+        var uuid = cookies.get('get_brand');
+        var token = cookies.get('logintoken');
+        var config = {
+            method: 'patch',
+            url: url,
+            headers: {
+              "Authorization": "Bearer " + token,
+            },
+            data:{
+                uuid : uuid,
+                brand_video:brand_video,
+    
+              }
+        
+          };
+          console.log(config)
+           await axios(config).then(res=>{
+              console.log(res.data.data)
+            window.location = '/brand-profile'
+          }
+          
+          ).catch(err=>{
+            console.error(err);
+          window.location = "/brand-profile";
+          })
+    }
+
     return (
         <>
             <AdminNavbar />
@@ -436,7 +470,7 @@ function BrandProfile2() {
                                 <div className="cover-md-right-cont">
                                     <ul>
                                         <li>
-                                            <button class="border-btn"> <i class="fa fa-eye" aria-hidden="true"></i>  0  </button>
+                                            <button class="border-btn"> <i class="fa fa-eye" aria-hidden="true"></i>  {sbrand.brand_views}  </button>
                                         </li>
                                         <li>
                                             <button class="border-btn">  <i class="fa fa-plus" aria-hidden="true"></i>  0  </button>
@@ -593,7 +627,7 @@ function BrandProfile2() {
                                                                     </td>
                                                                    
                                                                     <td> {pd.productStatus==true? 
-                                                                        <button className="border-btn">Complete </button>: <button className="border-btn">Drafted </button>}
+                                                                        <button className="border-btn">Ready for Approval </button>: <button className="border-btn"  onClick={()=>Redirect(pd.pd_uuid)}>Draft </button>}
                                                                         </td>
                                                                     <td className="pd-last-td">
                                                                     <button className="border-btn"  onClick={()=>CopyFunction(pd.pd_uuid)}>  Copy Product   </button>
@@ -740,7 +774,7 @@ function BrandProfile2() {
                                                                     <i class="far fa-tag"></i>  PRODUCTS
                                                                     </p>
                                                                     <p>
-                                                                        ( 1 )
+                                                                        ( {count} )
                                                                     </p>
                                                                 </li>
                                                                 <li>
@@ -850,7 +884,7 @@ function BrandProfile2() {
                                                       <Row>
                                                           <Col md="12" xs="12">
                                                             {/* <p className="f-size124"> Product Name </p> */}
-                                                            {content? <EditorPreview data={content} />:<div className="p-story-box-d">
+                                                            {sbrand.brand_story? <EditorPreview data={sbrand.brand_story} />:<div className="p-story-box-d">
                                                             <i class="fal fa-comment-alt-lines"></i>
                                                                 <h4> Tell your Story </h4>
                                                                 <p> Let buyers know more about your brand. </p>
@@ -858,13 +892,14 @@ function BrandProfile2() {
                                                             </div>}
                                                           </Col>
                                                           <Col md="12" xs="12">
-                                                         
-                                                            <div className="p-story-box-d">
-                                                            <i class="fal fa-play-circle"></i>
-                                                                <h4> Add a video </h4>
-                                                                <p> Embed a YouTube or Vimeo video about your brand or products. </p>
-                                                                <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Add Video </button>
-                                                            </div>
+                                                          {sbrand.brand_video? sbrand.brand_video:<div className="p-story-box-d">
+                                                                
+                                                                <i class="fal fa-play-circle"></i>
+                                                                    <h4> Add a video </h4>
+                                                                    <p> Embed a YouTube or Vimeo video about your brand or products. </p>
+                                                                    <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Add Video </button>
+                                                                </div>}
+                                                            
                                                           </Col>
 
                                                       </Row>
@@ -906,7 +941,7 @@ function BrandProfile2() {
                                                                     <i class="far fa-calendar-week"></i> YEAR FOUNDED
                                                                     </p>
                                                                     <p>
-                                                                        ( 2019 )
+                                                                        ( {sbrand.year_founded} )
                                                                     </p>
                                                                 </li>
 
@@ -915,11 +950,11 @@ function BrandProfile2() {
                                                                     <i class="far fa-chart-line"></i> REVENUE
                                                                     </p>
                                                                     <p>
-                                                                        ( $1M-$5M )
+                                                                        ( {sbrand.annual_revenue })
                                                                     </p>
                                                                 </li>
 
-                                                                <li>
+                                                                {/* <li>
                                                                     <p>
                                                                     <i class="fal fa-bullhorn"></i> PROMOTIONAL SPEND
 
@@ -927,9 +962,9 @@ function BrandProfile2() {
                                                                     <p>
                                                                         ( $1 - $25k )
                                                                     </p>
-                                                                </li>
+                                                                </li> */}
 
-                                                                <li>
+                                                                {/* <li>
                                                                     <p>
                                                                     <i class="fas fa-dollar-sign"></i>  MSRP RANGE
 
@@ -938,7 +973,7 @@ function BrandProfile2() {
                                                                     <p>
                                                                         ( $89.00 - $89.00 )
                                                                     </p>
-                                                                </li>
+                                                                </li> */}
 
                                                             </ul>
                                                         </div>
@@ -1220,7 +1255,7 @@ function BrandProfile2() {
                             <Col xs={12} md={10} className="m-auto"> 
                                 <Form.Group controlId="formBasicEmail">
                                 
-                                    <Form.Control type="text" placeholder="https://youtu.be/abcdefg"/>
+                                    <Form.Control type="text" id="brand_video" placeholder="https://youtu.be/abcdefg"/>
 
                                 </Form.Group>
 
@@ -1233,7 +1268,7 @@ function BrandProfile2() {
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500">  Embed Video </button>
+                        <button class="admin-add-btn f-w-500"  onClick={() => {EditBrandVideo()}}>  Embed Video </button>
                     </div>
                 </Modal.Footer>
             </Modal>
