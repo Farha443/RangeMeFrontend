@@ -70,7 +70,7 @@ class CompanyStepFour extends React.Component {
                 var region = document.getElementById('region').value;
             }
 
-            var area = country+"/"+region
+            // var area = country+"/"+region
            
             var token = cookies.get('token')
             var url =  BASE_URL + "authentication/createbuyer/"
@@ -81,7 +81,8 @@ class CompanyStepFour extends React.Component {
                   "Authorization": "Bearer " + token,
                 },
                 data:{
-                    country : area
+                    country : country,
+                    region : region,
                     
                   }
             

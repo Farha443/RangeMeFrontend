@@ -50,6 +50,7 @@ function Toggle1() {
         // isValid = false;
         // errors["password"] = "Passwords don't match.";
         alert("Passwords do not match.")
+        window.location = "/signup"
       }
   } 
 
@@ -60,11 +61,13 @@ function Toggle1() {
         // isValid = false;
         // errors["email"] = "Please enter valid email address.";
           alert("Enter a valid email")
+          window.location = "/signup"
       }
     
     }
     if(terms==null){
       alert("Please agree to the terms and conditions first. ");
+      window.location = "/signup"
     }
     else{
     //  debugger

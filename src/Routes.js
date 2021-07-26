@@ -10,12 +10,13 @@ import CompanyStepTwo from './component/admin/company-form/CompanyStepTwo';
 import EmailConfirmation from './component/admin/company-form/EmailConfirmaton';
 import Distribution from './component/admin/Distribution';
 import Marketing from './component/admin/Marketing';
+import Buyerhome from './component/admin/Buyerhome';
+import BuyerNavbar from './component/admin/BuyerNavbar';
 import Preview from './component/admin/Preview';
 import ProductDetail from './component/admin/ProductDetail ';
 import ProductForm from './component/admin/ProductForm';
 import Home from './component/home/Home';
 import Homeold from './component/home/Homeold';
-
 import Login from './component/login/Login';
 import Signup from './component/signup/Signup';
 import base from './component/base';
@@ -92,6 +93,9 @@ function Routes(){
                 <Route exact path="/change-password-service" component={Changepassword}></Route>
                 <Route exact path="/service-company-profile" component={ServiceCompanyProfile}></Route>
                 <Route exact path="/brand-profile" component={BrandProfile}></Route>
+                <Route exact path="/buyer-home" component={Buyerhome}></Route>
+                <Route exact path="/buyer-navbar" component={BuyerNavbar}></Route>
+                
             </Switch>
         </> 
     )

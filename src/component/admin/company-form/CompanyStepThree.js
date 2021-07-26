@@ -122,7 +122,9 @@ function CompanyStepThree(){
                                           <Col md="3">
                                                 <div className="step-three-category-box">
                                                 <input type="checkbox" id="category" name="type" onKeyPress={handleKeypress} value={cat.uuid}/>
-                                                        <img src="assets/images/tshirt.png" />
+                                            
+                                                        <img src= {cat.logo?BASE_URL.slice(0,-5)+cat.logo:"assets/images/tshirt.png"} />
+                                                        
                                                         <p>{cat.name} </p>
                                                         
                                                 </div>

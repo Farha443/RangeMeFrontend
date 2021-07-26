@@ -1926,9 +1926,10 @@ audio,canvas,iframe,img,svg,video {
 	vertical-align: middle;
 }
 
-img {
+/* img {
 	border-style: none;
-}
+} */
+
 
 svg {
 	fill: currentColor;
@@ -4670,4 +4671,12 @@ a.header-bar__logo h1 {
 .layout__flex-column___1gh1R {
 	display: flex;
 	flex-direction: column;
+}
+
+/************* department category img csss *****/
+
+img {
+    border-style: none;
+    height: 100px;
+    width: 100px;
 }
