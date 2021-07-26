@@ -149,9 +149,9 @@ function BrandProfile2() {
         })
         axios.get(BASE_URL+'authentication/singlebrand/'+ cookies.get("get_brand") )
         .then(res=>{
-            debugger
+            // debugger
             setSbrand(res.data.data)
-            setCount(res.data.data.product_name.length)
+            // setCount(res.data.data.product_name.length)
             console.clear()
             console.log("------Single Brand------")
             console.log(res.data.data)
@@ -174,10 +174,11 @@ function BrandProfile2() {
         axios.get(url )
         .then(res=>{
             // setProducts(res.data.data.product)
-            // debugger
+            debugger
             setDetails(res.data.data)
+            setCount(res.data.data.details.length)
             console.log("-------------all Products-------------")
-            console.log(res.data.data.product)
+            console.log(res.data.data)
             console.log("-------detail--------")
             console.log(res.data.data.details)
         }).catch(err=>{
