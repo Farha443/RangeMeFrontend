@@ -48,7 +48,7 @@ function AdminNavbar(){
   
   const [profilephoto, setProfilephoto]= useState(null)
     useEffect(() => {
-      debugger
+      // debugger
         axios.get(BASE_URL+'authentication/getuser/'+cookies.get("uuid")).then(res=>{
           setProfilephoto(res.data.data.user_pic)
 

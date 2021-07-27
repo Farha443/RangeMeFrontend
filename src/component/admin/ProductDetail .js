@@ -73,7 +73,7 @@ function ProductDetail() {
         // console.log(category)
         
         axios.get(BASE_URL +'product/get_pdetails/'+cookies.get("productuuid")).then(re=>{
-            debugger
+            // debugger
             setPdetails(re.data.data)
             console.log("----product details-----")
             console.log(re.data.data)

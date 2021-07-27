@@ -58,7 +58,7 @@ class CompanyStepFour extends React.Component {
      Func() {
             $(".laoder").show(); 
             
-            debugger
+            // debugger
             // console.log(this.state.no_select)
             var country = document.getElementById('country').value;
             var slectradio = document.querySelector('input[name = "sakshi"]:checked').value;
@@ -114,7 +114,7 @@ class CompanyStepFour extends React.Component {
 
 
         selectCountry (val) {
-            debugger
+            // debugger
             this.setState({ country: val });
           }
     
@@ -123,7 +123,7 @@ class CompanyStepFour extends React.Component {
           }
     
           changefunction(e){
-              debugger
+            //   debugger
             this.setState({ no_select : e.target.value });
             
           } 

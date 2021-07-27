@@ -149,7 +149,7 @@ function BrandProfile2() {
         })
         axios.get(BASE_URL+'authentication/singlebrand/'+ cookies.get("get_brand") )
         .then(res=>{
-            debugger
+            // debuggers
             setSbrand(res.data.data)
             setCount(res.data.data.product_name.length)
             console.clear()
@@ -213,7 +213,7 @@ function BrandProfile2() {
     }
 
     function SaveMoveBrand(){  
-        debugger
+        // debugger
         var checked_brand = $("input[type='radio'][name='checked_brand']:checked").val();
         if(checked_brand === undefined){
             window.location = "/brand-profile"
@@ -250,7 +250,7 @@ function BrandProfile2() {
     }
     
     function MoveBrand(x,y){
-        debugger
+        // debugger
         console.log(x,y)
         prox = y
         proxuuid = x
