@@ -390,12 +390,12 @@ savechange(){
 
                                             <Col md="6">
 
-                                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Companny Location</Form.Label>
+                                            {/* <Form.Group controlId="exampleForm.ControlSelect1">
+                                                <Form.Label>Company Location</Form.Label>
                                                 <Form.Control id="comp_location" defaultValue={this.state.comp_location}type="text">
                                               
                                                 </Form.Control>
-                                            </Form.Group>
+                                            </Form.Group> */}
 
                                             </Col>
 

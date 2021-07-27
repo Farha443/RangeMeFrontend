@@ -81,6 +81,7 @@ var userTypeTitle=cookies.get('userType');
         var array = Array.from(selected).map(el => el.value);
         var busiess_type = document.getElementById('buss_type').value;
         var brand_name = document.getElementById('brand_name').value;
+        var brand_webisite = document.getElementById('brand_webisite').value;
         var comp_location = document.getElementById('city').value;
         var url = BASE_URL + "authentication/createsupplier/";
         var token = cookies.get('token');
@@ -99,6 +100,7 @@ var userTypeTitle=cookies.get('userType');
             department: array,
             busiess_type: busiess_type,
             brand_name: brand_name,
+            brand_webisite:brand_webisite,
             comp_location:comp_location,
 
           }
@@ -139,7 +141,7 @@ var userTypeTitle=cookies.get('userType');
                                <Card.Body>
                                     <div className="product-form-main">
                                         <div className="p-inside-title">
-                                            <p> Step 1 of 3 </p>
+                                            {/* <p> Step 1  </p> */}
                                             <h5> Tell us about your company </h5>
                                         </div>
                                         <div className="overview-form">
@@ -222,6 +224,13 @@ var userTypeTitle=cookies.get('userType');
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Brand name</Form.Label>
                                                 <Form.Control type="text"  id="brand_name"/>
+                                            </Form.Group>
+                                            </Col>
+
+                                            <Col md="12">
+                                            <Form.Group controlId="formBasicEmail">
+                                                <Form.Label>Brand Website</Form.Label>
+                                                <Form.Control type="text"  id="brand_webisite"/>
 
                                             </Form.Group>
 

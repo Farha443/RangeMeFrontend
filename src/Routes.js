@@ -42,6 +42,7 @@ import Changepassword from './component/service-provider/Changepassword';
 import ServiceCompanyProfile from './component/service-provider/ServiceCompanyProfile';
 import BrandProfile from './component/admin/BrandProfile';
 import BrandProfile2 from './component/admin/BrandProfile2';
+import AdminHomeNew from './component/admin/AdminHomeNew';
 
 
 function Routes(){
@@ -67,6 +68,7 @@ function Routes(){
                 <Route exact path="/email_confirmation" component={EmailConfirmation}></Route>
                 <Route exact path="/products_detail" component={ProductDetail}></Route>
                 <Route exact path="/admin_home" component={AdminHome}></Route>
+                <Route exact path="/admin_home1" component={AdminHomeNew}></Route>
                 <Route exact path="/admin_navbar" component={AdminNavbar}></Route>
                 <Route exact path="/product_form" component={ProductForm}></Route>
                 <Route exact path="/preview" component={Preview}></Route>

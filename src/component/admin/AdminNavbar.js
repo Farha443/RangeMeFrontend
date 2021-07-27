@@ -82,7 +82,7 @@ function AdminNavbar(){
               
 <Navbar expand="lg">
   <Container>
-  <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> 
+  <Navbar.Brand href="/admin_home1" className="admin-header-logo-main"> 
       <img src="/assets/images/Savas11.png" />
    </Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -90,7 +90,7 @@ function AdminNavbar(){
     <Nav className="ml-auto">
 
     
-      <Nav.Link href="/admin_home">Home</Nav.Link>
+      <Nav.Link href="/admin_home1">Home</Nav.Link>
       
       <NavDropdown title="My Brand" id="basic-nav-dropdown" className="menu-drop-1245">
       {brands.map(brand=>(

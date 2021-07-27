@@ -1926,10 +1926,18 @@ audio,canvas,iframe,img,svg,video {
 	vertical-align: middle;
 }
 
-img {
+/* img {
 	border-style: none;
+} */
+
+/*********** department category img csss ***/
+.step-three-category-box img {
+    border-style: none;
+    height: 100px;
+    width: 100px;
 }
 
+/*  */
 svg {
 	fill: currentColor;
 }

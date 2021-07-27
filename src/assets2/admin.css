@@ -1660,10 +1660,10 @@ section.all-msg-section {
 /******************************************/
 
 .ad-hm-logo-main {
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
     border-radius: 0%;
-    border: 3px solid #38B5E6;
+    border: 2px solid #38B5E6;
     overflow: hidden;
     margin-top: 0px;
     margin-right: 1rem;
@@ -2885,3 +2885,56 @@ ul.b-tab-list-one {
 }
 
 .pd-0{padding: 0 !important;}
+
+/******************* admin-home new section css ************/
+
+.hm-insight-m-div ul li .in-content .in-cont-first i {
+    font-size: 22px;
+    color: #38b5e6;
+}
+.hm-insight-m-div ul li .in-content .in-cont-first {
+    display: flex;
+    align-items: center;
+}
+.p-inside-title {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e4e4e4;
+    padding-bottom: 10px;
+}
+.hm-insight-m-div ul {
+    padding: 0;
+    list-style: none;
+}
+.hm-insight-m-div ul li .in-content .in-cont-first p {
+    margin: 0;
+    margin-left: 0.5rem;
+    font-weight: 400;
+    font-size: 18px;
+    color: grey;
+}
+.hm-insight-m-div ul li .in-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.hm-insight-m-div ul li .in-content .in-cont-first {
+    float: left;
+}
+.hm-insight-m-div ul li .in-content .in-content-two {
+    float: right;
+}
+.in-content-two button {
+    margin: 0;
+}
+.hm-insight-m-div ul li {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0px 10px;
+}
+.hm-insight-m-div ul li.ad-home-active {
+    background: rgb(236, 245, 255);
+    border-radius: 5px;
+}

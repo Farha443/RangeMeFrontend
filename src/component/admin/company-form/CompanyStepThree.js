@@ -42,6 +42,7 @@ function SelectCategory(){
             "Authorization": "Bearer " + token,
           },
         data:{
+
             uuid : uuid1,
             b_category : array,
           }
@@ -49,7 +50,7 @@ function SelectCategory(){
       axios(config).then(res=>{
         console.log(res.data )
         $(".laoder").hide();
-        window.location = '/company_form_Four'
+        window.location = '/company_form_four'
       }
       
       ).catch(err=>{
@@ -122,7 +123,9 @@ function CompanyStepThree(){
                                           <Col md="3">
                                                 <div className="step-three-category-box">
                                                 <input type="checkbox" id="category" name="type" onKeyPress={handleKeypress} value={cat.uuid}/>
-                                                        <img src="assets/images/tshirt.png" />
+                                            
+                                                        <img src= {cat.logo?BASE_URL.slice(0,-5)+cat.logo:"assets/images/tshirt.png"} />
+                                                        
                                                         <p>{cat.name} </p>
                                                         
                                                 </div>
@@ -154,3 +157,4 @@ function CompanyStepThree(){
 }
 
 export default CompanyStepThree
+

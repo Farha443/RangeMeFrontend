@@ -30,7 +30,7 @@ var userTypeTitle=cookies.get('userType');
 
  function Func() {
     $(".laoder").show();
-    debugger
+    // debugger
     var comp_type = document.getElementById('comp_type').value;
     var job_title = document.getElementById('job_title').value;
     var buyers = document.getElementById('buyers').value;

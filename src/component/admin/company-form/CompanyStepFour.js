@@ -109,7 +109,7 @@ class CompanyStepFour extends React.Component {
 
 
         selectCountry (val) {
-            debugger
+            // debugger
             this.setState({ country: val });
           }
     
@@ -118,7 +118,7 @@ class CompanyStepFour extends React.Component {
           }
     
           changefunction(e){
-              debugger
+            //   debugger
             this.setState({ no_select : e.target.value });
             
           } 

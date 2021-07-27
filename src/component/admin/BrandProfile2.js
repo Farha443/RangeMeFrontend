@@ -194,7 +194,7 @@ function BrandProfile() {
     }
 
     function SaveMoveBrand(){  
-        debugger
+        // debugger
         var checked_brand = $("input[type='radio'][name='checked_brand']:checked").val();
         if(checked_brand === undefined){
             window.location = "/brand-profile"
@@ -231,7 +231,7 @@ function BrandProfile() {
     }
     
     function MoveBrand(x,y){
-        debugger
+        // debugger
         console.log(x,y)
         prox = y
         proxuuid = x

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {useEffect, userEffect, useState} from 'react';
 import {NavLink} from 'react-router-dom';
-import useState from 'react-hook-use-state';
 import {
   Jumbotron,
   Button,
@@ -17,6 +16,7 @@ import {
 } from 'react-bootstrap';
 import SignupModal from '../element/SignupModal';
 import Cookies from 'universal-cookie';
+import BASE_URL from '../base';
 
 const axios = require('axios');
 const cookies = new Cookies();
@@ -53,6 +53,24 @@ function Click2(){
 
 function Header(){
   const [modalShow, setModalShow] = useState(false);
+  const[brands, setBrands] = useState([])
+
+  useEffect(() => {
+         
+    axios.get(BASE_URL+'authentication/getsupplier/'+ cookies.get('uuid') )
+    .then(res=>{
+        // debugger
+        setBrands(res.data.data)
+        console.clear()
+        console.log("------brands------")
+        console.log(res.data.data)
+    }).catch(err=>{
+        // $(".laoder").hide();
+        console.log(err)            
+    })
+    
+},[])
+
     return(
         <>
 
@@ -81,7 +99,7 @@ function Header(){
           <a href="#" className="sub-nav__link">Webinars</a>
         </div>
       </div>
-      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>}
+      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home1" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>}
       {/* <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">Log in</NavLink> */}
       <button className="header-bar__cta button button--green " onClick={() => setModalShow(true)}>Ücretsiz Hesap Aç <i class="fal fa-long-arrow-right"></i></button>
   
@@ -128,7 +146,7 @@ function Header(){
       </div>
       <a href="#" data-signup="supplier" className="nav__signup button button--blue">Get Started</a>
       {/* <NavLink to="/login"  className="nav__login button button--border">Log in</NavLink> */}
-      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">Log In</NavLink>}
+      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home1" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>}
     </nav>
   </div>
 </div>

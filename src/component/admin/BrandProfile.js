@@ -45,6 +45,7 @@ function Submit(){
     // debugger
     var brand_name = document.getElementById('brand_name').value;
     var brand_location = document.getElementById('brand_location').value;
+    var brand_website = document.getElementById('website').value;
     var year_founded = document.getElementById('year').value;
     var annual_revenue = document.getElementById('revenue').value;
     var url = BASE_URL + "authentication/createsupplier/";
@@ -64,6 +65,7 @@ var config = {
         year_founded : year_founded,
         annual_revenue: annual_revenue,
         brand_name : brand_name,
+        brand_website : brand_website,
         comp_location : brand_location,
 
       }
@@ -75,7 +77,7 @@ var config = {
     cookies.set('uuid2', res.data.data.uuid, { path: '/' })
     // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
     $(".laoder").hide(); 
-    window.location = '/admin_home'
+    window.location = '/admin_home1'
   }
   
   ).catch(err=>{
@@ -84,6 +86,7 @@ var config = {
   window.location = "/brand-profile";
   })
 }
+
 
 
 function BrandProfile2() {
@@ -96,6 +99,7 @@ function BrandProfile2() {
     const[content, setContent] = useState("");
     const [isActive, setActive] = useState("false");
     const [isAct, setAct] = useState("false");
+    const [showInfo, setShowInfo] = useState(false);
 
     const handleToggle = () => {
       setActive(!isActive);
@@ -140,6 +144,7 @@ function BrandProfile2() {
         getBrands()
         axios.get(BASE_URL+'authentication/getsupplier/'+ user_uuid )
         .then(res=>{
+            
             setBrands(res.data.data)
             console.log("------brands------")
             console.log(res.data.data)
@@ -174,9 +179,9 @@ function BrandProfile2() {
         axios.get(url )
         .then(res=>{
             // setProducts(res.data.data.product)
-            debugger
+            // debugger
             setDetails(res.data.data)
-            setCount(res.data.data.details.length)
+            setCount(res.data.data.product.length)
             console.log("-------------all Products-------------")
             console.log(res.data.data)
             console.log("-------detail--------")
@@ -214,7 +219,7 @@ function BrandProfile2() {
     }
 
     function SaveMoveBrand(){  
-        debugger
+        // debugger
         var checked_brand = $("input[type='radio'][name='checked_brand']:checked").val();
         if(checked_brand === undefined){
             window.location = "/brand-profile"
@@ -241,6 +246,7 @@ function BrandProfile2() {
     }
 
     function CopyFunction(e){
+        alert(e)
         var url = BASE_URL + "product/copy_product/"+ e
         axios.post(url )
         .then(res=>{
@@ -251,7 +257,7 @@ function BrandProfile2() {
     }
     
     function MoveBrand(x,y){
-        debugger
+        // debugger
         console.log(x,y)
         prox = y
         proxuuid = x
@@ -416,6 +422,51 @@ function BrandProfile2() {
             console.error(err);
           window.location = "/brand-profile";
           })
+    }
+
+    function EditBrandInfo(){
+        var brand_name = document.getElementById('e_name').value;
+        var brand_location = document.getElementById('e_location').value;
+        var brand_website = document.getElementById('e_website').value;
+        var year_founded = document.getElementById('e_year').value;
+        var annual_revenue = document.getElementById('e_revenue').value;
+        var url = BASE_URL + "authentication/createsupplier/";
+        var token = cookies.get('logintoken');
+        var uuid = cookies.get('get_brand');
+        var product_uuid = cookies.get('productuuid')
+        var userType = cookies.get('user_type');
+    var config = {
+        method: 'patch',
+        url: url,
+        headers: {
+          "Authorization": "Bearer " + token,
+        },
+        data:{
+            uuid : uuid,
+            product_name : product_uuid,
+            year_founded : year_founded,
+            annual_revenue: annual_revenue,
+            brand_name : brand_name,
+            brand_website : brand_website,
+            comp_location : brand_location,
+    
+          }
+    
+      };
+      console.log(config)
+      axios(config).then(res=>{
+          console.log(res.data.data)
+        cookies.set('uuid2', res.data.data.uuid, { path: '/' })
+        // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+        $(".laoder").hide(); 
+        window.location = '/brand-profile'
+      }
+      
+      ).catch(err=>{
+        console.error(err);
+        $(".laoder").hide(); 
+      window.location = "/brand-profile";
+      })
     }
 
     return (
@@ -613,29 +664,29 @@ function BrandProfile2() {
                                                                 </tr>
                                                             </thead>
 
-                                                            <tbody>{details.details ? details.details.map(pd=>(
+                                                            <tbody>{details.product ? details.product.map(pd=>(
                                                                 <tr>
                                                                 
                                                                     <td>
                                                                         <NavLink to="/product_form" className="p-img-a">
                                                                         
                                                                             <div className="tbl-prod-img">
-                                                                                <img src={BASE_URL.slice(0,-5)+pd.image} />
+                                                                                <img src={BASE_URL.slice(0,-5)+pd.images} />
                                                                             </div>
                                                                             
-                                                               {pd.Product}
+                                                               {pd.product_name}
                                                                </NavLink>
                                                                     </td>
                                                                    
                                                                     <td> {pd.productStatus==true? 
-                                                                        <button className="border-btn">Ready for Approval </button>: <button className="border-btn"  onClick={()=>Redirect(pd.pd_uuid)}>Draft </button>}
+                                                                        <button className="border-btn">Ready for Approval </button>: <button className="border-btn"  onClick={()=>Redirect(pd.uuid)}>Draft </button>}
                                                                         </td>
                                                                     <td className="pd-last-td">
-                                                                    <button className="border-btn"  onClick={()=>CopyFunction(pd.pd_uuid)}>  Copy Product   </button>
+                                                                    <button className="border-btn"  onClick={()=>CopyFunction(pd.uuid)}>  Copy Product   </button>
                                                                         <button className="border-btn"> <NavLink to=""
-                                                                        onClick={()=>Redirect(pd.pd_uuid)}> Edit </NavLink>  </button>
-                                                                         <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.pd_uuid)}> Delete </NavLink>  </button>
-                                                                         <button className="border-btn" onClick={()=>MoveBrand(pd.pd_uuid,pd.Product)}>  Move To A Different Brand   </button>
+                                                                        onClick={()=>Redirect(pd.uuid)}> Edit </NavLink>  </button>
+                                                                         <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.uuid)}> Delete </NavLink>  </button>
+                                                                         <button className="border-btn" onClick={()=>MoveBrand(pd.uuid,pd.product_name)}>  Move To A Different Brand   </button>
                                                                         <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
                                                                         <div className={isAct ? "drop-d-101 " : "drop-d-101 open-drop"}> 
                                                                             <ul>
@@ -722,17 +773,17 @@ function BrandProfile2() {
                                                <Row>
                                                    <Col md="9" xs="12"> 
                                                       <Row>
-                                                      {details.details ? details.details.map(pd=>(
+                                                      {details.product ? details.product.map(pd=>(
                                                           <Col md="4" xs="4">
                                                             <div className="brand-product-box-d">
                                                                 <div className="p-img">
                                                                     {/* <img src="assets/images/blog1.jpg" alt="p-image"/> */}
-                                                                    {pd.image?
-                                                                    <img src={BASE_URL.slice(0,-5)+pd.image} />:<img src="assets/images/blog1.jpg" alt="p-image"/>}
+                                                                    {pd.images?
+                                                                    <img src={BASE_URL.slice(0,-5)+pd.images} />:<img src="assets/images/blog1.jpg" alt="p-image"/>}
 
                                                                 </div>
                                                                 <div className="p-text-d-12458">
-                                                                    <h6> {pd.Product} </h6>
+                                                                    <h6> {pd.product_name} </h6>
                                                                     <div className="cost-text">
                                                                     <p> Cost/item <span> {pd.cost} </span> </p>
                                                                     <p> Margin <span> {pd.mrp} </span> </p>
@@ -751,13 +802,13 @@ function BrandProfile2() {
                                                    <Col md="3" xs="12">
                                                      <div className="b-profile-sidebar">
                                                         <div>
-                                                            <button className="ed-btn"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Information </button>
+                                                            <button className="ed-btn" onClick={() => setShowInfo(true)}> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Information </button>
                                                         </div>
                                                         <div className="b-profile-sidebar-text">
                                                             <ul>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="fas fa-map-marker-alt"></i>  Indore, MP
+                                                                    <i class="fas fa-map-marker-alt"></i>  {sbrand.comp_location}
                                                                     </p>
                                                                 </li>
                                                                 <li>
@@ -820,7 +871,7 @@ function BrandProfile2() {
                                                             </ul>
                                                         </div>
 
-                                                        <div className="b-profile-sidebar-text">
+                                                        {/* <div className="b-profile-sidebar-text">
                                                             <ul>
                                                                 <li>
                                                                     <p>
@@ -870,7 +921,7 @@ function BrandProfile2() {
                                                                 </li>
 
                                                             </ul>
-                                                        </div>
+                                                        </div> */}
 
 
 
@@ -916,7 +967,7 @@ function BrandProfile2() {
                                                             <ul>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="fas fa-map-marker-alt"></i>  Indore, MP
+                                                                    <i class="fas fa-map-marker-alt"></i>  {sbrand.comp_location}
                                                                     </p>
                                                                 </li>
                                                                 <li>
@@ -934,7 +985,7 @@ function BrandProfile2() {
                                                                     <i class="far fa-tag"></i>  PRODUCTS
                                                                     </p>
                                                                     <p>
-                                                                        ( 1 )
+                                                                        ( {count} )
                                                                     </p>
                                                                 </li>
                                                                 <li>
@@ -979,7 +1030,7 @@ function BrandProfile2() {
                                                             </ul>
                                                         </div>
 
-                                                        <div className="b-profile-sidebar-text">
+                                                        {/* <div className="b-profile-sidebar-text">
                                                             <ul>
                                                                 <li>
                                                                     <p>
@@ -1029,7 +1080,7 @@ function BrandProfile2() {
                                                                 </li>
 
                                                             </ul>
-                                                        </div>
+                                                        </div> */}
 
 
 
@@ -1393,7 +1444,11 @@ function BrandProfile2() {
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label  style={{marginTop: '0px'}}>Location</Form.Label>
                         <Form.Control type="text" id="brand_location" placeholder="abc" />
+                    </Form.Group>
 
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label  style={{marginTop: '0px'}}>Website</Form.Label>
+                        <Form.Control type="text" id="website" defaultValue={sbrand.brand_webisite} placeholder="abc.com" />
                     </Form.Group>
 
                     <Form.Group controlId="exampleForm.ControlSelect1">
@@ -1436,6 +1491,83 @@ function BrandProfile2() {
                 </div>
             </Modal.Footer>
       </Modal>
+
+
+{/* Edit brand info modal */}
+      <Modal
+        size="lg"
+        // dialogClassName="modal-90w"
+        show={showInfo}
+        onHide={() => setShowInfo(false)}
+        aria-labelledby="example-custom-modal-styling-title"
+        >
+            <Modal.Header closeButton>
+            <Modal.Title id="example-custom-modal-styling-title">
+            Brand information
+            </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            <Container>
+                
+                <Row>
+                <Col xs={12} md={6}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label  style={{marginTop: '0px'}} >Brand Name</Form.Label>
+                        <Form.Control type="text"  id="e_name" placeholder="abc" defaultValue={sbrand.brand_name} />
+
+                    </Form.Group>
+                </Col>
+
+                <Col xs={12} md={6}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label  style={{marginTop: '0px'}}>Location</Form.Label>
+                        <Form.Control type="text" id="e_location" defaultValue={sbrand.comp_location} placeholder="abc" />
+
+                    </Form.Group>
+                </Col>         
+
+                <Col xs={12} md={6}>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label  style={{marginTop: '0px'}}>Website</Form.Label>
+                        <Form.Control type="text" id="e_website" defaultValue={sbrand.brand_webisite} placeholder="abc.com" />
+                    </Form.Group>
+                </Col>
+                
+                <Col xs={12} md={6}>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label  style={{marginTop: '0px'}}>Year founded</Form.Label>
+                        <Form.Control as="select" defaultValue={sbrand.year_founded} id="e_year">
+                        {years.map((year, index) => {
+                            return <option key={`year${index}`} value={year}>{year}</option>})}
+                        
+                    </Form.Control>
+                    </Form.Group>
+                </Col>
+            
+                <Col xs={12} md={6}>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label  style={{marginTop: '0px'}}>Revenue</Form.Label>
+                   
+                    <Form.Control as="select" id='e_revenue' defaultValue={sbrand.annual_revenue}>
+                      <option value="0M$-5M$">0M$-5M$</option>
+                      <option value="6M$-10M$">6M$-10M$</option>
+                      <option value="11M$-15M$">11M$-15M$</option>
+                      </Form.Control>
+                  </Form.Group>
+                </Col>
+
+            </Row>
+
+            
+            </Container>
+            </Modal.Body>
+            <Modal.Footer>
+                <div className="col-md-12 text-center">
+                <button class="admin-add-btn f-w-500" onClick={() => EditBrandInfo()}> Save </button>
+                </div>
+            </Modal.Footer>
+      </Modal>
+
         </>
     );
 }
