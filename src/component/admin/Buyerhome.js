@@ -22,8 +22,14 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import BuyerNavbar from './BuyerNavbar';
-const axios = require('axios').default;
+// const axios = require('axios').default;
+// const cookies = new Cookies();
 const cookies = new Cookies();
+const axios = require('axios');
+var first_name= cookies.get("first_name")
+var user_pic= cookies.get("user_pic")
+var user_uuid = cookies.get("uuid")
+var token = cookies.get("token")
 
 function Buyerhome(){
     const [show2, setShow2] = useState(false);

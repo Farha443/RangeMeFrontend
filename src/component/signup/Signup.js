@@ -94,6 +94,7 @@ function Toggle1() {
          
           cookies.set('uuid', res.data.data.uuid, { path: '/' })
           cookies.set('token', res.data.data.access, { path: '/' })
+          cookies.set('first_name', res.data.data.user, {path:'/'});
         
          
           if (userType === "buyer"){
@@ -110,6 +111,7 @@ function Toggle1() {
           }
           
         }).catch(err=>{
+          $(".laoder").hide();
           window.location = "/signup"
           console.log(err)
         })

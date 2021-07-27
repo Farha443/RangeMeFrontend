@@ -91,17 +91,21 @@ class CompanyStepFour extends React.Component {
          axios(config).then(res=>{
                   if (res.data.message === "Buyer updated"){
                     alert("buyer updated");
+                    window.location = "/login"
                   }
                   else if (res.data.message === "Could not update buyer"){
                     alert("Could not update buyer");
                   }
          
-                  cookies.set('uuid', res.data.data.uuid, { path: '/' })
-                  cookies.set('token', res.data.data.access, { path: '/' })
-        
+                  cookies.set('uuid', res.data.data.uuid, { path: '/' });
+                  cookies.set('token', res.data.data.access, { path: '/' });
+                  cookies.set('first_name', res.data.data.user, {path:'/'});
+                  cookies.set('user_pic', res.data.data.user_pic, { path: '/' });
+                //   cookies.set('uuid', res.data.data.uuid, { path: '/' })
+                //   window.location = "/buyer-home"
                   
                 }).catch(err=>{
-                  window.location = "/"
+                  window.location = "/company_form_Four"
                   console.log(err)
                 })
               

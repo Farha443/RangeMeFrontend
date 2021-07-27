@@ -84,9 +84,9 @@ section.admin-home-section {
     font-weight: 500;
 }
 .admin-count-box {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding:50px 15px;
+    margin-top: -1.5rem;
+    margin-bottom: -0.5rem;
+    padding:1px 1px;
     text-align: center;
     background: white;
     box-shadow: rgb(0 0 0 / 8%) 0px 4px 12px;
@@ -2210,6 +2210,7 @@ section.ad-pad-sec {
 }
 a.admin-header-logo-main.navbar-brand img {
     width: 100%;
+    height: 100%;
 }
 .inp-disable {
     opacity: 0.6;
@@ -2691,5 +2692,238 @@ section.serv-com-details-section-2 {
 a.dropdown-item .itm-drop-bt button.admin-add-btn {
     margin: 0;
     padding: 5px 15px;
+    font-size: 14px;
+}
+
+
+
+/* ---------------------------------- brand profie css ----------------------- */
+.tbs-menu i {
+    font-size: 22px;
+    margin-bottom: 0.5rem;
+}
+
+.tbs-menu {
+    display: grid;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #4f5965;
+}
+
+.cover-tab-one-main .react-tabs__tab--selected {
+    background: #ffffff;
+    border-color: #aaa;
+    color: #38B5E6;
+    border-radius: 5px 5px 0 0;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.cover-tab-one-main .react-tabs__tab {
+    display: inline-block;
+    border: 1px solid transparent;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    padding: 25px 25px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.prod-num-r-btn {
+    float: left;
+    width: 100%;
+    padding: 0px 0px;
+}
+/**************************************/
+
+.cover-tab-one-main .react-tabs__tab--selected .tbs-menu {
+    color: #38b5e6;
+}
+
+
+.b-profile-tab-2-d ul.react-tabs__tab-list li {
+    display: inline-block;
+    border: 1px solid transparent;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    padding-left: 0;
+    margin-right: 10px;
+}
+
+.b-profile-tab-2-d ul.react-tabs__tab-list .react-tabs__tab--selected {
+    background: transparent;
+    border-color: #aaa;
+    color: #38B5E6;
+    border-radius: 5px 5px 0 0;
+    box-shadow: none;
+    border-bottom: 2px solid #38b5e6 !important;
+}
+.b-profile-tab-2-d ul.react-tabs__tab-list {
+    text-align: left;
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 0px;
+    margin-bottom: 2rem;
+}
+
+.brand-product-box-d .p-text-d-12458 {
+    padding: 15px;
+}
+
+.brand-product-box-d .p-img img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.brand-product-box-d .p-text-d-12458 .cost-text p:nth-child(1) {
+    margin-right: 1rem;
+}
+
+.brand-product-box-d .p-text-d-12458 .cost-text {
+    display: flex;
+}
+.brand-product-box-d .p-text-d-12458 .cost-text p {
+    margin-top: 0rem;
+    font-size: 14px;
+}
+
+.brand-product-box-d .p-text-d-12458 .cost-text p span {
+    margin-left: 0.2rem;
+}
+
+button.ed-btn {
+    border: 1px solid #dfdfdf;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 2px;
+    color: #38b5e6;
+    outline: none;
+}
+
+.brand-product-box-d {
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.b-profile-sidebar-text {
+    border-bottom: 1px solid #dedede;
+    padding: 10px 0px;
+    width: 100%;
+    float: left;
+}
+.b-profile-sidebar-text ul li p {
+    margin: 0;
+    color: #4c4c4c;
+}
+.b-profile-sidebar-text ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    float: left;
+}
+.b-profile-sidebar-text ul li {
+    padding-top: 10px;
+    width: 100%;
+    float: left;
+}
+.b-profile-sidebar-text ul li p:nth-child(1) {
+    float: left;
+}
+.b-profile-sidebar-text ul li p:nth-child(2) {
+    float: right;
+}
+.b-profile-sidebar-text ul li p i {
+    width: 20px;
+}
+p.f-size124 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.p-story-box-d {
+    background: #e6f9ff;
+    padding: 40px 0px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.p-story-box-d i.fal.fa-comment-alt-lines {
+    font-size: 42px;
+    color: #38b5e6;
+    margin-bottom: 0.5rem;
+}
+.p-story-box-d i.fal.fa-play-circle {
+    font-size: 42px;
+    color: #38b5e6;
+    margin-bottom: 0.5rem;
+}
+
+
+.p-story-box-d p {
+    margin: 0;
+}
+.p-story-box-d i.fal.fa-comment-alt-lines {
+    font-size: 42px;
+    margin-bottom: 0.5rem;
+}
+
+
+ul.b-tab-list-one {
+    background: #efefef;
+    padding: 1.5rem 0px;
+    margin: -1px 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.pd-0{padding: 0 !important;}
+
+
+
+/********************* buyer product page css *************/
+.prod-img-546 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.prod-img-546 {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+}
+
+.buyer-filter-br-m {
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    background: white;
+    padding: 15px 15px;
+    border-radius: 5px;
+    margin: 3rem 0px;
+}
+
+.prod-search-inp .input-group span {
+    background: #ffc536;
+    color: white;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.brand-product-box-d {
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    background: white;
+}
+
+.cost-text.by-h-bt button {
+    padding: 3px 15px;
     font-size: 14px;
 }

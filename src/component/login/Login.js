@@ -66,7 +66,7 @@ function Loginfunction() {
             
             }
             else{
-              window.location = "/buyer-home"
+              window.location = "/newbuyerhome"
             }
 
             

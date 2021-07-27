@@ -64,61 +64,11 @@ function AdminHome(){
     return(
         <>
             <AdminNavbar/>
-
-
-            <section className="admin-home-section"> 
-            <Container>
-                <Row>
-                    <Col md="12">
-                    <Card>
-                      
-                        <Card.Body>
-                            <div className="p-insight-d-main">
-                                <div className="p-inside-title">
-                                    <h5> Profile Insights </h5>
-                                    <p> Profile Status : <span> Unpublished </span> </p>
-                                </div>
-                            </div>
-                        <Row>
-                            <Col md="4">
-                                <div className="admin-count-box">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                    <h2> 200 </h2>
-                                    <p> VIEWS </p>
-                                </div>
-                            </Col>
-
-                            <Col md="4">
-                                <div className="admin-count-box">
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                <h2> 165 </h2>
-                                    <p> PROFILE VISITS </p>
-                                </div>
-                            </Col>
-
-                            <Col md="4">
-                                <div className="admin-count-box">
-                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                                <h2> 145 </h2>
-                                    <p> CONVERSIONS </p>
-                                </div>
-                            </Col>  
-                        </Row>
-                        </Card.Body>
-                    </Card>
-                       
-                    </Col>
-                </Row>
-            </Container>
-            </section>
-
-
-
             <section className="admin-home-section2"> 
             <Container>
                 <Row>
                     <Col md="12">
-                    <Card>
+                    <Card style={{width: '80%',marginTop:"100px"}}>
                       
                         <Card.Body>
                             <div className="p-insight-d-main">
@@ -171,6 +121,56 @@ function AdminHome(){
             </Container>
             
             </section>
+
+            <section className="admin-home-section"> 
+            <Container>
+                <Row>
+                    <Col md="12">
+                    <Card style={{width: '80%',marginTop:"5px"}}>
+                      
+                        <Card.Body>
+                            <div className="p-insight-d-main">
+                                <div className="p-inside-title">
+                                    <h5> Profile Insights </h5>
+                                    <p> Profile Status : <span> Unpublished </span> </p>
+                                </div>
+                            </div>
+                        <Row>
+                            <Col md="4">
+                                <div className="admin-count-box">
+                                {/* <i class="fa fa-eye" aria-hidden="true"></i> */}
+                                    <h2> - </h2>
+                                    <p> VIEWS </p>
+                                </div>
+                            </Col>
+
+                            <Col md="4">
+                                <div className="admin-count-box">
+                                {/* <i class="fa fa-users" aria-hidden="true"></i> */}
+                                <h2> - </h2>
+                                    <p> PROFILE VISITS </p>
+                                </div>
+                            </Col>
+
+                            <Col md="4">
+                                <div className="admin-count-box">
+                                {/* <i class="fa fa-commenting-o" aria-hidden="true"></i> */}
+                                <h2> - </h2>
+                                    <p> CONVERSIONS </p>
+                                </div>
+                            </Col>  
+                        </Row>
+                        </Card.Body>
+                    </Card>
+                       
+                    </Col>
+                </Row>
+            </Container>
+            </section>
+
+
+
+            
             <Modal
                 size="lg"
                 centered

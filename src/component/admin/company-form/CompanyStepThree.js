@@ -49,7 +49,7 @@ function SelectCategory(){
       axios(config).then(res=>{
         console.log(res.data )
         $(".laoder").hide();
-        window.location = '/login'
+        window.location = '/company_form_four'
       }
       
       ).catch(err=>{

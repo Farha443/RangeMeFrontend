@@ -33,7 +33,6 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import BASE_URL from '../base';
 import $ from "jquery"; 
-import {CKEditor} from 'ckeditor4-react';
 
 const cookies = new Cookies();
 var prox = ""
@@ -86,14 +85,14 @@ var config = {
 }
 
 
-function BrandProfile2() {
+function BrandProfile() {
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
     const [show4, setShow4] = useState(false);
     const [showV, setShowV] = useState(false);
     const [showStory, setShowStory] = useState(false);
-    const[content, setContent] = useState("");
+
     const [isActive, setActive] = useState("false");
     const [isAct, setAct] = useState("false");
 
@@ -103,20 +102,13 @@ function BrandProfile2() {
     const handleToggleTwo = () => {
         setAct(!isAct);
       };
-
-    const onEditorChange=( evt )=>{
-        setContent( evt.editor.getData() );
-    }
-
     
     const [details, setDetails]= useState([])
     const[brands, setBrands] = useState([])
     const [cover, setCover] = useState(false);
     const [logo, setLogo] = useState(false);
     const [show11, setShow11] = useState(false);
-    const[sbrand, setSbrand]=useState([]);
-    const[video, setVideo] = useState('')
-    const[count, setCount] = useState('')
+    const [filteredproduct, setFilteredProduct] = useState([]);
 
     const year = (new Date()).getFullYear()-50;
     const years = Array.from(new Array(80),(val, index) => index + year);
@@ -147,18 +139,7 @@ function BrandProfile2() {
             // $(".laoder").hide();
             console.log(err)            
         })
-        axios.get(BASE_URL+'authentication/singlebrand/'+ cookies.get("get_brand") )
-        .then(res=>{
-            debugger
-            setSbrand(res.data.data)
-            setCount(res.data.data.product_name.length)
-            console.clear()
-            console.log("------Single Brand------")
-            console.log(res.data.data)
-        }).catch(err=>{
-            // $(".laoder").hide();
-            console.log(err)            
-        })     
+             
 
     }
     ,[])
@@ -356,67 +337,7 @@ function BrandProfile2() {
             window.location = "/brand-profile";
             })
     }
-
-    async function EditBrandStory(){
-        var brand_story = content;
-        var url = BASE_URL+'authentication/createsupplier/';
-        var uuid = cookies.get('get_brand');
-        var token = cookies.get('logintoken');
-        var config = {
-            method: 'patch',
-            url: url,
-            headers: {
-              "Authorization": "Bearer " + token,
-            },
-            data:{
-                uuid : uuid,
-                brand_story:brand_story,
-    
-              }
-        
-          };
-          console.log(config)
-           await axios(config).then(res=>{
-              console.log(res.data.data)
-            window.location = '/brand-profile'
-          }
-          
-          ).catch(err=>{
-            console.error(err);
-          window.location = "/brand-profile";
-          })
-    }
-
-    async function EditBrandVideo(){
-        var brand_video = document.getElementById('brand_video').value;
-        var url = BASE_URL+'authentication/createsupplier/';
-        var uuid = cookies.get('get_brand');
-        var token = cookies.get('logintoken');
-        var config = {
-            method: 'patch',
-            url: url,
-            headers: {
-              "Authorization": "Bearer " + token,
-            },
-            data:{
-                uuid : uuid,
-                brand_video:brand_video,
-    
-              }
-        
-          };
-          console.log(config)
-           await axios(config).then(res=>{
-              console.log(res.data.data)
-            window.location = '/brand-profile'
-          }
-          
-          ).catch(err=>{
-            console.error(err);
-          window.location = "/brand-profile";
-          })
-    }
-
+   
     return (
         <>
             <AdminNavbar />
@@ -425,17 +346,17 @@ function BrandProfile2() {
 
                 <div className="clickable-cover-image__clickable-cover-image___Agsbi" data-tname="CoverImage">
                     <div className="cover-image__image-container___2tnKs">
-                        <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+sbrand.brand_cover} />
-                        {/* {sbrand.map(img=>(
+                        {/* <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+cookies.get('brand_cover')} /> */}
+                        {brands.map(img=>(
                             img.uuid===cookies.get('get_brand')?
                         <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+ img.brand_cover} />:""
-                        ))} */}
+                        ))}
                         
                     </div>
                     <div className="clickable-cover-image__container___1Y72X">
                         <button className="clickable-cover-image__change-image___JnYhU" type="button" onClick={() => setShow(true)}>
                             <div className="clickable-cover-image__change-image-hint___3NLUs">
-                                <img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src={BASE_URL.slice(0,-5)+sbrand.brand_logo}/>
+                                <img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src={BASE_URL.slice(0,-5)+cookies.get('brand_logo')}/>
                                 <div className="clickable-cover-image__change-image-text___1kIxy">Change cover image</div>
                             </div>
                         </button>
@@ -463,14 +384,14 @@ function BrandProfile2() {
                                         </div>
                                     </div>
                                     <div className="cover-brand-title">
-                                        <h5>{sbrand.brand_name}</h5>
+                                        <h5>{cookies.get('brand_name')}</h5>
                                         {/* <p> Tage Line text.. </p> */}
                                     </div>
                                 </div>
                                 <div className="cover-md-right-cont">
                                     <ul>
                                         <li>
-                                            <button class="border-btn"> <i class="fa fa-eye" aria-hidden="true"></i>  {sbrand.brand_views}  </button>
+                                            <button class="border-btn"> <i class="fa fa-eye" aria-hidden="true"></i>  0  </button>
                                         </li>
                                         <li>
                                             <button class="border-btn">  <i class="fa fa-plus" aria-hidden="true"></i>  0  </button>
@@ -496,31 +417,14 @@ function BrandProfile2() {
                 </Container>
             </section>
 
-            <section className="cover-midd-cont-section pd-0">
-                <Container fluid>
+
+
+            <section className="cover-midd-cont-section">
+                <Container>
                     <Row>
                         <Col md="12">
                             <div className="cover-tab-one-main">
-
-                                <Row>
-                                    <Col md="12">
-                                    <Tabs >
-                                    <TabList className="b-tab-list-one">
-                                        <Tab>
-                                            <div className="tbs-menu">
-                                                <i class="fa fa-cog" aria-hidden="true"></i> Manage Product
-                                    </div>
-                                        </Tab>
-                                        <Tab>
-                                            <div className="tbs-menu">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit brand page
-                                    </div>
-                                        </Tab>
-
-
-                                    </TabList>
-                                    <TabPanel>
-                                    <Col md="12">
+                            <Col md="12">
                                             <Card>
                                                 <Card.Body>
                                                     <div className="prod-num-r-btn mb-3">
@@ -627,7 +531,7 @@ function BrandProfile2() {
                                                                     </td>
                                                                    
                                                                     <td> {pd.productStatus==true? 
-                                                                        <button className="border-btn">Ready for Approval </button>: <button className="border-btn"  onClick={()=>Redirect(pd.pd_uuid)}>Draft </button>}
+                                                                        <button className="border-btn">Complete </button>: <button className="border-btn">Drafted </button>}
                                                                         </td>
                                                                     <td className="pd-last-td">
                                                                     <button className="border-btn"  onClick={()=>CopyFunction(pd.pd_uuid)}>  Copy Product   </button>
@@ -692,375 +596,16 @@ function BrandProfile2() {
                                             </Card>
                                         </Col>
                                
-                                    </TabPanel>
-                                    <TabPanel>
-                                    <Col md="12">
-                                        <Card>
-                                            <Card.Body>
-
-                                                <div className="b-p-title">
-                                                    <h5> Brand page </h5>
-                                                </div>
-                                            <Tabs>
-                                                <div className="b-profile-tab-2-d">
-
-                                                <TabList>
-                                                <Tab>
-                                                    <div className="tbs-menu">
-                                                     Arrange Products
-                                                    </div>
-                                                </Tab>
-                                                <Tab>
-                                                    <div className="tbs-menu">
-                                                      Edit Profile
-                                                    </div>
-                                                </Tab>
-                                            </TabList>
-
-                                            <TabPanel>
-                                               <Row>
-                                                   <Col md="9" xs="12"> 
-                                                      <Row>
-                                                      {details.details ? details.details.map(pd=>(
-                                                          <Col md="4" xs="4">
-                                                            <div className="brand-product-box-d">
-                                                                <div className="p-img">
-                                                                    {/* <img src="assets/images/blog1.jpg" alt="p-image"/> */}
-                                                                    {pd.image?
-                                                                    <img src={BASE_URL.slice(0,-5)+pd.image} />:<img src="assets/images/blog1.jpg" alt="p-image"/>}
-
-                                                                </div>
-                                                                <div className="p-text-d-12458">
-                                                                    <h6> {pd.Product} </h6>
-                                                                    <div className="cost-text">
-                                                                    <p> Cost/item <span> {pd.cost} </span> </p>
-                                                                    <p> Margin <span> {pd.mrp} </span> </p>
-                                                               
-                                                                    </div>
-                                                                 </div>
-                                                            </div>
-                                                          </Col>
-                                                          )) : ''}
-
-                                                          
-                                                        
-                                                      </Row>
-                                                   </Col>
-
-                                                   <Col md="3" xs="12">
-                                                     <div className="b-profile-sidebar">
-                                                        <div>
-                                                            <button className="ed-btn"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Information </button>
-                                                        </div>
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-map-marker-alt"></i>  Indore, MP
-                                                                    </p>
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-link"></i> ....
-                                                                    </p>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-tag"></i>  PRODUCTS
-                                                                    </p>
-                                                                    <p>
-                                                                        ( {count} )
-                                                                    </p>
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-calendar-week"></i> YEAR FOUNDED
-                                                                    </p>
-                                                                    <p>
-                                                                        ( {sbrand.year_founded} )
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-chart-line"></i> REVENUE
-                                                                    </p>
-                                                                    <p>
-                                                                        ( {sbrand.annual_revenue} )
-                                                                    </p>
-                                                                </li>
-
-                                                                {/* <li>
-                                                                    <p>
-                                                                    <i class="fal fa-bullhorn"></i> PROMOTIONAL SPEND
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $1 - $25k )
-                                                                    </p>
-                                                                </li> */}
-
-                                                                {/* <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $89.00 - $89.00 )
-                                                                    </p>
-                                                                </li> */}
-
-                                                            </ul>
-                                                        </div>
-
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-facebook-square"></i>  FACEBOOK
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                  
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-twitter-square"></i> TWITTER
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-pinterest-square"></i> PINTEREST
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-instagram"></i> INSTAGRAM
-                                                                    </p>
-                                                                    <p>
-                                                                        ---
-                                                                    </p>                                                    
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-
-
-
-                                                     </div>
-                                                   </Col>
-                                               </Row>
-                                            </TabPanel>
-
-                                            <TabPanel>
-                                            <Row>
-                                                   <Col md="9" xs="12"> 
-                                                      <Row>
-                                                          <Col md="12" xs="12">
-                                                            {/* <p className="f-size124"> Product Name </p> */}
-                                                            {sbrand.brand_story? <EditorPreview data={sbrand.brand_story} />:<div className="p-story-box-d">
-                                                            <i class="fal fa-comment-alt-lines"></i>
-                                                                <h4> Tell your Story </h4>
-                                                                <p> Let buyers know more about your brand. </p>
-                                                                <button className="admin-add-btn" onClick={() => setShowStory(true)}><i class="fal fa-pen"></i> Edit Your story </button>
-                                                            </div>}
-                                                          </Col>
-                                                          <Col md="12" xs="12">
-                                                          {sbrand.brand_video? sbrand.brand_video:<div className="p-story-box-d">
-                                                                
-                                                                <i class="fal fa-play-circle"></i>
-                                                                    <h4> Add a video </h4>
-                                                                    <p> Embed a YouTube or Vimeo video about your brand or products. </p>
-                                                                    <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Add Video </button>
-                                                                </div>}
-                                                            
-                                                          </Col>
-
-                                                      </Row>
-                                                   </Col>
-                                                   
-
-                                                   <Col md="3" xs="12">
-                                                     <div className="b-profile-sidebar">
-                                                        <div>
-                                                            <button className="ed-btn"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Information </button>
-                                                        </div>
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-map-marker-alt"></i>  Indore, MP
-                                                                    </p>
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-link"></i> ....
-                                                                    </p>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-tag"></i>  PRODUCTS
-                                                                    </p>
-                                                                    <p>
-                                                                        ( 1 )
-                                                                    </p>
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-calendar-week"></i> YEAR FOUNDED
-                                                                    </p>
-                                                                    <p>
-                                                                        ( {sbrand.year_founded} )
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-chart-line"></i> REVENUE
-                                                                    </p>
-                                                                    <p>
-                                                                        ( {sbrand.annual_revenue })
-                                                                    </p>
-                                                                </li>
-
-                                                                {/* <li>
-                                                                    <p>
-                                                                    <i class="fal fa-bullhorn"></i> PROMOTIONAL SPEND
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $1 - $25k )
-                                                                    </p>
-                                                                </li> */}
-
-                                                                {/* <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $89.00 - $89.00 )
-                                                                    </p>
-                                                                </li> */}
-
-                                                            </ul>
-                                                        </div>
-
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-facebook-square"></i>  FACEBOOK
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                  
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-twitter-square"></i> TWITTER
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-pinterest-square"></i> PINTEREST
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-instagram"></i> INSTAGRAM
-                                                                    </p>
-                                                                    <p>
-                                                                        ---
-                                                                    </p>                                                    
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-
-
-
-                                                     </div>
-                                                   </Col>
-                                               </Row>
-                                            </TabPanel>
-
-                                                </div>
-                                                </Tabs>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>                
-                                    </TabPanel>
-
-                                </Tabs>
-                                    </Col>
-
-                                
-                                </Row>
-                            
-                               
 
                             </div>
                         </Col>
                     </Row>
                 </Container>
             </section>
-        
 
-{/* Brand Logo upload modal  */}
-<Modal
+
+{/* Brand Logo uplod modal  */}
+            <Modal
                 size="lg"
                 centered
                 show={show3}
@@ -1125,8 +670,22 @@ function BrandProfile2() {
 
                         <Row>
                             <Col xs={12} md={12}>
-
-                                <CoverPhotoUploader />
+                            <div className="profile-up-main cover-photo">
+                                <div className="upload-imf-direction-text ">
+                                <h6> Upload Cover Photo </h6>
+                                <p>Image must be at least 1600 x 400 px.
+                                    File formats: JPG, PNG, GIF, jPEG</p>
+                                </div>
+                                <ImageUploader
+                                withIcon={true}
+                                buttonText='Choose Cover Photo'
+                                onChange={onDrop}
+                                imgExtension={['.jpg', '.gif', '.png', '.gif', 'jpeg']}
+                                maxFileSize={5242880}
+                                withPreview="true"
+                    />
+                            </div>
+                                {/* <CoverPhotoUploader /> */}
 
                             </Col>
 
@@ -1135,7 +694,7 @@ function BrandProfile2() {
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500">  Save  </button>
+                        <button class="admin-add-btn f-w-500" onClick={AddCover}>  Save  </button>
                     </div>
                 </Modal.Footer>
             </Modal>
@@ -1183,189 +742,9 @@ function BrandProfile2() {
                 </Modal.Footer>
             </Modal>
 
-{/* add story modal */}
-            <Modal
-                size="lg"
-                centered
-                show={showStory}
-                onHide={() => setShowStory(false)}
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    <h5 style={{ marginBottom: '0px' }}> Add Story </h5>
-           
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-
-                        <Row>
-                          
             
-                            <Col xs={12} md={12} className="m-auto"> 
-                            {/* <CKEditor
-                                data={content}
-                                onChange={onEditorChange()} /> */}
-                               <div className="pop-editor-text">
-                               <CKEditor
-                                data={content}
-                                onChange={onEditorChange} /> 
-                                    {/* <p style={{ marginTop: '0px' }}> 
-                                         Add reach text editor
-                                    </p> */}
-                               </div>
-                            </Col>
-                        
-
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500" type="submit" onClick={() => {EditBrandStory() }} >Add </button>
-                        {/* onClick={EditBrandStory()} */}
-                    </div>
-                </Modal.Footer>
-            </Modal>
-        
-{/*add brand video url modal  */}
-            <Modal
-                size="lg"
-                centered
-                show={showV}
-                onHide={() => setShowV(false)}
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    {/* <h5 style={{ marginBottom: '0px' }}> Add product </h5> */}
-                    {/* <p> Start with adding your product’s name </p> */}
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-
-                        <Row>
-                            <Col xs={12} md={10} className="m-auto">
-                         <div className="text-center mb-3">
-                         <h5> Add Youtube/Vimeo URL </h5>  
-                        
-                         </div>
-                            <Col xs={12} md={10} className="m-auto"> 
-                                <Form.Group controlId="formBasicEmail">
-                                
-                                    <Form.Control type="text" id="brand_video" placeholder="https://youtu.be/abcdefg"/>
-
-                                </Form.Group>
-
-
-                            </Col>
-                            </Col>
-
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500"  onClick={() => {EditBrandVideo()}}>  Embed Video </button>
-                    </div>
-                </Modal.Footer>
-            </Modal>
-
-{/* move brand modal */}
-            <Modal
-                size="lg"
-                centered
-                show={show11}
-                onHide={() => setShow11(false)}
-                aria-labelledby="example-custom-modal-styling-title">
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    <h5 style={{ marginBottom: '0px' }}> </h5>
-                    {prox}
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-                        <Row>
-                            <Col xs={12} md={10} className="m-auto">
-                         <div className="text-center mb-3">
-                         <h5>Choose a brand for this product</h5>  
-                         
-                         </div>
-                            <Col xs={12} md={10} className="m-auto"> 
-                            {brands.map(brand=>( 
-                                <p>
-                             {brand.brand_name}<img src={BASE_URL.slice(0,-5)+brand.brand_logo} width="70px" />
-                             <input id="checked_brand" name="checked_brand" type="radio"  value={brand.uuid}/>  
-                               </p>
-                            ))}
-
-                           
-
-                            </Col>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button className="admin-add-btn" onClick={SaveMoveBrand} > Save </button>
-                    </div>
-                </Modal.Footer>
-            </Modal>
-
-{/* Cover photo uplod modal  */}
-        <Modal
-                size="lg"
-                centered
-                show={show}
-                onHide={() => setShow(false)}
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    Upload your cover image
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-
-                        <Row>
-                            <Col xs={12} md={12}>
-                            <div className="profile-up-main cover-photo">
-                                <div className="upload-imf-direction-text ">
-                                <h6> Upload Cover Photo </h6>
-                                <p>Image must be at least 1600 x 400 px.
-                                    File formats: JPG, PNG, GIF, jPEG</p>
-                                </div>
-                                <ImageUploader
-                                withIcon={true}
-                                buttonText='Choose Cover Photo'
-                                onChange={onDrop}
-                                imgExtension={['.jpg', '.gif', '.png', '.gif', 'jpeg']}
-                                maxFileSize={5242880}
-                                withPreview="true"
-                    />
-                            </div>
-                                {/* <CoverPhotoUploader /> */}
-
-                            </Col>
-
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500" onClick={AddCover}>  Save  </button>
-                    </div>
-                </Modal.Footer>
-            </Modal>
-
-
 {/* add new brand modal */}
-        <Modal
+            <Modal
         size="lg"
         // dialogClassName="modal-90w"
         show={show4}
@@ -1435,22 +814,53 @@ function BrandProfile2() {
                 </div>
             </Modal.Footer>
       </Modal>
+
+
+{/* move a product modal */}
+            <Modal
+                size="lg"
+                centered
+                show={show11}
+                onHide={() => setShow11(false)}
+                aria-labelledby="example-custom-modal-styling-title">
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    <h5 style={{ marginBottom: '0px' }}> </h5>
+                    {prox}
+            </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
+                        <Row>
+                            <Col xs={12} md={10} className="m-auto">
+                         <div className="text-center mb-3">
+                         <h5>Choose a brand for this product</h5>  
+                         
+                         </div>
+                            <Col xs={12} md={10} className="m-auto"> 
+                            {brands.map(brand=>( 
+                                <p>
+                             {brand.brand_name}<img src={BASE_URL.slice(0,-5)+brand.brand_logo} width="70px" />
+                             <input id="checked_brand" name="checked_brand" type="radio"  value={brand.uuid}/>  
+                               </p>
+                            ))}
+
+                           
+
+                            </Col>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="col-md-12 text-center">
+                        <button className="admin-add-btn" onClick={SaveMoveBrand} > Save </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+
         </>
     );
 }
-class EditorPreview extends React.Component {
-    render() {
-        return (
-            <div className="editor-preview">
-              
-                <div dangerouslySetInnerHTML={ { __html: this.props.data } }></div>
-            </div>
-        );
-    }
-  }
-  
-  EditorPreview.defaultProps = {
-    data: ''
-  };
 
-export default BrandProfile2
+export default BrandProfile

@@ -12,6 +12,7 @@ import Distribution from './component/admin/Distribution';
 import Marketing from './component/admin/Marketing';
 import Buyerhome from './component/admin/Buyerhome';
 import BuyerNavbar from './component/admin/BuyerNavbar';
+import BuyerAdminProfile from './component/admin/BuyerAdminProfile';
 import Preview from './component/admin/Preview';
 import ProductDetail from './component/admin/ProductDetail ';
 import ProductForm from './component/admin/ProductForm';
@@ -35,6 +36,7 @@ import TeamAccess from './component/admin/TeamAccess';
 import ChangePassword from './component/admin/ChangePassword';
 import Notification from './component/admin/Notification';
 import AdminNewPage from './component/admin/AdminNewPage';
+import HomeBuyer from './component/admin/buyer/HomeBuyer';
 import AddBlogs from './component/admin/AddBlogs';
 import Blogs from './component/blogs/Blogs';
 import BlogsDetails from './component/blogs/BlogsDetails';
@@ -44,6 +46,7 @@ import ServiceNavbar from './component/service-provider/ServiceNavbar';
 import Changepassword from './component/service-provider/Changepassword';
 import ServiceCompanyProfile from './component/service-provider/ServiceCompanyProfile';
 import BrandProfile from './component/admin/BrandProfile';
+import BrandProfile2 from './component/admin/BrandProfile2';
 
 
 function Routes(){
@@ -79,7 +82,7 @@ function Routes(){
                 <Route exact path="/request_forgotpass" component={RequestForgotPassword}></Route>
                 <Route exact path="/validate-otp" component={ForgotPassOTP}></Route>
                 <Route exact path="/change-password" component={FcPassword}></Route>
-                <Route exact path="/admin_profile" component={AdminProfile}></Route>
+                {/* <Route exact path="/admin_profile" component={AdminProfile}></Route> */}
                 <Route exact path="/change_password" component={ChangePassword}></Route>
                 <Route exact path="/notification" component={Notification}></Route>
                 <Route exact path="/company_details" component={CompanyDetails}></Route>
@@ -95,7 +98,10 @@ function Routes(){
                 <Route exact path="/brand-profile" component={BrandProfile}></Route>
                 <Route exact path="/buyer-home" component={Buyerhome}></Route>
                 <Route exact path="/buyer-navbar" component={BuyerNavbar}></Route>
-                
+                <Route exact path="/brand-profile2" component={BrandProfile2}></Route>
+                <Route exact path="/admin_profile" component={AdminProfile}></Route>
+                <Route exact path="/buyeradmin_prof" component={BuyerAdminProfile}></Route>
+                <Route exact path="/newbuyerhome" component={HomeBuyer}></Route>
             </Switch>
         </> 
     )

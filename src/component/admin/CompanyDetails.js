@@ -391,7 +391,7 @@ savechange(){
                                             <Col md="6">
 
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>comp_location</Form.Label>
+                                                <Form.Label>Companny Location</Form.Label>
                                                 <Form.Control id="comp_location" defaultValue={this.state.comp_location}type="text">
                                               
                                                 </Form.Control>
@@ -423,7 +423,7 @@ savechange(){
                                             <Col md="6">
 
                                                 <Form.Group  controlId="exampleForm.ControlSelect1">
-                                                    <Form.Label>busiess_type</Form.Label>
+                                                    <Form.Label>business Type</Form.Label>
                                                     <Form.Control id="busiess_type" as="select" value={this.state.buss_type}
                                                     
                                                     onChange={this.handleChange1}>
