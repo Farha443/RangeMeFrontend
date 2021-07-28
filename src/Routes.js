@@ -43,6 +43,9 @@ import ServiceCompanyProfile from './component/service-provider/ServiceCompanyPr
 import BrandProfile from './component/admin/BrandProfile';
 import BrandProfile2 from './component/admin/BrandProfile2';
 import AdminHomeNew from './component/admin/AdminHomeNew';
+import HomeBuyer from './component/admin/buyer/HomeBuyer';
+import BuyerNavbar from './component/admin/BuyerNavbar';
+import BuyerAdminProfile from './component/admin/BuyerAdminProfile';
 
 
 function Routes(){
@@ -93,6 +96,9 @@ function Routes(){
                 <Route exact path="/service-company-profile" component={ServiceCompanyProfile}></Route>
                 <Route exact path="/brand-profile" component={BrandProfile}></Route>
                 <Route exact path="/brand-profile2" component={BrandProfile2}></Route>
+                <Route exact path="/buyeradmin_prof" component={BuyerAdminProfile}></Route>
+                <Route exact path="/newbuyerhome" component={HomeBuyer}></Route>
+                <Route exact path="/buyer-navbar" component={BuyerNavbar}></Route>
             </Switch>
         </> 
     )

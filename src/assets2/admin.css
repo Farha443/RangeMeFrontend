@@ -2938,3 +2938,44 @@ ul.b-tab-list-one {
     background: rgb(236, 245, 255);
     border-radius: 5px;
 }
+
+
+
+/********************* buyer product page css *************/
+.prod-img-546 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.prod-img-546 {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+}
+
+.buyer-filter-br-m {
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    background: white;
+    padding: 15px 15px;
+    border-radius: 5px;
+    margin: 3rem 0px;
+}
+
+.prod-search-inp .input-group span {
+    background: #ffc536;
+    color: white;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.brand-product-box-d {
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    background: white;
+}
+
+.cost-text.by-h-bt button {
+    padding: 3px 15px;
+    font-size: 14px;
+} 
