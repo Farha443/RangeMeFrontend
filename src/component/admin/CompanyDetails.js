@@ -371,7 +371,7 @@ savechange(){
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Company Name</Form.Label>
-                                                <Form.Control id="comp_name" type="text" placeholder="Ssoution"
+                                                <Form.Control id="comp_name" type="text" placeholder="Enter name"
                                                 defaultValue={this.state.comp_name} />
 
                                             </Form.Group>

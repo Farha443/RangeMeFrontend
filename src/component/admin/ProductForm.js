@@ -282,6 +282,7 @@ function ProductForm() {
 
             <Col md="6">
             <Form.Group multiple controlId="exampleForm.ControlSelect1">    
+            <Form.Label>Approval Certifications</Form.Label>
             <Form.Control as="select" defaultValue={productname.approvals_certifications} id="approvals_certifications" multiple="true">
             {certi.map(cat=>( 
             <option value={cat.uuid}>{cat.name}</option>))}

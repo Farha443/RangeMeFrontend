@@ -40,7 +40,7 @@ function AdminHomeNew(){
       };
 
       useEffect(() => {
-         
+        
         axios.get(BASE_URL+'authentication/getsupplier/'+ user_uuid )
         .then(res=>{
             setBrands(res.data.data[0])
@@ -60,7 +60,7 @@ function AdminHomeNew(){
         axios.get(BASE_URL+'authentication/singlebrand/'+ uuid )
         .then(res=>{
             setBrands(res.data.data)
-            alert(res.data.data.brand_name)
+            // alert(res.data.data.brand_name)
             console.log(res.data.data.length)
             // console.clear()
             // console.log("------Single Brand------")
@@ -72,6 +72,12 @@ function AdminHomeNew(){
         
     }
 
+    function removeItem(e){
+        debugger
+        var index = Allbrands.indexOf(e.target.value)
+            Allbrands.splice(index, 1);
+            setAllbrands(Allbrands);
+    }
 
     return(
         <>
@@ -108,17 +114,13 @@ function AdminHomeNew(){
                                       
                                         <p onClick={handleToggle}> Switch Brand <i class="fa fa-angle-down" aria-hidden="true"></i> </p>
                                         <div className={isActive ? "drop-d-101 " : "drop-d-101 open-drop"}>
-                                        {Allbrands.map(function(bt, index){
-                                            if(index!==1){
-                                                return <ul>
+                                        {/* {Allbrands.map(function(bt, index){ */}
+                                        {Allbrands.map(bt=>( 
+                                           <ul>
                                                    <li onClick={() => GetSingleBrand(bt.uuid)}> <NavLink to="/admin_home1">{bt.brand_name}</NavLink> </li>
                                                </ul>
-                                               }
-                                               else{
-                                                return 
-                                              
-                        }
-                    })}
+                                               ))}
+                                            {/* onClick={() => GetSingleBrand(bt.uuid)} */}
                                            </div>
                                     </div>
                     </div>

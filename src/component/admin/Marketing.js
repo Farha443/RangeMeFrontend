@@ -44,14 +44,15 @@ function Marketing() {
     const [image, setImage] = useState();
     const[market, setMarket] = useState([]);
     const[budget, setBudget] = useState([]);
+    const[pitcures, setPictures] = useState([]);
 
-    function onDrop(pictureFiles, pictureDataURLs) {
-        // debugger
-        // alert(pictureFiles)
-        setImage({
-            pictureFiles
-        });
-    }
+    // function onDrop(pictureFiles, pictureDataURLs) {
+    //     // debugger
+    //     // alert(pictureFiles)
+    //     setImage({
+    //         pictureFiles
+    //     });
+    // }
 
 
     // ----------get product marketing--------------//
@@ -152,6 +153,29 @@ function Marketing() {
     function handleChange(v) {
         setBudget({ budget: v.target.value });
     }
+
+    const handleChange2 =(event)=> {
+        
+        var reader = new FileReader();
+        reader.onload = function(){
+        var output = document.getElementById('output');
+        
+        output.src = reader.result;
+        console.log(output.src)
+        
+        reader.readAsDataURL(event.target.files[0])
+        
+        };
+
+       
+        
+    }
+    
+       function onDrop(pictureFiles, pictureDataURLs) {
+            setPictures({pictureFiles})
+
+       }
+       console.log(pitcures)
     // const handleChange = e => setBudget({...budget, [e.target.name]: e.target.value})
 
 
@@ -266,7 +290,7 @@ function Marketing() {
 
                                             <Col md="6" >
                                             <Form.Label>Product Image</Form.Label>
-                                               <img src={BASE_URL.slice(0,-5)+ market.product_images} />
+                                               {/* <img src={BASE_URL.slice(0,-5)+ market.product_images} /> */}
                                                 {/* <ImageUploader
                                                         id="id"
                                                         withIcon={false}
@@ -276,6 +300,20 @@ function Marketing() {
                                                         maxFileSize={5242880}
                                                         withPreview={true}
                                                 /> */}
+                                                <div className="change-img-maind">
+                                            {market.product_images ?   
+                                            <div className="pic-1101">
+                                                <img id="output" src={BASE_URL.slice(0,-5)+ pitcures} width="180px" height="120px" />
+                                            
+                                                </div>
+                                                : <img className="" id="output" width="180px" height="120px" src=""/>}
+                                                <div className="pic202">
+                                                
+                                                <input  type="file" id="id" onChange={handleChange2} placeholder="Change"/>
+                                            
+                                            </div>
+
+                                        </div>
                                             </Col>
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">

@@ -9,7 +9,7 @@ import CompanyStepThree from './component/admin/company-form/CompanyStepThree';
 import CompanyStepTwo from './component/admin/company-form/CompanyStepTwo';
 import EmailConfirmation from './component/admin/company-form/EmailConfirmaton';
 import Distribution from './component/admin/Distribution';
-import Marketing from './component/admin/Marketing';
+import Marketing from './component/admin/NewMarketing';
 import Preview from './component/admin/Preview';
 import ProductDetail from './component/admin/ProductDetail ';
 import ProductForm from './component/admin/ProductForm';
