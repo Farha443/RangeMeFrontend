@@ -25,7 +25,7 @@ const cookies = new Cookies();
 const axios = require('axios');
 cookies.get('sup_uuid')
 cookies.get('buy_uuid')
-var busssiness_type = ""
+// var busssiness_type = ""
 class CompanyDetails extends React.Component {
      constructor(props) {
         super(props);
@@ -39,7 +39,8 @@ class CompanyDetails extends React.Component {
             comp_location:null,
             comp_category : null,
             buss_type : null,
-            company_logo:null,};
+            company_logo:null,
+            mobile:null,};
             this.onDrop = this.onDrop.bind(this);
             this.handleChange = this.handleChange.bind(this);
             this.handleChange1 = this.handleChange1.bind(this);
@@ -67,24 +68,26 @@ class CompanyDetails extends React.Component {
     }
     
 savechange(){
+    // debugger
         var comp_name = document.getElementById('comp_name').value;
         var email = document.getElementById('email').value;
-        var comp_location = document.getElementById('comp_location').value;
+        // var comp_location = document.getElementById('comp_location').value;
         // var department = document.getElementById('department').value;
     
         const selected = document.querySelectorAll('#department option:checked');
         var array = Array.from(selected).map(el => el.value);
-        var busiess_type = document.getElementById('busiess_type').value;
+        // var busiess_type = document.getElementById('busiess_type').value;
         var company_logo = document.getElementById('company_logo').files[0];
-        var url = BASE_URL+'authentication/createsupplier/'
+        // var url = BASE_URL+'authentication/createsupplier/'
+        var url = BASE_URL+'authentication/signup/';
         var uuid = cookies.get('sup_uuid');
         var userType = cookies.get('user_type');
         var data = new FormData();
         data.append('comp_name', comp_name);
         data.append('email', email);
-        data.append('comp_location', comp_location);
+        // data.append('comp_location', comp_location);
         data.append('department', array);
-        data.append('busiess_type', busiess_type);
+        // data.append('busiess_type', busiess_type);
         // data.append('company_logo', company_logo);
         if(company_logo){
             data.append('company_logo', company_logo);
@@ -178,7 +181,6 @@ savechange(){
         }
         
         var user_uuid = cookies.get('uuid')
-        
         var url3 = BASE_URL + 'authentication/getuser/' + user_uuid+'/';
         var config = {
             method: 'get',
@@ -224,21 +226,22 @@ savechange(){
                 url: url3,     
                 
             };
-        
+            
             axios(config2).then(re => {
-                // console.log('hello')
+                console.log('hello')
                 console.log(re.data.data)
-                busssiness_type=re.data.data.busiess_type
                 this.setState({
                     
                     email: re.data.data.email,
                     comp_name: re.data.data.comp_name,
                     company_logo:re.data.data.company_logo,
                     comp_location:re.data.data.comp_location,
+                    // buss_type:re.data.data.busiess_type,
+                    mobile : re.data.data.mobile,
                     
                 
                  });
-                 console.log(this.state.busiess_type);
+                //  alert(this.state.buss_type)
                     
                 })
                 .catch(err => {
@@ -371,7 +374,7 @@ savechange(){
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Company Name</Form.Label>
-                                                <Form.Control id="comp_name" type="text" placeholder="Ssoution"
+                                                <Form.Control id="comp_name" type="text" placeholder="Enter name"
                                                 defaultValue={this.state.comp_name} />
 
                                             </Form.Group>
@@ -389,20 +392,19 @@ savechange(){
                                             </Col>
 
                                             <Col md="6">
-
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>comp_location</Form.Label>
-                                                <Form.Control id="comp_location" defaultValue={this.state.comp_location}type="text">
+                                                <Form.Label>Mobile</Form.Label>
+                                                <Form.Control id="comp_location" defaultValue={this.state.mobile}type="text">
                                               
                                                 </Form.Control>
                                             </Form.Group>
-
                                             </Col>
 
                                             <Col md="6">
-                                            
-                                            
                                                 <Form.Group controlId="exampleForm.ControlSelect1">
+                                                <Form.Label>Company Location</Form.Label>
+                                                <Form.Control id="email" type="email"
+                                                defaultValue={this.state.comp_location} placeholder="abc.com" />
                                                 {/* <Form.Label>Category</Form.Label> */}
                                                 {/* <Form.Control as="select" multiple="true" 
                                                 value={this.state.comp_category}
@@ -420,11 +422,11 @@ savechange(){
                                             </Form.Group>
                                             </Col>
 
-                                            <Col md="6">
+                                            {/* <Col md="6">
 
                                                 <Form.Group  controlId="exampleForm.ControlSelect1">
-                                                    <Form.Label>busiess_type</Form.Label>
-                                                    <Form.Control id="busiess_type" as="select"
+                                                    <Form.Label>business Type</Form.Label>
+                                                    <Form.Control id="busiess_type" as="select" value={this.state.buss_type}
                                                     
                                                     onChange={this.handleChange1}>
                                                     <option value="none">None</option>
@@ -433,23 +435,10 @@ savechange(){
                                                     <option value="reseller">reseller</option>
                                                     <option value="other">other</option>
                                                     </Form.Control>
-                                                    {/* <div className="select-container">
-                                                    
-                                                <select  onChange={this.handleChange1} id="busiess_type">
-                                                <option value="none">None</option>
-                                                    <option value="manufacturer">manufacturer</option>
-                                                    <option value="broker">broker</option>
-                                                    <option value="reseller">reseller</option>
-                                                    <option value="other">other</option>
-                                                </select>
-                                                </div> */}
+                                                   
                                                 </Form.Group>
 
-                                                </Col>
-
-                                          
-
-                                        
+                                                </Col> */}
                                     
                                             <Col md="12" className="text-center">
                                             <button class="admin-add-btn" onClick={cookies.get('sup_uuid')?()=>this.savechange():()=>this.savebuyer()}>   Save Changes  </button>

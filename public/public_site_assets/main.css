@@ -7325,6 +7325,7 @@ a.header-bar__logo.active {
 section.banner-section {
     padding: 120px 0px;
    
+    background-image: url(../assets/images/banner-1.jpg);
     background-size: 100% 100%;
     position: relative;
     height: 620px;
@@ -7948,7 +7949,6 @@ button.header-bar__cta.button.button--green i {
 }
 
 
-/************************* sk ************************/
 button.slide-prev i {
     font-size: 32px;
     margin-right: 5px;

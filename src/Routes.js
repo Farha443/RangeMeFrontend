@@ -9,7 +9,7 @@ import CompanyStepThree from './component/admin/company-form/CompanyStepThree';
 import CompanyStepTwo from './component/admin/company-form/CompanyStepTwo';
 import EmailConfirmation from './component/admin/company-form/EmailConfirmaton';
 import Distribution from './component/admin/Distribution';
-import Marketing from './component/admin/Marketing';
+import Marketing from './component/admin/NewMarketing';
 import Preview from './component/admin/Preview';
 import ProductDetail from './component/admin/ProductDetail ';
 import ProductForm from './component/admin/ProductForm';
@@ -43,6 +43,11 @@ import ServiceNavbar from './component/service-provider/ServiceNavbar';
 import Changepassword from './component/service-provider/Changepassword';
 import ServiceCompanyProfile from './component/service-provider/ServiceCompanyProfile';
 import BrandProfile from './component/admin/BrandProfile';
+import BrandProfile2 from './component/admin/BrandProfile2';
+import AdminHomeNew from './component/admin/AdminHomeNew';
+import HomeBuyer from './component/admin/buyer/HomeBuyer';
+import BuyerNavbar from './component/admin/BuyerNavbar';
+import BuyerAdminProfile from './component/admin/BuyerAdminProfile';
 
 
 function Routes(){
@@ -68,7 +73,8 @@ function Routes(){
                 <Route exact path="/company_form_Four" component={CompanyStepFour}></Route>
                 <Route exact path="/email_confirmation" component={EmailConfirmation}></Route>
                 <Route exact path="/products_detail" component={ProductDetail}></Route>
-                <Route exact path="/admin_home" component={AdminHome}></Route>
+                <Route exact path="/admin_home1" component={AdminHome}></Route>
+                <Route exact path="/admin_home" component={AdminHomeNew}></Route>
                 <Route exact path="/admin_navbar" component={AdminNavbar}></Route>
                 <Route exact path="/product_form" component={ProductForm}></Route>
                 <Route exact path="/preview" component={Preview}></Route>
@@ -92,6 +98,10 @@ function Routes(){
                 <Route exact path="/change-password-service" component={Changepassword}></Route>
                 <Route exact path="/service-company-profile" component={ServiceCompanyProfile}></Route>
                 <Route exact path="/brand-profile" component={BrandProfile}></Route>
+                <Route exact path="/brand-profile2" component={BrandProfile2}></Route>
+                <Route exact path="/buyeradmin_prof" component={BuyerAdminProfile}></Route>
+                <Route exact path="/newbuyerhome" component={HomeBuyer}></Route>
+                <Route exact path="/buyer-navbar" component={BuyerNavbar}></Route>
             </Switch>
         </> 
     )

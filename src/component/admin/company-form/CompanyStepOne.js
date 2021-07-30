@@ -30,6 +30,7 @@ var userTypeTitle=cookies.get('userType');
 
  function Func() {
     $(".laoder").show();
+    // debugger
     var comp_type = document.getElementById('comp_type').value;
     var job_title = document.getElementById('job_title').value;
     var buyers = document.getElementById('buyers').value;
@@ -118,7 +119,7 @@ var userTypeTitle=cookies.get('userType');
                                                 <Form.Control as="select" id="comp_type">
                                                 <option value="company owned">Company Owened</option>
                                                 <option value="distributor">Distributor</option>
-                                                <option value=" franchisor"> franchisor</option>
+                                                <option value="franchiser"> Franchiser</option>
                                                 <option value="importer">Importer</option>
                                                 </Form.Control>
                                             </Form.Group>

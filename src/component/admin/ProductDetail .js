@@ -43,8 +43,6 @@ const colourOptions=[
 const axios = require('axios');
 const cookies = new Cookies();
 
-
-
 function ProductDetail() {
     const [show3, setShow3] = useState(false);
     const [packaging, setPackaging] = useState('');
@@ -58,8 +56,14 @@ function ProductDetail() {
     const [show4, setShow4] = useState(false);
     const [show, setShow] = useState(false);
     const [productname, setproductname]= useState({})
+    const[p_details, setPdetails]=useState([]);
+    const[p_package, setPdPackage]=useState([]);
+    
+    // alert(p_package.product_name)
     
     useEffect(() => {
+        
+
         axios.get(BASE_URL +'product/ProductDetailView/'+cookies.get("productuuid")+'/').then(res=>{
             setproductname(res.data.data)
             
@@ -67,6 +71,22 @@ function ProductDetail() {
             console.log(err)            
         })
         // console.log(category)
+        
+        axios.get(BASE_URL +'product/get_pdetails/'+cookies.get("productuuid")).then(re=>{
+            // debugger
+            setPdetails(re.data.data)
+            console.log("----product details-----")
+            console.log(re.data.data)
+        }).catch(err=>{
+            console.log(err)            
+        })
+        axios.get(BASE_URL +'product/get_pdpack/'+cookies.get("productuuid")).then(re=>{
+            setPdPackage(re.data.data)
+            console.log("----product packaging-----")
+            console.log(re.data.data)
+        }).catch(err=>{
+            console.log(err)            
+        })
     },[])
     cookies.set('Product_Name', productname, { path: '/' });
 
@@ -85,8 +105,6 @@ function ProductDetail() {
             
             
     }
-   
-  
 
     function productdetail() {  
         var image =  proimage ? (proimage.pictureFiles)[0] : "";
@@ -129,66 +147,29 @@ function ProductDetail() {
 
         const selected4 =  document.querySelectorAll('#product_size_type option:checked')
         var array = Array.from(selected4).map(el => el.value);
+
         var product_size_type = array[0]
         var product_size = product_size_type ? document.getElementById('product_size').value : ''
 
-
-        // var product_packaging = document.getElementById('product_cost').value;
         const selected5 =  document.querySelectorAll('#life_type option:checked')
         var array = Array.from(selected5).map(el => el.value);
+        
         var life_type = array[0]
         var life_disc = life_type ? document.getElementById('life_disc').value : ""
         
-        // debugger
         if(selflife === "true"){
         var ingredients = document.getElementById('ingredients').value ? document.getElementById('ingredients').value : ''
         }
         else{
             var ingredients = ""
         }
-        // var ingredients = document.getElementById('ingredients').value 
-        // var nutritionl_label =  document.getElementById('nutritionl_label').value;
         var nutritionl_label  = proimage1 ? (proimage1.pictureFiles)[0] : ""
         var url = BASE_URL+"product/ProductDetail/"
-
-
-
-        // {  
-        //     data3:{ Product:Product,
-        //      image:data1,
-        //      variant_style_no:variant_style_no,
-        //      cost:  cost,
-        //      mrp: mrp,             
-        //      products_per_case:products_per_case,
-        //      case_pricing:case_pricing,
-        //      pricing_comments:pricing_comments,
-        //      barcode_type:barcode_type,
-        //      barcode_disc:barcode_disc,
-        //      life_type:life_type,
-        //      life_disc:life_disc,
-        //      ingredients:ingredients,
-        //      nutritionl_label:data1,},
-        //      data4:{
-
-        //      product_dimension_type:product_dimension_type,
-        //      product_d_width:product_d_width,
-        //      product_d_height:product_d_height,
-        //      product_d_depth:product_d_depth,
-
-        //      product_volume_type:product_volume_type,
-        //      product_volume:product_volume,
-
-        //      product_weight_type:product_weight_type,
-        //      product_weight:product_weight,
-
-        //      product_size_type:product_size_type,
-        //      product_size:product_size,}
-
-        //      }
         
         var data= new FormData();
         data.append('image', image);
         data.append('Product', Product);
+        data.append('product_name',Product);
         data.append('variant_style_no', variant_style_no);
         data.append('cost', cost);
         data.append('mrp', mrp);
@@ -222,10 +203,10 @@ function ProductDetail() {
               },
             data:data
         }
-        
+        // var y = respRepos.includes(usr)
         axios(config)
         .then(res=>{
-                  
+                //   debugger
                   if (res.data.message === "product detail is created"){
                     alert("product detail is created");
                   }
@@ -234,15 +215,127 @@ function ProductDetail() {
                   }
                   
                   console.log(res.data.message)
-               
                 }).catch(err=>{
                   // alert(err)
                 })
               
-      }
-    //   const image1 = (proimage1.pictureFiles)[0]
+    }
+
+    function ProductDetailsUpdate() {
+        // debugger
+        var image =  proimage ? (proimage.pictureFiles)[0] : "";
+        
+        var Product = document.getElementById('productkiuuid').value;
+        var product_name = document.getElementById('productkiuuid').value;
+        var variant_style_no =  document.getElementById('variant_style_no').value;
+
+
+        var cost = document.getElementById('cost').value;
+        var mrp = document.getElementById('mrp').value;
+        var products_per_case =document.getElementById('products_per_case').value;
+        var case_pricing = document.getElementById('case_pricing').value;
+        var pricing_comments = document.getElementById('pricing_comments').value;
+
+
+        const selected = document.querySelectorAll('#barcode_type option:checked');
+        var array = Array.from(selected).map(el => el.value);
+        var barcode_type = array[0]?array[0]:""
+        var barcode_disc = barcode_type ? document.getElementById('barcode_disc').value : "";
+
+        const selected1 =  document.querySelectorAll('#product_dimension_type option:checked')
+        var array = Array.from(selected1).map(el => el.value);
+        var product_dimension_type = array[0]?array[0]:""
+        
+        var product_d_width = product_dimension_type ? document.getElementById('product_d_width').value : ""
+        var product_d_height = product_dimension_type ? document.getElementById('product_d_height').value : ""
+        var product_d_depth = product_dimension_type ? document.getElementById('product_d_depth').value : ""
+
+        const selected2 =  document.querySelectorAll('#product_volume_type option:checked')
+        var array = Array.from(selected2).map(el => el.value);
+        var product_volume_type = array[0]?array[0]:""
+
+        var product_volume = product_volume_type ? document.getElementById('product_volume').value: ''
+
+
+        const selected3 =  document.querySelectorAll('#product_weight_type option:checked')
+        var array = Array.from(selected3).map(el => el.value);
+        var product_weight_type = array[0]?array[0]:""
+        var product_weight = product_weight_type ? document.getElementById('product_weight').value : ''
+
+        const selected4 =  document.querySelectorAll('#product_size_type option:checked')
+        var array = Array.from(selected4).map(el => el.value);
+        var product_size_type = array[0]?array[0]:""
+        var product_size = product_size_type ? document.getElementById('product_size').value : ''
+
+        const selected5 =  document.querySelectorAll('#life_type option:checked')
+        var array = Array.from(selected5).map(el => el.value);
+        var life_type = array[0]?array[0]:""
+        var life_disc = life_type ? document.getElementById('life_disc').value : ""
+        
+        if(selflife === "true"){
+        var ingredients = document.getElementById('ingredients').value ? document.getElementById('ingredients').value : ''
+        }
+        else{
+            var ingredients = ""
+        }
+        var nutritionl_label  = proimage1 ? (proimage1.pictureFiles)[0] : ""
+        var url1 = BASE_URL+"product/ProductDetail/" 
+        
+        var data= new FormData();
+        data.append('image', image);
+        data.append('Product', Product);
+        data.append('product_name',product_name)
+        data.append('variant_style_no', variant_style_no);
+        data.append('cost', cost);
+        data.append('mrp', mrp);
+        data.append('products_per_case', products_per_case);
+        data.append('case_pricing', case_pricing);
+        data.append('pricing_comments', pricing_comments);
+        data.append('barcode_type', barcode_type);
+        data.append('barcode_disc', barcode_disc);
+        data.append('life_type', life_type);
+        data.append('life_disc', life_disc);
+        data.append('ingredients', ingredients);
+        data.append('nutritionl_label', nutritionl_label);
+        data.append('product_dimension_type', product_dimension_type);
+        data.append('product_d_width', product_d_width);
+        data.append('product_d_height', product_d_height);
+        data.append('product_d_depth', product_d_depth);
+        data.append('product_volume_type', product_volume_type);
+        data.append('product_volume', product_volume);
+        data.append('product_weight_type', product_weight_type);
+        data.append('product_weight', product_weight);
+        data.append('product_size_type', product_size_type);
+        data.append('product_size', product_size);
+
+                
+        var config = {
+            method: 'patch',
+            url: url1,
+            headers: {
+                'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                // "Authorization": "Bearer" + token,
+              },
+            data:data
+        }
+        // var y = respRepos.includes(usr)
+        axios(config)
+        .then(res=>{
+                //   debugger
+                  if (res.data.message === "product detail is created"){
+                    alert("product detail is created");
+                  }
+                  else if (res.data.message === "error...error..error"){
+                    alert("product detail is not created");
+                  }
+                  
+                  console.log(res.data.message)
+                }).catch(err=>{
+                  // alert(err)
+                })
+              
+    }
     return (
-        // const image1 = {(proimage1.pictureFiles)[0]}
         <>
             <AdminNavbar />
 
@@ -341,9 +434,7 @@ function ProductDetail() {
 
                                         <div className="overview-form">
 
-                                           <Row>
-
-                                   
+                                           <Row>      
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
@@ -353,11 +444,11 @@ function ProductDetail() {
                                             </Form.Group>
 
                                             </Col>
-
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Variant SKU/Style number</Form.Label>
-                                                <Form.Control type="number" placeholder="Enter number" id="variant_style_no"/>
+                                                <Form.Control type="text" placeholder="Enter number" id="variant_style_no"
+                                                defaultValue={p_details.variant_style_no}/>
 
                                             </Form.Group>
 
@@ -375,19 +466,10 @@ function ProductDetail() {
                                                         maxFileSize={5242880}
                                                         withPreview={true}
                                                 />
-                                            </Col>
-                            
-                                    
-
-                                
-
-                                           
+                                            </Col>     
                                            </Row>
-                                            
                                         </div>
-
                                     </div>
-
                                 </Card.Body>
                             </Card>
 
@@ -419,6 +501,7 @@ function ProductDetail() {
                                                 aria-label="Username"
                                                 aria-describedby="basic-addon1"
                                                 id="cost"
+                                                defaultValue={p_details.cost}
                                                 />
                                             </InputGroup>
 
@@ -439,6 +522,7 @@ function ProductDetail() {
                                                 aria-describedby="basic-addon1"
                                                 id="mrp"
                                                 type="number"
+                                                defaultValue={p_details.mrp}
                                                 />
                                             </InputGroup>
 
@@ -448,7 +532,7 @@ function ProductDetail() {
                                         <label htmlFor="basic-url" className="lb">Products per case
                                             <p>  (Default as 1) </p>
                                         </label>
-                                        <Form.Control type="number" placeholder="1" id="products_per_case"/>
+                                        <Form.Control type="number" placeholder="1" id="products_per_case" defaultValue={p_details.mrp}/>
 
                                         </Col>
 
@@ -456,22 +540,18 @@ function ProductDetail() {
                                         <label htmlFor="basic-url" className="lb">Case Price
                                          <p>  (Default as $10) </p>
                                         </label>
-                                        <Form.Control type="number" placeholder="$10.00" id="case_pricing"/>
-
+                                        <Form.Control type="number" placeholder="$10.00" id="case_pricing"
+                                        defaultValue={p_details.case_pricing}/>
                                         </Col>
-
-                                        
                                         <Col md="12">
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                                 <Form.Label>Pricing comments (Optional)</Form.Label>
-                                                <Form.Control as="textarea" rows={3}  id="pricing_comments"/>
+                                                <Form.Control as="textarea" rows={3}  id="pricing_comments"
+                                                defaultValue={p_details.pricing_comments}/>
                                             </Form.Group>
                                         </Col>
-                                       
                                         </Row>
-                                        
                                     </div>
-
                                 </div>
 
                                 </Card.Body>
@@ -502,14 +582,15 @@ function ProductDetail() {
 
                                                 <div >
                                                 <InputGroup className="mb-3 mt-3">
-                                               {barcode === "true" ? <Form.Control as="select" id="barcode_type" className="col-md-3" >
+                                               {barcode === "true" ? <Form.Control as="select" id="barcode_type"
+                                               defaultValue={p_details.barcode_type} className="col-md-3" >
                                                <option value="none">none</option>
                                                     <option value="UPC">UPC</option>
                                                     <option value="EAN">EAN</option>
                                                     <option value="ISBN"> ISBN</option>
                 
                                                     </Form.Control>:''}
-                                                   {barcode === "true" ? <FormControl className="col-md-9" id="barcode_disc" aria-describedby="basic-addon1" defaultValue="enter your disc"/>:''}
+                                                   {barcode === "true" ? <FormControl className="col-md-9" id="barcode_disc" aria-describedby="basic-addon1" placeholder="enter your disc" defaultValue={p_details.barcode_disc}/>:''}
 
                                                  
 
@@ -554,17 +635,19 @@ function ProductDetail() {
                                                 {packaging=== "true" ? <div >
                                                 <label className="col-md-12" htmlFor="basic-url" className="lb">Product dimensions (Optional)</label>
                                                 <InputGroup className="mb-3">
-                                                <Form.Control as="select" id="product_dimension_type" className="col-md-3">
+                                                <Form.Control as="select" id="product_dimension_type" defaultValue={p_package.product_dimension_type}
+                                                className="col-md-3">
                                                     <option value="in">in</option>
                                                     <option value="ft">ft</option>
                                                     <option value="m">m</option>
                                                     <option value="cm">cm</option>
                                                     
                                                     </Form.Control>
-                                                    <FormControl id="product_d_width" className="col-md-3" aria-describedby="basic-addon1" placeholder="Width"/>
-                                                    <FormControl id="product_d_height" className="col-md-3" aria-describedby="basic-addon1" placeholder="Hight"/>
+                                                    <FormControl id="product_d_width" className="col-md-3" aria-describedby="basic-addon1" placeholder="Width" defaultValue={p_package.product_d_width}/>
+                                                    <FormControl id="product_d_height" className="col-md-3" aria-describedby="basic-addon1" placeholder="Hight" defaultValue={p_package.product_d_height}/>
                                                     <FormControl id="product_d_depth" className="col-md-3" aria-describedby="basic-addon1" 
-                                                    type='number'placeholder="Depth"/>
+                                                    type='number'placeholder="Depth"
+                                                    defaultValue={p_package.product_d_depth}/>
 
                                                  
 
@@ -578,17 +661,16 @@ function ProductDetail() {
                                              {packaging=== "true" ?   <div >
                                                 <label className="col-md-12" htmlFor="basic-url" className="lb">Product volume (Optional)</label>
                                                 <InputGroup  className="mb-3">
-                                                <Form.Control id="product_volume_type" as="select" className="col-md-4">
+                                                <Form.Control id="product_volume_type" as="select" className="col-md-4" defaultValue={p_package.product_volume_type}>
                                                     <option value="in3">In3</option>
                                                     <option value="ft3">ft3</option>
                                                     <option value="m3">m3</option>
                                                     <option value="cm3">cm3</option>
                                                    
                                                     </Form.Control>
-                                                    <FormControl id="product_volume" className="col-md-8" type='number' aria-describedby="basic-addon1" placeholder="Width"/>
-                                                  
-                                                 
-
+                                                    <FormControl id="product_volume" className="col-md-8" type='number' aria-describedby="basic-addon1" 
+                                                    placeholder="Width"
+                                                    defaultValue={p_package.product_volume}/>
                                                 </InputGroup>
                                                 </div>:''}
                                             </Col>
@@ -597,16 +679,15 @@ function ProductDetail() {
                                             {packaging=== "true" ?   <div >
                                                 <label className="col-md-12" htmlFor="basic-url" className="lb">Product weight (Optional)</label>
                                                 <InputGroup className="mb-3">
-                                                <Form.Control as="select" id="product_weight_type" className="col-md-4">
+                                                <Form.Control as="select" id="product_weight_type" className="col-md-4" defaultValue={p_package.product_weight_type}>
                                                     <option value="lb">lb</option>
                                                     <option value="kg">kg</option>
                                                     <option value="g">g</option>
                                                     <option value="oz">oz</option>
                                                     <option value="fl oz">fl oz</option>
                                                     </Form.Control>
-                                                    <FormControl id="product_weight" className="col-md-8" type='number' aria-describedby="basic-addon1" placeholder="Width"/>
-                                                  
-                                                 
+                                                    <FormControl id="product_weight" className="col-md-8" type='number' aria-describedby="basic-addon1"
+                                                    defaultValue={p_package.product_weight} placeholder="Width"/>
 
                                                 </InputGroup>
                                                 </div>:''}
@@ -617,7 +698,7 @@ function ProductDetail() {
                                             {packaging=== "true" ?  <div >
                                                 <label className="col-md-12" htmlFor="basic-url" className="lb"  >Product size (Optional)</label>
                                                 <InputGroup className="mb-3">
-                                                <Form.Control id="product_size_type" as="select" className="col-md-4">
+                                                <Form.Control id="product_size_type" as="select" className="col-md-4" defaultValue={p_package.product_size_type ? p_package.product_size_type : "hello"}>
                                                 <option value="lb">lb</option>
                                                     <option value="kg"> kg</option>
                                                     <option value="g"> g</option>
@@ -625,10 +706,7 @@ function ProductDetail() {
                                                     <option value="fl oz"> fl oz</option>
                                                     <option value="unit count">unit count</option>
                                                     </Form.Control>
-                                                    <FormControl id="product_size" className="col-md-8" aria-describedby="basic-addon1" placeholder="Width"/>
-                                                  
-                                                 
-
+                                                    <FormControl id="product_size" className="col-md-8" aria-describedby="basic-addon1" placeholder="Width" defaultValue={p_package.product_size}/>
                                                 </InputGroup>
                                                 </div>:''}
                                             </Col>
@@ -660,25 +738,22 @@ function ProductDetail() {
                                                     <div>
                                                     <label htmlFor="basic-url" className="lb">Does your product have a shelf life? (optional)</label>
                                                     </div>
- <Form.Check inline label="Yes" name="group3" type="radio" onChange={e => setIngredient(e.target.value)}  value="true"  />
- <Form.Check inline label="No" type="radio" name="group3" onChange={e => setIngredient(e.target.value)}  value="false"  />
+                                                    <Form.Check inline label="Yes" name="group3" type="radio" onChange={e => setIngredient(e.target.value)}  value="true"  />
+                                                    <Form.Check inline label="No" type="radio" name="group3" onChange={e => setIngredient(e.target.value)}  value="false"  />
                                                     </div>
                                                 </Col>
 
                                                 <Col md="12" xs="12">
                                          
                                                 {ingredient === "true" ? <InputGroup className="mt-2">
-                                                <Form.Control id="life_type" as="select" className="col-md-3">
+                                                <Form.Control id="life_type" as="select" className="col-md-3" defualtValue={p_details.life_type}>
                                                     <option value="days">days</option>
                                                     <option value="weeks">weeks</option>
                                                     <option value="months">months</option>
                                                     <option value="years">years</option>
                                                     
                                                     </Form.Control>
-                                                    <FormControl id="life_disc" className="col-md-9" aria-describedby="basic-addon1"/>
-                                                  
-                                                 
-
+                                                    <FormControl id="life_disc" className="col-md-9" aria-describedby="basic-addon1" defaultValue={p_details.life_disc}/>
                                                 </InputGroup> : ''}
                                             
                                             </Col>
@@ -698,7 +773,7 @@ function ProductDetail() {
 
                                                 <Col md="12" xs="12">                                               
                                                 {selflife === "true" ?   <div className="input-tags-main-1024" >
-                                                        <input placeholder="yes" type="text" id="ingredients" />
+                                                        <input placeholder="yes" type="text" id="ingredients" defaultValue={p_details.ingredients}/>
                                                     </div>       :''}                                      
                                                 </Col>
 
@@ -729,28 +804,18 @@ function ProductDetail() {
                                                 imgExtension={['.jpg', '.gif', '.png', '.gif']}
                                                 maxFileSize={5242880}
                                                 withPreview="true"/>:''}
-                                                 
-
-
-                                                 
                                                 </Col>
                                             </Row>
-                                            
                                         </div>
-
                                     </div>
-
                                     </Card.Body>
                                     </Card>
 
-
-
-
-                            <Col md="12" className="text-center mt-4 two-btn-main">
-                            <button class="admin-add-btn"> <NavLink to="/product_form"> Back </NavLink>    </button>
-                                 <button class="admin-add-btn" onClick={productdetail}> <NavLink to="/distribution"> Next </NavLink>  </button>
-                            </Col>
-
+                                        <Col md="12" className="text-center mt-4 two-btn-main">
+                                        <button class="admin-add-btn"> <NavLink to="/product_form"> Back </NavLink>    </button>
+                                        {p_details.Product === null || p_package.product_marketing=== null ?  <button class="admin-add-btn" onClick={() => productdetail()}> <NavLink to="/distribution"> Next </NavLink>  </button> :
+                                            <button class="admin-add-btn" onClick={() => ProductDetailsUpdate()}> <NavLink to="/distribution"> Update&Next </NavLink>  </button>}
+                                        </Col>
                         </Col>
 
 
@@ -775,13 +840,11 @@ function ProductDetail() {
 
                             </div>
                         </Col>
-
-
                     </Row>
                 </Container>
             </section>
 
-
+{/* -----------------------------------modals----------------------------------------- */}
             <Modal
                 size="lg"
                 centered

@@ -98,7 +98,7 @@ function Home(){
       setsmallheading(res.data)
       console.log(res.data)
       setBlogs(res.data.blogs)
-      setList(res.data.blogs[0])
+      setList(res.data.blogs)
       setBlogLength(res.data.blogs.length)
       console.clear()
       console.log(res.data.data)
