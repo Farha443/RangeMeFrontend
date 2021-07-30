@@ -77,7 +77,7 @@ var config = {
     cookies.set('uuid2', res.data.data.uuid, { path: '/' })
     // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
     $(".laoder").hide(); 
-    window.location = '/admin_home1'
+    window.location = '/admin_home'
   }
   
   ).catch(err=>{
@@ -100,7 +100,6 @@ function BrandProfile2() {
     const [isActive, setActive] = useState("false");
     const [isAct, setAct] = useState("false");
     const [showInfo, setShowInfo] = useState(false);
-
     const handleToggle = () => {
       setActive(!isActive);
     };
@@ -168,13 +167,33 @@ function BrandProfile2() {
     }
     ,[])
 
-
     function getBrands(query=null){
         if (query){
             var url = BASE_URL+'product/get_brands/'+ cookies.get("get_brand")+'/?search='+query    
         }
         else{    
         var url = BASE_URL+'product/get_brands/'+ cookies.get("get_brand")   
+        }
+        axios.get(url )
+        .then(res=>{
+            // setProducts(res.data.data.product)
+            // debugger
+            setDetails(res.data.data)
+            setCount(res.data.data.product.length)
+            console.log("-------------all Products-------------")
+            console.log(res.data.data)
+        }).catch(err=>{
+            // $(".laoder").hide();
+            console.log(err)            
+        })
+    }
+
+    function PdStatus(query=null){
+        if (query){
+            var url = BASE_URL+'product/pdstatus/?search='+query    
+        }
+        else{    
+        var url = BASE_URL+'product/get_brands/' 
         }
         axios.get(url )
         .then(res=>{
@@ -196,7 +215,14 @@ function BrandProfile2() {
         // alert)
         
         var s = document.getElementById('search').value;
-        getBrands(s)   
+        var array = []
+        var checkboxes = document.querySelectorAll(' input#status:checked')
+        for (var i = 0; i < checkboxes.length; i++) {
+            array.push(checkboxes[i].value)
+        }
+        var p = document.getElementById('pd_status').value
+        getBrands(s) 
+        PdStatus(p)  
     }
 
     function DeleteProduct(id){
@@ -594,7 +620,7 @@ function BrandProfile2() {
                                                                 aria-describedby="basic-addon2"
                                                             />
 
-                                                            <DropdownButton
+                                                            {/* <DropdownButton
                                                                 as={InputGroup.Append}
                                                                 variant="outline-dark"
                                                                 title="Product status"
@@ -602,32 +628,37 @@ function BrandProfile2() {
                                                             >
                                                                 <div className="filter-drop-main">
                                                                     <div className="step-four-radio noti-check">
-
                                                                         <Form.Group controlId="formBasicEmail">
 
-                                                                            <Form.Check inline name="group1" type="checkbox" id="1" />
+                                                                            <Form.Check inline name="group1" type="checkbox"
+                                                                            id="1"
+                                                                            value="draft" />
                                                                             <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Draft </label>
                                                                         </Form.Group>
 
                                                                         <Form.Group controlId="formBasicEmail">
 
-                                                                            <Form.Check inline name="group1" type="checkbox" id="1" />
+                                                                            <Form.Check inline name="group1" type="checkbox" id="1"
+                                                                            value="pending_approval" />
                                                                             <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Pending Approval </label>
                                                                         </Form.Group>
 
                                                                         <Form.Group controlId="formBasicEmail">
 
-                                                                            <Form.Check inline name="group1" type="checkbox" id="1" />
+                                                                            <Form.Check inline name="group1" type="checkbox" id="1"
+                                                                            value="published" />
                                                                             <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Published </label>
                                                                         </Form.Group>
 
                                                                         <Form.Group controlId="formBasicEmail">
-                                                                            <Form.Check inline name="group1" type="checkbox" id="1" />
+                                                                            <Form.Check inline name="group1" type="checkbox"id="1"
+                                                                            value="approved" />
                                                                             <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Ready to submit update </label>
                                                                         </Form.Group>
 
                                                                         <Form.Group controlId="formBasicEmail">
-                                                                            <Form.Check inline name="group1" type="checkbox" id="1" />
+                                                                            <Form.Check inline name="group1" type="checkbox" id="1"
+                                                                            value="rejected" />
                                                                             <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Rejected </label>
                                                                         </Form.Group>
 
@@ -640,7 +671,7 @@ function BrandProfile2() {
                                                                         <div className="filter-drop-btn-main">
                                                                             <button className="border-btn"> Clear </button>
 
-                                                                            <button className="admin-add-btn f-w-500"> Apply now </button>
+                                                                            <button className="admin-add-btn f-w-500" onClick={()=>search()}> Apply now </button>
                                                                         </div>
 
 
@@ -648,7 +679,7 @@ function BrandProfile2() {
                                                                     </div>
                                                                 </div>
                                                            
-                                                            </DropdownButton>
+                                                            </DropdownButton> */}
                                                         </InputGroup>
                                                     </div>
 
@@ -678,8 +709,8 @@ function BrandProfile2() {
                                                                </NavLink>
                                                                     </td>
                                                                    
-                                                                    <td> {pd.productStatus==true? 
-                                                                        <button className="border-btn">Ready for Approval </button>: <button className="border-btn"  onClick={()=>Redirect(pd.uuid)}>Draft </button>}
+                                                                    <td> {pd.productStatus=='approved'? 
+                                                                        <button className="border-btn">Complete </button>: pd.productStatus==="draft"?<button className="border-btn"  onClick={()=>Redirect(pd.uuid)}>Draft </button>:""}
                                                                         </td>
                                                                     <td className="pd-last-td">
                                                                     <button className="border-btn"  onClick={()=>CopyFunction(pd.uuid)}>  Copy Product   </button>

@@ -22,7 +22,8 @@ const axios = require('axios');
 const cookies = new Cookies();
 cookies.get('uuid')
 cookies.get('logintoken')
-cookies.get('userType')
+var type = cookies.get('user_type')
+// alert(type)
 var logintoken = cookies.get("logintoken")
 var userType = '';
 cookies.get('uuid2')
@@ -99,7 +100,16 @@ function Header(){
           <a href="#" className="sub-nav__link">Webinars</a>
         </div>
       </div>
-      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home1" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>}
+      {logintoken === undefined ?
+      <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">
+        GİRİŞ YAP
+        </NavLink>:type==='supplier'?
+        <NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">
+          GİRİŞ YAP
+          </NavLink>:<NavLink to="/newbuyerhome" className="header-bar__login button button--border button--compact dark-text">
+            GİRİŞ YAP
+            </NavLink>
+            }
       {/* <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">Log in</NavLink> */}
       <button className="header-bar__cta button button--green " onClick={() => setModalShow(true)}>Ücretsiz Hesap Aç <i class="fal fa-long-arrow-right"></i></button>
   
@@ -146,7 +156,10 @@ function Header(){
       </div>
       <a href="#" data-signup="supplier" className="nav__signup button button--blue">Get Started</a>
       {/* <NavLink to="/login"  className="nav__login button button--border">Log in</NavLink> */}
-      {logintoken === undefined ?<NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/admin_home1" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>}
+      {logintoken === undefined ?
+      <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">
+        GİRİŞ YAP
+        </NavLink>:type==='supplier'?<NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>:<NavLink to="/newbuyerhome" className="header-bar__login button button--border button--compact dark-text">GİRİŞ YAP</NavLink>}
     </nav>
   </div>
 </div>

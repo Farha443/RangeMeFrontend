@@ -70,8 +70,8 @@ function Routes(){
                 <Route exact path="/company_form_Four" component={CompanyStepFour}></Route>
                 <Route exact path="/email_confirmation" component={EmailConfirmation}></Route>
                 <Route exact path="/products_detail" component={ProductDetail}></Route>
-                <Route exact path="/admin_home" component={AdminHome}></Route>
-                <Route exact path="/admin_home1" component={AdminHomeNew}></Route>
+                <Route exact path="/admin_home1" component={AdminHome}></Route>
+                <Route exact path="/admin_home" component={AdminHomeNew}></Route>
                 <Route exact path="/admin_navbar" component={AdminNavbar}></Route>
                 <Route exact path="/product_form" component={ProductForm}></Route>
                 <Route exact path="/preview" component={Preview}></Route>

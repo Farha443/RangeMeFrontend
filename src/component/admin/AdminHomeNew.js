@@ -35,49 +35,93 @@ function AdminHomeNew(){
     const[brands, setBrands] = useState([])
     const[Allbrands, setAllbrands] = useState([])
     const[singleBrand , setSingleBrand] = useState([]);
+    const[remove , setRemove] = useState([]);
+    const[message , setMessage] = useState([]);
+    const[messageCount , setMessageCount] = useState([]);
     const handleToggle = () => {
         setActive(!isActive);
       };
-
+      var ws = new WebSocket('ws://localhost:8000/test/')
       useEffect(() => {
+         
+        ws.onopen = () => {
+            console.log('connected')
+            }
+
         
+            ws.onmessage = evt => {
+                // listen to data sent from the websocket server
+                const message = JSON.parse(evt.data)
+                
+                // this.setState({dataFromServer: message})
+                console.clear()
+                console.log(message.payload)
+                if(message.payload){
+                    setMessage(message.payload.notify)
+                    setMessageCount(message.payload.count)
+                    // setInterval(function(){
+                    //         setMessage(message.payload.notify)
+                    //     setMessageCount(message.payload.count)
+                    //     },2000)
+                }
+                ws.onclose = () => {
+                    console.log('disconnected')
+                    // automatically try to reconnect on connection loss
+            
+                    }
+                // 
+                
+            //     try{
+                
+            // }  
+            // catch(err){
+            //     console.log('except')  
+            }
+                
+                
         axios.get(BASE_URL+'authentication/getsupplier/'+ user_uuid )
         .then(res=>{
             setBrands(res.data.data[0])
-            setAllbrands(res.data.data)
-            // console.clear()
-            console.log("------brands------")
-            console.log(res.data.data)
+            setRemove(res.data.data)
+            var arra = []
+            const map1 = res.data.data.map(x => 
+                {
+                    if (x.uuid === res.data.data[0].uuid ){
+                        return {};
+                    }else{
+                        return arra.push(x) ;
+                    }
+                });
+            setAllbrands(arra)
         }).catch(err=>{
-            // $(".laoder").hide();
             console.log(err)            
         })
         
     },[])
 
+
     function GetSingleBrand(uuid){
-        // alert(uuid)
         axios.get(BASE_URL+'authentication/singlebrand/'+ uuid )
         .then(res=>{
             setBrands(res.data.data)
-            // alert(res.data.data.brand_name)
+            var dd = remove
+            var arra=[];
+            const map1 = dd.map(x => 
+                {
+                    if (x.uuid === uuid ){
+                        return {};
+                    }else{
+                        return arra.push(x) ;
+                    }
+                });
+            setAllbrands(arra)
             console.log(res.data.data.length)
-            // console.clear()
-            // console.log("------Single Brand------")
-            // console.log(res.data.data)
         }).catch(err=>{
             console.log(err)            
         })     
-        // console.log(brands);
-        
     }
 
-    function removeItem(e){
-        debugger
-        var index = Allbrands.indexOf(e.target.value)
-            Allbrands.splice(index, 1);
-            setAllbrands(Allbrands);
-    }
+   
 
     return(
         <>
@@ -114,10 +158,9 @@ function AdminHomeNew(){
                                       
                                         <p onClick={handleToggle}> Switch Brand <i class="fa fa-angle-down" aria-hidden="true"></i> </p>
                                         <div className={isActive ? "drop-d-101 " : "drop-d-101 open-drop"}>
-                                        {/* {Allbrands.map(function(bt, index){ */}
                                         {Allbrands.map(bt=>( 
                                            <ul>
-                                                   <li onClick={() => GetSingleBrand(bt.uuid)}> <NavLink to="/admin_home1">{bt.brand_name}</NavLink> </li>
+                                                   <li onClick={() => {GetSingleBrand(bt.uuid);handleToggle()}}> <NavLink to="/admin_home">{bt.brand_name}</NavLink> </li>
                                                </ul>
                                                ))}
                                             {/* onClick={() => GetSingleBrand(bt.uuid)} */}
@@ -248,236 +291,14 @@ function AdminHomeNew(){
                 </Row>
             </Container>
             </section>
-            {/* <section className="admin-home-section2"> 
-         
-                <Row>
-                    <Col md="12">
-                    <Card>
-                      
-                        <Card.Body className="mb-4">
-                            <div className="p-insight-d-main">
-                                <div className="p-inside-title with-btn">
-                                    <h5> Profile Insights </h5>
-                                    <p> <button className="admin-add-btn"  onClick={() => setShow(true)}> <i class="fa fa-plus" aria-hidden="true"></i> Add Brand </button> </p>
-                                      
-                                </div>
-                            </div>
-                        <Row>
-                            <Col md="12">
-                            <ul class="process">
-                                <li class="process__item">
-                                    <span class="process__number">1</span>
-                                    <span class="process__title">Create account</span>
-                                    <span class="process__subtitle">We analyse your problem and develop a strategy</span>
-                                </li>
-
-                                <li class="process__item active">
-                                    <span class="process__number">2</span>
-                                    <span class="process__title">Add product</span>
-                                    <span class="process__subtitle">Add your first product to attract interest from buyers</span>
-
-                                    <button className="admin-add-btn"> <NavLink to="/product_form"> Complete Product </NavLink>  </button>
-
-                                </li>
-
-                                <li class="process__item">
-                                    <span class="process__number">3</span>
-                                    <span class="process__title">
-                                        Confirm email</span>
-                                    <span class="process__subtitle">We analyse your problem and develop a strategy</span>
-                                </li>
-
-                                <li class="process__item">
-                                    <span class="process__number">4</span>
-                                    <span class="process__title">Add logo</span>
-                                    <span class="process__subtitle">We analyse your problem and develop a strategy</span>
-                                </li>
-                             
-                                </ul>
-                            </Col>
-
-    
-                        </Row>
-                        </Card.Body>
-                    </Card>
-                       
-                    </Col>
-                </Row>
-        
-            </section> */}
-
-            <section className="adm-hm-side-tabs-section">
-                <Row>
-                    <Col md="12">
-                      <Card>
-                          <Card.Body className="pb-0">
-                          <div className="side-tabs-main">
-                              <Row>
-                              <Col sm={12}>
-                                  <div className="side-tb-title-main">
-                                        <h5> Improve your profile </h5>
-                                  </div>
-                              </Col>
-                              </Row>
-                        <Tab.Container id="left-tabs-example" defaultActiveKey="1">
-                        <Row>
-                            <Col sm={3}>
-                            <Nav variant="pills" className="flex-column side-tabs-menu-main">
-                                <Nav.Item>
-                                     <Nav.Link eventKey="1">Invite your team</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                     <Nav.Link eventKey="2">Create Sell Sheets</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                     <Nav.Link eventKey="3">Share your profile</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                     <Nav.Link eventKey="4">Add more products</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                     <Nav.Link eventKey="5">Get Vaniver Verified™</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                     <Nav.Link eventKey="6">Get a free consultation</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                     <Nav.Link eventKey="7">Optimize your profile</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                     <Nav.Link eventKey="8">Submit to retailers</Nav.Link>
-                                </Nav.Item>
-                                
-                            </Nav>
-                            </Col>
-                            <Col sm={8}>
-                            <Tab.Content className="side-tabs-content-main">
-                                <Tab.Pane eventKey="1">
-                                    <div className="improve-your-profile-tab-panel__top___2wZZo">
-                                        <h4> Invite your team </h4>
-                                        <div className="improve-your-profile-tab-panel__icon___29Tsa">
-                                            <img src="assets/images/two-people-blue.svg"/>
-                                        </div>
-                                        <p>
-                                        Add your marketing and sales colleagues to your RangeMe account,
-                                        so that you can more quickly attract interest from buyers,
-                                        get buyer feedback, track prospects, and win new business.
-                                        </p>
-                                        <button className="admin-add-btn"> <NavLink to="/team_access"> Invite Team </NavLink>  </button>
-                                    </div>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="2">
-                                     <div className="improve-your-profile-tab-panel__top___2wZZo">
-                                        <h4> Create and share downloadable sell sheets </h4>
-                                        <div className="improve-your-profile-tab-panel__icon___29Tsa">
-                                            <img src="assets/images/sales-sheet.svg"/>
-                                        </div>
-                                        <p>
-                                        Turn your RangeMe profile into a downloadable sell sheet that you can 
-                                        share via PDF or print for in-person use.
-                                        </p>
-                                        <button className="admin-add-btn">  Create Sell Sheet </button>
-                                    </div>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="3">
-                                     <div className="improve-your-profile-tab-panel__top___2wZZo">
-                                        <h4> Share your profile with buyers </h4>
-                                        <div className="improve-your-profile-tab-panel__icon___29Tsa">
-                                            <img src="assets/images/laptop-share.svg"/>
-                                        </div>
-                                        <p>
-                                        Increase visits to your profile by sharing it with buyers via 
-                                        a URL that you can post anywhere, or by sending them an invite via email.
-                                        </p>
-                                        <button className="admin-add-btn"> Share Profile </button>
-                                    </div>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="4">
-                                    <div className="improve-your-profile-tab-panel__top___2wZZo">
-                                        <h4> Add more products </h4>
-                                        <div className="improve-your-profile-tab-panel__icon___29Tsa">
-                                            <img src="assets/images/two-boxes-b.svg"/>
-                                        </div>
-                                        <p>
-                                        Add your full product assortment to ensure your best chances of success.
-                                        </p>
-                                        <button className="admin-add-btn"> Add a product </button>
-                                    </div>
-                                
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="5">
-                                    <div className="improve-your-profile-tab-panel__top___2wZZo">
-                                        <h4> Get Veniver Verified™ </h4>
-                                        <div className="improve-your-profile-tab-panel__icon___29Tsa">
-                                            <img src="assets/images/laptop-verified.svg"/>
-                                        </div>
-                                        <p>
-                                        Learn how to optimize your profile by getting helpful tips from a member of our Customer Success team.
-                                        </p>
-                                        <button className="admin-add-btn">Get Verified </button>
-                                    </div>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="6">
-                                    <div className="improve-your-profile-tab-panel__top___2wZZo">
-                                        <h4> Get a free consultation </h4>
-                                        <div className="improve-your-profile-tab-panel__icon___29Tsa">
-                                            <img src="assets/images/laptop-verified.svg"/>
-                                        </div>
-                                        <p>
-                                        Complete verification to show buyers that you're
-                                        retail-ready and start experiencing up to 7x the visibility for your brand.
-                                        </p>
-                                        <button className="admin-add-btn"> Request a phone call </button>
-                                    </div>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="7">
-                                    <div className="improve-your-profile-tab-panel__top___2wZZo">
-                                        <h4> Optimize your profile </h4>
-                                        <div className="improve-your-profile-tab-panel__icon___29Tsa">
-                                            <img src="assets/images/laptop-thumbs-up.svg"/>
-                                        </div>
-                                        <p>
-                                        Add the most relevant keywords, and consider updating your pricing, to make sure buyers see your profile when searching.
-                                        </p>
-                                        <button className="admin-add-btn"> Get insights </button>
-                                    </div>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="8">
-                                    <div className="improve-your-profile-tab-panel__top___2wZZo">
-                                        <h4> Submit to retailers </h4>
-                                        <div className="improve-your-profile-tab-panel__icon___29Tsa">
-                                            <img src="assets/images/inbox-with-arrow-blue.svg"/>
-                                        </div>
-                                        <p>
-                                        Submit to the right retailer for you at the right time, by reviewing those accepting new product submissions for specific categories.
-                                        </p>
-                                        <button className="admin-add-btn"> Browse retailers </button>
-                                    </div>
-                                </Tab.Pane>
-
-                            </Tab.Content>
-                            </Col>
-                        </Row>
-                        </Tab.Container>
-
-                        </div>
-                          </Card.Body>
-                      </Card>
-                    </Col>
-                </Row>
-            </section>
-  
             </div>
-
-
-
         {/* right sidebar div start  */}
 
         <div className="col-md-3">
             <div className="rgm-right-bar">
                 <div className="right-side-header">
                     <h5>Current buyer activity on Vaniver</h5>
-                    <p> See buyer actions across all suppliers on Vaniver </p>
+                    <p> {message} </p>
                 </div> 
 
                 <ul>
@@ -496,7 +317,7 @@ function AdminHomeNew(){
                             <img src="assets/images/101.jpg" alt="img"/>
                         </div>
                        <div className="tx-1021">
-                       <h6>A buyer from QVC / HSN</h6>
+                       <h6>{messageCount}</h6>
                         <p> saved a brand </p>
                        </div>
                     </li>

@@ -56,7 +56,7 @@ function Loginfunction() {
               window.location = "/admin/home"
             }
             else if(cookies.get('user_type')==="supplier"){
-              window.location = "/admin_home1"
+              window.location = "/admin_home"
 
             
             }

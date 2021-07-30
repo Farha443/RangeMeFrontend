@@ -82,7 +82,7 @@ function AdminNavbar(){
               
 <Navbar expand="lg">
   <Container>
-  <Navbar.Brand href="/admin_home1" className="admin-header-logo-main"> 
+  <Navbar.Brand href="/admin_home" className="admin-header-logo-main"> 
       <img src="/assets/images/Savas11.png" />
    </Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -90,7 +90,7 @@ function AdminNavbar(){
     <Nav className="ml-auto">
 
     
-      <Nav.Link href="/admin_home1">Home</Nav.Link>
+      <Nav.Link href="/admin_home">Home</Nav.Link>
       
       <NavDropdown title="My Brand" id="basic-nav-dropdown" className="menu-drop-1245">
       {brands.map(brand=>(
@@ -124,9 +124,9 @@ function AdminNavbar(){
       </div>
       <i class="fa fa-angle-down" aria-hidden="true"></i>
 
-      <div className={isActive ? "dropmenu-profile-img " : "dropmenu-profile-img dropmenu-profile-open"}>
+      <div className={isActive ? "dropmenu-profile-img " : "dropmenu-profile-img dropmenu-profile-open"} onClick={handleToggle}>
           <ul>
-            <li> <NavLink to="">{first_name} </NavLink> </li>
+            <li> <NavLink to="/admin_profile">{first_name} </NavLink> </li>
             <li> <NavLink to="/admin_profile">Settings </NavLink> </li>
             <li> <NavLink to="" onClick={logout}> Logout </NavLink> </li>
           </ul>

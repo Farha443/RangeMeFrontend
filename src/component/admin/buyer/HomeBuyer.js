@@ -1,6 +1,7 @@
 import React, {useEffect, userEffect, useState} from 'react';
 import '../../../assets2/admin.css';
 import AdminNavbar from '../AdminNavbar'
+import Cookies from 'universal-cookie';
 import {
   Jumbotron,
   Button,
@@ -23,7 +24,8 @@ import { NavLink } from 'react-router-dom';
 import BuyerNavbar from '../BuyerNavbar';
 import BASE_URL from '../../base';
 import axios from 'axios';
-
+import $ from "jquery";  
+const cookies = new Cookies();
 
 function HomeBuyer(){
     const [show, setShow] = useState(false);
@@ -43,6 +45,47 @@ function HomeBuyer(){
   
   },[])
 
+
+
+//   function BidPlacing(){
+//     debugger
+//     var requirements = document.getElementById('biddata').value;
+//     var notifyurl = BASE_URL+'authentication/send_notifiaction/'
+//     var n_user = cookies.get("uuid")
+//     var notifyconfig = {
+//         method: 'post',
+//         url: notifyurl,
+//         data:{
+//             n_user : n_user,
+//             notification : requirements,
+//           }
+//       };
+//       var ws = new WebSocket('ws://localhost:8000/test/')
+//       ws.onclose = () => {
+//         console.log('disconnected')
+//         // automatically try to reconnect on connection loss
+
+//         }
+//       ws.onopen = () => {
+//         console.log('connected')
+//         }
+//       axios(notifyconfig).then(res=>{
+//         //   console.log(res.status)
+          
+//         ws.onmessage = evt => {
+//             // listen to data sent from the websocket server
+//             const message = JSON.parse(evt.data)
+//             debugger
+//             // this.setState({dataFromServer: message})
+//             console.log(message)
+//             }
+    
+//         // window.location = '/company_form_two'
+//       }
+//       ).catch(err=>{
+//         console.error(err);
+//       })
+//   }
 
 function myfunc(query=null){
     if (query){
@@ -69,6 +112,25 @@ function search(){
     return(
         <>
            <BuyerNavbar/>
+
+           <Col md="4" xs="12">
+               
+                {/* <input type="text"> Bid Proposal </input> */}
+                    
+                    
+                        {/* <div>
+                        <FormControl
+                                    placeholder="requirements "
+                                    id="biddata"
+                                    aria-label="Username"
+                                    aria-describedby="basic-addon1"
+                                    />
+                            <button className="admin-add-btn" onClick={BidPlacing}> Bid place</button> 
+                            
+                        </div>
+                        */}
+                
+                </Col>
                 <div className="container">
                 <Row>
                     <Col md="12" xs="12">
@@ -126,6 +188,8 @@ function search(){
                     </Col>
                 ))}
 
+
+                
 
                     
 

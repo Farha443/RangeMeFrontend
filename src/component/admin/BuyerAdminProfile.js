@@ -98,7 +98,7 @@ class BuyerAdminProfile extends React.Component {
                 alert("success")
                 // cookies.set('uuid1', res.data.data.uuid, { path: '/' })
                 // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
-                window.location = '/buyer-navbar'
+                window.location = '/newbuyerhome'
             }
             
             ).catch(err=>{

@@ -169,6 +169,7 @@ function ProductDetail() {
         var data= new FormData();
         data.append('image', image);
         data.append('Product', Product);
+        data.append('product_name',Product);
         data.append('variant_style_no', variant_style_no);
         data.append('cost', cost);
         data.append('mrp', mrp);
@@ -446,7 +447,7 @@ function ProductDetail() {
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Variant SKU/Style number</Form.Label>
-                                                <Form.Control type="number" placeholder="Enter number" id="variant_style_no"
+                                                <Form.Control type="text" placeholder="Enter number" id="variant_style_no"
                                                 defaultValue={p_details.variant_style_no}/>
 
                                             </Form.Group>

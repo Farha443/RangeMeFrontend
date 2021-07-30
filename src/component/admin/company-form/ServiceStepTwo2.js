@@ -204,16 +204,6 @@ var region_value = ''
                                         </div>
                                         <div className="overview-form">
                                            <Row>
-                                          
-                                            
-                                            
-                                           
-                                            
-                                           
-
-                                            
-
-
                                             <Col md="12">
                                             <Form.Group controlId="exampleForm.ControlSelect1">
                                                 <Form.Label> Select your service Category. </Form.Label>
