@@ -23,7 +23,7 @@ import $ from "jquery";
 
 const axios = require('axios');
 const cookies = new Cookies();
-var userTypeTitle=cookies.get('userType');
+// var userTypeTitle=cookies.get('userType');
 
 function skip(){
     window.location='/company_form_three';
@@ -31,18 +31,19 @@ function skip(){
 
  function Func() {
     $(".laoder").show();
+    debugger
     var company_logo = document.getElementById('comp_logo').files[0];
     var company_description = document.getElementById('comp_desc').value;
     var url = BASE_URL + "authentication/createbuyer/";
     // var token = cookies.get('token');
-    var uuid = cookies.get('uuid1');
-    // alert(uuid)
-    var userType = cookies.get('userType');
+    var uuid = cookies.get('uuid');
+    
     var data = new FormData();
     data.append('company_logo', company_logo);
     data.append('uuid', uuid);
     data.append('company_description', company_description);
-    var token = cookies.get("token")
+    var token = cookies.get("token");
+    var userTypeTitle= cookies.get("userType")
       
       var config = {
   

@@ -95,6 +95,8 @@ function Toggle1() {
           cookies.set('uuid', res.data.data.uuid, { path: '/' })
           cookies.set('token', res.data.data.access, { path: '/' })
           cookies.set('first_name', res.data.data.user, {path:'/'});
+          cookies.set('user_type', res.data.data.user_type, {path:'/'});
+           
         
          
           if (userType === "buyer"){
