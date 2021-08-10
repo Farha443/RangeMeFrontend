@@ -518,7 +518,7 @@ class Distribution extends React.Component {
                                             
                                             </Col>
 
-                                            <Col md="12" className="" >
+                                            {/* <Col md="12" className="" >
                                                 <div className="step-four-radio">
                                                 <div>
                                                 <label htmlFor="basic-url" className="lb">Is this product available now? </label>
@@ -553,16 +553,16 @@ class Distribution extends React.Component {
                                                     </div> <button onClick={()=>this.removeId(op.uuid)} > X </button>  </div>
                                                     }
                                                 })}
-                                                    </div>
+                                                    </div> */}
                                                 {/* <Form.Control as="select" multiple="true" id="selling_Platform">
                                                 {this.state.data.map(sell=>(  
                                                 <option value={sell.uuid}>{sell.name}</option>))}
                                                 
                                                 </Form.Control> */}
-                                            </Form.Group>: ""}
+                                            {/* </Form.Group>: ""}
                                             {this.state.productAvailable === "false" ? <input class="form-control" id="product_availability" defaultValue={this.state.data2.product_availability}
-                                            type="date"></input>:""}
-                                            </Col>
+                                            type="date"></input>:""} */}
+                                            {/* </Col> */}
 
                                             <Col md="12" className="" >
                                                 <div className="step-four-radio">
