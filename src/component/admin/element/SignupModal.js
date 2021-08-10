@@ -31,7 +31,6 @@ function Click(){
   cookies.set('userType', supplier, { path: '/' });
   // console.log(cookies.get('userType'));
   userType=cookies.get('userType');                                          
-  alert(userType);
   window.location = "/signup"
   }
 
@@ -40,7 +39,6 @@ function Click1(){
   var buyer = "buyer";
   cookies.set('userType', buyer, { path: '/' });
   userType=cookies.get('userType');
-  alert(userType);
   window.location = "/signup"
   }
 

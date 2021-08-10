@@ -76,7 +76,6 @@ function Header(){
 function SignUp(){
   var supplier = "supplier";
   cookies.set('userType', supplier, { path: '/' });
-  alert(cookies.get('userType'))
   setModalShow(true)
 }
 

@@ -207,12 +207,12 @@ function ProductDetail() {
         axios(config)
         .then(res=>{
                 //   debugger
-                  if (res.data.message === "product detail is created"){
-                    alert("product detail is created");
-                  }
-                  else if (res.data.message === "error...error..error"){
-                    alert("product detail is not created");
-                  }
+                //   if (res.data.message === "product detail is created"){
+                //     alert("product detail is created");
+                //   }
+                //   else if (res.data.message === "error...error..error"){
+                //     alert("product detail is not created");
+                //   }
                   
                   console.log(res.data.message)
                 }).catch(err=>{
@@ -321,13 +321,13 @@ function ProductDetail() {
         // var y = respRepos.includes(usr)
         axios(config)
         .then(res=>{
-                //   debugger
-                  if (res.data.message === "product detail is created"){
-                    alert("product detail is created");
-                  }
-                  else if (res.data.message === "error...error..error"){
-                    alert("product detail is not created");
-                  }
+                // //   debugger
+                //   if (res.data.message === "product detail is created"){
+                //     alert("product detail is created");
+                //   }
+                //   else if (res.data.message === "error...error..error"){
+                //     alert("product detail is not created");
+                //   }
                   
                   console.log(res.data.message)
                 }).catch(err=>{

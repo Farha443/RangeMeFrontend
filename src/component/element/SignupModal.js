@@ -115,7 +115,7 @@ function Click1(){
   cookies.set('userType', buyer, { path: '/' });
   userType=cookies.get('userType');
   window.location = "signup"
-  alert(userType)
+  // alert(userType)
   }
 
 
@@ -199,7 +199,7 @@ axios(config).then(res=>{
   cookies.set('token', res.data.data.access, { path: '/' })
   
   // $(".laoder").hide(); 
-  alert("success")
+  // alert("success")
   window.location = "/login";
 }
 
