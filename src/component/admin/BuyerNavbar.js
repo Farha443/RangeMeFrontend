@@ -56,15 +56,6 @@ function AdminNavbar(){
             console.log(err)            
         })
 
-        // axios.get(BASE_URL+'authentication/getbuyer/'+ user_uuid )
-        // .then(res=>{
-        //     setBrands(res.data.data)
-        //     console.log("------brands------")
-        //     console.log(res.data.data)
-        // }).catch(err=>{
-        //     // $(".laoder").hide();
-        //     console.log(err)            
-        // })
         
     },[])
     return(
@@ -96,7 +87,7 @@ function AdminNavbar(){
 
       <div className={isActive ? "dropmenu-profile-img " : "dropmenu-profile-img dropmenu-profile-open"}>
           <ul>
-            <li> <NavLink to="">{first_name} </NavLink> </li>
+            <li> <NavLink to="/buyeradmin_prof">{first_name} </NavLink> </li>
             <li> <NavLink to="/buyeradmin_prof">Settings </NavLink> </li>
             <li> <NavLink to="" onClick={logout}> Logout </NavLink> </li>
           </ul>
