@@ -74,7 +74,8 @@ function AdminHomeNew(){
         ;
       },[])
 
- var socket = new WebSocket('ws://tayuss.com/chat/')
+//  var socket = new WebSocket('ws://localhost:8000/chat/')
+var socket = new WebSocket('ws://tayuss.com/chat/')
  useEffect(() => {
     socket.onopen = () => {
             // debugger
@@ -120,6 +121,7 @@ function AdminHomeNew(){
     const handleToggle = () => {
         setActive(!isActive);
       };
+    //   var ws = new WebSocket('ws://localhost:8000/test/')
       var ws = new WebSocket('ws://tayuss.com/test/')
       useEffect(() => {
          
@@ -215,7 +217,8 @@ function AdminHomeNew(){
                     msg : msg
                 },
             };
-            var wss = new WebSocket('ws://tayuss.com/chat/')
+    // var wss = new WebSocket('ws://localhost:8000/chat/')
+    var wss = new WebSocket('ws://tayuss.com/chat/')
     wss.onclose = () => {
         console.log('disconnected')
         }

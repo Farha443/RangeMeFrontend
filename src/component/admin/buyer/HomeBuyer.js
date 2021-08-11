@@ -45,7 +45,7 @@ function HomeBuyer(){
     const[chat,setChat]=useState([])
     const[newMessage,setnewMessage]=useState({})
     const [Id , setId] = useState([])
-    var socket = new WebSocket('ws://tayuss.com:8000/chat/')
+    var socket = new WebSocket('ws://tayuss.com/chat/')
     // var socket = new WebSocket('ws://localhost:8000/chat/')
     useEffect(() => {
        socket.onopen = () => {
@@ -119,6 +119,7 @@ function BidPlacing(){
           }
       };
       var ws = new WebSocket('ws://tayuss.com/test/')
+    //   var ws = new WebSocket('ws://localhost:8000/test/')
       ws.onclose = () => {
         console.log('disconnected')
         }
@@ -171,6 +172,7 @@ function Sendmessage(id){
             },
         };
 
+    // var wss = new WebSocket('ws://localhost:8000/chat/')
     var wss = new WebSocket('ws://tayuss.com/chat/')
     wss.onclose = () => {
         console.log('disconnected')
