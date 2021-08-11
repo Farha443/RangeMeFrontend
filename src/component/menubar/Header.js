@@ -93,7 +93,7 @@ function SignUp(){
     <div className="header-bar__actions">
       <a href="/supplier-home"  className="header-bar__link">Satıcılar İçin</a>
       <a href="/buyer-home"  className="header-bar__link">Alıcılar İçin</a>
-      <a href="#"  onClick={Click2} className="header-bar__link">For Service Providers</a>
+      <a href="servicehome"  className="header-bar__link">For Service Providers</a>
       {/* <div className="header-bar__divider" /> */}
       <div className="header-bar__link sub-nav__toggle">
         <span>Resources</span>
@@ -139,7 +139,7 @@ function SignUp(){
     <nav className="nav nav--menu">
       <a href="/supplier-home" className="nav__link">Satıcılar İçin</a>
       <a href="/buyer-home" className="nav__link">Alıcılar İçin</a>
-      <a href="#" className="nav__link">For Service Providers</a>
+      <a href="/servicehome" className="nav__link">For Service Providers</a>
       <div className="nav__divider" />
       <div className="nav__link nav__link--sub-nav">
         <span className="sub-nav__toggle">Resources</span>

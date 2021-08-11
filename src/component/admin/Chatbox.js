@@ -70,7 +70,7 @@ function Chatbox(){
                 const message = JSON.parse(evt.data)
                 // debugger
                 if (message.payload){var jk = JSON.parse(message.payload.msg)}
-                console.log("okay I hate you")
+                // console.log("okay I hate you")
                 console.log(jk)
  
                 if(message.payload){

@@ -54,18 +54,7 @@ function skip(){
         },
         data: data
       };
-    // var config = {
-    //     method: 'put',
-    //     url: url,
-    //     // headers: {
-    //     //     'content-type': `multipart/form-data;`,
-    //     // },
-    //     data:{
-    //         uuid : uuid1,
-    //         company_logo : company_logo,
-    //         company_description: company_description,
-    //       }
-    //   };
+    
       axios(config).then(res=>{
           console.log(res.data.data)
           $(".laoder").hide();

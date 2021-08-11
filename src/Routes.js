@@ -53,7 +53,8 @@ import Chatbox from './component/admin/Chatbox';
 import Supplies from './component/supplie/Supplies';
 import dummy from './component/supplie/dummy';
 import BuyerCompanies from './component/buyee/BuyerCompanies';
-
+import Bidding from './component/admin/buyer/Bidding';
+import ServiceProvidersHome from './component/service-provider/ServiceProvidersHome';
 
 
 
@@ -115,6 +116,8 @@ function Routes(){
                 <Route exact path="/buyer-navbar" component={BuyerNavbar}></Route>
                 <Route exact path="/about" component={About}></Route>
                 <Route exact path="/privacy" component={PrivacyStatement}></Route>
+                <Route exact path="/bidding" component={Bidding}></Route>
+                <Route exact path="/servicehome" component={ServiceProvidersHome}></Route>
             </Switch>
         </> 
     )

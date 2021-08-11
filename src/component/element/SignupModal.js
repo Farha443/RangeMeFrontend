@@ -118,7 +118,13 @@ function Click1(){
   // alert(userType)
   }
 
-
+function Click2(){
+  cookies.remove('userType');
+  var service = "service provider";
+  cookies.set('userType', service, { path: '/' });
+  userType=cookies.get('userType');
+  window.location = "signup"
+  }
 
 function Submit(){
   var token = cookies.get('token');
@@ -256,7 +262,7 @@ function SignupModal(props){
                 <TabList>
                   <Tab onClick={click}> <div  className="sign-tab-menu"> <i class="fas fa-user-tie"></i> supplier </div> </Tab>
                   <Tab onClick={Click1}> <div className="sign-tab-menu"> <i class="fas fa-store"></i> buyer </div> </Tab>
-                  <Tab> <div className="sign-tab-menu"> <i class="fas fa-cog"></i> service providers</div> </Tab>
+                  <Tab onClick={Click2}> <div className="sign-tab-menu"> <i class="fas fa-cog"></i> service providers</div> </Tab>
                 </TabList>
 
                 <TabPanel>

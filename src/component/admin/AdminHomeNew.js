@@ -45,18 +45,29 @@ function AdminHomeNew(){
     const[list,setList]=useState([])
     const [Id , setId] = useState([])
     const [recieverID , setRecieverId] = useState([])
+    const [requirements , setRequirements] = useState([])
 
-     async function BuyerDetail(e){
-        // debugger
-        await axios.get(BASE_URL+'authentication/getuser/'+ e )
+    function BuyerDetail(e,id){
+        var url = BASE_URL+'authentication/getuser/'+ e;
+        var url1 = BASE_URL+'authentication/requirements/'+ id; 
+        axios.get(url)
         .then(res=>{
-            // debugger
             console.log(res.data.data)
             setBuyerDetail(res.data.data)
             setShow2(true)
         }).catch(err=>{
             console.log(err)            
         })
+
+        axios.get(url1 )
+        .then(res=>{
+            console.log(res.data.data)
+            setRequirements(res.data.data)
+            setShow2(true)
+        }).catch(err=>{
+            console.log(err)            
+        })
+
     }
 
     useEffect(() => {
@@ -86,11 +97,7 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                 const message = JSON.parse(evt.data)
                 // debugger
                 if (message.payload){var jk = JSON.parse(message.payload.msg)}
-                console.log("okay I hate you")
                 console.log(jk)
-                // console.log(messageList.push(message.payload))
-                // alert(messageList.receiver) 
-                // console.log(message.payload)
                 if(message.payload){
                     setmessageList(jk)
                         // setMessageCount(message.payload.length)
@@ -104,7 +111,7 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
     useEffect(() => {    
         axios.get(BASE_URL+'authentication/send_notifiaction/' )
             .then(res=>{
-                // debugger
+                console.log("--- get rqs----")
                 console.log(res.data.data)
                 if(res.data.data){
                         setMessage(res.data.data)
@@ -131,6 +138,7 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
             }
             ws.onmessage = evt => {
                 // listen to data sent from the websocket server
+                console.log('checking ')
                 const message = JSON.parse(evt.data)
                 console.log(message.payload)
                 if(message.payload){
@@ -184,63 +192,7 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
         })     
     }
 
-    function openchatbox(y){
-        // debugger
-        var data = list[y]
-        var from = data[0].sender
-        var to = data[0].receiver
-        var rec = cookies.get('uuid')
-        if (from===rec){
-            setRecieverId(to)
-        }
-        else{
-            setRecieverId(from)
-        }
-        setId(data[0].fromId)
-        setChatbox(true)
-        console.log("here seeen")
-        setolDMessages(data)  
-        console.log(data)   
-    }
-
-    function Sendmessage(id){
-        var url = BASE_URL+"authentication/messagebuyer/";
-        var msg = document.getElementById('message').value; 
-        var fromId=cookies.get('uuid');
-        var toId = id
-        var config= {
-            method: 'post',
-                url: url,
-                data: {
-                    fromId : fromId,
-                    toId: toId,
-                    msg : msg
-                },
-            };
-    // var wss = new WebSocket('ws://localhost:8000/chat/')
-    var wss = new WebSocket('ws://tayuss.com/chat/')
-    wss.onclose = () => {
-        console.log('disconnected')
-        }
-    wss.onopen = () => {
-        console.log('connected')
-        }
-    axios(config).then(res=>{
-        wss.onmessage = evt => {
-            // debugger
-            const message = JSON.parse(evt.data)
-            console.log(message)
-            }
-            setolDMessages(res.data) 
-            $(document).ready(function() {
-                $('#message').val('');
-             })
-          }
-          ).catch(err=>{
-            console.error(err);
-           
-          }) 
-      }
+    
 
    
 
@@ -423,9 +375,9 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                    
                     {/* {msg} */}
                    
-                    <p> {msg[Object.keys(msg)[0]]} </p>
+                    <p> {msg[Object.keys(msg)[1]]} </p>
                     {/* <p> {Object.values(msg)[1]} </p> */}
-                    <button className="admin-add-btn f-w-500" onClick={() => BuyerDetail(Object.values(msg)[1])}><i class="fa fa-plus" aria-hidden="true"></i>Buyer Detail</button>
+                    <button className="admin-add-btn f-w-500" onClick={() => BuyerDetail((Object.values(msg)[7]),(Object.values(msg)[0]))}><i class="fa fa-plus" aria-hidden="true"></i>Buyer Detail</button>
                    
                 </div>
                 })}
@@ -448,10 +400,9 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                 aria-labelledby="example-custom-modal-styling-title"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
+                    {/* <Modal.Title id="example-custom-modal-styling-title">
                     <h5 style={{ marginBottom: '0px' }}> Add product </h5>
-                    {/* <p> Start with adding your product’s name </p> */}
-            </Modal.Title>
+            </Modal.Title> */}
                 </Modal.Header>
                 <Modal.Body>
                     <Container>
@@ -465,16 +416,35 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                             <Col xs={12} md={10} className="m-auto"> 
                                 <div>
                                     <p>
-                                    Name :- {buyerdetail.first_name}
+                                    <strong>Name :- </strong>{buyerdetail.first_name}
                                     &nbsp;{buyerdetail.last_name}
                                     
                                     </p>
                                     <p>
-                                    Mobile:- {buyerdetail.mobile}
+                                    <strong>Mobile:- </strong>{buyerdetail.mobile}
                                     
                                     </p>
                                     <p>
-                                    Address:- {buyerdetail.comp_location}
+                                    <strong>Address:- </strong>{buyerdetail.comp_location}
+                                    </p>
+
+                                    <p>
+                                    <strong>Product:- </strong>{requirements.product}
+                                    </p>
+                                    <p>
+                                    <strong>Budget:- </strong>{requirements.budget}
+                                    </p>
+
+                                    <p>
+                                    <strong>Category:- </strong> {requirements.cat  }
+                                    </p>
+
+                                    <p>
+                                    <strong>Quantity:- </strong>{requirements.quantity}
+                                    </p>
+
+                                    <p>
+                                    <strong>Requirements:- </strong> {requirements.notification}
                                     </p>
                                 </div>
                             </Col>
@@ -485,80 +455,6 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                 </Modal.Body>
                
             </Modal>
-    {/* Brand logo modal  */}
-    {/* <Modal
-                size="lg"
-                centered
-                show={show3}
-                onHide={() => setShow3(false)}
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                        Brand Logo
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-
-                        <Row>
-                            <Col xs={12} md={12}>
-
-                              <BrandLogoHome/>
-
-                            </Col>
-
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500">  Save  </button>
-                    </div>
-                </Modal.Footer>
-            </Modal>
- */}
-<Modal
-        size="md"
-        show={chatbox}
-        onHide={() => setChatbox(false)}
-        aria-labelledby="example-custom-modal-styling-title"
-        >
-            <Modal.Header closeButton>
-            <Modal.Title id="example-custom-modal-styling-title">
-            {Id}
-            </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-            <Container>
-                
-                <Row>
-                   <Col md="12">
-                        <div className="chat-list"> 
-                        <ul>
-                        {olDMessages.map(msg=>(<li>
-                            {msg.msg}
-                    </li>))}
-                    
-                    <li>{String(messageList.receiver)===cookies.get("uuid").split('-').join('') && recieverID.split('-').join('')===messageList.sender?messageList.msg:''}</li>
-                        </ul>
-                    </div>
-                    </Col>
-                    
-                
-                        
-                <Col xs={12} md={12}>
-                    <div className="chat-input">
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Control type="text"  id="message" placeholder="abc" />
-                        <button type = 'submit' onClick={()=>Sendmessage(recieverID)} class='btn btn-primary'>send</button>
-                    </Form.Group>
-                    </div>
-                </Col>
-            </Row>
-            </Container>
-            </Modal.Body>
-      </Modal>
 
         </> 
     );

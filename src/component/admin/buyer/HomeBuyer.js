@@ -51,28 +51,12 @@ function HomeBuyer(){
        socket.onopen = () => {
                console.log('connected')
                }
-            //    socket.onmessage = evt => {
-            //        // listen to data sent from the websocket server
-            //        const message = JSON.parse(evt.data)
-            //        console.log("data-------")
-                
-            //        // console.log(messageList.push(message.payload))
-            //        console.log(message.payload)
-            //        if(message.payload){
-            //         setChat(message.payload)
-            //                // setMessageCount(message.payload.length)
-            //            }
-            //        }
             socket.onmessage = evt => {
                 // listen to data sent from the websocket server
                 const message = JSON.parse(evt.data)
-                // debugger
                 if (message.payload){var jk = JSON.parse(message.payload.msg)}
                 console.log("okay I hate you")
                 console.log(jk)
-                // console.log(messageList.push(message.payload))
-                // alert(messageList.receiver) 
-                // console.log(message.payload)
                 if(message.payload){
                     setnewMessage(jk)
                         // setMessageCount(message.payload.length)
@@ -92,51 +76,18 @@ function HomeBuyer(){
       })
 
       var toId=cookies.get('uuid');
-      // var recieverId = uuid
       var url = BASE_URL+'authentication/message/?toId=' + toId 
       axios.get(url)
       .then(res=>{  
-        //   debugger
           setList(res.data)
           console.log(res.data.length)
          
         }).catch(err=>{
             console.log(err)            
         })
-  
   },[])
 
-function BidPlacing(){
-    var requirements = document.getElementById('biddata').value;
-    var notifyurl = BASE_URL+'authentication/send_notifiaction/'
-    var n_user = cookies.get("uuid")
-    var notifyconfig = {
-        method: 'post',
-        url: notifyurl,
-        data:{
-            n_user : n_user,
-            notification : requirements,
-          }
-      };
-      var ws = new WebSocket('ws://tayuss.com/test/')
-    //   var ws = new WebSocket('ws://localhost:8000/test/')
-      ws.onclose = () => {
-        console.log('disconnected')
-        }
-      ws.onopen = () => {
-        console.log('connected')
-        }
-      axios(notifyconfig).then(res=>{
-        ws.onmessage = evt => {
-            // listen to data sent from the websocket s
-            const message = JSON.parse(evt.data)
-            console.log(message)
-       }
-      }
-      ).catch(err=>{
-        console.error(err);
-      })
-  }
+
 
 function openchatbox(uuid,name){
     setChatbox(true)
@@ -229,11 +180,7 @@ function search(){
         <>
            <BuyerNavbar/>
 
-           <Col md="4" xs="12">
-               
-                {/* <input type="text"> Bid Proposal </input> */}
-                {/* messageList */}
-                    
+           {/* <Col md="4" xs="12">
                         <div>
                         <FormControl
                                     placeholder="requirements "
@@ -244,9 +191,7 @@ function search(){
                             <button className="admin-add-btn" onClick={BidPlacing}> Bid place</button> 
                             
                         </div>
-                       
-                
-                </Col>
+                </Col> */}
                 <div className="container">
                 <Row>
                     <Col md="12" xs="12">

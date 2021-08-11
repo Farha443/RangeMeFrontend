@@ -72,9 +72,7 @@ function AdminNavbar(){
   <Navbar.Collapse id="basic-navbar-nav" className="admin-nav-collapse">
     <Nav className="ml-auto">
 
-
-
-      
+    <Nav.Link href="/bidding">Bidding</Nav.Link>
 
     <Nav.Link href="#home" className="drop-menu"  onClick={handleToggle}>
       <div className="menu-profile-img-main">
