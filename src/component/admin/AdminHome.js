@@ -82,7 +82,8 @@ function AdminHome(){
                             <ul class="process">
                                 <li class="process__item">
                                     <span class="process__number">1</span>
-                                    <span class="process__title">Create account</span>
+                                    <span class="process__title">Hesap aç</span> 
+                                    {/* create account */}
                                     <span class="process__subtitle">We analyse your problem and develop a strategy</span>
                                 </li>
 
@@ -98,7 +99,7 @@ function AdminHome(){
                                 <li class="process__item">
                                     <span class="process__number">3</span>
                                     <span class="process__title">
-                                        Confirm email</span>
+                                    Email doğrula </span>
                                     <span class="process__subtitle">We analyse your problem and develop a strategy</span>
                                 </li>
 
@@ -190,8 +191,8 @@ function AdminHome(){
                         <Row>
                             <Col xs={12} md={10} className="m-auto">
                          <div className="text-center mb-3">
-                         <h5> Add new product </h5>  
-                         <p style={{ marginTop: '0px' }}> Start with adding your product’s name </p>
+                         <h5> Yeni ürün ekle </h5>  
+                         <p style={{ marginTop: '0px' }}> Ürün İsmi Ekle </p>
                          </div>
                             <Col xs={12} md={10} className="m-auto"> 
                                 <Form.Group controlId="formBasicEmail">

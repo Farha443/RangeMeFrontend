@@ -6,11 +6,12 @@ import SignupModal from '../element/SignupModal';
 import Slider from "react-slick";
 import BASE_URL from '../base';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 var mid_b_img = ""
 var tr=""
 var btmimg =""
-
+const cookies = new Cookies();
 function ServiceProviders(){
 
   const [modalShow, setModalShow] = useState(false);
@@ -56,6 +57,13 @@ function ServiceProviders(){
       }
     ]
   };
+
+  useEffect(()=>{
+    var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
+  })
 
   useEffect(() => {
     debugger
@@ -296,7 +304,7 @@ eksik marka kriterleri gibi detayları şeffaf bir şekilde sunar.
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1>base <span class="hm-title-h"> buyers </span> </h1>
+                            <h1>base <span class="hm-title-h"> Alıcılar </span> </h1>
                             </div>
                         </div>
 

@@ -133,10 +133,8 @@ class Distribution extends React.Component {
       
             this.state.already.splice(i, 1);
             this.setState({already:this.state.already}) 
-          }
-      
+          } 
       }
-            // $('#'+id).remove();
       }
 
       handleSubmit1(event) {
@@ -297,6 +295,7 @@ class Distribution extends React.Component {
 
     async Edit(){
         // $(".laoder").show()
+        debugger
         var country = this.state.country;
         var state = this.state.region;
         const selected = document.querySelectorAll('#distributors option:checked');
@@ -330,8 +329,6 @@ class Distribution extends React.Component {
                 product_availability = null;
             }
         var distribution_location = this.state.dis_country;
-        // var global_distribution = document.querySelector('.vehicle1 input[type=checkbox]:checked')
-        // var global_distribution =  document.querySelector('#vehicle1:checked').value;
 
         var check = document.querySelector('#vehicle1:checked');
         if (check != null) {
@@ -390,6 +387,10 @@ class Distribution extends React.Component {
       };
       
     render() {
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
         const { country, region,dis_country } = this.state;
         const isActive = this.state.isActive;
     return (
@@ -402,11 +403,11 @@ class Distribution extends React.Component {
                         <Col md="12">
                             <div className="p-header-main">
 
-                                {/* <div className="p-header-left">
+                                <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> Headphone </h4> <span> Product </span>
+                                        <h4> {cookies.get('product_name')} </h4> <span> Ürün </span>
                                     </div>
-                                </div> */}
+                                </div>
 
                                 <div className="p-header-right">
                                     <div className="p-right-content">
@@ -417,7 +418,7 @@ class Distribution extends React.Component {
 
                                         <div className="p-icn-02">
                                             <button className="pre-btn"> Preview </button>
-                                            <button className="appro-btn"> Submit Approval </button>
+                                            <button className="appro-btn"> Onay için ürünü gönder</button>
                                         </div>
                                     </div>
                                 </div>
@@ -441,7 +442,7 @@ class Distribution extends React.Component {
                                             inactiveClassName="text-gray-800"
                                             >
                                                 <img src="assets/images/list-searching-variant.png" />
-                                                <div className="sidebar-title"> Product Overview  </div>
+                                                <div className="sidebar-title">Ürüne Genel Bakış </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -450,7 +451,7 @@ class Distribution extends React.Component {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Product Details  </div>
+                                                <div className="sidebar-title"> Ürün Açıklaması</div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -459,7 +460,8 @@ class Distribution extends React.Component {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/moving-truck.png" />
-                                                <div className="sidebar-title"> Distribution  </div>
+                                                <div className="sidebar-title"> Ürün dağıtımı
+</div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -468,7 +470,7 @@ class Distribution extends React.Component {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Marketing </div>
+                                                <div className="sidebar-title"> Ürün Pazarlaması </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -484,7 +486,8 @@ class Distribution extends React.Component {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5>Distribution </h5>
+                                            <h5>Ürün dağıtımı
+</h5>
 
                                         </div>
 
@@ -494,7 +497,7 @@ class Distribution extends React.Component {
 
                                            <Col md="12">
                                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>What country/region is your product manufactured in?</Form.Label>
+                                                <Form.Label>Ürün hangi ülke ve şehirde üretiliyor ?</Form.Label>
                                                 
                                                 <CountryDropdown id="country" 
                                                 className="form-control"
@@ -510,7 +513,7 @@ class Distribution extends React.Component {
                                                 <Form.Label>What state is your product manufactured in?</Form.Label>
                                                 
                                                 <RegionDropdown  id ="state" className = "form-control"
-                                                    country={country}
+                                                    country={this.state.country}
                                                     value={region}
                                                     defaultValue={this.state.state1}
                                                     onChange={(val) => this.selectRegion(val)} />
@@ -573,7 +576,7 @@ class Distribution extends React.Component {
                                                 <Form.Check inline label="No" name="group7" type="radio" value="false" onClick={this.product_dis}  />
                                                 </div>
                                                 {this.state.product_dis === "true" ?<Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Which distributors? </Form.Label>
+                                                <Form.Label>Which Distribütörler? </Form.Label>
                                                 <Form.Control as="select" multiple="true" id="distributors">
                                                 {this.state.data1.map(dis=>(  
                                                 <option value={dis.uuid}>{dis.name}</option>))}
@@ -589,7 +592,7 @@ class Distribution extends React.Component {
 
                                             <Col md="12">
                                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Where can you Distribute the Products?</Form.Label>
+                                                <Form.Label>Ürün tedarik alanı nedir?</Form.Label>
                                                 
                                                 <CountryDropdown  id = "distribution_location" className={isActive ? "form-control " : "form-control inp-disable    "}
                                                     value={dis_country}
@@ -597,14 +600,14 @@ class Distribution extends React.Component {
                                                     onChange={(val1) => this.DistributionCountry(val1)} />
                                                     <label>If you can distribute to an entire country, add that country. Otherwise, please add the specific states or provinces (Texas, Quebec, etc.).</label>
                                                     <div className="validated-field__container___1zNgS">
-                  <div className="checkbox-large__wrapper___2i1Pl signup-layout__terms-and-conditions___1mfPt">
-                    <div className="checkbox-large__inner-wrapper___3jgqh" data-tname="TermsAndConditionsCheckbox">
-                      <input onClick={this.handleToggle} onKeyPress={this.GlobalCheck} type="checkbox" id="vehicle1" name="vehicle1" className="sign-check" />
-                      <span className="text__text___2g-Dv text__small-copy___bgT96 checkbox-large__label___1i8a0" data-tname="CheckboxLargeLabel"><span className="signup-layout__terms-and-conditions-label___csiGB">
-                      I can distribute to all countries globally.</span></span>
-                    </div>
-                  </div>
-                </div>
+                                                <div className="checkbox-large__wrapper___2i1Pl signup-layout__terms-and-conditions___1mfPt">
+                                                    <div className="checkbox-large__inner-wrapper___3jgqh" data-tname="TermsAndConditionsCheckbox">
+                                                    <input onClick={this.handleToggle} onKeyPress={this.GlobalCheck} type="checkbox" id="vehicle1" name="vehicle1" className="sign-check" />
+                                                    <span className="text__text___2g-Dv text__small-copy___bgT96 checkbox-large__label___1i8a0" data-tname="CheckboxLargeLabel"><span className="signup-layout__terms-and-conditions-label___csiGB">
+                                                    I can distribute to all countries globally.</span></span>
+                                                    </div>
+                                                </div>
+                                                </div>
                                         </Form.Group>                                
                                             </Col>
                                             
@@ -631,7 +634,7 @@ class Distribution extends React.Component {
                                                 <Col md="12" className="" >
                                                     <div className="step-four-radio">
                                                         <div>
-                                                        <label htmlFor="basic-url" className="lb">Is this product available for private label? </label>
+                                                        <label htmlFor="basic-url" className="lb">Bu Ürün Private Label için uygun mu? </label>
                                                         </div>
                                                         {this.state.data2.private_label === true ?
                                                         <Form.Check inline label="yes" name="group10" type="radio" value="true" defaultChecked onClick={this.private_label}  />:
@@ -648,8 +651,10 @@ class Distribution extends React.Component {
                                                         <div>
                                                         <label htmlFor="basic-url" className="lb">Does your product require cold storage?</label>
                                                         </div>
+                                                        
                                                         <Form.Check inline label="yes" name="group3" type="radio" value="true" onClick={this.storageChange}  />
-                                                        <Form.Check inline label="No" name="group3" type="radio" value="false" onClick={this.storageChange}  />
+                                                        {this.state.data2.storage_required === "" ?
+                                                        <Form.Check inline label="No" name="group3" type="radio" value="false" defaultChecked onClick={this.storageChange}  />:<Form.Check inline label="No" name="group3" type="radio" value="false" onClick={this.storageChange}  />}
 
                                                     </div>
                                                    {this.state.storage === "true" ?<div className="step-four-radio">
@@ -695,11 +700,11 @@ class Distribution extends React.Component {
                                     <img src="assets/images/blog1.jpg" />
                                 </div>      
                                 <div className="prod-info-text">
-                                    <h5> Brand Name </h5>
+                                    <h5> marka adı </h5>
                                     <h6> product </h6>
                                 </div>
                                 <div className="pro-margin">
-                                    <span> 10$ Cost/item </span>
+                                    <span> 10$ Ürün fiyatı </span>
                                     <span> 33.00%  Margin </span>
                                 </div>
 

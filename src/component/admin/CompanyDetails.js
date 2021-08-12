@@ -242,6 +242,10 @@ savechange(){
                 })
     }
      render() {
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
         return (
         <>
             <AdminNavbar />

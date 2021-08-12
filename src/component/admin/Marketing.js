@@ -30,14 +30,16 @@ import BASE_URL from '../base';
 const cookies = new Cookies();
 
 const axios = require('axios');
-const colourOptions=[
-    { value: 'Red', label: 'Red' },
-    { value: 'Black', label: 'Black' },
-    { value: 'Blue', label: 'Blue' },
-    { value: 'Green', label: 'Green' },
-]
+
 var Product_Name = cookies.get("product_name")
 // var tt = {}
+
+useEffect(()=>{
+    var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
+})
 
 function Marketing() {
 
@@ -70,7 +72,8 @@ function Marketing() {
         var array = Array.from(selected).map(el => el.value);
 
         var promotional_budget = array[0]
-        var product_images =  image ? (image.pictureFiles)[0] : "";
+        // var product_images =  image ? (image.pictureFiles)[0] : "";
+        var product_images =  document.getElementById('id').files[0];;
         var product_videos = document.getElementById('product_videos').value;
 
         var url = BASE_URL+"product/product_marketing/";
@@ -80,7 +83,10 @@ function Marketing() {
         var data= new FormData();
         data.append('product_marketing', product_marketing);
         data.append('promotional_budget', promotional_budget);
-        data.append('product_images', product_images);
+        if(product_images){
+            data.append('product_images', product_images);  
+        }
+        // data.append('product_images', product_images);
         data.append('product_videos', product_videos);
         
 // ------- post product marketing ------------//
@@ -96,7 +102,7 @@ function Marketing() {
 
         axios(config)
         .then(res=>{
-            window.location = "admin_home"
+            window.location = "/admin_home"
         }).catch(err=>{
         })
     }
@@ -147,20 +153,12 @@ function Marketing() {
     }
 
     const handleChange2 =(event)=> {
-        
         var reader = new FileReader();
         reader.onload = function(){
         var output = document.getElementById('output');
-        
         output.src = reader.result;
-        console.log(output.src)
-        
         reader.readAsDataURL(event.target.files[0])
-        
-        };
-
-       
-        
+        };   
     }
     
        function onDrop(pictureFiles, pictureDataURLs) {
@@ -184,7 +182,7 @@ function Marketing() {
 
                                 <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4>{Product_Name} </h4> <span> Product </span>
+                                        <h4>{Product_Name} </h4> <span>Ürün</span>
                                     </div>
                                 </div>
 
@@ -221,7 +219,7 @@ function Marketing() {
                                             inactiveClassName="text-gray-800"
                                             >
                                                 <img src="assets/images/list-searching-variant.png" />
-                                                <div className="sidebar-title"> Product Overview  </div>
+                                                <div className="sidebar-title">  Ürüne Genel Bakış </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -230,7 +228,7 @@ function Marketing() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Product Details  </div>
+                                                <div className="sidebar-title"> Ürün Açıklaması </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -239,7 +237,7 @@ function Marketing() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/moving-truck.png" />
-                                                <div className="sidebar-title"> Distribution  </div>
+                                                <div className="sidebar-title"> Ürün dağıtımı</div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -248,7 +246,7 @@ function Marketing() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Marketing </div>
+                                                <div className="sidebar-title"> Ürün Pazarlaması </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -261,14 +259,14 @@ function Marketing() {
                                 <Card.Body>
                                     <div className="product-form-main">
                                         <div className="p-inside-title">
-                                            <h5>Marketing </h5>
+                                            <h5>Ürün Pazarlaması </h5>
                                         </div>
 
                                         <div className="overview-form">
                                            <Row>
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Promotional budget</Form.Label>
+                                                <Form.Label>Reklam Bütçesi </Form.Label>
                                                 <Form.Control as="select" id="promotional_budget" value={market.promotional_budget} onChange={e => handleChange(e)} className=""  >
                                                <option value="Zero">Zero</option>
                                                     <option value="$25k - $50k">$25k - $50k</option>
@@ -310,7 +308,7 @@ function Marketing() {
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                
-                                            <Form.Label>Product video URL </Form.Label>
+                                            <Form.Label>Ürün video linki  </Form.Label>
                                             <Form.Control id="product_videos" defaultValue={market.product_videos} type="text" placeholder="Enter URL" />
 
                                                 {/* <button className="admin-add-btn" type="button" onClick={() => handleAdd()}>Add Video</button>
@@ -344,11 +342,11 @@ function Marketing() {
                                     <img src="assets/images/blog1.jpg" />
                                 </div>      
                                 <div className="prod-info-text">
-                                    <h5> Brand Name </h5>
+                                    <h5> Marka adı </h5>
                                     <h6> product </h6>
                                 </div>
                                 <div className="pro-margin">
-                                    <span> 10$ Cost/item </span>
+                                    <span> 10$ Ürün fiyatı </span>
                                     <span> 33.00%  Margin </span>
                                 </div>
 

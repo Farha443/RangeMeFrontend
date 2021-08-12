@@ -429,7 +429,7 @@ function BrandProfile() {
                                                 <Card.Body>
                                                     <div className="prod-num-r-btn mb-3">
                                                         
-                                                        <button className="admin-add-btn f-w-500" onClick={() => setShow2(true)}><i class="fa fa-plus" aria-hidden="true"></i>  Add New Product </button>
+                                                        <button className="admin-add-btn f-w-500" onClick={() => setShow2(true)}><i class="fa fa-plus" aria-hidden="true"></i> Yeni ürün ekle </button>
                                                        
                                                     </div>
 
@@ -720,8 +720,8 @@ function BrandProfile() {
                         <Row>
                             <Col xs={12} md={10} className="m-auto">
                          <div className="text-center mb-3">
-                         <h5> Add new product </h5>  
-                         <p style={{ marginTop: '0px' }}> Start with adding your product’s name </p>
+                         <h5> Yeni ürün ekle </h5>  
+                         <p style={{ marginTop: '0px' }}>Ürün İsmi Ekle  </p>
                          </div>
                             <Col xs={12} md={10} className="m-auto"> 
                                 <Form.Group controlId="formBasicEmail">

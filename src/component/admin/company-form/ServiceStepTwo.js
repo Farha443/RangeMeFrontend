@@ -193,6 +193,10 @@ var region_value = ''
 
     
   render() {
+    var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
     const { country, region,dis_country } = this.state;
    
     return(
@@ -224,7 +228,8 @@ var region_value = ''
 
                                             <Col md="12">
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label> Select your service Category. </Form.Label>
+                                                {/* <Form.Label> Select your service Category. </Form.Label> */}
+                                                <Form.Label> Servis Kategorisi </Form.Label>
                                                 <Form.Control  onClick={this.ChangeSelect} as="select" id="department">
                                                 {this.state.data.map(cat=>(  
                                                 <option  value={cat.uuid}>{cat.categoryname}</option>
@@ -262,7 +267,7 @@ var region_value = ''
                                             <Col md="12" className="" >
                                             {(this.state.data2).length != 0   ?    <div className="step-four-radio">
                                                         <div>
-                                                        <label htmlFor="basic-url" className="lb">What areas can you service?</label>
+                                                        <label htmlFor="basic-url" className="lb">What areas can you Servis?</label>
                                                         </div>
                                                         <Form.Check inline label="National" onClick={this.servicechnge}  value="National" name="group10" type="radio" />
                                                         <Form.Check inline label="State" name="group10" type="radio"

@@ -199,19 +199,19 @@ function Notification() {
                                             <Row>
 
                                                 <Col md="6" className="mt-3" >
-                                                    <h5> Buyer activity </h5>
+                                                    <h5> Alıcı activity </h5>
                                                     <div className="step-four-radio noti-check">
 
                                                         <Form.Group controlId="formBasicEmail">
 
                                                             <Form.Check inline name="group1" type="checkbox" id="1" checked />
-                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">When buyers request a product sample</label>
+                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">When Alıcı request a product sample</label>
                                                         </Form.Group>
 
                                                         <Form.Group controlId="formBasicEmail">
 
                                                             <Form.Check inline name="group1" type="checkbox" id="1" />
-                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">When buyers send you messages</label>
+                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">When Alıcı send you messages</label>
                                                         </Form.Group>
 
                                                         <Form.Group controlId="formBasicEmail">

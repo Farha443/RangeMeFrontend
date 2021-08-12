@@ -142,6 +142,10 @@ class AdminProfile extends React.Component {
     
       }
     render() {
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
     return (
         <>
             <ServiceNavbar/>

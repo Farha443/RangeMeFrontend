@@ -87,12 +87,13 @@ class CompanyStepFour extends React.Component {
               };
             //  debugger
          axios(config).then(res=>{
-                  if (res.data.message === "Buyer updated"){
-                    alert("buyer updated");
+                //   if (res.data.message === "Buyer updated"){
+                //     alert("Alıcı updated");
                     
-                  }
-                  else if (res.data.message === "Could not update buyer"){
-                    alert("Could not update buyer");
+                //   }
+                //   else 
+                  if (res.data.message === "Could not update buyer"){
+                    alert("Could not update Alıcı");
                   }
          
                   cookies.set('uuid', res.data.data.uuid, { path: '/' })
@@ -126,6 +127,12 @@ class CompanyStepFour extends React.Component {
     render() {
         console.log(this.state.country)
         const { country, region  } = this.state;
+
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
+
     return(
         <>
         

@@ -66,6 +66,13 @@ function TeamAccess() {
     const[brands, setBrands] = useState([]);
     var user_uuid = cookies.get("uuid");
 
+    useEffect(()=>{
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
+    })
+
     useEffect(() => {
         axios.get(BASE_URL+'authentication/useraccess/').then(res=>{
             setCategory(res.data.data)
@@ -232,7 +239,8 @@ function TeamAccess() {
 
                                         <div className="p-inside-title p-inside-invite mb-3">
                                             <h5> <img src="assets/images/add-group.png" /> Team Access </h5>
-                                            <p> <button className="admin-add-btn"  onClick={() => setShow(true)}> <i class="fa fa-plus" aria-hidden="true"></i> Invite user </button> </p>
+                                            <p> <button className="admin-add-btn"  onClick={() => setShow(true)}> <i class="fa fa-plus" aria-hidden="true"></i> kullanıcıyı davet et</button> </p>
+                                            {/* invite user */}
                                         </div>
 
                                         <div className="overview-form">
@@ -474,7 +482,7 @@ function TeamAccess() {
 
 
                     <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label  style={{marginTop: '0px'}}>Custom Message (Optional)</Form.Label>
+                        <Form.Label  style={{marginTop: '0px'}}>Custom Message (Opsiyonel)</Form.Label>
                         <Form.Control as="textarea"  id="custom_message" rows={3} />
                     </Form.Group>
 
@@ -627,8 +635,8 @@ function TeamAccess() {
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                 <Dropdown.Item value="view" onClick={()=>change1('view')}>view</Dropdown.Item>
-                                <Dropdown.Item value="view & share" onClick={()=>change1('view & share')}>view & share</Dropdown.Item>
-                                <Dropdown.Item value="edit" onClick={()=>change1('edit')}>edit</Dropdown.Item>
+                                <Dropdown.Item value="view & share" onClick={()=>change1('view & share')}>view & Share</Dropdown.Item>
+                                <Dropdown.Item value="edit" onClick={()=>change1('edit')}>Edit</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                                 </div>

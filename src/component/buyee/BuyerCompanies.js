@@ -500,7 +500,8 @@ or send a message to request additional information. </p>
                             <div className="hm-slider-title">
                             <h1>
 BASE <span class="hm-title-h"> 
-BUYERS </span> </h1>
+Alıcı Sayısı
+ </span> </h1>
                             </div>
                         </div>
 
@@ -528,7 +529,8 @@ BUYERS </span> </h1>
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl">{tr} </span> CREATE ACCOUNT! </h3>
+                                  <h3> <span className="btm-banner-text-yl">{tr} </span> Hesap aç </h3>
+                                  {/* create account */}
                               </div>
                               <div className="btm-banner-btn supplie">
                                  <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>

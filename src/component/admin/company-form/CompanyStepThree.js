@@ -25,6 +25,8 @@ import $ from "jquery";
 const cookies = new Cookies();
 
 function SelectCategory(){
+
+
     $(".laoder").show();
     var array = []
     var b_category = document.querySelectorAll('input[type=checkbox]:checked')
@@ -66,6 +68,11 @@ const handleKeypress = (event) => {
   }
 
 function CompanyStepThree(){
+
+    var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
     const [category, setCategory]= useState([])
     useEffect(() => {
         axios.get(BASE_URL+'authentication/GetCategorysignup/').then(res=>{

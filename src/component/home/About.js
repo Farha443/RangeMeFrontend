@@ -180,7 +180,7 @@ INCREASE </h1>
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1>Base <span class="hm-title-h"> BUYERS </span> </h1>
+                            <h1>Base <span class="hm-title-h"> Alıcılar </span> </h1>
                             </div>
                         </div>
 

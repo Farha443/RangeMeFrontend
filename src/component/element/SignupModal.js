@@ -37,12 +37,19 @@ function Func() {
   var userType = cookies.get('userType');
 
 
+  if(mobile !== "undefined"){
+    var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+    if(!mobile.match(phoneno)){
+      alert("Please enter correct phone number")
+    }
+  }
+
   if (typeof password !== "undefined" && typeof confirm_password !== "undefined") {
     if (password!= confirm_password) {
       // isValid = false;
       // errors["password"] = "Passwords don't match.";
       alert("Passwords do not match.")
-      window.location = "/signup"
+      // window.location = "/signup"
     }
 } 
 
@@ -53,13 +60,13 @@ function Func() {
       // isValid = false;
       // errors["email"] = "Please enter valid email address.";
         alert("Enter a valid email")
-        window.location = "/signup"
+        // window.location = "/signup"
     }
   
   }
   if(terms==null){
     alert("Please agree to the terms and conditions first. ");
-    window.location = "/"
+    // window.location = "/"
   }
   else{
   axios.post( BASE_URL + "authentication/signup/",
@@ -94,7 +101,8 @@ function Func() {
 
       }).catch(err=>{
         // $(".laoder").hide();
-        window.location = "/"
+        
+        document.getElementById('s2').className='st-one';
         console.log(err)
       })
     }
@@ -171,6 +179,7 @@ axios(config).then(res=>{
   console.error(err);
   // $(".laoder").hide(); 
 // window.location = "/";
+document.getElementById('s2').className='st-two';
 alert("something went wrong")
 })
 
@@ -212,6 +221,7 @@ axios(config).then(res=>{
 ).catch(err=>{
   console.error(err);
   // $(".laoder").hide(); 
+  document.getElementById('s3').className='st-three'
 alert("something went wrong")
 
 })
@@ -260,9 +270,9 @@ function SignupModal(props){
             <div className="sign-tabs-mn-2345">
               <Tabs>
                 <TabList>
-                  <Tab onClick={click}> <div  className="sign-tab-menu"> <i class="fas fa-user-tie"></i> supplier </div> </Tab>
-                  <Tab onClick={Click1}> <div className="sign-tab-menu"> <i class="fas fa-store"></i> buyer </div> </Tab>
-                  <Tab onClick={Click2}> <div className="sign-tab-menu"> <i class="fas fa-cog"></i> service providers</div> </Tab>
+                  <Tab onClick={click}> <div  className="sign-tab-menu"> <i class="fas fa-user-tie"></i> Tedarikçi </div> </Tab>
+                  <Tab onClick={Click1}> <div className="sign-tab-menu"> <i class="fas fa-store"></i> Alıcı</div> </Tab>
+                  <Tab onClick={Click2}> <div className="sign-tab-menu"> <i class="fas fa-cog"></i> Servis providers</div> </Tab>
                 </TabList>
 
                 <TabPanel>
@@ -414,7 +424,7 @@ function SignupModal(props){
                                           <p> 3 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>BRAND</span> INFORMATIONS </p>
+                                          <p> <span>Firmalar/Markalar</span> INFORMATIONS </p>
                                         </div>
                                       </li>
                                     </ul>
@@ -518,7 +528,7 @@ function SignupModal(props){
                         <div className="container">
                             <div className="col-md-12 col-xs-12">
                                 <div className="sig-text-1">
-                                    <p> Your products and brand profile <span className="sign-text-1-span-2">  exhibiting to thousands of buyers </span> <span className="sign-text-1-span-1"> increase your sales! </span> </p>
+                                    <p> Your products and Firmalar/Markalar profile <span className="sign-text-1-span-2">  exhibiting to thousands of buyers </span> <span className="sign-text-1-span-1"> increase your sales! </span> </p>
                                     <h6> CREATE YOUR FREE SUPPLIER PROFILE NOW. </h6>
                                 </div>
                             </div>
@@ -563,14 +573,14 @@ function SignupModal(props){
                   <Row> 
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Brand name</Form.Label>
+                            <Form.Label>Firmalar/Markalar name</Form.Label>
                             <Form.Control type="email" id="brand_name" placeholder="Lütfen  firma adınızı yazın..." />
                           </Form.Group>
                         </Col>
 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Brand website</Form.Label>
+                            <Form.Label>Firmalar/Markalar website</Form.Label>
                             <Form.Control type="email" id="brand_website" placeholder="Lütfen  firma adınızı yazın..." />
                           </Form.Group>
                         </Col>

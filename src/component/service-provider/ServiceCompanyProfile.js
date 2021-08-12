@@ -75,6 +75,13 @@ function ServiceProfile(){
     const [promotionData, setPromotionData] = useState([]);
     
     // var company_logo = cookies.set("comapnyLogo",ProfileData.company_logo,"/service-dashboard")
+useEffect(()=>{
+    var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
+})
+
     useEffect(() => {
         var url6 = BASE_URL+'authentication/promotion/';
         var url = BASE_URL+'authentication/createserprovider/';
@@ -472,7 +479,7 @@ function ServiceProfile(){
 
                                     <Col md="6" xs="12">
                                         <div className="color-pick-inp-m">
-                                        <Form.Label> Brand Color</Form.Label>
+                                        <Form.Label> Firmalar/Markalar Color</Form.Label>
                                        
                                          <div className="color-pic-div"
                                           
@@ -620,7 +627,7 @@ function ServiceProfile(){
                     <div className="product-form-main">
 
                         <div className="p-inside-title">
-                            <h5> Promotion  </h5>
+                            <h5> Tanıtım </h5>
 
                         </div>
 
@@ -629,7 +636,7 @@ function ServiceProfile(){
                     <Row>
                             <Col xs={12} md={12} className="m-auto">
                              
-                                <Form.Label>Offer a promotion to attract more views and incentivize customers.</Form.Label>      
+                                <Form.Label>Offer a Tanıtım to attract more views and incentivize customers.</Form.Label>      
                               <br></br>{promotionData.length === 0 ? <InputGroup.Text class="btn btn-success"  onClick={() => setShow3(true)}>Add Promotion</InputGroup.Text>:''}
                                
                                
@@ -672,7 +679,7 @@ function ServiceProfile(){
                     <div className="product-form-main">
 
                         <div className="p-inside-title">
-                            <h5> Services  </h5>
+                            <h5> Servis  </h5>
                         </div>
 
                         <div>your selected catetory
@@ -690,7 +697,8 @@ function ServiceProfile(){
                         <Row>
                             <Col xs={12} md={12} className="m-auto">
                                 <Form.Group controlId="exampleForm.ControlSelect1">
-                                    <Form.Label>Select your service category</Form.Label>
+                                    {/* <Form.Label>Select your service category</Form.Label> */}
+                                    <Form.Label>Servis Kategorisi</Form.Label>
                                     <Form.Control onClick={ChangeSelect} as="select" id="department">
                                                 {CategoryData.map(cat=>(  
                                                 <option  value={cat.uuid}>{cat.categoryname}</option>
@@ -761,49 +769,7 @@ function ServiceProfile(){
                         </Col>
                     </Row>
                 </section>
-
-
             </div>
-
-
-             {/* right sidebar div start  */}
-
-            {/* <div className="col-md-3">
-                <div className="rgm-right-bar serv-p-side-left">
-
-                    <div className="serv-comp-leftbar">
-                        <img src="assets/images/brand-logo.jpg" />
-                    </div> 
-
-                    <div className="serv-comp-title">
-                        <h5> Company Name  </h5>
-                    </div>
-
-                    <div className="p-text-45878">
-                        <span className="span-1"> Preview :</span>
-                        <span className="span-2">
-                            <NavLink to=""> Profile </NavLink>
-                            <NavLink to=""> search Listing </NavLink>
-                        </span>
-                    </div>
-
-                    <div className="serv-com-btn-m">
-                        <button className="admin-add-btn"> Complete Profile </button>
-                    </div>
-
-                    <div className="p-text-45878 text-center">
-                        <p> <i class="fa fa-check-circle-o" aria-hidden="true"></i> All changes saved </p>
-                        <span className="span-1"> Profile status :</span>
-                        <span className="span-2 " style={{fontSize: '14px', marginLeft: '0.5rem'}}>
-                        Unpublished
-                        </span>
-                    </div>
-
-                
-                </div>
-         
-            </div> */}
-
                 </div>
             </div>
 
@@ -816,7 +782,7 @@ function ServiceProfile(){
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-custom-modal-styling-title">
-                    <h5 style={{ marginBottom: '0px' }}>Promotion </h5>
+                    <h5 style={{ marginBottom: '0px' }}>Tanıtım </h5>
                     
             </Modal.Title>
                 </Modal.Header>
@@ -825,8 +791,8 @@ function ServiceProfile(){
 
                         <Row>
                             <Col md={12} className="text-center">
-                            <p style={{margin: '0px'}}> Offer a promotion to get more visibility and attract customers.
-                        Promotions are only available to Premium and Pro suppliers </p>
+                            <p style={{margin: '0px'}}> Offer a Tanıtım to get more visibility and attract customers.
+                            Tanıtım are only available to Premium and Pro suppliers </p>
                             </Col>
                         </Row>
 
@@ -834,7 +800,7 @@ function ServiceProfile(){
                             
                             <Col xs={12} md={6} className="m-auto">
                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                <Form.Label>Type of promotion</Form.Label>
+                                <Form.Label>Type of Tanıtım</Form.Label>
                                 <Form.Control id="promotion_type" defaultValue={promotionData.amount_type ? promotionData.amount_type : ''} as="select">
                                    
                                 <option value="percent" >%Discount</option>
@@ -855,7 +821,7 @@ function ServiceProfile(){
 
                             <Col xs={12} md={12} className="m-auto">
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                                    <Form.Label style={{marginTop: '0.5rem'}}>Description (optional)</Form.Label>
+                                    <Form.Label style={{marginTop: '0.5rem'}}>Description (Opsiyonel)</Form.Label>
                                     <Form.Control id="promotion_description" defaultValue={promotionData.description ? promotionData.description : ''}  as="textarea" rows={3} />
                                 </Form.Group>
                             </Col>
@@ -899,7 +865,7 @@ function ServiceProfile(){
                             
                             <Col xs={12} md={6} className="m-auto">
                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                <Form.Label>Type of promotion</Form.Label>
+                                <Form.Label>Type of Tanıtım</Form.Label>
                                 <Form.Control id="promotion_type" defaultValue={promotionData.amount_type ? promotionData.amount_type : ''} as="select">
                                    
                                 <option value="percent" >%Discount</option>
@@ -920,7 +886,7 @@ function ServiceProfile(){
 
                             <Col xs={12} md={12} className="m-auto">
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                                    <Form.Label style={{marginTop: '0.5rem'}}>Description (optional)</Form.Label>
+                                    <Form.Label style={{marginTop: '0.5rem'}}>Description (Opsiyonel)</Form.Label>
                                     <Form.Control id="promotion_description" defaultValue={promotionData.description ? promotionData.description : ''}  as="textarea" rows={3} />
                                 </Form.Group>
                             </Col>
@@ -930,7 +896,7 @@ function ServiceProfile(){
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button class="admin-add-btn " onClick={EditPromotion}> Save promotion </button>
+                        <button class="admin-add-btn " onClick={EditPromotion}> Save Tanıtım </button>
                     </div>
                 </Modal.Footer>
             </Modal>
@@ -992,8 +958,8 @@ function ServiceProfile(){
                         <Row>
                             <Col md={12} className="text-center">
                                 <h6 > Are you sure? </h6>
-                            <p style={{margin: '0px'}}> You are about to permanently delete your promotion.
-Promotions get you more visibility and attract customers. </p>
+                            <p style={{margin: '0px'}}> You are about to permanently delete your Tanıtım.
+                            Tanıtım get you more visibility and attract customers. </p>
                             </Col>
 
                             <div className="col-md-12 mt-3 text-center">

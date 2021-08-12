@@ -86,6 +86,10 @@ var userTypeTitle=cookies.get('userType');
       }
     }
     render(){
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
     return(
         <>
          <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
@@ -138,7 +142,7 @@ var userTypeTitle=cookies.get('userType');
                                             
                                             <Col md="6">
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label> Number Of Buyers </Form.Label>
+                                                <Form.Label> Alıcı Sayısı</Form.Label>
                                                 <Form.Control as="select" id="buyers">
                                                 <option value="1-2">1-2</option>
                                                 <option value="3-10">3-10</option>
@@ -204,11 +208,6 @@ var userTypeTitle=cookies.get('userType');
                             </Card>
 
                         </Col>
-
-
-
-
-
                     </Row>
                 </Container>
             </section>

@@ -56,7 +56,7 @@ function Click2(){
     <div className="header-bar__actions">
       <a href="#" onClick={Click} className="header-bar__link" >Satıcılar İçin</a>
       <a href="#" onClick={Click1} className="header-bar__link" >Alıcılar İçin</a>
-      <a href="#" onClick={Click2} className="header-bar__link">For Service Providers</a>
+      <a href="#" onClick={Click2} className="header-bar__link">Servis </a>
       <div className="header-bar__divider" />
       <div className="header-bar__link sub-nav__toggle">
         <span>Resources</span>
@@ -207,7 +207,7 @@ function Click2(){
           <path fillRule="evenodd" clipRule="evenodd" d="M70.4956 84.6901C70.4956 83.7566 61.4305 83 50.2478 83C39.0651 83 30 83.7566 30 84.6901C30 85.6237 39.0651 86.3803 50.2478 86.3803C61.4305 86.3803 70.4956 85.6237 70.4956 84.6901Z" fill="#E3E6ED" />
         </svg>
         <div className="signup-modal__account-text">
-          <div className="signup-modal__account-name">Service Provider</div>
+          <div className="signup-modal__account-name">Servis</div>
           <div className="signup-modal__account-description">I sell services to suppliers</div>
         </div>
       </NavLink>

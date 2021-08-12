@@ -144,7 +144,7 @@ function AdminNavbar(){
                 <Col xs={12} md={12}>
                 
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label  style={{marginTop: '0px'}}>Brand Name</Form.Label>
+                        <Form.Label  style={{marginTop: '0px'}}>Firmalar/Markalar</Form.Label>
                         <Form.Control type="text" id="brand_name" placeholder="abc" />
 
                     </Form.Group>

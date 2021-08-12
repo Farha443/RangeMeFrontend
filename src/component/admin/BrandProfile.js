@@ -139,6 +139,13 @@ function BrandProfile2() {
         });
     }
 
+    useEffect(()=>{
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
+    },)
+
     useEffect(() => {
         getBrands()
         axios.get(BASE_URL+'authentication/getsupplier/'+ user_uuid )
@@ -264,8 +271,9 @@ function BrandProfile2() {
 
     }
 
-    function Redirect(uuid){
-        cookies.set('productuuid',uuid,{path:'/'});
+    function Redirect(uuid, name){
+        cookies.set('productuuid',uuid,{path:'/product_form'});
+        cookies.set('product_name',name,{path:'/product_form'});
         window.location='/product_form/';
       }
 
@@ -476,18 +484,26 @@ function BrandProfile2() {
 
                 <div className="clickable-cover-image__clickable-cover-image___Agsbi" data-tname="CoverImage">
                     <div className="cover-image__image-container___2tnKs">
-                        <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+sbrand.brand_cover} />
+                        {sbrand.brand_cover?
+                        <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+sbrand.brand_cover}/>:<div className="bg222">
+                        <p>Banner Ekle </p>
+                        </div>}
                         {/* {sbrand.map(img=>(
                             img.uuid===cookies.get('get_brand')?
                         <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+ img.brand_cover} />:""
                         ))} */}
+                        {/* <div className="bg222">
+                        <p>Add Cover Photo</p>
+                        </div> */}
                         
                     </div>
                     <div className="clickable-cover-image__container___1Y72X">
                         <button className="clickable-cover-image__change-image___JnYhU" type="button" onClick={() => setShow(true)}>
                             <div className="clickable-cover-image__change-image-hint___3NLUs">
-                                <img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src={BASE_URL.slice(0,-5)+sbrand.brand_logo}/>
-                                <div className="clickable-cover-image__change-image-text___1kIxy">Change cover image</div>
+                                <img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src="assets/images/camera.jpg"/>
+                                {/* src={BASE_URL.slice(0,-5)+sbrand.brand_logo} */}
+                                <div className="clickable-cover-image__change-image-text___1kIxy" src="assets/images/camera.jpg">Kapak resmini değiştir</div>
+                                {/* change cover image */}
                             </div>
                         </button>
                     </div>
@@ -507,11 +523,14 @@ function BrandProfile2() {
                                         <img src={BASE_URL.slice(0,-5)+img.brand_logo} />:""))}
                                         <div className="prof-img-btn">
                                             <button className="clickable-cover-image__change-image___JnYhU" type="button" onClick={() => setShow3(true)}>
-                                                <div className="clickable-cover-image__change-image-hint___3NLUs"><img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src="" />
+                                                <div className="clickable-cover-image__change-image-hint___3NLUs"><img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src="assets/images/camera.jpg" />
                                                     <div className="clickable-cover-image__change-image-text___1kIxy"></div>
                                                 </div>
                                             </button>
                                         </div>
+                                        {/* <div className="img-circle-bg">
+                                              <p> Add Logo </p>
+                                        </div> */}
                                     </div>
                                     <div className="cover-brand-title">
                                         <h5>{sbrand.brand_name}</h5>
@@ -533,9 +552,9 @@ function BrandProfile2() {
                                             <button class="border-btn" onClick={handleToggle}> <i class="fa fa-cog" aria-hidden="true"></i> </button>
                                            <div className={isActive ? "drop-d-101 " : "drop-d-101 open-drop"}>
                                                <ul>
-                                                   <li> <NavLink to="/brand-profile">Merge brands </NavLink> </li>
-                                                   <li> <NavLink to="/brand-profile">Preview brand page</NavLink> </li>
-                                                   <li> <NavLink to="/brand-profile">Preview brand card </NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Merge Firmalar/Markalar </NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Preview Firmalar/Markalar page</NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Preview Firmalar/Markalar card </NavLink> </li>
                                                </ul>
                                            </div>
                                         </li>
@@ -559,12 +578,12 @@ function BrandProfile2() {
                                     <TabList className="b-tab-list-one">
                                         <Tab>
                                             <div className="tbs-menu">
-                                                <i class="fa fa-cog" aria-hidden="true"></i> Manage Product
+                                                <i class="fa fa-cog" aria-hidden="true"></i> Manage Ürün
                                     </div>
                                         </Tab>
                                         <Tab>
                                             <div className="tbs-menu">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit brand page
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Firmalar/Markalar page
                                     </div>
                                         </Tab>
 
@@ -576,7 +595,7 @@ function BrandProfile2() {
                                                 <Card.Body>
                                                     <div className="prod-num-r-btn mb-3">
                                                         
-                                                        <button className="admin-add-btn f-w-500" onClick={() => setShow2(true)}><i class="fa fa-plus" aria-hidden="true"></i>  Add New Product </button>
+                                                        <button className="admin-add-btn f-w-500" onClick={() => setShow2(true)}><i class="fa fa-plus" aria-hidden="true"></i>  Yeni ürün ekle </button>
                                                        
                                                     </div>
 
@@ -655,13 +674,17 @@ function BrandProfile2() {
                                                             </DropdownButton> */}
                                                         </InputGroup>
                                                     </div>
+                                                    {count===0?
+                                                    <div className="empty-div">
+                                                    <p> No Products to show click Add product Button to a Product.</p>
+                                                    </div>:
 
                                                     <div className="pro-table-main">
                                                         <Table responsive="sm">
                                                             <thead>
                                                                 <tr>
 
-                                                                    <th>Product</th>
+                                                                    <th>Ürün</th>
                                                                     <th>Product status</th>
                                                                     <th className="ac-right" >Action</th>
 
@@ -688,9 +711,9 @@ function BrandProfile2() {
                                                                     <td className="pd-last-td">
                                                                     <button className="border-btn"  onClick={()=>CopyFunction(pd.uuid)}>  Copy Product   </button>
                                                                         <button className="border-btn"> <NavLink to=""
-                                                                        onClick={()=>Redirect(pd.uuid)}> Edit </NavLink>  </button>
+                                                                        onClick={()=>Redirect(pd.uuid,pd.product_name)}> Edit </NavLink>  </button>
                                                                          <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.uuid)}> Delete </NavLink>  </button>
-                                                                         <button className="border-btn" onClick={()=>MoveBrand(pd.uuid,pd.product_name)}>  Move To A Different Brand   </button>
+                                                                         <button className="border-btn" onClick={()=>MoveBrand(pd.uuid,pd.product_name)}>  Move To A Different Firmalar/Markalar   </button>
                                                                         <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
                                                                         <div className={isAct ? "drop-d-101 " : "drop-d-101 open-drop"}> 
                                                                             <ul>
@@ -743,7 +766,9 @@ function BrandProfile2() {
 
                                                             </tbody>
                                                         </Table>
-                                                    </div>
+                                                    </div>}
+                                                
+                                                
                                                 </Card.Body>
                                             </Card>
                                         </Col>
@@ -755,7 +780,7 @@ function BrandProfile2() {
                                             <Card.Body>
 
                                                 <div className="b-p-title">
-                                                    <h5> Brand page </h5>
+                                                    <h5> Firmalar/Markalar page </h5>
                                                 </div>
                                             <Tabs>
                                                 <div className="b-profile-tab-2-d">
@@ -774,6 +799,10 @@ function BrandProfile2() {
                                             </TabList>
 
                                             <TabPanel>
+                                                {count===0?
+                                            <div className="empty-div">
+                                                    <p> No Products to show.</p>
+                                                    </div>:
                                                <Row>
                                                    <Col md="9" xs="12"> 
                                                       <Row>
@@ -789,7 +818,7 @@ function BrandProfile2() {
                                                                 <div className="p-text-d-12458">
                                                                     <h6> {pd.product_name} </h6>
                                                                     <div className="cost-text">
-                                                                    <p> Cost/item <span> {pd.cost} </span> </p>
+                                                                    <p> Ürün fiyatı <span> {pd.cost} </span> </p>
                                                                     <p> Margin <span> {pd.mrp} </span> </p>
                                                                
                                                                     </div>
@@ -827,7 +856,7 @@ function BrandProfile2() {
                                                             <ul>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-tag"></i>  PRODUCTS
+                                                                    <i class="far fa-tag"></i>  Ürün
                                                                     </p>
                                                                     <p>
                                                                         ( {count} )
@@ -850,88 +879,11 @@ function BrandProfile2() {
                                                                         ( {sbrand.annual_revenue} )
                                                                     </p>
                                                                 </li>
-
-                                                                {/* <li>
-                                                                    <p>
-                                                                    <i class="fal fa-bullhorn"></i> PROMOTIONAL SPEND
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $1 - $25k )
-                                                                    </p>
-                                                                </li> */}
-
-                                                                {/* <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $89.00 - $89.00 )
-                                                                    </p>
-                                                                </li> */}
-
                                                             </ul>
                                                         </div>
-
-                                                        {/* <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-facebook-square"></i>  FACEBOOK
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                  
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-twitter-square"></i> TWITTER
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-pinterest-square"></i> PINTEREST
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-instagram"></i> INSTAGRAM
-                                                                    </p>
-                                                                    <p>
-                                                                        ---
-                                                                    </p>                                                    
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div> */}
-
-
-
                                                      </div>
                                                    </Col>
-                                               </Row>
+                                               </Row>}
                                             </TabPanel>
 
                                             <TabPanel>
@@ -943,7 +895,7 @@ function BrandProfile2() {
                                                             {sbrand.brand_story? <EditorPreview data={sbrand.brand_story} />:<div className="p-story-box-d">
                                                             <i class="fal fa-comment-alt-lines"></i>
                                                                 <h4> Tell your Story </h4>
-                                                                <p> Let buyers know more about your brand. </p>
+                                                                <p> Let Alıcı know more about your Firmalar/Markalar. </p>
                                                                 <button className="admin-add-btn" onClick={() => setShowStory(true)}><i class="fal fa-pen"></i> Edit Your story </button>
                                                             </div>}
                                                           </Col>
@@ -952,7 +904,7 @@ function BrandProfile2() {
                                                                 
                                                                 <i class="fal fa-play-circle"></i>
                                                                     <h4> Add a video </h4>
-                                                                    <p> Embed a YouTube or Vimeo video about your brand or products. </p>
+                                                                    <p> Embed a YouTube or Vimeo video about your Firmalar/Markalar or products. </p>
                                                                     <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Add Video </button>
                                                                 </div>}
                                                             
@@ -986,7 +938,7 @@ function BrandProfile2() {
                                                             <ul>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-tag"></i>  PRODUCTS
+                                                                    <i class="far fa-tag"></i>  Ürün
                                                                     </p>
                                                                     <p>
                                                                         ( {count} )
@@ -1008,84 +960,12 @@ function BrandProfile2() {
                                                                     <p>
                                                                         ( {sbrand.annual_revenue })
                                                                     </p>
-                                                                </li>
-
-                                                                {/* <li>
-                                                                    <p>
-                                                                    <i class="fal fa-bullhorn"></i> PROMOTIONAL SPEND
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $1 - $25k )
-                                                                    </p>
-                                                                </li> */}
-
-                                                                {/* <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $89.00 - $89.00 )
-                                                                    </p>
-                                                                </li> */}
+                                                                </li>                                                              
 
                                                             </ul>
                                                         </div>
 
-                                                        {/* <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-facebook-square"></i>  FACEBOOK
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                  
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-twitter-square"></i> TWITTER
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-pinterest-square"></i> PINTEREST
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-instagram"></i> INSTAGRAM
-                                                                    </p>
-                                                                    <p>
-                                                                        ---
-                                                                    </p>                                                    
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div> */}
-
+                                            
 
 
                                                      </div>
@@ -1135,7 +1015,7 @@ function BrandProfile2() {
                             <Col xs={12} md={12}>
                             <div className="profile-up-main brand-logo">
                             <div className="upload-imf-direction-text ">
-                            <h6> Brand Logo </h6>
+                            <h6> Marka logosu</h6>
                             <p>Image must be at least 800 x 800px.
                                 File formats JPG, PNG, GIF, JPEG.</p>
                             </div>
@@ -1207,7 +1087,8 @@ function BrandProfile2() {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-custom-modal-styling-title">
-                    <h5 style={{ marginBottom: '0px' }}> Add product </h5>
+                    <h5 style={{ marginBottom: '0px' }}> ürün ekle
+</h5>
                     {/* <p> Start with adding your product’s name </p> */}
             </Modal.Title>
                 </Modal.Header>
@@ -1217,8 +1098,8 @@ function BrandProfile2() {
                         <Row>
                             <Col xs={12} md={10} className="m-auto">
                          <div className="text-center mb-3">
-                         <h5> Add new product </h5>  
-                         <p style={{ marginTop: '0px' }}> Start with adding your product’s name </p>
+                         <h5> Yeni ürün ekle</h5>  
+                         <p style={{ marginTop: '0px' }}>Ürün İsmi Ekle  </p>
                          </div>
                             <Col xs={12} md={10} className="m-auto"> 
                                 <Form.Group controlId="formBasicEmail">
@@ -1234,7 +1115,8 @@ function BrandProfile2() {
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button className="admin-add-btn" onClick={AddProduct} >  Add product  </button>
+                        <button className="admin-add-btn" onClick={AddProduct} >ürün ekle
+ </button>
                     </div>
                 </Modal.Footer>
             </Modal>
@@ -1347,7 +1229,7 @@ function BrandProfile2() {
                         <Row>
                             <Col xs={12} md={10} className="m-auto">
                          <div className="text-center mb-3">
-                         <h5>Choose a brand for this product</h5>  
+                         <h5>Choose a Firmalar/Markalar for this ürün</h5>  
                          
                          </div>
                             <Col xs={12} md={10} className="m-auto"> 
@@ -1430,7 +1312,7 @@ function BrandProfile2() {
         >
             <Modal.Header closeButton>
             <Modal.Title id="example-custom-modal-styling-title">
-            Add new brand
+            Add new Firmalar/Markalar
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -1440,7 +1322,7 @@ function BrandProfile2() {
                 <Col xs={12} md={12}>
                 
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label  style={{marginTop: '0px'}}>Brand Name</Form.Label>
+                        <Form.Label  style={{marginTop: '0px'}}>marka adı</Form.Label>
                         <Form.Control type="text" id="brand_name" placeholder="abc" />
 
                     </Form.Group>
@@ -1499,7 +1381,7 @@ function BrandProfile2() {
         >
             <Modal.Header closeButton>
             <Modal.Title id="example-custom-modal-styling-title">
-            Brand information
+            Firmalar/Markalar information
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -1508,7 +1390,7 @@ function BrandProfile2() {
                 <Row>
                 <Col xs={12} md={6}>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label  style={{marginTop: '0px'}} >Brand Name</Form.Label>
+                        <Form.Label  style={{marginTop: '0px'}} >Marka adı</Form.Label>
                         <Form.Control type="text"  id="e_name" placeholder="abc" defaultValue={sbrand.brand_name} />
 
                     </Form.Group>

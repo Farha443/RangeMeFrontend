@@ -185,6 +185,10 @@ var region_value = ''
 
     
   render() {
+    var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
     const { country, region,dis_country } = this.state;
    
     return(
@@ -206,7 +210,7 @@ var region_value = ''
                                            <Row>
                                             <Col md="12">
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label> Select your service Category. </Form.Label>
+                                                <Form.Label> Servis Kategorisi </Form.Label>
                                                 <Form.Control  onClick={this.ChangeSelect} as="select" id="department">
                                                 {this.state.data.map(cat=>(  
                                                 <option  value={cat.uuid}>{cat.categoryname}</option>

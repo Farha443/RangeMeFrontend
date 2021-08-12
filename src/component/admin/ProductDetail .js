@@ -61,9 +61,14 @@ function ProductDetail() {
     
     // alert(p_package.product_name)
     
-    useEffect(() => {
-        
+    useEffect(()=>{
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
+    })
 
+    useEffect(() => {
         axios.get(BASE_URL +'product/ProductDetailView/'+cookies.get("productuuid")+'/').then(res=>{
             setproductname(res.data.data)
             
@@ -347,7 +352,7 @@ function ProductDetail() {
 
                                 <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4>  {productname.product_name } </h4> <span> Product </span>
+                                        <h4>  {productname.product_name } </h4> <span>Ürün  </span>
                                     </div>
                                 </div>
 
@@ -360,7 +365,7 @@ function ProductDetail() {
 
                                         <div className="p-icn-02">
                                             <button className="pre-btn"> <NavLink to="/preview"> <i class="fa fa-eye" aria-hidden="true"></i> Preview </NavLink>  </button>
-                                            <button className="appro-btn"> Submit Approval </button>
+                                            <button className="appro-btn">Onay için ürünü gönder </button>
                                         </div>
                                     </div>
                                 </div>
@@ -384,7 +389,7 @@ function ProductDetail() {
                                             inactiveClassName="text-gray-800"
                                             >
                                                 {/* <img src="assets/images/list-searching-variant.png" /> */}
-                                                <div className="sidebar-title"> Product Overview  </div>
+                                                <div className="sidebar-title"> Ürüne Genel Bakış  </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -393,7 +398,7 @@ function ProductDetail() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Product Details  </div>
+                                                <div className="sidebar-title"> Ürün Açıklaması </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -402,7 +407,8 @@ function ProductDetail() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/moving-truck.png" />
-                                                <div className="sidebar-title"> Distribution  </div>
+                                                <div className="sidebar-title"> Ürün dağıtımı
+  </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -411,7 +417,7 @@ function ProductDetail() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Marketing </div>
+                                                <div className="sidebar-title"> Ürün Pazarlaması </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -428,7 +434,7 @@ function ProductDetail() {
 
                                         <div className="p-inside-title">
                                     
-                                            <h5>Product Details </h5>
+                                            <h5>Ürün Açıklaması </h5>
 
                                         </div>
 
@@ -446,7 +452,7 @@ function ProductDetail() {
                                             </Col>
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Variant SKU/Style number</Form.Label>
+                                                <Form.Label>SKU/ Stok kodu</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter number" id="variant_style_no"
                                                 defaultValue={p_details.variant_style_no}/>
 
@@ -460,7 +466,7 @@ function ProductDetail() {
                                                 <ImageUploader
                                                         id="image_ki_id"
                                                         withIcon={false}
-                                                        buttonText='Choose Image'
+                                                        buttonText='Ürün Resmi Seç'
                                                         onChange={onDrop}
                                                         imgExtension={['.jpg', '.gif', '.png', '.gif', 'jpeg']}
                                                         maxFileSize={5242880}
@@ -479,7 +485,8 @@ function ProductDetail() {
                                 <div className="product-form-main">
 
                                     <div className="p-inside-title">
-                                        <h5>PRODUCT PRICING </h5>
+                                        {/* product pricing */}
+                                        <h5>Ürün Fiyatı</h5>
 
                                     </div>
 
@@ -488,7 +495,7 @@ function ProductDetail() {
                                         <Row>
 
                                         <Col md="6">
-                                        <label htmlFor="basic-url" className="lb">Cost
+                                        <label htmlFor="basic-url" className="lb">Ürün fiyatı
                                             <p>  (Suggested cost to the retailer) </p>
                                         </label>
                                             <InputGroup className="mb-3">
@@ -509,7 +516,7 @@ function ProductDetail() {
 
 
                                         <Col md="6">
-                                            <label htmlFor="basic-url" className="lb">MSRP
+                                            <label htmlFor="basic-url" className="lb">Tedarikçinin önerdiği son satış fiyatı
                                                 <p>   (Suggested selling price for retailers) </p>
                                             </label>
                                             <InputGroup className="mb-3">
@@ -529,7 +536,7 @@ function ProductDetail() {
                                         </Col>
                                         
                                         <Col md="6">
-                                        <label htmlFor="basic-url" className="lb">Products per case
+                                        <label htmlFor="basic-url" className="lb">Kutu başı ürün sayısı
                                             <p>  (Default as 1) </p>
                                         </label>
                                         <Form.Control type="number" placeholder="1" id="products_per_case" defaultValue={p_details.mrp}/>
@@ -537,7 +544,10 @@ function ProductDetail() {
                                         </Col>
 
                                         <Col md="6">
-                                        <label htmlFor="basic-url" className="lb">Case Price
+                                        {/* <label htmlFor="basic-url" className="lb">Case Price
+                                         <p>  (Default as $10) </p>
+                                        </label> */}
+                                        <label htmlFor="basic-url" className="lb">Kutu başı ürün sayısı
                                          <p>  (Default as $10) </p>
                                         </label>
                                         <Form.Control type="number" placeholder="$10.00" id="case_pricing"
@@ -545,7 +555,7 @@ function ProductDetail() {
                                         </Col>
                                         <Col md="12">
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
-                                                <Form.Label>Pricing comments (Optional)</Form.Label>
+                                                <Form.Label>Fiyat açıklaması (Opsiyonel)</Form.Label>
                                                 <Form.Control as="textarea" rows={3}  id="pricing_comments"
                                                 defaultValue={p_details.pricing_comments}/>
                                             </Form.Group>
@@ -564,7 +574,7 @@ function ProductDetail() {
                                 <div className="product-form-main">
 
                                     <div className="p-inside-title">
-                                        <h5>PRODUCT BARCODE </h5>
+                                        <h5>Ürün Barkodu  </h5>
 
                                     </div>
 
@@ -615,7 +625,7 @@ function ProductDetail() {
                                 <div className="product-form-main">
 
                                     <div className="p-inside-title">
-                                        <h5>PRODUCT PACKAGING </h5>
+                                        <h5>Ürün Paket Bilgileri </h5>
 
                                     </div>
 
@@ -626,14 +636,14 @@ function ProductDetail() {
                                         <Col md="12" className="" >
                                             <div className="step-four-radio">
                                                 <div>
-                                                <label htmlFor="basic-url" className="lb">Does your product have packaging? (Optional)</label>
+                                                <label htmlFor="basic-url" className="lb">Ürün Paketlemesi var mı? (Opsiyonel)</label>
                                                 </div>
                                                 <Form.Check inline label="Yes" name="group2" type="radio" onChange={e => setPackaging(e.target.value)}  value="true" id="yes_packaging" />
                                                 <Form.Check value="false" inline label="No" name="group2" onChange={e => setPackaging(e.target.value)}  type="radio" id="no_packaging" />
                                                 </div>
 
                                                 {packaging=== "true" ? <div >
-                                                <label className="col-md-12" htmlFor="basic-url" className="lb">Product dimensions (Optional)</label>
+                                                <label className="col-md-12" htmlFor="basic-url" className="lb">Ürün Ölçüleri (Opsiyonel)</label>
                                                 <InputGroup className="mb-3">
                                                 <Form.Control as="select" id="product_dimension_type" defaultValue={p_package.product_dimension_type}
                                                 className="col-md-3">
@@ -659,7 +669,7 @@ function ProductDetail() {
 
                                              <Col md="6" xs="12">
                                              {packaging=== "true" ?   <div >
-                                                <label className="col-md-12" htmlFor="basic-url" className="lb">Product volume (Optional)</label>
+                                                <label className="col-md-12" htmlFor="basic-url" className="lb">Product volume (Opsiyonel)</label>
                                                 <InputGroup  className="mb-3">
                                                 <Form.Control id="product_volume_type" as="select" className="col-md-4" defaultValue={p_package.product_volume_type}>
                                                     <option value="in3">In3</option>
@@ -677,7 +687,7 @@ function ProductDetail() {
 
                                             <Col md="6" xs="12">
                                             {packaging=== "true" ?   <div >
-                                                <label className="col-md-12" htmlFor="basic-url" className="lb">Product weight (Optional)</label>
+                                                <label className="col-md-12" htmlFor="basic-url" className="lb">Product weight (Opsiyonel)</label>
                                                 <InputGroup className="mb-3">
                                                 <Form.Control as="select" id="product_weight_type" className="col-md-4" defaultValue={p_package.product_weight_type}>
                                                     <option value="lb">lb</option>
@@ -696,7 +706,7 @@ function ProductDetail() {
 
                                             <Col md="6" xs="12">
                                             {packaging=== "true" ?  <div >
-                                                <label className="col-md-12" htmlFor="basic-url" className="lb"  >Product size (Optional)</label>
+                                                <label className="col-md-12" htmlFor="basic-url" className="lb"  >Product size (Opsiyonel)</label>
                                                 <InputGroup className="mb-3">
                                                 <Form.Control id="product_size_type" as="select" className="col-md-4" defaultValue={p_package.product_size_type ? p_package.product_size_type : "hello"}>
                                                 <option value="lb">lb</option>
@@ -725,7 +735,7 @@ function ProductDetail() {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5>PRODUCT SHELF LIFE AND INGREDIENTS </h5>
+                                            <h5>Ürün raf ömrü AND içerikler </h5>
 
                                         </div>
 
@@ -736,7 +746,7 @@ function ProductDetail() {
                                             <Col md="12" xs="12" className="" >
                                                 <div className="step-four-radio">
                                                     <div>
-                                                    <label htmlFor="basic-url" className="lb">Does your product have a shelf life? (optional)</label>
+                                                    <label htmlFor="basic-url" className="lb">Ürünün Raf ömrü var mı? (Opsiyonel)</label>
                                                     </div>
                                                     <Form.Check inline label="Yes" name="group3" type="radio" onChange={e => setIngredient(e.target.value)}  value="true"  />
                                                     <Form.Check inline label="No" type="radio" name="group3" onChange={e => setIngredient(e.target.value)}  value="false"  />
@@ -764,7 +774,7 @@ function ProductDetail() {
                                             <Col md="12" xs="12" className="" >
                                             <div className="step-four-radio">
                                                     <div>
-                                                    <label htmlFor="basic-url" className="lb">Does your product have ingredients? (optional)</label>
+                                                    <label htmlFor="basic-url" className="lb">Ürün içerikleri ne?(Opsiyonel)</label>
                                                     </div>
                                                     <Form.Check inline label="Yes" name="group4" type="radio"  onChange={e => setSelflife(e.target.value)}  value="true" />
                                                     <Form.Check inline label="No" name="group4" type="radio" onChange={e => setSelflife(e.target.value)}  value="false" />
@@ -786,7 +796,7 @@ function ProductDetail() {
                                                   <div className="step-four-radio">
                                                   
                                                     <div>
-                                                    <label htmlFor="basic-url" className="lb">Does your product have a nutritional label? (optional) </label>
+                                                    <label htmlFor="basic-url" className="lb">Besin değeri etiketi var mı? (Opsiyonel) </label>
                                                     </div>
                                                     <Form.Check inline label="Yes" type="radio" name="group6" onChange={e => setNutritional(e.target.value)}  value="true" id="yes_nutrition"/>
                                                     <Form.Check inline label="No" type="radio" name="group6" onChange={e => setNutritional(e.target.value)}  value="false" id="no_nutrition" />
@@ -825,11 +835,11 @@ function ProductDetail() {
                                     <img src="assets/images/blog1.jpg" />
                                 </div>      
                                 <div className="prod-info-text">
-                                    <h5> Brand Name </h5>
+                                    <h5> Marka adı</h5>
                                     <h6> product </h6>
                                 </div>
                                 <div className="pro-margin">
-                                    <span> 10$ Cost/item </span>
+                                    <span> 10$ Ürün fiyatı</span>
                                     <span> 33.00%  Margin </span>
                                 </div>
 
@@ -872,9 +882,9 @@ function ProductDetail() {
 
                             <Col xs={12} md={6} >
                             <div className="nutri-text-right">
-                                    <h5> PRODUCT IMAGE </h5>
+                                    <h5> Ürün Resmi Seç  </h5>
                                     <p>
-                                    The product image is your first impression to buyers and one of the most important elements of your listing. </p>
+                                    The product image is your first impression to Alıcı and one of the most important elements of your listing. </p>
 
                                  
                                 </div>

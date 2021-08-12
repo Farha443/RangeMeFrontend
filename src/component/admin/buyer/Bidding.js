@@ -44,8 +44,8 @@ function BidPlacing(){
             category:category,
           }
       };
-      var ws = new WebSocket('ws://tayuss.com/test/')
-    //   var ws = new WebSocket('ws://localhost:8000/test/')
+      // var ws = new WebSocket('ws://tayuss.com/test/')
+      var ws = new WebSocket('ws://localhost:8000/test/')
       ws.onclose = () => {
         console.log('disconnected')
         }
@@ -66,6 +66,7 @@ function BidPlacing(){
   }
 
 
+
 class Bidding extends React.Component {
     handleKeypress = (event) => {
       if(event.key === 'Enter'){
@@ -78,6 +79,7 @@ class Bidding extends React.Component {
         data: [],
       };
       
+    
     async componentDidMount(){
       // debugger
         var url = BASE_URL+'authentication/GetCategorysignup/';
@@ -106,6 +108,11 @@ class Bidding extends React.Component {
     }
 
     render(){
+
+var token = cookies.get('logintoken');
+if (token === undefined){
+  window.location="/login"
+}
     return(
       
         <>

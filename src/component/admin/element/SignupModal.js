@@ -140,7 +140,7 @@ function SignupModal(props){
   </svg>
   <div className="signup-modal__account-text">
     <div className="signup-modal__account-name">Service Provider</div>
-    <div className="signup-modal__account-description">I sell services to suppliers</div>
+    <div className="signup-modal__account-description">I sell services to Tedarikçi</div>
 
 
   </div>

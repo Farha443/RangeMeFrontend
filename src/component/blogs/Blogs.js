@@ -52,6 +52,7 @@ class Blogs  extends React.Component{
 }
   // const [modalShow, setModalShow] = useState(false);
     render() {
+      
     return(
         <>
          <Header/>   

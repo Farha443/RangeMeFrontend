@@ -36,6 +36,12 @@ let send_message_form = $('#send-message-form')
 
 
 function HomeBuyer(){
+
+    var token = cookies.get('logintoken');
+    if (token === undefined){
+    window.location="/login"
+    }
+
     const [show, setShow] = useState(false);
     const [recieverID , setRecieverId] = useState(false)
     const[products,setProducts]=useState([])
@@ -45,8 +51,8 @@ function HomeBuyer(){
     const[chat,setChat]=useState([])
     const[newMessage,setnewMessage]=useState({})
     const [Id , setId] = useState([])
-    var socket = new WebSocket('ws://tayuss.com/chat/')
-    // var socket = new WebSocket('ws://localhost:8000/chat/')
+    // var socket = new WebSocket('ws://tayuss.com/chat/')
+    var socket = new WebSocket('ws://localhost:8000/chat/')
     useEffect(() => {
        socket.onopen = () => {
                console.log('connected')
@@ -123,8 +129,8 @@ function Sendmessage(id){
             },
         };
 
-    // var wss = new WebSocket('ws://localhost:8000/chat/')
-    var wss = new WebSocket('ws://tayuss.com/chat/')
+    var wss = new WebSocket('ws://localhost:8000/chat/')
+    // var wss = new WebSocket('ws://https://tayuss.com/chat/')
     wss.onclose = () => {
         console.log('disconnected')
         }
@@ -199,7 +205,7 @@ function search(){
                             <Row>
                             <div class="col-md-4 col-xs-12">
                             <div class="form-group">
-                                <label for="sel1" style={{margin:"0px"}} className="mb-1">Select Category</label>
+                                <label for="sel1" style={{margin:"0px"}} className="mb-1">Ürün Kategorisi seç</label>
                                 <select class="form-control" id="sel1">
                                     <option>1</option>
                                     <option>2</option>

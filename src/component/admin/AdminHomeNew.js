@@ -71,6 +71,10 @@ function AdminHomeNew(){
     }
 
     useEffect(() => {
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
         var toId=cookies.get('uuid');
         var url = BASE_URL+'authentication/message/?toId=' + toId;
          axios.get(url)
@@ -85,8 +89,8 @@ function AdminHomeNew(){
         ;
       },[])
 
-//  var socket = new WebSocket('ws://localhost:8000/chat/')
-var socket = new WebSocket('ws://tayuss.com/chat/')
+ var socket = new WebSocket('ws://localhost:8000/chat/')
+// var socket = new WebSocket('ws://tayuss.com/chat/')
  useEffect(() => {
     socket.onopen = () => {
             // debugger
@@ -128,8 +132,8 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
     const handleToggle = () => {
         setActive(!isActive);
       };
-    //   var ws = new WebSocket('ws://localhost:8000/test/')
-      var ws = new WebSocket('ws://tayuss.com/test/')
+      var ws = new WebSocket('ws://localhost:8000/test/')
+    //   var ws = new WebSocket('ws://tayuss.com/test/')
       useEffect(() => {
          
         ws.onopen = () => {
@@ -228,8 +232,8 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
 
                                     <div className="cover-brand-title ad-hm-b-title">
                                         <h5> {brands.brand_name} </h5>
-                                      
-                                        <p onClick={handleToggle}> Switch Brand <i class="fa fa-angle-down" aria-hidden="true"></i> </p>
+                                        {/* switch brand */}
+                                        <p onClick={handleToggle}> Marka Değiştir <i class="fa fa-angle-down" aria-hidden="true"></i> </p>
                                         <div className={isActive ? "drop-d-101 " : "drop-d-101 open-drop"}>
                                         {Allbrands.map(bt=>( 
                                            <ul>
@@ -259,7 +263,8 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                                             <div className="in-content">
                                                 <div className="in-cont-first">
                                                 <i class="fal fa-check-circle"></i>
-                                                    <p>  Create account </p>          
+                                                    <p>Hesap aç</p>
+                                                              {/* create account*/}
                                                 </div>           
                                             </div>
                                         </li>
@@ -268,7 +273,7 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                                             <div className="in-content">
                                                 <div className="in-cont-first">
                                                 <i class="fal fa-check-circle"></i>
-                                                    <p>  Add product </p> 
+                                                    <p>  Ürün ekle  </p> 
                                                     <p> Add your first product to attract interest from buyers</p>         
                                                 </div>
                                                 <div className="in-content-two">
@@ -281,7 +286,8 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                                             <div className="in-content">
                                                 <div className="in-cont-first">
                                                 <i class="fal fa-check-circle"></i>
-                                                    <p> Confirm email </p>          
+                                                    <p> Email doğrula  </p>          
+                                                    {/* confirm email */}
                                                 </div>
                                             </div>
                                         </li>
@@ -290,7 +296,9 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                                             <div className="in-content">
                                                 <div className="in-cont-first">
                                                 <i class="fal fa-check-circle"></i>
-                                                    <p> Add logo (optional) </p>          
+                                                    {/* <p> Add logo (optional) </p> */}
+                                                    <p> Logo Ekle (Opsiyonel) </p>
+                                                              
                                                 </div>                     
                                             </div>
                                         </li>
@@ -299,7 +307,8 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                                             <div className="in-content">
                                                 <div className="in-cont-first">
                                                 <i class="fal fa-check-circle"></i>
-                                                    <p>  Add cover image (optional) </p>          
+                                                    {/* <p>  Add cover image (optional) </p>           */}
+                                                    <p>  Banner Ekle  (Opsiyonel) </p>  
                                                 </div>      
                                             </div>
                                         </li>
@@ -368,7 +377,7 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
 
         <div className="col-md-3">
             <div className="rgm-right-bar">
-            <h5>Current buyer Bidding Placed --- {message.length}
+            <h5>Current Alıcı Bidding Placed --- {message.length}
            </h5> 
                 {message.map(msg=>{
                     return <div className="right-side-header">
@@ -410,7 +419,9 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                         <Row>
                             <Col xs={12} md={10} className="m-auto">
                          <div className="text-center mb-3">
-                         <h5>Buyer detail</h5>  
+                         {/* <h5>Buyer detail</h5>   */}
+                         <h5>Alıcı detail</h5> 
+                         
                        
                          </div>
                             <Col xs={12} md={10} className="m-auto"> 
@@ -429,7 +440,7 @@ var socket = new WebSocket('ws://tayuss.com/chat/')
                                     </p>
 
                                     <p>
-                                    <strong>Product:- </strong>{requirements.product}
+                                    <strong>Ürün:- </strong>{requirements.product}
                                     </p>
                                     <p>
                                     <strong>Budget:- </strong>{requirements.budget}

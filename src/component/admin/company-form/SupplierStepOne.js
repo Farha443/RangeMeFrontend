@@ -127,7 +127,10 @@ var userTypeTitle=cookies.get('userType');
       }
     }
   render() {
-   
+    var token = cookies.get('logintoken');
+    if (token === undefined){
+    window.location="/login"
+    }
    
     return(
         <>
@@ -222,14 +225,14 @@ var userTypeTitle=cookies.get('userType');
 
                                             <Col md="12">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Brand name</Form.Label>
+                                                <Form.Label>Marka adı</Form.Label>
                                                 <Form.Control type="text"  id="brand_name"/>
                                             </Form.Group>
                                             </Col>
 
                                             <Col md="12">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Brand Website</Form.Label>
+                                                <Form.Label>Firmalar/Markalar Website</Form.Label>
                                                 <Form.Control type="text"  id="brand_webisite"/>
 
                                             </Form.Group>

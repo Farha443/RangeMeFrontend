@@ -163,7 +163,7 @@ return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
                                         {/* <img src="assets/images/icons/paper-plane.svg" class="icn-img"/> */}
-                                        <img src={BASE_URL.slice(0,-5)+'/'+'media/'+ sub.logo}/>
+                                        {/* <img src={BASE_URL.slice(0,-5)+'/'+'media/'+ sub.logo}/> */}
                   
                                       </div>
                                       <div className="ic-text-6254">
@@ -224,7 +224,7 @@ return<li>
                         <div className="col-md-6 co-xs-12 ml-auto">
                             <div className="r-text-254">
                             <h5> {work.title}<br/>
-                            Grow your business by sharing your brand profile!</h5>
+                            Grow your business by sharing your Firmalar/Markalar profile!</h5>
                             </div>
                             <div className="d-one-12423">
                                 <ul>
@@ -234,7 +234,7 @@ return<li>
                                     <div className="ic-5248 ic-22"> 
                                         {/* <img src="assets/images/icons/view.svg" class="icn-img"/>
                                          */}
-                                          <img src={BASE_URL.slice(0,-5)+'/'+'media/'+ sub.logo}/>
+                                          {/* <img src={BASE_URL.slice(0,-5)+'/'+'media/'+ sub.logo}/> */}
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading} </h6>
@@ -549,7 +549,7 @@ Examine which product details increase interaction with the buyer company. </p>
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1>BASE <span class="hm-title-h">BUYERS </span> </h1>
+                            <h1>BASE <span class="hm-title-h">Alıcılar </span> </h1>
                             </div>
                         </div>
 
@@ -610,7 +610,8 @@ Examine which product details increase interaction with the buyer company. </p>
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl">{tr} </span>  CREATE ACCOUNT!  </h3>
+                                  <h3> <span className="btm-banner-text-yl">{tr} </span>  Hesap aç</h3>
+                                  {/* create account */}
                               </div>
                               <div className="btm-banner-btn supplie">
                                  <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>

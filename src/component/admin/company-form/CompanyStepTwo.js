@@ -76,6 +76,10 @@ function skip(){
       }
     }
     render(){
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
     return(
         <>
                  <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
@@ -106,7 +110,7 @@ function skip(){
                                                     <div className="step-form-pera">
                                                         <p className="text-center"> Get started with your company profile by uploading your logo and adding a description
                                                             <br/>
-                                                            this information will be available to all supplier on Tayuss.
+                                                            this information will be available to all Tedarikçi on Tayuss.
                                                         </p>
                                                         
                                                     </div>

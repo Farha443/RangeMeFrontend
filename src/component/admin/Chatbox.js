@@ -44,6 +44,13 @@ function Chatbox(){
     const [recieverID , setRecieverId] = useState([])
 
 
+    useEffect(()=>{
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
+    })
+
     useEffect(() => {
         var toId=cookies.get('uuid');
         var url = BASE_URL+'authentication/message/?toId=' + toId;

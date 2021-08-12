@@ -51,6 +51,14 @@ function ProductForm() {
     
     const [category, setCategory]= useState({})
     const [cat, setCategoryData]= useState('')
+
+    useEffect(()=>{
+        var token = cookies.get('logintoken');
+        if (token === undefined){
+        window.location="/login"
+        }
+    })
+
     useEffect(() => {
         axios.get(BASE_URL +'authentication/getcategory/').then(res=>{
             setCategory(res.data.data)
@@ -67,6 +75,8 @@ function ProductForm() {
             setproductname(res.data.data)
             console.log(res.data.data)
             cookies.set('product_name', res.data.data.product_name, { path: '/products_detail' })
+            cookies.set('product_name', res.data.data.product_name, { path: '/distribution' })
+            cookies.set('product_name', res.data.data.product_name, { path: '/marketing' })
             cookies.set('product_uuid', res.data.data.uuid, { path: '/' })
             
         }).catch(err=>{
@@ -75,15 +85,6 @@ function ProductForm() {
         console.log(productname);
 
         axios.get(BASE_URL +'product/create_appro_certi/').then(res=>{
-            
-            // const clr = (res.data.data).map(oo => {
-                
-            //     var ppo={"value":oo.name, "label": oo.name }
-            //     colourOptions.push(ppo)
-            //  })
-            // console.log("kro")
-            // console.log(colourOptions)
-            // return colourOptions
             setCerti(res.data.data)
             
         }).catch(err=>{
@@ -163,7 +164,7 @@ function ProductForm() {
 
                                  <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> {productname.product_name} </h4> <span> Product </span>
+                                        <h4> {productname.product_name} </h4> <span>Ürün </span>
                                     </div>
                                 </div> 
 
@@ -199,7 +200,7 @@ function ProductForm() {
                                             >
                                                 <img src="assets/images/list-searching-variant.png" />
                                                 <div className="sidebar-title">
-                                                Product Overview  </div>
+                                                Ürüne Genel Bakış</div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -208,7 +209,7 @@ function ProductForm() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Product Details  </div>
+                                                <div className="sidebar-title">Ürün Açıklaması</div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -217,7 +218,8 @@ function ProductForm() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/moving-truck.png" />
-                                                <div className="sidebar-title"> Distribution  </div>
+                                                <div className="sidebar-title"> Ürün dağıtımı
+  </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -226,7 +228,7 @@ function ProductForm() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Marketing </div>
+                                                <div className="sidebar-title"> Ürün Pazarlaması </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -243,7 +245,7 @@ function ProductForm() {
                                    
                                         <div className="p-inside-title">
                                         
-                                            <h5>{productname.product_name} Product Overview </h5>
+                                            <h5>{productname.product_name} Ürüne Genel Bakış</h5>
 
                                         </div>
 
@@ -263,7 +265,7 @@ function ProductForm() {
                                             <Col md="6">
 
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Select category</Form.Label>
+                                                <Form.Label>Ürün Kategorisi seç</Form.Label>
                                               
                                                 <TreeMenu
                                                 id="select_category"
@@ -282,7 +284,7 @@ function ProductForm() {
 
             <Col md="6">
             <Form.Group multiple controlId="exampleForm.ControlSelect1">    
-            <Form.Label>Approval Certifications</Form.Label>
+            <Form.Label>Ürün Sertifikasyonlar</Form.Label>
             <Form.Control as="select" defaultValue={productname.approvals_certifications} id="approvals_certifications" multiple="true">
             {certi.map(cat=>( 
             <option value={cat.uuid}>{cat.name}</option>))}
@@ -293,7 +295,7 @@ function ProductForm() {
                                       
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Unique selling propositions (USPs)</Form.Label>
+                                                <Form.Label>Ürün özellikleri (USPs)</Form.Label>
                                                 <Form.Control id="usp" type="text" placeholder="Enter USP" defaultValue={productname.usp} />
 
                                             </Form.Group>
@@ -302,7 +304,7 @@ function ProductForm() {
 
                                             <Col md="6">
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
-                                                <Form.Label>Short product description</Form.Label>
+                                                <Form.Label>Ürün Açıklaması</Form.Label>
                                                 <Form.Control id="product_disc" as="textarea" defaultValue={productname.product_disc} rows={3} />
                                             </Form.Group>
                                             </Col>
@@ -329,11 +331,11 @@ function ProductForm() {
                                     <img src="assets/images/blog1.jpg" />
                                 </div>      
                                 <div className="prod-info-text">
-                                    <h5> Brand Name </h5>
+                                    <h5> Marka adı</h5>
                                     <h6> product </h6>
                                 </div>
                                 <div className="pro-margin">
-                                    <span> 10$ Cost/item </span>
+                                    <span> 10$ Ürün fiyatı </span>
                                     <span> 33.00%  Margin </span>
                                 </div>
 

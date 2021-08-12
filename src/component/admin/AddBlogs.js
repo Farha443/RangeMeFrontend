@@ -218,7 +218,8 @@ Blogs(){
                 </Col>
 
                     <Col md="6">
-                        <Form.Label> Category</Form.Label>
+                        {/* <Form.Label> Category</Form.Label> */}
+                        <Form.Label> Kategori</Form.Label>
                         <Form.Control as="select"  id="b_category">
                         {this.state.data.map(cat=>(  
                         <option value={cat.uuid}>{cat.name}</option>))}

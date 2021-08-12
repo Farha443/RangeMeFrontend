@@ -384,7 +384,7 @@ function Home(){
                           <div className="midd-banner-text">
                              
                             {/* <h5 className="h-01-1"> HİZMET SAĞLAYICILAR </h5> */}
-                            <h5 className="h-01-1"> {tt}service provider</h5>
+                            <h5 className="h-01-1"> {tt}Servis provider</h5>
 
                             {/* <h6 className="h-01-2"> Tayuss ile binlerce ürün tedarikçisini keşfet ve <span> hizmetlerini  </span></h6> */}
                             <h6 className="h-01-2"> {td}</h6>                       

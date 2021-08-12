@@ -51,9 +51,9 @@ function Footer(){
   <div className="footer__nav">
     <h5 className="footer__heading">Product</h5>
     <a href="index.html" className="footer__link">Home</a>
-    <a href="#" className="footer__link">For Suppliers</a>
-    <a href="#" className="footer__link">For Buyers</a>
-    <a href="#" className="footer__link">For Service Providers</a>
+    <a href="#" className="footer__link">Tedarikçiler</a>
+    <a href="#" className="footer__link">Alıcılar</a>
+    <a href="#" className="footer__link">For Servis Providers</a>
   </div>
   <div className="footer__nav">
     <h5 className="footer__heading">Resources</h5>
