@@ -44,8 +44,8 @@ function BidPlacing(){
             category:category,
           }
       };
-      // var ws = new WebSocket('ws://tayuss.com/test/')
-      var ws = new WebSocket('ws://localhost:8000/test/')
+      var ws = new WebSocket('wss://tayuss.com/test/')
+      // var ws = new WebSocket('ws://localhost:8000/test/')
       ws.onclose = () => {
         console.log('disconnected')
         }

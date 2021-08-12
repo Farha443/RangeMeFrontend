@@ -66,7 +66,7 @@ function Chatbox(){
       },[])
 
 //  var socket = new WebSocket('ws://localhost:8000/chat/')
- var socket = new WebSocket('ws://tayuss.com/chat/')
+ var socket = new WebSocket('wss://tayuss.com/chat/')
  useEffect(() => {
     socket.onopen = () => {
             // debugger
@@ -106,7 +106,7 @@ function Chatbox(){
     },[])
 
     //   var ws = new WebSocket('ws://localhost:8000/test/')
-      var ws = new WebSocket('ws://tayuss.com/test/')
+      var ws = new WebSocket('wss://tayuss.com/test/')
       useEffect(() => {
          
         ws.onopen = () => {
@@ -183,7 +183,7 @@ function Chatbox(){
                 },
             };
             // var wss = new WebSocket('ws://localhost:8000/chat/')
-            var wss = new WebSocket('ws://tayuss.com/chat/')
+            var wss = new WebSocket('wss://tayuss.com/chat/')
     wss.onclose = () => {
         console.log('disconnected')
         }
