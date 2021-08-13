@@ -53,6 +53,8 @@ class Distribution extends React.Component {
             already:[],
             options: [],
             data2:[],
+            productname:[],
+            p_details:[]
             }
 
             this.storageChange = this.storageChange.bind(this);
@@ -143,7 +145,7 @@ class Distribution extends React.Component {
       async componentDidMount(){
         var url = BASE_URL+'product/getsellPlatform/';
         var url1 = BASE_URL + 'product/get_distributors/';
-        var url2 = BASE_URL+'product/get_pdis'+ "/"+cookies.get('productuuid');
+        var url2 = BASE_URL+'product/get_pdis'+ "/"+cookies.get('product_uuid');
         
 // ----------- get selling platforms----------// 
         var config = {
@@ -161,7 +163,19 @@ class Distribution extends React.Component {
       .catch(err => {
         alert(err);
       })
-
+      axios.get(BASE_URL +'product/ProductDetailView/'+cookies.get("productuuid")+'/').then(res=>{
+        this.setState({productname:res.data.data})
+        
+    }).catch(err=>{
+        console.log(err)            
+    })
+    
+    axios.get(BASE_URL +'product/get_pdetails/'+cookies.get("productuuid")).then(re=>{
+        // debugger
+        this.setState({p_details:re.data.data})
+    }).catch(err=>{
+        console.log(err)            
+    })
 
     //----------- get distributors ----------//    
       var config1 = {
@@ -697,14 +711,15 @@ class Distribution extends React.Component {
                         <Col md="3">
                             <div className="right-bar-main">
                                 <div className="right-cont-img-d">
-                                    <img src="assets/images/blog1.jpg" />
+                                    {/* <img src="assets/images/blog1.jpg" /> */}
+                                    <img src={BASE_URL.slice(0,-5)+this.state.p_details.image} />
                                 </div>      
                                 <div className="prod-info-text">
                                     <h5> marka adı </h5>
-                                    <h6> product </h6>
+                                    <h6> {this.state.productname.product_name} </h6>
                                 </div>
                                 <div className="pro-margin">
-                                    <span> 10$ Ürün fiyatı </span>
+                                <span> {this.state.p_details.cost} Ürün fiyatı</span>
                                     <span> 33.00%  Margin </span>
                                 </div>
 

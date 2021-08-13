@@ -323,7 +323,6 @@ function ProductDetail() {
               },
             data:data
         }
-        // var y = respRepos.includes(usr)
         axios(config)
         .then(res=>{
                 // //   debugger
@@ -336,7 +335,6 @@ function ProductDetail() {
                   
                   console.log(res.data.message)
                 }).catch(err=>{
-                  // alert(err)
                 })
               
     }
@@ -345,7 +343,7 @@ function ProductDetail() {
             <AdminNavbar />
 
             <section className="product-header-section">
-                <Container>
+                <Container >  
                     <Row>
                         <Col md="12">
                             <div className="p-header-main">
@@ -378,7 +376,7 @@ function ProductDetail() {
 
 
             <section className="product-form-section">
-                <Container>
+                <Container fluid>
                     <Row className="justify">
                     <Col md="3">
                             <aside>
@@ -388,7 +386,7 @@ function ProductDetail() {
                                             <NavLink to="/product_form"
                                             inactiveClassName="text-gray-800"
                                             >
-                                                {/* <img src="assets/images/list-searching-variant.png" /> */}
+                                                <img src="assets/images/list-searching-variant.png" />
                                                 <div className="sidebar-title"> Ürüne Genel Bakış  </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
@@ -444,7 +442,7 @@ function ProductDetail() {
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Product name</Form.Label>
+                                                <Form.Label>Ürün adı</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter email" disabled defaultValue={productname.product_name} id="product_name"/>
                                                 <Form.Control type="hidden" placeholder="Enter email" defaultValue={productname.uuid} id="productkiuuid"/>
                                             </Form.Group>
@@ -832,14 +830,15 @@ function ProductDetail() {
                         <Col md="3">
                             <div className="right-bar-main">
                                 <div className="right-cont-img-d">
-                                    <img src="assets/images/blog1.jpg" />
+                                    {/* <img src="assets/images/blog1.jpg" /> */}
+                                    <img src={BASE_URL.slice(0,-5)+p_details.image} />
                                 </div>      
                                 <div className="prod-info-text">
                                     <h5> Marka adı</h5>
-                                    <h6> product </h6>
+                                    <h6> {productname.product_name} </h6>
                                 </div>
                                 <div className="pro-margin">
-                                    <span> 10$ Ürün fiyatı</span>
+                                    <span> {p_details.cost} Ürün fiyatı</span>
                                     <span> 33.00%  Margin </span>
                                 </div>
 

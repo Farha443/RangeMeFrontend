@@ -39,7 +39,10 @@ class Marketing extends React.Component{
         image:null,
         market:[],
         budget:[],
-        pictures:[],};
+        pictures:[],
+        productname:[],
+        p_details:[]
+        };
         this.onDrop = this.onDrop.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleChange2 = this.handleChange2.bind(this);
@@ -51,11 +54,23 @@ componentDidMount(){
 
     axios.get(url1).then(res=>{
         this.setState({market:res.data.data})
-        console.log("------ mrketing-----")
-        console.log(res.data.data)
+
      }).catch(err=>{
          console.log(err)            
      })
+     axios.get(BASE_URL +'product/ProductDetailView/'+cookies.get("productuuid")+'/').then(res=>{
+        this.setState({productname:res.data.data})
+        
+    }).catch(err=>{
+        console.log(err)            
+    })
+    
+    axios.get(BASE_URL +'product/get_pdetails/'+cookies.get("productuuid")).then(re=>{
+        // debugger
+        this.setState({p_details:re.data.data})
+    }).catch(err=>{
+        console.log(err)            
+    })
 
 }
 save(){
@@ -332,14 +347,14 @@ handleChange2(event) {
                         <Col md="3">
                             <div className="right-bar-main">
                                 <div className="right-cont-img-d">
-                                    <img src="assets/images/blog1.jpg" />
+                                <img src={BASE_URL.slice(0,-5)+this.state.p_details.image} />
                                 </div>      
                                 <div className="prod-info-text">
                                     <h5> Marka adı </h5>
-                                    <h6> product </h6>
+                                    <h6> {this.state.productname.product_name} </h6>
                                 </div>
                                 <div className="pro-margin">
-                                    <span> 10$ Ürün fiyatı</span>
+                                <span> {this.state.p_details.cost} Ürün fiyatı</span>
                                     <span> 33.00%  Margin </span>
                                 </div>
 

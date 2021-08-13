@@ -34,11 +34,14 @@ import Cookies from 'universal-cookie';
 import BASE_URL from '../base';
 import $ from "jquery"; 
 import {CKEditor} from 'ckeditor4-react';
+import { pascalCase } from "pascal-case";
 
 const cookies = new Cookies();
 var prox = ""
 var proxuuid = ""
 var prodname = ""
+var name = ""
+var brandName =""
 
 function Submit(){
     // $(".laoder").show(); 
@@ -86,7 +89,6 @@ var config = {
   window.location = "/brand-profile";
   })
 }
-
 
 
 function BrandProfile2() {
@@ -138,7 +140,12 @@ function BrandProfile2() {
             pictureFiles
         });
     }
-
+    const handleKeypress = (event) => {
+        if(event.key === 'Enter'){
+            search();
+        }
+      }
+    
     useEffect(()=>{
         var token = cookies.get('logintoken');
         if (token === undefined){
@@ -162,6 +169,9 @@ function BrandProfile2() {
         .then(res=>{
             // debugger
             setSbrand(res.data.data)
+            name = res.data.data.brand_name;
+            
+            capitalize(name);
             // setCount(res.data.data.product_name.length)
             console.clear()
             console.log("------Single Brand------")
@@ -252,7 +262,7 @@ function BrandProfile2() {
     }
 
     function CopyFunction(e){
-        alert(e)
+        // alert(e)
         var url = BASE_URL + "product/copy_product/"+ e
         axios.post(url )
         .then(res=>{
@@ -476,6 +486,12 @@ function BrandProfile2() {
       })
     }
 
+    function capitalize(name) {
+        // alert(name);
+        brandName =  name.charAt(0).toUpperCase() + name.slice(1);
+      }
+      
+
     return (
         <>
             <AdminNavbar />
@@ -524,6 +540,7 @@ function BrandProfile2() {
                                         <div className="prof-img-btn">
                                             <button className="clickable-cover-image__change-image___JnYhU" type="button" onClick={() => setShow3(true)}>
                                                 <div className="clickable-cover-image__change-image-hint___3NLUs"><img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src="assets/images/camera.jpg" />
+                                                <h6>Add logo</h6>
                                                     <div className="clickable-cover-image__change-image-text___1kIxy"></div>
                                                 </div>
                                             </button>
@@ -533,6 +550,7 @@ function BrandProfile2() {
                                         </div> */}
                                     </div>
                                     <div className="cover-brand-title">
+                                        {/* <h5>{brandName}</h5> */}
                                         <h5>{sbrand.brand_name}</h5>
                                         {/* <p> Tage Line text.. </p> */}
                                     </div>
@@ -542,12 +560,12 @@ function BrandProfile2() {
                                         <li>
                                             <button class="border-btn"> <i class="fa fa-eye" aria-hidden="true"></i>  {sbrand.brand_views}  </button>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <button class="border-btn">  <i class="fa fa-plus" aria-hidden="true"></i>  0  </button>
-                                        </li>
-                                        <li>
+                                        </li> */}
+                                        {/* <li>
                                             <button class="admin-add-btn f-w-500"> <i class="fa fa-share-square" aria-hidden="true"></i> Share Profile  </button>
-                                        </li>
+                                        </li> */}
                                         <li>
                                             <button class="border-btn" onClick={handleToggle}> <i class="fa fa-cog" aria-hidden="true"></i> </button>
                                            <div className={isActive ? "drop-d-101 " : "drop-d-101 open-drop"}>
@@ -578,12 +596,12 @@ function BrandProfile2() {
                                     <TabList className="b-tab-list-one">
                                         <Tab>
                                             <div className="tbs-menu">
-                                                <i class="fa fa-cog" aria-hidden="true"></i> Manage Ürün
+                                                <i class="fa fa-cog" aria-hidden="true"></i> Ürünü yönet
                                     </div>
                                         </Tab>
                                         <Tab>
                                             <div className="tbs-menu">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Firmalar/Markalar page
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Marka sayfasını düzenle
                                     </div>
                                         </Tab>
 
@@ -600,15 +618,15 @@ function BrandProfile2() {
                                                     </div>
 
                                                     <div className="prod-search-filter-main">
-                                                        <InputGroup>
+                                                        <InputGroup >
                                                             <InputGroup.Prepend>
-                                                                <Button variant="outline-dark"><i class="fa fa-search" aria-hidden="true" onClick={()=>search()}></i></Button>
+                                                                <Button variant="outline-dark"><i class="fa fa-search" aria-hidden="true" onClick={()=>search()} ></i></Button>
                                                             </InputGroup.Prepend>
                                                                                                                                                             <FormControl
-                                                                placeholder="Search by product name"
+                                                                placeholder="Ürün adına göre ara"
                                                                 aria-label="Recipient's username"
                                                                 id = "search"
-                                                                
+                                                                onKeyPress={handleKeypress}
                                                                 aria-describedby="basic-addon2"
                                                             />
 
@@ -676,7 +694,7 @@ function BrandProfile2() {
                                                     </div>
                                                     {count===0?
                                                     <div className="empty-div">
-                                                    <p> No Products to show click Add product Button to a Product.</p>
+                                                    <p> Gösterilecek Ürün Yok Ürün eklemek için Ürün Ekle Düğmesine tıklayın.</p>
                                                     </div>:
 
                                                     <div className="pro-table-main">
@@ -685,7 +703,7 @@ function BrandProfile2() {
                                                                 <tr>
 
                                                                     <th>Ürün</th>
-                                                                    <th>Product status</th>
+                                                                    <th>Ürün durumu</th>
                                                                     <th className="ac-right" >Action</th>
 
                                                                 </tr>
@@ -801,7 +819,7 @@ function BrandProfile2() {
                                             <TabPanel>
                                                 {count===0?
                                             <div className="empty-div">
-                                                    <p> No Products to show.</p>
+                                                    <p>Gösterilecek Ürün Yok.</p>
                                                     </div>:
                                                <Row>
                                                    <Col md="9" xs="12"> 
@@ -812,7 +830,7 @@ function BrandProfile2() {
                                                                 <div className="p-img">
                                                                     {/* <img src="assets/images/blog1.jpg" alt="p-image"/> */}
                                                                     {pd.images?
-                                                                    <img src={BASE_URL.slice(0,-5)+pd.images} />:<img src="assets/images/blog1.jpg" alt="p-image"/>}
+                                                                    <img src={BASE_URL.slice(0,-5)+pd.images} />:<img src="#" alt="p-image"/>}
 
                                                                 </div>
                                                                 <div className="p-text-d-12458">
@@ -835,7 +853,7 @@ function BrandProfile2() {
                                                    <Col md="3" xs="12">
                                                      <div className="b-profile-sidebar">
                                                         <div>
-                                                            <button className="ed-btn" onClick={() => setShowInfo(true)}> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Information </button>
+                                                            <button className="ed-btn" onClick={() => setShowInfo(true)}> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Bilgileri Düzenle</button>
                                                         </div>
                                                         <div className="b-profile-sidebar-text">
                                                             <ul>
@@ -844,11 +862,11 @@ function BrandProfile2() {
                                                                     <i class="fas fa-map-marker-alt"></i>  {sbrand.comp_location}
                                                                     </p>
                                                                 </li>
-                                                                <li>
+                                                                {/* <li>
                                                                     <p>
                                                                     <i class="far fa-link"></i> ....
                                                                     </p>
-                                                                </li>
+                                                                </li> */}
                                                             </ul>
                                                         </div>
 
@@ -864,8 +882,7 @@ function BrandProfile2() {
                                                                 </li>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-calendar-week"></i> YEAR FOUNDED
-                                                                    </p>
+                                                                    <i class="far fa-calendar-week"></i>Kuruluş Yılı</p>
                                                                     <p>
                                                                         ( {sbrand.year_founded} )
                                                                     </p>
@@ -873,7 +890,7 @@ function BrandProfile2() {
 
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-chart-line"></i> REVENUE
+                                                                    <i class="far fa-chart-line"></i> Hasılat
                                                                     </p>
                                                                     <p>
                                                                         ( {sbrand.annual_revenue} )
@@ -917,7 +934,7 @@ function BrandProfile2() {
                                                    <Col md="3" xs="12">
                                                      <div className="b-profile-sidebar">
                                                         <div>
-                                                            <button className="ed-btn"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Information </button>
+                                                            <button className="ed-btn"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Bilgileri Düzenle</button>
                                                         </div>
                                                         <div className="b-profile-sidebar-text">
                                                             <ul>
@@ -926,11 +943,11 @@ function BrandProfile2() {
                                                                     <i class="fas fa-map-marker-alt"></i>  {sbrand.comp_location}
                                                                     </p>
                                                                 </li>
-                                                                <li>
+                                                                {/* <li>
                                                                     <p>
                                                                     <i class="far fa-link"></i> ....
                                                                     </p>
-                                                                </li>
+                                                                </li> */}
                                                             </ul>
                                                         </div>
 
@@ -946,8 +963,7 @@ function BrandProfile2() {
                                                                 </li>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-calendar-week"></i> YEAR FOUNDED
-                                                                    </p>
+                                                                    <i class="far fa-calendar-week"></i> Kuruluş Yılı</p>
                                                                     <p>
                                                                         ( {sbrand.year_founded} )
                                                                     </p>
@@ -955,7 +971,7 @@ function BrandProfile2() {
 
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-chart-line"></i> REVENUE
+                                                                    <i class="far fa-chart-line"></i> Hasılat
                                                                     </p>
                                                                     <p>
                                                                         ( {sbrand.annual_revenue })
@@ -1338,7 +1354,7 @@ function BrandProfile2() {
                     </Form.Group>
 
                     <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label  style={{marginTop: '0px'}}>Year founded</Form.Label>
+                    <Form.Label  style={{marginTop: '0px'}}>Kuruluş Yılı</Form.Label>
                       <Form.Control as="select" id="year">
                       {years.map((year, index) => {
                             return <option key={`year${index}`} value={year}>{year}</option>
@@ -1348,7 +1364,7 @@ function BrandProfile2() {
                   </Form.Group>
 
                     <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label  style={{marginTop: '0px'}}>Revenue</Form.Label>
+                    <Form.Label  style={{marginTop: '0px'}}>Hasılat</Form.Label>
                       <Form.Control as="select" id='revenue'>
                       <option value="0M$-5M$">0M$-5M$</option>
                       <option value="6M$-10M$">6M$-10M$</option>
@@ -1413,7 +1429,7 @@ function BrandProfile2() {
                 
                 <Col xs={12} md={6}>
                     <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label  style={{marginTop: '0px'}}>Year founded</Form.Label>
+                        <Form.Label  style={{marginTop: '0px'}}>Kuruluş Yılı</Form.Label>
                         <Form.Control as="select" defaultValue={sbrand.year_founded} id="e_year">
                         {years.map((year, index) => {
                             return <option key={`year${index}`} value={year}>{year}</option>})}
@@ -1424,7 +1440,7 @@ function BrandProfile2() {
             
                 <Col xs={12} md={6}>
                 <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label  style={{marginTop: '0px'}}>Revenue</Form.Label>
+                    <Form.Label  style={{marginTop: '0px'}}>Hasılat</Form.Label>
                    
                     <Form.Control as="select" id='e_revenue' defaultValue={sbrand.annual_revenue}>
                       <option value="0M$-5M$">0M$-5M$</option>

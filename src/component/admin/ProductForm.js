@@ -48,7 +48,7 @@ function ProductForm() {
     ]
     const [productname, setproductname]= useState({})
     const [certi, setCerti]= useState([])
-    
+    const[p_details, setPdetails]=useState([]);
     const [category, setCategory]= useState({})
     const [cat, setCategoryData]= useState('')
 
@@ -69,7 +69,15 @@ function ProductForm() {
         }).catch(err=>{
             console.log(err)            
         })
-        console.log(category)
+
+        axios.get(BASE_URL +'product/get_pdetails/'+cookies.get("productuuid")).then(re=>{
+            // debugger
+            setPdetails(re.data.data)
+            console.log("----product details-----")
+            console.log(re.data.data)
+        }).catch(err=>{
+            console.log(err)            
+        })
 
         axios.get(BASE_URL +'product/ProductDetailView/'+cookies.get("productuuid")+'/').then(res=>{
             setproductname(res.data.data)
@@ -164,7 +172,7 @@ function ProductForm() {
 
                                  <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> {productname.product_name} </h4> <span>Ürün </span>
+                                        <h4> {productname.product_name} </h4> <span>Ürün3</span>
                                     </div>
                                 </div> 
 
@@ -190,7 +198,7 @@ function ProductForm() {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                        <Col md="2">
+                        <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <ul>
@@ -245,7 +253,7 @@ function ProductForm() {
                                    
                                         <div className="p-inside-title">
                                         
-                                            <h5>{productname.product_name} Ürüne Genel Bakış</h5>
+                                            <h5> Ürüne Genel Bakış</h5>
 
                                         </div>
 
@@ -255,7 +263,7 @@ function ProductForm() {
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Product name</Form.Label>
+                                                <Form.Label>Ürün adı</Form.Label>
                                                 <Form.Control id="product_name" type="text" disabled defaultValue={productname.product_name}/>
                                                 
                                             </Form.Group>
@@ -325,18 +333,19 @@ function ProductForm() {
                         </Col>
 
 
-                        <Col md="2">
+                        <Col md="3">
                             <div className="right-bar-main">
                                 <div className="right-cont-img-d">
-                                    <img src="assets/images/blog1.jpg" />
+                                    {/* <img src="assets/images/blog1.jpg" /> */}
+                                    <img src={BASE_URL.slice(0,-5)+p_details.image} />
                                 </div>      
                                 <div className="prod-info-text">
                                     <h5> Marka adı</h5>
-                                    <h6> product </h6>
+                                    <h6> {productname.product_name} </h6>
                                 </div>
                                 <div className="pro-margin">
-                                    <span> 10$ Ürün fiyatı </span>
-                                    <span> 33.00%  Margin </span>
+                                    <span> {p_details.cost} Ürün fiyatı </span>
+                                    {/* <span> 33.00%  Margin </span> */}
                                 </div>
 
                                 <div className="prod-help">

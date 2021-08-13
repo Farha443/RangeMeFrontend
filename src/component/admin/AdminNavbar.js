@@ -87,12 +87,12 @@ function AdminNavbar(){
     <Nav className="ml-auto">
 
     
-      <Nav.Link href="/admin_home">Home</Nav.Link>
-      <NavDropdown title="My Brand" id="basic-nav-dropdown" className="menu-drop-1245">
+      <Nav.Link href="/admin_home">Anasayfa</Nav.Link>
+      <NavDropdown title="Markalarım" id="basic-nav-dropdown" className="menu-drop-1245">
       {brands.map(brand=>(
         <NavDropdown.Item onClick={()=>GetBrand(brand)} >{brand.brand_name}</NavDropdown.Item>))}
         <NavDropdown.Divider />
-        <NavDropdown.Item href="" className="itm-drop-bt">  <button className="admin-add-btn"  onClick={() => setShow4(true)}> <i class="fa fa-plus" aria-hidden="true"></i> Add Brand </button> </NavDropdown.Item>
+        <NavDropdown.Item href="" className="itm-drop-bt">  <button className="admin-add-btn"  onClick={() => setShow4(true)}> <i class="fa fa-plus" aria-hidden="true"></i> Marka Ekle</button> </NavDropdown.Item>
       </NavDropdown>
       {/* <Nav.Link href="/brand-profile">My Brand</Nav.Link> */}
      
