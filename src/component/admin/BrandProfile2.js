@@ -447,7 +447,7 @@ function BrandProfile() {
                                                             />
 
                                                             <DropdownButton
-                                                                as={InputGroup.Append}
+                                                                as={InputGroup.Append} 
                                                                 variant="outline-dark"
                                                                 title="Product status"
                                                                 id="input-group-dropdown-2"
@@ -531,7 +531,7 @@ function BrandProfile() {
                                                                     </td>
                                                                    
                                                                     <td> {pd.productStatus==true? 
-                                                                        <button className="border-btn">Complete </button>: <button className="border-btn">Drafted </button>}
+                                                                        <button className="border-btn">Tamamlamak </button>: <button className="border-btn">Taşlak </button>}
                                                                         </td>
                                                                     <td className="pd-last-td">
                                                                     <button className="border-btn"  onClick={()=>CopyFunction(pd.pd_uuid)}>  Copy Product   </button>

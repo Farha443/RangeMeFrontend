@@ -156,14 +156,14 @@ class AdminProfile extends React.Component {
                         <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
-                                    <p className="p1"> Account Setting </p>
+                                    <p className="p1"> Hesap Ayarları </p>
                                     <ul>
                                         <li>
                                             <NavLink to="/admin_profile"
                                             inactiveClassName="text-gray-800"
                                             >
                                                 <img src="assets/images/list-searching-variant.png" />
-                                                <div className="sidebar-title">Your Profile </div>
+                                                <div className="sidebar-title">Senin profil</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -172,7 +172,7 @@ class AdminProfile extends React.Component {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Change Password  </div>
+                                                <div className="sidebar-title"> Şifre değiştir  </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -181,17 +181,17 @@ class AdminProfile extends React.Component {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/moving-truck.png" />
-                                                <div className="sidebar-title"> Notifications  </div>
+                                                <div className="sidebar-title"> Bildirimler  </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
-                                        <p className="p2"> Company Setting </p>
+                                        <p className="p2"> Şirket Ayarları </p>
                                         <li>
                                             <NavLink to="/company_details"  
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Company Details </div>
+                                                <div className="sidebar-title"> Şirket Detayları</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -201,7 +201,7 @@ class AdminProfile extends React.Component {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Team Access </div>
+                                                <div className="sidebar-title"> Ekip Erişimi </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -217,7 +217,7 @@ class AdminProfile extends React.Component {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5> Your Profile </h5>
+                                            <h5> Senin profil</h5>
                                           
                                               
                                         </div>
@@ -245,7 +245,7 @@ class AdminProfile extends React.Component {
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>First Name</Form.Label>
+                                                <Form.Label>İlk adı</Form.Label>
                                                 <Form.Control defaultValue={this.state.first_name} id='first_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
@@ -254,7 +254,7 @@ class AdminProfile extends React.Component {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Last Name</Form.Label>
+                                                <Form.Label>Soy isim</Form.Label>
                                                 <Form.Control defaultValue={this.state.last_name} id='last_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
@@ -263,7 +263,7 @@ class AdminProfile extends React.Component {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Email</Form.Label>
+                                                <Form.Label>E-posta</Form.Label>
                                                 <Form.Control  defaultValue={this.state.email} type="email" id="email" placeholder="Enter email" />
 
                                             </Form.Group>
@@ -273,7 +273,7 @@ class AdminProfile extends React.Component {
                                             <Col md="6">
 
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Phone</Form.Label>
+                                                <Form.Label>Telefon numarası</Form.Label>
                                                 <Form.Control defaultValue={this.state.mobile} type="text" id="phone" >
                                                 
                                                 </Form.Control>
@@ -281,7 +281,7 @@ class AdminProfile extends React.Component {
                                             </Col>
                                              
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={()=>this.save()}>  Save Changes  </button>
+                                            <button class="admin-add-btn" onClick={()=>this.save()}>  Değişiklikleri Kaydet  </button>
                                             </Col>
 
                                            </Row>

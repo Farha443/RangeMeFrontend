@@ -149,7 +149,7 @@ function ChangePassword() {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5> <img src="assets/images/padlock.png" /> Change Password </h5>
+                                            <h5> <img src="assets/images/padlock.png" /> Şifre değiştir</h5>
 
                                         </div>
 
@@ -159,7 +159,7 @@ function ChangePassword() {
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Current Password</Form.Label>
+                                                <Form.Label>Şimdiki Şifre</Form.Label>
                                                 <Form.Control type="password" id='current_pass' />
 
                                             </Form.Group>
@@ -168,7 +168,7 @@ function ChangePassword() {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>New Password</Form.Label>
+                                                <Form.Label>Yeni Şifre</Form.Label>
                                                 <Form.Control type="password" id='new_pass' />
 
                                             </Form.Group>
@@ -177,7 +177,7 @@ function ChangePassword() {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>New Password Confirmation</Form.Label>
+                                                <Form.Label>Şifreyi Onayla</Form.Label>
                                                 <Form.Control type="password" id='confirm_new'/>
 
                                             </Form.Group>
@@ -187,7 +187,7 @@ function ChangePassword() {
                                         
                                     
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={ChangecurrentPassword}>Change Password </button>
+                                            <button class="admin-add-btn" onClick={ChangecurrentPassword}>Şifre değiştir </button>
                                             </Col>
 
                                            </Row>

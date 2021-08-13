@@ -704,7 +704,7 @@ function BrandProfile2() {
 
                                                                     <th>Ürün</th>
                                                                     <th>Ürün durumu</th>
-                                                                    <th className="ac-right" >Action</th>
+                                                                    <th className="ac-right" >Eylem</th>
 
                                                                 </tr>
                                                             </thead>
@@ -724,14 +724,14 @@ function BrandProfile2() {
                                                                     </td>
                                                                    
                                                                     <td> {pd.productStatus=='approved'? 
-                                                                        <button className="border-btn">Complete </button>: pd.productStatus==="draft"?<button className="border-btn"  onClick={()=>Redirect(pd.uuid)}>Draft </button>:""}
+                                                                        <button className="border-btn">Tamamlamak </button>: pd.productStatus==="draft"?<button className="border-btn"  onClick={()=>Redirect(pd.uuid)}>Taşlak </button>:""}
                                                                         </td>
                                                                     <td className="pd-last-td">
-                                                                    <button className="border-btn"  onClick={()=>CopyFunction(pd.uuid)}>  Copy Product   </button>
+                                                                    <button className="border-btn"  onClick={()=>CopyFunction(pd.uuid)}>  Ürünü kopyala </button>
                                                                         <button className="border-btn"> <NavLink to=""
-                                                                        onClick={()=>Redirect(pd.uuid,pd.product_name)}> Edit </NavLink>  </button>
-                                                                         <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.uuid)}> Delete </NavLink>  </button>
-                                                                         <button className="border-btn" onClick={()=>MoveBrand(pd.uuid,pd.product_name)}>  Move To A Different Firmalar/Markalar   </button>
+                                                                        onClick={()=>Redirect(pd.uuid,pd.product_name)}> Düzenlemek </NavLink>  </button>
+                                                                         <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.uuid)}> Silmek </NavLink>  </button>
+                                                                         <button className="border-btn" onClick={()=>MoveBrand(pd.uuid,pd.product_name)}>  Farklı markaya geçiş  </button>
                                                                         <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
                                                                         <div className={isAct ? "drop-d-101 " : "drop-d-101 open-drop"}> 
                                                                             <ul>
@@ -798,7 +798,7 @@ function BrandProfile2() {
                                             <Card.Body>
 
                                                 <div className="b-p-title">
-                                                    <h5> Firmalar/Markalar page </h5>
+                                                    <h5>Marka sayfası</h5>
                                                 </div>
                                             <Tabs>
                                                 <div className="b-profile-tab-2-d">
@@ -806,12 +806,12 @@ function BrandProfile2() {
                                                 <TabList>
                                                 <Tab>
                                                     <div className="tbs-menu">
-                                                     Arrange Products
+                                                    Ürünleri Düzenle
                                                     </div>
                                                 </Tab>
                                                 <Tab>
                                                     <div className="tbs-menu">
-                                                      Edit Profile
+                                                    Profili Düzenle
                                                     </div>
                                                 </Tab>
                                             </TabList>
@@ -911,18 +911,18 @@ function BrandProfile2() {
                                                             {/* <p className="f-size124"> Product Name </p> */}
                                                             {sbrand.brand_story? <EditorPreview data={sbrand.brand_story} />:<div className="p-story-box-d">
                                                             <i class="fal fa-comment-alt-lines"></i>
-                                                                <h4> Tell your Story </h4>
-                                                                <p> Let Alıcı know more about your Firmalar/Markalar. </p>
-                                                                <button className="admin-add-btn" onClick={() => setShowStory(true)}><i class="fal fa-pen"></i> Edit Your story </button>
+                                                                <h4>Hikayeni anlat</h4>
+                                                                <p> Alıcıların markanız hakkında bilgi sahibi olmasını sağlayın. </p>
+                                                                <button className="admin-add-btn" onClick={() => setShowStory(true)}><i class="fal fa-pen"></i> Hikayenizi düzenleyin </button>
                                                             </div>}
                                                           </Col>
                                                           <Col md="12" xs="12">
                                                           {sbrand.brand_video? sbrand.brand_video:<div className="p-story-box-d">
                                                                 
                                                                 <i class="fal fa-play-circle"></i>
-                                                                    <h4> Add a video </h4>
-                                                                    <p> Embed a YouTube or Vimeo video about your Firmalar/Markalar or products. </p>
-                                                                    <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Add Video </button>
+                                                                    <h4> Video ekle</h4>
+                                                                    <p> Markanız veya ürünleriniz hakkında bir YouTube veya Vimeo videosu yerleştirin. </p>
+                                                                    <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Video ekle </button>
                                                                 </div>}
                                                             
                                                           </Col>
