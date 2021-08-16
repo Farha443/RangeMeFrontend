@@ -91,7 +91,7 @@ var config = {
 }
 
 
-function BrandProfile2() {
+function BrandProfile() {
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
@@ -282,18 +282,18 @@ function BrandProfile2() {
     }
 
     function Redirect(uuid, name){
-        cookies.set('productuuid',uuid,{path:'/product_form'});
+        cookies.set('productuuid',uuid,{path:'/'});
         cookies.set('product_name',name,{path:'/product_form'});
         window.location='/product_form/';
       }
 
     function AddProduct(){
-        // debugger
-        $(".laoder").show();
+        debugger
+        // $(".laoder").show();
         var product_name = document.getElementById("addproduct").value;
         var brand = cookies.get('get_brand')
         var token = cookies.get("logintoken");
-        var uuid = cookies.get('sup_uuid');
+        // var uuid = cookies.get('sup_uuid');
         var config= {
             method: 'post',
                 url: BASE_URL + 'product/create_product/',
@@ -308,8 +308,9 @@ function BrandProfile2() {
         };
         axios(config).then(res=>{
             console.log(res.data )
-            $(".laoder").hide();
+            // $(".laoder").hide();
             cookies.set('productuuid', res.data.data.uuid, { path: '/' })
+            cookies.set('product_name',res.data.data.product_name,{path:'/product_form'})
             window.location = '/product_form'
           }
           ).catch(err=>{
@@ -1480,4 +1481,4 @@ class EditorPreview extends React.Component {
     data: ''
   };
 
-export default BrandProfile2
+export default BrandProfile

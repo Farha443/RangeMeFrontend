@@ -145,7 +145,7 @@ class Distribution extends React.Component {
       async componentDidMount(){
         var url = BASE_URL+'product/getsellPlatform/';
         var url1 = BASE_URL + 'product/get_distributors/';
-        var url2 = BASE_URL+'product/get_pdis'+ "/"+cookies.get('product_uuid');
+        var url2 = BASE_URL+'product/get_pdis'+ "/"+cookies.get('productuuid');
         
 // ----------- get selling platforms----------// 
         var config = {

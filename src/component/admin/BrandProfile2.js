@@ -85,7 +85,7 @@ var config = {
 }
 
 
-function BrandProfile() {
+function BrandProfile2() {
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
@@ -266,7 +266,7 @@ function BrandProfile() {
         axios(config).then(res=>{
             console.log(res.data )
             $(".laoder").hide();
-            cookies.set('productuuid', res.data.data.uuid, { path: '/' })
+            cookies.set('productuuid', res.data.data.uuid, { path: '/product_form' })
             window.location = '/product_form'
           }
           ).catch(err=>{
@@ -863,4 +863,4 @@ function BrandProfile() {
     );
 }
 
-export default BrandProfile
+export default BrandProfile2

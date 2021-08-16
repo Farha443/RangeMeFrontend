@@ -839,7 +839,6 @@ function ProductDetail() {
                                 </div>
                                 <div className="pro-margin">
                                     <span> {p_details.cost} Ürün fiyatı</span>
-                                    <span> 33.00%  Margin </span>
                                 </div>
 
                                 <div className="prod-help">

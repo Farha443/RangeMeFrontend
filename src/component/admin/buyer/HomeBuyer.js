@@ -52,6 +52,8 @@ function HomeBuyer(){
     const[newMessage,setnewMessage]=useState({})
     const [Id , setId] = useState([])
     const [catwiseProduct , setCatwiseProduct] = useState([])
+    const [showcat, setshowcat] = useState([])
+
     // var socket = new WebSocket('wss://tayuss.com/chat/')
     var socket = new WebSocket('ws://localhost:8000/chat/')
     useEffect(() => {
@@ -73,26 +75,37 @@ function HomeBuyer(){
        },[])
 
     useEffect(() => {
-      axios.get(BASE_URL+'product/getcatwise_product/')
-    .then(res=>{  
-        setProducts(res.data.data) 
-        console.log("-------products ------------")
-        console.log(res.data.data)  
-      }).catch(err=>{
-          console.log(err)            
-      })
 
-      var toId=cookies.get('uuid');
-      var url = BASE_URL+'authentication/message/?toId=' + toId 
-      axios.get(url)
-      .then(res=>{  
-          setList(res.data)
-          console.log(res.data.length)
-         
+        axios.get(BASE_URL+'authentication/GetCategorysignup/')
+        .then(res=>{  
+            console.log("this is it")
+            console.log(res.data.data)
+
+            setshowcat(res.data.data ) 
         }).catch(err=>{
             console.log(err)            
         })
-  },[])
+
+        axios.get(BASE_URL+'product/getcatwise_product/?search=null')
+        .then(res=>{  
+            setProducts(res.data) 
+            console.log("-------products ------------")
+            console.log(res.data.data)  
+        }).catch(err=>{
+            console.log(err)            
+        })
+
+        var toId=cookies.get('uuid');
+        var url = BASE_URL+'authentication/message/?toId=' + toId 
+        axios.get(url)
+        .then(res=>{  
+            setList(res.data)
+            console.log(res.data.length)
+            
+            }).catch(err=>{
+                console.log(err)            
+            })
+    },[])
 
 
 
@@ -160,26 +173,39 @@ function Sendmessage(id){
       }) 
   }
     
-function myfunc(query=null){
-    if (query){
-        var url = BASE_URL+'product/getcatwise_product/?search='+query    
-    }
-    else{    
-    var url = BASE_URL+'product/getcatwise_product/'   
-    }
-    axios.get(url)
+// function myfunc(query=null){
+//     if (query){
+//         var url = BASE_URL+'product/getcatwise_product/?search='+query    
+//     }
+//     else{    
+//     var url = BASE_URL+'product/getcatwise_product/'   
+//     }
+//     axios.get(url)
+//     .then(res=>{  
+//         console.log(res.data.data)  
+//         setProducts(res.data.data) 
+//     }).catch(err=>{
+//         console.log(err)            
+//     })
+//     // console.log(home)
+
+// }
+// function search(){
+//     var s = document.getElementById('search').value;
+//     myfunc(s)   
+// }
+
+function myfunc(){
+    var cat_name = document.getElementById("category").value
+    axios.get(BASE_URL+'product/getcatwise_product/?search='+cat_name)
     .then(res=>{  
-        console.log(res.data.data)  
-        setProducts(res.data.data) 
+        console.log(res.data)  
+        setProducts(res.data) 
     }).catch(err=>{
         console.log(err)            
     })
     // console.log(home)
 
-}
-function search(){
-    var s = document.getElementById('search').value;
-    myfunc(s)   
 }
    
 function myfunc1(){
@@ -189,7 +215,7 @@ function myfunc1(){
     axios.get(BASE_URL+'product/getcatwise_product/?search='+categoryname)
     .then(res=>{  
         console.log(res.data)  
-        setCatwiseProduct(res.data) 
+        setProducts(res.data) 
     }).catch(err=>{
         console.log(err)            
     })
@@ -230,6 +256,7 @@ function myfunc1(){
                                  <Form.Control  onChange={myfunc1} as="select" id="department">
                              {showcat.map(cat=>(
                                                 <option value={cat.name}>{cat.name}</option>
+                                                // <option>All</option>
                                                 ))}
                                                 
                                                 </Form.Control>
@@ -240,11 +267,11 @@ function myfunc1(){
                                 <InputGroup>
                                 <FormControl
                                     placeholder="Username"
-                                    id="search"
+                                    id="category"
                                     aria-label="Username"
                                     aria-describedby="basic-addon1"
                                     />
-                                    <InputGroup.Text id="basic-addon1"onClick={()=>search()}><i class="fa fa-search" aria-hidden="true"></i></InputGroup.Text>
+                                    <InputGroup.Text id="basic-addon1"onClick={()=>myfunc()}><i class="fa fa-search" aria-hidden="true"></i></InputGroup.Text>
                                   
                                 </InputGroup>
                             </div>

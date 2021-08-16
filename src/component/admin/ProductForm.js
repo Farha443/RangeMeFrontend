@@ -43,9 +43,7 @@ var treeData = {
 };
 
 function ProductForm() {
-    var colourOptions=[
-      
-    ]
+    
     const [productname, setproductname]= useState({})
     const [certi, setCerti]= useState([])
     const[p_details, setPdetails]=useState([]);
@@ -73,8 +71,12 @@ function ProductForm() {
         axios.get(BASE_URL +'product/get_pdetails/'+cookies.get("productuuid")).then(re=>{
             // debugger
             setPdetails(re.data.data)
+            // setproductname(cookies.get('product_name'))
             console.log("----product details-----")
             console.log(re.data.data)
+            cookies.set('product_name', re.data.data.product_name, { path: '/products_detail' })
+            cookies.set('product_name', re.data.data.product_name, { path: '/distribution' })
+            cookies.set('product_name', re.data.data.product_name, { path: '/marketing' })
         }).catch(err=>{
             console.log(err)            
         })
@@ -82,15 +84,14 @@ function ProductForm() {
         axios.get(BASE_URL +'product/ProductDetailView/'+cookies.get("productuuid")+'/').then(res=>{
             setproductname(res.data.data)
             console.log(res.data.data)
-            cookies.set('product_name', res.data.data.product_name, { path: '/products_detail' })
-            cookies.set('product_name', res.data.data.product_name, { path: '/distribution' })
-            cookies.set('product_name', res.data.data.product_name, { path: '/marketing' })
-            cookies.set('product_uuid', res.data.data.uuid, { path: '/' })
+            // cookies.set('product_name', res.data.data.product_name, { path: '/products_detail' })
+            // cookies.set('product_name', res.data.data.product_name, { path: '/distribution' })
+            // cookies.set('product_name', res.data.data.product_name, { path: '/marketing' })
+            // cookies.set('product_uuid', res.data.data.uuid, { path: '/' })
             
         }).catch(err=>{
             console.log(err)            
         })
-        console.log(productname);
 
         axios.get(BASE_URL +'product/create_appro_certi/').then(res=>{
             setCerti(res.data.data)
@@ -103,7 +104,6 @@ function ProductForm() {
     )
 
         function Step1(){
-            // debugger
             var product_name = document.getElementById('product_name').value;
             var select_category = cat;
             const selected = document.querySelectorAll('#approvals_certifications option:checked');
@@ -172,7 +172,7 @@ function ProductForm() {
 
                                  <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> {productname.product_name} </h4> <span>Ürün3</span>
+                                        <h4> {productname.product_name?productname.product_name:cookies.get('product_name')} </h4> <span>Ürün3</span>
                                     </div>
                                 </div> 
 
@@ -264,7 +264,7 @@ function ProductForm() {
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Ürün adı</Form.Label>
-                                                <Form.Control id="product_name" type="text" disabled defaultValue={productname.product_name}/>
+                                                <Form.Control id="product_name" type="text" disabled defaultValue={productname.product_name?productname.product_name:cookies.get('product_name') }/>
                                                 
                                             </Form.Group>
 
@@ -290,15 +290,15 @@ function ProductForm() {
                                             </Col>
 
 
-            <Col md="6">
-            <Form.Group multiple controlId="exampleForm.ControlSelect1">    
-            <Form.Label>Ürün Sertifikasyonlar</Form.Label>
-            <Form.Control as="select" defaultValue={productname.approvals_certifications} id="approvals_certifications" multiple="true">
-            {certi.map(cat=>( 
-            <option value={cat.uuid}>{cat.name}</option>))}
-            </Form.Control> 
-            </Form.Group>
-            </Col> 
+                                            <Col md="6">
+                                            <Form.Group multiple controlId="exampleForm.ControlSelect1">    
+                                            <Form.Label>Ürün Sertifikasyonlar</Form.Label>
+                                            <Form.Control as="select" defaultValue={productname.approvals_certifications} id="approvals_certifications" multiple="true">
+                                            {certi.map(cat=>( 
+                                            <option value={cat.uuid}>{cat.name}</option>))}
+                                            </Form.Control> 
+                                            </Form.Group>
+                                            </Col> 
             
                                       
                                             <Col md="6">
