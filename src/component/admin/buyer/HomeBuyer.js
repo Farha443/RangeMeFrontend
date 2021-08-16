@@ -51,8 +51,9 @@ function HomeBuyer(){
     const[chat,setChat]=useState([])
     const[newMessage,setnewMessage]=useState({})
     const [Id , setId] = useState([])
-    var socket = new WebSocket('wss://tayuss.com/chat/')
-    // var socket = new WebSocket('ws://localhost:8000/chat/')
+    const [catwiseProduct , setCatwiseProduct] = useState([])
+    // var socket = new WebSocket('wss://tayuss.com/chat/')
+    var socket = new WebSocket('ws://localhost:8000/chat/')
     useEffect(() => {
        socket.onopen = () => {
                console.log('connected')
@@ -128,9 +129,8 @@ function Sendmessage(id){
                 msg : msg
             },
         };
-
-    // var wss = new WebSocket('ws://localhost:8000/chat/')
-    var wss = new WebSocket('wss://tayuss.com/chat/')
+    var wss = new WebSocket('ws://localhost:8000/chat/')
+    // var wss = new WebSocket('wss://tayuss.com/chat/')
     wss.onclose = () => {
         console.log('disconnected')
         }
@@ -182,6 +182,21 @@ function search(){
     myfunc(s)   
 }
    
+function myfunc1(){
+   
+    var categoryname = document.getElementById("department").value
+    // alert(categoryname)
+    axios.get(BASE_URL+'product/getcatwise_product/?search='+categoryname)
+    .then(res=>{  
+        console.log(res.data)  
+        setCatwiseProduct(res.data) 
+    }).catch(err=>{
+        console.log(err)            
+    })
+    // console.log(home)
+
+}
+
     return(
         <>
            <BuyerNavbar/>
@@ -206,12 +221,18 @@ function search(){
                             <div class="col-md-4 col-xs-12">
                             <div class="form-group">
                                 <label for="sel1" style={{margin:"0px"}} className="mb-1">Ürün Kategorisi seç</label>
-                                <select class="form-control" id="sel1">
+                                {/* <select class="form-control" id="sel1">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
-                                </select>
+                                </select> */}
+                                 <Form.Control  onChange={myfunc1} as="select" id="department">
+                             {showcat.map(cat=>(
+                                                <option value={cat.name}>{cat.name}</option>
+                                                ))}
+                                                
+                                                </Form.Control>
                             </div>
                             </div>
                             <div class="col-md-4 col-xs-12 ml-auto prod-search-inp">
