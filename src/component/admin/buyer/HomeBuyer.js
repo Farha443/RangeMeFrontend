@@ -51,11 +51,11 @@ function HomeBuyer(){
     const[chat,setChat]=useState([])
     const[newMessage,setnewMessage]=useState({})
     const [Id , setId] = useState([])
-    const [catwiseProduct , setCatwiseProduct] = useState([])
     const [showcat, setshowcat] = useState([])
+    const[count, setCount] = useState('')
 
-    // var socket = new WebSocket('wss://tayuss.com/chat/')
-    var socket = new WebSocket('ws://localhost:8000/chat/')
+    var socket = new WebSocket('wss://tayuss.com/chat/')
+    // var socket = new WebSocket('ws://localhost:8000/chat/')
     useEffect(() => {
        socket.onopen = () => {
                console.log('connected')
@@ -64,7 +64,6 @@ function HomeBuyer(){
                 // listen to data sent from the websocket server
                 const message = JSON.parse(evt.data)
                 if (message.payload){var jk = JSON.parse(message.payload.msg)}
-                console.log("okay I hate you")
                 console.log(jk)
                 if(message.payload){
                     setnewMessage(jk)
@@ -78,7 +77,7 @@ function HomeBuyer(){
 
         axios.get(BASE_URL+'authentication/GetCategorysignup/')
         .then(res=>{  
-            console.log("this is it")
+            
             console.log(res.data.data)
 
             setshowcat(res.data.data ) 
@@ -89,8 +88,8 @@ function HomeBuyer(){
         axios.get(BASE_URL+'product/getcatwise_product/?search=null')
         .then(res=>{  
             setProducts(res.data) 
-            console.log("-------products ------------")
-            console.log(res.data.data)  
+            // console.log("-------products ------------")
+            // console.log(res.data)  
         }).catch(err=>{
             console.log(err)            
         })
@@ -100,7 +99,7 @@ function HomeBuyer(){
         axios.get(url)
         .then(res=>{  
             setList(res.data)
-            console.log(res.data.length)
+            // console.log(res.data.length)
             
             }).catch(err=>{
                 console.log(err)            
@@ -142,8 +141,8 @@ function Sendmessage(id){
                 msg : msg
             },
         };
-    var wss = new WebSocket('ws://localhost:8000/chat/')
-    // var wss = new WebSocket('wss://tayuss.com/chat/')
+    // var wss = new WebSocket('ws://localhost:8000/chat/')
+    var wss = new WebSocket('wss://tayuss.com/chat/')
     wss.onclose = () => {
         console.log('disconnected')
         }
@@ -201,6 +200,8 @@ function myfunc(){
     .then(res=>{  
         console.log(res.data)  
         setProducts(res.data) 
+        console.log("search item") 
+        setCount(res.data.length) 
     }).catch(err=>{
         console.log(err)            
     })
@@ -263,7 +264,7 @@ function myfunc1(){
                             </div>
                             </div>
                             <div class="col-md-4 col-xs-12 ml-auto prod-search-inp">
-                            <Form.Label htmlFor="basic-url" style={{margin:"0px"}} className="mb-1">Search Products By Category</Form.Label>
+                            <Form.Label htmlFor="basic-url" style={{margin:"0px"}} className="mb-1">Ürün adına göre ara</Form.Label>
                                 <InputGroup>
                                 <FormControl
                                     placeholder="Username"
@@ -279,8 +280,12 @@ function myfunc1(){
                         </div>
                     </Col>
                 </Row>
-                
+                {count===0?
+                <div className="empty-div">
+                <p>Ürün Bulunamadı.</p>
+                </div>:
                 <Row>
+              
                 {products.map(cat=>(
                     <Col md="4" xs="12">
 
@@ -303,8 +308,9 @@ function myfunc1(){
 
                     </Col>
                 ))}
-                </Row>
 
+                </Row>
+}
                 <Row>
                     
                 </Row>

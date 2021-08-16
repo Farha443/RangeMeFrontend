@@ -83,6 +83,7 @@ function ProductForm() {
 
         axios.get(BASE_URL +'product/ProductDetailView/'+cookies.get("productuuid")+'/').then(res=>{
             setproductname(res.data.data)
+            console.clear()
             console.log(res.data.data)
             // cookies.set('product_name', res.data.data.product_name, { path: '/products_detail' })
             // cookies.set('product_name', res.data.data.product_name, { path: '/distribution' })
@@ -104,6 +105,7 @@ function ProductForm() {
     )
 
         function Step1(){
+            debugger
             var product_name = document.getElementById('product_name').value;
             var select_category = cat;
             const selected = document.querySelectorAll('#approvals_certifications option:checked');
@@ -112,8 +114,7 @@ function ProductForm() {
             var usp = document.getElementById('usp').value;
             var product_disc = document.getElementById('product_disc').value;
             var url = BASE_URL+'product/create_product/'
-            var productuuid = cookies.get('productuuid');
-            var userType = cookies.get('user_type');          
+            var productuuid = cookies.get('productuuid');        
             var token = cookies.get('logintoken');
             var uuid = cookies.get('get_brand');
             var config = {
@@ -133,20 +134,21 @@ function ProductForm() {
                     product_uuid:productuuid
                 }
               };
-              
+              if(select_category===''){
+                  alert("Please Select a category")
+              }
+              else{
              axios(config)
                 .then(re => {
                   if(re.status === 201){
-                   
                     window.location='/products_detail'
-    
                   }
                 })
                 .catch(err => {
                   alert(err);
                 })
         } 
-
+    }
         function action(val){
             // alert(val)
             console.clear()

@@ -69,7 +69,7 @@ async function ChangecurrentPassword() {
     ).catch(err=>{
         console.error(err);
         $(".laoder").hide(); 
-        window.location = "/change_password";
+        window.location.reload();
     })
    
 }

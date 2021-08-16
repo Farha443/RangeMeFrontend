@@ -89,8 +89,8 @@ function AdminHomeNew(){
         ;
       },[])
 
- var socket = new WebSocket('ws://localhost:8000/chat/')
-// var socket = new WebSocket('wss://tayuss.com/chat/')
+//  var socket = new WebSocket('ws://localhost:8000/chat/')
+var socket = new WebSocket('wss://tayuss.com/chat/')
  useEffect(() => {
     socket.onopen = () => {
             // debugger
@@ -132,8 +132,8 @@ function AdminHomeNew(){
     const handleToggle = () => {
         setActive(!isActive);
       };
-      var ws = new WebSocket('ws://localhost:8000/test/')
-    //   var ws = new WebSocket('wss://tayuss.com/test/')
+    //   var ws = new WebSocket('ws://localhost:8000/test/')
+      var ws = new WebSocket('wss://tayuss.com/test/')
       useEffect(() => {
          
         ws.onopen = () => {
@@ -377,7 +377,7 @@ function AdminHomeNew(){
 
         <div className="col-md-3">
             <div className="rgm-right-bar">
-            <h5>Current Alıcı Bidding Placed --- {message.length}
+            <h5>Geçerli Alıcı Teklifi Verildi --- {message.length}
            </h5> 
                 {message.map(msg=>{
                     return <div className="right-side-header">

@@ -208,7 +208,22 @@ function ProductDetail() {
               },
             data:data
         }
-        // var y = respRepos.includes(usr)
+        if(variant_style_no===''){
+            alert('Girin lütfen SKU/ Stok kodu')
+        }
+        if(cost===''){
+            alert('Girin lütfen Maliyet')
+        }
+        if(mrp===''){
+            alert("Girin lütfen MİP")
+        }
+        if(products_per_case===''){
+            alert('Girin lütfen Kutu başına ürün')
+        }
+        if(case_pricing==='kasa fiyatı'){
+            alert('Girin lütfen')
+        }
+        else{
         axios(config)
         .then(res=>{
                 //   debugger
@@ -225,6 +240,7 @@ function ProductDetail() {
                 })
               
     }
+}
 
     function ProductDetailsUpdate() {
         // debugger
@@ -484,7 +500,7 @@ function ProductDetail() {
 
                                     <div className="p-inside-title">
                                         {/* product pricing */}
-                                        <h5>Ürün Fiyatı</h5>
+                                        <h5>Ürün    </h5>
 
                                     </div>
 
@@ -502,7 +518,6 @@ function ProductDetail() {
                                                 </InputGroup.Prepend>
                                                 <FormControl
                                                 type="number"
-                                                placeholder="10.00"
                                                 aria-label="Username"
                                                 aria-describedby="basic-addon1"
                                                 id="cost"
@@ -522,7 +537,6 @@ function ProductDetail() {
                                                 <InputGroup.Text id="basic-addon1">US Dollar</InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <FormControl
-                                                placeholder="10.00"
                                                 aria-label="Username"
                                                 aria-describedby="basic-addon1"
                                                 id="mrp"
@@ -534,10 +548,10 @@ function ProductDetail() {
                                         </Col>
                                         
                                         <Col md="6">
-                                        <label htmlFor="basic-url" className="lb">Kutu başı ürün sayısı
-                                            <p>  (Default as 1) </p>
+                                        <label htmlFor="basic-url" className="lb">Kutu başına ürün
+                                            {/* <p>  (Default as 1) </p> */}
                                         </label>
-                                        <Form.Control type="number" placeholder="1" id="products_per_case" defaultValue={p_details.mrp}/>
+                                        <Form.Control type="number"  id="products_per_case" defaultValue={p_details.mrp}/>
 
                                         </Col>
 
@@ -545,10 +559,10 @@ function ProductDetail() {
                                         {/* <label htmlFor="basic-url" className="lb">Case Price
                                          <p>  (Default as $10) </p>
                                         </label> */}
-                                        <label htmlFor="basic-url" className="lb">Kutu başı ürün sayısı
-                                         <p>  (Default as $10) </p>
+                                        <label htmlFor="basic-url" className="lb">kasa fiyatı
+                                         {/* <p>  (Default as $10) </p> */}
                                         </label>
-                                        <Form.Control type="number" placeholder="$10.00" id="case_pricing"
+                                        <Form.Control type="number" placeholder="10.00" id="case_pricing"
                                         defaultValue={p_details.case_pricing}/>
                                         </Col>
                                         <Col md="12">
@@ -583,7 +597,7 @@ function ProductDetail() {
                                         <Col md="12" className="" >
                                                <div className="step-four-radio">
                                                 <div>
-                                                <label htmlFor="basic-url" className="lb">Does your product have a barcode? </label>
+                                                <label htmlFor="basic-url" className="lb">Ürününüzün barkodu var mı? </label>
                                                 </div>
                                                 <Form.Check inline label="Yes"  name="group1" onChange={e => setBarcode(e.target.value)} type="radio" value="true" id="yes_barcode"/>
                                                 <Form.Check inline label="No" name="group1" onChange={e => setBarcode(e.target.value)} type="radio" value="false" id="no_barcode" />

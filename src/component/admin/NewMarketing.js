@@ -74,7 +74,7 @@ componentDidMount(){
 
 }
 save(){
-    // debugger
+    debugger
     var product_marketing = cookies.get("product_uuid")
 
 
@@ -106,7 +106,7 @@ save(){
           },
         data:data
     }
-
+    // if( )
     axios(config)
     .then(res=>{
         window.location = "admin_home"
@@ -148,7 +148,7 @@ Edit(){
 
     axios(config)
     .then(res=>{
-        window.location = "/marketing"
+        window.location.reload();
     }).catch(err=>{
     })
 }

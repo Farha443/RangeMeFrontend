@@ -86,7 +86,7 @@ var config = {
   ).catch(err=>{
     console.error(err);
     $(".laoder").hide(); 
-  window.location = "/brand-profile";
+    window.location.reload();
   })
 }
 
@@ -225,12 +225,12 @@ function BrandProfile() {
         axios(config).then(res=>{
             console.log(res.data )
             // $(".laoder").hide();
-            window.location = '/brand-profile'
+            window.location.reload();
           }
           ).catch(err=>{
             console.error(err);
             // $(".laoder").hide();
-          window.location = "/brand-profile";
+            window.location.reload();
           })  
     }
 
@@ -251,11 +251,11 @@ function BrandProfile() {
         };
         axios(config).then(res=>{
             console.log(res.data )
-            window.location = '/brand-profile'
+            window.location.reload();
           }
           ).catch(err=>{
             console.error(err);
-          window.location = "/brand-profile";
+            window.location.reload();
           })  
 
 
@@ -266,7 +266,7 @@ function BrandProfile() {
         var url = BASE_URL + "product/copy_product/"+ e
         axios.post(url )
         .then(res=>{
-            window.location = "/brand-profile"
+            window.location.reload();
         }).catch(err=>{
             console.log(err)            
         })
@@ -316,7 +316,7 @@ function BrandProfile() {
           ).catch(err=>{
             console.error(err);
             $(".laoder").hide();
-          window.location = "/brand-profile";
+            window.location.reload();
           })  
     }
 
@@ -342,13 +342,13 @@ function BrandProfile() {
                 console.log(res.data.data)
                 // alert("success")
                 //
-                window.location = '/brand-profile'
+                window.location.reload();
                 setShow(false)
             }
             
             ).catch(err=>{
                 console.error(err);
-            window.location = "/brand-profile";
+                window.location.reload();
             })
     }
 
@@ -373,12 +373,12 @@ function BrandProfile() {
          .then(res=>{
                 console.log(res.data.data)
                 // alert("success")
-                window.location = '/brand-profile'
+                window.location.reload();
             }
             
             ).catch(err=>{
                 console.error(err);
-            window.location = "/brand-profile";
+                window.location.reload();
             })
     }
 
@@ -403,12 +403,12 @@ function BrandProfile() {
           console.log(config)
            await axios(config).then(res=>{
               console.log(res.data.data)
-            window.location = '/brand-profile'
+              window.location.reload();
           }
           
           ).catch(err=>{
             console.error(err);
-          window.location = "/brand-profile";
+            window.location.reload();
           })
     }
 
@@ -433,12 +433,12 @@ function BrandProfile() {
           console.log(config)
            await axios(config).then(res=>{
               console.log(res.data.data)
-            window.location = '/brand-profile'
+              window.location.reload();
           }
           
           ).catch(err=>{
             console.error(err);
-          window.location = "/brand-profile";
+            window.location.reload();
           })
     }
 
@@ -477,13 +477,13 @@ function BrandProfile() {
         cookies.set('uuid2', res.data.data.uuid, { path: '/' })
         // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
         $(".laoder").hide(); 
-        window.location = '/brand-profile'
+        window.location.reload();
       }
       
       ).catch(err=>{
         console.error(err);
         $(".laoder").hide(); 
-      window.location = "/brand-profile";
+        window.location.reload();
       })
     }
 

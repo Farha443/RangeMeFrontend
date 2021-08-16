@@ -108,7 +108,7 @@ savechange(){
             
             ).catch(err=>{
                 console.error(err);
-            window.location = "/company_details";
+                window.location.reload();
             })
     }
 

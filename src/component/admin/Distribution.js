@@ -302,7 +302,7 @@ class Distribution extends React.Component {
       ).catch(err=>{
         alert(err);
         // $(".laoder").hide(); 
-      window.location = "/distribution";
+        window.location.reload();
       })
     }
 
@@ -391,7 +391,7 @@ class Distribution extends React.Component {
       ).catch(err=>{
         alert(err);
         // $(".laoder").hide(); 
-      window.location = "/distribution";
+        window.location.reload();
       })
     }
 
@@ -524,7 +524,7 @@ class Distribution extends React.Component {
 
                                             <Col md="12">
                                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>What state is your product manufactured in?</Form.Label>
+                                                <Form.Label>Ürününüz hangi eyalette üretiliyor?</Form.Label>
                                                 
                                                 <RegionDropdown  id ="state" className = "form-control"
                                                     country={this.state.country}

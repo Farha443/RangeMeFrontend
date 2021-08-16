@@ -143,7 +143,7 @@ function Marketing() {
 
         axios(config)
         .then(res=>{
-            window.location = "/marketing"
+            window.location.reload();
         }).catch(err=>{
         })
     }
