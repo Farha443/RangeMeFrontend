@@ -274,7 +274,7 @@ function ProductForm() {
 
                                             <Col md="6">
 
-                                            <Form.Group controlId="exampleForm.ControlSelect1">
+                                            <Form.Group className="" controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>Ürün Kategorisi seç</Form.Label>
                                               
                                                 <TreeMenu

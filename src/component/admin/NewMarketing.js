@@ -75,7 +75,7 @@ componentDidMount(){
 }
 save(){
     debugger
-    var product_marketing = cookies.get("product_uuid")
+    var product_marketing = cookies.get("productuuid")
 
 
     const selected = document.querySelectorAll('#promotional_budget option:checked');
@@ -85,36 +85,41 @@ save(){
     // var product_images =  this.state.market.product_images ? (this.state.market.product_images.pictureFiles)[0] : "";
     var product_images = document.getElementById('id').files[0];
     var product_videos = document.getElementById('product_videos').value;
+    if (product_videos.indexOf("http://") == 0 || product_videos.indexOf("https://") == 0) {
 
-    var url = BASE_URL+"product/product_marketing/";
+        var url = BASE_URL+"product/product_marketing/";
     
-    var token = cookies.get("token")
+        var token = cookies.get("token")
+    
+        var data= new FormData();
+        data.append('product_marketing', product_marketing);
+        data.append('promotional_budget', promotional_budget);
+        data.append('product_images', product_images);
+        data.append('product_videos', product_videos);
+        
+    // ------- post product marketing ------------//
+        var config = {
+            method: 'post',
+            url: url,
+            headers: {
+                'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                "Authorization": "Bearer" + token,
+              },
+            data:data
+        }   
+        axios(config)
+        .then(res=>{
+            window.location = "admin_home"
+        }).catch(err=>{
+        })
 
-    var data= new FormData();
-    data.append('product_marketing', product_marketing);
-    data.append('promotional_budget', promotional_budget);
-    data.append('product_images', product_images);
-    data.append('product_videos', product_videos);
-    
-// ------- post product marketing ------------//
-    var config = {
-        method: 'post',
-        url: url,
-        headers: {
-            'content-type': `multipart/form-data; boundary=${data._boundary}`,
-            "Authorization": "Bearer" + token,
-          },
-        data:data
+    }else{
+        alert("Please Enter a valid URL");
     }
-    // if( )
-    axios(config)
-    .then(res=>{
-        window.location = "admin_home"
-    }).catch(err=>{
-    })
+
 }
 Edit(){
-    var product_marketing = cookies.get("product_uuid")
+    var product_marketing = cookies.get("productuuid")
 
 
     const selected = document.querySelectorAll('#promotional_budget option:checked');
@@ -124,7 +129,7 @@ Edit(){
     // var product_images =  this.state.image!=null ? (this.state.image.pictureFiles)[0] : "";
     var product_images = document.getElementById('id').files[0];
     var product_videos = document.getElementById('product_videos').value;
-
+    if (product_videos.indexOf("http://") == 0 || product_videos.indexOf("https://") == 0) {
     var url = BASE_URL+"product/product_marketing/";
     
     var token = cookies.get("token")
@@ -151,6 +156,11 @@ Edit(){
         window.location.reload();
     }).catch(err=>{
     })
+
+    }else{
+        alert("Please Enter a valid URL");
+
+    }
 }
 handleChange(v) {
     this.setState({ budget: v.target.value });
@@ -276,9 +286,9 @@ handleChange2(event) {
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Reklam Bütçesi </Form.Label>
                                                 <Form.Control as="select" id="promotional_budget" value={this.state.market.promotional_budget} onChange={e => this.handleChange(e)} className=""  >
-                                               <option value="Zero">0</option>
-                                                    <option value="$25k - $50k"> 25.000 TL - 50.000 TL</option>
-                                                    <option value="$50k - $200k">50.000 TL - 200.000 TL </option>
+                                               <option value="0">0</option>
+                                                    <option value="25.000 TL - 50.000 TL"> 25.000 TL - 50.000 TL</option>
+                                                    <option value="50.000 TL - 200.000 TL">50.000 TL - 200.000 TL </option>
                                                                 
                                                     </Form.Control>
 

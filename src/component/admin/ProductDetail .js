@@ -378,8 +378,8 @@ function ProductDetail() {
                                         </div>
 
                                         <div className="p-icn-02">
-                                            <button className="pre-btn"> <NavLink to="/preview"> <i class="fa fa-eye" aria-hidden="true"></i> Ürünü Görüntüle</NavLink>  </button>
-                                            <button className="appro-btn">Onay için ürünü gönder </button>
+                                            <button className="pre-btn"> Ürünü Görüntüle</button>
+                                            <button className="appro-btn">Onay için ürünü gönder </button> 
                                         </div>
                                     </div>
                                 </div>
@@ -562,7 +562,7 @@ function ProductDetail() {
                                         <label htmlFor="basic-url" className="lb">kasa fiyatı
                                          {/* <p>  (Default as $10) </p> */}
                                         </label>
-                                        <Form.Control type="number" placeholder="10.00" id="case_pricing"
+                                        <Form.Control type="number"  id="case_pricing"
                                         defaultValue={p_details.case_pricing}/>
                                         </Col>
                                         <Col md="12">

@@ -1,7 +1,6 @@
 import React, {useEffect, userEffect, useState} from 'react';
 import '../../assets2/admin.css';
 import AdminNavbar from './AdminNavbar'
-import Gallery from './Gallery'
 import { NavLink } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -28,13 +27,12 @@ import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import context from 'react-bootstrap/esm/AccordionContext';
 import CoverPhotoUploader from './CoverPhotoUploader';
-import BrandLogo from './BrandLogo';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import BASE_URL from '../base';
 import $ from "jquery"; 
 import {CKEditor} from 'ckeditor4-react';
-import { pascalCase } from "pascal-case";
+import Swal from 'sweetalert2';
 
 const cookies = new Cookies();
 var prox = ""
@@ -74,9 +72,9 @@ var config = {
       }
 
   };
-  console.log(config)
+//   console.log(config)
   axios(config).then(res=>{
-      console.log(res.data.data)
+    //   console.log(res.data.data)
     cookies.set('uuid2', res.data.data.uuid, { path: '/' })
     // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
     $(".laoder").hide(); 
@@ -129,7 +127,6 @@ function BrandProfile() {
     var user_uuid = cookies.get("uuid")
 
     function onDrop(pictureFiles, pictureDataURLs) {
-        // alert(pictureFiles)
         setCover({
             pictureFiles
         });
@@ -210,7 +207,7 @@ function BrandProfile() {
         var array = []
         var checkboxes = document.querySelectorAll(' input#status:checked')
         for (var i = 0; i < checkboxes.length; i++) {
-            array.push(checkboxes[i].value)
+            array.push(checkboxes[i].value);
         }
         getBrands(s) 
     }
@@ -223,7 +220,7 @@ function BrandProfile() {
             url:url,
         };
         axios(config).then(res=>{
-            console.log(res.data )
+            // console.log(res.data )
             // $(".laoder").hide();
             window.location.reload();
           }
@@ -235,44 +232,25 @@ function BrandProfile() {
     }
     
 
-    // function DeleteConfirm(id)
-    // {
-    //        Swal.fire({
-    //            icon: 'warning',
-    //            title: 'Are you sure?',
-    //            text: 'Click Yes! to Delete',
-    //            showCancelButton: true,
-    //            confirmButtonColor: '#3085d6',
-    //            cancelButtonColor: '#d33',
-    //            confirmButtonText: 'Yes!',
-    //        }).then((result) => {
-    //            if (result.isConfirmed) {
-    //                Delete(id)
-   
-    //            } else if (result.isCancled) {
-    //                Swal.fire('Changes are not saved', '', 'info')
-    //            }
-    //        });
-    //    }
-   
-    //    function Delete(id)
-    // {
-    //        axios
-    //            .delete(BASE_URL + 'deleteCategoryById/' + id)
-    //            .then(getuuid => {
-    //                Swal.fire({
-    //                    icon: 'success',
-    //                    title: 'Success',
-    //                    type: 'success',
-    //                    text: 'Category has been Deleted Successfully.',
-    //                    // showConfirmButton: false,
-    //                    timer: 5000
-    //                });
-    //                window.location.reload();
-    //                setcategory(getuuid.data);
-    //            })
-    //    }
-
+    function DeleteConfirm(id)
+    {
+           Swal.fire({
+               icon: 'warning',
+               title: 'Are you sure?',
+               text: 'Click Yes! to Delete',
+               showCancelButton: true,
+               confirmButtonColor: '#38b5e6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: 'Yes!',
+           }).then((result) => {
+               
+               if (result.value === true) {
+                DeleteProduct(id);
+               } else if (result.value === false) {
+                   Swal.fire('Changes are not saved', '', 'info')
+               }
+           });
+       }
 
     function SaveMoveBrand(){  
         // debugger
@@ -322,8 +300,11 @@ function BrandProfile() {
     }
 
     function Redirect(uuid, name){
+        // alert(name)
         cookies.set('productuuid',uuid,{path:'/'});
         cookies.set('product_name',name,{path:'/product_form'});
+        cookies.set('product_name',name,{path:'/distribution'});
+        cookies.set('product_name',name,{path:'/marketing'});
         window.location='/product_form/';
       }
 
@@ -513,7 +494,6 @@ function BrandProfile() {
       };
       console.log(config)
       axios(config).then(res=>{
-          console.log(res.data.data)
         cookies.set('uuid2', res.data.data.uuid, { path: '/' })
         // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
         $(".laoder").hide(); 
@@ -771,7 +751,7 @@ function BrandProfile() {
                                                                     <button className="border-btn"  onClick={()=>CopyFunction(pd.uuid)}>  Ürünü kopyala </button>
                                                                         <button className="border-btn"> <NavLink to=""
                                                                         onClick={()=>Redirect(pd.uuid,pd.product_name)}> Düzenle </NavLink>  </button>
-                                                                         <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.uuid)}> Sil </NavLink>  </button>
+                                                                         <button className="border-btn"> <NavLink to="/brand-profile" onClick={()=>DeleteConfirm(pd.uuid)}> Sil </NavLink>  </button>
                                                                          <button className="border-btn" onClick={()=>MoveBrand(pd.uuid,pd.product_name)}>  Başka Marka altına taşı </button>
                                                                         <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
                                                                         <div className={isAct ? "drop-d-101 " : "drop-d-101 open-drop"}> 

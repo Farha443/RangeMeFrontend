@@ -267,7 +267,7 @@ class Distribution extends React.Component {
         var url2 = BASE_URL+ 'product/create_product_distribution/';
         var uuid = cookies.get('sup_uuid');
         var userType = cookies.get('user_type');
-        var product = cookies.get('product_uuid');
+        var product = cookies.get('productuuid');
 
     var config = {
         method: 'post',
@@ -356,7 +356,7 @@ class Distribution extends React.Component {
         var url2 = BASE_URL+ 'product/create_product_distribution/';
         var uuid = cookies.get('sup_uuid');
         var userType = cookies.get('user_type');
-        var product = cookies.get('product_uuid');
+        var product = cookies.get('productuuid');
 
     var config = {
         method: 'patch',
