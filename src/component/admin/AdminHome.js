@@ -73,8 +73,8 @@ function AdminHome(){
                         <Card.Body>
                             <div className="p-insight-d-main">
                                 <div className="p-inside-title">
-                                    <h5> Profile Insights </h5>
-                                    <p>Complete your profile to get insights</p>
+                                    <h5> Profil Bilgileri </h5>
+                                    <p>Yayınlandı Profiliniz to get insights</p>
                                 </div>
                             </div>
                         <Row>
@@ -132,8 +132,8 @@ function AdminHome(){
                         <Card.Body>
                             <div className="p-insight-d-main">
                                 <div className="p-inside-title">
-                                    <h5> Profile Insights </h5>
-                                    <p> Profile Status : <span> Unpublished </span> </p>
+                                    <h5> Profil Bilgileri </h5>
+                                    <p> Profil Durumu : <span> Yayınlanmamış </span> </p>
                                 </div>
                             </div>
                         <Row>
@@ -141,7 +141,7 @@ function AdminHome(){
                                 <div className="admin-count-box">
                                 {/* <i class="fa fa-eye" aria-hidden="true"></i> */}
                                     <h2> - </h2>
-                                    <p> VIEWS </p>
+                                    <p> Görüntülenme </p>
                                 </div>
                             </Col>
 
@@ -149,7 +149,7 @@ function AdminHome(){
                                 <div className="admin-count-box">
                                 {/* <i class="fa fa-users" aria-hidden="true"></i> */}
                                 <h2> - </h2>
-                                    <p> PROFILE VISITS </p>
+                                    <p> Profil Ziyaretleri</p>
                                 </div>
                             </Col>
 
@@ -157,7 +157,7 @@ function AdminHome(){
                                 <div className="admin-count-box">
                                 {/* <i class="fa fa-commenting-o" aria-hidden="true"></i> */}
                                 <h2> - </h2>
-                                    <p> CONVERSIONS </p>
+                                    <p> Dönüşümler </p>
                                 </div>
                             </Col>  
                         </Row>

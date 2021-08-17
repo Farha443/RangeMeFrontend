@@ -6,7 +6,7 @@ export default class CompanyLogo extends Component {
         return (
             <div className="profile-up-main">
                 <div className="upload-imf-direction-text ">
-                <h6> Company Logo </h6>
+                <h6> Şirket Logosu </h6>
                   <p>Image must be at least 800 x 800px.
                      File formats JPG, PNG, GIF.</p>
                 </div>

@@ -153,11 +153,11 @@ class BuyerAdminProfile extends React.Component {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                        <Col md="3">
+                        {/* <Col md="3">
                         <aside>
                                 
                             </aside>
-                        </Col>
+                        </Col> */}
                         <Col md="8">
 
                             <Card>
@@ -194,7 +194,7 @@ class BuyerAdminProfile extends React.Component {
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>First Name</Form.Label>
+                                                <Form.Label>Ad </Form.Label>
                                                 <Form.Control defaultValue={this.state.first_name} id='first_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
@@ -203,7 +203,7 @@ class BuyerAdminProfile extends React.Component {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Last Name</Form.Label>
+                                                <Form.Label>Soyad</Form.Label>
                                                 <Form.Control defaultValue={this.state.last_name} id='last_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
@@ -212,7 +212,7 @@ class BuyerAdminProfile extends React.Component {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Email</Form.Label>
+                                                <Form.Label>E-posta</Form.Label>
                                                 <Form.Control  defaultValue={this.state.email} type="email" id="email" placeholder="Enter email" />
 
                                             </Form.Group>
@@ -222,7 +222,7 @@ class BuyerAdminProfile extends React.Component {
                                             <Col md="6">
 
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Phone</Form.Label>
+                                                <Form.Label>Cep Telefonu</Form.Label>
                                                 <Form.Control defaultValue={this.state.mobile} type="text" id="phone" >
                                                 
                                                 </Form.Control>

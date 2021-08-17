@@ -258,7 +258,7 @@ savechange(){
                     <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
-                                    <p className="p1"> Account Setting </p>
+                                    <p className="p1">Hesap Ayarları</p>
                                     <ul>
                                         <li>
                                             <NavLink to="/admin_profile"
@@ -274,7 +274,7 @@ savechange(){
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Şifre değiştir</div>
+                                                <div className="sidebar-title"> Şifre Değiştirme</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -287,7 +287,7 @@ savechange(){
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
-                                        <p className="p2"> Company Setting </p>
+                                        <p className="p2"> Şirket Ayarları </p>
                                         <li>
                                             <NavLink to="/company_details"  
                                             inactiveClassName="text-gray-800"
@@ -303,7 +303,7 @@ savechange(){
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Team Access </div>
+                                                <div className="sidebar-title"> Ekip Erişimi</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -331,7 +331,7 @@ savechange(){
                                               
                                             <div className="profile-up-main jio22">
                                             <div className="upload-imf-direction-text ">
-                                            <h6> Company Logo </h6>
+                                            <h6> Şirket Logosu </h6>
                                            
                                             </div>
                                             {/* <ImageUploader
@@ -368,7 +368,7 @@ savechange(){
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Company Name</Form.Label>
+                                                <Form.Label>Şirket Adı</Form.Label>
                                                 <Form.Control id="comp_name" type="text" placeholder="Enter name"
                                                 defaultValue={this.state.comp_name} />
 
@@ -378,7 +378,7 @@ savechange(){
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Email</Form.Label>
+                                                <Form.Label>Cep Telefonu</Form.Label>
                                                 <Form.Control id="email" type="email"
                                                 defaultValue={this.state.email} placeholder="abc.com" />
 
@@ -388,7 +388,7 @@ savechange(){
 
                                             <Col md="6">
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Mobile</Form.Label>
+                                                <Form.Label>Cep Telefonu</Form.Label>
                                                 <Form.Control id="comp_location" defaultValue={this.state.mobile}type="text">
                                               
                                                 </Form.Control>
@@ -397,7 +397,7 @@ savechange(){
 
                                             <Col md="6">
                                                 <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Company Location</Form.Label>
+                                                <Form.Label>Şirket Adresi</Form.Label>
                                                 <Form.Control id="email" type="email"
                                                 defaultValue={this.state.comp_location} placeholder="abc.com" />
                                                 {/* <Form.Label>Category</Form.Label> */}

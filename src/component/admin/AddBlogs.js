@@ -152,7 +152,7 @@ Blogs(){
           <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
-                                    <p className="p1"> Account Setting </p>
+                                    <p className="p1"> Hesap Ayarları </p>
                                     <ul>
                                     <li>
                                             <NavLink to="/admin/home"

@@ -417,7 +417,7 @@ useEffect(()=>{
                     <Row>
                         <Col md="12" xs="12">
                             <div className="service-p-title">
-                                <h5> Edit your profile </h5>
+                                <h5> Düzenle Profiliniz</h5>
                             </div>
                         </Col>
                     </Row>
@@ -441,7 +441,7 @@ useEffect(()=>{
                             <Col md="12">    
                             
                             <div className="change-img-maind">
-                            <h6>Company Logo</h6>
+                            <h6>Şirket Logosu</h6>
                                             {user_pic ?   
                                             <div className="pic-1101">
                                                 
@@ -461,7 +461,7 @@ useEffect(()=>{
 
                                 <Col md="6">
                                     <Form.Group controlId="formBasicEmail">
-                                        <Form.Label>Company Name</Form.Label>
+                                        <Form.Label>Şirket Adı</Form.Label>
                                         <Form.Control id="company-name"type="text" placeholder="dddd" defaultValue={ProfileData.company_name} />
 
                                     </Form.Group>
@@ -479,7 +479,7 @@ useEffect(()=>{
 
                                     <Col md="6" xs="12">
                                         <div className="color-pick-inp-m">
-                                        <Form.Label> Firmalar/Markalar Color</Form.Label>
+                                        <Form.Label> Marka Adı Color</Form.Label>
                                        
                                          <div className="color-pic-div"
                                           
@@ -537,7 +537,7 @@ useEffect(()=>{
                                 <Col md="12">
                                     <Form.Group className="abt-tet125" controlId="exampleForm.ControlTextarea1">
                                         <Form.Label>Short description</Form.Label>
-                                        <p> Provide a short introduction to your company that will be at the top of your profile and visible in your profile preview.
+                                        <p> Provide a short introduction to your company that will be at the top of Profiliniz and visible in Profiliniz preview.
 </p>
                                         <Form.Control defaultValue={ProfileData.short_des} id="short_des" as="textarea" rows={3} />
                                     </Form.Group>
@@ -958,12 +958,12 @@ useEffect(()=>{
                         <Row>
                             <Col md={12} className="text-center">
                                 <h6 > Are you sure? </h6>
-                            <p style={{margin: '0px'}}> You are about to permanently delete your Tanıtım.
+                            <p style={{margin: '0px'}}> You are about to permanently Sil your Tanıtım.
                             Tanıtım get you more visibility and attract customers. </p>
                             </Col>
 
                             <div className="col-md-12 mt-3 text-center">
-                        <button class="btn btn-danger mr-3" onClick={DeletePromotion}> Delete</button>
+                        <button class="btn btn-danger mr-3" onClick={DeletePromotion}> Sil</button>
                         <button class="border-btn ">Cancel</button>
                     </div>
                         </Row>

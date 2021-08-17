@@ -58,7 +58,7 @@ function SelectCategory(){
       ).catch(err=>{
         console.error(err);
         $(".laoder").hide();
-      window.location = "company_form_three";
+        window.location.reload();
       })  
 }
 const handleKeypress = (event) => {
@@ -69,10 +69,10 @@ const handleKeypress = (event) => {
 
 function CompanyStepThree(){
 
-    var token = cookies.get('logintoken');
-        if (token === undefined){
-        window.location="/login"
-        }
+    // var token = cookies.get('logintoken');
+    //     if (token === undefined){
+    //     window.location="/login"
+    //     }
     const [category, setCategory]= useState([])
     useEffect(() => {
         axios.get(BASE_URL+'authentication/GetCategorysignup/').then(res=>{

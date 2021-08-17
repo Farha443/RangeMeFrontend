@@ -336,7 +336,7 @@ function SignupModal(props){
                         </Col>
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Soyadınız/Your last name</Form.Label>
+                            <Form.Label>Soyadınız/Your Soyad</Form.Label>
                             <Form.Control type="email" id="last_name" placeholder="Lütfen soyadınızı yazın..." />
                           </Form.Group>
                         </Col>
@@ -361,7 +361,7 @@ function SignupModal(props){
 
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Telefon Numaranız/mobile</Form.Label>
+                            <Form.Label>Cep Telefonu</Form.Label>
                             <Form.Control type="number" id="mobile" placeholder="Lütfen mail adresinizi yazın..." />
                           </Form.Group>
                         </Col>
@@ -424,7 +424,7 @@ function SignupModal(props){
                                           <p> 3 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>Firmalar/Markalar</span> INFORMATIONS </p>
+                                          <p> <span>Marka Adı/</span> INFORMATIONS </p>
                                         </div>
                                       </li>
                                     </ul>
@@ -440,14 +440,14 @@ function SignupModal(props){
                     <Row> 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Company Name</Form.Label>
+                            <Form.Label>Şirket Adı</Form.Label>
                             <Form.Control type="email" id="comp_name" placeholder="Lütfen  firma adınızı yazın..." />
                           </Form.Group>
                         </Col>
                         <Col md="6" xs="12">
                         <div class="form-group signup-f-group">
                         <Form.Group controlId="exampleForm.ControlSelect1" >
-                                                <Form.Label>Year Founded</Form.Label>
+                                                <Form.Label> Kuruluş Tarihi</Form.Label>
                                                 <Form.Control as="select" id="year">
                                                 {
        years.reverse().map((year, index) => {
@@ -464,7 +464,7 @@ function SignupModal(props){
                         <Col md="6" xs="12">
                         <div class="form-group signup-f-group">
                         <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label> Annual Gross Revenue </Form.Label>
+                                                <Form.Label> Annual Gross Yıllık Ciro </Form.Label>
                                                 <Form.Control as="select" id="revenue">
                                                 <option value="0M$-5M$">0M$-5M$</option>
                                                 <option value="6M$-10M$">6M$-10M$</option>
@@ -504,7 +504,7 @@ function SignupModal(props){
 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Your Company Location</Form.Label>
+                            <Form.Label>Your Şirket Adresi</Form.Label>
                             <Form.Control type="email"  id="city" placeholder="Lütfen  firma adınızı yazın..." />
                           </Form.Group>
                         </Col>
@@ -528,7 +528,7 @@ function SignupModal(props){
                         <div className="container">
                             <div className="col-md-12 col-xs-12">
                                 <div className="sig-text-1">
-                                    <p> Your products and Firmalar/Markalar profile <span className="sign-text-1-span-2">  exhibiting to thousands of buyers </span> <span className="sign-text-1-span-1"> increase your sales! </span> </p>
+                                    <p> Your products and Marka Adı profile <span className="sign-text-1-span-2">  exhibiting to thousands of buyers </span> <span className="sign-text-1-span-1"> increase your sales! </span> </p>
                                     <h6> CREATE YOUR FREE SUPPLIER PROFILE NOW. </h6>
                                 </div>
                             </div>
@@ -573,14 +573,14 @@ function SignupModal(props){
                   <Row> 
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Firmalar/Markalar name</Form.Label>
+                            <Form.Label>Marka Adı name</Form.Label>
                             <Form.Control type="email" id="brand_name" placeholder="Lütfen  firma adınızı yazın..." />
                           </Form.Group>
                         </Col>
 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Firmalar/Markalar website</Form.Label>
+                            <Form.Label>Marka Adı website</Form.Label>
                             <Form.Control type="email" id="brand_website" placeholder="Lütfen  firma adınızı yazın..." />
                           </Form.Group>
                         </Col>

@@ -193,7 +193,7 @@ Create Your Brand Profile </h6>
                                         <img src="assets/images/icons/share.svg" class="icn-img"/>
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6> Share Your Profile</h6>
+                                        <h6> Share Profiliniz</h6>
                                         <p> Alıcı firmaların ihtiyaç duyabileceği önemli marka bilgileriniz </p>
                                       </div>
                                     </div>

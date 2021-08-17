@@ -74,7 +74,7 @@ var userTypeTitle=cookies.get('userType');
       ).catch(err=>{
         console.error(err);
         $(".laoder").hide();
-      window.location = "company_form_one";
+        window.location.reload();
       })
   }
 
@@ -86,10 +86,10 @@ var userTypeTitle=cookies.get('userType');
       }
     }
     render(){
-        var token = cookies.get('logintoken');
-        if (token === undefined){
-        window.location="/login"
-        }
+        // var token = cookies.get('logintoken');
+        // if (token === undefined){
+        // window.location="/login"
+        // }
     return(
         <>
          <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>

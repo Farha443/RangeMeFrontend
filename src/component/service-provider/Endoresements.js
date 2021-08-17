@@ -64,7 +64,7 @@ function Endoresements(){
                 </div> 
 
                 <div className="serv-comp-title">
-                    <h5> Company Name  </h5>
+                    <h5> Şirket Adı  </h5>
                 </div>
 
                 <div className="p-text-45878">

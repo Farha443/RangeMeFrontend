@@ -224,7 +224,7 @@ return<li>
                         <div className="col-md-6 co-xs-12 ml-auto">
                             <div className="r-text-254">
                             <h5> {work.title}<br/>
-                            Grow your business by sharing your Firmalar/Markalar profile!</h5>
+                            Grow your business by sharing your Marka Adı profile!</h5>
                             </div>
                             <div className="d-one-12423">
                                 <ul>

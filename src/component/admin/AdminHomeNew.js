@@ -27,7 +27,11 @@ const cookies = new Cookies();
 
 
 var user_uuid = cookies.get("uuid")
-
+let loc = window.location;
+    let wsStart= 'ws://';
+    if (loc.protocol==='https'){
+        wsStart='wss://'
+    }
 function AdminHomeNew(){
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
@@ -47,6 +51,7 @@ function AdminHomeNew(){
     const [recieverID , setRecieverId] = useState([])
     const [requirements , setRequirements] = useState([])
 
+    
     function BuyerDetail(e,id){
         var url = BASE_URL+'authentication/getuser/'+ e;
         var url1 = BASE_URL+'authentication/requirements/'+ id; 
@@ -90,7 +95,7 @@ function AdminHomeNew(){
       },[])
 
 //  var socket = new WebSocket('ws://localhost:8000/chat/')
-var socket = new WebSocket('wss://tayuss.com/chat/')
+var socket = new WebSocket(wsStart+'tayuss.com/chat/')
  useEffect(() => {
     socket.onopen = () => {
             // debugger
@@ -133,7 +138,7 @@ var socket = new WebSocket('wss://tayuss.com/chat/')
         setActive(!isActive);
       };
     //   var ws = new WebSocket('ws://localhost:8000/test/')
-      var ws = new WebSocket('wss://tayuss.com/test/')
+      var ws = new WebSocket('ws://tayuss.com/test/')
       useEffect(() => {
          
         ws.onopen = () => {
@@ -251,8 +256,8 @@ var socket = new WebSocket('wss://tayuss.com/chat/')
                         <Card.Body className="mb-2">
                             <div className="p-insight-d-main">
                                 <div className="p-inside-title">
-                                    <h5> Profile Insights </h5>
-                                    <p> Profile Status : <span> Unpublished </span> </p>
+                                    <h5> Profil Bilgileri</h5>
+                                    <p> Profil Durumu: <span> Yayınlanmamış </span> </p>
                                 </div>
                             </div>
                         <Row>
@@ -274,10 +279,10 @@ var socket = new WebSocket('wss://tayuss.com/chat/')
                                                 <div className="in-cont-first">
                                                 <i class="fal fa-check-circle"></i>
                                                     <p>  Ürün ekle  </p> 
-                                                    <p> Add your first product to attract interest from buyers</p>         
+                                                    <p> Alıcıların ilgisini çekmek için ilk ürününüzü ekleyin</p>         
                                                 </div>
                                                 <div className="in-content-two">
-                                                    <button className="admin-add-btn"> Complete Product  </button>
+                                                    <button className="admin-add-btn"> Ürün Girişini Tamamlayın </button>
                                                 </div>
                                             </div>
                                         </li>
@@ -336,8 +341,8 @@ var socket = new WebSocket('wss://tayuss.com/chat/')
                         <Card.Body>
                             <div className="p-insight-d-main">
                                 <div className="p-inside-title">
-                                    <h5> Profile Insights </h5>
-                                    <p> Profile Status : <span> Unpublished </span> </p>
+                                    <h5>Profil Bilgileri</h5>
+                                    <p> Profil Durumu: <span> Yayınlanmamış </span> </p>
                                 </div>
                             </div>
                         <Row>
@@ -345,7 +350,7 @@ var socket = new WebSocket('wss://tayuss.com/chat/')
                                 <div className="admin-count-box">
                                 {/* <i class="fa fa-eye" aria-hidden="true"></i> */}
                                     <h2> {brands.brand_views}</h2>
-                                    <p> VIEWS </p>
+                                    <p> Görüntülenme </p>
                                 </div>
                             </Col>
 
@@ -353,7 +358,7 @@ var socket = new WebSocket('wss://tayuss.com/chat/')
                                 <div className="admin-count-box">
                                 {/* <i class="fa fa-users" aria-hidden="true"></i> */}
                                 <h2> - </h2>
-                                    <p> PROFILE VISITS </p>
+                                    <p> Profil Ziyaretleri </p>
                                 </div>
                             </Col>
 
@@ -361,7 +366,7 @@ var socket = new WebSocket('wss://tayuss.com/chat/')
                                 <div className="admin-count-box">
                                 {/* <i class="fa fa-commenting-o" aria-hidden="true"></i> */}
                                 <h2> - </h2>
-                                    <p> CONVERSIONS </p>
+                                    <p> Dönüşümler </p>
                                 </div>
                             </Col>  
                         </Row>
@@ -432,7 +437,7 @@ var socket = new WebSocket('wss://tayuss.com/chat/')
                                     
                                     </p>
                                     <p>
-                                    <strong>Mobile:- </strong>{buyerdetail.mobile}
+                                    <strong>Cep Telefonu:- </strong>{buyerdetail.mobile}
                                     
                                     </p>
                                     <p>

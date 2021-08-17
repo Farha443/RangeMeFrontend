@@ -88,7 +88,7 @@ function ChangePassword() {
                     <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
-                                    <p className="p1"> Account Setting </p>
+                                    <p className="p1"> Hesap Ayarları</p>
                                     <ul>
                                         <li>
                                             <NavLink to="/admin_profile"
@@ -104,7 +104,7 @@ function ChangePassword() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Şifre değiştir </div>
+                                                <div className="sidebar-title"> Şifre Değiştirme</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -117,7 +117,7 @@ function ChangePassword() {
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
-                                        <p className="p2"> Company Setting </p>
+                                        <p className="p2"> Şirket Ayarları </p>
                                         <li>
                                             <NavLink to="/company_details"  
                                             inactiveClassName="text-gray-800"
@@ -133,7 +133,7 @@ function ChangePassword() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Team Access </div>
+                                                <div className="sidebar-title">Ekip Erişimi</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -149,7 +149,7 @@ function ChangePassword() {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5> <img src="assets/images/padlock.png" /> Şifre değiştir</h5>
+                                            <h5> <img src="assets/images/padlock.png" /> Şifre Değiştirme</h5>
 
                                         </div>
 
@@ -159,7 +159,7 @@ function ChangePassword() {
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Şimdiki Şifre</Form.Label>
+                                                <Form.Label>Mevcut Şifre</Form.Label>
                                                 <Form.Control type="password" id='current_pass' />
 
                                             </Form.Group>
@@ -177,7 +177,7 @@ function ChangePassword() {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Şifreyi Onayla</Form.Label>
+                                                <Form.Label>Yeni Şifre - Tekrar</Form.Label>
                                                 <Form.Control type="password" id='confirm_new'/>
 
                                             </Form.Group>
@@ -187,7 +187,7 @@ function ChangePassword() {
                                         
                                     
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={ChangecurrentPassword}>Şifre değiştir </button>
+                                            <button class="admin-add-btn" onClick={ChangecurrentPassword}>Kaydet</button>
                                             </Col>
 
                                            </Row>

@@ -177,7 +177,7 @@ function TeamAccess() {
                     <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
-                                    <p className="p1"> Account Setting </p>
+                                    <p className="p1"> Hesap Ayarları </p>
                                     <ul>
                                         <li>
                                             <NavLink to="/admin_profile"
@@ -193,7 +193,7 @@ function TeamAccess() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title">Şifre değiştir </div>
+                                                <div className="sidebar-title">Şifre Değiştirme </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -206,7 +206,7 @@ function TeamAccess() {
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
-                                        <p className="p2"> Company Setting </p>
+                                        <p className="p2"> Şirket Ayarları </p>
                                         <li>
                                             <NavLink to="/company_details"  
                                             inactiveClassName="text-gray-800"
@@ -222,7 +222,7 @@ function TeamAccess() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Team Access </div>
+                                                <div className="sidebar-title"> Ekip Erişimi</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -238,7 +238,7 @@ function TeamAccess() {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title p-inside-invite mb-3">
-                                            <h5> <img src="assets/images/add-group.png" /> Team Access </h5>
+                                            <h5> <img src="assets/images/add-group.png" /> Ekip Erişimi</h5>
                                             <p> <button className="admin-add-btn"  onClick={() => setShow(true)}> <i class="fa fa-plus" aria-hidden="true"></i> kullanıcıyı davet et</button> </p>
                                             {/* invite user */}
                                         </div>
@@ -255,7 +255,7 @@ function TeamAccess() {
                                                         </div>
                                                         <div className="int-left-text">
                                                             <h6> John  </h6>
-                                                            <p> All Brands </p>
+                                                            <p> Tüm markalar </p>
                                                         </div>
                                                    </div>
 
@@ -275,7 +275,7 @@ function TeamAccess() {
                                                         </div>
                                                         <div className="int-left-text">
                                                             <h6> John  </h6>
-                                                            <p> All Brands </p>
+                                                            <p> Tüm markalar </p>
                                                         </div>
                                                    </div>
 
@@ -295,7 +295,7 @@ function TeamAccess() {
                                                         </div>
                                                         <div className="int-left-text">
                                                             <h6> John  </h6>
-                                                            <p> All Brands </p>
+                                                            <p> Tüm markalar </p>
                                                         </div>
                                                    </div>
 
@@ -315,7 +315,7 @@ function TeamAccess() {
                                                         </div>
                                                         <div className="int-left-text">
                                                             <h6> John  </h6>
-                                                            <p> All Brands </p>
+                                                            <p> Tüm markalar </p>
                                                         </div>
                                                    </div>
 
@@ -335,7 +335,7 @@ function TeamAccess() {
                                                         </div>
                                                         <div className="int-left-text">
                                                             <h6> John  </h6>
-                                                            <p> All Brands </p>
+                                                            <p> Tüm markalar </p>
                                                         </div>
                                                    </div>
 
@@ -355,7 +355,7 @@ function TeamAccess() {
                                                         </div>
                                                         <div className="int-left-text">
                                                             <h6> John  </h6>
-                                                            <p> All Brands </p>
+                                                            <p>Tüm markalar </p>
                                                         </div>
                                                    </div>
 
@@ -375,7 +375,7 @@ function TeamAccess() {
                                                         </div>
                                                         <div className="int-left-text">
                                                             <h6> John  </h6>
-                                                            <p> All Brands </p>
+                                                            <p> Tüm markalar </p>
                                                         </div>
                                                    </div>
 
@@ -395,7 +395,7 @@ function TeamAccess() {
                                                         </div>
                                                         <div className="int-left-text">
                                                             <h6> John  </h6>
-                                                            <p> All Brands </p>
+                                                            <p> Tüm markalar </p>
                                                         </div>
                                                    </div>
 
@@ -437,7 +437,7 @@ function TeamAccess() {
         >
             <Modal.Header closeButton>
             <Modal.Title id="example-custom-modal-styling-title">
-            Invite User
+            Yeni Kullanıcı Davet Et
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -455,10 +455,10 @@ function TeamAccess() {
                     <Form.Group controlId="formBasicEmail">
                         <div className="step-four-radio">
                             <div>
-                            <label  style={{marginTop: '0px'}} htmlFor="basic-url" className="lb">Brands </label>
+                            <label  style={{marginTop: '0px'}} htmlFor="basic-url" className="lb">Markalar </label>
                             </div>
-                            <Form.Check inline label="All Brands" id="all" name="group1" type="radio" onClick={()=>setShowField(false)} />
-                            <Form.Check inline label="Specific Brands" id="specific" onClick={()=>setShowField(true)} name="group1" type="radio"  />
+                            <Form.Check inline label="Tüm markalar" id="all" name="group1" type="radio" onClick={()=>setShowField(false)} />
+                            <Form.Check inline label="Seçili Markalar" id="specific" onClick={()=>setShowField(true)} name="group1" type="radio"  />
                         </div>
                     </Form.Group>
                     
@@ -482,7 +482,7 @@ function TeamAccess() {
 
 
                     <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label  style={{marginTop: '0px'}}>Custom Message (Opsiyonel)</Form.Label>
+                        <Form.Label  style={{marginTop: '0px'}}>Özel Not(Opsiyonel)</Form.Label>
                         <Form.Control as="textarea"  id="custom_message" rows={3} />
                     </Form.Group>
 
@@ -497,7 +497,7 @@ function TeamAccess() {
                     <div className="inv-user-pop-right">
                     
                     <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label   style={{marginTop: '0px'}}>Role</Form.Label>
+                    <Form.Label   style={{marginTop: '0px'}}>Sistemdeki Rolü</Form.Label>
                         <Form.Control as="select" id="Role" value={selectedClient} onChange={handleSelectChange}>
                         <option value="admin">Admin</option>
                         <option value="sales">Sales</option>
@@ -512,69 +512,65 @@ function TeamAccess() {
                     
                    {selectedClient==="admin" ? <div id="admin" className="tab-cont-main-10121 tb-one">
                               <div class="invite-user-modal__permission-description___3XMpQ">
-                                  <span class="text__text___2g-Dv text__small-copy___bgT96">Admin users have access to all account functionality.
-                                   They can make modifications to the brand profile and product listings.
-                                    They have full access to all messages relating to the brands which they
-                                    have been assigned and can invite other company members to a conversation. 
-                                    They can also update company and subscription details if they have been assigned access to ‘All Brands’. They can manage and fulfill orders as well as update ordering settings.</span>
+                                  <span class="text__text___2g-Dv text__small-copy___bgT96">Yönetici kullanıcılar, tüm hesap işlevlerine erişebilir. Marka profilinde ve ürün listelemelerinde değişiklik yapabilirler. Atandıkları markalarla ilgili tüm mesajlara tam erişime sahiptirler ve diğer şirket üyelerini sohbete davet edebilirler. Ayrıca, "Tüm Markalar"a erişim atanmışlarsa şirket ve abonelik ayrıntılarını da güncelleyebilirler. Sipariş ayarlarını güncellemenin yanı sıra siparişleri yönetebilir ve yerine getirebilirler.</span>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Section</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Permission</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Bölüm</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Yetkiler</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Brands & Products</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Markalar ve Ürünler</span></div>
                               <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Edit</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Messaging</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Full Access</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Mesajlaşma</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Tam Yetki</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Company Settings</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Şirket Ayarları</span></div>
                               <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Manage</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU" style={{border: 'none'}}>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Lead Tracker</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Full Access</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Müşteri Adayı Takibi</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Tam Yetki</span></div>
                               </div>
                     </div>:""}
 
                     {selectedClient==="sales" ?<div id="sales" className="tab-cont-main-10121 tb-two">
                               <div class="invite-user-modal__permission-description___3XMpQ">
                                   <span class="text__text___2g-Dv text__small-copy___bgT96">
-                                  Sales users have view only access to the brand profile and product listings. They have full permissions to the sharing functionality and can create and manage shares. They have full access to all messages relating to the brands which they have been assigned and can invite other company members to a conversation. They do not have access to company settings.
+                                  Satış kullanıcılarının yalnızca marka profiline ve ürün listelemelerine erişimi vardır. Paylaşım işlevi için tam izinlere sahiptirler ve paylaşımlar oluşturup yönetebilirler. Atandıkları markalarla ilgili tüm mesajlara tam erişime sahiptirler ve diğer şirket üyelerini sohbete davet edebilirler. Şirket ayarlarına erişimleri yoktur.
                                 </span>   
                                   </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Section</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Permission</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Bölüm</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Yetkiler</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Brands & Products</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">view & share</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Markalar ve Ürünler</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Görüntüleme ve Paylaşma</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Messaging</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Full Access</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Mesajlaşma</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Tam Yetki</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Company Settings</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Şirket Ayarları</span></div>
                               <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">None</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU" style={{border: 'none'}}>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Lead Tracker</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Full Access</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Müşteri Adayı Takibi</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Tam Yetki</span></div>
                               </div>
 
 
@@ -584,33 +580,33 @@ function TeamAccess() {
                     {selectedClient==="marketing" ?<div id="marketing" className="tab-cont-main-10121 tb-three ">
                               <div class="invite-user-modal__permission-description___3XMpQ">
                                   <span class="text__text___2g-Dv text__small-copy___bgT96">
-                                  Marketing users can manage the brand profile and product listings. They also have full permissions to the sharing functionality and can create and manage shares. They do not have access to messaging and cannot be invited to a conversation. They do not have access to company settings.
+                                  Pazarlama kullanıcıları, marka profilini ve ürün listelerini yönetebilir. Ayrıca paylaşım işlevi için tam izinlere sahiptirler ve paylaşımlar oluşturup yönetebilirler. Mesajlaşmaya erişimleri yoktur ve bir sohbete davet edilemezler. Şirket ayarlarına erişimleri yoktur.
                                    </span>   
                                   </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Section</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Permission</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Bölüm</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Yetkiler</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Brands & Products</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Markalar ve Ürünler</span></div>
                               <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Edit</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Messaging</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Mesajlaşma</span></div>
                               <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">announccement only</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Company Settings</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Şirket Ayarları</span></div>
                               <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">none</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU" style={{border: 'none'}}>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Lead Tracker</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Full Access</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Müşteri Adayı Takibi</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Tam Yetki</span></div>
                               </div>
 
 
@@ -621,12 +617,12 @@ function TeamAccess() {
                             
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Section</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Permission</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Bölüm</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Yetkiler</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div className="d11"><span class="text__text___2g-Dv text__medium-copy___1Y01K">Brands & Products</span></div>
+                              <div className="d11"><span class="text__text___2g-Dv text__medium-copy___1Y01K">Markalar ve Ürünler</span></div>
                               <div className="d12">
                                
                               <Dropdown >
@@ -634,24 +630,24 @@ function TeamAccess() {
                                 <p id="text1">view</p>
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                <Dropdown.Item value="view" onClick={()=>change1('view')}>view</Dropdown.Item>
-                                <Dropdown.Item value="view & share" onClick={()=>change1('view & share')}>view & Share</Dropdown.Item>
+                                <Dropdown.Item value="view" onClick={()=>change1('view')}>Görüntüleme</Dropdown.Item>
+                                <Dropdown.Item value="view & share" onClick={()=>change1('view & share')}>Görüntüleme ve Paylaşma</Dropdown.Item>
                                 <Dropdown.Item value="edit" onClick={()=>change1('edit')}>Edit</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                                 </div>
                               </div>
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div className="d11"><span class="text__text___2g-Dv text__medium-copy___1Y01K">Messaging</span></div>
+                              <div className="d11"><span class="text__text___2g-Dv text__medium-copy___1Y01K">Mesajlaşma</span></div>
                               <div className="d12">
                                
                                <Dropdown>
                                  <Dropdown.Toggle  id="dropdown-custom-components">
-                                 <p id="text2">full access</p>
+                                 <p id="text2">Tam Yetki</p>
                                  </Dropdown.Toggle>
  
                                  <Dropdown.Menu >
-                                 <Dropdown.Item onClick={()=>change2('full access')}>full access</Dropdown.Item>
+                                 <Dropdown.Item onClick={()=>change2('full access')}>Tam Yetki</Dropdown.Item>
                                  <Dropdown.Item onClick={()=>change2('announcement only')}>announcement only</Dropdown.Item>
                                  <Dropdown.Item onClick={()=>change2('by invite')}>
                                      by invite
@@ -664,7 +660,7 @@ function TeamAccess() {
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
-                              <div className="d11"><span class="text__text___2g-Dv text__medium-copy___1Y01K">Company Settings</span></div>
+                              <div className="d11"><span class="text__text___2g-Dv text__medium-copy___1Y01K">Şirket Ayarları</span></div>
                               <div className="d12">
                                
                                <Dropdown>
@@ -674,7 +670,7 @@ function TeamAccess() {
  
                                  <Dropdown.Menu >
                                  <Dropdown.Item onClick={()=>change3('none')}>None</Dropdown.Item>
-                                 <Dropdown.Item onClick={()=>change3('view & share')}>view & share</Dropdown.Item>
+                                 <Dropdown.Item onClick={()=>change3('view & share')}>Görüntüleme ve Paylaşma</Dropdown.Item>
                                  <Dropdown.Item onClick={()=>change3('share')}>share</Dropdown.Item>
                                  
                                  </Dropdown.Menu>
@@ -684,7 +680,7 @@ function TeamAccess() {
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU" style={{border: 'none'}}>
-                              <div className="d11"><span class="text__text___2g-Dv text__medium-copy___1Y01K">Lead Tracker</span></div>
+                              <div className="d11"><span class="text__text___2g-Dv text__medium-copy___1Y01K">Müşteri Adayı Takibi</span></div>
                               <div className="d12">
                                
                                <Dropdown>
@@ -694,7 +690,7 @@ function TeamAccess() {
  
                                  <Dropdown.Menu >
                                  <Dropdown.Item onClick={()=>change4('none')}>none</Dropdown.Item>
-                                 <Dropdown.Item onClick={()=>change4('full access')}>full access</Dropdown.Item>
+                                 <Dropdown.Item onClick={()=>change4('full access')}>Tam Yetki</Dropdown.Item>
                                 
                                  </Dropdown.Menu>
                              </Dropdown>
@@ -713,7 +709,7 @@ function TeamAccess() {
             </Modal.Body>
             <Modal.Footer>
                 <div className="col-md-12 text-center">
-                <button class="admin-add-btn f-w-500" onClick={Func}>  <i class="fa fa-plus" aria-hidden="true"></i> Invite  </button>
+                <button class="admin-add-btn f-w-500" onClick={Func}>  <i class="fa fa-plus" aria-hidden="true"></i> Davet Et  </button>
                 </div>
             </Modal.Footer>
       </Modal>

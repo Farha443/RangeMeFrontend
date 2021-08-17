@@ -37,7 +37,7 @@ function Notification() {
                     <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
-                                    <p className="p1"> Account Setting </p>
+                                    <p className="p1"> Hesap Ayarları</p>
                                     <ul>
                                         <li>
                                             <NavLink to="/admin_profile"
@@ -53,7 +53,7 @@ function Notification() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Şifre değiştir </div>
+                                                <div className="sidebar-title"> Şifre Değiştirme </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -66,7 +66,7 @@ function Notification() {
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
-                                        <p className="p2"> Company Setting </p>
+                                        <p className="p2"> Şirket Ayarları </p>
                                         <li>
                                             <NavLink to="/company_details"  
                                             inactiveClassName="text-gray-800"
@@ -82,7 +82,7 @@ function Notification() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Team Access </div>
+                                                <div className="sidebar-title"> Ekip Erişimi</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -119,36 +119,13 @@ function Notification() {
                                                         <Form.Group controlId="formBasicEmail">
 
                                                             <Form.Check inline name="group1" type="checkbox" id="1" checked />
-                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Updates to your Vaniver Verified™ status</label>
+                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Tayuss Onaylanmış™ durumunuzla ilgili güncellemeler</label>
                                                         </Form.Group>
 
                                                         <Form.Group controlId="formBasicEmail">
 
                                                             <Form.Check inline name="group1" type="checkbox" id="1" />
-                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Reminders to finish brand submissions</label>
-                                                        </Form.Group>
-
-                                                    </div>
-                                                </Col>
-                                            </Row>
-
-
-                                            <Row>
-
-                                                <Col md="6" className="mt-2"  >
-                                                    <h5> Team collaboration </h5>
-                                                    <div className="step-four-radio noti-check">
-
-                                                        <Form.Group controlId="formBasicEmail">
-
-                                                            <Form.Check inline name="group1" type="checkbox" id="1" />
-                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Updates when new team members are added to your brand</label>
-                                                        </Form.Group>
-
-                                                        <Form.Group controlId="formBasicEmail">
-
-                                                            <Form.Check inline name="group1" type="checkbox" id="1" />
-                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Reminders for pending team member invites</label>
+                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Onaya gönderilen markalar için hatırlatıcılar</label>
                                                         </Form.Group>
 
                                                     </div>
@@ -159,13 +136,36 @@ function Notification() {
                                             <Row>
 
                                                 <Col md="6" className="mt-2"  >
-                                                    <h5> Multiple brands  </h5>
+                                                    <h5> Ekip Çalışması </h5>
                                                     <div className="step-four-radio noti-check">
 
                                                         <Form.Group controlId="formBasicEmail">
 
                                                             <Form.Check inline name="group1" type="checkbox" id="1" />
-                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">See notifications from all your brands</label>
+                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Markanıza yeni ekip üyeleri eklendiğinde güncellemeler</label>
+                                                        </Form.Group>
+
+                                                        <Form.Group controlId="formBasicEmail">
+
+                                                            <Form.Check inline name="group1" type="checkbox" id="1" />
+                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Bekleyen ekip üyesi davetleri için hatırlatıcılar</label>
+                                                        </Form.Group>
+
+                                                    </div>
+                                                </Col>
+                                            </Row>
+
+
+                                            <Row>
+
+                                                <Col md="6" className="mt-2"  >
+                                                    <h5> Çoklu Markalar  </h5>
+                                                    <div className="step-four-radio noti-check">
+
+                                                        <Form.Group controlId="formBasicEmail">
+
+                                                            <Form.Check inline name="group1" type="checkbox" id="1" />
+                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Tüm markalarınızdan gelen bildirimleri görün</label>
                                                         </Form.Group>
 
 
@@ -199,25 +199,25 @@ function Notification() {
                                             <Row>
 
                                                 <Col md="6" className="mt-3" >
-                                                    <h5> Alıcı activity </h5>
+                                                    <h5> Alıcı Aktiviteleri </h5>
                                                     <div className="step-four-radio noti-check">
 
                                                         <Form.Group controlId="formBasicEmail">
 
                                                             <Form.Check inline name="group1" type="checkbox" id="1" checked />
-                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">When Alıcı request a product sample</label>
+                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Alıcı numume ürün talepleri</label>
                                                         </Form.Group>
 
                                                         <Form.Group controlId="formBasicEmail">
 
                                                             <Form.Check inline name="group1" type="checkbox" id="1" />
-                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">When Alıcı send you messages</label>
+                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Alıcı size mesaj gönderdiğinde</label>
                                                         </Form.Group>
 
                                                         <Form.Group controlId="formBasicEmail">
 
                                                             <Form.Check inline name="group1" type="checkbox" id="1" />
-                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">When I have unread messages</label>
+                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Gelen okunmamış mesajlar okundu durumuna geçtiğinde</label>
                                                         </Form.Group>
 
 

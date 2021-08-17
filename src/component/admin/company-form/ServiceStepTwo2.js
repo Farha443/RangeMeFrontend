@@ -185,10 +185,10 @@ var region_value = ''
 
     
   render() {
-    var token = cookies.get('logintoken');
-        if (token === undefined){
-        window.location="/login"
-        }
+    // var token = cookies.get('logintoken');
+    //     if (token === undefined){
+    //     window.location="/login"
+    //     }
     const { country, region,dis_country } = this.state;
    
     return(

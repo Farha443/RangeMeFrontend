@@ -102,7 +102,7 @@ function ServiceNavbar(){
           <ul>
             <li> <NavLink to="">{first_name} </NavLink> </li>
             <li> <NavLink to="/service-provider-profile">Settings </NavLink> </li>
-            <li> <NavLink to="" onClick={logout}> Logout </NavLink> </li>
+            <li> <NavLink to="" onClick={logout}> Çıkış </NavLink> </li>
           </ul>
       </div>
      </Nav.Link>

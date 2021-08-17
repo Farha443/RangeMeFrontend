@@ -64,7 +64,7 @@ function skip(){
       ).catch(err=>{
         console.error(err);
         $(".laoder").hide();
-      window.location = "company_form_two";
+        window.location.reload();
       })    
 
   }
@@ -76,10 +76,10 @@ function skip(){
       }
     }
     render(){
-        var token = cookies.get('logintoken');
-        if (token === undefined){
-        window.location="/login"
-        }
+        // var token = cookies.get('logintoken');
+        // if (token === undefined){
+        // window.location="/login"
+        // }
     return(
         <>
                  <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div>
@@ -99,7 +99,7 @@ function skip(){
 
                                         <div className="p-inside-title">
                                             <p> Step 2 of 3 </p>
-                                            <h5> Get Your profile Looking your great </h5> 
+                                            <h5> Get Profiliniz Looking your great </h5> 
                                         </div>
 
                                     
@@ -143,7 +143,7 @@ function skip(){
                                            <Col md="6">
                                                 <div className="logo-right-text-01">
                                                     <div>
-                                                    <h5> Company Logo</h5>
+                                                    <h5> Şirket Logosu</h5>
                                                     <p> Images must be at least 800 x 800px file formats JPG,PNG,SVG  </p>
                                                     </div>
                                                 </div>

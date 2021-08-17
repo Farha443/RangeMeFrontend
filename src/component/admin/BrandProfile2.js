@@ -403,9 +403,9 @@ function BrandProfile2() {
                                             <button class="border-btn" onClick={handleToggle}> <i class="fa fa-cog" aria-hidden="true"></i> </button>
                                            <div className={isActive ? "drop-d-101 " : "drop-d-101 open-drop"}>
                                                <ul>
-                                                   <li> <NavLink to="/brand-profile">Merge brands </NavLink> </li>
-                                                   <li> <NavLink to="/brand-profile">Preview brand page</NavLink> </li>
-                                                   <li> <NavLink to="/brand-profile">Preview brand card </NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Merge Markalar </NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Preview Markalar page</NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Preview Markalar card </NavLink> </li>
                                                </ul>
                                            </div>
                                         </li>
@@ -458,7 +458,7 @@ function BrandProfile2() {
                                                                         <Form.Group controlId="formBasicEmail">
 
                                                                             <Form.Check inline name="group1" type="checkbox" id="1" />
-                                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Draft </label>
+                                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Taslak </label>
                                                                         </Form.Group>
 
                                                                         <Form.Group controlId="formBasicEmail">
@@ -470,7 +470,7 @@ function BrandProfile2() {
                                                                         <Form.Group controlId="formBasicEmail">
 
                                                                             <Form.Check inline name="group1" type="checkbox" id="1" />
-                                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Published </label>
+                                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Yayınlanmış </label>
                                                                         </Form.Group>
 
                                                                         <Form.Group controlId="formBasicEmail">
@@ -531,12 +531,12 @@ function BrandProfile2() {
                                                                     </td>
                                                                    
                                                                     <td> {pd.productStatus==true? 
-                                                                        <button className="border-btn">Tamamlamak </button>: <button className="border-btn">Taşlak </button>}
+                                                                        <button className="border-btn">Yayınlandı </button>: <button className="border-btn">Taşlak </button>}
                                                                         </td>
                                                                     <td className="pd-last-td">
-                                                                    <button className="border-btn"  onClick={()=>CopyFunction(pd.pd_uuid)}>  Copy Product   </button>
+                                                                    <button className="border-btn"  onClick={()=>CopyFunction(pd.pd_uuid)}>  Ürünü Kopyala   </button>
                                                                         <button className="border-btn"> <NavLink to=""
-                                                                        onClick={()=>Redirect(pd.pd_uuid)}> Edit </NavLink>  </button>
+                                                                        onClick={()=>Redirect(pd.pd_uuid)}> Düzenle </NavLink>  </button>
                                                                          <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.pd_uuid)}> Delete </NavLink>  </button>
                                                                          <button className="border-btn" onClick={()=>MoveBrand(pd.pd_uuid,pd.Product)}>  Move To A Different Brand   </button>
                                                                         <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
@@ -753,8 +753,7 @@ function BrandProfile2() {
         >
             <Modal.Header closeButton>
             <Modal.Title id="example-custom-modal-styling-title">
-            Add new brand
-            </Modal.Title>
+            Yeni Marka Ekle            </Modal.Title>
             </Modal.Header>
             <Modal.Body>
             <Container>
@@ -769,13 +768,13 @@ function BrandProfile2() {
                     </Form.Group>
 
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label  style={{marginTop: '0px'}}>Location</Form.Label>
+                        <Form.Label  style={{marginTop: '0px'}}>Şehir</Form.Label>
                         <Form.Control type="text" id="brand_location" placeholder="abc" />
 
                     </Form.Group>
 
                     <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label  style={{marginTop: '0px'}}>Year founded</Form.Label>
+                    <Form.Label  style={{marginTop: '0px'}}>Kuruluş Tarihi</Form.Label>
                       <Form.Control as="select" id="year">
                       {years.map((year, index) => {
                             return <option key={`year${index}`} value={year}>{year}</option>
@@ -790,7 +789,7 @@ function BrandProfile2() {
                   </Form.Group>
 
                     <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label  style={{marginTop: '0px'}}>Revenue</Form.Label>
+                    <Form.Label  style={{marginTop: '0px'}}>Yıllık Ciro</Form.Label>
                       <Form.Control as="select" id='revenue'>
                       <option value="0M$-5M$">0M$-5M$</option>
                       <option value="6M$-10M$">6M$-10M$</option>
@@ -810,7 +809,7 @@ function BrandProfile2() {
             </Modal.Body>
             <Modal.Footer>
                 <div className="col-md-12 text-center">
-                <button class="admin-add-btn f-w-500" onClick={Submit}>  <i class="fa fa-plus" aria-hidden="true"></i> Add Brand </button>
+                <button class="admin-add-btn f-w-500" onClick={Submit}>  <i class="fa fa-plus" aria-hidden="true"></i>Marka Ekle</button>
                 </div>
             </Modal.Footer>
       </Modal>
@@ -834,7 +833,7 @@ function BrandProfile2() {
                         <Row>
                             <Col xs={12} md={10} className="m-auto">
                          <div className="text-center mb-3">
-                         <h5>Choose a brand for this product</h5>  
+                         <h5>Choose a Markalar for this product</h5>  
                          
                          </div>
                             <Col xs={12} md={10} className="m-auto"> 

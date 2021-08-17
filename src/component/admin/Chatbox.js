@@ -66,7 +66,12 @@ function Chatbox(){
       },[])
 
 //  var socket = new WebSocket('ws://localhost:8000/chat/')
- var socket = new WebSocket('wss://tayuss.com/chat/')
+let loc = window.location;
+    let wsStart= 'ws://';
+    if (loc.protocol==='https'){
+        wsStart='wss://'
+    }
+ var socket = new WebSocket(wsStart+'tayuss.com/chat/')
  useEffect(() => {
     socket.onopen = () => {
             // debugger
@@ -106,7 +111,12 @@ function Chatbox(){
     },[])
 
     //   var ws = new WebSocket('ws://localhost:8000/test/')
-      var ws = new WebSocket('wss://tayuss.com/test/')
+    // let loc = window.location;
+    // let wsStart= 'ws://';
+    // if (loc.protocol==='https'){
+    //     wsStart='wss://'
+    // }
+      var ws = new WebSocket(wsStart+'tayuss.com/test/')
       useEffect(() => {
          
         ws.onopen = () => {
@@ -183,7 +193,7 @@ function Chatbox(){
                 },
             };
             // var wss = new WebSocket('ws://localhost:8000/chat/')
-            var wss = new WebSocket('wss://tayuss.com/chat/')
+            var wss = new WebSocket(wsStart+'tayuss.com/chat/')
     wss.onclose = () => {
         console.log('disconnected')
         }
@@ -288,7 +298,7 @@ function Chatbox(){
                     <div className="chat-input">
                     <Form.Group controlId="formBasicEmail">
                         <Form.Control type="text"  id="message" placeholder="abc" />
-                        <button type = 'submit' onClick={()=>Sendmessage(recieverID)} class='btn btn-primary'>send</button>
+                        <button type = 'submit' onClick={()=>Sendmessage(recieverID)} class='btn btn-primary'>göndermek</button>
                     </Form.Group>
                     </div>
                 </Col>

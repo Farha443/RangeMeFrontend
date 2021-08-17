@@ -181,7 +181,7 @@ var region_value = ''
       ).catch(err=>{
         console.error(err);
         $(".laoder").hide(); 
-      window.location = "/service_step_two";
+        window.location.reload();
       })
     }
     handleKeypress = (event) => {

@@ -6,7 +6,7 @@ export default class BrandLogo extends Component {
         return (
             <div className="profile-up-main brand-logo">
             <div className="upload-imf-direction-text ">
-            <h6> Firmalar/Markalar Logo </h6>
+            <h6>Marka Adı Logo </h6>
               <p>Image must be at least 800 x 800px.
                  File formats JPG, PNG, GIF, JPEG.</p>
             </div>

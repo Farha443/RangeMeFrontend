@@ -233,6 +233,46 @@ function BrandProfile() {
             window.location.reload();
           })  
     }
+    
+
+    // function DeleteConfirm(id)
+    // {
+    //        Swal.fire({
+    //            icon: 'warning',
+    //            title: 'Are you sure?',
+    //            text: 'Click Yes! to Delete',
+    //            showCancelButton: true,
+    //            confirmButtonColor: '#3085d6',
+    //            cancelButtonColor: '#d33',
+    //            confirmButtonText: 'Yes!',
+    //        }).then((result) => {
+    //            if (result.isConfirmed) {
+    //                Delete(id)
+   
+    //            } else if (result.isCancled) {
+    //                Swal.fire('Changes are not saved', '', 'info')
+    //            }
+    //        });
+    //    }
+   
+    //    function Delete(id)
+    // {
+    //        axios
+    //            .delete(BASE_URL + 'deleteCategoryById/' + id)
+    //            .then(getuuid => {
+    //                Swal.fire({
+    //                    icon: 'success',
+    //                    title: 'Success',
+    //                    type: 'success',
+    //                    text: 'Category has been Deleted Successfully.',
+    //                    // showConfirmButton: false,
+    //                    timer: 5000
+    //                });
+    //                window.location.reload();
+    //                setcategory(getuuid.data);
+    //            })
+    //    }
+
 
     function SaveMoveBrand(){  
         // debugger
@@ -571,9 +611,9 @@ function BrandProfile() {
                                             <button class="border-btn" onClick={handleToggle}> <i class="fa fa-cog" aria-hidden="true"></i> </button>
                                            <div className={isActive ? "drop-d-101 " : "drop-d-101 open-drop"}>
                                                <ul>
-                                                   <li> <NavLink to="/brand-profile">Merge Firmalar/Markalar </NavLink> </li>
-                                                   <li> <NavLink to="/brand-profile">Preview Firmalar/Markalar page</NavLink> </li>
-                                                   <li> <NavLink to="/brand-profile">Preview Firmalar/Markalar card </NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Merge Marka Adı</NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Preview Marka Adı page</NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Preview Marka Adı card </NavLink> </li>
                                                </ul>
                                            </div>
                                         </li>
@@ -725,21 +765,21 @@ function BrandProfile() {
                                                                     </td>
                                                                    
                                                                     <td> {pd.productStatus=='approved'? 
-                                                                        <button className="border-btn">Tamamlamak </button>: pd.productStatus==="draft"?<button className="border-btn"  onClick={()=>Redirect(pd.uuid)}>Taşlak </button>:""}
+                                                                        <button className="border-btn">Yayınlandı </button>: pd.productStatus==="draft"?<button className="border-btn"  onClick={()=>Redirect(pd.uuid)}>Taşlak </button>:""}
                                                                         </td>
                                                                     <td className="pd-last-td">
                                                                     <button className="border-btn"  onClick={()=>CopyFunction(pd.uuid)}>  Ürünü kopyala </button>
                                                                         <button className="border-btn"> <NavLink to=""
-                                                                        onClick={()=>Redirect(pd.uuid,pd.product_name)}> Düzenlemek </NavLink>  </button>
-                                                                         <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.uuid)}> Silmek </NavLink>  </button>
-                                                                         <button className="border-btn" onClick={()=>MoveBrand(pd.uuid,pd.product_name)}>  Farklı markaya geçiş  </button>
+                                                                        onClick={()=>Redirect(pd.uuid,pd.product_name)}> Düzenle </NavLink>  </button>
+                                                                         <button className="border-btn"> <NavLink to="" onClick={()=>DeleteProduct(pd.uuid)}> Sil </NavLink>  </button>
+                                                                         <button className="border-btn" onClick={()=>MoveBrand(pd.uuid,pd.product_name)}>  Başka Marka altına taşı </button>
                                                                         <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
                                                                         <div className={isAct ? "drop-d-101 " : "drop-d-101 open-drop"}> 
                                                                             <ul>
                                                                                 <li> <NavLink to="/brand-profile">View product statistics 1 </NavLink> </li>
                                                                                 <li> <NavLink to="/preview">Preview product 1</NavLink> </li>
                                                                                 <li> <NavLink to="/brand-profile">Make a copy</NavLink> </li>
-                                                                                <li> <NavLink to="/brand-profile"> Delete product</NavLink> </li>
+                                                                                <li> <NavLink to="/brand-profile"> Sil product</NavLink> </li>
                                                                                
                                                                             </ul>
                                                                         </div>
@@ -1148,7 +1188,7 @@ function BrandProfile() {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-custom-modal-styling-title">
-                    <h5 style={{ marginBottom: '0px' }}> Add Story </h5>
+                    <h5 style={{ marginBottom: '0px' }}> Hikaye Ekle </h5>
            
             </Modal.Title>
                 </Modal.Header>
@@ -1204,7 +1244,7 @@ function BrandProfile() {
                         <Row>
                             <Col xs={12} md={10} className="m-auto">
                          <div className="text-center mb-3">
-                         <h5> Add Youtube/Vimeo URL </h5>  
+                         <h5> Youtube/Vimeo URL'si ekle </h5>  
                         
                          </div>
                             <Col xs={12} md={10} className="m-auto"> 
@@ -1246,7 +1286,7 @@ function BrandProfile() {
                         <Row>
                             <Col xs={12} md={10} className="m-auto">
                          <div className="text-center mb-3">
-                         <h5>Choose a Firmalar/Markalar for this ürün</h5>  
+                         <h5>Choose a Marka Adı for this ürün</h5>  
                          
                          </div>
                             <Col xs={12} md={10} className="m-auto"> 
@@ -1329,7 +1369,7 @@ function BrandProfile() {
         >
             <Modal.Header closeButton>
             <Modal.Title id="example-custom-modal-styling-title">
-            Add new Firmalar/Markalar
+            Add new Marka Adı
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -1382,7 +1422,7 @@ function BrandProfile() {
             </Modal.Body>
             <Modal.Footer>
                 <div className="col-md-12 text-center">
-                <button class="admin-add-btn f-w-500" onClick={Submit}>  <i class="fa fa-plus" aria-hidden="true"></i> Add Brand </button>
+                <button class="admin-add-btn f-w-500" onClick={Submit}>  <i class="fa fa-plus" aria-hidden="true"></i> Marka Ekle</button>
                 </div>
             </Modal.Footer>
       </Modal>
@@ -1398,7 +1438,7 @@ function BrandProfile() {
         >
             <Modal.Header closeButton>
             <Modal.Title id="example-custom-modal-styling-title">
-            Firmalar/Markalar information
+            Marka Adı  information
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>

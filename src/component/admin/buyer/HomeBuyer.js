@@ -34,7 +34,11 @@ let input_message = $('.input-message')
 let message_body  = $('.msg_card_body')
 let send_message_form = $('#send-message-form')
 
-
+let loc = window.location;
+    let wsStart= 'ws://';
+    if (loc.protocol==='https'){
+        wsStart='wss://'
+    }
 function HomeBuyer(){
 
     var token = cookies.get('logintoken');
@@ -54,7 +58,7 @@ function HomeBuyer(){
     const [showcat, setshowcat] = useState([])
     const[count, setCount] = useState('')
 
-    var socket = new WebSocket('wss://tayuss.com/chat/')
+    var socket = new WebSocket(wsStart+'tayuss.com/chat/')
     // var socket = new WebSocket('ws://localhost:8000/chat/')
     useEffect(() => {
        socket.onopen = () => {
@@ -142,7 +146,7 @@ function Sendmessage(id){
             },
         };
     // var wss = new WebSocket('ws://localhost:8000/chat/')
-    var wss = new WebSocket('wss://tayuss.com/chat/')
+    var wss = new WebSocket(wsStart+'tayuss.com/chat/')
     wss.onclose = () => {
         console.log('disconnected')
         }

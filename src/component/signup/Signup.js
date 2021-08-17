@@ -33,7 +33,7 @@ function Toggle1() {
 
  function Func() {
     $(".laoder").show(); 
-    // debugger
+    debugger
     var first_name = document.getElementById('first_name').value;
     var last_name = document.getElementById('last_name').value;
     var email = document.getElementById('email').value;
@@ -146,7 +146,7 @@ class Signup extends React.Component {
                     <div className="validated-field__container___1zNgS">
                       <div className="input-with-floating-label__wrapper___368i9">
                         <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="FirstNameInput" placeholder="First Name" id="first_name" type="text"  />
-                        <label className="input-with-floating-label__label___4HdSN"  htmlFor="firstName"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">First Name</span></label>
+                        <label className="input-with-floating-label__label___4HdSN"  htmlFor="firstName"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Ad</span></label>
                       </div>
                     </div>
                   </div>
@@ -154,22 +154,22 @@ class Signup extends React.Component {
                     <div className="validated-field__container___1zNgS">
                       <div className="input-with-floating-label__wrapper___368i9">
                         <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="LastNameInput" id="last_name" placeholder="Last Name " type="text"  />
-                        <label className="input-with-floating-label__label___4HdSN" htmlFor="lastName"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Last Name</span></label>
+                        <label className="input-with-floating-label__label___4HdSN" htmlFor="lastName"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Soyad</span></label>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="validated-field__container___1zNgS">
                   <div className="input-with-floating-label__wrapper___368i9">
-                    <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="EmailInput" id="email" placeholder="Email " type="text" />
-                    <label className="input-with-floating-label__label___4HdSN" htmlFor="email"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Email</span></label>
+                    <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="EmailInput" id="email" placeholder="E-posta " type="text" />
+                    <label className="input-with-floating-label__label___4HdSN" htmlFor="email"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">E-posta</span></label>
                   </div>
                 </div>
                 <div className="password-input__wrapper___QSbdy">
                   <div className="validated-field__container___1zNgS password-input__full-width-input___3FfgD">
                     <div className="input-with-floating-label__wrapper___368i9">
-                      <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U password-input__input___oDHJw" data-tname="PasswordInput" id="password" placeholder="Password " type="password"  />
-                      <label className="input-with-floating-label__label___4HdSN" htmlFor="password"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Password</span></label>
+                      <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U password-input__input___oDHJw" data-tname="PasswordInput" id="password" placeholder="Şifre  " type="password"  />
+                      <label className="input-with-floating-label__label___4HdSN" htmlFor="password"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Şifre </span></label>
                     </div>
                   </div>
                   <button className="password-input__toggle-button___2A3QJ" onClick = {Toggle} data-tname="togglePasswordVisibility" tabIndex={-1} type="button"><span className="text__text___2g-Dv text__small-copy___bgT96 password-input__toggle-button-text___1PpgB">Show</span></button>
@@ -177,8 +177,8 @@ class Signup extends React.Component {
                 <div className="password-input__wrapper___QSbdy">
                   <div className="validated-field__container___1zNgS password-input__full-width-input___3FfgD">
                     <div className="input-with-floating-label__wrapper___368i9">
-                      <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U password-input__input___oDHJw" data-tname="PasswordInput" id="password1" placeholder="Password " type="password"  />
-                      <label className="input-with-floating-label__label___4HdSN" htmlFor="password"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Confirm Password</span></label>
+                      <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U password-input__input___oDHJw" data-tname="PasswordInput" id="password1" placeholder="Şifre - Tekrar " type="password"  />
+                      <label className="input-with-floating-label__label___4HdSN" htmlFor="password"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Şifre - Tekrar</span></label>
                     </div>
                   </div>
                   <button className="password-input__toggle-button___2A3QJ" onClick = {Toggle1}data-tname="togglePasswordVisibility" tabIndex={-1} type="button"><span className="text__text___2g-Dv text__small-copy___bgT96 password-input__toggle-button-text___1PpgB">Show</span></button>
@@ -186,13 +186,13 @@ class Signup extends React.Component {
                 <div className="validated-field__container___1zNgS">
                   <div className="input-with-floating-label__wrapper___368i9">
                     <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="phone no" placeholder="Phone no " id="mobile" type="number" />
-                    <label className="input-with-floating-label__label___4HdSN" htmlFor="number"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Phone no</span></label>
+                    <label className="input-with-floating-label__label___4HdSN" htmlFor="number"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Cep Telefonu </span></label>
                   </div>
                 </div>
                 <div className="validated-field__container___1zNgS">
                   <div className="input-with-floating-label__wrapper___368i9">
                     <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="CompanyNameInput" id="comp_name" placeholder="Company Name " type="text" />
-                    <label className="input-with-floating-label__label___4HdSN" htmlFor="companyName"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Company Name</span></label>
+                    <label className="input-with-floating-label__label___4HdSN" htmlFor="companyName"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Şirket Adı</span></label>
                   </div>
                 </div>
                 <div className="validated-field__container___1zNgS">

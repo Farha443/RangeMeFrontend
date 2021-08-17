@@ -56,7 +56,7 @@ function Preview() {
 
                                         <div className="p-icn-02">
                                           
-                                            <button className="appro-btn"> Edit </button>
+                                            <button className="appro-btn"> Düzenleme </button>
                                         </div>
                                     </div>
                                 </div>

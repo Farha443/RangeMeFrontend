@@ -127,10 +127,10 @@ var userTypeTitle=cookies.get('userType');
       }
     }
   render() {
-    var token = cookies.get('logintoken');
-    if (token === undefined){
-    window.location="/login"
-    }
+    // var token = cookies.get('logintoken');
+    // if (token === undefined){
+    // window.location="/login"
+    // }
    
     return(
         <>
@@ -151,7 +151,7 @@ var userTypeTitle=cookies.get('userType');
                                            <Row>
                                            <Col md="6">
                                             <Form.Group controlId="exampleForm.ControlSelect1" >
-                                                <Form.Label>Year Founded</Form.Label>
+                                                <Form.Label>Kuruluş Tarihi</Form.Label>
                                                 <Form.Control as="select" id="year">
                                                 {/* <select> */}
                                                     
@@ -174,7 +174,7 @@ var userTypeTitle=cookies.get('userType');
                                             
                                             <Col md="6">
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label> Annual Gross Revenue </Form.Label>
+                                                <Form.Label> Annual Gross Yıllık Ciro </Form.Label>
                                                 <Form.Control as="select" id="revenue">
                                                 <option value="0M$-5M$">0M$-5M$</option>
                                                 <option value="6M$-10M$">6M$-10M$</option>
@@ -232,7 +232,7 @@ var userTypeTitle=cookies.get('userType');
 
                                             <Col md="12">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Firmalar/Markalar Website</Form.Label>
+                                                <Form.Label>Marka Adı Website</Form.Label>
                                                 <Form.Control type="text"  id="brand_webisite"/>
 
                                             </Form.Group>

@@ -21,7 +21,11 @@ import {
 const axios = require('axios');
 const cookies = new Cookies();
 
-
+let loc = window.location;
+    let wsStart= 'ws://';
+    if (loc.protocol==='https'){
+        wsStart='wss://'
+    }
 
 function BidPlacing(){
     debugger
@@ -44,7 +48,7 @@ function BidPlacing(){
             category:category,
           }
       };
-      var ws = new WebSocket('wss://tayuss.com/test/')
+      var ws = new WebSocket(wsStart+'tayuss.com/test/')
       // var ws = new WebSocket('ws://localhost:8000/test/')
       ws.onclose = () => {
         console.log('disconnected')

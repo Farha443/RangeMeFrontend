@@ -155,7 +155,7 @@ class AdminProfile extends React.Component {
                         <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
-                                    <p className="p1"> Account Setting </p>
+                                    <p className="p1"> Hesap Ayarları</p>
                                     <ul>
                                         <li>
                                             <NavLink to="/service-provider-profile"
@@ -171,7 +171,7 @@ class AdminProfile extends React.Component {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Şifre değiştir </div>
+                                                <div className="sidebar-title"> Şifre Değiştirme </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -225,7 +225,7 @@ class AdminProfile extends React.Component {
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>First Name</Form.Label>
+                                                <Form.Label>Ad</Form.Label>
                                                 <Form.Control defaultValue={this.state.first_name} id='first_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
@@ -234,7 +234,7 @@ class AdminProfile extends React.Component {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Last Name</Form.Label>
+                                                <Form.Label>Soyad</Form.Label>
                                                 <Form.Control defaultValue={this.state.last_name} id='last_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
@@ -253,7 +253,7 @@ class AdminProfile extends React.Component {
                                             <Col md="6">
 
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Phone</Form.Label>
+                                                <Form.Label>Cep Telefonu</Form.Label>
                                                 <Form.Control defaultValue={this.state.mobile} type="text" id="phone" >
                                                 
                                                 </Form.Control>

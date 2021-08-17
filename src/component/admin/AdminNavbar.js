@@ -113,8 +113,8 @@ function AdminNavbar(){
       <div className={isActive ? "dropmenu-profile-img " : "dropmenu-profile-img dropmenu-profile-open"} onClick={handleToggle}>
           <ul>
             <li> <NavLink to="/admin_profile">{first_name} </NavLink> </li>
-            <li> <NavLink to="/admin_profile">Settings </NavLink> </li>
-            <li> <NavLink to="" onClick={logout}> Logout </NavLink> </li>
+            <li> <NavLink to="/admin_profile">Ayarlar </NavLink> </li>
+            <li> <NavLink to="" onClick={logout}> Çıkış </NavLink> </li>
           </ul>
       </div>
      </Nav.Link>
@@ -134,8 +134,7 @@ function AdminNavbar(){
         >
             <Modal.Header closeButton>
             <Modal.Title id="example-custom-modal-styling-title">
-            Add new brand
-            </Modal.Title>
+            Yeni Marka Ekle            </Modal.Title>
             </Modal.Header>
             <Modal.Body>
             <Container>
@@ -144,7 +143,7 @@ function AdminNavbar(){
                 <Col xs={12} md={12}>
                 
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label  style={{marginTop: '0px'}}>Firmalar/Markalar</Form.Label>
+                        <Form.Label  style={{marginTop: '0px'}}>Marka Adı</Form.Label>
                         <Form.Control type="text" id="brand_name" placeholder="abc" />
 
                     </Form.Group>
@@ -156,7 +155,7 @@ function AdminNavbar(){
                     </Form.Group>
 
                     <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label  style={{marginTop: '0px'}}>Year founded</Form.Label>
+                    <Form.Label  style={{marginTop: '0px'}}>Kuruluş Tarihi</Form.Label>
                       <Form.Control as="select" id="year">
                         
                       {years.map((year, index) => {
@@ -183,7 +182,7 @@ function AdminNavbar(){
             </Modal.Body>
             <Modal.Footer>
                 <div className="col-md-12 text-center">
-                <button class="admin-add-btn f-w-500" onClick={Submit}>  <i class="fa fa-plus" aria-hidden="true"></i> Add Brand </button>
+                <button class="admin-add-btn f-w-500" onClick={Submit}>  <i class="fa fa-plus" aria-hidden="true"></i> Marka Ekle</button>
                 </div>
             </Modal.Footer>
       </Modal>

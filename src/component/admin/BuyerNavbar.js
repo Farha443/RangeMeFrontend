@@ -86,8 +86,8 @@ function AdminNavbar(){
       <div className={isActive ? "dropmenu-profile-img " : "dropmenu-profile-img dropmenu-profile-open"}>
           <ul>
             <li> <NavLink to="/buyeradmin_prof">{first_name} </NavLink> </li>
-            <li> <NavLink to="/buyeradmin_prof">Settings </NavLink> </li>
-            <li> <NavLink to="" onClick={logout}> Logout </NavLink> </li>
+            <li> <NavLink to="/buyeradmin_prof">Ayarlar  </NavLink> </li>
+            <li> <NavLink to="" onClick={logout}> Çıkış </NavLink> </li>
           </ul>
       </div>
      </Nav.Link>

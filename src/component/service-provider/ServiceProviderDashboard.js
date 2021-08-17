@@ -48,7 +48,7 @@ function ServiceProviderDashboard(){
                 </div> 
 
                 <div className="serv-comp-title">
-                    <h5> Company Name  </h5>
+                    <h5> Şirket Adı  </h5>
                 </div>
                 {/* <img src={BASE_URL.slice(0,-5)+cookies.get('companyProfile')} width="150px" height='200px'/> */}
                 <div className="p-text-45878">
@@ -60,13 +60,13 @@ function ServiceProviderDashboard(){
                 </div>
 
                 <div className="serv-com-btn-m">
-                    <button className="admin-add-btn"> <NavLink to="/service-company-profile">Complete Profile  </NavLink></button>
+                    <button className="admin-add-btn"> <NavLink to="/service-company-profile">Yayınlandı Profile  </NavLink></button>
                 </div>
 
                 <div className="p-text-45878 text-center">
                     <span className="span-1"> Preview :</span>
                     <span className="span-2 " style={{fontSize: '14px', marginLeft: '0.5rem'}}>
-                       Unpublished
+                    Yayınlanmamış
                     </span>
                 </div>
 
@@ -83,10 +83,10 @@ function ServiceProviderDashboard(){
                         <div className="wel-text">
                         <h4> Welcome to your dashboard! </h4>
                         <p>
-                        Manage your profile, view your messages, and track profile visits.
+                        Manage Profiliniz, view your messages, and track Profil Ziyaretleri.
                         </p>
                         <p>
-                         <NavLink to=""> Complete your profile </NavLink> to become discoverable by thousands of suppliers.
+                         <NavLink to=""> Yayınlandı Profiliniz</NavLink> to become discoverable by thousands of suppliers.
                         </p>
                         </div>
 
@@ -125,7 +125,7 @@ function ServiceProviderDashboard(){
                                                 <div className="b-cont">
                                                 {/* <i class="fa fa-eye" aria-hidden="true"></i> */}
                                                 <h2> - </h2>
-                                                <p> Profile visits   </p>
+                                                <p> Profil Ziyaretleri </p>
                                                 </div>
                                             </li>
 

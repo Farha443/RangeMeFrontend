@@ -69,7 +69,7 @@ var userTypeTitle=cookies.get('userType');
       ).catch(err=>{
         console.error(err);
         $(".laoder").hide(); 
-      window.location = "/service_step_one";
+        window.location.reload();
       })
     }
     handleKeypress = (event) => {
@@ -79,10 +79,10 @@ var userTypeTitle=cookies.get('userType');
     }
   render() {
    
-    var token = cookies.get('logintoken');
-    if (token === undefined){
-    window.location="/login"
-    }
+    // var token = cookies.get('logintoken');
+    // if (token === undefined){
+    // window.location="/login"
+    // }
     return(
         <>
         <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div> 
@@ -103,7 +103,7 @@ var userTypeTitle=cookies.get('userType');
 
                                             <Col md="12">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Comapnay Addresss</Form.Label>
+                                                <Form.Label>Şirket Adresi</Form.Label>
                                                 <Form.Control type="text"  id="comp_location"/>
 
                                             </Form.Group>

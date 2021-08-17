@@ -172,7 +172,7 @@ class AdminProfile extends React.Component {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Şifre değiştir  </div>
+                                                <div className="sidebar-title"> Şifre Değiştirme  </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -245,7 +245,7 @@ class AdminProfile extends React.Component {
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>İlk adı</Form.Label>
+                                                <Form.Label>Ad</Form.Label>
                                                 <Form.Control defaultValue={this.state.first_name} id='first_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
@@ -254,7 +254,7 @@ class AdminProfile extends React.Component {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Soy isim</Form.Label>
+                                                <Form.Label>Soyad</Form.Label>
                                                 <Form.Control defaultValue={this.state.last_name} id='last_name' type="text" placeholder="Enter email" />
 
                                             </Form.Group>
@@ -273,7 +273,7 @@ class AdminProfile extends React.Component {
                                             <Col md="6">
 
                                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Telefon numarası</Form.Label>
+                                                <Form.Label>Cep Telefonu</Form.Label>
                                                 <Form.Control defaultValue={this.state.mobile} type="text" id="phone" >
                                                 
                                                 </Form.Control>

@@ -101,7 +101,7 @@ class CompanyStepFour extends React.Component {
                   window.location = "/login"
                   
                 }).catch(err=>{
-                  window.location = "/company_form_Four"
+                    window.location.reload();
                   console.log(err)
                 })
               
@@ -128,10 +128,10 @@ class CompanyStepFour extends React.Component {
         console.log(this.state.country)
         const { country, region  } = this.state;
 
-        var token = cookies.get('logintoken');
-        if (token === undefined){
-        window.location="/login"
-        }
+        // var token = cookies.get('logintoken');
+        // if (token === undefined){
+        // window.location="/login"
+        // }
 
     return(
         <>
@@ -176,6 +176,7 @@ class CompanyStepFour extends React.Component {
                                                 className="form-control"
                                                     value={country}
                                                     defaultValue={this.state.country}
+                                                    defaultOptionLabel="Ülke Seçiniz"
                                                     onChange={(val) => this.selectCountry(val)} />
                                             </Form.Group>
 
@@ -190,7 +191,7 @@ class CompanyStepFour extends React.Component {
                                                 <label htmlFor="basic-url" className="lb">Do you cover all regions within your country</label>
                                                 </div>
                                                 <Form.Check inline onChange={this.changefunction} label="Evet" value="true" name="cover" type="radio" id="yes" />
-                                               <Form.Check onChange={this.changefunction} inline label="No" value="false" name="cover" type="radio" id="no" />
+                                               <Form.Check onChange={this.changefunction} inline label="Hayır" value="false" name="cover" type="radio" id="no" />
                                                 </div>
                                                </Col>
                                            </Row>

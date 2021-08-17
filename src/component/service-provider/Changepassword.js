@@ -89,7 +89,7 @@ function Changepassword() {
                     <Col md="3">
                     <aside>
                                 <div className="admin-sidebar-main">
-                                    <p className="p1"> Account Setting </p>
+                                    <p className="p1"> Hesap Ayarları</p>
                                     <ul>
                                         <li>
                                             <NavLink to="/service-provider-profile"
@@ -105,7 +105,7 @@ function Changepassword() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                
-                                                <div className="sidebar-title">Şifre değiştir</div>
+                                                <div className="sidebar-title">Şifre Değiştirme</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -141,7 +141,7 @@ function Changepassword() {
 
                                            <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Current Password</Form.Label>
+                                                <Form.Label>Mevcut Şifre</Form.Label>
                                                 <Form.Control type="password" id='current_pass' />
 
                                             </Form.Group>
@@ -150,7 +150,7 @@ function Changepassword() {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>New Password</Form.Label>
+                                                <Form.Label>Yeni Şifre</Form.Label>
                                                 <Form.Control type="password" id='new_pass' />
 
                                             </Form.Group>
@@ -159,7 +159,7 @@ function Changepassword() {
 
                                             <Col md="6">
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>New Password Confirmation</Form.Label>
+                                                <Form.Label>Yeni Şifre - Tekrar</Form.Label>
                                                 <Form.Control type="password" id='confirm_new'/>
 
                                             </Form.Group>
