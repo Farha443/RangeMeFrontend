@@ -184,7 +184,7 @@ function TeamAccess() {
                                             inactiveClassName="text-gray-800"
                                             >
                                                 <img src="assets/images/list-searching-variant.png" />
-                                                <div className="sidebar-title">Your Profile </div>
+                                                <div className="sidebar-title">Senin profil  </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -193,7 +193,7 @@ function TeamAccess() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Change Password  </div>
+                                                <div className="sidebar-title">Şifre değiştir </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -202,7 +202,7 @@ function TeamAccess() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/moving-truck.png" />
-                                                <div className="sidebar-title"> Notifications  </div>
+                                                <div className="sidebar-title"> Bildirimler  </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -212,7 +212,7 @@ function TeamAccess() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Company Details </div>
+                                                <div className="sidebar-title"> Şirket Detayları </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>

@@ -182,12 +182,12 @@ function ProductForm() {
                                     <div className="p-right-content">
                                         <div className="p-icn-01">
                                             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                                            <span> All changes saved </span>
+                                            {/* <span> All changes saved </span> */}
                                         </div>
 
                                         <div className="p-icn-02">
-                                            <button className="pre-btn"> Preview </button>
-                                            <button className="appro-btn"> Submit Approval </button>
+                                            <button className="pre-btn"> Ürünü Görüntüle</button>
+                                            <button className="appro-btn"> Ürünü Onaya Gönder </button>
                                         </div>
                                     </div>
                                 </div>
@@ -320,7 +320,7 @@ function ProductForm() {
                                             </Col>
 
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={Step1}>   Next  </button>
+                                            <button class="admin-add-btn" onClick={Step1}> Sonraki Sayfa  </button>
                                             </Col>
 
                                            </Row>

@@ -87,7 +87,7 @@ function CompanyStepFour(){
                                            <Row>
                                                <Col md="6" className="m-auto" >
                                                <div className="step-four-radio">
-                                                <Form.Check inline label="Yes" name="group1" type="radio" id="1" />
+                                                <Form.Check inline label="Evet" name="group1" type="radio" id="1" />
                                                 <Form.Check inline label="No" name="group1" type="radio" id="2" />
                                                 </div>
                                                </Col>

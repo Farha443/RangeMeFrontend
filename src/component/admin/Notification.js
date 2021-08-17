@@ -34,7 +34,7 @@ function Notification() {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                    <Col md="2">
+                    <Col md="3">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <p className="p1"> Account Setting </p>
@@ -44,7 +44,7 @@ function Notification() {
                                             inactiveClassName="text-gray-800"
                                             >
                                                 <img src="assets/images/list-searching-variant.png" />
-                                                <div className="sidebar-title">Your Profile </div>
+                                                <div className="sidebar-title">Senin profil </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -53,7 +53,7 @@ function Notification() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Change Password  </div>
+                                                <div className="sidebar-title"> Şifre değiştir </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -62,7 +62,7 @@ function Notification() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/moving-truck.png" />
-                                                <div className="sidebar-title"> Notifications  </div>
+                                                <div className="sidebar-title"> Bildirimler  </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -72,7 +72,7 @@ function Notification() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Company Details </div>
+                                                <div className="sidebar-title"> Şirket Detayları </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -98,7 +98,7 @@ function Notification() {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5> <img src="assets/images/bell.png" /> Notifications </h5>
+                                            <h5> <img src="assets/images/bell.png" /> Bildirimler </h5>
 
                                         </div>
 
@@ -234,7 +234,7 @@ function Notification() {
 
 
                             <Col md="12" className="text-center mt-3">
-                                <button class="admin-add-btn">   Save Changes </button>
+                                <button class="admin-add-btn"> Ürünü Kaydet</button>
                             </Col>
                         </Col>
 

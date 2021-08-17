@@ -512,7 +512,7 @@ function SignupModal(props){
                         <Col md="12" xs="12">
                           <div className="signup-btn-d">
                               <button className="signup-btn" onClick={Submit}> 
-                              <span>  next </span> ADIM <i class="fal fa-long-arrow-right"></i>
+                              <span>  Sonraki  </span> ADIM <i class="fal fa-long-arrow-right"></i>
                               </button>
                           </div>
                         </Col>

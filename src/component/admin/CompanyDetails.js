@@ -265,7 +265,7 @@ savechange(){
                                             inactiveClassName="text-gray-800"
                                             >
                                                 <img src="assets/images/list-searching-variant.png" />
-                                                <div className="sidebar-title">Your Profile </div>
+                                                <div className="sidebar-title">Senin profil  </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -274,7 +274,7 @@ savechange(){
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title"> Change Password  </div>
+                                                <div className="sidebar-title"> Şifre değiştir</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -283,7 +283,7 @@ savechange(){
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/moving-truck.png" />
-                                                <div className="sidebar-title"> Notifications  </div>
+                                                <div className="sidebar-title"> Bildirimler  </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -293,7 +293,7 @@ savechange(){
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
-                                                <div className="sidebar-title"> Company Details </div>
+                                                <div className="sidebar-title"> Şirket Detayları </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -319,7 +319,7 @@ savechange(){
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5> Company Details </h5>
+                                            <h5> Şirket Detayları </h5>
 
                                         </div>
 
@@ -436,7 +436,7 @@ savechange(){
                                                 </Col> */}
                                     
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={cookies.get('sup_uuid')?()=>this.savechange():()=>this.savebuyer()}>   Save Changes  </button>
+                                            <button class="admin-add-btn" onClick={cookies.get('sup_uuid')?()=>this.savechange():()=>this.savebuyer()}> Ürünü Kaydet</button>
                                             </Col>
 
                                            </Row>

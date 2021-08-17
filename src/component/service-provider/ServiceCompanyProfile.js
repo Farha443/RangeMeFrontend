@@ -432,7 +432,7 @@ useEffect(()=>{
                     <div className="product-form-main">
 
                         <div className="p-inside-title">
-                            <h5> Company Details </h5>
+                            <h5> Şirket Detayları </h5>
 
                         </div>
 
@@ -755,7 +755,7 @@ useEffect(()=>{
                             </Col>
 
                             <Col md="12" className="text-center">
-                                <button class="admin-add-btn" onClick={SaveSection1}>   Save Changes  </button>
+                                <button class="admin-add-btn" onClick={SaveSection1}>Ürünü Kaydet</button>
                                 </Col>
 
                         </Row>

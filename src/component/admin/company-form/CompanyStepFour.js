@@ -59,7 +59,7 @@ class CompanyStepFour extends React.Component {
             $(".laoder").show(); 
             // console.log(this.state.no_select)
             var country = document.getElementById('country').value;
-            var slectradio = document.querySelector('input[name = "sakshi"]:checked').value;
+            var slectradio = document.querySelector('input[name = "cover"]:checked').value;
             if(slectradio === "true" ){
         
                 var region = "all"
@@ -189,8 +189,8 @@ class CompanyStepFour extends React.Component {
                                                <div>
                                                 <label htmlFor="basic-url" className="lb">Do you cover all regions within your country</label>
                                                 </div>
-                                                <Form.Check inline onChange={this.changefunction} label="Yes" value="true" name="sakshi" type="radio" id="yes" />
-                                               <Form.Check onChange={this.changefunction} inline label="No" value="false" name="sakshi" type="radio" id="no" />
+                                                <Form.Check inline onChange={this.changefunction} label="Evet" value="true" name="cover" type="radio" id="yes" />
+                                               <Form.Check onChange={this.changefunction} inline label="No" value="false" name="cover" type="radio" id="no" />
                                                 </div>
                                                </Col>
                                            </Row>

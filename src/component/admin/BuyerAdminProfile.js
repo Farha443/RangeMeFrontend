@@ -166,7 +166,7 @@ class BuyerAdminProfile extends React.Component {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5> Your Profile </h5>
+                                            <h5>Senin profil </h5>
                                           
                                               
                                         </div>
@@ -230,7 +230,7 @@ class BuyerAdminProfile extends React.Component {
                                             </Col>
                                              
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={()=>this.save()}>  Save Changes  </button>
+                                            <button class="admin-add-btn" onClick={()=>this.save()}>  Ürünü Kaydet</button>
                                             </Col>
 
                                            </Row>

@@ -374,11 +374,11 @@ function ProductDetail() {
                                     <div className="p-right-content">
                                         <div className="p-icn-01">
                                             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                                            <span> All changes saved </span>
+                                            {/* <span> All changes saved </span> */}
                                         </div>
 
                                         <div className="p-icn-02">
-                                            <button className="pre-btn"> <NavLink to="/preview"> <i class="fa fa-eye" aria-hidden="true"></i> Preview </NavLink>  </button>
+                                            <button className="pre-btn"> <NavLink to="/preview"> <i class="fa fa-eye" aria-hidden="true"></i> Ürünü Görüntüle</NavLink>  </button>
                                             <button className="appro-btn">Onay için ürünü gönder </button>
                                         </div>
                                     </div>
@@ -475,7 +475,7 @@ function ProductDetail() {
                                             </Col>
 
                                             <Col md="6" class="choose_pp">
-                                            <Form.Label>Product Image</Form.Label>
+                                            <Form.Label> Ürün Resmi</Form.Label>
                                                 {/* <button className="admin-add-btn" onClick={() => setShow4(true)} >  <i class="fa fa-plus" aria-hidden="true"></i> Add Image</button> */}
                                                 <ImageUploader
                                                         id="image_ki_id"
@@ -599,8 +599,8 @@ function ProductDetail() {
                                                 <div>
                                                 <label htmlFor="basic-url" className="lb">Ürününüzün barkodu var mı? </label>
                                                 </div>
-                                                <Form.Check inline label="Yes"  name="group1" onChange={e => setBarcode(e.target.value)} type="radio" value="true" id="yes_barcode"/>
-                                                <Form.Check inline label="No" name="group1" onChange={e => setBarcode(e.target.value)} type="radio" value="false" id="no_barcode" />
+                                                <Form.Check inline label="Evet"  name="group1" onChange={e => setBarcode(e.target.value)} type="radio" value="true" id="yes_barcode"/>
+                                                <Form.Check inline label="Hayır" name="group1" onChange={e => setBarcode(e.target.value)} type="radio" value="false" id="no_barcode" />
 
                                                 <div >
                                                 <InputGroup className="mb-3 mt-3">
@@ -650,8 +650,8 @@ function ProductDetail() {
                                                 <div>
                                                 <label htmlFor="basic-url" className="lb">Ürün Paketlemesi var mı? (Opsiyonel)</label>
                                                 </div>
-                                                <Form.Check inline label="Yes" name="group2" type="radio" onChange={e => setPackaging(e.target.value)}  value="true" id="yes_packaging" />
-                                                <Form.Check value="false" inline label="No" name="group2" onChange={e => setPackaging(e.target.value)}  type="radio" id="no_packaging" />
+                                                <Form.Check inline label="Evet" name="group2" type="radio" onChange={e => setPackaging(e.target.value)}  value="true" id="yes_packaging" />
+                                                <Form.Check value="false" inline label="Hayır" name="group2" onChange={e => setPackaging(e.target.value)}  type="radio" id="no_packaging" />
                                                 </div>
 
                                                 {packaging=== "true" ? <div >
@@ -760,8 +760,8 @@ function ProductDetail() {
                                                     <div>
                                                     <label htmlFor="basic-url" className="lb">Ürünün Raf ömrü var mı? (Opsiyonel)</label>
                                                     </div>
-                                                    <Form.Check inline label="Yes" name="group3" type="radio" onChange={e => setIngredient(e.target.value)}  value="true"  />
-                                                    <Form.Check inline label="No" type="radio" name="group3" onChange={e => setIngredient(e.target.value)}  value="false"  />
+                                                    <Form.Check inline label="Evet" name="group3" type="radio" onChange={e => setIngredient(e.target.value)}  value="true"  />
+                                                    <Form.Check inline label="Hayır" type="radio" name="group3" onChange={e => setIngredient(e.target.value)}  value="false"  />
                                                     </div>
                                                 </Col>
 
@@ -788,14 +788,14 @@ function ProductDetail() {
                                                     <div>
                                                     <label htmlFor="basic-url" className="lb">Ürün içerikleri ne?(Opsiyonel)</label>
                                                     </div>
-                                                    <Form.Check inline label="Yes" name="group4" type="radio"  onChange={e => setSelflife(e.target.value)}  value="true" />
-                                                    <Form.Check inline label="No" name="group4" type="radio" onChange={e => setSelflife(e.target.value)}  value="false" />
+                                                    <Form.Check inline label="Evet" name="group4" type="radio"  onChange={e => setSelflife(e.target.value)}  value="true" />
+                                                    <Form.Check inline label="Hayır" name="group4" type="radio" onChange={e => setSelflife(e.target.value)}  value="false" />
                                                     </div> 
                                                 </Col>
 
                                                 <Col md="12" xs="12">                                               
                                                 {selflife === "true" ?   <div className="input-tags-main-1024" >
-                                                        <input placeholder="yes" type="text" id="ingredients" defaultValue={p_details.ingredients}/>
+                                                        <input placeholder="Evet" type="text" id="ingredients" defaultValue={p_details.ingredients}/>
                                                     </div>       :''}                                      
                                                 </Col>
 
@@ -810,8 +810,8 @@ function ProductDetail() {
                                                     <div>
                                                     <label htmlFor="basic-url" className="lb">Besin değeri etiketi var mı? (Opsiyonel) </label>
                                                     </div>
-                                                    <Form.Check inline label="Yes" type="radio" name="group6" onChange={e => setNutritional(e.target.value)}  value="true" id="yes_nutrition"/>
-                                                    <Form.Check inline label="No" type="radio" name="group6" onChange={e => setNutritional(e.target.value)}  value="false" id="no_nutrition" />
+                                                    <Form.Check inline label="Evet" type="radio" name="group6" onChange={e => setNutritional(e.target.value)}  value="true" id="yes_nutrition"/>
+                                                    <Form.Check inline label="Hayır" type="radio" name="group6" onChange={e => setNutritional(e.target.value)}  value="false" id="no_nutrition" />
                                                     </div>
                                                 </Col>
 
@@ -834,9 +834,9 @@ function ProductDetail() {
                                     </Card>
 
                                         <Col md="12" className="text-center mt-4 two-btn-main">
-                                        <button class="admin-add-btn"> <NavLink to="/product_form"> Back </NavLink>    </button>
-                                        {p_details.Product === null || p_package.product_marketing=== null ?  <button class="admin-add-btn" onClick={() => productdetail()}> <NavLink to="/distribution"> Next </NavLink>  </button> :
-                                            <button class="admin-add-btn" onClick={() => ProductDetailsUpdate()}> <NavLink to="/distribution"> Update&Next </NavLink>  </button>}
+                                        <button class="admin-add-btn"> <NavLink to="/product_form">  Önceki Sayfa</NavLink>    </button>
+                                        {p_details.Product === null || p_package.product_marketing=== null ?  <button class="admin-add-btn" onClick={() => productdetail()}> <NavLink to="/distribution"> Sonraki Sayfa </NavLink>  </button> :
+                                            <button class="admin-add-btn" onClick={() => ProductDetailsUpdate()}> <NavLink to="/distribution"> Güncelle ve Sonraki </NavLink>  </button>}
                                         </Col>
                         </Col>
 

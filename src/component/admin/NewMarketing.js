@@ -197,12 +197,12 @@ handleChange2(event) {
                                     <div className="p-right-content">
                                         <div className="p-icn-01">
                                             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                                            <span> All changes saved </span>
+                                            {/* <span> All changes saved </span> */}
                                         </div>
 
                                         <div className="p-icn-02">
-                                            <button className="pre-btn"> Preview </button>
-                                            <button className="appro-btn"> Submit Approval </button>
+                                            <button className="pre-btn"> Ürünü Görüntüle</button>
+                                            <button className="appro-btn">  Ürünü Onaya Gönder </button>
                                         </div>
                                     </div>
                                 </div>
@@ -276,9 +276,9 @@ handleChange2(event) {
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Reklam Bütçesi </Form.Label>
                                                 <Form.Control as="select" id="promotional_budget" value={this.state.market.promotional_budget} onChange={e => this.handleChange(e)} className=""  >
-                                               <option value="Zero">Zero</option>
-                                                    <option value="$25k - $50k">$25k - $50k</option>
-                                                    <option value="$50k - $200k">$50k - $200k</option>
+                                               <option value="Zero">0</option>
+                                                    <option value="$25k - $50k"> 25.000 TL - 50.000 TL</option>
+                                                    <option value="$50k - $200k">50.000 TL - 200.000 TL </option>
                                                                 
                                                     </Form.Control>
 
@@ -287,7 +287,7 @@ handleChange2(event) {
                                             </Col>
 
                                             <Col md="6" >
-                                            <Form.Label>Product Image</Form.Label>
+                                            <Form.Label> Ürün Resmi</Form.Label>
                                                {/* <img src={BASE_URL.slice(0,-5)+ market.product_images} /> */}
                                                 {/* <ImageUploader
                                                         id="id"
@@ -317,7 +317,7 @@ handleChange2(event) {
                                             <Form.Group controlId="formBasicEmail">
                                                
                                             <Form.Label>Ürün video linki  </Form.Label>
-                                            <Form.Control id="product_videos" defaultValue={this.state.market.product_videos} type="text" placeholder="Enter URL" />
+                                            <Form.Control id="product_videos" defaultValue={this.state.market.product_videos} type="text" placeholder=" Youtube -Vimeo URL" />
 
                                                 {/* <button className="admin-add-btn" type="button" onClick={() => handleAdd()}>Add Video</button>
                                                 <div class="input-group-m" id="inputDiv">
@@ -334,7 +334,8 @@ handleChange2(event) {
                                     
                                             <Col md="12" className="text-center">
                                             {this.state.market.length === 0 ? 
-                                            <button class="admin-add-btn" onClick={this.save}>   Save Changes  </button>:<button class="admin-add-btn" onClick={this.Edit}>Update Changes</button>}
+                                            <button class="admin-add-btn" onClick={this.save}>Ürünü Kaydet
+                                            </button>:<button class="admin-add-btn" onClick={this.Edit}>Değişiklikleri Güncelle</button>}
                                             </Col>
                                            </Row>
                                         </div>

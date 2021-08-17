@@ -96,7 +96,7 @@ function Changepassword() {
                                             inactiveClassName="text-gray-800"
                                             >
                                                 <img src="assets/images/list-searching-variant.png" />
-                                                <div className="sidebar-title">Your Profile </div>
+                                                <div className="sidebar-title">Senin profil </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -105,7 +105,7 @@ function Changepassword() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                
-                                                <div className="sidebar-title"> Change Password  </div>
+                                                <div className="sidebar-title">Şifre değiştir</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -131,7 +131,7 @@ function Changepassword() {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5> <img src="assets/images/padlock.png" /> Change Password </h5>
+                                            <h5> <img src="assets/images/padlock.png" /> Şifre değiştir </h5>
 
                                         </div>
 
@@ -169,7 +169,7 @@ function Changepassword() {
                                         
                                     
                                             <Col md="12" className="text-center">
-                                            <button class="admin-add-btn" onClick={ChangecurrentPassword}>Change Password </button>
+                                            <button class="admin-add-btn" onClick={ChangecurrentPassword}>Şifre değiştir</button>
                                             </Col>
 
                                            </Row>

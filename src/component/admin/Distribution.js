@@ -427,11 +427,11 @@ class Distribution extends React.Component {
                                     <div className="p-right-content">
                                         <div className="p-icn-01">
                                             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                                            <span> All changes saved </span>
+                                            {/* <span> All changes saved </span> */}
                                         </div>
 
                                         <div className="p-icn-02">
-                                            <button className="pre-btn"> Preview </button>
+                                            <button className="pre-btn"> Ürünü Görüntüle</button>
                                             <button className="appro-btn"> Onay için ürünü gönder</button>
                                         </div>
                                     </div>
@@ -516,6 +516,7 @@ class Distribution extends React.Component {
                                                 <CountryDropdown id="country" 
                                                 className="form-control"
                                                     value={country}
+                                                    defaultOptionLabel="Ülke Seçiniz"
                                                     defaultValue={this.state.country}
                                                     onChange={(val) => this.selectCountry(val)} />
                                                    
@@ -529,6 +530,7 @@ class Distribution extends React.Component {
                                                 <RegionDropdown  id ="state" className = "form-control"
                                                     country={this.state.country}
                                                     value={region}
+                                                    defaultOptionLabel=" Şehir Seçiniz"
                                                     defaultValue={this.state.state1}
                                                     onChange={(val) => this.selectRegion(val)} />
                                                     </Form.Group>
@@ -584,13 +586,13 @@ class Distribution extends React.Component {
                                             <Col md="12" className="" >
                                                 <div className="step-four-radio">
                                                 <div>
-                                                <label htmlFor="basic-url" className="lb">Is this product available through distributors? </label>
+                                                <label htmlFor="basic-url" className="lb"> Ürüne distribütör-bayi aracılık ediyor mu? </label>
                                                 </div>
-                                                <Form.Check inline label="Yes" name="group7" type="radio" value="true" onClick={this.product_dis}  />
-                                                <Form.Check inline label="No" name="group7" type="radio" value="false" onClick={this.product_dis}  />
+                                                <Form.Check inline label="Evet" name="group7" type="radio" value="true" onClick={this.product_dis}  />
+                                                <Form.Check inline label="Hayır" name="group7" type="radio" value="false" onClick={this.product_dis}  />
                                                 </div>
                                                 {this.state.product_dis === "true" ?<Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label>Which Distribütörler? </Form.Label>
+                                                <Form.Label>Hangi Distribütör ye da Bayiler? </Form.Label>
                                                 <Form.Control as="select" multiple="true" id="distributors">
                                                 {this.state.data1.map(dis=>(  
                                                 <option value={dis.uuid}>{dis.name}</option>))}
@@ -610,15 +612,16 @@ class Distribution extends React.Component {
                                                 
                                                 <CountryDropdown  id = "distribution_location" className={isActive ? "form-control " : "form-control inp-disable    "}
                                                     value={dis_country}
+                                                    defaultOptionLabel="Ülke Seçiniz"
                                                     defaultValue={this.state.disCountry}
                                                     onChange={(val1) => this.DistributionCountry(val1)} />
-                                                    <label>If you can distribute to an entire country, add that country. Otherwise, please add the specific states or provinces (Texas, Quebec, etc.).</label>
+                                                    <label>Yukarıdaki listeden ülke seçin, tüm ülkelere ticaretiniz varsa aşağıdaki seçimi işaretleyin.</label>
                                                     <div className="validated-field__container___1zNgS">
                                                 <div className="checkbox-large__wrapper___2i1Pl signup-layout__terms-and-conditions___1mfPt">
                                                     <div className="checkbox-large__inner-wrapper___3jgqh" data-tname="TermsAndConditionsCheckbox">
                                                     <input onClick={this.handleToggle} onKeyPress={this.GlobalCheck} type="checkbox" id="vehicle1" name="vehicle1" className="sign-check" />
                                                     <span className="text__text___2g-Dv text__small-copy___bgT96 checkbox-large__label___1i8a0" data-tname="CheckboxLargeLabel"><span className="signup-layout__terms-and-conditions-label___csiGB">
-                                                    I can distribute to all countries globally.</span></span>
+                                                    Tüm ülkelere tedarik edebiliyoruz.</span></span>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -632,12 +635,12 @@ class Distribution extends React.Component {
                                             <Col md="12" className="" >
                                                     <div className="step-four-radio">
                                                         <div>
-                                                        <label htmlFor="basic-url" className="lb">Can you drop-ship this product to consumers? </label>
+                                                        <label htmlFor="basic-url" className="lb">Bu ürünü drop-shipping yoluyla satıyor musunuz? </label>
                                                         </div>
                                                         {this.state.data2.drop_ship === true ?
-                                                       <Form.Check inline label="Yes" name="group9" type="radio" value="true" defaultChecked onClick={this.drop_ship}  />: <Form.Check inline label="Yes" name="group9" type="radio" value="true"  onClick={this.drop_ship}  />}
+                                                       <Form.Check inline label="Evet" name="group9" type="radio" value="true" defaultChecked onClick={this.drop_ship}  />: <Form.Check inline label="Evet" name="group9" type="radio" value="true"  onClick={this.drop_ship}  />}
 
-                                                        {this.state.data2.drop_ship === false ? <Form.Check inline label="No" name="group9" type="radio" value="false" defaultChecked onClick={this.drop_ship}  /> : <Form.Check inline label="No" name="group9" type="radio" value="false" onClick={this.drop_ship}  /> }
+                                                        {this.state.data2.drop_ship === false ? <Form.Check inline label="Hayır" name="group9" type="radio" value="false" defaultChecked onClick={this.drop_ship}  /> : <Form.Check inline label="Hayır" name="group9" type="radio" value="false" onClick={this.drop_ship}  /> }
                                                         
                                                         
                                                     </div>
@@ -651,11 +654,11 @@ class Distribution extends React.Component {
                                                         <label htmlFor="basic-url" className="lb">Bu Ürün Private Label için uygun mu? </label>
                                                         </div>
                                                         {this.state.data2.private_label === true ?
-                                                        <Form.Check inline label="yes" name="group10" type="radio" value="true" defaultChecked onClick={this.private_label}  />:
-                                                        <Form.Check inline label="yes" name="group10" type="radio" value="true" onClick={this.private_label}  />}
+                                                        <Form.Check inline label="Evet" name="group10" type="radio" value="true" defaultChecked onClick={this.private_label}  />:
+                                                        <Form.Check inline label="Evet" name="group10" type="radio" value="true" onClick={this.private_label}  />}
                                                          {this.state.data2.private_label === false ?
-                                                        <Form.Check inline label="No" name="group10" type="radio" value="false" defaultChecked onClick={this.private_label}  />:
-                                                        <Form.Check inline label="No" name="group10" type="radio" value="false" onClick={this.private_label}  />}
+                                                        <Form.Check inline label="Hayır" name="group10" type="radio" value="false" defaultChecked onClick={this.private_label}  />:
+                                                        <Form.Check inline label="Hayır" name="group10" type="radio" value="false" onClick={this.private_label}  />}
 
                                                     </div>
                                                 </Col>
@@ -663,12 +666,12 @@ class Distribution extends React.Component {
                                                 <Col md="12" className="" >
                                                     <div className="step-four-radio">
                                                         <div>
-                                                        <label htmlFor="basic-url" className="lb">Does your product require cold storage?</label>
+                                                        <label htmlFor="basic-url" className="lb"> Bu ürün soğuk-zincir taşıması gerektiriyor mu? </label>
                                                         </div>
                                                         
-                                                        <Form.Check inline label="yes" name="group3" type="radio" value="true" onClick={this.storageChange}  />
+                                                        <Form.Check inline label="Evet" name="group3" type="radio" value="true" onClick={this.storageChange}  />
                                                         {this.state.data2.storage_required === "" ?
-                                                        <Form.Check inline label="No" name="group3" type="radio" value="false" defaultChecked onClick={this.storageChange}  />:<Form.Check inline label="No" name="group3" type="radio" value="false" onClick={this.storageChange}  />}
+                                                        <Form.Check inline label="Hayır" name="group3" type="radio" value="false" defaultChecked onClick={this.storageChange}  />:<Form.Check inline label="Hayır" name="group3" type="radio" value="false" onClick={this.storageChange}  />}
 
                                                     </div>
                                                    {this.state.storage === "true" ?<div className="step-four-radio">
@@ -699,10 +702,10 @@ class Distribution extends React.Component {
 
 
                             <Col md="12" className="text-center mt-4 two-btn-main">
-                            <button class="admin-add-btn"> <NavLink to="/products_detail"> Back </NavLink>    </button>
+                            <button class="admin-add-btn"> <NavLink to="/products_detail">  Önceki Sayfa</NavLink>    </button>
                             {this.state.data2.length === 0  ? 
-                                 <button class="admin-add-btn"> <NavLink to="" onClick={() => this.Submit()}> Next </NavLink>  </button>:
-                                 <button class="admin-add-btn"> <NavLink to="" onClick={() => this.Edit()}> Update&Next </NavLink>  </button>}
+                                 <button class="admin-add-btn"> <NavLink to="" onClick={() => this.Submit()}> Sonraki Sayfa </NavLink>  </button>:
+                                 <button class="admin-add-btn"> <NavLink to="" onClick={() => this.Edit()}> Güncelle ve Sonraki </NavLink>  </button>}
                             </Col>
 
                         </Col>

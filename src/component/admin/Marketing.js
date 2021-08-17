@@ -195,7 +195,7 @@ function Marketing() {
 
                                         <div className="p-icn-02">
                                             <button className="pre-btn"> Preview </button>
-                                            <button className="appro-btn"> Submit Approval </button>
+                                            <button className="appro-btn">  Ürünü Onaya Gönder </button>
                                         </div>
                                     </div>
                                 </div>
@@ -279,7 +279,7 @@ function Marketing() {
                                             </Col>
 
                                             <Col md="6" >
-                                            <Form.Label>Product Image</Form.Label>
+                                            <Form.Label> Ürün Resmi</Form.Label>
                                                {/* <img src={BASE_URL.slice(0,-5)+ market.product_images} /> */}
                                                 {/* <ImageUploader
                                                         id="id"
@@ -326,7 +326,8 @@ function Marketing() {
                                     
                                             <Col md="12" className="text-center">
                                             {market.length === 0 ? 
-                                            <button class="admin-add-btn" onClick={save}>   Save Changes  </button>:<button class="admin-add-btn" onClick={Edit}>Update Changes</button>}
+                                            <button class="admin-add-btn" onClick={save}> Ürünü Kaydet
+                                            </button>:<button class="admin-add-btn" onClick={Edit}>Update Changes</button>}
                                             </Col>
                                            </Row>
                                         </div>
