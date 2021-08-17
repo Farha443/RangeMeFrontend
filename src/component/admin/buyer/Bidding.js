@@ -22,7 +22,7 @@ const axios = require('axios');
 const cookies = new Cookies();
 
 let loc = window.location;
-    let wsStart= 'ws://';
+    let wsStart= 'wss://';
     if (loc.protocol==='https'){
         wsStart='wss://'
     }

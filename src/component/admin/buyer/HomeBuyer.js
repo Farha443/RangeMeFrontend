@@ -35,7 +35,7 @@ let message_body  = $('.msg_card_body')
 let send_message_form = $('#send-message-form')
 
 let loc = window.location;
-    let wsStart= 'ws://';
+    let wsStart= 'wss://';
     if (loc.protocol==='https'){
         wsStart='wss://'
     }

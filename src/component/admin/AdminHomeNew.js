@@ -28,7 +28,7 @@ const cookies = new Cookies();
 
 var user_uuid = cookies.get("uuid")
 let loc = window.location;
-    let wsStart= 'ws://';
+    let wsStart= 'wss://';
     if (loc.protocol==='https'){
         wsStart='wss://'
     }
@@ -138,7 +138,7 @@ var socket = new WebSocket(wsStart+'tayuss.com/chat/')
         setActive(!isActive);
       };
     //   var ws = new WebSocket('ws://localhost:8000/test/')
-      var ws = new WebSocket('ws://tayuss.com/test/')
+      var ws = new WebSocket('wss://tayuss.com/test/')
       useEffect(() => {
          
         ws.onopen = () => {
