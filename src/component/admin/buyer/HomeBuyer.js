@@ -27,6 +27,7 @@ import BASE_URL from '../../base';
 import axios from 'axios';
 import $ from "jquery";  
 import {Launcher} from 'react-chat-window'
+import { deprecationHandler } from 'moment';
 
 
 const cookies = new Cookies();
@@ -50,7 +51,7 @@ function HomeBuyer(){
     const [recieverID , setRecieverId] = useState(false)
     const[products,setProducts]=useState([])
     const[chatbox,setChatbox]=useState(false)
-    const[messageList,setmessageList]=useState([])
+    const[fullDetail,setFullDetail]=useState([])
     const[list,setList]=useState([])
     const[chat,setChat]=useState([])
     const[newMessage,setnewMessage]=useState({})
@@ -58,8 +59,8 @@ function HomeBuyer(){
     const [showcat, setshowcat] = useState([])
     const[count, setCount] = useState('')
 
-    var socket = new WebSocket(wsStart+'tayuss.com/chat/')
-    // var socket = new WebSocket('ws://localhost:8000/chat/')
+    // var socket = new WebSocket(wsStart+'tayuss.com/chat/')
+    var socket = new WebSocket('ws://localhost:8000/chat/')
     useEffect(() => {
        socket.onopen = () => {
                console.log('connected')
@@ -82,7 +83,7 @@ function HomeBuyer(){
         axios.get(BASE_URL+'authentication/GetCategorysignup/')
         .then(res=>{  
             
-            console.log(res.data.data)
+            // console.log(res.data.data)
 
             setshowcat(res.data.data ) 
         }).catch(err=>{
@@ -92,8 +93,8 @@ function HomeBuyer(){
         axios.get(BASE_URL+'product/getcatwise_product/?search=null')
         .then(res=>{  
             setProducts(res.data) 
-            // console.log("-------products ------------")
-            // console.log(res.data)  
+            console.log("-------products ------------")
+            console.log(res.data)  
         }).catch(err=>{
             console.log(err)            
         })
@@ -145,8 +146,8 @@ function Sendmessage(id){
                 msg : msg
             },
         };
-    // var wss = new WebSocket('ws://localhost:8000/chat/')
-    var wss = new WebSocket(wsStart+'tayuss.com/chat/')
+    var wss = new WebSocket('ws://localhost:8000/chat/')
+    // var wss = new WebSocket(wsStart+'tayuss.com/chat/')
     wss.onclose = () => {
         console.log('disconnected')
         }
@@ -175,28 +176,6 @@ function Sendmessage(id){
        
       }) 
   }
-    
-// function myfunc(query=null){
-//     if (query){
-//         var url = BASE_URL+'product/getcatwise_product/?search='+query    
-//     }
-//     else{    
-//     var url = BASE_URL+'product/getcatwise_product/'   
-//     }
-//     axios.get(url)
-//     .then(res=>{  
-//         console.log(res.data.data)  
-//         setProducts(res.data.data) 
-//     }).catch(err=>{
-//         console.log(err)            
-//     })
-//     // console.log(home)
-
-// }
-// function search(){
-//     var s = document.getElementById('search').value;
-//     myfunc(s)   
-// }
 
 function myfunc(){
     var cat_name = document.getElementById("category").value
@@ -228,6 +207,12 @@ function myfunc1(){
 
 }
 
+function Redirect(uuid){
+    // cookies.set('productuuid',id,{path:'/preview'})
+    window.location='/preview/'+uuid;
+}
+
+
     return(
         <>
            <BuyerNavbar/>
@@ -252,12 +237,7 @@ function myfunc1(){
                             <div class="col-md-4 col-xs-12">
                             <div class="form-group">
                                 <label for="sel1" style={{margin:"0px"}} className="mb-1">Ürün Kategorisi seç</label>
-                                {/* <select class="form-control" id="sel1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select> */}
+                              
                                  <Form.Control  onChange={myfunc1} as="select" id="department">
                              {showcat.map(cat=>(
                                                 <option value={cat.name}>{cat.name}</option>
@@ -303,23 +283,18 @@ function myfunc1(){
                                 <h6> {cat.product_name} </h6>
                                 <p style={{margin: "0px"}}> Lorem ipsum dollar </p>
                                 <div className="cost-text by-h-bt">
-                                    <button className="admin-add-btn"> Save</button> 
-                                    <button className="admin-add-btn ml-2"> Contact </button> 
-                                    <button class='btn btn-primary' onClick={()=>openchatbox(cat.user,cat.name)}>Chat</button>
+                                    <button className="admin-add-btn" onClick={()=>Redirect(cat.uuid)}> Detay</button> 
+                                    {/* <button className="admin-add-btn ml-2"> Contact </button>  */}
+                                    <button class='admin-add-btn ml-2' onClick={()=>openchatbox(cat.user,cat.name)}>Chat</button>
                                 </div>
                                 </div>
                         </div>
 
                     </Col>
                 ))}
-
-                </Row>
-}
-                <Row>
-                    
-                </Row>
-
-                <Modal
+                </Row>}
+                
+    <Modal
         size="md"
         show={chatbox}
         onHide={() => setChatbox(false)}
@@ -368,7 +343,7 @@ function myfunc1(){
             </Modal.Footer> */}
       </Modal>
             </div>
-                    
+          
             
         </> 
     );

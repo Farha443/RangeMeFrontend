@@ -65,13 +65,13 @@ function Chatbox(){
         ;
       },[])
 
-//  var socket = new WebSocket('ws://localhost:8000/chat/')
+ var socket = new WebSocket('ws://localhost:8000/chat/')
 let loc = window.location;
-    let wsStart= 'ws://';
+    let wsStart= 'wss://';
     if (loc.protocol==='https'){
         wsStart='wss://'
     }
- var socket = new WebSocket(wsStart+'tayuss.com/chat/')
+//  var socket = new WebSocket(wsStart+'tayuss.com/chat/')
  useEffect(() => {
     socket.onopen = () => {
             // debugger
@@ -110,13 +110,13 @@ let loc = window.location;
         
     },[])
 
-    //   var ws = new WebSocket('ws://localhost:8000/test/')
+      var ws = new WebSocket('ws://localhost:8000/test/')
     // let loc = window.location;
     // let wsStart= 'ws://';
     // if (loc.protocol==='https'){
     //     wsStart='wss://'
     // }
-      var ws = new WebSocket(wsStart+'tayuss.com/test/')
+    //   var ws = new WebSocket(wsStart+'tayuss.com/test/')
       useEffect(() => {
          
         ws.onopen = () => {
@@ -192,8 +192,8 @@ let loc = window.location;
                     msg : msg
                 },
             };
-            // var wss = new WebSocket('ws://localhost:8000/chat/')
-            var wss = new WebSocket(wsStart+'tayuss.com/chat/')
+            var wss = new WebSocket('ws://localhost:8000/chat/')
+            // var wss = new WebSocket(wsStart+'tayuss.com/chat/')
     wss.onclose = () => {
         console.log('disconnected')
         }

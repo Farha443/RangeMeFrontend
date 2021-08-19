@@ -88,7 +88,7 @@ function Routes(){
                 <Route exact path="/admin_home" component={AdminHomeNew}></Route>
                 <Route exact path="/admin_navbar" component={AdminNavbar}></Route>
                 <Route exact path="/product_form" component={ProductForm}></Route>
-                <Route exact path="/preview" component={Preview}></Route>
+                <Route exact path="/preview/:uuid" component={Preview}></Route>
                 <Route exact path="/distribution" component={Distribution}></Route>
                 <Route exact path="/marketing" component={Marketing}></Route>
                 <Route exact path="/supplier_step_one" component={SupplierStepOne}></Route>
@@ -118,6 +118,7 @@ function Routes(){
                 <Route exact path="/privacy" component={PrivacyStatement}></Route>
                 <Route exact path="/bidding" component={Bidding}></Route>
                 <Route exact path="/servicehome" component={ServiceProvidersHome}></Route>
+                
             </Switch>
         </> 
     )

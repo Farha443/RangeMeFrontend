@@ -55,7 +55,21 @@ function Click2(){
 
 function Header(){
   const [modalShow, setModalShow] = useState(false);
-  const[brands, setBrands] = useState([])
+  const[brands, setBrands] = useState([]);
+  const [, triggerRender] = useState(0);
+
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      //  console.log('This will run every second!');
+      //  alert(new Date());
+    }, 3000);
+ 
+    // This is important, you must clear your interval when component unmounts
+    return () => clearInterval(interval);
+ 
+ }, [])  
 
   useEffect(() => {
          

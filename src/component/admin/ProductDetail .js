@@ -42,6 +42,7 @@ const colourOptions=[
 
 const axios = require('axios');
 const cookies = new Cookies();
+var uuid = cookies.get('productuuid');
 
 function ProductDetail() {
     const [show3, setShow3] = useState(false);
@@ -354,6 +355,12 @@ function ProductDetail() {
                 })
               
     }
+
+    function Redirect(uuid){
+        window.location='/preview/'+uuid;
+    }
+
+
     return (
         <>
             <AdminNavbar />
@@ -366,7 +373,7 @@ function ProductDetail() {
 
                                 <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4>  {productname.product_name } </h4> <span>Ürün  </span>
+                                        <h4>  {productname.product_name } </h4> <span>Ürün</span>
                                     </div>
                                 </div>
 
@@ -378,7 +385,7 @@ function ProductDetail() {
                                         </div>
 
                                         <div className="p-icn-02">
-                                            <button className="pre-btn"> Ürünü Görüntüle</button>
+                                            <button className="pre-btn" onClick={() => Redirect(uuid)}> Ürünü Görüntüle</button>
                                             <button className="appro-btn">Onay için ürünü gönder </button> 
                                         </div>
                                     </div>
@@ -514,7 +521,7 @@ function ProductDetail() {
                                         </label>
                                             <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
-                                                <InputGroup.Text id="basic-addon1">US Dollar</InputGroup.Text>
+                                                <InputGroup.Text id="basic-addon1">TL</InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <FormControl
                                                 type="number"
@@ -534,7 +541,7 @@ function ProductDetail() {
                                             </label>
                                             <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
-                                                <InputGroup.Text id="basic-addon1">US Dollar</InputGroup.Text>
+                                                <InputGroup.Text id="basic-addon1">TL</InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <FormControl
                                                 aria-label="Username"
@@ -977,7 +984,7 @@ function ProductDetail() {
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500" onClick={() => setShow3(false)}>  Save  </button>
+                        <button class="admin-add-btn f-w-500" onClick={() => setShow3(false)}>  Kaydet  </button>
                     </div>
                 </Modal.Footer>
             </Modal>

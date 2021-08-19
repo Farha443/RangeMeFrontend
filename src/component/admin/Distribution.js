@@ -28,7 +28,7 @@ import context from 'react-bootstrap/esm/AccordionContext';
 const axios = require('axios');
 const cookies = new Cookies();
 
-
+var uuid =cookies.get('productuuid');
 class Distribution extends React.Component {
     
     constructor (props) {
@@ -157,8 +157,7 @@ class Distribution extends React.Component {
         this.setState({
             options: res.data.data
         });
-        console.log("-----selling platforms-------")
-        console.log(res.data.data);
+ 
       })
       .catch(err => {
         alert(err);
@@ -187,8 +186,6 @@ class Distribution extends React.Component {
         this.setState({
         data1: res.data.data
         });
-        console.log("------get distributors------")
-        console.log(res.data.data);
     })
     .catch(err => {
         alert(err);
@@ -208,9 +205,8 @@ class Distribution extends React.Component {
     disCountry:res.data.data.distribution_location,
     });
     console.log("------pd distribution-----")
-    console.clear()
     console.log(res.data.data);
-    console.log("----------state-"+ this.state.state1)
+    // console.log("----------state-"+ this.state.state1)
     })
     .catch(err => {
     alert(err);
@@ -395,11 +391,15 @@ class Distribution extends React.Component {
       })
     }
 
+    Redirect(uuid){
+        window.location='/preview/'+uuid;
+    }
 
     handleToggle = () => {
         this.setState({ isActive: !this.state.isActive });
       };
-      
+    
+
     render() {
         var token = cookies.get('logintoken');
         if (token === undefined){
@@ -419,7 +419,8 @@ class Distribution extends React.Component {
 
                                 <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> {cookies.get('product_name')} </h4> <span> Ürün </span>
+                                        <h4>{this.state.productname.product_name?this.state.productname.product_name:cookies.get('product_name')}</h4>
+                                        <span> Ürün </span>
                                     </div>
                                 </div>
 
@@ -431,7 +432,7 @@ class Distribution extends React.Component {
                                         </div>
 
                                         <div className="p-icn-02">
-                                            <button className="pre-btn"> Ürünü Görüntüle</button>
+                                            <button className="pre-btn" onClick={() => this.Redirect(uuid)} > Ürünü Görüntüle</button>
                                             <button className="appro-btn"> Onay için ürünü gönder</button>
                                         </div>
                                     </div>
@@ -500,9 +501,7 @@ class Distribution extends React.Component {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title">
-                                            <h5>Ürün dağıtımı
-</h5>
-
+                                            <h5>Ürün dağıtımı</h5>
                                         </div>
 
                                         <div className="overview-form">

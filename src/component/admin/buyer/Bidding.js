@@ -28,7 +28,6 @@ let loc = window.location;
     }
 
 function BidPlacing(){
-    debugger
     var product = document.getElementById('product').value;
     var quantity = document.getElementById('qty').value;
     var budget = document.getElementById('budget').value;
@@ -48,8 +47,8 @@ function BidPlacing(){
             category:category,
           }
       };
-      var ws = new WebSocket(wsStart+'tayuss.com/test/')
-      // var ws = new WebSocket('ws://localhost:8000/test/')
+      // var ws = new WebSocket(wsStart+'tayuss.com/test/')
+      var ws = new WebSocket('ws://localhost:8000/test/')
       ws.onclose = () => {
         console.log('disconnected')
         }

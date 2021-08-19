@@ -896,7 +896,7 @@ useEffect(()=>{
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button class="admin-add-btn " onClick={EditPromotion}> Save Tanıtım </button>
+                        <button class="admin-add-btn " onClick={EditPromotion}> Tanıtım Kaydet</button>
                     </div>
                 </Modal.Footer>
             </Modal>

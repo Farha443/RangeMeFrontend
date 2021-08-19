@@ -32,6 +32,8 @@ const cookies = new Cookies();
 const axios = require('axios');
 
 var Product_Name = cookies.get("product_name");
+var uuid =cookies.get('productuuid');
+
 class Marketing extends React.Component{
     constructor(props) {
         super(props);
@@ -180,6 +182,9 @@ handleChange2(event) {
             
         });
     }
+Redirect(uuid){
+        window.location='/preview/'+uuid;
+}
 
     render(){
         var token = cookies.get('logintoken');
@@ -199,7 +204,7 @@ handleChange2(event) {
 
                                 <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4>{Product_Name} </h4> <span> Ürün  </span>
+                                        <h4> <h4>{this.state.productname.product_name?this.state.productname.product_name:cookies.get('product_name')}</h4> </h4> <span> Ürün  </span>
                                     </div>
                                 </div>
 
@@ -211,7 +216,7 @@ handleChange2(event) {
                                         </div>
 
                                         <div className="p-icn-02">
-                                            <button className="pre-btn"> Ürünü Görüntüle</button>
+                                            <button className="pre-btn" onClick={() => this.Redirect(uuid)}> Ürünü Görüntüle</button>
                                             <button className="appro-btn">  Ürünü Onaya Gönder </button>
                                         </div>
                                     </div>

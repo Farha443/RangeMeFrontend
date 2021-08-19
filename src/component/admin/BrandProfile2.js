@@ -646,7 +646,7 @@ function BrandProfile2() {
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500" onClick={AddLogo}>  Save  </button>
+                        <button class="admin-add-btn f-w-500" onClick={AddLogo}>  Kaydet  </button>
                     </div>
                 </Modal.Footer>
             </Modal>
@@ -694,7 +694,7 @@ function BrandProfile2() {
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500" onClick={AddCover}>  Save  </button>
+                        <button class="admin-add-btn f-w-500" onClick={AddCover}>  Kaydet  </button>
                     </div>
                 </Modal.Footer>
             </Modal>
@@ -853,7 +853,7 @@ function BrandProfile2() {
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button className="admin-add-btn" onClick={SaveMoveBrand} > Save </button>
+                        <button className="admin-add-btn" onClick={SaveMoveBrand} > Kaydet </button>
                     </div>
                 </Modal.Footer>
             </Modal>

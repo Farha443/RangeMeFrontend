@@ -41,7 +41,7 @@ const cookies = new Cookies();
 var treeData = {
    
 };
-
+var uuid = cookies.get('productuuid');
 function ProductForm() {
     
     const [productname, setproductname]= useState({})
@@ -158,6 +158,9 @@ function ProductForm() {
             // console.log(cat)
         }
         
+       function Redirect(uuid){
+             window.location='/preview/'+uuid;
+         }
 
     const [show2, setShow2] = useState(false);
 
@@ -174,7 +177,7 @@ function ProductForm() {
 
                                  <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> {productname.product_name?productname.product_name:cookies.get('product_name')} </h4> <span>Ürün3</span>
+                                        <h4> {productname.product_name?productname.product_name:cookies.get('product_name')} </h4> <span>Ürün   </span>
                                     </div>
                                 </div> 
 
@@ -186,7 +189,7 @@ function ProductForm() {
                                         </div>
 
                                         <div className="p-icn-02">
-                                            <button className="pre-btn"> Ürünü Görüntüle</button>
+                                            <button className="pre-btn" onClick={() => Redirect(uuid)}> Ürünü Görüntüle</button>
                                             <button className="appro-btn"> Ürünü Onaya Gönder </button>
                                         </div>
                                     </div>

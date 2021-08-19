@@ -30,7 +30,7 @@ constructor(props) {
         blog:{}
     };
   } 
-  async componentDidMount(){
+  componentDidMount(){
     let uuid = this.props.match.params.uuid;
     if(uuid==='undefined'){
         window.location = '/blogs';
