@@ -104,7 +104,7 @@ function Changepassword() {
                                             <NavLink to="/change-password-service"
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
-                                               
+                                                <img src="assets/images/detail.png" />
                                                 <div className="sidebar-title">Şifre Değiştirme</div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>

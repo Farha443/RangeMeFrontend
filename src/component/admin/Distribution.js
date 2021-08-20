@@ -305,7 +305,6 @@ class Distribution extends React.Component {
 
     async Edit(){
         // $(".laoder").show()
-        debugger
         var country = this.state.country;
         var state = this.state.region;
         const selected = document.querySelectorAll('#distributors option:checked');
@@ -639,7 +638,7 @@ class Distribution extends React.Component {
                                                         {this.state.data2.drop_ship === true ?
                                                        <Form.Check inline label="Evet" name="group9" type="radio" value="true" defaultChecked onClick={this.drop_ship}  />: <Form.Check inline label="Evet" name="group9" type="radio" value="true"  onClick={this.drop_ship}  />}
 
-                                                        {this.state.data2.drop_ship === false ? <Form.Check inline label="Hayır" name="group9" type="radio" value="false" defaultChecked onClick={this.drop_ship}  /> : <Form.Check inline label="Hayır" name="group9" type="radio" value="false" onClick={this.drop_ship}  /> }
+                                                        {this.state.data2.drop_ship === false || this.state.data2.drop_ship === null ? <Form.Check inline label="Hayır" name="group9" type="radio" value="false" defaultChecked onClick={this.drop_ship}  /> : <Form.Check inline label="Hayır" name="group9" type="radio" value="false" onClick={this.drop_ship}  /> }
                                                         
                                                         
                                                     </div>
@@ -655,7 +654,7 @@ class Distribution extends React.Component {
                                                         {this.state.data2.private_label === true ?
                                                         <Form.Check inline label="Evet" name="group10" type="radio" value="true" defaultChecked onClick={this.private_label}  />:
                                                         <Form.Check inline label="Evet" name="group10" type="radio" value="true" onClick={this.private_label}  />}
-                                                         {this.state.data2.private_label === false ?
+                                                         {this.state.data2.private_label === null || this.state.data2.private_label === false ?
                                                         <Form.Check inline label="Hayır" name="group10" type="radio" value="false" defaultChecked onClick={this.private_label}  />:
                                                         <Form.Check inline label="Hayır" name="group10" type="radio" value="false" onClick={this.private_label}  />}
 
@@ -667,32 +666,25 @@ class Distribution extends React.Component {
                                                         <div>
                                                         <label htmlFor="basic-url" className="lb"> Bu ürün soğuk-zincir taşıması gerektiriyor mu? </label>
                                                         </div>
-                                                        
-                                                        <Form.Check inline label="Evet" name="group3" type="radio" value="true" onClick={this.storageChange}  />
+                                                        {this.state.data2.storage_required === "Refrigerated" || this.state.data2.storage_required === "Frozen" ?
+                                                        <Form.Check inline label="Evet" name="group3" type="radio" defaultChecked value="true" onClick={this.storageChange}/>: <Form.Check inline label="Evet" name="group3" type="radio" value="true" onClick={this.storageChange}/>}
                                                         {this.state.data2.storage_required === "" ?
                                                         <Form.Check inline label="Hayır" name="group3" type="radio" value="false" defaultChecked onClick={this.storageChange}  />:<Form.Check inline label="Hayır" name="group3" type="radio" value="false" onClick={this.storageChange}  />}
 
                                                     </div>
-                                                   {this.state.storage === "true" ?<div className="step-four-radio">
+                                                   {this.state.storage === "true" || this.state.data2!== null ?<div className="step-four-radio">
                                                         <div>
-                                                        <label htmlFor="basic-url" className="lb">What type of storage is required?</label>
+                                                        <label htmlFor="basic-url" className="lb">Ne tür bir depolama gereklidir?</label>
                                                         </div>
                                                         {this.state.data2.storage_required === "Refrigerated" ?
-                                                        <Form.Check inline label="Refrigerated" name="group6" type="radio" defaultchecked value="Refrigerated" onClick={this.storage1}  />:<Form.Check inline label="Refrigerated" name="group6" type="radio"  value="Refrigerated" onClick={this.storage1}  />
+                                                        <Form.Check inline label="Refrigerated" name="group6" type="radio" defaultChecked value="Refrigerated" onClick={this.storage1}  />:<Form.Check inline label="Refrigerated" name="group6" type="radio"  value="Refrigerated" onClick={this.storage1}  />
                                                         }
-                                                         {this.state.data2.storage_required === "Frozen" ?<Form.Check inline label="Frozen" defaultchecked name="group6" type="radio" value="Frozen" onClick={this.storage1}  />:
+                                                         {this.state.data2.storage_required === "Frozen" ?<Form.Check inline label="Frozen" defaultChecked name="group6" type="radio" value="Frozen" onClick={this.storage1}  />:
                                                         <Form.Check inline label="Frozen" name="group6" type="radio" value="Frozen" onClick={this.storage1}  />}
-
-
                                                     </div>:""}
                                                 </Col>
-                                                    
-         
-         
                                             </Row>
-
                                         </div>
-
                                     </div>
 
                                 </Card.Body>

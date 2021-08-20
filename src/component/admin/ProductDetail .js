@@ -94,8 +94,7 @@ function ProductDetail() {
             console.log(err)            
         })
     },[])
-    cookies.set('Product_Name', productname, { path: '/' });
-
+    
     function onDrop(pictureFiles, pictureDataURLs) {
         // alert(pictureFiles)
         setImage({

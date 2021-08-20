@@ -40,6 +40,7 @@ function logout() {
 function GetBrand(id){
   var id = id;
   cookies.set("get_brand", id.uuid , {path:"/"})
+  cookies.set("brand_name", id.brand_name , {path:"/"})
   window.location="/brand-profile";
 }
 
@@ -64,8 +65,6 @@ function AdminNavbar(){
         axios.get(BASE_URL+'authentication/getsupplier/'+ user_uuid )
         .then(res=>{
             setBrands(res.data.data)
-            console.log("------brands------")
-            console.log(res.data.data)
         }).catch(err=>{
             // $(".laoder").hide();
             console.log(err)            

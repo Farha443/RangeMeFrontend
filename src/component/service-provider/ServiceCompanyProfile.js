@@ -65,7 +65,7 @@ function ServiceProfile(){
     const [show4, setShow4] = useState(false);
     const [show5, setShow5] = useState(false);
     const [color, setColor] = React.useState([]);
-    const [isActive, setActive] = useState("false");
+    const [user, setUser] = useState([]);
     const [user_pic, setUser_pic] = useState([]);
     const [video_link, setVideo_link] = useState('');
     const [CategoryData, setCategoryData] = useState([]);
@@ -83,6 +83,14 @@ useEffect(()=>{
 })
 
     useEffect(() => {
+
+        axios.get(BASE_URL+'authentication/getuser/'+cookies.get("uuid")).then(res=>{
+        setUser(res.data.data)
+
+        }).catch(err=>{
+            console.log(err)            
+        })
+
         var url6 = BASE_URL+'authentication/promotion/';
         var url = BASE_URL+'authentication/createserprovider/';
         var url1 = BASE_URL+'authentication/service-category/' ;
@@ -98,8 +106,7 @@ useEffect(()=>{
       
           };
           axios(config6).then(res=>{
-            // debugger
-            // console.log(promotionData)
+              console.log("data 1")
             console.log(res.data)
             if(res.data[0] === undefined){
                 setPromotionData([])
@@ -120,7 +127,7 @@ useEffect(()=>{
         }
       }
           axios(config).then(res=>{
-
+            console.log("data 2")
               console.log(res.data.data[0])
 
               setProfileData(res.data.data[0])
@@ -327,8 +334,6 @@ useEffect(()=>{
     }
 
     function setLink(){
-       
-        
         ll = document.getElementById('video_link').value;
         setShow2(false)
         
@@ -462,7 +467,7 @@ useEffect(()=>{
                                 <Col md="6">
                                     <Form.Group controlId="formBasicEmail">
                                         <Form.Label>Şirket Adı</Form.Label>
-                                        <Form.Control id="company-name"type="text" placeholder="dddd" defaultValue={ProfileData.company_name} />
+                                        <Form.Control id="company-name"type="text" placeholder="dddd" defaultValue={user.comp_name} />
 
                                     </Form.Group>
 

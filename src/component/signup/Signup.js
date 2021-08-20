@@ -33,7 +33,7 @@ function Toggle1() {
 
  function Func() {
     $(".laoder").show(); 
-    debugger
+
     var first_name = document.getElementById('first_name').value;
     var last_name = document.getElementById('last_name').value;
     var email = document.getElementById('email').value;
@@ -145,7 +145,7 @@ class Signup extends React.Component {
                   <div className="side-by-side-above-mobile__field___1u_TX">
                     <div className="validated-field__container___1zNgS">
                       <div className="input-with-floating-label__wrapper___368i9">
-                        <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="FirstNameInput" placeholder="First Name" id="first_name" type="text"  />
+                        <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="FirstNameInput" placeholder="Ad" id="first_name" type="text"  />
                         <label className="input-with-floating-label__label___4HdSN"  htmlFor="firstName"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Ad</span></label>
                       </div>
                     </div>
@@ -153,7 +153,7 @@ class Signup extends React.Component {
                   <div className="side-by-side-above-mobile__field___1u_TX">
                     <div className="validated-field__container___1zNgS">
                       <div className="input-with-floating-label__wrapper___368i9">
-                        <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="LastNameInput" id="last_name" placeholder="Last Name " type="text"  />
+                        <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="LastNameInput" id="last_name" placeholder="Soyad" type="text"  />
                         <label className="input-with-floating-label__label___4HdSN" htmlFor="lastName"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Soyad</span></label>
                       </div>
                     </div>
@@ -185,13 +185,13 @@ class Signup extends React.Component {
                 </div>
                 <div className="validated-field__container___1zNgS">
                   <div className="input-with-floating-label__wrapper___368i9">
-                    <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="phone no" placeholder="Phone no " id="mobile" type="number" />
+                    <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="phone no" placeholder="Cep Telefonu" id="mobile" type="number" />
                     <label className="input-with-floating-label__label___4HdSN" htmlFor="number"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Cep Telefonu </span></label>
                   </div>
                 </div>
                 <div className="validated-field__container___1zNgS">
                   <div className="input-with-floating-label__wrapper___368i9">
-                    <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="CompanyNameInput" id="comp_name" placeholder="Company Name " type="text" />
+                    <input autoComplete="new-password" className="input-with-floating-label__input___SyB1U" data-tname="CompanyNameInput" id="comp_name" placeholder="Şirket Adı" type="text" />
                     <label className="input-with-floating-label__label___4HdSN" htmlFor="companyName"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Şirket Adı</span></label>
                   </div>
                 </div>

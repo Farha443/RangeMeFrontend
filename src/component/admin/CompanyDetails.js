@@ -353,7 +353,8 @@ savechange(){
                                                 : <img className="" id="output" width="180px" height="120px" src=""/>}
                                                 <div className="pic202">
                                                 
-                                                <input  type="file" id="company_logo" onChange={this.handleChange2} placeholder="Change"/>
+                                                <label for="company_logo" class="btn btn-primary">Choose Picture</label>
+                                                <input style={{display:'none'}} type="file" id="company_logo" onChange={this.handleChange2} placeholder="Change"/>
                                             
                                             </div>
 

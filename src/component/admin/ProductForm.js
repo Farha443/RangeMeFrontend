@@ -105,7 +105,6 @@ function ProductForm() {
     )
 
         function Step1(){
-            debugger
             var product_name = document.getElementById('product_name').value;
             var select_category = cat;
             const selected = document.querySelectorAll('#approvals_certifications option:checked');
@@ -177,7 +176,9 @@ function ProductForm() {
 
                                  <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> {productname.product_name?productname.product_name:cookies.get('product_name')} </h4> <span>Ürün   </span>
+                                        <h4> {productname.product_name!==undefined?productname.product_name:cookies.get('product_name')} </h4> 
+                                        {/* <h4>{productname.product_name}</h4> */}
+                                        <span>Ürün   </span>
                                     </div>
                                 </div> 
 
@@ -345,7 +346,7 @@ function ProductForm() {
                                     <img src={BASE_URL.slice(0,-5)+p_details.image} />
                                 </div>      
                                 <div className="prod-info-text">
-                                    <h5> Marka adı</h5>
+                                    <h5>{cookies.get('brand_name')}</h5>
                                     <h6> {productname.product_name} </h6>
                                 </div>
                                 <div className="pro-margin">
@@ -354,7 +355,7 @@ function ProductForm() {
                                 </div>
 
                                 <div className="prod-help">
-                                    <button className="prev-prod-btn"> <i class="fa fa-eye" aria-hidden="true"></i> Preview Product Profile </button>
+                                    <button className="prev-prod-btn" onClick={() => Redirect(uuid)}> <i class="fa fa-eye" aria-hidden="true"></i> Preview Product Profile </button>
                                     <p> We will help guide you along the process. <NavLink to=""> Need Help </NavLink> </p>
                                 </div>
 

@@ -78,16 +78,7 @@ function ServiceNavbar(){
 
       <Nav.Link href="#home"><i class="fa fa-comments" aria-hidden="true"></i></Nav.Link>
      
-      <Nav.Link href="/service-provider-profile"><i class="fa fa-cog" aria-hidden="true">Settings</i></Nav.Link>
-
-      {/* <NavDropdown id="basic-nav-dropdown" className="header-profile-drop"  >
-       
-        <NavDropdown.Item href="#action/3.1">{first_name}</NavDropdown.Item>
-        <NavDropdown.Item href="/admin_profile"> Settings</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Help</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
-      </NavDropdown> */}
+      <Nav.Link href="/service-provider-profile"><i class="fa fa-cog" aria-hidden="true">Ayarlar</i></Nav.Link>
 
     <Nav.Link href="" className="drop-menu"  onClick={handleToggle}>
       <div className="menu-profile-img-main">
@@ -101,7 +92,7 @@ function ServiceNavbar(){
       <div className={isActive ? "dropmenu-profile-img " : "dropmenu-profile-img dropmenu-profile-open"}>
           <ul>
             <li> <NavLink to="">{first_name} </NavLink> </li>
-            <li> <NavLink to="/service-provider-profile">Settings </NavLink> </li>
+            <li> <NavLink to="/service-provider-profile">Ayarlar </NavLink> </li>
             <li> <NavLink to="" onClick={logout}> Çıkış </NavLink> </li>
           </ul>
       </div>

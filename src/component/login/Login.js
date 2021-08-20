@@ -134,7 +134,7 @@ class Login extends React.Component {
                 {/* forgot password */}
                 <div className="auth-form-wrapper__footer___1Zu1V">
                   <div><a href="/request_forgotpass"><span className="text__text___2g-Dv text__small-copy___bgT96">Şifreyi Unuttum</span></a><span className="text__text___2g-Dv text__small-copy___bgT96 sign-in-form-with-wrapper__get-started-link___DfPbs">Don’t have an account? 
-                  <NavLink to="/Signup" >Get started</NavLink></span></div>
+                  <NavLink to="/" >Get started</NavLink></span></div>
                 </div>
               </div>
             </div>

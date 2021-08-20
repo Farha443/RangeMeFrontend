@@ -66,7 +66,6 @@ function ServiceProviders(){
   })
 
   useEffect(() => {
-    debugger
     axios.get(BASE_URL+'servicehome/servicehomeview/')
     .then(res=>{
      

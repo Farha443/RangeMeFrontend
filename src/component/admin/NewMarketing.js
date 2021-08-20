@@ -76,23 +76,16 @@ componentDidMount(){
 
 }
 save(){
-    debugger
     var product_marketing = cookies.get("productuuid")
-
-
     const selected = document.querySelectorAll('#promotional_budget option:checked');
     var array = Array.from(selected).map(el => el.value);
-
     var promotional_budget = array[0]
     // var product_images =  this.state.market.product_images ? (this.state.market.product_images.pictureFiles)[0] : "";
     var product_images = document.getElementById('id').files[0];
     var product_videos = document.getElementById('product_videos').value;
-    if (product_videos.indexOf("http://") == 0 || product_videos.indexOf("https://") == 0) {
-
+    if (product_videos.indexOf("http://") == 0 || product_videos.indexOf("https://") == 0 || product_videos==="") {
         var url = BASE_URL+"product/product_marketing/";
-    
         var token = cookies.get("token")
-    
         var data= new FormData();
         data.append('product_marketing', product_marketing);
         data.append('promotional_budget', promotional_budget);
@@ -321,8 +314,9 @@ Redirect(uuid){
                                                 </div>
                                                 : <img className="" id="output" width="180px" height="120px" src=""/>}
                                                 <div className="pic202">
-                                                
-                                                <input  type="file" id="id" onChange={this.handleChange2} placeholder="Change"/>
+
+                                                <label for="id" class="btn btn-primary">Choose Picture</label>
+                                                <input style={{display:'none'}} type="file" id="id" onChange={this.handleChange2} placeholder="Change"/>
                                             
                                             </div>
 

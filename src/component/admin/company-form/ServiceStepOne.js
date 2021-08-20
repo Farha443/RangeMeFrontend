@@ -27,7 +27,7 @@ const cookies = new Cookies();
 var userTypeTitle=cookies.get('userType');
 
 
-  class SupplierStepOne extends React.Component{
+  class ServiceStepOne extends React.Component{
   
    
     state = {
@@ -44,6 +44,7 @@ var userTypeTitle=cookies.get('userType');
         var token = cookies.get('token');
         var uuid = cookies.get('uuid');
         var userType = cookies.get('userType');
+        if (website.indexOf("http://") == 0 || website.indexOf("https://") == 0 || website==="") {
     var config = {
         method: 'post',
         url: url,
@@ -71,6 +72,9 @@ var userTypeTitle=cookies.get('userType');
         $(".laoder").hide(); 
         window.location.reload();
       })
+    }else{
+        alert("Please Enter a valid URL");
+      }
     }
     handleKeypress = (event) => {
       if(event.key === 'Enter'){
@@ -78,11 +82,7 @@ var userTypeTitle=cookies.get('userType');
       }
     }
   render() {
-   
-    // var token = cookies.get('logintoken');
-    // if (token === undefined){
-    // window.location="/login"
-    // }
+
     return(
         <>
         <div class="laoder"> <img src="assets/images/ZZ5H.gif" alt="image" /></div> 
@@ -122,7 +122,7 @@ var userTypeTitle=cookies.get('userType');
                                            
                                             <Col md="12">
                                                 <div className="company-form-btn-main text-center">
-                                                    <button class="admin-add-btn" onClick={() => this.Submit()}> <NavLink to="/company_form_two"> Continue</NavLink>  </button>
+                                                    <button class="admin-add-btn" onClick={() => this.Submit()}> Devam et </button>
                                                 </div>
                                             </Col>
                                            
@@ -148,4 +148,4 @@ var userTypeTitle=cookies.get('userType');
 }
 }
 
-export default SupplierStepOne
+export default ServiceStepOne

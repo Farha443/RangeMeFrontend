@@ -230,8 +230,9 @@ class AdminProfile extends React.Component {
                                                 </div>
                                                 : <img className="" id="output" width="180px" height="120px" src=""/>}
                                                 <div className="pic202">
-                                                
-                                                <input  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
+
+                                                <label for="user_pic" class="btn btn-primary">Choose Picture</label>
+                                                <input style={{display:'none'}} type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
                                             
                                             </div>
 

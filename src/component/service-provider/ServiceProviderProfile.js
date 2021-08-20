@@ -94,9 +94,6 @@ class AdminProfile extends React.Component {
          axios(config)
          .then(res=>{
                 console.log(res.data.data)
-                alert("success")
-                // cookies.set('uuid1', res.data.data.uuid, { path: '/' })
-                // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
                 window.location = '/service-dashboard'
             }
             
@@ -210,8 +207,9 @@ class AdminProfile extends React.Component {
                                                 </div>
                                                 : <img className="" id="output" width="180px" height="120px" src=""/>}
                                                 <div className="pic202">
-                                                
-                                                <input  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
+
+                                                <label for="user_pic" class="btn btn-primary">Choose Picture</label>
+                                                <input style={{display:'none'}}  type="file" id="user_pic" onChange={this.handleChange} placeholder="Change"/>
                                             
                                             </div>
 

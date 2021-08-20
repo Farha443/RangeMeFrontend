@@ -25,12 +25,7 @@ import {
 import Select from 'react-select';
 import CompanyLogo from './CompanyLogo';
 // import useState from 'react-hook-use-state';
-const colourOptions=[
-    { value: 'Red', label: 'Red' },
-    { value: 'Black', label: 'Black' },
-    { value: 'Blue', label: 'Blue' },
-    { value: 'Green', label: 'Green' },
-]
+
 
 const axios = require('axios');
 const cookies = new Cookies();
@@ -62,7 +57,7 @@ function TeamAccess() {
 
     const [show, setShow] = useState(false);
     const [showfield, setShowField] = useState(false);
-    const [category, setCategory]= useState([]);
+    const [list, setList]= useState([]);
     const[brands, setBrands] = useState([]);
     var user_uuid = cookies.get("uuid");
 
@@ -74,8 +69,9 @@ function TeamAccess() {
     })
 
     useEffect(() => {
-        axios.get(BASE_URL+'authentication/useraccess/').then(res=>{
-            setCategory(res.data.data)
+        axios.get(BASE_URL+'authentication/useraccess/?pk='+cookies.get('uuid')).then(res=>{
+            setList(res.data.data)
+            console.log('test-----'+res.data.data)
             setSelectedClient("admin")
         }).catch(err=>{
             console.log(err)            
@@ -84,8 +80,6 @@ function TeamAccess() {
         axios.get(BASE_URL+'authentication/getsupplier/'+ user_uuid )
         .then(res=>{
             setBrands(res.data.data)
-            console.log("------brands------")
-            console.log(res.data.data)
         }).catch(err=>{
             console.log(err)            
         })
@@ -155,9 +149,8 @@ function TeamAccess() {
             }
         };
         axios(config).then(res=>{
-            console.log("---- User Access Data-----");
-            console.log(res.data.data);
             setShow(!show); 
+            window.location.reload()
         }
         
         ).catch(err=>{
@@ -223,7 +216,7 @@ function TeamAccess() {
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/megaphone.png" />
                                                 <div className="sidebar-title"> Ekip Erişimi</div>
-                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                <i class="fa fa-angle-right" aria-hidden="brand_nametrue"></i>
                                             </NavLink>
                                         </li>
                                     </ul>
@@ -238,7 +231,7 @@ function TeamAccess() {
                                     <div className="product-form-main">
 
                                         <div className="p-inside-title p-inside-invite mb-3">
-                                            <h5> <img src="assets/images/add-group.png" /> Ekip Erişimi</h5>
+                                            <h5>  Ekip Erişimi</h5>
                                             <p> <button className="admin-add-btn"  onClick={() => setShow(true)}> <i class="fa fa-plus" aria-hidden="true"></i> kullanıcıyı davet et</button> </p>
                                             {/* invite user */}
                                         </div>
@@ -246,166 +239,29 @@ function TeamAccess() {
                                         <div className="overview-form">
 
                                            <Row className="justify mb-3">
-
-                                            <Col md="6">
+                                            {list.map(li=>(
+                                            <Col md="12">
                                                 <div className="invie-user-box-main">
                                                    <div className="inv-left-cont">
                                                         <div className="in-img">
-                                                            <img src="assets/images/2.jpg" />
+                                                        <img src="/assets/images/user64x64.png"/>
                                                         </div>
                                                         <div className="int-left-text">
-                                                            <h6> John  </h6>
-                                                            <p> Tüm markalar </p>
+                                                            <h6> {li.email}  </h6>
+                                                            {li.brand.map(br=>(
+                                                            <p> {br.brand_name} </p>
+                                                            ))}
+                                                            {/* <p>{li.access_brand}</p> */}
                                                         </div>
                                                    </div>
 
-                                                    <div className="inv-right-cont">
+                                                    {/* <div className="inv-right-cont">
                                                         <button className="inv-owner-btn"> Owner </button>
-                                                    </div>
-
-
+                                                    </div> */}
                                                 </div>
-                                            </Col>
+                                            </Col>))}
 
-                                            <Col md="6">
-                                                <div className="invie-user-box-main">
-                                                   <div className="inv-left-cont">
-                                                        <div className="in-img">
-                                                            <img src="assets/images/2.jpg" />
-                                                        </div>
-                                                        <div className="int-left-text">
-                                                            <h6> John  </h6>
-                                                            <p> Tüm markalar </p>
-                                                        </div>
-                                                   </div>
-
-                                                    <div className="inv-right-cont">
-                                                        <button className="inv-owner-btn"> Owner </button>
-                                                    </div>
-
-
-                                                </div>
-                                            </Col>
-
-                                            <Col md="6">
-                                                <div className="invie-user-box-main">
-                                                   <div className="inv-left-cont">
-                                                        <div className="in-img">
-                                                            <img src="assets/images/2.jpg" />
-                                                        </div>
-                                                        <div className="int-left-text">
-                                                            <h6> John  </h6>
-                                                            <p> Tüm markalar </p>
-                                                        </div>
-                                                   </div>
-
-                                                    <div className="inv-right-cont">
-                                                        <button className="inv-owner-btn"> Owner </button>
-                                                    </div>
-
-
-                                                </div>
-                                            </Col>
-
-                                            <Col md="6">
-                                                <div className="invie-user-box-main">
-                                                   <div className="inv-left-cont">
-                                                        <div className="in-img">
-                                                            <img src="assets/images/2.jpg" />
-                                                        </div>
-                                                        <div className="int-left-text">
-                                                            <h6> John  </h6>
-                                                            <p> Tüm markalar </p>
-                                                        </div>
-                                                   </div>
-
-                                                    <div className="inv-right-cont">
-                                                        <button className="inv-owner-btn"> Owner </button>
-                                                    </div>
-
-
-                                                </div>
-                                            </Col>
-
-                                            <Col md="6">
-                                                <div className="invie-user-box-main">
-                                                   <div className="inv-left-cont">
-                                                        <div className="in-img">
-                                                            <img src="assets/images/2.jpg" />
-                                                        </div>
-                                                        <div className="int-left-text">
-                                                            <h6> John  </h6>
-                                                            <p> Tüm markalar </p>
-                                                        </div>
-                                                   </div>
-
-                                                    <div className="inv-right-cont">
-                                                        <button className="inv-owner-btn"> Owner </button>
-                                                    </div>
-
-
-                                                </div>
-                                            </Col>
-
-                                            <Col md="6">
-                                                <div className="invie-user-box-main">
-                                                   <div className="inv-left-cont">
-                                                        <div className="in-img">
-                                                            <img src="assets/images/2.jpg" />
-                                                        </div>
-                                                        <div className="int-left-text">
-                                                            <h6> John  </h6>
-                                                            <p>Tüm markalar </p>
-                                                        </div>
-                                                   </div>
-
-                                                    <div className="inv-right-cont">
-                                                        <button className="inv-owner-btn"> Owner </button>
-                                                    </div>
-
-
-                                                </div>
-                                            </Col>
-
-                                            <Col md="6">
-                                                <div className="invie-user-box-main">
-                                                   <div className="inv-left-cont">
-                                                        <div className="in-img">
-                                                            <img src="assets/images/2.jpg" />
-                                                        </div>
-                                                        <div className="int-left-text">
-                                                            <h6> John  </h6>
-                                                            <p> Tüm markalar </p>
-                                                        </div>
-                                                   </div>
-
-                                                    <div className="inv-right-cont">
-                                                        <button className="inv-owner-btn"> Owner </button>
-                                                    </div>
-
-
-                                                </div>
-                                            </Col>
-
-                                            <Col md="6">
-                                                <div className="invie-user-box-main">
-                                                   <div className="inv-left-cont">
-                                                        <div className="in-img">
-                                                            <img src="assets/images/2.jpg" />
-                                                        </div>
-                                                        <div className="int-left-text">
-                                                            <h6> John  </h6>
-                                                            <p> Tüm markalar </p>
-                                                        </div>
-                                                   </div>
-
-                                                    <div className="inv-right-cont">
-                                                        <button className="inv-owner-btn"> Owner </button>
-                                                    </div>
-
-
-                                                </div>
-                                            </Col>
+                                            
 
                                            </Row>
                                             
@@ -522,7 +378,7 @@ function TeamAccess() {
 
                               <div className="invite-user-modal__permission-header___DvkVU">
                               <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Markalar ve Ürünler</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Edit</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Düzenle</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
@@ -591,7 +447,7 @@ function TeamAccess() {
 
                               <div className="invite-user-modal__permission-header___DvkVU">
                               <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Markalar ve Ürünler</span></div>
-                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Edit</span></div>
+                              <div><span class="text__text___2g-Dv text__medium-copy___1Y01K">Düzenle</span></div>
                               </div>
 
                               <div className="invite-user-modal__permission-header___DvkVU">
@@ -632,7 +488,7 @@ function TeamAccess() {
                                 <Dropdown.Menu>
                                 <Dropdown.Item value="view" onClick={()=>change1('view')}>Görüntüleme</Dropdown.Item>
                                 <Dropdown.Item value="view & share" onClick={()=>change1('view & share')}>Görüntüleme ve Paylaşma</Dropdown.Item>
-                                <Dropdown.Item value="edit" onClick={()=>change1('edit')}>Edit</Dropdown.Item>
+                                <Dropdown.Item value="edit" onClick={()=>change1('edit')}>Düzenle</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                                 </div>

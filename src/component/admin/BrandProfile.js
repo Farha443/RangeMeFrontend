@@ -68,15 +68,11 @@ var config = {
         brand_name : brand_name,
         brand_website : brand_website,
         comp_location : brand_location,
-
       }
-
   };
-//   console.log(config)
+
   axios(config).then(res=>{
-    //   console.log(res.data.data)
     cookies.set('uuid2', res.data.data.uuid, { path: '/' })
-    // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
     $(".laoder").hide(); 
     window.location = '/admin_home'
   }
@@ -309,7 +305,6 @@ function BrandProfile() {
       }
 
     function AddProduct(){
-        debugger
         // $(".laoder").show();
         var product_name = document.getElementById("addproduct").value;
         var brand = cookies.get('get_brand')
