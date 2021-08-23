@@ -76,7 +76,7 @@
 }
 
 .button__primary___3hlTY {
-	background-color: #38B5E6;
+	background-color: #00cdae;
 	color: #fff;
 }
 
@@ -750,10 +750,6 @@ dfn {
 	font-style: italic;
 }
 
-mark {
-	background-color: #ff0;
-	color: #000;
-}
 
 progress {
 	vertical-align: baseline;
@@ -791,13 +787,7 @@ img {
 	border-style: none;
 }
 
-svg {
-	fill: currentColor;
-}
 
-svg:not(:root) {
-	overflow: hidden;
-}
 
 a {
 	background-color: transparent;
@@ -899,9 +889,9 @@ textarea {
 	cursor: default;
 }
 
-[tabindex],a,area,button,input,label,select,textarea {
+/* [tabindex],a,area,button,input,label,select,textarea {
 	touch-action: manipulation;
-}
+} */
 
 [hidden][aria-hidden=false] {
 	clip: rect(0,0,0,0);
@@ -1012,7 +1002,7 @@ body,html {
 
 .flash-message__notice___lkmAt {
 	background: #e4f8f5;
-	color: #38B5E6;
+	color: #00cdae;
 	padding: .5rem;
 }
 
@@ -1027,12 +1017,12 @@ body,html {
 }
 
 .auth-form-wrapper__modal___3ccc_,.auth-form-wrapper__sign-in-modal___1WSWV {
-	background: #fff;
-	border: 1px solid #e3e6ed;
+	/* background: #fff;
+	border: 1px solid #e3e6ed; */
 	border-radius: 4px;
-	margin-top: 2rem;
-	padding: calc(1.25rem - 1px) 2.5rem calc(2.5rem - 1px);
-	width: 500px;
+	margin-top: 5rem;
+	/* padding: calc(1.25rem - 1px) 2.5rem calc(2.5rem - 1px); */
+	width: 400px;
     margin-bottom: 0.5rem;
 }
 
@@ -1107,7 +1097,7 @@ body,html {
 }
 
 .link-button__primary___112dD {
-	background-color: #38B5E6;
+	background-color: #00cdae;
 	color: #fff;
 }
 
@@ -1670,7 +1660,7 @@ body,html {
 
 .global-markets-advertisement__container___2Vacv {
 	align-items: center ;
-	background-color: #485269 ;
+	background-color: #38b5e6b8 ;
 	
 	background-position: 100% 0 ;
 	background-size: cover;
@@ -1698,14 +1688,14 @@ body,html {
 	width: 11.5rem;
 }
 
-.center-aligned__container___3lBR4 {
+/* .center-aligned__container___3lBR4 {
 	display: block;
 	left: 50%;
 	position: absolute;
 	top: 50%;
 	transform: translate(-50%,-50%);
 	min-width: 450px;
-}
+} */
 
 @media(max-width:450px) {
 	.center-aligned__container___3lBR4 {
@@ -2263,7 +2253,7 @@ body,html {
 }
 
 .banner-alert__banner___OTCuG.banner-alert__success___2s2FB {
-	background: #38B5E6;
+	background: #00cdae;
 }
 
 .banner-alert__banner___OTCuG.banner-alert__warning___1Dlk6 {
@@ -2285,7 +2275,7 @@ body,html {
 }
 
 a.header-bar__logo h1 {
-    color: #38B5E6!important;
+    color: #00cdae !important;
 }
 
 .global-markets-advertisement__container___2Vacv h1 {
@@ -2300,7 +2290,7 @@ div#root {
     align-items: center;
     height: 100%;
     margin-right: 40px;
-    margin: auto;
+    margin: inherit;
     text-align: center !important;
 }
 .sign-check {
@@ -2308,3 +2298,62 @@ div#root {
     width: 18px;
     margin-right: 5px;
 }
+.sign-in-form__remember-me-container___3ibWe label {
+    margin-top: 0px !important;
+}
+
+
+.with-advertisement__form___1Tp6K.left {
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-start;
+	padding-top: 1rem;
+    background: white;
+}
+
+
+h4.tl-tx-hd span {
+    font-weight: 500;
+    color: #0f536d;
+}
+
+h4.tl-tx-hd {
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.lg-btn-mn-d button i {
+    margin-top: 0.2rem;
+    float: right;
+}
+.lg-btn-mn-d button {
+    width: 100%;
+}
+.log-link102 p a {
+    font-weight: 500;
+    color: #0f536d;
+}
+
+/************************ New login css ********************/
+.t-right {
+    text-align: right;
+}
+.lg-right-t a {
+    color: #ffc536;
+    font-size: 24px;
+    font-weight: 500;
+}
+.lg-right-t h5 {
+    font-weight: 300;
+}
+
+.lg-right-t a:hover {
+    color: #ffc536;
+
+}
+
+
+a.header-bar__logo {
+    width: 150px;
+}
+/******************************************************************/
