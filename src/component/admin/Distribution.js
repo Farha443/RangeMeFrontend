@@ -432,7 +432,9 @@ class Distribution extends React.Component {
 
                                         <div className="p-icn-02">
                                             <button className="pre-btn" onClick={() => this.Redirect(uuid)} > Ürünü Görüntüle</button>
-                                            <button className="appro-btn"> Onay için ürünü gönder</button>
+                                            {this.state.productname.approved_product=== true? 
+                                                                        <button class="btn btn-success">Admin Approved </button>:
+                                                                        this.state.productname.approved_product=== false ?<button class="btn btn-danger" >Not Approved </button>:""}
                                         </div>
                                     </div>
                                 </div>
@@ -709,7 +711,7 @@ class Distribution extends React.Component {
                                     <img src={BASE_URL.slice(0,-5)+this.state.p_details.image} />
                                 </div>      
                                 <div className="prod-info-text">
-                                    <h5> marka adı </h5>
+                                    <h5>{cookies.get('brand_name')} </h5>
                                     <h6> {this.state.productname.product_name} </h6>
                                 </div>
                                 <div className="pro-margin">

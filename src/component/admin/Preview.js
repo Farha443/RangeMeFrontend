@@ -120,8 +120,8 @@ class Preview extends React.Component {
                                 
 
                                         <div className="p-icn-02">
-                                          
-                                            <button className="appro-btn"> <NavLink to=""  onClick={()=>this.Redirect(uuid)}>  Düzenle </NavLink>  </button>
+                                          {cookies.get('user_type')==="supplier"?
+                                            <button className="appro-btn"> <NavLink to=""  onClick={()=>this.Redirect(uuid)}>  Düzenle </NavLink>  </button>:""}
                                         </div>
                                     </div>
                                 </div>
@@ -310,7 +310,7 @@ class Preview extends React.Component {
                                             <div class="product-retail-unit__details-value___1IJk4" data-tname="RetailPrice" id="retail_price">
                                                     <p class="product-retail-unit__currency-field___1UoBm">
                                                         <span>Fiyat açıklaması </span>&nbsp;</p>
-                                                        <h4 class="product-retail-unit__details-label___i-63R" data-tname="PriceUnit">{this.state.data.details?this.state.data.details.pricing_comments===null?"No comments":this.state.data.details.pricing_comments:""}</h4>
+                                                        <h4 class="product-retail-unit__details-label___i-63R" data-tname="PriceUnit">{this.state.data.details?this.state.data.details.pricing_comments===null?"Yorum yok":this.state.data.details.pricing_comments:""}</h4>
                                                 </div>
                                         </div>:""}
                                             {this.state.priceType==="case"?

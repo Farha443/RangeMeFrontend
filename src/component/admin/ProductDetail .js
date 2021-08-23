@@ -385,7 +385,8 @@ function ProductDetail() {
 
                                         <div className="p-icn-02">
                                             <button className="pre-btn" onClick={() => Redirect(uuid)}> Ürünü Görüntüle</button>
-                                            <button className="appro-btn">Onay için ürünü gönder </button> 
+                                            {productname.approved_product=== true? 
+                                                                        <button class="btn btn-success">Admin Approved </button>: productname.approved_product=== false ?<button class="btn btn-danger" >Not Approved </button>:""} 
                                         </div>
                                     </div>
                                 </div>
@@ -854,7 +855,7 @@ function ProductDetail() {
                                     <img src={BASE_URL.slice(0,-5)+p_details.image} />
                                 </div>      
                                 <div className="prod-info-text">
-                                    <h5> Marka adı</h5>
+                                    <h5> {cookies.get('brand_name')}</h5>
                                     <h6> {productname.product_name} </h6>
                                 </div>
                                 <div className="pro-margin">

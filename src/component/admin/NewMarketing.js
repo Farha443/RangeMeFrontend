@@ -34,7 +34,7 @@ const axios = require('axios');
 var Product_Name = cookies.get("product_name");
 var uuid =cookies.get('productuuid');
 
-class Marketing extends React.Component{
+class NewMarketing extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -210,7 +210,9 @@ Redirect(uuid){
 
                                         <div className="p-icn-02">
                                             <button className="pre-btn" onClick={() => this.Redirect(uuid)}> Ürünü Görüntüle</button>
-                                            <button className="appro-btn">  Ürünü Onaya Gönder </button>
+                                            {this.state.productname.approved_product=== true? 
+                                                                        <button class="btn btn-success">Admin Approved </button>:
+                                                                        this.state.productname.approved_product=== false ?<button class="btn btn-danger" >Not Approved </button>:""}
                                         </div>
                                     </div>
                                 </div>
@@ -360,7 +362,7 @@ Redirect(uuid){
                                 <img src={BASE_URL.slice(0,-5)+this.state.p_details.image} />
                                 </div>      
                                 <div className="prod-info-text">
-                                    <h5> Marka adı </h5>
+                                    <h5>{cookies.get('brand_name')} </h5>
                                     <h6> {this.state.productname.product_name} </h6>
                                 </div>
                                 <div className="pro-margin">
@@ -384,4 +386,4 @@ Redirect(uuid){
     }
 };
 
-export default Marketing;
+export default NewMarketing;

@@ -187,7 +187,7 @@ function BrandProfile() {
         axios.get(url )
         .then(res=>{
             // setProducts(res.data.data.product)
-            // debugger
+            debugger
             setDetails(res.data.data)
             setCount(res.data.data.product.length)
             console.log("-------------all Products-------------")
@@ -739,9 +739,13 @@ function BrandProfile() {
                                                                </NavLink>
                                                                     </td>
                                                                    
-                                                                    <td> {pd.productStatus=='approved'? 
-                                                                        <button className="border-btn">Yayınlandı </button>: pd.productStatus==="draft"?<button className="border-btn"  onClick={()=>Redirect(pd.uuid)}>Taşlak </button>:""}
+                                                                    <td> {pd.approved_product=== true? 
+                                                                        <button class="btn btn-success" onClick={()=>Redirect(pd.uuid,pd.product_name)}>Admin Approved </button>: pd.approved_product=== false ?<button class="btn btn-danger"  onClick={()=>Redirect(pd.uuid,pd.product_name)}>Not Approved </button>:""}
                                                                         </td>
+                                                                        {/* <td>
+                                                                            <h5>hello</h5>
+                                                                            {pd.approved_product === true ? "Admin Approved" : "NOt Approved" }
+                                                                        </td> */}
                                                                     <td className="pd-last-td">
                                                                     <button className="border-btn"  onClick={()=>CopyFunction(pd.uuid)}>  Ürünü kopyala </button>
                                                                         <button className="border-btn"> <NavLink to=""

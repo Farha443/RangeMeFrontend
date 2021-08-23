@@ -5,7 +5,6 @@ import AdminNavbar from './AdminNavbar'
 import { NavLink } from 'react-router-dom';
 import BASE_URL from '../base';
 import Cookies from 'universal-cookie';
-// import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
 import TreeMenu from 'react-simple-tree-menu'
 // import TreeViewMenu from 'react-simple-tree-menu'
 // import Input from 'react-simple-tree-menu'
@@ -62,8 +61,6 @@ function ProductForm() {
             setCategory(res.data.data)
             // debugger
             treeData = res.data.data;
-            console.clear();
-            console.log(res.data.data)
         }).catch(err=>{
             console.log(err)            
         })
@@ -83,12 +80,8 @@ function ProductForm() {
 
         axios.get(BASE_URL +'product/ProductDetailView/'+cookies.get("productuuid")+'/').then(res=>{
             setproductname(res.data.data)
-            console.clear()
+            console.log('-------')
             console.log(res.data.data)
-            // cookies.set('product_name', res.data.data.product_name, { path: '/products_detail' })
-            // cookies.set('product_name', res.data.data.product_name, { path: '/distribution' })
-            // cookies.set('product_name', res.data.data.product_name, { path: '/marketing' })
-            // cookies.set('product_uuid', res.data.data.uuid, { path: '/' })
             
         }).catch(err=>{
             console.log(err)            
@@ -176,8 +169,8 @@ function ProductForm() {
 
                                  <div className="p-header-left">
                                     <div className="p-title">
-                                        <h4> {productname.product_name!==undefined?productname.product_name:cookies.get('product_name')} </h4> 
-                                        {/* <h4>{productname.product_name}</h4> */}
+                                        {/* <h4> {productname.product_name!==undefined?productname.product_name:cookies.get('product_name')} </h4>  */}
+                                        <h4>{productname.product_name}</h4>
                                         <span>Ürün   </span>
                                     </div>
                                 </div> 
@@ -191,7 +184,9 @@ function ProductForm() {
 
                                         <div className="p-icn-02">
                                             <button className="pre-btn" onClick={() => Redirect(uuid)}> Ürünü Görüntüle</button>
-                                            <button className="appro-btn"> Ürünü Onaya Gönder </button>
+                                            {productname.approved_product=== true? 
+                                                                        <button class="btn btn-success">Admin Approved </button>: productname.approved_product=== false ?<button class="btn btn-danger" >Not Approved </button>:""}
+                                            {/* <button className="appro-btn"> Ürünü Onaya Gönder </button> */}
                                         </div>
                                     </div>
                                 </div>
@@ -205,7 +200,7 @@ function ProductForm() {
                 <Container fluid>
                     <Row className="justify">
                         <Col md="3">
-                        <aside>
+                            <aside>
                                 <div className="admin-sidebar-main">
                                     <ul>
                                         <li>
@@ -213,8 +208,7 @@ function ProductForm() {
                                             inactiveClassName="text-gray-800"
                                             >
                                                 <img src="assets/images/list-searching-variant.png" />
-                                                <div className="sidebar-title">
-                                                Ürüne Genel Bakış</div>
+                                                <div className="sidebar-title"> Ürüne Genel Bakış  </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -223,7 +217,7 @@ function ProductForm() {
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
                                                 <img src="assets/images/detail.png" />
-                                                <div className="sidebar-title">Ürün Açıklaması</div>
+                                                <div className="sidebar-title"> Ürün Açıklaması </div>
                                                 <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                                             </NavLink>
                                         </li>
@@ -250,7 +244,7 @@ function ProductForm() {
                                 </div>
                             </aside>
                         </Col>
-                        <Col md="6">
+                    <Col md="6">
 
                             <Card>
 
