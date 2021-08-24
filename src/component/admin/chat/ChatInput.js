@@ -53,35 +53,15 @@ function ChatInput({recId}){
             axios(config)
             .then(re => {
              setMsg(re.data.data)
-             getChats(recId);
+             $(document).ready(function() {
+              $('#message').val('');
+           })
             })
             .catch(err => {
               alert(err);
             }) 
       }
-      function getChats(recId){
-        var url = BASE_URL+'messaging/get_chats/?person='+recId;
-        var token = cookies.get('logintoken');
-          var config = {
-              method: 'get',
-              headers: {
-                "Authorization": "Bearer " + token,
-                "Content-Type": "application/json",
-              },
-              url: url,
-            };
-            axios(config)
-            .then(res => {
-                setMsg(res.data);
-              console.log(res.data);
-              
-            })
-            .catch(err => {
-              alert(err);
-            })
-        
-      
-    }
+
    
     return(
         <>

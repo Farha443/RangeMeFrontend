@@ -37,12 +37,12 @@ function Func() {
   var userType = cookies.get('userType');
 
 
-  if(mobile !== "undefined"){
-    var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-    if(!mobile.match(phoneno)){
-      alert("Please enter correct phone number")
-    }
-  }
+  // if(mobile !== "undefined"){
+  //   var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+  //   if(!mobile.match(phoneno)){
+  //     alert("Please enter correct phone number")
+  //   }
+  // }
 
   if (typeof password !== "undefined" && typeof confirm_password !== "undefined") {
     if (password!= confirm_password) {
@@ -364,7 +364,7 @@ function SignupModal(props){
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Cep Telefonu</Form.Label>
-                            <Form.Control type="number" id="mobile" placeholder="Lütfen mail adresinizi yazın..." />
+                            <Form.Control type="text" id="mobile" placeholder="Lütfen mail adresinizi yazın..." />
                           </Form.Group>
                         </Col>
 
