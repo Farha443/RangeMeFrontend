@@ -192,7 +192,7 @@ function brandSubmit(){
   var brand_name = document.getElementById('brand_name').value;
   var brand_website = document.getElementById('brand_website').value;
   var url = BASE_URL + "authentication/createsupplier/";
-  if (brand_website.indexOf("http://") == 0 || brand_website.indexOf("https://") == 0 || brand_website==="") {
+  // if (brand_website.indexOf("http://") == 0 || brand_website.indexOf("https://") == 0 || brand_website==="") {
     var config = {
       method: 'patch',
       url: url,
@@ -224,9 +224,9 @@ function brandSubmit(){
       document.getElementById('s3').className='st-three'
     alert("something went wrong")
     })
-  }else{
-    alert("Please Enter a valid URL");
-  }
+  // }else{
+  //   alert("Please Enter a valid URL");
+  // }
 
 }
 

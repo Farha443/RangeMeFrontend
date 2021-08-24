@@ -124,7 +124,7 @@ Edit(){
     // var product_images =  this.state.image!=null ? (this.state.image.pictureFiles)[0] : "";
     var product_images = document.getElementById('id').files[0];
     var product_videos = document.getElementById('product_videos').value;
-    if (product_videos.indexOf("http://") == 0 || product_videos.indexOf("https://") == 0) {
+    // if (product_videos.indexOf("http://") == 0 || product_videos.indexOf("https://") == 0) {
     var url = BASE_URL+"product/product_marketing/";
     
     var token = cookies.get("token")
@@ -152,10 +152,10 @@ Edit(){
     }).catch(err=>{
     })
 
-    }else{
-        alert("Please Enter a valid URL");
+    // }else{
+    //     alert("Please Enter a valid URL");
 
-    }
+    // }
 }
 handleChange(v) {
     this.setState({ budget: v.target.value });
