@@ -1,10 +1,11 @@
 import React, {useEffect, userEffect, useState} from 'react';
 import '../../assets2/admin.css';
 import AdminNavbar from './AdminNavbar'
+import Gallery from './Gallery'
 import { NavLink } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import ImageUploader from 'react-images-upload';
+
 import {
     Jumbotron,
     Button,
@@ -27,12 +28,14 @@ import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import context from 'react-bootstrap/esm/AccordionContext';
 import CoverPhotoUploader from './CoverPhotoUploader';
+import BrandLogo from './BrandLogo';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import BASE_URL from '../base';
 import $ from "jquery"; 
 import {CKEditor} from 'ckeditor4-react';
 import Swal from 'sweetalert2';
+import ImageUploader from 'react-images-upload';
 
 const cookies = new Cookies();
 var prox = ""
@@ -84,7 +87,6 @@ var config = {
   })
 }
 
-
 function BrandProfile() {
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
@@ -92,10 +94,12 @@ function BrandProfile() {
     const [show4, setShow4] = useState(false);
     const [showV, setShowV] = useState(false);
     const [showStory, setShowStory] = useState(false);
+    const [showInfo, setShowInfo] = useState(false);
+    
     const[content, setContent] = useState("");
     const [isActive, setActive] = useState("false");
     const [isAct, setAct] = useState("false");
-    const [showInfo, setShowInfo] = useState(false);
+
     const handleToggle = () => {
       setActive(!isActive);
     };
@@ -104,10 +108,9 @@ function BrandProfile() {
       };
 
     const onEditorChange=( evt )=>{
-        setContent( evt.editor.getData() );
-    }
+    setContent( evt.editor.getData() );
+    };
 
-    
     const [details, setDetails]= useState([])
     const[brands, setBrands] = useState([])
     const [cover, setCover] = useState(false);
@@ -187,7 +190,6 @@ function BrandProfile() {
         axios.get(url )
         .then(res=>{
             // setProducts(res.data.data.product)
-            debugger
             setDetails(res.data.data)
             setCount(res.data.data.product.length)
             console.log("-------------all Products-------------")
@@ -249,7 +251,7 @@ function BrandProfile() {
        }
 
     function SaveMoveBrand(){  
-        // debugger
+
         var checked_brand = $("input[type='radio'][name='checked_brand']:checked").val();
         if(checked_brand === undefined){
             window.location = "/brand-profile"
@@ -287,7 +289,6 @@ function BrandProfile() {
     }
     
     function MoveBrand(x,y){
-        // debugger
         console.log(x,y)
         prox = y
         proxuuid = x
@@ -506,7 +507,6 @@ function BrandProfile() {
         // alert(name);
         brandName =  name.charAt(0).toUpperCase() + name.slice(1);
       }
-      
 
     return (
         <>
@@ -516,26 +516,16 @@ function BrandProfile() {
 
                 <div className="clickable-cover-image__clickable-cover-image___Agsbi" data-tname="CoverImage">
                     <div className="cover-image__image-container___2tnKs">
-                        {sbrand.brand_cover?
+                    {sbrand.brand_cover?
                         <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+sbrand.brand_cover}/>:<div className="bg222">
                         <p>Banner Ekle </p>
                         </div>}
-                        {/* {sbrand.map(img=>(
-                            img.uuid===cookies.get('get_brand')?
-                        <img alt="Cover" className="cover-image__image___yE2oR" src={BASE_URL.slice(0,-5)+ img.brand_cover} />:""
-                        ))} */}
-                        {/* <div className="bg222">
-                        <p>Add Cover Photo</p>
-                        </div> */}
-                        
+                        {/* <img alt="Cover" className="cover-image__image___yE2oR" src="assets/images/cover-img.jpg" /> */}
                     </div>
                     <div className="clickable-cover-image__container___1Y72X">
                         <button className="clickable-cover-image__change-image___JnYhU" type="button" onClick={() => setShow(true)}>
-                            <div className="clickable-cover-image__change-image-hint___3NLUs">
-                                <img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src="assets/images/camera.jpg"/>
-                                {/* src={BASE_URL.slice(0,-5)+sbrand.brand_logo} */}
-                                <div className="clickable-cover-image__change-image-text___1kIxy" src="assets/images/camera.jpg">Kapak resmini değiştir</div>
-                                {/* change cover image */}
+                            <div className="clickable-cover-image__change-image-hint___3NLUs"><img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTMxIDZoLTcuNmwtMy43LTMuN2MtLjItLjItLjQtLjMtLjctLjNoLTZjLS4zIDAtLjUuMS0uNy4zTDguNiA2SDFjLS42IDAtMSAuNC0xIDF2MjJjMCAuNi40IDEgMSAxaDMwYy42IDAgMS0uNCAxLTFWN2MwLS42LS40LTEtMS0xek0xNiAyNWMtMy45IDAtNy0zLjEtNy03czMuMS03IDctNyA3IDMuMSA3IDctMy4xIDctNyA3eiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNiA1SDNjLS42IDAtMS0uNC0xLTFzLjQtMSAxLTFoM2MuNiAwIDEgLjQgMSAxcy0uNCAxLTEgMXoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=" />
+                                <div className="clickable-cover-image__change-image-text___1kIxy">Change cover image</div>
                             </div>
                         </button>
                     </div>
@@ -553,42 +543,39 @@ function BrandProfile() {
                                     {brands.map(img=>(
                                       img.uuid===cookies.get('get_brand')?
                                         <img src={BASE_URL.slice(0,-5)+img.brand_logo} />:""))}
+                                        {/* <img src="assets/images/brand-logo.jpg" /> */}
                                         <div className="prof-img-btn">
-                                            <button className="clickable-cover-image__change-image___JnYhU" type="button" onClick={() => setShow3(true)}>
+                                        <button className="clickable-cover-image__change-image___JnYhU" type="button" onClick={() => setShow3(true)}>
                                                 <div className="clickable-cover-image__change-image-hint___3NLUs"><img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src="assets/images/camera.jpg" />
                                                 <h6>Add logo</h6>
                                                     <div className="clickable-cover-image__change-image-text___1kIxy"></div>
                                                 </div>
                                             </button>
                                         </div>
-                                        {/* <div className="img-circle-bg">
-                                              <p> Add Logo </p>
-                                        </div> */}
                                     </div>
                                     <div className="cover-brand-title">
-                                        {/* <h5>{brandName}</h5> */}
-                                        <h5>{sbrand.brand_name}</h5>
+                                    <h5>{sbrand.brand_name}</h5>
                                         {/* <p> Tage Line text.. </p> */}
                                     </div>
                                 </div>
                                 <div className="cover-md-right-cont">
                                     <ul>
                                         <li>
-                                            <button class="border-btn"> <i class="fa fa-eye" aria-hidden="true"></i>  {sbrand.brand_views}  </button>
+                                            <button class="border-btn"> <i class="fa fa-eye" aria-hidden="true"></i>   {sbrand.brand_views} </button>
                                         </li>
                                         {/* <li>
-                                            <button class="border-btn">  <i class="fa fa-plus" aria-hidden="true"></i>  0  </button>
+                                            <button class="border-btn">  <i class="fa fa-plus" aria-hidden="true"></i>  02  </button>
                                         </li> */}
-                                        {/* <li>
-                                            <button class="admin-add-btn f-w-500"> <i class="fa fa-share-square" aria-hidden="true"></i> Share Profile  </button>
-                                        </li> */}
+                                        <li>
+                                            <button class="admin-add-btn f-w-500">PROFİLİNİZİ PAYLAŞIN </button>
+                                        </li>
                                         <li>
                                             <button class="border-btn" onClick={handleToggle}> <i class="fa fa-cog" aria-hidden="true"></i> </button>
                                            <div className={isActive ? "drop-d-101 " : "drop-d-101 open-drop"}>
                                                <ul>
-                                                   <li> <NavLink to="/brand-profile">Merge Marka Adı</NavLink> </li>
-                                                   <li> <NavLink to="/brand-profile">Preview Marka Adı page</NavLink> </li>
-                                                   <li> <NavLink to="/brand-profile">Preview Marka Adı card </NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Merge brands </NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Preview brand page</NavLink> </li>
+                                                   <li> <NavLink to="/brand-profile">Preview brand card </NavLink> </li>
                                                </ul>
                                            </div>
                                         </li>
@@ -601,113 +588,91 @@ function BrandProfile() {
             </section>
 
             <section className="cover-midd-cont-section pd-0">
-                <Container fluid>
-                    <Row>
+              
+                
                         <Col md="12">
                             <div className="cover-tab-one-main">
 
                                 <Row>
-                                    <Col md="12">
+                                    <Col md="12 pd-0">
                                     <Tabs >
-                                    <TabList className="b-tab-list-one">
-                                        <Tab>
-                                            <div className="tbs-menu">
-                                                <i class="fa fa-cog" aria-hidden="true"></i> Ürünü yönet
-                                    </div>
-                                        </Tab>
-                                        <Tab>
-                                            <div className="tbs-menu">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Marka sayfasını düzenle
-                                    </div>
-                                        </Tab>
+                                   
+                               
+                                        <TabList className="b-tab-list-one">
+                                        <Container>
+                                        <Col md="12">
 
+                                            <div className="adh-tab-list-d">
+                                            <Tab>
+                                                <div className="tbs-menu">
+                                                    manage products
+                                                </div>
+                                            </Tab>
+                                            <Tab>
+                                                <div className="tbs-menu">
+                                                    Edit your products
+                                                </div>
+                                            </Tab>
+                                            <Tab>
+                                                <div className="tbs-menu">
+                                                    Edit your profile
+                                                </div>
+                                            </Tab>
+                                            </div>
+
+                                        </Col>
+                                   </Container>
 
                                     </TabList>
-                                    <TabPanel>
+                                    
+
+                                   <section className="bg-gr">
+                                   <Container >
+
+                                      <Col md="12" xs="12">
+                                        <div className="count-product-title">
+                                            <p> Sayfanıza Toplam <span> 7 Ürün </span> Eklediniz.  </p>
+                                        </div>
+                                      </Col>  
+
+                                        <TabPanel>
+                                  
                                     <Col md="12">
                                             <Card>
                                                 <Card.Body>
-                                                    <div className="prod-num-r-btn mb-3">
-                                                        
-                                                        <button className="admin-add-btn f-w-500" onClick={() => setShow2(true)}><i class="fa fa-plus" aria-hidden="true"></i>  Yeni ürün ekle </button>
-                                                       
-                                                    </div>
-
-                                                    <div className="prod-search-filter-main">
-                                                        <InputGroup >
-                                                            <InputGroup.Prepend>
-                                                                <Button variant="outline-dark"><i class="fa fa-search" aria-hidden="true" onClick={()=>search()} ></i></Button>
-                                                            </InputGroup.Prepend>
-                                                                                                                                                            <FormControl
-                                                                placeholder="Ürün adına göre ara"
-                                                                aria-label="Recipient's username"
+                                                    <div className="filter-d-4574">
+                                                        <div className="filter-d1">
+                                                
+                                                        <InputGroup>
+                                                           
+                                                            <FormControl
+                                                                placeholder="Search by product name"
                                                                 id = "search"
                                                                 onKeyPress={handleKeypress}
+                                                                aria-label="Recipient's username"
                                                                 aria-describedby="basic-addon2"
                                                             />
-
-                                                            {/* <DropdownButton
-                                                                as={InputGroup.Append}
-                                                                variant="outline-dark"
-                                                                title="Product status"
-                                                                id="input-group-dropdown-2"
-                                                            >
-                                                                <div className="filter-drop-main">
-                                                                    <div className="step-four-radio noti-check">
-                                                                        <Form.Group controlId="formBasicEmail">
-
-                                                                            <Form.Check inline name="group1" type="checkbox"
-                                                                            id="1"
-                                                                            value="draft" />
-                                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Draft </label>
-                                                                        </Form.Group>
-
-                                                                        <Form.Group controlId="formBasicEmail">
-
-                                                                            <Form.Check inline name="group1" type="checkbox" id="1"
-                                                                            value="pending_approval" />
-                                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Pending Approval </label>
-                                                                        </Form.Group>
-
-                                                                        <Form.Group controlId="formBasicEmail">
-
-                                                                            <Form.Check inline name="group1" type="checkbox" id="1"
-                                                                            value="published" />
-                                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Published </label>
-                                                                        </Form.Group>
-
-                                                                        <Form.Group controlId="formBasicEmail">
-                                                                            <Form.Check inline name="group1" type="checkbox"id="1"
-                                                                            value="approved" />
-                                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Ready to submit update </label>
-                                                                        </Form.Group>
-
-                                                                        <Form.Group controlId="formBasicEmail">
-                                                                            <Form.Check inline name="group1" type="checkbox" id="1"
-                                                                            value="rejected" />
-                                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Rejected </label>
-                                                                        </Form.Group>
-
-                                                                        <Form.Group controlId="formBasicEmail">
-                                                                            <Form.Check inline name="group1" type="checkbox" id="1" />
-                                                                            <label style={{ marginTop: '0px' }} htmlFor="basic-url" className="lb">Update Rejected </label>
-                                                                        </Form.Group>
-
-
-                                                                        <div className="filter-drop-btn-main">
-                                                                            <button className="border-btn"> Clear </button>
-
-                                                                            <button className="admin-add-btn f-w-500" onClick={()=>search()}> Apply now </button>
-                                                                        </div>
-
-
-
-                                                                    </div>
-                                                                </div>
-                                                           
-                                                            </DropdownButton> */}
+                                                             <InputGroup.Prepend>
+                                                                <Button variant="outline-dark"><i class="fa fa-search" onClick={()=>search()} aria-hidden="true"></i></Button>
+                                                            </InputGroup.Prepend>
+                    
                                                         </InputGroup>
+                                                            <div className="filter-i-2">
+                                                            <Button variant="outline-dark"><i class="fas fa-filter"></i></Button>
+                                                       
+                                                            </div>
+                                                        </div>
+                                                       
+                                                        <div className="filter-d2">
+                                                            <button className="admin-add-btn f-w-500" onClick={() => setShow2(true)}><i class="fa fa-plus" aria-hidden="true"></i>  YENİ ÜRÜN <span className="btn-spn-f"> EKLEYİN </span> </button>
+                                                        </div>
                                                     </div>
+                                                    <div className="prod-num-r-btn mb-3 d-none">
+                                                        <h5> Products <span> (1) </span> </h5>
+                                                        <button className="admin-add-btn f-w-500" onClick={() => setShow2(true)}><i class="fa fa-plus" aria-hidden="true"></i>  Add New Product </button>
+                                                    </div>
+
+                                                   
                                                     {count===0?
                                                     <div className="empty-div">
                                                     <p> Gösterilecek Ürün Yok Ürün eklemek için Ürün Ekle Düğmesine tıklayın.</p>
@@ -718,107 +683,67 @@ function BrandProfile() {
                                                             <thead>
                                                                 <tr>
 
-                                                                    <th>Ürün</th>
-                                                                    <th>Ürün durumu</th>
-                                                                    <th className="ac-right" >Eylem</th>
+                                                                    <th>Product</th>
+                                                                    <th>Product status</th>
+                                                                    <th className="ac-right" >Transactions</th>
 
                                                                 </tr>
                                                             </thead>
-
                                                             <tbody>{details.product ? details.product.map(pd=>(
                                                                 <tr>
-                                                                
+
                                                                     <td>
-                                                                        <NavLink to="/product_form" className="p-img-a">
-                                                                        
+                                                                        <div className="tbl-mn-d1">
+                                                                       
                                                                             <div className="tbl-prod-img">
-                                                                                <img src={BASE_URL.slice(0,-5)+pd.images} />
+                                                                            <img src={BASE_URL.slice(0,-5)+pd.images} />
                                                                             </div>
                                                                             
-                                                               {pd.product_name}
-                                                               </NavLink>
+                                                                        <div className="tbl-d2">
+                                                                        <NavLink to="/product_form" className="p-img-a">
+                                                                        {pd.product_name}
+                                                                            </NavLink>
+                                                                         {/* <button className="tbl-btn-587"> Öne Çıkan Ürün </button> */}
+                                                                         </div>
+                                                                        </div>
                                                                     </td>
-                                                                   
                                                                     <td> {pd.approved_product=== true? 
-                                                                        <button class="btn btn-success" onClick={()=>Redirect(pd.uuid,pd.product_name)}>Admin Approved </button>: pd.approved_product=== false ?<button class="btn btn-danger"  onClick={()=>Redirect(pd.uuid,pd.product_name)}>Not Approved </button>:""}
-                                                                        </td>
-                                                                        {/* <td>
-                                                                            <h5>hello</h5>
-                                                                            {pd.approved_product === true ? "Admin Approved" : "NOt Approved" }
-                                                                        </td> */}
+                                                                        <button class="btn btn-success" onClick={()=>Redirect(pd.uuid,pd.product_name)}>Admin Approved </button>: pd.approved_product=== false ?<button class="btn btn-danger"  onClick={()=>Redirect(pd.uuid,pd.product_name)}>Not Approved </button>:""} </td>
+                                                                        
                                                                     <td className="pd-last-td">
-                                                                    <button className="border-btn"  onClick={()=>CopyFunction(pd.uuid)}>  Ürünü kopyala </button>
                                                                         <button className="border-btn"> <NavLink to=""
                                                                         onClick={()=>Redirect(pd.uuid,pd.product_name)}> Düzenle </NavLink>  </button>
-                                                                         <button className="border-btn"> <NavLink to="/brand-profile" onClick={()=>DeleteConfirm(pd.uuid)}> Sil </NavLink>  </button>
-                                                                         <button className="border-btn" onClick={()=>MoveBrand(pd.uuid,pd.product_name)}>  Başka Marka altına taşı </button>
                                                                         <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
-                                                                        <div className={isAct ? "drop-d-101 " : "drop-d-101 open-drop"}> 
+                                                                        <div className={isAct ? " drop-d-101" : "drop-d-101 open-drop"}> 
                                                                             <ul>
-                                                                                <li> <NavLink to="/brand-profile">View product statistics 1 </NavLink> </li>
-                                                                                <li> <NavLink to="/preview">Preview product 1</NavLink> </li>
-                                                                                <li> <NavLink to="/brand-profile">Make a copy</NavLink> </li>
-                                                                                <li> <NavLink to="/brand-profile"> Sil product</NavLink> </li>
+                                                                                <li> <NavLink to="/brand-profile">View product statistics </NavLink> </li>
+                                                                                <li> <NavLink to="/preview">Preview product</NavLink> </li>
+
+                                                                                <li> <NavLink to="/brand-profile" onClick={()=>CopyFunction(pd.uuid)} >Make a copy</NavLink> </li>
+
+                                                                                <li> <NavLink to="/brand-profile" onClick={()=>DeleteConfirm(pd.uuid)} > Delete product</NavLink> </li>
                                                                                
+                                                                                <li> <NavLink to="/brand-profile" onClick={()=>MoveBrand(pd.uuid,pd.product_name)} > Move to a different brand</NavLink> </li>
+
                                                                             </ul>
                                                                         </div>
                                                                     </td>
-                                                                
+
                                                                 </tr>)) : ''}
-
-                                                                {/* <tr> */}
-
-                                                                    {/* <td>
-                                                                        <NavLink to="/product_form" className="p-img-a">
-                                                                            <div className="tbl-prod-img">   
-                                                                                <img src="assets/images/blog2.jpeg" />
-                                                                            </div>
-                                                                            Headphone
-                                                                        </NavLink>
-                                                                    </td> */}
-                                                                    {/* <td> <button details.className="border-btn"> Drafted </button> </td>
-                                                                    <td className="pd-last-td">
-                                                                        <button className="border-btn"> <NavLink to="/product_form"> Edit </NavLink> </button>
-                                                                        <button className="border-btn"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
-                                                                    </td> */}
-
-                                                                {/* </tr> */}
-
-                                                                {/* <tr> */}
-
-                                                                    {/* <td>
-                                                                        <NavLink to="/product_form" className="p-img-a">
-                                                                            <div className="tbl-prod-img">
-                                                                                <img src="assets/images/blog2.jpeg" />
-                                                                            </div>
-                                                          Headphone
-                                                          </NavLink>
-                                                                    </td> */}
-                                                                    {/* <td> <button className="border-btn"> Drafted </button> </td>
-                                                                    <td className="pd-last-td">
-                                                                        <button className="border-btn"> <NavLink to="/product_form"> Edit </NavLink> </button>
-                                                                        <button className="border-btn"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
-                                                                    </td> */}
-
-                                                                {/* </tr> */}
-
                                                             </tbody>
                                                         </Table>
-                                                    </div>}
-                                                
-                                                
+                                                        </div>}
                                                 </Card.Body>
                                             </Card>
                                         </Col>
-                               
                                     </TabPanel>
-                                    <TabPanel>
-                                    <Col md="12">
+                                        <TabPanel>
+                                            <Col md="12">
                                         <Card>
                                             <Card.Body>
 
                                                 <div className="b-p-title">
-                                                    <h5>Marka sayfası</h5>
+                                                    <h5> Brand page </h5>
                                                 </div>
                                             <Tabs>
                                                 <div className="b-profile-tab-2-d">
@@ -826,67 +751,86 @@ function BrandProfile() {
                                                 <TabList>
                                                 <Tab>
                                                     <div className="tbs-menu">
-                                                    Ürünleri Düzenle
+                                                     Arrange Products
                                                     </div>
                                                 </Tab>
                                                 <Tab>
                                                     <div className="tbs-menu">
-                                                    Profili Düzenle
+                                                      Edit Profile
                                                     </div>
                                                 </Tab>
                                             </TabList>
 
                                             <TabPanel>
-                                                {count===0?
-                                            <div className="empty-div">
-                                                    <p>Gösterilecek Ürün Yok.</p>
-                                                    </div>:
                                                <Row>
                                                    <Col md="9" xs="12"> 
                                                       <Row>
-                                                      {details.product ? details.product.map(pd=>(
                                                           <Col md="4" xs="4">
                                                             <div className="brand-product-box-d">
                                                                 <div className="p-img">
-                                                                    {/* <img src="assets/images/blog1.jpg" alt="p-image"/> */}
-                                                                    {pd.images?
-                                                                    <img src={BASE_URL.slice(0,-5)+pd.images} />:<img src="#" alt="p-image"/>}
-
+                                                                    <img src="assets/images/blog1.jpg" alt="p-image"/>
                                                                 </div>
                                                                 <div className="p-text-d-12458">
-                                                                    <h6> {pd.product_name} </h6>
+                                                                    <h6> Candles </h6>
                                                                     <div className="cost-text">
-                                                                    <p> Ürün fiyatı <span> {pd.cost} </span> </p>
-                                                                    <p> Margin <span> {pd.mrp} </span> </p>
+                                                                    <p> Cost/item <span> $69.00 </span> </p>
+                                                                    <p> Margin <span> $69.00 </span> </p>
                                                                
                                                                     </div>
                                                                  </div>
                                                             </div>
                                                           </Col>
-                                                          )) : ''}
 
-                                                          
-                                                        
+                                                          <Col md="4" xs="4">
+                                                            <div className="brand-product-box-d">
+                                                                <div className="p-img">
+                                                                    <img src="assets/images/blog1.jpg" alt="p-image"/>
+                                                                </div>
+                                                                <div className="p-text-d-12458">
+                                                                    <h6> Candles </h6>
+                                                                    <div className="cost-text">
+                                                                    <p> Cost/item <span> $69.00 </span> </p>
+                                                                    <p> Margin <span> $69.00 </span> </p>
+                                                               
+                                                                    </div>
+                                                                 </div>
+                                                            </div>
+                                                          </Col>
+                                                          <Col md="4" xs="4">
+                                                            <div className="brand-product-box-d">
+                                                                <div className="p-img">
+                                                                    <img src="assets/images/blog1.jpg" alt="p-image"/>
+                                                                </div>
+                                                                <div className="p-text-d-12458">
+                                                                    <h6> Candles </h6>
+                                                                    <div className="cost-text">
+                                                                    <p> Cost/item <span> $69.00 </span> </p>
+                                                                    <p> Margin <span> $69.00 </span> </p>
+                                                               
+                                                                    </div>
+                                                                 </div>
+                                                            </div>
+                                                          </Col>
                                                       </Row>
                                                    </Col>
 
                                                    <Col md="3" xs="12">
                                                      <div className="b-profile-sidebar">
                                                         <div>
-                                                            <button className="ed-btn" onClick={() => setShowInfo(true)}> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Bilgileri Düzenle</button>
+                                                            <button className="ed-btn" onClick={() => setShowInfo(true)}> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Information </button>
                                                         </div>
                                                         <div className="b-profile-sidebar-text">
                                                             <ul>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="fas fa-map-marker-alt"></i>  {sbrand.comp_location}
+                                                                    <i class="fas fa-map-marker-alt"></i>  Indore, MP
                                                                     </p>
                                                                 </li>
-                                                                {/* <li>
+                                                                <li>
                                                                     <p>
                                                                     <i class="far fa-link"></i> ....
                                                                     </p>
-                                                                </li> */}
+                                                                </li>
                                                             </ul>
                                                         </div>
 
@@ -894,33 +838,111 @@ function BrandProfile() {
                                                             <ul>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-tag"></i>  Ürün
+                                                                    <i class="far fa-tag"></i>  PRODUCTS
                                                                     </p>
                                                                     <p>
-                                                                        ( {count} )
+                                                                        ( 1 )
                                                                     </p>
                                                                 </li>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-calendar-week"></i>Kuruluş Yılı</p>
+                                                                    <i class="far fa-calendar-week"></i> YEAR FOUNDED
+                                                                    </p>
                                                                     <p>
-                                                                        ( {sbrand.year_founded} )
+                                                                        ( 2019 )
                                                                     </p>
                                                                 </li>
 
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-chart-line"></i> Hasılat
+                                                                    <i class="far fa-chart-line"></i> REVENUE
                                                                     </p>
                                                                     <p>
-                                                                        ( {sbrand.annual_revenue} )
+                                                                        ( $1M-$5M )
                                                                     </p>
                                                                 </li>
+
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fal fa-bullhorn"></i> PROMOTIONAL SPEND
+
+                                                                    </p>
+                                                                    <p>
+                                                                        ( $1 - $25k )
+                                                                    </p>
+                                                                </li>
+
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
+
+
+                                                                    </p>
+                                                                    <p>
+                                                                        ( $89.00 - $89.00 )
+                                                                    </p>
+                                                                </li>
+
                                                             </ul>
                                                         </div>
+
+                                                        <div className="b-profile-sidebar-text">
+                                                            <ul>
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fab fa-facebook-square"></i>  FACEBOOK
+                                                                    </p>
+                                                                    <p>
+                                                                        --- 
+                                                                    </p>
+                                                                  
+                                                                </li>
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fab fa-twitter-square"></i> TWITTER
+                                                                    </p>
+                                                                    <p>
+                                                                        --- 
+                                                                    </p>
+                                                                </li>
+
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fab fa-pinterest-square"></i> PINTEREST
+                                                                    </p>
+                                                                    <p>
+                                                                        --- 
+                                                                    </p>
+                                                                </li>
+
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fab fa-instagram"></i> INSTAGRAM
+                                                                    </p>
+                                                                    <p>
+                                                                        ---
+                                                                    </p>                                                    
+                                                                </li>
+
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
+
+
+                                                                    </p>
+                                                                    <p>
+                                                                        --- 
+                                                                    </p>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+
+
+
                                                      </div>
                                                    </Col>
-                                               </Row>}
+                                               </Row>
                                             </TabPanel>
 
                                             <TabPanel>
@@ -928,23 +950,22 @@ function BrandProfile() {
                                                    <Col md="9" xs="12"> 
                                                       <Row>
                                                           <Col md="12" xs="12">
-                                                            {/* <p className="f-size124"> Product Name </p> */}
-                                                            {sbrand.brand_story? <EditorPreview data={sbrand.brand_story} />:<div className="p-story-box-d">
+                                                            <p className="f-size124"> Product Name </p>
+                                                            <div className="p-story-box-d">
                                                             <i class="fal fa-comment-alt-lines"></i>
-                                                                <h4>Hikayeni anlat</h4>
-                                                                <p> Alıcıların markanız hakkında bilgi sahibi olmasını sağlayın. </p>
-                                                                <button className="admin-add-btn" onClick={() => setShowStory(true)}><i class="fal fa-pen"></i> Hikayenizi düzenleyin </button>
-                                                            </div>}
+                                                                <h4> Tell your Story </h4>
+                                                                <p> Let buyers know more about your brand. </p>
+                                                                <button className="admin-add-btn" onClick={() => setShowStory(true)}><i class="fal fa-pen"></i> Edit Your story </button>
+                                                            </div>
                                                           </Col>
                                                           <Col md="12" xs="12">
-                                                          {sbrand.brand_video? sbrand.brand_video:<div className="p-story-box-d">
-                                                                
-                                                                <i class="fal fa-play-circle"></i>
-                                                                    <h4> Video ekle</h4>
-                                                                    <p> Markanız veya ürünleriniz hakkında bir YouTube veya Vimeo videosu yerleştirin. </p>
-                                                                    <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Video ekle </button>
-                                                                </div>}
-                                                            
+                                                         
+                                                            <div className="p-story-box-d">
+                                                            <i class="fal fa-play-circle"></i>
+                                                                <h4> Add a video </h4>
+                                                                <p> Embed a YouTube or Vimeo video about your brand or products. </p>
+                                                                <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Add Video </button>
+                                                            </div>
                                                           </Col>
 
                                                       </Row>
@@ -954,20 +975,20 @@ function BrandProfile() {
                                                    <Col md="3" xs="12">
                                                      <div className="b-profile-sidebar">
                                                         <div>
-                                                            <button className="ed-btn"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Bilgileri Düzenle</button>
+                                                            <button className="ed-btn"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Information </button>
                                                         </div>
                                                         <div className="b-profile-sidebar-text">
                                                             <ul>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="fas fa-map-marker-alt"></i>  {sbrand.comp_location}
+                                                                    <i class="fas fa-map-marker-alt"></i>  Indore, MP
                                                                     </p>
                                                                 </li>
-                                                                {/* <li>
+                                                                <li>
                                                                     <p>
                                                                     <i class="far fa-link"></i> ....
                                                                     </p>
-                                                                </li> */}
+                                                                </li>
                                                             </ul>
                                                         </div>
 
@@ -975,33 +996,106 @@ function BrandProfile() {
                                                             <ul>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-tag"></i>  Ürün
+                                                                    <i class="far fa-tag"></i>  PRODUCTS
                                                                     </p>
                                                                     <p>
-                                                                        ( {count} )
+                                                                        ( 1 )
                                                                     </p>
                                                                 </li>
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-calendar-week"></i> Kuruluş Yılı</p>
+                                                                    <i class="far fa-calendar-week"></i> YEAR FOUNDED
+                                                                    </p>
                                                                     <p>
-                                                                        ( {sbrand.year_founded} )
+                                                                        ( 2019 )
                                                                     </p>
                                                                 </li>
 
                                                                 <li>
                                                                     <p>
-                                                                    <i class="far fa-chart-line"></i> Hasılat
+                                                                    <i class="far fa-chart-line"></i> REVENUE
                                                                     </p>
                                                                     <p>
-                                                                        ( {sbrand.annual_revenue })
+                                                                        ( $1M-$5M )
                                                                     </p>
-                                                                </li>                                                              
+                                                                </li>
+
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fal fa-bullhorn"></i> PROMOTIONAL SPEND
+
+                                                                    </p>
+                                                                    <p>
+                                                                        ( $1 - $25k )
+                                                                    </p>
+                                                                </li>
+
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
+
+
+                                                                    </p>
+                                                                    <p>
+                                                                        ( $89.00 - $89.00 )
+                                                                    </p>
+                                                                </li>
 
                                                             </ul>
                                                         </div>
 
-                                            
+                                                        <div className="b-profile-sidebar-text">
+                                                            <ul>
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fab fa-facebook-square"></i>  FACEBOOK
+                                                                    </p>
+                                                                    <p>
+                                                                        --- 
+                                                                    </p>
+                                                                  
+                                                                </li>
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fab fa-twitter-square"></i> TWITTER
+                                                                    </p>
+                                                                    <p>
+                                                                        --- 
+                                                                    </p>
+                                                                </li>
+
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fab fa-pinterest-square"></i> PINTEREST
+                                                                    </p>
+                                                                    <p>
+                                                                        --- 
+                                                                    </p>
+                                                                </li>
+
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fab fa-instagram"></i> INSTAGRAM
+                                                                    </p>
+                                                                    <p>
+                                                                        ---
+                                                                    </p>                                                    
+                                                                </li>
+
+                                                                <li>
+                                                                    <p>
+                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
+
+
+                                                                    </p>
+                                                                    <p>
+                                                                        --- 
+                                                                    </p>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+
 
 
                                                      </div>
@@ -1014,8 +1108,12 @@ function BrandProfile() {
                                             </Card.Body>
                                         </Card>
                                     </Col>                
-                                    </TabPanel>
-
+                                        </TabPanel>
+                                        <TabPanel>
+                                            <p> Tab 3 content </p>
+                                        </TabPanel>
+                                    </Container>
+                                   </section>
                                 </Tabs>
                                     </Col>
 
@@ -1026,12 +1124,12 @@ function BrandProfile() {
 
                             </div>
                         </Col>
-                    </Row>
-                </Container>
+             
+          
             </section>
         
 
-{/* Brand Logo upload modal  */}
+{/* Brand Logo uplod modal  */}
 <Modal
                 size="lg"
                 centered
@@ -1079,219 +1177,9 @@ function BrandProfile() {
             </Modal>
 
 
-{/* Cover photo uplod modal  */}
-            <Modal
-                size="lg"
-                centered
-                show={show}
-                onHide={() => setShow(false)}
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    Upload your cover image
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-
-                        <Row>
-                            <Col xs={12} md={12}>
-
-                                <CoverPhotoUploader />
-
-                            </Col>
-
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500">  Kaydet  </button>
-                    </div>
-                </Modal.Footer>
-            </Modal>
-
-
-{/* add product modal */}
-            <Modal
-                size="lg"
-                centered
-                show={show2}
-                onHide={() => setShow2(false)}
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    <h5 style={{ marginBottom: '0px' }}> ürün ekle
-</h5>
-                    {/* <p> Start with adding your product’s name </p> */}
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-
-                        <Row>
-                            <Col xs={12} md={10} className="m-auto">
-                         <div className="text-center mb-3">
-                         <h5> Yeni ürün ekle</h5>  
-                         <p style={{ marginTop: '0px' }}>Ürün İsmi Ekle  </p>
-                         </div>
-                            <Col xs={12} md={10} className="m-auto"> 
-                                <Form.Group controlId="formBasicEmail">
-                                
-                                    <Form.Control id="addproduct" type="text" placeholder="e.g. Corn Flakes"/>
-
-                                </Form.Group>
-                            </Col>
-                            </Col>
-
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button className="admin-add-btn" onClick={AddProduct} >ürün ekle
- </button>
-                    </div>
-                </Modal.Footer>
-            </Modal>
-
-{/* add story modal */}
-            <Modal
-                size="lg"
-                centered
-                show={showStory}
-                onHide={() => setShowStory(false)}
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    <h5 style={{ marginBottom: '0px' }}> Hikaye Ekle </h5>
-           
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-
-                        <Row>
-                          
-            
-                            <Col xs={12} md={12} className="m-auto"> 
-                            {/* <CKEditor
-                                data={content}
-                                onChange={onEditorChange()} /> */}
-                               <div className="pop-editor-text">
-                               <CKEditor
-                                data={content}
-                                onChange={onEditorChange} /> 
-                                    {/* <p style={{ marginTop: '0px' }}> 
-                                         Add reach text editor
-                                    </p> */}
-                               </div>
-                            </Col>
-                        
-
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500" type="submit" onClick={() => {EditBrandStory() }} >Add </button>
-                        {/* onClick={EditBrandStory()} */}
-                    </div>
-                </Modal.Footer>
-            </Modal>
-        
-{/*add brand video url modal  */}
-            <Modal
-                size="lg"
-                centered
-                show={showV}
-                onHide={() => setShowV(false)}
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    {/* <h5 style={{ marginBottom: '0px' }}> Add product </h5> */}
-                    {/* <p> Start with adding your product’s name </p> */}
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-
-                        <Row>
-                            <Col xs={12} md={10} className="m-auto">
-                         <div className="text-center mb-3">
-                         <h5> Youtube/Vimeo URL'si ekle </h5>  
-                        
-                         </div>
-                            <Col xs={12} md={10} className="m-auto"> 
-                                <Form.Group controlId="formBasicEmail">
-                                
-                                    <Form.Control type="text" id="brand_video" placeholder="https://youtu.be/abcdefg"/>
-
-                                </Form.Group>
-
-
-                            </Col>
-                            </Col>
-
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500"  onClick={() => {EditBrandVideo()}}>  Embed Video </button>
-                    </div>
-                </Modal.Footer>
-            </Modal>
-
-{/* move brand modal */}
-            <Modal
-                size="lg"
-                centered
-                show={show11}
-                onHide={() => setShow11(false)}
-                aria-labelledby="example-custom-modal-styling-title">
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    <h5 style={{ marginBottom: '0px' }}> </h5>
-                    {prox}
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-                        <Row>
-                            <Col xs={12} md={10} className="m-auto">
-                         <div className="text-center mb-3">
-                         <h5>Choose a Marka Adı for this ürün</h5>  
-                         
-                         </div>
-                            <Col xs={12} md={10} className="m-auto"> 
-                            {brands.map(brand=>( 
-                                <p>
-                             {brand.brand_name}<img src={BASE_URL.slice(0,-5)+brand.brand_logo} width="70px" />
-                             <input id="checked_brand" name="checked_brand" type="radio"  value={brand.uuid}/>  
-                               </p>
-                            ))}
-
-                           
-
-                            </Col>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button className="admin-add-btn" onClick={SaveMoveBrand} > Kaydet </button>
-                    </div>
-                </Modal.Footer>
-            </Modal>
 
 {/* Cover photo uplod modal  */}
-        <Modal
+<Modal
                 size="lg"
                 centered
                 show={show}
@@ -1338,8 +1226,52 @@ function BrandProfile() {
             </Modal>
 
 
+{/* add product modal */}
+<Modal
+                size="lg"
+                centered
+                show={show2}
+                onHide={() => setShow2(false)}
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    <h5 style={{ marginBottom: '0px' }}> ürün ekle
+</h5>
+                    {/* <p> Start with adding your product’s name </p> */}
+            </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
+
+                        <Row>
+                            <Col xs={12} md={10} className="m-auto">
+                         <div className="text-center mb-3">
+                         <h5> Yeni ürün ekle</h5>  
+                         <p style={{ marginTop: '0px' }}>Ürün İsmi Ekle  </p>
+                         </div>
+                            <Col xs={12} md={10} className="m-auto"> 
+                                <Form.Group controlId="formBasicEmail">
+                                
+                                    <Form.Control id="addproduct" type="text" placeholder="e.g. Corn Flakes"/>
+
+                                </Form.Group>
+                            </Col>
+                            </Col>
+
+                        </Row>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="col-md-12 text-center">
+                        <button className="admin-add-btn" onClick={AddProduct} >ürün ekle
+ </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+
 {/* add new brand modal */}
-        <Modal
+<Modal
         size="lg"
         // dialogClassName="modal-90w"
         show={show4}
@@ -1406,9 +1338,141 @@ function BrandProfile() {
             </Modal.Footer>
       </Modal>
 
+{/* add story modal */}
+<Modal
+                size="lg"
+                centered
+                show={showStory}
+                onHide={() => setShowStory(false)}
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    <h5 style={{ marginBottom: '0px' }}> Hikaye Ekle </h5>
+           
+            </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
 
-{/* Edit brand info modal */}
-      <Modal
+                        <Row>
+                          
+            
+                            <Col xs={12} md={12} className="m-auto"> 
+                            {/* <CKEditor
+                                data={content}
+                                onChange={onEditorChange()} /> */}
+                               <div className="pop-editor-text">
+                               <CKEditor
+                                data={content}
+                                onChange={onEditorChange} /> 
+                                    {/* <p style={{ marginTop: '0px' }}> 
+                                         Add reach text editor
+                                    </p> */}
+                               </div>
+                            </Col>
+                        
+
+                        </Row>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="col-md-12 text-center">
+                        <button class="admin-add-btn f-w-500" type="submit" onClick={() => {EditBrandStory() }} >Add </button>
+                        {/* onClick={EditBrandStory()} */}
+                    </div>
+                </Modal.Footer>
+            </Modal>
+
+
+            
+            <Modal
+                size="lg"
+                centered
+                show={showStory}
+                onHide={() => setShowStory(false)}
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    <h5 style={{ marginBottom: '0px' }}> Add Story </h5>
+           
+            </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
+
+                        <Row>
+                          
+            
+                            <Col xs={12} md={12} className="m-auto"> 
+                               <div className="pop-editor-text">
+                                    <p style={{ marginTop: '0px' }}> 
+                                         Add rich text editor
+                                    </p>
+                               </div>
+                            </Col>
+                        
+
+                        </Row>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="col-md-12 text-center">
+                        <button class="admin-add-btn f-w-500">  Add </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+        
+
+        
+            <Modal
+                size="lg"
+                centered
+                show={showV}
+                onHide={() => setShowV(false)}
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    {/* <h5 style={{ marginBottom: '0px' }}> Add product </h5> */}
+                    {/* <p> Start with adding your product’s name </p> */}
+            </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
+
+                        <Row>
+                            <Col xs={12} md={10} className="m-auto">
+                         <div className="text-center mb-3">
+                         <h5> Add Youtube/Vimeo URL </h5>  
+                        
+                         </div>
+                            <Col xs={12} md={10} className="m-auto"> 
+                                <Form.Group controlId="formBasicEmail">
+                                
+                                    <Form.Control type="text" placeholder="https://youtu.be/abcdefg"/>
+
+                                </Form.Group>
+
+
+                            </Col>
+                            </Col>
+
+                        </Row>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="col-md-12 text-center">
+                        <button class="admin-add-btn f-w-500">  Embed Video </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+
+
+
+        
+        <Modal
         size="lg"
         // dialogClassName="modal-90w"
         show={showInfo}
@@ -1417,7 +1481,7 @@ function BrandProfile() {
         >
             <Modal.Header closeButton>
             <Modal.Title id="example-custom-modal-styling-title">
-            Marka Adı  information
+            Brand information
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -1426,8 +1490,8 @@ function BrandProfile() {
                 <Row>
                 <Col xs={12} md={6}>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label  style={{marginTop: '0px'}} >Marka adı</Form.Label>
-                        <Form.Control type="text"  id="e_name" placeholder="abc" defaultValue={sbrand.brand_name} />
+                        <Form.Label  style={{marginTop: '0px'}}>Band Name</Form.Label>
+                        <Form.Control type="email" placeholder="abc" />
 
                     </Form.Group>
                 </Col>
@@ -1435,7 +1499,7 @@ function BrandProfile() {
                 <Col xs={12} md={6}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label  style={{marginTop: '0px'}}>Location</Form.Label>
-                        <Form.Control type="text" id="e_location" defaultValue={sbrand.comp_location} placeholder="abc" />
+                        <Form.Control type="email" placeholder="abc" />
 
                     </Form.Group>
                 </Col>         
@@ -1443,44 +1507,136 @@ function BrandProfile() {
                 <Col xs={12} md={6}>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label  style={{marginTop: '0px'}}>Website</Form.Label>
-                        <Form.Control type="text" id="e_website" defaultValue={sbrand.brand_webisite} placeholder="abc.com" />
+                        <Form.Control type="email" placeholder="abc.com" />
                     </Form.Group>
                 </Col>
                 
                 <Col xs={12} md={6}>
                     <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label  style={{marginTop: '0px'}}>Kuruluş Yılı</Form.Label>
-                        <Form.Control as="select" defaultValue={sbrand.year_founded} id="e_year">
-                        {years.map((year, index) => {
-                            return <option key={`year${index}`} value={year}>{year}</option>})}
-                        
-                    </Form.Control>
+                        <Form.Label  style={{marginTop: '0px'}}>Year founded</Form.Label>
+                        <Form.Control as="select">
+                        <option>Select</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>3</option>
+                        </Form.Control>
                     </Form.Group>
                 </Col>
             
                 <Col xs={12} md={6}>
                 <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label  style={{marginTop: '0px'}}>Hasılat</Form.Label>
+                    <Form.Label  style={{marginTop: '0px'}}>Revenue</Form.Label>
                    
-                    <Form.Control as="select" id='e_revenue' defaultValue={sbrand.annual_revenue}>
-                      <option value="0M$-5M$">0M$-5M$</option>
-                      <option value="6M$-10M$">6M$-10M$</option>
-                      <option value="11M$-15M$">11M$-15M$</option>
+                      <Form.Control as="select">
+                      <option>Select</option>
+                      <option>brand 1</option>
+                      <option>brand 2</option>
+                      <option>brand 3</option>
+                      <option>brand 3</option>
                       </Form.Control>
                   </Form.Group>
                 </Col>
 
             </Row>
 
-            
+            <Row>
+                <Col xs={12} md={6}>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label  style={{marginTop: '0px'}}>Facebook</Form.Label>
+                        <Form.Control type="email" placeholder="Add user name" />
+                    </Form.Group>
+                </Col>
+
+                <Col xs={12} md={6}>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label  style={{marginTop: '0px'}}>Twitter</Form.Label>
+                        <Form.Control type="email" placeholder="Add user name" />
+                    </Form.Group>
+                </Col>
+
+                <Col xs={12} md={6}>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label  style={{marginTop: '0px'}}>Pinterest</Form.Label>
+                        <Form.Control type="email" placeholder="Add user name" />
+                    </Form.Group>
+                </Col>
+
+                <Col xs={12} md={6}>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label  style={{marginTop: '0px'}}>Instagram</Form.Label>
+                        <Form.Control type="email" placeholder="Add user name" />
+                    </Form.Group>
+                </Col>
+
+
+                <Col xs={12} md={12}>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label  style={{marginTop: '0px'}}>Trade shows</Form.Label>
+                   
+                      <Form.Control as="select">
+                      <option>Select</option>
+                      <option>brand 1</option>
+                      <option>brand 2</option>
+                      <option>brand 3</option>
+                      <option>brand 3</option>
+                      </Form.Control>
+                  </Form.Group>
+                </Col>
+
+            </Row>
             </Container>
             </Modal.Body>
             <Modal.Footer>
                 <div className="col-md-12 text-center">
-                <button class="admin-add-btn f-w-500" onClick={() => EditBrandInfo()}> Kaydet </button>
+                <button class="admin-add-btn f-w-500"> Save </button>
                 </div>
             </Modal.Footer>
       </Modal>
+
+{/* move brand modal */}
+<Modal
+                size="lg"
+                centered
+                show={show11}
+                onHide={() => setShow11(false)}
+                aria-labelledby="example-custom-modal-styling-title">
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    <h5 style={{ marginBottom: '0px' }}> </h5>
+                    {prox}
+            </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
+                        <Row>
+                            <Col xs={12} md={10} className="m-auto">
+                         <div className="text-center mb-3">
+                         <h5>Choose a Marka Adı for this ürün</h5>  
+                         
+                         </div>
+                            <Col xs={12} md={10} className="m-auto"> 
+                            {brands.map(brand=>( 
+                                <p>
+                             {brand.brand_name}<img src={BASE_URL.slice(0,-5)+brand.brand_logo} width="70px" />
+                             <input id="checked_brand" name="checked_brand" type="radio"  value={brand.uuid}/>  
+                               </p>
+                            ))}
+
+                           
+
+                            </Col>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="col-md-12 text-center">
+                        <button className="admin-add-btn" onClick={SaveMoveBrand} > Kaydet </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+
 
         </>
     );

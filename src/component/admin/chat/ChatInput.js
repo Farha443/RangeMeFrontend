@@ -26,18 +26,18 @@ import ChatText from './ChatText';
 import ChatUser from './ChatUser';
 import BASE_URL from '../../base';
 import axios from 'axios';
+import $ from "jquery"; 
 
 const cookies = new Cookies();
-function ChatInput(){
-    const [show, setShow] = useState(false);
+function ChatInput({recId}){
+    const[msg,setMsg]=useState([])
 
-    function Sendmessage(id){
-        //   alert(id)
+
+    function Sendmessage(recId){
         var url = BASE_URL+"messaging/chats/";
         var message = document.getElementById('message').value; 
         var token=cookies.get('logintoken');
-        var reciever = id
-        // message.append($(messageList))
+        var reciever = recId;
         var config= {
             method: 'post',
                 url: url,
@@ -50,20 +50,38 @@ function ChatInput(){
                     message: message,
                 },
             };
-           
-
-
             axios(config)
             .then(re => {
-              if(re.status === 201){
-                window.location='/products_detail'
-              }
+             setMsg(re.data.data)
+             getChats(recId);
             })
             .catch(err => {
               alert(err);
             }) 
       }
-
+      function getChats(recId){
+        var url = BASE_URL+'messaging/get_chats/?person='+recId;
+        var token = cookies.get('logintoken');
+          var config = {
+              method: 'get',
+              headers: {
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json",
+              },
+              url: url,
+            };
+            axios(config)
+            .then(res => {
+                setMsg(res.data);
+              console.log(res.data);
+              
+            })
+            .catch(err => {
+              alert(err);
+            })
+        
+      
+    }
    
     return(
         <>
@@ -71,11 +89,11 @@ function ChatInput(){
             
 <div className="chat-textarea">
 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-    <Form.Control as="textarea" rows={3} placeholder="type message"/>
+    <Form.Control as="textarea" id='message' rows={3} placeholder="type message"/>
 </Form.Group>
 </div>
 <div className="chat-btn">
-    <button className="admin-add-btn">
+    <button className="admin-add-btn"  onClick={()=>Sendmessage(recId)}>
     <i class="fas fa-paper-plane"></i>  Send
     </button>
 </div>

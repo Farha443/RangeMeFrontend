@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, userEffect, useState} from 'react';
 import '../../../assets2/admin.css';
 import AdminNavbar from '../AdminNavbar'
 import {
@@ -20,84 +20,45 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
-import useState from 'react-hook-use-state';
+import BASE_URL from '../../base';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
+function ChatText({messages}){
+    const[msg,setMsg]=useState([])
 
-function ChatText(){
+    useEffect(() => {
+        setMsg(messages)
+        console.log(messages)
+    })
+
    
     return(
         <>
       <div className="chat-box-d">
-        <div className="rec-text-d1">
+        {msg.length>0?msg.map(m=>{
+            if(m.sender === cookies.get('uuid')){
+                return <div className="rec-text-d2">
             <ul>
                 <li>
-                    <p> Lorem ipsum dollar site.. </p>
-                </li>
-
-                <li>
-                    <p> Lorem ipsum dollar site.. </p>
-                </li>
-
-                <li>
-                    <p> Lorem ipsum dollar site.. </p>
-                </li>
-
-                <li>
-                    <p> Lorem ipsum dollar site.. </p>
-                </li>
-                <li>
-                    <p> Lorem ipsum dollar site.. </p>
-                </li>
-                <li>
-                    <p> Lorem ipsum dollar site.. </p>
-                </li>
-
-                <li>
-                    <p> Lorem ipsum dollar site.. </p>
-                </li>
-                <li>
-                    <p> Lorem ipsum dollar site.. </p>
-                </li>
-                <li>
-                    <p> Lorem ipsum dollar site.. </p>
-                </li>
-
-            </ul>
-        </div>
-
-        <div className="rec-text-d2">
-            <ul>
-                <li>
-                    <p> Hello world.. </p>
-                </li>
-
-                <li>
-                    <p> Hello world.. </p>
-                </li>
-                <li>
-                    <p> Hello world.. </p>
-                </li>
-                <li>
-                    <p> Hello world.. </p>
-                </li>
-                <li>
-                    <p> Hello world.. </p>
-                </li>
-                <li>
-                    <p> Hello world.. </p>
-                </li><li>
-                    <p> Hello world.. </p>
-                </li><li>
-                    <p> Hello world.. </p>
-                </li><li>
-                    <p> Hello world.. </p>
-                </li><li>
-                    <p> Hello world.. </p>
-                </li><li>
-                    <p> Hello world.. </p>
+                    <p> {m.message} </p>
                 </li>
             </ul>
-        </div>
+        </div>   
+            }
+            else{
+                return <div className="rec-text-d1">
+                <ul>
+                    <li>
+                        <p> {m.message} </p>
+                    </li>
+                </ul>
+            </div>
+            }
+        }):''}
+
+        
         </div>
         </> 
     );
