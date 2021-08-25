@@ -37,18 +37,27 @@ import axios from 'axios';
 const cookies = new Cookies();
 
 
-var treeData = {
-   
-};
+
 var uuid = cookies.get('productuuid');
 
 function ProductForm() {
-    
+    const [sO,setSO ] = useState([]);
     const [productname, setproductname]= useState({})
     const [certi, setCerti]= useState([])
     const[p_details, setPdetails]=useState([]);
-    const [category, setCategory]= useState({})
+    const [category, setCategory]= useState([])
     const [cat, setCategoryData]= useState('')
+    const treeData = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+      ];
+
+
+      function handleChange(selectedOption){
+        setSO(selectedOption);
+        console.log(`Option selected:`, selectedOption);
+      };
 
     useEffect(()=>{
         var token = cookies.get('logintoken');
@@ -104,9 +113,10 @@ function ProductForm() {
     // ]))
 
         function Step1(){
+
             var product_name = document.getElementById('product_name').value;
-            var cat = document.querySelectorAll('#select_category option:checked');
-            var select_category = Array.from(cat).map(el => el.value);
+
+            var select_category = Array.from(sO).map(el => el.value);
             const selected = document.querySelectorAll('#approvals_certifications option:checked');
             var approvals_certifications = Array.from(selected).map(el => el.value);
             
@@ -299,7 +309,10 @@ function ProductForm() {
                                                 id="select_category"
                                                 isMulti
                                                 name="colors"
-                                                options={Object.values(category).map(cat=>({value:cat.val,label:cat.label}))}
+                                                value={sO}
+                                                
+                                                onChange={handleChange}
+                                                options={category}
                                                 className="basic-multi-select"
                                                 classNamePrefix="select"
                                             />
