@@ -105,20 +105,20 @@ function SignUp(){
      
     </NavLink>
     <div className="header-bar__actions">
-      <a href="/supplier-home"  className="header-bar__link">Satıcılar İçin</a>
-      <a href="/buyer-home"  className="header-bar__link">Alıcılar İçin</a>
-      <a href="servicehome"  className="header-bar__link">Servis</a>
+      <a href="/supplier-home"  className="header-bar__link">tedarikçiler</a>
+      <a href="/buyer-home"  className="header-bar__link">alıcı firmalar</a>
+      <a href="servicehome"  className="header-bar__link">hizmet sağlayıcılar</a>
       {/* <div className="header-bar__divider" /> */}
       <div className="header-bar__link sub-nav__toggle">
-        <span>Resources</span>
+        <span>kaynaklar</span>
         <div className="header-bar__angle">
         <i class="fa fa-caret-down svg" aria-hidden="true"></i>
         </div>
         <div className="sub-nav" id="resources-sub-nav">
-        <NavLink to="/success" className="sub-nav__link">Success Stories</NavLink>
-          <a href="/blogs" className="sub-nav__link">Blog</a>
-          <a href="#" className="sub-nav__link">In The News</a>
-          <a href="#" className="sub-nav__link">Webinars</a>
+        <NavLink to="/success" className="sub-nav__link">başarı öyküleri</NavLink>
+          <a href="/blogs" className="sub-nav__link">tayuss blog</a>
+          <a href="#" className="sub-nav__link">haberler</a>
+          <a href="#" className="sub-nav__link">webinarlar</a>
         </div>
       </div>
       {logintoken === undefined ?
@@ -152,31 +152,31 @@ function SignUp(){
 <div id="menu" className="menu">
   <div className="menu__inner">
     <nav className="nav nav--menu">
-      <a href="/supplier-home" className="nav__link">Satıcılar İçin</a>
-      <a href="/buyer-home" className="nav__link">Alıcılar İçin</a>
-      <a href="/servicehome" className="nav__link">Servis</a>
+      <a href="/supplier-home" className="nav__link">tedarikçiler</a>
+      <a href="/buyer-home" className="nav__link">alıcı firmalar</a>
+      <a href="/servicehome" className="nav__link">hizmet sağlayıcılar</a>
       <div className="nav__divider" />
       <div className="nav__link nav__link--sub-nav">
-        <span className="sub-nav__toggle">Resources</span>
+        <span className="sub-nav__toggle">kaynaklar</span>
         <div className="sub-nav">
-          <NavLink to="/success" className="sub-nav__link">Success Stories</NavLink>
-          <a href="#" className="sub-nav__link">Blog</a>
-          <a href="#" className="sub-nav__link">In The News</a>
-          <a href="#" className="sub-nav__link">Webinars</a>
-          <a href="#" className="sub-nav__link">Support</a>
+          <NavLink to="/success" className="sub-nav__link">başarı öyküleri</NavLink>
+          <a href="#" className="sub-nav__link">tayuss blog</a>
+          <a href="#" className="sub-nav__link">haberler</a>
+          <a href="#" className="sub-nav__link">webinarlar</a>
+          <a href="#" className="sub-nav__link">destek</a>
         </div>
       </div>
       <div className="nav__link nav__link--sub-nav">
-        <span className="sub-nav__toggle">Company</span>
+        <span className="sub-nav__toggle">Kurumsal</span>
         <div className="sub-nav">
-          <a href="#" className="sub-nav__link">About Us</a>
-          <a href="#" className="sub-nav__link">Contact</a>
-          <a href="#" className="sub-nav__link">Careers</a>
-          <a href="#" className="sub-nav__link">Privacy</a>
-          <a href="#" className="sub-nav__link">Terms</a>
+          <a href="#" className="sub-nav__link">hakkımızda</a>
+          <a href="#" className="sub-nav__link">iletişim</a>
+          <a href="#" className="sub-nav__link">kariyer</a>
+          <a href="#" className="sub-nav__link">gizlilik</a>
+          <a href="#" className="sub-nav__link">kullanım koşulları</a>
         </div>
       </div>
-      <a href="#" data-signup="supplier" className="nav__signup button button--blue">Get Started</a>
+      <a href="#" data-signup="supplier" className="nav__signup button button--blue">Şimdi Başlayın!</a>
       {/* <NavLink to="/login"  className="nav__login button button--border">Log in</NavLink> */}
       {logintoken === undefined ?
       <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">
