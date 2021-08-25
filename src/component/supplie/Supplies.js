@@ -162,9 +162,7 @@ function Supplies(){
 return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
-                                        {/* <img src="assets/images/icons/paper-plane.svg" class="icn-img"/> */}
-                                        {/* <img src={BASE_URL.slice(0,-5)+'/'+'media/'+ sub.logo}/> */}
-                  
+                                      <i class={sub.icon}></i>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6> {sub.heading}</h6>
@@ -231,9 +229,11 @@ return<li>
                                 {work.sub_works.map(sub=>{
                                   return<li>
                                     <div className="ic-text-mn">
+                                    
                                     <div className="ic-5248 ic-22"> 
                                         {/* <img src="assets/images/icons/view.svg" class="icn-img"/>
                                          */}
+                                         <i class={sub.icon}></i>
                                           {/* <img src={BASE_URL.slice(0,-5)+'/'+'media/'+ sub.logo}/> */}
                                       </div>
                                       <div className="ic-text-6254">
@@ -436,7 +436,7 @@ Examine which product details increase interaction with the buyer company. </p>
                                  return <li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
-                                      <i class="fas fa-file-alt"></i>
+                                      <i class={sub.icon}></i>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading}  </h6>
@@ -486,7 +486,7 @@ Examine which product details increase interaction with the buyer company. </p>
                     <div className="row"> 
                         <div className="col-md-6 co-xs-12">
                         <div className="r-text-254">
-                            <h5> {workk.title} <br/>MEET YOUR NEEDS!
+                            <h5> {workk.title} <br/>
                             </h5>
                             </div>
                             <div className="d-one-12423">
@@ -495,7 +495,7 @@ Examine which product details increase interaction with the buyer company. </p>
                                   return<li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248"> 
-                                      <i class="fas fa-binoculars"></i>
+                                      <i class={sub.icon}></i>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6> {sub.heading} </h6>

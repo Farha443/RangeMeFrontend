@@ -51,8 +51,8 @@ function Footer(){
   <div className="footer__nav">
     <h5 className="footer__heading">Product</h5>
     <a href="index.html" className="footer__link">Home</a>
-    <a href="#" className="footer__link">Tedarikçiler</a>
-    <a href="#" className="footer__link">Alıcılar</a>
+    <a href="/supplier-home" className="footer__link">Tedarikçiler</a>
+    <a href="/buyer-homez" className="footer__link">Alıcılar</a>
     <a href="#" className="footer__link">For Servis Providers</a>
   </div>
   <div className="footer__nav">
@@ -87,13 +87,13 @@ function Footer(){
                   <div className="col-md-9 col-xs-12">
                     <div className="ft-link-text-mn"> 
                         <ul>
-                          <li> <NavLink to=""> anasayfa  </NavLink> </li>
-                          <li> <NavLink to=""> tedarikçiler   </NavLink> </li>
-                          <li> <NavLink to=""> alıcı firmalar   </NavLink> </li>
-                          <li> <NavLink to=""> hizmet sağlayıcılar   </NavLink> </li>
-                          <li> <NavLink to=""> blog    </NavLink> </li>
-                          <li> <NavLink to=""> hakkımızda  </NavLink> </li>
-                          <li> <NavLink to=""> gizlilik politikası   </NavLink> </li>
+                          <li> <NavLink to="/"> anasayfa  </NavLink> </li>
+                          <li> <NavLink to="/supplier-home"> tedarikçiler   </NavLink> </li>
+                          <li> <NavLink to="/buyer-home"> alıcı firmalar   </NavLink> </li>
+                          <li> <NavLink to="/servicehome"> hizmet sağlayıcılar   </NavLink> </li>
+                          <li> <NavLink to="/blogs"> blog    </NavLink> </li>
+                          <li> <NavLink to="/about"> hakkımızda  </NavLink> </li>
+                          <li> <NavLink to="/privacy"> gizlilik politikası   </NavLink> </li>
                           <li> <NavLink to=""> iletişim   </NavLink> </li>
 
                         </ul>

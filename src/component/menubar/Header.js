@@ -72,7 +72,7 @@ function Header(){
  }, [])  
 
   useEffect(() => {
-         
+        //  alert(logintoken)
     axios.get(BASE_URL+'authentication/getsupplier/'+ cookies.get('uuid') )
     .then(res=>{
         // debugger
@@ -132,7 +132,8 @@ function SignUp(){
             </NavLink>
             }
       {/* <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">Log in</NavLink> */}
-      <button className="header-bar__cta button button--green " onClick={() => SignUp()}>Ücretsiz Hesap Aç <i class="fal fa-long-arrow-right"></i></button>
+      {logintoken === undefined ?<button className="header-bar__cta button button--green " onClick={() => SignUp()}>Ücretsiz Hesap Aç <i class="fal fa-long-arrow-right"></i></button>
+      :""}
   
       <button id="menu-toggle" className="menu__button">
         <svg xmlns="http://www.w3.org/2000/svg" className="svg" width={24} height={24}>

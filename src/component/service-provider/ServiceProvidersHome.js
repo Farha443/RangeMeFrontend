@@ -58,12 +58,6 @@ function ServiceProviders(){
     ]
   };
 
-  useEffect(()=>{
-    var token = cookies.get('logintoken');
-        if (token === undefined){
-        window.location="/login"
-        }
-  })
 
   useEffect(() => {
     axios.get(BASE_URL+'servicehome/servicehomeview/')

@@ -22,7 +22,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const cookies = new Cookies();
 const axios = require('axios');
 var first_name= cookies.get("first_name")
-var user_pic= cookies.get("user_pic")
 var user_uuid = cookies.get("uuid")
 
 
@@ -71,6 +70,7 @@ function AdminNavbar(){
         })
         
     },[])
+
     return(
         <>
 
@@ -86,7 +86,7 @@ function AdminNavbar(){
     <Nav className="ml-auto">
 
     
-      <Nav.Link href="/admin_home">Anasayfa</Nav.Link>
+      <Nav.Link href="/admin_home" >Anasayfa</Nav.Link>
       <NavDropdown title="Markalarım" id="basic-nav-dropdown" className="menu-drop-1245">
       {brands.map(brand=>(
         <NavDropdown.Item onClick={()=>GetBrand(brand)} >{brand.brand_name}</NavDropdown.Item>))}
@@ -96,7 +96,7 @@ function AdminNavbar(){
       {/* <Nav.Link href="/brand-profile">My Brand</Nav.Link> */}
      
 
-      <Nav.Link href="/chatbox"><i class="fa fa-comments" aria-hidden="true"></i></Nav.Link>
+      <Nav.Link href="/chat"><i class="fa fa-comments" aria-hidden="true"></i></Nav.Link>
      
       <Nav.Link href="#home"><i class="fa fa-bell-o" aria-hidden="true"></i></Nav.Link>
 
@@ -221,7 +221,7 @@ console.log(config)
 axios(config).then(res=>{
     console.log(res.data.data)
   cookies.set('uuid2', res.data.data.uuid, { path: '/' })
-  // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
+
   $(".laoder").hide(); 
   window.location = '/admin_home'
 }

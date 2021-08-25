@@ -89,7 +89,7 @@ function Chat(){
        
        <div className="chating-box-mn">
            
-          <ChatText messages={msg}/>
+          <ChatText messages={msg} recId={id}/>
           
           <ChatInput recId={id}/>
 

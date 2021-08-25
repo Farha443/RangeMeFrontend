@@ -69,29 +69,7 @@ class Preview extends React.Component {
           alert(err);
         })
     }
-    // const use = useParams();
-    // const[fullDetail,setFullDetail]=useState([])
     
-    // useEffect(() => {
-    //     alert(cookies.get('productuuid'))
-    //     // console.log(use)
-    //     // if(uuid==='undefined'){
-    //     //     window.location = '/blogs';
-    //     // }
-    //     // var uuid = cookies.get('productuuid')
-    //     var url = BASE_URL+'product/fulldetail/'+uuid;
-    //     var config={
-    //     method:'get',
-    //     url:url,
-    //     }
-
-    //     axios(config).then(re=>{
-    //         console.log(re.data)
-    //         setFullDetail(re.data)
-    //     }).catch(err=>{
-    //     alert(err);
-    //     })
-    // },[])
     
     render() {
     return (
@@ -122,6 +100,8 @@ class Preview extends React.Component {
                                         <div className="p-icn-02">
                                           {cookies.get('user_type')==="supplier"?
                                             <button className="appro-btn"> <NavLink to=""  onClick={()=>this.Redirect(uuid)}>  Düzenle </NavLink>  </button>:""}
+                                            {cookies.get('user_type')==="supplier"?
+                                            <button className="appro-btn"><NavLink to="/brand-profile">Back</NavLink></button>:cookies.get('user_type')==="buyer"?<button className="appro-btn"><NavLink to="/newbuyerhome">Back</NavLink></button>:""}
                                         </div>
                                     </div>
                                 </div>

@@ -133,7 +133,7 @@ class AdminProfile extends React.Component {
     
             });
             // alert(BASE_URL.slice(0,-1)+ this.state.user_pic)
-            cookies.set('user_pic',re.data.data.user_pic,{path:'/'})
+            // cookies.set('user_pic',re.data.data.user_pic,{path:'/'})
             cookies.set('first_name',re.data.data.first_name,{path:'/'})
           })
           .catch(err => {

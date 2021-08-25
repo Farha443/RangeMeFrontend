@@ -22,7 +22,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const cookies = new Cookies();
 const axios = require('axios');
 var first_name= cookies.get("first_name")
-var user_pic= cookies.get("user_pic")
 var user_uuid = cookies.get("uuid")
 
 

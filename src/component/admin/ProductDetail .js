@@ -341,7 +341,6 @@ function ProductDetail() {
         }
         axios(config)
         .then(res=>{
-                // //   debugger
                 //   if (res.data.message === "product detail is created"){
                 //     alert("product detail is created");
                 //   }

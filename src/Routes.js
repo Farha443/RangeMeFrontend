@@ -51,7 +51,6 @@ import BuyerNavbar from './component/admin/BuyerNavbar';
 import BuyerAdminProfile from './component/admin/BuyerAdminProfile';
 import Chatbox from './component/admin/Chatbox';
 import Supplies from './component/supplie/Supplies';
-import dummy from './component/supplie/dummy';
 import BuyerCompanies from './component/buyee/BuyerCompanies';
 import Bidding from './component/admin/buyer/Bidding';
 import ServiceProvidersHome from './component/service-provider/ServiceProvidersHome';
@@ -67,7 +66,6 @@ function Routes(){
                 <Route exact path="/" component={Home}></Route>
                 <Route exact path="/supplier-home" component={Supplies}></Route>
                 <Route exact path="/buyer-home" component={BuyerCompanies}></Route>
-                <Route exact path="/dummy" component={dummy}></Route>
                 <Route exact path="/homeold" component={Homeold}></Route>
                 <Route exact path="/login" component={Login}></Route>
                 <Route exact path="/signup" component={Signup}></Route>

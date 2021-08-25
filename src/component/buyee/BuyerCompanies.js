@@ -207,7 +207,7 @@ function BuyerCompanies(){
                                  return<li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
-                                      <img src="assets/images/icons/new-user.svg" class="icn-img"/>
+                                      <i class={sub.icon}></i>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading} </h6>
@@ -269,7 +269,7 @@ launch or save the product for later review. </p>
 
                         <div className="col-md-6 co-xs-12 ml-auto">
                             <div className="r-text-254">
-                            <h5> {work.title}huhuugyffgggamitt</h5>
+                            <h5> {work.title}</h5>
                             </div>
                             <div className="d-one-12423">
                                 <ul>
@@ -277,7 +277,7 @@ launch or save the product for later review. </p>
                                   return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
-                                      <img src="assets/images/icons/filter.svg" class="icn-img"/>
+                                    <i class={sub.icon}></i>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading}   </h6>
@@ -375,7 +375,7 @@ DISCOVER </h1>
                                 return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
-                                        <img src="assets/images/icons/click.svg" class="icn-img"/>
+                                    <i class={sub.icon}></i>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading}  </h6>
@@ -442,7 +442,7 @@ Check out with trending collections such as </p>
                                   return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
-                                        <img src="assets/images/icons/floppy-disk.svg" class="icn-img"/>
+                                    <i class={sub.icon}></i>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6> {sub.heading}</h6>

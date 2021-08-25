@@ -38,6 +38,60 @@
     <!--<![endif]-->
   
     <script src="packs/third-party-scripts-ea7a4bb303cd8dd64f64.js" defer="defer"></script>
+
+    <script type="text/javascript">
+      let timer, currSeconds = 0;
+  
+      function resetTimer() {
+  
+          / Hide the timer text /
+          document.querySelector(".timertext")
+                  .style.display = 'none';
+  
+          / Clear the previous interval /
+          clearInterval(timer);
+  
+          / Reset the seconds of the timer /
+          currSeconds = 0;
+  
+          / Set a new interval /
+          timer = 
+              setInterval(startIdleTimer, 1000);
+      }
+  
+      // Define the events that
+      // would reset the timer
+      window.onload = resetTimer;
+      window.onmousemove = resetTimer;
+      window.onmousedown = resetTimer;
+      window.ontouchstart = resetTimer;
+      window.onclick = resetTimer;
+      window.onkeypress = resetTimer;
+  
+      function startIdleTimer() {
+            
+          /* Increment the
+              timer seconds */
+          currSeconds++;
+          var path=['/','/login','/signup'];
+  
+          /* Set the timer text
+              to the new value */
+              if(currSeconds>=300 && !path.includes(window.location.pathname)){
+                  // alert("test")
+              }
+              if(currSeconds>=180 && path.includes(window.location.pathname)){
+                  window.location.reload();
+              }
+          document.querySelector(".secs")
+              .textContent = ' '+currSeconds;
+              // document.cookie("username=timer; path=/");
+  
+          
+          document.querySelector(".timertext")
+              .style.display = 'block';
+      }
+  </script>
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       

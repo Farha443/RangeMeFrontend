@@ -306,7 +306,7 @@ function Home(){
   return                                   <li>
   <div className="ic-text-mn">
     <div className="ic-5248"> 
-       <i class="fas fa-id-card"></i>
+       <i class={sub.icon}></i>
     </div>
     <div className="ic-text-6254">
       <h5> {sub.heading} </h5>
@@ -358,7 +358,7 @@ function Home(){
                               return <li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
-                                      <i class="fas fa-user-plus"></i>
+                                      <i class={sub.icon}></i>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h5> {sub.heading} </h5>

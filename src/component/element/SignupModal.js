@@ -21,6 +21,7 @@ import {
   Card,
   Row
 } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
 const axios = require('axios');
 const cookies = new Cookies();
@@ -169,7 +170,7 @@ console.log(config)
 axios(config).then(res=>{
     console.log(res.data.data)
   cookies.set('uuid2', res.data.data.uuid, { path: '/' })
-  cookies.set('token1', res.data.data.access, { path: '/' })
+  // cookies.set('token1', res.data.data.access, { path: '/' })
   document.getElementById('s2').className='st-two d-none';
   document.getElementById('s1').className='st-one  d-none'
   document.getElementById('s3').className='st-three'
@@ -184,7 +185,6 @@ alert("something went wrong")
 })
 
 }
-
 
 function brandSubmit(){
   var token = cookies.get('token');
@@ -209,13 +209,22 @@ function brandSubmit(){
     };
     console.log(config)
     axios(config).then(res=>{
-        console.log(res.data.data)
-      cookies.set('uuid2', res.data.data.uuid, { path: '/' })
-      cookies.set('token', res.data.data.access, { path: '/' })
-      
-      // $(".laoder").hide(); 
-      // alert("success")
+      cookies.set('uuid2', res.data.data.uuid, { path: '/' });
+      cookies.set('token', res.data.data.access, { path: '/' });
+
+      Swal.fire({
+        title: 'Registeration Successfull',
+        text: 'Redirecting...',
+        timerProgressBar: true,
+        type: 'success',
+        timer: 3000,
+        buttons: false,
+    })
+    .then(() => {
       window.location = "/login";
+        // dispatch(redirect('/login'));
+    })
+      // window.location = "/login";
     }
 
     ).catch(err=>{
@@ -333,13 +342,13 @@ function SignupModal(props){
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Adınız/Your name</Form.Label>
-                            <Form.Control type="email" id="first_name" placeholder="Lütfen adınızı yazın..." />
+                            <Form.Control type="text" id="first_name" placeholder="Lütfen adınızı yazın..." />
                           </Form.Group>
                         </Col>
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Soyadınız/Your Soyad</Form.Label>
-                            <Form.Control type="email" id="last_name" placeholder="Lütfen soyadınızı yazın..." />
+                            <Form.Control type="text" id="last_name" placeholder="Lütfen soyadınızı yazın..." />
                           </Form.Group>
                         </Col>
                         <Col md="12" xs="12">
@@ -443,7 +452,7 @@ function SignupModal(props){
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Şirket Adı</Form.Label>
-                            <Form.Control type="email" id="comp_name" placeholder="Lütfen  firma adınızı yazın..." />
+                            <Form.Control type="text" id="comp_name" placeholder="Lütfen  firma adınızı yazın..." />
                           </Form.Group>
                         </Col>
                         <Col md="6" xs="12">
@@ -507,7 +516,7 @@ function SignupModal(props){
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Your Şirket Adresi</Form.Label>
-                            <Form.Control type="email"  id="city" placeholder="Lütfen  firma adınızı yazın..." />
+                            <Form.Control type="text"  id="city" placeholder="Lütfen  firma adınızı yazın..." />
                           </Form.Group>
                         </Col>
 
@@ -576,14 +585,14 @@ function SignupModal(props){
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Marka Adı name</Form.Label>
-                            <Form.Control type="email" id="brand_name" placeholder="Lütfen  firma adınızı yazın..." />
+                            <Form.Control type="text" id="brand_name" placeholder="Lütfen  firma adınızı yazın..." />
                           </Form.Group>
                         </Col>
 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Marka Adı website</Form.Label>
-                            <Form.Control type="email" id="brand_website" placeholder="Lütfen  firma adınızı yazın..." />
+                            <Form.Control type="text" id="brand_website" placeholder="Lütfen  firma adınızı yazın..." />
                           </Form.Group>
                         </Col>
 

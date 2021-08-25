@@ -187,7 +187,6 @@ function BrandProfile() {
         axios.get(url )
         .then(res=>{
             // setProducts(res.data.data.product)
-            debugger
             setDetails(res.data.data)
             setCount(res.data.data.product.length)
             console.log("-------------all Products-------------")

@@ -508,6 +508,10 @@ function BrandProfile() {
         brandName =  name.charAt(0).toUpperCase() + name.slice(1);
       }
 
+    function Redirect1(uuid){
+        window.location='/preview/'+uuid;
+    }
+
     return (
         <>
             <AdminNavbar />
@@ -700,7 +704,8 @@ function BrandProfile() {
                                                                             </div>
                                                                             
                                                                         <div className="tbl-d2">
-                                                                        <NavLink to="/product_form" className="p-img-a">
+                                                                        <NavLink to=""
+                                                                         onClick={()=>Redirect(pd.uuid,pd.product_name)} className="p-img-a">
                                                                         {pd.product_name}
                                                                             </NavLink>
                                                                          {/* <button className="tbl-btn-587"> Öne Çıkan Ürün </button> */}
@@ -717,7 +722,7 @@ function BrandProfile() {
                                                                         <div className={isAct ? " drop-d-101" : "drop-d-101 open-drop"}> 
                                                                             <ul>
                                                                                 <li> <NavLink to="/brand-profile">View product statistics </NavLink> </li>
-                                                                                <li> <NavLink to="/preview">Preview product</NavLink> </li>
+                                                                                <li> <NavLink to="/preview" onClick={() => Redirect1(pd.uuid)}>Preview product</NavLink> </li>
 
                                                                                 <li> <NavLink to="/brand-profile" onClick={()=>CopyFunction(pd.uuid)} >Make a copy</NavLink> </li>
 

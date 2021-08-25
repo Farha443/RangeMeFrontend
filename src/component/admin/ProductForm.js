@@ -41,6 +41,7 @@ var treeData = {
    
 };
 var uuid = cookies.get('productuuid');
+
 function ProductForm() {
     
     const [productname, setproductname]= useState({})
@@ -59,11 +60,13 @@ function ProductForm() {
     useEffect(() => {
         axios.get(BASE_URL +'authentication/getcategory/').then(res=>{
             setCategory(res.data.data)
+            console.log(res.data.data)
             // debugger
             treeData = res.data.data;
         }).catch(err=>{
             console.log(err)            
         })
+        
 
         axios.get(BASE_URL +'product/get_pdetails/'+cookies.get("productuuid")).then(re=>{
             // debugger
@@ -80,9 +83,7 @@ function ProductForm() {
 
         axios.get(BASE_URL +'product/ProductDetailView/'+cookies.get("productuuid")+'/').then(res=>{
             setproductname(res.data.data)
-            console.log('-------')
-            console.log(res.data.data)
-            
+
         }).catch(err=>{
             console.log(err)            
         })
@@ -96,10 +97,16 @@ function ProductForm() {
         console.log(certi)
     },{}
     )
+    
+
+    // const colourOptions= category.map(cat=>( [
+    //     { value: cat.val, label:cat.label  },
+    // ]))
 
         function Step1(){
             var product_name = document.getElementById('product_name').value;
-            var select_category = cat;
+            var cat = document.querySelectorAll('#select_category option:checked');
+            var select_category = Array.from(cat).map(el => el.value);
             const selected = document.querySelectorAll('#approvals_certifications option:checked');
             var approvals_certifications = Array.from(selected).map(el => el.value);
             
@@ -119,7 +126,7 @@ function ProductForm() {
                 data:{
                     p_user : uuid,
                     product_name:product_name,
-                    select_category:[select_category],
+                    select_category:select_category,
                     approvals_certifications:approvals_certifications,
                     usp:usp,
                     product_disc:product_disc,
@@ -270,8 +277,7 @@ function ProductForm() {
 
                                             </Col>
 
-                                            <Col md="6">
-
+                                            {/* <Col md="6">
                                             <Form.Group className="" controlId="exampleForm.ControlSelect1">
                                                 <Form.Label>Ürün Kategorisi seç</Form.Label>
                                               
@@ -283,12 +289,32 @@ function ProductForm() {
                                                     action(val) // user defined prop
                                                   }}
                                                 />
-                                                {/* </Form.Control>  */}
-                                                
+                                            </Form.Group>
+                                            </Col> */}
+                                            <Col md="6" className="m-auto">
+
+                                            <Form.Group controlId="exampleForm.ControlSelect1">
+                                                <Form.Label>Ürün Kategorisi seç </Form.Label>
+                                                <Select
+                                                id="select_category"
+                                                isMulti
+                                                name="colors"
+                                                options={Object.values(category).map(cat=>({value:cat.val,label:cat.label}))}
+                                                className="basic-multi-select"
+                                                classNamePrefix="select"
+                                            />
+                                            {/* <TreeMenu
+                                                id="select_category"
+                                                data={category} 
+                                                onClickItem={({ key, label,val, ...props }) => {
+                                                    
+                                                    action(val) // user defined prop
+                                                  }}
+                                                /> */}
                                             </Form.Group>
 
-                                            </Col>
 
+                                            </Col>
 
                                             <Col md="6">
                                             <Form.Group multiple controlId="exampleForm.ControlSelect1">    

@@ -20,7 +20,7 @@ import {
 } from 'react-bootstrap';
 import Cookies from 'universal-cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import useState from 'react-hook-use-state';
 import ChatText from './ChatText';
 import ChatUser from './ChatUser';
@@ -31,6 +31,7 @@ import $ from "jquery";
 const cookies = new Cookies();
 function ChatInput({recId}){
     const[msg,setMsg]=useState([])
+    const history = useHistory();
 
 
     function Sendmessage(recId){
@@ -52,7 +53,12 @@ function ChatInput({recId}){
             };
             axios(config)
             .then(re => {
-             setMsg(re.data.data)
+             
+             console.log(re.data)
+             history.push({
+              pathname:  "/chat",
+              search: `?id=`+recId
+           });
              $(document).ready(function() {
               $('#message').val('');
            })
