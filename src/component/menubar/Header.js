@@ -77,9 +77,6 @@ function Header(){
     .then(res=>{
         // debugger
         setBrands(res.data.data)
-        console.clear()
-        console.log("------brands------")
-        console.log(res.data.data)
     }).catch(err=>{
         // $(".laoder").hide();
         console.log(err)            

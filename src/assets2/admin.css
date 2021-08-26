@@ -25,10 +25,9 @@
 }
 
 header.admin-header nav.navbar.navbar-expand-lg.navbar-light {
-    background: #38B5E6;
-    padding: 0.2rem 0px;
+    background: #ffffff;
+    padding: 0.5rem 1rem;
 }
-
 a.admin-header-logo-main.navbar-brand h3 {
     color: white;
     margin-bottom: 0;
@@ -4712,8 +4711,17 @@ button.ed-btn {
 
 
 .admin-nav-collapse .navbar-nav a.nav-link {
-    font-size: 14px;
+    color: #95b0ba;
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-weight: 500;
+    position: relative;
 }
+
+
 .header-profile-drop.nav-item.dropdown .dropdown-toggle {
     position: absolute;
     right: -28px;
@@ -4747,4 +4755,56 @@ button.ed-btn {
 }
 .admin-nav-collapse .admin-menu-list a {
     position: relative;
+}
+.inner-menu .dropdown-menu.show a.dropdown-item:after {
+    content: "";
+    display: none;
+}
+.inner-menu a:after {
+    content: "";
+    background: none !important;
+}
+.inner-menu a:before {
+    content: "";
+    width: 1px;
+    height: 13px;
+    background: #95b0ba;
+    position: absolute;
+    top: 14px;
+    right: -7px;
+}
+.sub-aa:before {
+    content: "";
+    display: none;
+}
+.inner-menu .dropdown-menu {
+    width: -webkit-fill-available;
+    background: #0f536d;
+    font-size: medium;
+}
+.inner-menu {
+    padding: 0px 10px;
+}
+.sub-nav a {
+    color: white;
+}
+.sub-nav a:hover {
+    color: white;
+}
+.sub-nav__toggle:hover .sub-nav {
+  background: #0f536d;
+}
+.inner-menu .dropdown-menu a {
+    color: white;
+}
+
+.inner-menu .dropdown-menu a:hover {
+    background: none;
+    color: white;
+}
+.inner-menu .dropdown-menu a.itm-drop-bt.dropdown-item button {
+    font-size: 14px;
+}
+.inner-menu .dropdown-menu a.itm-drop-bt.dropdown-item {
+    padding-left: 20px;
 }

@@ -7,7 +7,7 @@ import SignupModal from '../element/SignupModal';
 import Slider from "react-slick";
 
 
-function BlogDetail(){
+function BlogDetail1(){
 
   const [modalShow, setModalShow] = useState(false);
     
@@ -339,4 +339,4 @@ function BlogDetail(){
     );
 }
 
-export default BlogDetail
+export default BlogDetail1

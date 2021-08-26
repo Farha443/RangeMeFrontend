@@ -28,7 +28,10 @@ import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-countr
 
 const axios = require('axios');
 const cookies = new Cookies();
-var userType = '';
+var userType='';
+var value_tested = '';//global variable  
+var country_value = ''
+var region_value = ''
 
 function click(){
   cookies.remove("userType");
@@ -347,6 +350,8 @@ function SignupModal(props){
   const [countryService, setCountryService] = useState('');
   const [regionService, setRegionService] = useState('');
   const [sercategory, setServiceCategory]= useState([]);
+  const [changecat, setChangeCat]= useState([]);
+  const [change, setChange]= useState([]);
 
   function handleChange(selectedOption){
     setSO(selectedOption);
@@ -361,12 +366,9 @@ function SignupModal(props){
             url: url1,
           };
     axios(config1)
-      .then(rr => {
-        this.setState({
-          data2: rr.data.data
-        })
-      }
-      )
+      .then(re => {
+        setChangeCat(re.data.data)
+      })
       .catch(err => {
         console.log(err);
       })
@@ -377,8 +379,6 @@ function SignupModal(props){
     setyear(Array.from(new Array(100),(val,index) => index+1 + 1950).reverse())
     axios.get(BASE_URL+'authentication/GetCategorysignup/')
     .then(res=>{  
-       console.log("this is it")
-       console.log(res.data.data)
        setshowcat(res.data.data) 
     }).catch(err=>{
        console.log(err)            
@@ -412,13 +412,24 @@ const changefunction = e =>{
   
 }
 
+function servicechange(f){
+  // debugger
+var val = f.target.value
+setChange(val);
+value_tested = change
+return value_tested
+}
+
 const selectCountryService  = val => {
   setCountryService(val );
+  country_value = val
+  return country_value
 }
 
 const selectRegionService  = val =>{
   setRegionService(val );
-  
+  region_value = val
+  return region_value
 }
 
 function BuyerStep2() {
@@ -567,64 +578,67 @@ axios(config).then(res=>{
 })
 }
 
-// function ServiceStep2(){
-//   // debugger
-//   var array = []
-//   var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
-//   for (var i = 0; i < checkboxes.length; i++) {
-//       array.push(checkboxes[i].value)
-//   }
-//   // console.log(value_tested)
-//   // var service_area = value_tested
+function ServiceStep2(){
+  // debugger
+  var array = []
+  var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+  for (var i = 0; i < checkboxes.length; i++) {
+      array.push(checkboxes[i].value)
+  }
+  // console.log(value_tested)
+  // var service_area = value_tested
 
 
-//   if (value_tested === "true"){
-//     var service_area = country_value+"/"+region_value 
-//   }
-//   else{
-//     var service_area = value_tested
-//   }
-//   var url = BASE_URL + "authentication/createserprovider/";
-//   var token = cookies.get('token');
-//   var uuid = cookies.get('serviceuuid');
-//   var userType = cookies.get('userType');
-//   var user_uuid = cookies.get('uuid');
-//   var config = {
-//     method: 'patch',
-//     url: url,
-//     headers: {
-//       "Authorization": "Bearer " + token,
-//     },
-//   data:{
-//     brandcolor:"",
-//     company_name:"",
-//     website_url:'',
-//     short_des:'',
-//     full_des:'',
-//     company_logo:"",
-//     service :uuid,
-//     user_sv:user_uuid,
-//     service_area:service_area,
-//     s_category : array,
+  if (value_tested === "true"){
+    var service_area = country_value+"/"+region_value 
+  }
+  else{
+    var service_area = value_tested
+  }
+  var url = BASE_URL + "authentication/createserprovider/";
+  var token = cookies.get('token');
+  var uuid = cookies.get('serviceuuid');
+  var userType = cookies.get('userType');
+  var user_uuid = cookies.get('uuid');
+  var config = {
+    method: 'patch',
+    url: url,
+    headers: {
+      "Authorization": "Bearer " + token,
+    },
+  data:{
+    brandcolor:"",
+    website_url:'',
+    short_des:'',
+    full_des:'',
+    company_logo:"",
+    service :uuid,
+    user_sv:user_uuid,
+    service_area:service_area,
+    s_category : array,
       
-//     }
+    }
 
-// };
-// console.log(config)
-// axios(config).then(res=>{
-//     console.log(res.data.data)
-//   cookies.set('uuid2', res.data.data.uuid, { path: '/' })
-//   // alert(cookies.set('uuid1', res.data.data.uuid, { path: '/' }))
-//   $(".laoder").hide(); 
-//   window.location = '/login'
-// }
+};
+console.log(config)
+axios(config).then(res=>{
+  Swal.fire({
+    title: 'Registeration Successfull',
+    text: 'Redirecting...',
+    timerProgressBar: true,
+    type: 'success',
+    timer: 3000,
+    buttons: false,
+})
+.then(() => {
+  window.location = "/login";
+})
+}
 
-// ).catch(err=>{
-//   console.error(err);
-//   $(".laoder").hide(); 
-//   window.location.reload();
-// })
-// }
+).catch(err=>{
+  alert("something went wrong")
+})  
+}
 
     return(
         <>
@@ -1385,7 +1399,7 @@ axios(config).then(res=>{
 
 
                 <TabPanel>
-                  <section id="sp1" className="st-one d-none ">
+                  <section id="sp1" className="st-one ">
 
                       <section className="sign-d-1">
                       <div className="row">
@@ -1581,7 +1595,7 @@ axios(config).then(res=>{
                     </section>
                     </section>
 
-                  <section id="sp3" className="st-three" >
+                  <section id="sp3" className="st-three d-none" >
                       <section className="sign-d-1">
                         <div className="row">
                           <div className="container">
@@ -1639,17 +1653,23 @@ axios(config).then(res=>{
                         {sercategory.map(cat=>(  
                         <option  value={cat.uuid}>{cat.categoryname}</option>
                         ))}
-                        
                         </Form.Control>
                     </Form.Group>
                       </Col>
 
-                      <Col md="6" xs="12">
-                          <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Sirket adresi</Form.Label>
-                            <Form.Control type="email" placeholder="Lütfen  firma adınızı yazın..." />
-                          </Form.Group>
-                        </Col>
+                      <Col md="12" xs="12">
+                      {(changecat).length != 0   ?   <Form.Group controlId="formBasicEmail">
+                        <Form.Label>We Specialize in:</Form.Label>
+                        <tbody className="text-left" >
+                        {changecat.map(contact => {
+                            return <tr>
+                            <td><label className="tabl-check"><input type="checkbox" value={contact.uuid}/></label></td>
+                            <td>{contact.categoryname ? contact.categoryname : "Unlisted"}</td>
+                            </tr>
+                        })}
+                         </tbody>
+                    </Form.Group>: ''}
+                    </Col>
 
                         <Col md="12" >
                               <div className="mb-3 sign-radio">
@@ -1659,30 +1679,48 @@ axios(config).then(res=>{
                                   label="National"
                                   name="group1"
                                   type="radio"
+                                  value="National" 
                                   id="1"
+                                  onClick={servicechange}
                                 />
                                 <Form.Check
                                   inline
                                   label="State"
                                   name="group1"
+                                  value="true"
                                   type="radio"
                                   id="2"
+                                  onClick={servicechange}
                                 />     
 
                                  <Form.Check
                                   inline
                                   label="Global"
+                                  value="Global"
                                   name="group1"
                                   type="radio"
                                   id="2"
+                                  onClick={servicechange}
                                 />     
+
+                                {change === "true" ?<div>
+                                <CountryDropdown id="country" className="form-control"
+                                value={countryService}
+                                onChange={(val) => selectCountryService(val)} />
+                                </div> : ""}
+                                {change === "true" ? <div>
+                                <RegionDropdown  id ="state" className = "form-control"
+                                country={countryService}
+                                value={regionService}
+                                onChange={(val) => selectRegionService(val)} />
+                                </div>:""}
 
                               </div>
                           </Col>
 
                           <Col md="12" xs="12">
                             <div className="signup-btn-d">
-                                <button className="signup-btn"> 
+                                <button className="signup-btn" onClick={ServiceStep2}> 
                                 <span>  SONRAKİ </span> ADIM <i class="fal fa-long-arrow-right"></i>
                                 </button>
                             </div>

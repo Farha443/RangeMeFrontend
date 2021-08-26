@@ -20,38 +20,18 @@ function About(){
   const [heading, setheading]= useState([])
 
   useEffect(() => {
-    // debugger
+    
     axios.get(BASE_URL+'about/about/')
     .then(res=>{
-      console.clear()
       setheading(res.data.heading)
-      mid_b_img = res.data.mid_ban_img[0].bg_image
-      tr=res.data.btm_banner[0].content
-      first = res.data.desc_one[0].heading
-      second = res.data.desc_two[0].heading
+      mid_b_img = res.data.mid_ban_img.bg_image
+      tr=res.data.btm_banner.content
+      first = res.data.desc_one.heading
+      second = res.data.desc_two.heading
       setmbanner(res.data.midd_banner)
-      btmimg=res.data.btm_banner[0].image
+      btmimg=res.data.btm_banner.image
       setlink(res.data.links)
-      // setWorks(res.data.works)
-      // setWorksone(res.data.worksone)
-      // setheading(res.data.heading)
-      // setmbanner(res.data.midd_banner)
-      // setslide(res.data.slider)
-      // setbottombanner(res.data.btm_banner)
-      // ban_img =res.data.midd_banner[0].bg_image
-      // ban_heading =res.data.midd_banner[0].heading
-      // ban_description =res.data.midd_banner[0].description
-      // ban_count=res.data.midd_banner[0].count
-      // tr=res.data.btm_banner[0].content
-      // btmimg=res.data.btm_banner[0].image
-      // mid_b_img = res.data.mid_ban_img[0].bg_image
-     
-      
-      
   
-     
-
-
     }).catch(err=>{
         console.log(err)            
     })
@@ -74,10 +54,9 @@ function About(){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
-                                <p className="p1"> homepage </p>
                                 <h1>{heading.heading} </h1>
-                                <p className="p2">{heading.description} <span >  consetetur sadipscing elitr, </span> </p>
-                                <NavLink to=""> sed diam nonumy eirmod.  </NavLink>
+                                <p className="p2">{heading.description} </p>
+                                {/* <NavLink to=""> sed diam nonumy eirmod.  </NavLink> */}
                             </div>
                         </div>
                     </div>
@@ -91,9 +70,7 @@ function About(){
                             <div className="about-text-md">
                                 <p>{first}</p>
 
-                                <p>
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                </p>
+                                
                             </div>
                         </div>
                     </div>
@@ -116,33 +93,7 @@ function About(){
                             </div>
                         </div>})}
 
-                        {/* <div className="col-md-3 col-xs-12">
-                            <div className="supp-mid-banner-bx">
-                                <div className="supp-num">
-                                  <h1> 2 </h1>
-                                </div>
-                                <div className="supp-text">
-                                  <p>
-SERVICES</p>
-                                  <h1> 
-EXHIBIT </h1>
-                                </div>
-                               
-                            </div>
-                        </div>
-
-                        <div className="col-md-3 col-xs-12">
-                            <div className="supp-mid-banner-bx">
-                                <div className="supp-num">
-                                  <h1> 3 </h1>
-                                </div>
-                                <div className="supp-text">
-                                  <p> SALES </p>
-                                  <h1> 
-INCREASE </h1>
-                                </div>
-                            </div>
-                        </div> */}
+                     
 
 
                         <div className="col-md-3 col-xs-12">
@@ -164,11 +115,7 @@ INCREASE </h1>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="about-text-md">
-                                <p>{second}                                </p>
-
-                                <p>
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                </p>
+                                <p>{second}</p>
                             </div>
                         </div>
                     </div>
@@ -193,44 +140,9 @@ INCREASE </h1>
                           <img src={im.link_image?BASE_URL.slice(0,-5)+ im.link_image :"assets/images/640px-MiGROS_Logo.png"}/>
                       </div>
                     </li>})}
-
-                    {/* <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li> */}
-
-
                   </ul>
                 </div>
-                          
                       </div>
-
-                      
-
                   </div>
               </section>
 
@@ -240,7 +152,7 @@ INCREASE </h1>
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl">{tr} </span>  HESAP OLUŞTUR!  </h3>
+                                  <h3> <span className="btm-banner-text-yl">{tr} </span></h3>
                               </div>
                               <div className="btm-banner-btn supplie">
                                  <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>

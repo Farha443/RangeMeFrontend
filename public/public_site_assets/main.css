@@ -7771,7 +7771,7 @@ section.btm-banner-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../assets/images/btm-banner.jpg);
+    /* background-image: url(../assets/images/btm-banner.jpg); */
     background-size: cover;
     position: relative;
 }

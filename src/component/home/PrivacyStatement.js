@@ -20,9 +20,11 @@ function PrivacyStatement(){
   useEffect(() => {
     axios.get(BASE_URL+'about/privacy/')
     .then(res=>{
-      console.clear()
-      setlink(res.data.policy)
+      // console.clear()
+      // console.log(res.data)
+      setlink(res.data.policy.description)
       setheading(res.data.pheading)
+      sethead(res.data.banner)
     }).catch(err=>{
         console.log(err)            
     })
@@ -42,10 +44,9 @@ function PrivacyStatement(){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
-                                <p className="p1"> anasayfa </p>
                                 <h1> {heading.heading} </h1>
-                                <p className="p2">{heading.description} <span > odaklı hizmet anlayışını  </span> </p>
-                                <NavLink to=""> benimsiyoruz!  </NavLink>
+                                <p className="p2">{heading.description}</p>
+                                {/* <NavLink to=""> benimsiyoruz!  </NavLink> */}
                             </div>
                         </div>
                     </div>
@@ -58,7 +59,7 @@ function PrivacyStatement(){
                         <div className="col-md-12">
                        
                             <div className="about-text-md">
-                                <p> lorem</p>
+                                <p> {link}</p>
 
                              
                             </div> 
@@ -67,13 +68,13 @@ function PrivacyStatement(){
                 </div>
             </section>
 
-              <section className="btm-banner-section" style={{backgroundImage: 'url('+(head.pimage?BASE_URL.slice(0,-5)+head.pimage :"assets/images/banner-1.jpg")+')'}}> 
+              <section className="btm-banner-section" style={{backgroundImage: 'url('+(head.image?BASE_URL.slice(0,-5)+head.image :"assets/images/banner-1.jpg")+')'}}> 
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl"> {head.content}</span>  HESAP OLUŞTUR!  </h3>
+                                  <h3> <span className="btm-banner-text-yl"> {head.content}</span>  </h3>
                               </div>
                               <div className="btm-banner-btn supplie">
                                  <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>

@@ -240,7 +240,7 @@ function Home(){
                         <div className="layout-block__cell">
                           <p className="sect-2-t-1 small-heading dark-text"> 
                           
-                          {sm}<span className="span-1204"> Lorem ipsum dollar site ameat. </span>
+                          {sm}<span className="span-1204"></span>
                           </p>
                           {/* <p className="sect-2-t-2">
                           Tayuss İle İlİşkİlerİnİzİ güçlendİrerek <span className="span-1204"> satışlarınızı arttırın! </span>
@@ -251,7 +251,8 @@ function Home(){
                           {home.stats && home.stats.map(stats=>(
                             <div className="stats__item">
                               <div className="count-icn stats__description">
-                              <i class="far fa-store"></i>
+                              <i class={stats.icon} aria-hidden="true"></i>
+                              {/* <i class="fab fa-accessible-icon"></i> */}
                               </div>
                               <div className="stats_icn-m">
                               <p className="stats__description">{stats.content}</p>
@@ -302,20 +303,19 @@ function Home(){
                         <div className="col-md-6 co-xs-12">
                             <div className="d-one-12423">
                                 <ul>
-{work.sub_works.map(sub=>{
-  return                                   <li>
-  <div className="ic-text-mn">
-    <div className="ic-5248"> 
-       <i class={sub.icon}></i>
-    </div>
-    <div className="ic-text-6254">
-      <h5> {sub.heading} </h5>
-      <p> {sub.description}</p>
-    </div>
-  </div>
-</li>
-
-})}
+                            {work.sub_works.map(sub=>{
+                              return<li>
+                              <div className="ic-text-mn">
+                                <div className="ic-5248"> 
+                                  <i class={sub.icon}></i>
+                                </div>
+                                <div className="ic-text-6254">
+                                  <h5> {sub.heading} </h5>
+                                  <p> {sub.description}</p>
+                                </div>
+                              </div>
+                            </li>
+                            })}
                                 
                                 </ul>
                             </div>
@@ -423,16 +423,8 @@ function Home(){
                      
                     {/* {blogs.map(function(wo, inner_index){ */}
                         <div className="">
-
-
-                        
-                        
-     
-                      
                           <div className="slider-box-main">
-                          {list.map((user) => (
-                            
-                                    
+                          {list.map((user) => (  
                             <div className="two-sliders">
                                 <div className="hm-slider-img-d">
                                     <img src= {user?BASE_URL.slice(0,-5)+user.b_image :"assets/images/banner-1.jpg"} 
@@ -446,63 +438,27 @@ function Home(){
                                     <NavLink to=""> Detaylı İncele </NavLink>
                                   </div>
                               </div> 
-                             
-                               
-                                
-                                
                                 ))}
-                                
                             </div> 
-                           
-
                         </div> 
-                         {/* })}  */}
-
-
-                        
-
-
+               
                       </Slider>
 
 
                           </div>
                     </div>
 
-                      
-
-                  
-
-                    
                   </div>
               </section>
 
-              {/* <section className="btm-banner-section" sstyle={{backgroundImage: 'url('+(heading.bg_img?BASE_URL.slice(0,-5)+heading.bg_img:"assets/images/banner-1.jpg")+')'}} > 
-                    <div className="container">
-                        <div className="row">
-                       
-                            <div className="col-md-12 col-xs-12">
-                                <div className="btm-banner-cont-m"> 
-                                <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl"> {tr}</span>  dolor sit amet, consetetur.  </h3>
-                              </div>
-                              <div className="btm-banner-btn">
-                                  <button className="bt254">
-                                  ÜCRETSİZ KAYDOL  <i class="fal fa-long-arrow-right"></i>
-                                  </button>
-                              </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-              </section> */}
+            
               <section className="btm-banner-section" style={{backgroundImage: 'url('+(btmimg?BASE_URL.slice(0,-5)+btmimg :"assets/images/banner-1.jpg")+')'}}> 
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl"> {tr}</span>  dolor sit amet, consetetur.  </h3>
+                                  <h3> <span className="btm-banner-text-yl"> {tr}</span>  </h3>
                               </div>
                               <div className="btm-banner-btn">
                                   <button className="bt254">
@@ -515,18 +471,8 @@ function Home(){
                     </div>
               </section>  
 
-
-              
-           
             </main>
-
-           
-           
-
             <Footer/>
-
-
-
           </div>
         
 

@@ -55,6 +55,7 @@ import BuyerCompanies from './component/buyee/BuyerCompanies';
 import Bidding from './component/admin/buyer/Bidding';
 import ServiceProvidersHome from './component/service-provider/ServiceProvidersHome';
 import Chat from './component/admin/chat/Chat';
+import BlogsDetails1 from './component/blogs/BlogsDetails1';
 
 
 function Routes(){
@@ -117,6 +118,7 @@ function Routes(){
                 <Route exact path="/bidding" component={Bidding}></Route>
                 <Route exact path="/servicehome" component={ServiceProvidersHome}></Route>
                 <Route exact path="/chat" component={Chat}></Route>
+                <Route exact path="/blog_detail1" component={BlogsDetails}></Route>
             </Switch>
         </> 
     )

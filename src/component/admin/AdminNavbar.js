@@ -46,11 +46,14 @@ function GetBrand(id){
 function AdminNavbar(){
   const [show4, setShow4] = useState(false);
   const [isActive, setActive] = useState("false");
+  const [isActive1, setActive1] = useState("false");
   const[brands, setBrands] = useState([])
   const handleToggle = () => {
     setActive(!isActive);
   };
-  
+  const handleToggle1 = () => {
+    setActive1(!isActive1);
+  };
   const [profilephoto, setProfilephoto]= useState(null)
     useEffect(() => {
       // debugger
@@ -74,7 +77,85 @@ function AdminNavbar(){
     return(
         <>
 
-          <header className="admin-header">
+
+              <header className="admin-header">
+
+              <Navbar expand="lg">
+                <Container>
+                  <Navbar.Brand href="/admin_home" className="admin-header-logo-main header-bar__logo"> <img src="assets/images/Savas.png" /> </Navbar.Brand>
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav" className="admin-nav-collapse">
+                    <Nav className="m-auto admin-menu-list">
+
+                      <Nav.Link href="/admin_home">Home</Nav.Link>
+                      <NavDropdown title="Markalarım" id="basic-nav-dropdown" className="menu-drop-1245 inner-menu">
+                      {brands.map(brand=>(
+                        <NavDropdown.Item className="sub-aa" onClick={()=>GetBrand(brand)} >{brand.brand_name}
+                        </NavDropdown.Item>))}
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="" className="itm-drop-bt">  <button className="admin-add-btn"  onClick={() => setShow4(true)}> <i class="fa fa-plus" aria-hidden="true"></i> Marka Ekle</button> </NavDropdown.Item>
+                      </NavDropdown>
+                      <Nav.Link href="/">Vehicles</Nav.Link>
+                      <Nav.Link href="/">Sayuss approval</Nav.Link>
+                      <Nav.Link href="/">Submissions</Nav.Link>
+                      <Nav.Link href="/">Services</Nav.Link>
+                    </Nav>
+
+                    <Nav className="navbar-nav">
+                      <Nav.Link href="/chat" >
+                        <i class="fas fa-comment-alt-dots"></i></Nav.Link>
+                      <Nav.Link onClick={handleToggle}>
+                        <i class="fas fa-bell"></i>
+                        <div className={isActive ? "notifi-d-102 " : "notifi-d-102 open-drop"}>
+                          {/* <div className="noti-header">
+                  <h5> Notification </h5>
+                  <NavLink to=""> Manage </NavLink>
+                </div> */}
+                          <ul className="header-notifi-ul">
+                            <li>
+                              <div className="notifi-left-img">
+                                <img src="assets/images/3.jpg" />
+                              </div>
+                              <div className="notifi-right-cont-1">
+                                <h6> Notification Title </h6>
+                                <p> Lorem ipsum dollar site ameat dummy text  Lorem ipsum dollar site ameat dummy text .. </p>
+                                <button className="admin-add-btn f-w-500"> View </button>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </Nav.Link>
+
+                      <Nav.Link href="#home" className="drop-menu"  onClick={handleToggle1}>
+                      <div className="menu-profile-img-main">
+                      {profilephoto != null ? <img src={BASE_URL.slice(0,-5)+profilephoto} width="70px" />:
+                      <img src="/assets/images/user64x64.png"/>
+                      }</div>
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+
+                      <div className={isActive1 ? "dropmenu-profile-img " : "dropmenu-profile-img dropmenu-profile-open"} onClick={handleToggle1}>
+                          <ul>
+                            <li> <NavLink to="/admin_profile">{first_name} </NavLink> </li>
+                            <li> <NavLink to="/admin_profile">Ayarlar </NavLink> </li>
+                            <li> <NavLink to="" onClick={logout}> Çıkış </NavLink> </li>
+                          </ul>
+                      </div>
+                    </Nav.Link>
+                    </Nav>
+                    {/* <Form inline>
+              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+              <Button variant="outline-success">Search</Button>
+              </Form> */}
+                  </Navbar.Collapse>
+                </Container>
+              </Navbar>
+
+              </header>
+
+
+
+
+          <header className="admin-header d-none ">
               
 <Navbar expand="lg">
   <Container>

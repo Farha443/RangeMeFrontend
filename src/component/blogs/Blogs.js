@@ -18,40 +18,38 @@ class Blogs  extends React.Component{
 
   state = {
     data: [],
-    message1: "message"
+    message1: "message",
+    page:[],
 
   };
   async componentDidMount(){
 
       var url = BASE_URL+'home/blogs/';
+      var url1 = BASE_URL+'home/blog_page/';
       var config = {
           method: 'get',
           url: url,
-    
-        };
-        axios(config)
-
-    .then(res => {
-      // debugger
-      console.log(res.data);
-      this.setState({
-        data: res.data
-        
-      })
-      
-      
+        };axios(config).then(res => {
+      this.setState({data: res.data})      
     })
     .catch(err => {
-      // $(".laoder").hide(); 
-      alert(err);
     })
-     
+
+    var config = {
+      method: 'get',
+      url: url1,
+    };axios(config).then(res => {
+  this.setState({page: res.data.blog_page})      
+})
+.catch(err => {
+})
+
   }
+  
   Redirect(uuid){
-    // cookies.set('blog',uuid,{path:'/'});
     window.location='/blog_detail/'+uuid;
 }
-  // const [modalShow, setModalShow] = useState(false);
+
     render() {
     return(
         <>
@@ -62,21 +60,22 @@ class Blogs  extends React.Component{
           <div className="my-container" >
             <main className="content" >
 
-              <section className="other-banner-section" style={{backgroundImage: 'url(../assets/images/banner-1.jpg)'}}>
+              <section className="other-banner-section" 
+              style={{backgroundImage: 'url('+(this.state.page.upper_bg_img?BASE_URL.slice(0,-5)+this.state.page.upper_bg_img:"assets/images/banner-1.jpg")+')'}}>
+            
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
-                                <p className="p1"> anasayfa </p>
                                 <h1> HAKKIMIZDA </h1>
-                                <p className="p2">Lorem ipsum dolor sit amet, <span >  consetetur sadipscing elitr, </span> </p>
-                                <NavLink to=""> sed diam nonumy eirmod.  </NavLink>
+                                <p className="p2">{this.state.page.upper_banner_head}</p>
+                                {/* <NavLink to=""> sed diam nonumy eirmod.  </NavLink> */}
                             </div>
                         </div>
                     </div>
                 </div>
               </section>
-              <section className="blog-n-section">
+              <section className="blog-n-section" >
                     <div className="container">
                         <div className="row">
                         {this.state.data.map(blog=>{
@@ -104,13 +103,13 @@ class Blogs  extends React.Component{
               </section>
 
               
-              <section className="btm-banner-section"> 
+              <section className="btm-banner-section"  style={{backgroundImage: 'url('+(this.state.page.btm_ban_img?BASE_URL.slice(0,-5)+this.state.page.btm_ban_img:"assets/images/banner-1.jpg")+')'}}> 
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
+                                  <h3> <span className="btm-banner-text-yl">{this.state.page.btm_ban_heading} </span>  </h3>
                               </div>
                               <div className="btm-banner-btn supplie">
                                  <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>
