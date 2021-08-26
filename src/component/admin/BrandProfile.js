@@ -1114,6 +1114,7 @@ function BrandProfile() {
                                         </Card>
                                     </Col>                
                                         </TabPanel>
+                                       
                                         <TabPanel>
                                             <p> Tab 3 content </p>
                                         </TabPanel>

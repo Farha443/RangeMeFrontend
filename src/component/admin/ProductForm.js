@@ -46,7 +46,8 @@ function ProductForm() {
     const [certi, setCerti]= useState([])
     const[p_details, setPdetails]=useState([]);
     const [category, setCategory]= useState([])
-    const [cat, setCategoryData]= useState('')
+    const [cat, setCategoryData]= useState('');
+    
     const treeData = [
         { value: 'chocolate', label: 'Chocolate' },
         { value: 'strawberry', label: 'Strawberry' },

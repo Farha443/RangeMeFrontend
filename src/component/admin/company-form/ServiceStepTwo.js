@@ -97,7 +97,6 @@ var region_value = ''
         
       })
       .catch(err => {
-        $(".laoder").hide(); 
         alert(err);
       })
        
