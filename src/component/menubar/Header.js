@@ -106,7 +106,20 @@ function SignUp(){
       <a href="/buyer-home"  className="header-bar__link">alıcı firmalar</a>
       <a href="servicehome"  className="header-bar__link">hizmet sağlayıcılar</a>
       {/* <div className="header-bar__divider" /> */}
-      <div className="header-bar__link sub-nav__toggle">
+      <NavDropdown title="kaynaklar" id="basic-nav-dropdown" className="menu-drop-1245 men-menu-drop">
+      
+        <NavDropdown.Item  to="/success">başarı öyküleri</NavDropdown.Item>
+        <NavDropdown.Item  href="/blogs"  >tayuss blog</NavDropdown.Item>
+        <NavDropdown.Item  >haberler</NavDropdown.Item>
+        <NavDropdown.Item  >webinarlar</NavDropdown.Item>
+        {/* <NavLink to="/success" className="sub-nav__link">başarı öyküleri</NavLink>
+          <a href="/blogs" className="sub-nav__link">tayuss blog</a>
+          <a href="#" className="sub-nav__link">haberler</a>
+          <a href="#" className="sub-nav__link">webinarlar</a>
+        */}
+      </NavDropdown>
+
+      {/* <div className="header-bar__link sub-nav__toggle">
         <span>kaynaklar</span>
         <div className="header-bar__angle">
         <i class="fa fa-caret-down svg" aria-hidden="true"></i>
@@ -117,7 +130,7 @@ function SignUp(){
           <a href="#" className="sub-nav__link">haberler</a>
           <a href="#" className="sub-nav__link">webinarlar</a>
         </div>
-      </div>
+      </div> */}
       {logintoken === undefined ?
       <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">
         GİRİŞ YAP

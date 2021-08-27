@@ -162,7 +162,9 @@ function Supplies(){
 return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
-                                      <i class={sub.icon}></i>
+                                      {/* <i class={sub.icon}></i> */}
+                                      <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+ 
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6> {sub.heading}</h6>
@@ -233,7 +235,10 @@ return<li>
                                     <div className="ic-5248 ic-22"> 
                                         {/* <img src="assets/images/icons/view.svg" class="icn-img"/>
                                          */}
-                                         <i class={sub.icon}></i>
+                                         {/* <i class={sub.icon}></i> */}
+                                         <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+
+
                                           {/* <img src={BASE_URL.slice(0,-5)+'/'+'media/'+ sub.logo}/> */}
                                       </div>
                                       <div className="ic-text-6254">
@@ -436,7 +441,8 @@ Examine which product details increase interaction with the buyer company. </p>
                                  return <li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
-                                      <i class={sub.icon}></i>
+                                      {/* <i class={sub.icon}></i> */}
+                                      <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading}  </h6>
@@ -495,7 +501,8 @@ Examine which product details increase interaction with the buyer company. </p>
                                   return<li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248"> 
-                                      <i class={sub.icon}></i>
+                                      {/* <i class={sub.icon}></i> */}
+                                      <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6> {sub.heading} </h6>

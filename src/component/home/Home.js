@@ -251,7 +251,8 @@ function Home(){
                           {home.stats && home.stats.map(stats=>(
                             <div className="stats__item">
                               <div className="count-icn stats__description">
-                              <i class={stats.icon} aria-hidden="true"></i>
+                              {/* <i class={stats.icon} aria-hidden="true"></i> */}
+                              <img src={BASE_URL.slice(0,-5)+ stats.icon}/>
                               {/* <i class="fab fa-accessible-icon"></i> */}
                               </div>
                               <div className="stats_icn-m">
@@ -307,7 +308,8 @@ function Home(){
                               return<li>
                               <div className="ic-text-mn">
                                 <div className="ic-5248"> 
-                                  <i class={sub.icon}></i>
+                                  {/* <i class={sub.icon}></i> */}
+                                  <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
                                 </div>
                                 <div className="ic-text-6254">
                                   <h5> {sub.heading} </h5>
@@ -358,7 +360,8 @@ function Home(){
                               return <li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
-                                      <i class={sub.icon}></i>
+                                      {/* <i class={sub.icon}></i> */}
+                                      <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h5> {sub.heading} </h5>

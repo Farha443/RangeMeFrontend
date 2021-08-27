@@ -4808,3 +4808,15 @@ button.ed-btn {
 .inner-menu .dropdown-menu a.itm-drop-bt.dropdown-item {
     padding-left: 20px;
 }
+.men-menu-drop .dropdown-menu a {
+    color: white;
+}
+.men-menu-drop .dropdown-menu {
+    background: #0f536d;
+}
+.men-menu-drop .dropdown-menu a:hover {
+    background: none;
+}
+.men-menu-drop a {
+    color: #485269;
+}

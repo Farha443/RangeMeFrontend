@@ -207,7 +207,8 @@ function BuyerCompanies(){
                                  return<li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
-                                      <i class={sub.icon}></i>
+                                      {/* <i class={sub.icon}></i> */}
+                                      <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading} </h6>
@@ -277,8 +278,10 @@ launch or save the product for later review. </p>
                                   return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
-                                    <i class={sub.icon}></i>
+                                    {/* <i class={sub.icon}></i> */}
+                                    <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
                                       </div>
+
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading}   </h6>
                                         <p>{sub.description} 
@@ -375,7 +378,8 @@ DISCOVER </h1>
                                 return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
-                                    <i class={sub.icon}></i>
+                                    {/* <i class={sub.icon}></i> */}
+                                    <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading}  </h6>
@@ -442,7 +446,8 @@ Check out with trending collections such as </p>
                                   return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
-                                    <i class={sub.icon}></i>
+                                    {/* <i class={sub.icon}></i> */}
+                                    <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6> {sub.heading}</h6>
