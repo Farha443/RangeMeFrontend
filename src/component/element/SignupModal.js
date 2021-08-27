@@ -45,14 +45,15 @@ function Click1(){
   var buyer = "buyer";
   cookies.set('userType', buyer, { path: '/' });
   userType=cookies.get('userType');
-  }
+}
 
 function Click2(){
   cookies.remove('userType');
   var service = "service provider";
   cookies.set('userType', service, { path: '/' });
   userType=cookies.get('userType');
-  }
+}
+
 function Func() {
   var first_name = document.getElementById('first_name').value;
   var last_name = document.getElementById('last_name').value;
@@ -64,19 +65,9 @@ function Func() {
   var userType = cookies.get('userType');
 
 
-  // if(mobile !== "undefined"){
-  //   var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-  //   if(!mobile.match(phoneno)){
-  //     alert("Please enter correct phone number")
-  //   }
-  // }
-
   if (typeof password !== "undefined" && typeof confirm_password !== "undefined") {
     if (password!= confirm_password) {
-      // isValid = false;
-      // errors["password"] = "Passwords don't match.";
       alert("Passwords do not match.")
-      // window.location = "/signup"
     }
 } 
 
@@ -229,7 +220,6 @@ function brandSubmit(){
   // }
 
 }
-
 
 function submitBuyer() {
   var first_name = document.getElementById('first_name').value;
@@ -973,12 +963,6 @@ axios(config).then(res=>{
                           </Form.Group>
                         </Col>
 
-                        {/* <Col md="6" xs="12">
-                          <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Marka Adı</Form.Label>
-                            <Form.Control type="email" placeholder="Lütfen  firma adınızı yazın..." />
-                          </Form.Group>
-                        </Col> */}
                       
                         <Col md="12" xs="12">
                           <div className="signup-btn-d">

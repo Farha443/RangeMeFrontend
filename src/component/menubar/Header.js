@@ -157,7 +157,7 @@ function SignUp(){
         <span className="sub-nav__toggle">kaynaklar</span>
         <div className="sub-nav">
           <NavLink to="/success" className="sub-nav__link">başarı öyküleri</NavLink>
-          <a href="#" className="sub-nav__link">tayuss blog</a>
+          <a href="/blogs" className="sub-nav__link">tayuss blog</a>
           <a href="#" className="sub-nav__link">haberler</a>
           <a href="#" className="sub-nav__link">webinarlar</a>
           <a href="#" className="sub-nav__link">destek</a>

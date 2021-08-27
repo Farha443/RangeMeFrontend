@@ -6,6 +6,7 @@ import useState from 'react-hook-use-state';
 import SignupModal from '../element/SignupModal';
 import BASE_URL from '../base';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 function get_date(dt_string){
     var dt = dt_string.split('_')[0]
@@ -14,6 +15,9 @@ function get_date(dt_string){
     var date_parts = dt.split('-');
     return date_parts[0]+' '+month_list[parseInt(date_parts[1])-1] +' '+ dtt;
   }
+
+  const cookies = new Cookies();
+
 class Blogs  extends React.Component{
 
   state = {
@@ -47,7 +51,8 @@ class Blogs  extends React.Component{
   }
   
   Redirect(uuid){
-    window.location='/blog_detail/'+uuid;
+    cookies.set('blog_id', uuid, { path: '/blog_detail' })
+    window.location='/blog_detail';
 }
 
     render() {
@@ -67,7 +72,7 @@ class Blogs  extends React.Component{
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
-                                <h1> HAKKIMIZDA </h1>
+                                {/* <h1> HAKKIMIZDA </h1> */}
                                 <p className="p2">{this.state.page.upper_banner_head}</p>
                                 {/* <NavLink to=""> sed diam nonumy eirmod.  </NavLink> */}
                             </div>

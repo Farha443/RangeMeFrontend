@@ -94,7 +94,7 @@ function Footer(){
                           <li> <NavLink to="/blogs"> blog    </NavLink> </li>
                           <li> <NavLink to="/about"> hakkımızda  </NavLink> </li>
                           <li> <NavLink to="/privacy"> gizlilik politikası   </NavLink> </li>
-                          <li> <NavLink to=""> iletişim   </NavLink> </li>
+                          <li> <NavLink to="/contact"> iletişim   </NavLink> </li>
 
                         </ul>
                     </div>

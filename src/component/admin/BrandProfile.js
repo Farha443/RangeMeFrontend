@@ -45,8 +45,6 @@ var name = ""
 var brandName =""
 
 function Submit(){
-    // $(".laoder").show(); 
-    // debugger
     var brand_name = document.getElementById('brand_name').value;
     var brand_location = document.getElementById('brand_location').value;
     var brand_website = document.getElementById('website').value;
@@ -155,8 +153,6 @@ function BrandProfile() {
         .then(res=>{
             
             setBrands(res.data.data)
-            console.log("------brands------")
-            console.log(res.data.data)
         }).catch(err=>{
             // $(".laoder").hide();
             console.log(err)            
@@ -169,9 +165,7 @@ function BrandProfile() {
             
             capitalize(name);
             // setCount(res.data.data.product_name.length)
-            console.clear()
-            console.log("------Single Brand------")
-            console.log(res.data.data)
+
         }).catch(err=>{
             // $(".laoder").hide();
             console.log(err)            
@@ -742,383 +736,472 @@ function BrandProfile() {
                                             </Card>
                                         </Col>
                                     </TabPanel>
-                                        <TabPanel>
-                                            <Col md="12">
-                                        <Card>
-                                            <Card.Body>
-
-                                                <div className="b-p-title">
-                                                    <h5> Brand page </h5>
-                                                </div>
-                                            <Tabs>
-                                                <div className="b-profile-tab-2-d">
-
-                                                <TabList>
-                                                <Tab>
-                                                    <div className="tbs-menu">
-                                                     Arrange Products
+                                    <TabPanel>
+                                                <Col md="12">
+                                                    <div className="count-product-title">
+                                                        <p> Ürünlerin Sırasını yada  <span> Marka Bilgilerinizi Düzenleyin </span> </p>
                                                     </div>
-                                                </Tab>
-                                                <Tab>
-                                                    <div className="tbs-menu">
-                                                      Edit Profile
+                                                    <div className="b-profile-tab-2-d">
+                                                        <Row>
+                                                        
+                                                            <Col md="9" xs="12">
+                                                                <Row>
+                                                                    <Col md="4" xs="4">
+                                                                        <div className="brand-product-box-d">
+                                                                            <div className="p-img">
+                                                                                <img src="assets/images/blog1.jpg" alt="p-image" />
+                                                                            </div>
+                                                                            <div className="p-text-d-12458">
+                                                                                <h6> AB Bio El ve Cilt Dezenfektanı </h6>
+                                                                                <div className="cost-text">
+                                                                                    <p> Cost/item : <span> $69.00 </span> </p>
+                                                                                    <p> Margin <span> $69.00 </span> </p>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </Col>
+
+                                                                   
+                                                                    
+                                                                </Row>
+                                                            </Col>
+
+                                                            <Col md="3" xs="12">
+                                                                <div className="side-b-men-d-5245">
+                                                                    <div className="b-profile-sidebar">
+                                                                        <div>
+                                                                            <button className="ed-btn" onClick={() => setShowInfo(true)}>  Edit Information </button>
+                                                                        </div>
+                                                                        <div className="b-profile-sidebar-text">
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <i class="fas fa-map-marker-alt"></i>  Indore, MP
+                                                                                    </p>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <i class="far fa-link"></i>
+                                                                                        <strong>   http://abfoods.com.tr/en/</strong>
+                                                                                    </p>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+
+                                                                        <div className="b-profile-sidebar-text">
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        ÜRÜN
+                                                                                    </p>
+                                                                                    <p>
+                                                                                        ( 1 )
+                                                                                    </p>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        KURULUŞ YILI
+                                                                                    </p>
+                                                                                    <p>
+                                                                                        ( 1 )
+                                                                                    </p>
+                                                                                </li>
+
+                                                                                <li>
+                                                                                    <p>
+                                                                                        HASILAT
+                                                                                    </p>
+                                                                                    <p>
+                                                                                        ( 1 )
+                                                                                    </p>
+                                                                                </li>
+
+                                                                                <li>
+                                                                                    <p>
+                                                                                        PROMOSYON HARCAMASI
+
+                                                                                    </p>
+                                                                                    <p>
+                                                                                        ( 1 )
+                                                                                    </p>
+                                                                                </li>
+
+
+
+                                                                            </ul>
+                                                                        </div>
+
+                                                                        <div className="b-profile-sidebar-text social-d">
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <img src="assets/images/icons/facebook-logo-copy.png" /> facebook.com/abfoods
+                                                                                    </p>
+
+
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <img src="assets/images/icons/twitter-social-logotype-copy.png" /> <span> twitter.com/abfoods </span>
+                                                                                    </p>
+
+                                                                                </li>
+
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <img src="assets/images/icons/instagram-social-network-logo-of-photo-camera-copy.png" /> <span> PINTEREST </span>
+                                                                                    </p>
+
+                                                                                </li>
+
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <img src="assets/images/icons/pinterest-logo.png" /> <span> INSTAGRAM</span>
+                                                                                    </p>
+
+                                                                                </li>
+
+
+
+                                                                            </ul>
+                                                                        </div>
+
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </Col>
+                                                        </Row>
+
                                                     </div>
-                                                </Tab>
-                                            </TabList>
-
-                                            <TabPanel>
-                                               <Row>
-                                                   <Col md="9" xs="12"> 
-                                                      <Row>
-                                                          <Col md="4" xs="4">
-                                                            <div className="brand-product-box-d">
-                                                                <div className="p-img">
-                                                                    <img src="assets/images/blog1.jpg" alt="p-image"/>
-                                                                </div>
-                                                                <div className="p-text-d-12458">
-                                                                    <h6> Candles </h6>
-                                                                    <div className="cost-text">
-                                                                    <p> Cost/item <span> $69.00 </span> </p>
-                                                                    <p> Margin <span> $69.00 </span> </p>
-                                                               
-                                                                    </div>
-                                                                 </div>
-                                                            </div>
-                                                          </Col>
-
-                                                          <Col md="4" xs="4">
-                                                            <div className="brand-product-box-d">
-                                                                <div className="p-img">
-                                                                    <img src="assets/images/blog1.jpg" alt="p-image"/>
-                                                                </div>
-                                                                <div className="p-text-d-12458">
-                                                                    <h6> Candles </h6>
-                                                                    <div className="cost-text">
-                                                                    <p> Cost/item <span> $69.00 </span> </p>
-                                                                    <p> Margin <span> $69.00 </span> </p>
-                                                               
-                                                                    </div>
-                                                                 </div>
-                                                            </div>
-                                                          </Col>
-                                                          <Col md="4" xs="4">
-                                                            <div className="brand-product-box-d">
-                                                                <div className="p-img">
-                                                                    <img src="assets/images/blog1.jpg" alt="p-image"/>
-                                                                </div>
-                                                                <div className="p-text-d-12458">
-                                                                    <h6> Candles </h6>
-                                                                    <div className="cost-text">
-                                                                    <p> Cost/item <span> $69.00 </span> </p>
-                                                                    <p> Margin <span> $69.00 </span> </p>
-                                                               
-                                                                    </div>
-                                                                 </div>
-                                                            </div>
-                                                          </Col>
-                                                      </Row>
-                                                   </Col>
-
-                                                   <Col md="3" xs="12">
-                                                     <div className="b-profile-sidebar">
-                                                        <div>
-                                                            <button className="ed-btn" onClick={() => setShowInfo(true)}> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Information </button>
-                                                        </div>
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-map-marker-alt"></i>  Indore, MP
-                                                                    </p>
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-link"></i> ....
-                                                                    </p>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-tag"></i>  PRODUCTS
-                                                                    </p>
-                                                                    <p>
-                                                                        ( 1 )
-                                                                    </p>
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-calendar-week"></i> YEAR FOUNDED
-                                                                    </p>
-                                                                    <p>
-                                                                        ( 2019 )
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-chart-line"></i> REVENUE
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $1M-$5M )
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fal fa-bullhorn"></i> PROMOTIONAL SPEND
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $1 - $25k )
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
 
 
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $89.00 - $89.00 )
-                                                                    </p>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-facebook-square"></i>  FACEBOOK
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                  
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-twitter-square"></i> TWITTER
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-pinterest-square"></i> PINTEREST
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-instagram"></i> INSTAGRAM
-                                                                    </p>
-                                                                    <p>
-                                                                        ---
-                                                                    </p>                                                    
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-
-
-
-                                                     </div>
-                                                   </Col>
-                                               </Row>
+                                                </Col>
                                             </TabPanel>
 
                                             <TabPanel>
-                                            <Row>
-                                                   <Col md="9" xs="12"> 
-                                                      <Row>
-                                                          <Col md="12" xs="12">
-                                                            <p className="f-size124"> Product Name </p>
-                                                            <div className="p-story-box-d">
-                                                            <i class="fal fa-comment-alt-lines"></i>
-                                                                <h4> Tell your Story </h4>
-                                                                <p> Let buyers know more about your brand. </p>
-                                                                <button className="admin-add-btn" onClick={() => setShowStory(true)}><i class="fal fa-pen"></i> Edit Your story </button>
-                                                            </div>
-                                                          </Col>
-                                                          <Col md="12" xs="12">
-                                                         
-                                                            <div className="p-story-box-d">
-                                                            <i class="fal fa-play-circle"></i>
-                                                                <h4> Add a video </h4>
-                                                                <p> Embed a YouTube or Vimeo video about your brand or products. </p>
-                                                                <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Add Video </button>
-                                                            </div>
-                                                          </Col>
-
-                                                      </Row>
-                                                   </Col>
-                                                   
-
-                                                   <Col md="3" xs="12">
-                                                     <div className="b-profile-sidebar">
-                                                        <div>
-                                                            <button className="ed-btn"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Information </button>
-                                                        </div>
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-map-marker-alt"></i>  Indore, MP
-                                                                    </p>
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-link"></i> ....
-                                                                    </p>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-tag"></i>  PRODUCTS
-                                                                    </p>
-                                                                    <p>
-                                                                        ( 1 )
-                                                                    </p>
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-calendar-week"></i> YEAR FOUNDED
-                                                                    </p>
-                                                                    <p>
-                                                                        ( 2019 )
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="far fa-chart-line"></i> REVENUE
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $1M-$5M )
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fal fa-bullhorn"></i> PROMOTIONAL SPEND
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $1 - $25k )
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        ( $89.00 - $89.00 )
-                                                                    </p>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-
-                                                        <div className="b-profile-sidebar-text">
-                                                            <ul>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-facebook-square"></i>  FACEBOOK
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                  
-                                                                </li>
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-twitter-square"></i> TWITTER
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-pinterest-square"></i> PINTEREST
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fab fa-instagram"></i> INSTAGRAM
-                                                                    </p>
-                                                                    <p>
-                                                                        ---
-                                                                    </p>                                                    
-                                                                </li>
-
-                                                                <li>
-                                                                    <p>
-                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
-
-
-                                                                    </p>
-                                                                    <p>
-                                                                        --- 
-                                                                    </p>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-
-
-
-                                                     </div>
-                                                   </Col>
-                                               </Row>
-                                            </TabPanel>
-
+                                                <Col md="12">
+                                                <div className="count-product-title">
+                                                    <p> AB Foods   <span>Hakkında </span> </p>
                                                 </div>
-                                                </Tabs>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>                
-                                        </TabPanel>
-                                       
-                                        <TabPanel>
-                                            <p> Tab 3 content </p>
-                                        </TabPanel>
-                                    </Container>
+                                                    <div className="b-profile-tab-2-d">
+                                                        <Row>
+                                                            <Col md="9" xs="12">
+                                                                <Row className="">
+
+                                                                    <Col md="12" xs="12">
+                                                                       
+                                                                        <div className="p-story-box-d mt-0">
+                                                                        <div className="story-text">
+                                                                            <p> <strong> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+                                                                                sed diam nonumy eirmod tempor invidunt.</strong> </p>
+                                                                                <p>
+                                                                                Ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                                                                                At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+                                                                            </p>
+                                                                            <p>
+                                                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                                                                            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                                                                                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                                                            </p>   
+                                                                        </div>
+                                                                        <div className="story-btn-d">
+                                                                            <button className="edt" onClick={() => setShowStory(true)}><i class="fal fa-edit"></i></button>
+                                                                        </div>
+                                                                     </div>
+                                                                    </Col>
+                                                                    <Col md="12" xs="12">
+                                                                        <div className="count-product-title mt-2">
+                                                                            <p> AB Foods <span>Tanıtım Videosu </span> </p>
+                                                                        </div>
+
+                                                                        <div className="p-story-box-d">
+                                                                            <div className="new-story-mn-d">
+                                                                                       <div className="story-t2-text" onClick={() => setShowV(true)}>
+                                                                                            <button className="" > <img src="assets/images/icons/film-strip.png"/> </button>
+                                                                                            <h5>TANITIM VİDEOSU <span> EKLE </span></h5>
+                                                                                       </div>
+                                                                                 
+                                                                            </div>
+                                                                          </div>
+                                                                    </Col>
+
+                                                                </Row>
+
+
+                                                            </Col>
+
+                                                            <Col md="3" xs="12">
+                                                                <div className="side-b-men-d-5245">
+                                                                    <div className="b-profile-sidebar">
+                                                                        <div>
+                                                                            <button className="ed-btn" onClick={() => setShowInfo(true)}> Edit Information </button>
+                                                                        </div>
+                                                                        <div className="b-profile-sidebar-text">
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <i class="fas fa-map-marker-alt"></i>  Indore, MP
+                                                                                    </p>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <i class="far fa-link"></i>
+                                                                                        <strong>   http://abfoods.com.tr/en/</strong>
+                                                                                    </p>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+
+                                                                        <div className="b-profile-sidebar-text">
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        ÜRÜN
+                                                                                    </p>
+                                                                                    <p>
+                                                                                        ( 1 )
+                                                                                    </p>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        KURULUŞ YILI
+                                                                                    </p>
+                                                                                    <p>
+                                                                                        ( 1 )
+                                                                                    </p>
+                                                                                </li>
+
+                                                                                <li>
+                                                                                    <p>
+                                                                                        HASILAT
+                                                                                    </p>
+                                                                                    <p>
+                                                                                        ( 1 )
+                                                                                    </p>
+                                                                                </li>
+
+                                                                                <li>
+                                                                                    <p>
+                                                                                        PROMOSYON HARCAMASI
+
+                                                                                    </p>
+                                                                                    <p>
+                                                                                        ( 1 )
+                                                                                    </p>
+                                                                                </li>
+
+
+
+                                                                            </ul>
+                                                                        </div>
+
+                                                                        <div className="b-profile-sidebar-text social-d">
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <img src="assets/images/icons/facebook-logo-copy.png" /> facebook.com/abfoods
+                                                                                    </p>
+
+
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <img src="assets/images/icons/twitter-social-logotype-copy.png" /> <span> twitter.com/abfoods </span>
+                                                                                    </p>
+
+                                                                                </li>
+
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <img src="assets/images/icons/instagram-social-network-logo-of-photo-camera-copy.png" /> <span> PINTEREST </span>
+                                                                                    </p>
+
+                                                                                </li>
+
+                                                                                <li>
+                                                                                    <p>
+                                                                                        <img src="assets/images/icons/pinterest-logo.png" /> <span> INSTAGRAM</span>
+                                                                                    </p>
+
+                                                                                </li>
+
+
+
+                                                                            </ul>
+                                                                        </div>
+
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </Col>
+                                                        </Row>
+
+                                                        <Row className="d-none">
+                                                            <Col md="9" xs="12">
+                                                                <Row>
+                                                                    <Col md="12" xs="12">
+                                                                        <p className="f-size124"> Product Name </p>
+                                                                        <div className="p-story-box-d">
+                                                                            <i class="fal fa-comment-alt-lines"></i>
+                                                                            <h4> Tell your Story </h4>
+                                                                            <p> Let buyers know more about your brand. </p>
+                                                                            <button className="admin-add-btn" onClick={() => setShowStory(true)}><i class="fal fa-pen"></i> Edit Your story </button>
+                                                                        </div>
+                                                                    </Col>
+                                                                    <Col md="12" xs="12">
+
+                                                                        <div className="p-story-box-d">
+                                                                            <i class="fal fa-play-circle"></i>
+                                                                            <h4> Add a video </h4>
+                                                                            <p> Embed a YouTube or Vimeo video about your brand or products. </p>
+                                                                            <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Add Video </button>
+                                                                        </div>
+                                                                    </Col>
+
+                                                                </Row>
+                                                            </Col>
+
+
+                                                            <Col md="3" xs="12">
+                                                                <div className="b-profile-sidebar">
+                                                                    <div>
+                                                                        <button className="ed-btn"> Edit Information </button>
+                                                                    </div>
+                                                                    <div className="b-profile-sidebar-text">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="fas fa-map-marker-alt"></i>  Indore, MP
+                                                                                </p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="far fa-link"></i> ....
+                                                                                </p>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+
+                                                                    <div className="b-profile-sidebar-text d-none">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="far fa-tag"></i>  PRODUCTS
+                                                                                </p>
+                                                                                <p>
+                                                                                    ( 1 )
+                                                                                </p>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="far fa-calendar-week"></i> YEAR FOUNDED
+                                                                                </p>
+                                                                                <p>
+                                                                                    ( 2019 )
+                                                                                </p>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="far fa-chart-line"></i> REVENUE
+                                                                                </p>
+                                                                                <p>
+                                                                                    ( $1M-$5M )
+                                                                                </p>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="fal fa-bullhorn"></i> PROMOTIONAL SPEND
+
+                                                                                </p>
+                                                                                <p>
+                                                                                    ( $1 - $25k )
+                                                                                </p>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
+
+
+                                                                                </p>
+                                                                                <p>
+                                                                                    ( $89.00 - $89.00 )
+                                                                                </p>
+                                                                            </li>
+
+                                                                        </ul>
+                                                                    </div>
+
+                                                                    <div className="b-profile-sidebar-text">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="fab fa-facebook-square"></i>  FACEBOOK
+                                                                                </p>
+                                                                                <p>
+                                                                                    ---
+                                                                                </p>
+
+                                                                            </li>
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="fab fa-twitter-square"></i> TWITTER
+                                                                                </p>
+                                                                                <p>
+                                                                                    ---
+                                                                                </p>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="fab fa-pinterest-square"></i> PINTEREST
+                                                                                </p>
+                                                                                <p>
+                                                                                    ---
+                                                                                </p>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="fab fa-instagram"></i> INSTAGRAM
+                                                                                </p>
+                                                                                <p>
+                                                                                    ---
+                                                                                </p>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                <p>
+                                                                                    <i class="fas fa-dollar-sign"></i>  MSRP RANGE
+
+
+                                                                                </p>
+                                                                                <p>
+                                                                                    ---
+                                                                                </p>
+                                                                            </li>
+
+                                                                        </ul>
+                                                                    </div>
+
+
+
+                                                                </div>
+                                                            </Col>
+                                                        </Row>
+
+                                                    </div>
+
+
+                                                </Col>
+
+                                            </TabPanel>
+                                         </Container>
                                    </section>
                                 </Tabs>
                                     </Col>

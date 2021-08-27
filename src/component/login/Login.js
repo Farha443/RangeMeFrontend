@@ -9,14 +9,18 @@ import { Col, Form, Row } from 'react-bootstrap';
 import $ from "jquery";  
 import BASE_URL from '../base';
 import Cookies from 'universal-cookie';
+import SignupModal from '../element/SignupModal';
 
 const axios = require('axios');
 const cookies = new Cookies();
 cookies.get('userType')
+
+
+
 function Loginfunction() {
   $(".laoder").show(); 
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
+  var email = document.getElementById('get_email').value;
+  var password = document.getElementById('get_password').value;
       axios.post(BASE_URL+"authentication/login/",
           {              
               email: email,             
@@ -77,22 +81,41 @@ function Loginfunction() {
         
 }
 class Login extends React.Component {
+  state ={
+    modalShow : false
+}
+  
   handleKeypress = (event) => {
     if(event.key === 'Enter'){
       Loginfunction();
     }
   }
-
+  
+  onCloseModal = ()=>{
+    this.setState({modalShow : false})
+}
+  
   componentDidMount(){
     $(".laoder").hide(); 
   }
 
+
+  onClickButton = e =>{
+    e.preventDefault()
+    var supplier = "supplier";
+    cookies.set('userType', supplier, { path: '/' });
+    this.setState({modalShow : true})
+}
+
+ 
   render(){
     return(
         <>
+        {/* <SignupModal show={this.state.modalShow} onHide={() => this.state.modalShow(false)} />
+        
+       <SignupModal show={modalShow} onHide={() => setModalShow(false)} /> */}
+       <SignupModal show={this.state.modalShow} onHide={this.onCloseModal}></SignupModal>
 
-
-    
          <div data-tname="SignInContainer" className="w-100">
         <div className="with-advertisement__container___2Y-i4">
           <div className="with-advertisement__form___1Tp6K left">
@@ -115,14 +138,14 @@ class Login extends React.Component {
                     <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                               <Form.Label>E-Mail Adresi</Form.Label>
-                              <Form.Control type="email" id="email" placeholder="Adınız..." />
+                              <Form.Control type="email" id="get_email" placeholder="Adınız..." />
                           </Form.Group>
                     </Col>
 
                     <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                               <Form.Label>Parola</Form.Label>
-                              <Form.Control type="password" onKeyPress={this.handleKeypress} id="password" placeholder="Adınız..." />
+                              <Form.Control type="password" onKeyPress={this.handleKeypress} id="get_password" placeholder="Adınız..." />
                           </Form.Group>
                     </Col>
 
@@ -132,7 +155,7 @@ class Login extends React.Component {
                     </div>
 
                     <div className="log-link102">
-                        <p> Hesabınız yok mu? <NavLink to="">  Hemen ücretsiz kaydol! </NavLink> </p>
+                        <p> Hesabınız yok mu? <NavLink to="" onClick={this.onClickButton}>  Hemen ücretsiz kaydol! </NavLink> </p>
                     </div>
                     </Col>
                     </Row>

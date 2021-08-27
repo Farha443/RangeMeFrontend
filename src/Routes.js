@@ -37,7 +37,7 @@ import Notification from './component/admin/Notification';
 import AdminNewPage from './component/admin/AdminNewPage';
 import AddBlogs from './component/admin/AddBlogs';
 import Blogs from './component/blogs/Blogs';
-import BlogsDetails from './component/blogs/BlogsDetails';
+import BlogsDetails1 from './component/blogs/BlogsDetails1';
 import ServiceProviderDashboard from './component/service-provider/ServiceProviderDashboard'
 import ServiceProviderProfile from './component/service-provider/ServiceProviderProfile';
 import ServiceNavbar from './component/service-provider/ServiceNavbar';
@@ -55,7 +55,8 @@ import BuyerCompanies from './component/buyee/BuyerCompanies';
 import Bidding from './component/admin/buyer/Bidding';
 import ServiceProvidersHome from './component/service-provider/ServiceProvidersHome';
 import Chat from './component/admin/chat/Chat';
-import BlogsDetails1 from './component/blogs/BlogsDetails1';
+import BlogDetail from './component/blogs/BlogDetail';
+import Contact from './component/home/Contact';
 
 
 function Routes(){
@@ -101,7 +102,7 @@ function Routes(){
                 <Route exact path="/admin/home" component={AdminNewPage}></Route>
                 <Route exact path="/add-blog" component={AddBlogs}></Route>
                 <Route exact path="/blogs" component={Blogs}></Route>
-                <Route exact path="/blog_detail/:uuid" component={BlogsDetails}></Route>
+                <Route exact path="/blog_detail1/:uuid" component={BlogsDetails1}></Route>
                 <Route exact path="/service-dashboard" component={ServiceProviderDashboard}></Route>
                 <Route exact path="/service-provider-profile" component={ServiceProviderProfile}></Route>
                 <Route exact path="/ServiceNavbar" component={ServiceNavbar}></Route>
@@ -118,7 +119,8 @@ function Routes(){
                 <Route exact path="/bidding" component={Bidding}></Route>
                 <Route exact path="/servicehome" component={ServiceProvidersHome}></Route>
                 <Route exact path="/chat" component={Chat}></Route>
-                <Route exact path="/blog_detail1" component={BlogsDetails}></Route>
+                <Route exact path="/blog_detail" component={BlogDetail}></Route>
+                <Route exact path="/contact" component={Contact}></Route>
             </Switch>
         </> 
     )
