@@ -163,7 +163,7 @@ return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
                                       {/* <i class={sub.icon}></i> */}
-                                      <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icon}/>
+                                      <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icons}/>
  
                                       </div>
                                       <div className="ic-text-6254">
@@ -213,7 +213,7 @@ return<li>
                                         {/* <img src="assets/images/icons/view.svg" class="icn-img"/>
                                          */}
                                          {/* <i class={sub.icon}></i> */}
-                                         <img src={BASE_URL.slice(0,-4)+"media/"+sub.icon}/>
+                                         <img src={BASE_URL.slice(0,-4)+"media/"+sub.icons}/>
 
 
                                           {/* <img src={BASE_URL.slice(0,-5)+'/'+'media/'+ sub.logo}/> */}
@@ -298,7 +298,7 @@ return<li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
                                       {/* <i class={sub.icon}></i> */}
-                                      <img src={BASE_URL.slice(0,-4)+"media/"+sub.icon}/>
+                                      <img src={BASE_URL.slice(0,-4)+"media/"+sub.icons}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading}  </h6>
@@ -336,7 +336,7 @@ return<li>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
                                       {/* <i class={sub.icon}></i> */}
-                                      <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icon}/>
+                                      <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icons}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6> {sub.heading} </h6>
