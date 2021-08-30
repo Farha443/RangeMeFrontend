@@ -334,7 +334,7 @@ return<li>
                                 {workk.sub_works.map(sub=>{
                                   return<li>
                                     <div className="ic-text-mn">
-                                      <div className="ic-5248"> 
+                                      <div className="ic-5248 ic-22"> 
                                       {/* <i class={sub.icon}></i> */}
                                       <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icon}/>
                                       </div>

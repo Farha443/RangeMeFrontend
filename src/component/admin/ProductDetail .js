@@ -516,7 +516,7 @@ function ProductDetail() {
 
                                         <Col md="6">
                                         <label htmlFor="basic-url" className="lb">Ürün fiyatı
-                                            <p>  (Suggested cost to the retailer) </p>
+                                            <p>  (Satıcı için önerilen maliyet) </p>
                                         </label>
                                             <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
@@ -536,7 +536,7 @@ function ProductDetail() {
 
                                         <Col md="6">
                                             <label htmlFor="basic-url" className="lb">Tedarikçinin önerdiği son satış fiyatı
-                                                <p>   (Suggested selling price for retailers) </p>
+                                                <p>   (Perakendeciler için önerilen satış fiyatı) </p>
                                             </label>
                                             <InputGroup className="mb-3">
                                                 <InputGroup.Prepend>
@@ -861,10 +861,10 @@ function ProductDetail() {
                                     <span> {p_details.cost} Ürün fiyatı</span>
                                 </div>
 
-                                <div className="prod-help">
+                                {/* <div className="prod-help">
                                     <button className="prev-prod-btn">  <NavLink to="/preview"> <i class="fa fa-eye" aria-hidden="true"></i> Preview Product Profile </NavLink>   </button>
                                     <p> We will help guide you along the process. <NavLink to=""> Need Help </NavLink> </p>
-                                </div>
+                                </div> */}
 
                             </div>
                         </Col>

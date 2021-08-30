@@ -101,7 +101,13 @@ function BrandProfile() {
     const handleToggle = () => {
       setActive(!isActive);
     };
-    const handleToggleTwo = () => {
+    const handleToggleTwo = (uuid) => {
+        if(document.getElementById(uuid).className==="drop-d-101"){
+            document.getElementById(uuid).classList.add('open-drop')
+        }
+        else{
+            document.getElementById(uuid).classList.remove('open-drop')
+        }
         setAct(!isAct);
       };
 
@@ -714,8 +720,8 @@ function BrandProfile() {
                                                                     <td className="pd-last-td">
                                                                         <button className="border-btn"> <NavLink to=""
                                                                         onClick={()=>Redirect(pd.uuid,pd.product_name)}> Düzenle </NavLink>  </button>
-                                                                        <button className="border-btn" onClick={handleToggleTwo}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
-                                                                        <div className={isAct ? " drop-d-101" : "drop-d-101 open-drop"}> 
+                                                                        <button className="border-btn" onClick={()=>handleToggleTwo(pd.uuid)}><i class="fa fa-ellipsis-v" aria-hidden="true"></i> </button>
+                                                                        <div id={pd.uuid} className={"drop-d-101"}> 
                                                                             <ul>
                                                                                 <li> <NavLink to="/brand-profile">View product statistics </NavLink> </li>
                                                                                 <li> <NavLink to="/preview" onClick={() => Redirect1(pd.uuid)}>Preview product</NavLink> </li>

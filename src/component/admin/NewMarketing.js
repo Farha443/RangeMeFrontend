@@ -83,7 +83,7 @@ save(){
     // var product_images =  this.state.market.product_images ? (this.state.market.product_images.pictureFiles)[0] : "";
     var product_images = document.getElementById('id').files[0];
     var product_videos = document.getElementById('product_videos').value;
-    if (product_videos.indexOf("http://") == 0 || product_videos.indexOf("https://") == 0 || product_videos==="") {
+    // if (product_videos.indexOf("http://") == 0 || product_videos.indexOf("https://") == 0 || product_videos==="") {
         var url = BASE_URL+"product/product_marketing/";
         var token = cookies.get("token")
         var data= new FormData();
@@ -108,25 +108,19 @@ save(){
         }).catch(err=>{
         })
 
-    }else{
-        alert("Please Enter a valid URL");
-    }
+   
 
 }
 Edit(){
-    var product_marketing = cookies.get("productuuid")
-
-
+    var product_marketing = cookies.get("productuuid");
     const selected = document.querySelectorAll('#promotional_budget option:checked');
     var array = Array.from(selected).map(el => el.value);
-
     var promotional_budget = array[0]
     // var product_images =  this.state.image!=null ? (this.state.image.pictureFiles)[0] : "";
     var product_images = document.getElementById('id').files[0];
     var product_videos = document.getElementById('product_videos').value;
     // if (product_videos.indexOf("http://") == 0 || product_videos.indexOf("https://") == 0) {
     var url = BASE_URL+"product/product_marketing/";
-    
     var token = cookies.get("token")
 
     var data= new FormData();
@@ -152,10 +146,6 @@ Edit(){
     }).catch(err=>{
     })
 
-    // }else{
-    //     alert("Please Enter a valid URL");
-
-    // }
 }
 handleChange(v) {
     this.setState({ budget: v.target.value });
@@ -370,10 +360,10 @@ Redirect(uuid){
                                     <span> 33.00%  Margin </span>
                                 </div>
 
-                                <div className="prod-help">
+                                {/* <div className="prod-help">
                                     <button className="prev-prod-btn"> <i class="fa fa-eye" aria-hidden="true"></i> Preview Product Profile </button>
                                     <p> We will help guide you along the process. <NavLink to=""> Need Help </NavLink> </p>
-                                </div>
+                                </div> */}
                             </div>
                         </Col>
                     </Row>

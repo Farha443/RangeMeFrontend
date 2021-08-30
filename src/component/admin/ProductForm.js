@@ -388,10 +388,10 @@ function ProductForm() {
                                     {/* <span> 33.00%  Margin </span> */}
                                 </div>
 
-                                <div className="prod-help">
+                                {/* <div className="prod-help">
                                     <button className="prev-prod-btn" onClick={() => Redirect(uuid)}> <i class="fa fa-eye" aria-hidden="true"></i> Preview Product Profile </button>
                                     <p> We will help guide you along the process. <NavLink to=""> Need Help </NavLink> </p>
-                                </div>
+                                </div> */}
 
                             </div>
                         </Col>

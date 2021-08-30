@@ -718,11 +718,11 @@ class Distribution extends React.Component {
                                 <span> {this.state.p_details.cost} Ürün fiyatı</span>
                                     <span> 33.00%  Margin </span>
                                 </div>
-
+{/* 
                                 <div className="prod-help">
                                     <button className="prev-prod-btn"> <i class="fa fa-eye" aria-hidden="true"></i> Preview Product Profile </button>
                                     <p> We will help guide you along the process. <NavLink to=""> Need Help </NavLink> </p>
-                                </div>
+                                </div> */}
 
                             </div>
                         </Col>
