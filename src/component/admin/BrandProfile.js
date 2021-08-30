@@ -161,6 +161,8 @@ function BrandProfile() {
         .then(res=>{
             // debugger
             setSbrand(res.data.data)
+            console.log("data brand")
+            console.log(res.data.data)
             name = res.data.data.brand_name;
             
             capitalize(name);
@@ -629,7 +631,7 @@ function BrandProfile() {
 
                                       <Col md="12" xs="12">
                                         <div className="count-product-title">
-                                            <p> Sayfanıza Toplam <span> 7 Ürün </span> Eklediniz.  </p>
+                                            <p> Sayfanıza Toplam <span> {count} Ürün </span> Eklediniz.  </p>
                                         </div>
                                       </Col>  
 
@@ -743,27 +745,28 @@ function BrandProfile() {
                                                     </div>
                                                     <div className="b-profile-tab-2-d">
                                                         <Row>
-                                                        
+                                                       
                                                             <Col md="9" xs="12">
+                                                            
                                                                 <Row>
+                                                                {details.details?details.details.map(pr=>(
                                                                     <Col md="4" xs="4">
+                                                                    
                                                                         <div className="brand-product-box-d">
                                                                             <div className="p-img">
-                                                                                <img src="assets/images/blog1.jpg" alt="p-image" />
+                                                                            <img src={BASE_URL.slice(0,-5)+pr.images} />
                                                                             </div>
                                                                             <div className="p-text-d-12458">
-                                                                                <h6> AB Bio El ve Cilt Dezenfektanı </h6>
+                                                                                <h6> {pr.product_name} </h6>
                                                                                 <div className="cost-text">
-                                                                                    <p> Cost/item : <span> $69.00 </span> </p>
-                                                                                    <p> Margin <span> $69.00 </span> </p>
+                                                                                    <p> Cost/item : <span>TL {pr.cost} </span> </p>
+                                                                                    <p> Margin <span>TL{pr.mrp-pr.cost}</span> </p>
 
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </Col>
-
-                                                                   
-                                                                    
+                                                                    )) : ''}
                                                                 </Row>
                                                             </Col>
 
@@ -777,13 +780,13 @@ function BrandProfile() {
                                                                             <ul>
                                                                                 <li>
                                                                                     <p>
-                                                                                        <i class="fas fa-map-marker-alt"></i>  Indore, MP
+                                                                                        <i class="fas fa-map-marker-alt"></i>  {sbrand.comp_location}
                                                                                     </p>
                                                                                 </li>
                                                                                 <li>
                                                                                     <p>
                                                                                         <i class="far fa-link"></i>
-                                                                                        <strong>   http://abfoods.com.tr/en/</strong>
+                                                                                        <strong>   {sbrand.brand_website}</strong>
                                                                                     </p>
                                                                                 </li>
                                                                             </ul>
@@ -796,7 +799,7 @@ function BrandProfile() {
                                                                                         ÜRÜN
                                                                                     </p>
                                                                                     <p>
-                                                                                        ( 1 )
+                                                                                        ( {count} )
                                                                                     </p>
                                                                                 </li>
                                                                                 <li>
@@ -804,7 +807,7 @@ function BrandProfile() {
                                                                                         KURULUŞ YILI
                                                                                     </p>
                                                                                     <p>
-                                                                                        ( 1 )
+                                                                                        ( {sbrand.year_founded} )
                                                                                     </p>
                                                                                 </li>
 
@@ -813,17 +816,16 @@ function BrandProfile() {
                                                                                         HASILAT
                                                                                     </p>
                                                                                     <p>
-                                                                                        ( 1 )
+                                                                                        ( {sbrand.annual_revenue} )
                                                                                     </p>
                                                                                 </li>
 
                                                                                 <li>
                                                                                     <p>
-                                                                                        PROMOSYON HARCAMASI
-
+                                                                                        İş Tipi
                                                                                     </p>
                                                                                     <p>
-                                                                                        ( 1 )
+                                                                                        ( {sbrand.busiess_type} )
                                                                                     </p>
                                                                                 </li>
 
@@ -832,7 +834,7 @@ function BrandProfile() {
                                                                             </ul>
                                                                         </div>
 
-                                                                        <div className="b-profile-sidebar-text social-d">
+                                                                        {/* <div className="b-profile-sidebar-text social-d">
                                                                             <ul>
                                                                                 <li>
                                                                                     <p>
@@ -865,7 +867,7 @@ function BrandProfile() {
 
 
                                                                             </ul>
-                                                                        </div>
+                                                                        </div> */}
 
 
 
@@ -883,7 +885,7 @@ function BrandProfile() {
                                             <TabPanel>
                                                 <Col md="12">
                                                 <div className="count-product-title">
-                                                    <p> AB Foods   <span>Hakkında </span> </p>
+                                                    <p> {sbrand.brand_name} <span>Hakkında </span> </p>
                                                 </div>
                                                     <div className="b-profile-tab-2-d">
                                                         <Row>
@@ -893,6 +895,7 @@ function BrandProfile() {
                                                                     <Col md="12" xs="12">
                                                                        
                                                                         <div className="p-story-box-d mt-0">
+                                                                        {sbrand.brand_story? <EditorPreview data={sbrand.brand_story} />:
                                                                         <div className="story-text">
                                                                             <p> <strong> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
                                                                                 sed diam nonumy eirmod tempor invidunt.</strong> </p>
@@ -905,7 +908,7 @@ function BrandProfile() {
                                                                             sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
                                                                                 sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
                                                                             </p>   
-                                                                        </div>
+                                                                        </div>}
                                                                         <div className="story-btn-d">
                                                                             <button className="edt" onClick={() => setShowStory(true)}><i class="fal fa-edit"></i></button>
                                                                         </div>
@@ -913,7 +916,7 @@ function BrandProfile() {
                                                                     </Col>
                                                                     <Col md="12" xs="12">
                                                                         <div className="count-product-title mt-2">
-                                                                            <p> AB Foods <span>Tanıtım Videosu </span> </p>
+                                                                            <p> {sbrand.brand_name} <span>Tanıtım Videosu </span> </p>
                                                                         </div>
 
                                                                         <div className="p-story-box-d">
@@ -942,13 +945,13 @@ function BrandProfile() {
                                                                             <ul>
                                                                                 <li>
                                                                                     <p>
-                                                                                        <i class="fas fa-map-marker-alt"></i>  Indore, MP
+                                                                                        <i class="fas fa-map-marker-alt"></i>  {sbrand.comp_location}
                                                                                     </p>
                                                                                 </li>
                                                                                 <li>
                                                                                     <p>
                                                                                         <i class="far fa-link"></i>
-                                                                                        <strong>   http://abfoods.com.tr/en/</strong>
+                                                                                        <strong>   {sbrand.brand_website}</strong>
                                                                                     </p>
                                                                                 </li>
                                                                             </ul>
@@ -961,7 +964,7 @@ function BrandProfile() {
                                                                                         ÜRÜN
                                                                                     </p>
                                                                                     <p>
-                                                                                        ( 1 )
+                                                                                        ( {count} )
                                                                                     </p>
                                                                                 </li>
                                                                                 <li>
@@ -969,7 +972,7 @@ function BrandProfile() {
                                                                                         KURULUŞ YILI
                                                                                     </p>
                                                                                     <p>
-                                                                                        ( 1 )
+                                                                                        ( {sbrand.year_founded} )
                                                                                     </p>
                                                                                 </li>
 
@@ -978,17 +981,17 @@ function BrandProfile() {
                                                                                         HASILAT
                                                                                     </p>
                                                                                     <p>
-                                                                                        ( 1 )
+                                                                                        ( {sbrand.annual_revenue} )
                                                                                     </p>
                                                                                 </li>
 
                                                                                 <li>
                                                                                     <p>
-                                                                                        PROMOSYON HARCAMASI
+                                                                                    İş Tipi
 
                                                                                     </p>
                                                                                     <p>
-                                                                                        ( 1 )
+                                                                                        ( {sbrand.busiess_type} )
                                                                                     </p>
                                                                                 </li>
 
@@ -997,7 +1000,7 @@ function BrandProfile() {
                                                                             </ul>
                                                                         </div>
 
-                                                                        <div className="b-profile-sidebar-text social-d">
+                                                                        {/* <div className="b-profile-sidebar-text social-d">
                                                                             <ul>
                                                                                 <li>
                                                                                     <p>
@@ -1030,9 +1033,7 @@ function BrandProfile() {
 
 
                                                                             </ul>
-                                                                        </div>
-
-
+                                                                        </div> */}
 
                                                                     </div>
                                                                 </div>
@@ -1052,13 +1053,13 @@ function BrandProfile() {
                                                                         </div>
                                                                     </Col>
                                                                     <Col md="12" xs="12">
-
+                                                                    {sbrand.brand_video? sbrand.brand_video:
                                                                         <div className="p-story-box-d">
                                                                             <i class="fal fa-play-circle"></i>
                                                                             <h4> Add a video </h4>
                                                                             <p> Embed a YouTube or Vimeo video about your brand or products. </p>
                                                                             <button className="admin-add-btn" onClick={() => setShowV(true)}><i class="fal fa-video-plus"></i> Add Video </button>
-                                                                        </div>
+                                                                        </div>} 
                                                                     </Col>
 
                                                                 </Row>
@@ -1137,7 +1138,7 @@ function BrandProfile() {
                                                                         </ul>
                                                                     </div>
 
-                                                                    <div className="b-profile-sidebar-text">
+                                                                    {/* <div className="b-profile-sidebar-text">
                                                                         <ul>
                                                                             <li>
                                                                                 <p>
@@ -1187,7 +1188,7 @@ function BrandProfile() {
                                                                             </li>
 
                                                                         </ul>
-                                                                    </div>
+                                                                    </div> */}
 
 
 
@@ -1453,6 +1454,7 @@ function BrandProfile() {
                                 onChange={onEditorChange()} /> */}
                                <div className="pop-editor-text">
                                <CKEditor
+                               initData={<EditorPreview data={sbrand.brand_story} />}
                                 data={content}
                                 onChange={onEditorChange} /> 
                                     {/* <p style={{ marginTop: '0px' }}> 
@@ -1473,95 +1475,53 @@ function BrandProfile() {
                 </Modal.Footer>
             </Modal>
 
+{/* add brand video url */}
+<Modal
+    size="lg"
+    centered
+    show={showV}
+    onHide={() => setShowV(false)}
+    aria-labelledby="example-custom-modal-styling-title"
+>
+    <Modal.Header closeButton>
+        <Modal.Title id="example-custom-modal-styling-title">
+        {/* <h5 style={{ marginBottom: '0px' }}> Add product </h5> */}
+        {/* <p> Start with adding your product’s name </p> */}
+</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+        <Container>
 
+            <Row>
+                <Col xs={12} md={10} className="m-auto">
+            <div className="text-center mb-3">
+            <h5> Youtube/Vimeo URL'si ekle </h5>  
             
-            <Modal
-                size="lg"
-                centered
-                show={showStory}
-                onHide={() => setShowStory(false)}
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    <h5 style={{ marginBottom: '0px' }}> Add Story </h5>
-           
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
+            </div>
+                <Col xs={12} md={10} className="m-auto"> 
+                    <Form.Group controlId="formBasicEmail">
+                    
+                        <Form.Control type="text" id="brand_video" placeholder="https://youtu.be/abcdefg"/>
 
-                        <Row>
-                          
-            
-                            <Col xs={12} md={12} className="m-auto"> 
-                               <div className="pop-editor-text">
-                                    <p style={{ marginTop: '0px' }}> 
-                                         Add rich text editor
-                                    </p>
-                               </div>
-                            </Col>
-                        
-
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500">  Add </button>
-                    </div>
-                </Modal.Footer>
-            </Modal>
-        
-
-        
-            <Modal
-                size="lg"
-                centered
-                show={showV}
-                onHide={() => setShowV(false)}
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    {/* <h5 style={{ marginBottom: '0px' }}> Add product </h5> */}
-                    {/* <p> Start with adding your product’s name </p> */}
-            </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Container>
-
-                        <Row>
-                            <Col xs={12} md={10} className="m-auto">
-                         <div className="text-center mb-3">
-                         <h5> Add Youtube/Vimeo URL </h5>  
-                        
-                         </div>
-                            <Col xs={12} md={10} className="m-auto"> 
-                                <Form.Group controlId="formBasicEmail">
-                                
-                                    <Form.Control type="text" placeholder="https://youtu.be/abcdefg"/>
-
-                                </Form.Group>
+                    </Form.Group>
 
 
-                            </Col>
-                            </Col>
+                </Col>
+                </Col>
 
-                        </Row>
-                    </Container>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500">  Embed Video </button>
-                    </div>
-                </Modal.Footer>
-            </Modal>
+            </Row>
+        </Container>
+    </Modal.Body>
+    <Modal.Footer>
+        <div className="col-md-12 text-center">
+            <button class="admin-add-btn f-w-500"  onClick={() => {EditBrandVideo()}}>  Embed Video </button>
+        </div>
+    </Modal.Footer>
+</Modal>
 
 
-
-        
-        <Modal
+{/* Edit brand info modal */}
+<Modal
         size="lg"
         // dialogClassName="modal-90w"
         show={showInfo}
@@ -1570,7 +1530,7 @@ function BrandProfile() {
         >
             <Modal.Header closeButton>
             <Modal.Title id="example-custom-modal-styling-title">
-            Brand information
+            Marka Adı  information
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -1579,8 +1539,8 @@ function BrandProfile() {
                 <Row>
                 <Col xs={12} md={6}>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label  style={{marginTop: '0px'}}>Band Name</Form.Label>
-                        <Form.Control type="email" placeholder="abc" />
+                        <Form.Label  style={{marginTop: '0px'}} >Marka adı</Form.Label>
+                        <Form.Control type="text"  id="e_name" placeholder="abc" defaultValue={sbrand.brand_name} />
 
                     </Form.Group>
                 </Col>
@@ -1588,7 +1548,7 @@ function BrandProfile() {
                 <Col xs={12} md={6}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label  style={{marginTop: '0px'}}>Location</Form.Label>
-                        <Form.Control type="email" placeholder="abc" />
+                        <Form.Control type="text" id="e_location" defaultValue={sbrand.comp_location} placeholder="abc" />
 
                     </Form.Group>
                 </Col>         
@@ -1596,92 +1556,45 @@ function BrandProfile() {
                 <Col xs={12} md={6}>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label  style={{marginTop: '0px'}}>Website</Form.Label>
-                        <Form.Control type="email" placeholder="abc.com" />
+                        <Form.Control type="text" id="e_website" defaultValue={sbrand.brand_website} placeholder="abc.com" />
                     </Form.Group>
                 </Col>
                 
                 <Col xs={12} md={6}>
                     <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label  style={{marginTop: '0px'}}>Year founded</Form.Label>
-                        <Form.Control as="select">
-                        <option>Select</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>3</option>
-                        </Form.Control>
+                        <Form.Label  style={{marginTop: '0px'}}>Kuruluş Yılı</Form.Label>
+                        <Form.Control as="select" defaultValue={sbrand.year_founded} id="e_year">
+                        {years.map((year, index) => {
+                            return <option key={`year${index}`} value={year}>{year}</option>})}
+                        
+                    </Form.Control>
                     </Form.Group>
                 </Col>
             
                 <Col xs={12} md={6}>
                 <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label  style={{marginTop: '0px'}}>Revenue</Form.Label>
+                    <Form.Label  style={{marginTop: '0px'}}>Hasılat</Form.Label>
                    
-                      <Form.Control as="select">
-                      <option>Select</option>
-                      <option>brand 1</option>
-                      <option>brand 2</option>
-                      <option>brand 3</option>
-                      <option>brand 3</option>
+                    <Form.Control as="select" id='e_revenue' defaultValue={sbrand.annual_revenue}>
+                      <option value="0M$-5M$">0M$-5M$</option>
+                      <option value="6M$-10M$">6M$-10M$</option>
+                      <option value="11M$-15M$">11M$-15M$</option>
                       </Form.Control>
                   </Form.Group>
                 </Col>
 
             </Row>
 
-            <Row>
-                <Col xs={12} md={6}>
-                    <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label  style={{marginTop: '0px'}}>Facebook</Form.Label>
-                        <Form.Control type="email" placeholder="Add user name" />
-                    </Form.Group>
-                </Col>
-
-                <Col xs={12} md={6}>
-                    <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label  style={{marginTop: '0px'}}>Twitter</Form.Label>
-                        <Form.Control type="email" placeholder="Add user name" />
-                    </Form.Group>
-                </Col>
-
-                <Col xs={12} md={6}>
-                    <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label  style={{marginTop: '0px'}}>Pinterest</Form.Label>
-                        <Form.Control type="email" placeholder="Add user name" />
-                    </Form.Group>
-                </Col>
-
-                <Col xs={12} md={6}>
-                    <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label  style={{marginTop: '0px'}}>Instagram</Form.Label>
-                        <Form.Control type="email" placeholder="Add user name" />
-                    </Form.Group>
-                </Col>
-
-
-                <Col xs={12} md={12}>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label  style={{marginTop: '0px'}}>Trade shows</Form.Label>
-                   
-                      <Form.Control as="select">
-                      <option>Select</option>
-                      <option>brand 1</option>
-                      <option>brand 2</option>
-                      <option>brand 3</option>
-                      <option>brand 3</option>
-                      </Form.Control>
-                  </Form.Group>
-                </Col>
-
-            </Row>
+            
             </Container>
             </Modal.Body>
             <Modal.Footer>
                 <div className="col-md-12 text-center">
-                <button class="admin-add-btn f-w-500"> Save </button>
+                <button class="admin-add-btn f-w-500" onClick={() => EditBrandInfo()}> Kaydet </button>
                 </div>
             </Modal.Footer>
       </Modal>
+
 
 {/* move brand modal */}
 <Modal

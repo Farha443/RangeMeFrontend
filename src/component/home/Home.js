@@ -309,7 +309,7 @@ function Home(){
                               <div className="ic-text-mn">
                                 <div className="ic-5248"> 
                                   {/* <i class={sub.icon}></i> */}
-                                  <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+                                  <img src={BASE_URL.slice(0,-4)+"media/"+sub.icon}/>
                                 </div>
                                 <div className="ic-text-6254">
                                   <h5> {sub.heading} </h5>
@@ -361,7 +361,7 @@ function Home(){
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
                                       {/* <i class={sub.icon}></i> */}
-                                      <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+                                      <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h5> {sub.heading} </h5>

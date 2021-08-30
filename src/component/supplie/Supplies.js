@@ -163,7 +163,7 @@ return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
                                       {/* <i class={sub.icon}></i> */}
-                                      <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+                                      <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icon}/>
  
                                       </div>
                                       <div className="ic-text-6254">
@@ -173,29 +173,6 @@ return<li>
                                     </div>
                                   </li>})}
 
-                                  {/* <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248"> 
-                                      <i class="fad fa-box-check"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6>Promote Your Product Page</h6>
-                                        <p> Your important brand information that buyer companies may need </p>
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248"> 
-                                      <i class="fas fa-share-square"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> Share Your Profile</h6>
-                                        <p>Your important brand information that buyer companies may need </p>
-                                      </div>
-                                    </div>
-                                  </li> */}
                                 </ul>
                             </div>
                         </div>
@@ -236,7 +213,7 @@ return<li>
                                         {/* <img src="assets/images/icons/view.svg" class="icn-img"/>
                                          */}
                                          {/* <i class={sub.icon}></i> */}
-                                         <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+                                         <img src={BASE_URL.slice(0,-4)+"media/"+sub.icon}/>
 
 
                                           {/* <img src={BASE_URL.slice(0,-5)+'/'+'media/'+ sub.logo}/> */}
@@ -249,43 +226,7 @@ return<li>
                                     </div>
                                   </li>
 })}
-                                  {/* <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248 ic-22"> 
-                                      <i class="far fa-chart-line"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> Information Profile </h6>
-                                        <p>Examine the performance of your brand, which buyer companies
-                                          Find out what you're viewing and follow featured products. </p>
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248 ic-22"> 
-                                      <i class="fas fa-chart-pie"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6>Industry Data</h6>
-                                        <p>Popular search terms, such as margin, list prices, and certificates
-Examine which product details increase interaction with the buyer company. </p>
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248 ic-22"> 
-                                      <i class="fal fa-chart-area"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6>Monitoring and Sharing Analytics </h6>
-                                        <p>Visits from buyer companies that you share your brand profile with,View clicks and messages. </p>
-                                      </div>
-                                    </div>
-                                  </li> */}
+                                 
                                 </ul>
                             </div>
                         </div>
@@ -296,87 +237,12 @@ Examine which product details increase interaction with the buyer company. </p>
               </section>
                  }
               })}
-              {/* <section className="lr-section-main bg-g"> 
-                  <div className="container">
-                    <div className="row"> 
-                        <div className="col-md-12 col-xs-12">
-                            <div className="lr-title-1">
-                              <h3> Direct your brand to buyer companies!</h3>
-                              </div>
-                        </div>
-                    </div>
-
-                    <div className="row"> 
-                        <div className="col-md-6 co-xs-12">
-                            <div className="d-one-12423">
-                                <ul>
-                                  <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248"> 
-                                      <i class="fad fa-comments-alt"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6>Communication with Buyers</h6>
-                                        <p>Create brand awareness by sharing your brand directly with the buyer company you want.</p>
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248"> 
-                                      <i class="fas fa-bell"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6>Category Review Notice</h6>
-                                        <p> Your important brand information that buyer companies may need </p>
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248"> 
-                                      <i class="fad fa-paper-plane"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> Message Sending </h6>
-                                        <p> Your important brand information that buyer companies may need</p>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-md-5 m-auto col-xs-12">
-                            <div className="frame-main-d">
-                                <img src="assets/images/btn.png" />
-                            </div>
-                        </div>
-                    </div>
-
-                  </div>
-              </section> */}
+              
 
               <section className="hesap-banner-section" style={{backgroundImage: 'url('+(mid_b_img?BASE_URL.slice(0,-5)+mid_b_img:"assets/images/banner-1.jpg")+')'}}>
                 <div className="container"> 
                     <div className="row"> 
-                        {/* <div className="col-md-3 col-xs-12">
                         
-                         <div className="supp-mid-banner-bx">
-                          {mbanner.map(img =>{return <div>
-                           <div className="supp-num">
-                                <h1> {img.heading} </h1>
-                                </div>
-                                
-                                <div className="supp-text">
-                                  <p>{img.description}</p>
-                                  <h1> {img.count} </h1>
-                                </div>
-                             </div>})}
-                                
-                            </div>
-                        </div> */}
 {mbanner.map(img =>{
                        return<div className="col-md-3 col-xs-12">
                             <div className="supp-mid-banner-bx">
@@ -391,17 +257,7 @@ Examine which product details increase interaction with the buyer company. </p>
                             </div>
                         </div>})}
 
-                        {/* <div className="col-md-3 col-xs-12">
-                            <div className="supp-mid-banner-bx">
-                                <div className="supp-num">
-                                  <h1> 3 </h1>
-                                </div>
-                                <div className="supp-text">
-                                  <p>SALES </p>
-                                  <h1>INCREASE</h1>
-                                </div>
-                            </div>
-                        </div> */}
+                       
 
 
                         <div className="col-md-3 col-xs-12">
@@ -442,7 +298,7 @@ Examine which product details increase interaction with the buyer company. </p>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
                                       {/* <i class={sub.icon}></i> */}
-                                      <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+                                      <img src={BASE_URL.slice(0,-4)+"media/"+sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading}  </h6>
@@ -453,29 +309,7 @@ Examine which product details increase interaction with the buyer company. </p>
                                   </li>})}
                                  
 
-                                  {/* <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248 ic-22"> 
-                                      <i class="far fa-sort-shapes-up"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> Stand Out in Searches</h6>
-                                        <p> Above unverified brand profiles in search results Increase your engagement by appearing. </p>
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248 ic-22"> 
-                                      <i class="fas fa-badge-check"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> TAYUSS Approval </h6>
-                                        <p> By showing that you are ready to sell to the buyer companies with the approval of TayussGet faster response </p>
-                                      </div>
-                                    </div>
-                                  </li> */}
+                              
                                 </ul>
                             </div>
                         </div>
@@ -502,7 +336,7 @@ Examine which product details increase interaction with the buyer company. </p>
                                     <div className="ic-text-mn">
                                       <div className="ic-5248"> 
                                       {/* <i class={sub.icon}></i> */}
-                                      <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+                                      <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6> {sub.heading} </h6>
@@ -511,29 +345,7 @@ Examine which product details increase interaction with the buyer company. </p>
                                     </div>
                                   </li>})}
 
-                                  {/* <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248"> 
-                                      <i class="fas fa-comment-alt-lines"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> Feedbacks</h6>
-                                        <p> Return of suppliers who previously worked with the service provider Evaluate the notices. </p>
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li>
-                                    <div className="ic-text-mn">
-                                      <div className="ic-5248"> 
-                                      <i class="fas fa-file-edit"></i>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> Taking offers </h6>
-                                        <p> Contact the service provider you want, get a quote and Make the right choice by comparing offers. </p>
-                                      </div>
-                                    </div>
-                                  </li> */}
+                                  
                                 </ul>
                             </div>
                         </div>
@@ -571,35 +383,7 @@ Examine which product details increase interaction with the buyer company. </p>
                     </li>
                     })}
 
-                    {/* <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li> */}
-
+                   
 
                   </ul>
                 </div>

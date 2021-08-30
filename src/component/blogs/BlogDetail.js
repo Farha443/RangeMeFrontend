@@ -76,11 +76,7 @@ class BlogDetail extends React.Component {
     };
   } 
   componentDidMount(){
-    // let uuid = this.props.match.params.uuid;
-    // if(uuid==='undefined'){
-    //     window.location = '/blogs';
-    // }
-    
+
     let uuid = cookies.get('blog_id');
     if(uuid==='undefined'){
         window.location = '/blogs';

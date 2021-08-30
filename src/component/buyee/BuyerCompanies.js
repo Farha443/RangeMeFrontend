@@ -133,55 +133,7 @@ function BuyerCompanies(){
                           
                                 </div>  })} 
 
-                                {/* <div className="col-md-12">
-                      
-
-                                <div className="log-d2-14254">
-                                   <p> genel bakış </p>
-                                </div>
-                        </div>
-
-                                <div className="col-md-12">
-                      
-
-                                <div className="log-d2-14254">
-                                   <p> genel bakış </p>
-                                </div>
-
-                        </div>
-
-                                <div className="col-md-12">
-                  
-                                <div className="log-d2-14254">
-                                   <p> genel bakış </p>
-                                </div>
-
-                        </div>
-
-                        <div className="col-md-12">
-                  
-                        <div className="log-d2-14254">
-                                   <p> genel bakış </p>
-                                </div>
-
-                        </div>
-
-                        <div className="col-md-12">
-                  
-                        <div className="log-d2-14254">
-                                   <p> genel bakış </p>
-                                </div>
-
-                        </div>
-
-                        <div className="col-md-12">
-                  
-                        <div className="log-d2-14254">
-                                   <p> genel bakış </p>
-                                </div>
-
-                        </div> */}
-
+                               
                       </Slider>
 
                           </div>
@@ -198,8 +150,7 @@ function BuyerCompanies(){
                     <div className="row"> 
                         <div className="col-md-6 co-xs-12">
                         <div className="r-text-254">
-                            <h5>{work.title} <br/>
-                                  marka profİlİnİzİ paylaşarak İşİnİzİ büyütün! </h5>
+                            <h5>{work.title} </h5>
                             </div>
                             <div className="d-one-12423">
                                 <ul>
@@ -208,7 +159,7 @@ function BuyerCompanies(){
                                     <div className="ic-text-mn">
                                       <div className="ic-5248 ic-22"> 
                                       {/* <i class={sub.icon}></i> */}
-                                      <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+                                      <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading} </h6>
@@ -217,32 +168,7 @@ function BuyerCompanies(){
                                     </div>
                                   </li>})}
 
-                                  {/* <li>
-                                    <div className="ic-text-mn">
-                                    <div className="ic-5248 ic-22"> 
-                                      <img src="assets/images/icons/shipping.svg" class="icn-img"/>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6>
-Discover New Products </h6>
-                                        <p> Find the products you need in the fastest way thanks to the easy use of Tayuss. </p>
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li>
-                                    <div className="ic-text-mn">
-                                    <div className="ic-5248 ic-22"> 
-                                      <img src="assets/images/icons/affiliate-marketing.svg" class="icn-img"/>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> Connect with Suppliers </h6>
-                                        <p> 
-Request a sample from the supplier during the purchasing process, a conversation
-launch or save the product for later review. </p>
-                                      </div>
-                                    </div>
-                                  </li> */}
+                                 
                                 </ul>
                             </div>
                         </div>
@@ -279,7 +205,7 @@ launch or save the product for later review. </p>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
                                     {/* <i class={sub.icon}></i> */}
-                                    <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+                                    <img src={BASE_URL.slice(0,-4)+"media/"+sub.icon}/>
                                       </div>
 
                                       <div className="ic-text-6254">
@@ -315,30 +241,7 @@ launch or save the product for later review. </p>
                             </div>
                         </div>})}
 
-                        {/* <div className="col-md-3 col-xs-12">
-                            <div className="supp-mid-banner-bx">
-                                <div className="supp-num">
-                                  <h1> 2 </h1>
-                                </div>
-                                <div className="supp-text">
-                                  <p> NEW PRODUCTS</p>
-                                  <h1> 
-DISCOVER </h1>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-md-3 col-xs-12">
-                            <div className="supp-mid-banner-bx">
-                                <div className="supp-num">
-                                  <h1> 3 </h1>
-                                </div>
-                                <div className="supp-text">
-                                  <p>CONTACT US </p>
-                                  <h1>GO</h1>
-                                </div>
-                            </div>
-                        </div> */}
+                      
 
 
                         <div className="col-md-3 col-xs-12">
@@ -379,7 +282,7 @@ DISCOVER </h1>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
                                     {/* <i class={sub.icon}></i> */}
-                                    <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+                                    <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6>{sub.heading}  </h6>
@@ -389,35 +292,6 @@ DISCOVER </h1>
                                       </div>
                                     </div>
                                   </li>})}
-{/* 
-                                  <li>
-                                    <div className="ic-text-mn">
-                                    <div className="ic-5248 ic-22"> 
-                                        <img src="assets/images/icons/popularity.svg" class="icn-img"/>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> 
-Preferred </h6>
-                                        <p> Products with a high sales rate and the most admired brand in Tayuss
-Explore their profiles. </p>
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li>
-                                    <div className="ic-text-mn">
-                                    <div className="ic-5248 ic-22"> 
-                                        <img src="assets/images/icons/star.svg" class="icn-img"/>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> 
-Collections</h6>
-                                        <p> 
-Diversity and sustainability of brand profiles and products that stand out in your category.
-Check out with trending collections such as </p>
-                                      </div>
-                                    </div>
-                                  </li> */}
                                 </ul>
                             </div>
                         </div>
@@ -447,7 +321,7 @@ Check out with trending collections such as </p>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
                                     {/* <i class={sub.icon}></i> */}
-                                    <img src={BASE_URL.slice(0,-5)+ sub.icon}/>
+                                    <img src={BASE_URL.slice(0,-4)+"media/"+sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h6> {sub.heading}</h6>
@@ -456,32 +330,7 @@ Check out with trending collections such as </p>
                                     </div>
                                   </li>})}
 
-                                  {/* <li>
-                                    <div className="ic-text-mn">
-                                    <div className="ic-5248 ic-22"> 
-                                        <img src="assets/images/icons/shipping-1.svg" class="icn-img"/>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6>
-Requesting a Sample</h6>
-                                        <p> Request samples by sending a private message to suppliers
-let me know your needs. </p>
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li>
-                                    <div className="ic-text-mn">
-                                    <div className="ic-5248 ic-22"> 
-                                        <img src="assets/images/icons/paper-plane.svg" class="icn-img"/>
-                                      </div>
-                                      <div className="ic-text-6254">
-                                        <h6> Do not sent me a message </h6>
-                                        <p> Holding a meeting while keeping personal information about your company confidential
-or send a message to request additional information. </p>
-                                      </div>
-                                    </div>
-                                  </li> */}
+                                 
                                 </ul>
                             </div>
                         </div>
