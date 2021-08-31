@@ -5,6 +5,7 @@ import BASE_URL from '../base';
 // import { toastr } from 'react-redux-toastr';
 import { NavLink } from 'react-router-dom';
 import $, { removeData } from 'jquery';
+import InnerFooter from '../admin/InnerFooter';
 const axios = require('axios');
 const cookies = new Cookies();
 console.log(cookies.get('email'));
@@ -133,6 +134,8 @@ function ForgotPasdOTP(){
         </div>
       </div>
     </div>
+
+    <InnerFooter/>
       </>
   );
 }

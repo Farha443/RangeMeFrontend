@@ -27,6 +27,7 @@ import context from 'react-bootstrap/esm/AccordionContext';
 
 import Cookies from 'universal-cookie';
 import BASE_URL from '../base';
+import InnerFooter from './InnerFooter';
 const cookies = new Cookies();
 
 const axios = require('axios');
@@ -369,7 +370,7 @@ Redirect(uuid){
                     </Row>
                 </Container>
             </section>
-
+            <InnerFooter/>
         </>
 
         )

@@ -7,6 +7,7 @@ import SignupModal from '../element/SignupModal';
 import Slider from "react-slick";
 import BASE_URL from '../base';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 function get_date(dt_string){
   var dt = dt_string.split('_')[0]
@@ -27,6 +28,8 @@ var b_head = ""
 var indexing =""
 var inner_index =""
 var sm =""
+const cookies = new Cookies();
+
 function Home(){ 
   const [modalShow, setModalShow] = useState(false);
   const [home, setHome] = useState({})
@@ -136,9 +139,9 @@ function Home(){
 
 },[])
 
- function Redirect(uuid){
-  // cookies.set('blog',uuid,{path:'/'});
-  window.location='/blog_detail/'+uuid;
+function Redirect(uuid){
+  cookies.set('blog_id', uuid, { path: '/blog_detail' })
+  window.location='/blog_detail';
 }
   const settings = {
     dots: false,
@@ -250,7 +253,7 @@ function Home(){
                           <div className="stats">
                           {home.stats && home.stats.map(stats=>(
                             <div className="stats__item">
-                              <div className="count-icn stats__description">
+                              <div className="ic-5248 ic-22">
                               {/* <i class={stats.icon} aria-hidden="true"></i> */}
                               <img src={BASE_URL.slice(0,-5)+ stats.icon}/>
                               {/* <i class="fab fa-accessible-icon"></i> */}
@@ -427,18 +430,18 @@ function Home(){
                     {/* {blogs.map(function(wo, inner_index){ */}
                         <div className="">
                           <div className="slider-box-main">
-                          {list.map((user) => (  
+                          {list.map((blog) => (  
                             <div className="two-sliders">
                                 <div className="hm-slider-img-d">
-                                    <img src= {user?BASE_URL.slice(0,-5)+user.b_image :"assets/images/banner-1.jpg"} 
+                                    <img src= {blog?BASE_URL.slice(0,-5)+blog.b_image :"assets/images/banner-1.jpg"} 
                                      />
                                      </div>
                                     <div className="hm-slider-tect-cont">
-                                      <h5>{user.b_title} </h5>
+                                      <h5>{blog.b_title} </h5>
                                       <p>
-                                      {user.b_story}
+                                      {blog.b_story}
                                       </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
+                                    <NavLink to="" onClick={()=>Redirect(blog.uuid)}> Detaylı İncele </NavLink>
                                   </div>
                               </div> 
                                 ))}
@@ -455,13 +458,13 @@ function Home(){
               </section>
 
             
-              <section className="btm-banner-section" style={{backgroundImage: 'url('+(btmimg?BASE_URL.slice(0,-5)+btmimg :"assets/images/banner-1.jpg")+')'}}> 
+              <section className="btm-banner-section" style={{backgroundImage: 'url("assets/images/btm-banner.jpg")'}}> 
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl"> {tr}</span>  </h3>
+                                <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn">
                                   <button className="bt254">

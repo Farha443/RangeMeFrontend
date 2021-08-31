@@ -4,6 +4,7 @@ import BASE_URL from '../base';
 // import Menu from './Menu';
 import { NavLink } from 'react-router-dom';
 import $, { removeData } from 'jquery';
+import InnerFooter from '../admin/InnerFooter';
 // import { toastr } from 'react-redux-toastr';
 const axios = require('axios');
 const cookies = new Cookies();
@@ -119,6 +120,8 @@ function Email(){
         </div>
       </div>
     </div>
+
+    <InnerFooter/>
       </>
   );
 }

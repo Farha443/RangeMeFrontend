@@ -21,6 +21,7 @@ import Select from 'react-select';
 import CompanyLogo from './CompanyLogo';
 import Cookies from 'universal-cookie';
 import BASE_URL from '../base';
+import InnerFooter from './InnerFooter';
 const cookies = new Cookies();
 const axios = require('axios');
 cookies.get('sup_uuid')
@@ -456,7 +457,7 @@ savechange(){
                     </Row>
                 </Container>
             </section>
-
+            <InnerFooter/>
 
 
         </>

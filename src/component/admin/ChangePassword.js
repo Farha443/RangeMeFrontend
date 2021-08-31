@@ -26,6 +26,7 @@ import MyEditor from './MyEditor';
 import ImgUploader from './ImgUpload';
 import ProfileUploader from './ProfileUploader';
 import BASE_URL from '../base';
+import InnerFooter from './InnerFooter';
 const cookies = new Cookies();
 const axios = require('axios');
 cookies.get("uuid")
@@ -207,7 +208,7 @@ function ChangePassword() {
                 </Container>
             </section>
 
-
+            <InnerFooter/>
 
         </>
     );

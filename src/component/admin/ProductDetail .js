@@ -33,6 +33,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import context from 'react-bootstrap/esm/AccordionContext';
 import NutritionPic from './NutritionPic';
 import Pimage from './Pimage';
+import InnerFooter from './InnerFooter';
 const colourOptions=[
     { value: 'Red', label: 'Red' },
     { value: 'Black', label: 'Black' },
@@ -871,7 +872,7 @@ function ProductDetail() {
                     </Row>
                 </Container>
             </section>
-
+            <InnerFooter/>
 {/* -----------------------------------modals----------------------------------------- */}
             <Modal
                 size="lg"

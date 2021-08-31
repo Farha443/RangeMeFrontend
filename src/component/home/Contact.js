@@ -200,19 +200,10 @@ function contactUs(){
               </section>
 
 
-              <section className="map-section">
-                <Row>
-                    <Col md="12" xs="12">
-                        <div className="map-area-div">
-                            {/* <img src="assets/images/icons/map.png" /> */}
-                            <div style={{width: '100%'}}><iframe width="100%" height={600} frameBorder={0} scrolling="no" marginHeight={0} marginWidth={0} src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&t=&z=14&ie=UTF8&iwloc=B&output=embed" /><a href="https://www.maps.ie/draw-radius-circle-map/">Easy radius map</a></div>
-                        </div>
-                    </Col>
-                </Row>
-              </section>
+             
             
         
-              <section className="btm-banner-section"> 
+              <section className="btm-banner-section"  style={{backgroundImage: 'url("assets/images/btm-banner.jpg")'}}> 
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">

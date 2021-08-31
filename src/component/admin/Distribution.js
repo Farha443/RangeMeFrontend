@@ -25,6 +25,7 @@ import Select from 'react-select';
 import $ from "jquery"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import context from 'react-bootstrap/esm/AccordionContext';
+import InnerFooter from './InnerFooter';
 const axios = require('axios');
 const cookies = new Cookies();
 
@@ -732,7 +733,7 @@ class Distribution extends React.Component {
                 </Container>
             </section>
 
-
+            <InnerFooter/>
 
         </>
     );

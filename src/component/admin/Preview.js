@@ -26,6 +26,8 @@ import BASE_URL from '../base';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import BuyerNavbar from './BuyerNavbar';
+import Footer from '../footer/Footer';
+import InnerFooter from './InnerFooter';
 
 const cookies = new Cookies();
 var a="";
@@ -176,12 +178,12 @@ class Preview extends React.Component {
                                             <div data-tname="Distributors"><h4 className="wrappers__wrapper___1B_Ho product-summary__attribute-header___2RkcY">
                                         <span className="text__text___2g-Dv text__micro-copy___3xkfL text__display-block___1CZnH">Distribütörler</span></h4>
                                         <div className="product-summary__tag-list___3di1A" data-tname="TagList">
-
+                                            
                                         {this.state.data.distribution?this.state.data.distribution.name.map(dis=>(
                                             <ul className="tag-list__tags___1ScIL" style={{height: '40px'}}>
                                             <li className="tag-list__tag___36fRC" data-tname="TagListItem"><div className="base-tag__layout___cE4JE content-tag__tag___1m9j9" data-tname="ContentTag">
                                                 <span className="text__text___2g-Dv text__small-copy___bgT96 text__truncate___35vOk text__veto-baseline___3-Rqq">{dis.name}</span></div></li>
-                                            </ul>)):"hello"}
+                                            </ul>)):""}
                                             <button className="tag-list__more-button___3_fbF" type="button" style={{display: 'none'}}>+ undefined more</button>
                                         </div>
                                     </div>
@@ -215,11 +217,7 @@ class Preview extends React.Component {
                                             <div className="wrappers__wrapper___1B_Ho field-value__field-value___1b1WF"><span className="text__text___2g-Dv text__medium-copy___1Y01K text__display-block___1CZnH">{this.state.data.distribution?this.state.data.distribution.country:"N/A"}</span></div>
                                             <div className="wrappers__wrapper___1B_Ho field-name__field-name___1rZmV"><span className="text__text___2g-Dv text__medium-copy___1Y01K text__display-block___1CZnH">Dağıtım Yetenekleri</span></div>
                                             <div className="product-info__distribution-capabilities-container___3kNCl" data-tname="DistributionCapabilitySection">
-                                                {/* <div className="product-info__distribution-capabilities-region___OeS_L" data-tname="Region-0"><span className="text__text___2g-Dv text__medium-copy___1Y01K product-info__distribution-capabilities-region-title___1qSOL text__veto-baseline___3-Rqq" data-tname="RegionTitle">United States of America</span>
-                                                    <div className="product-info__distribution-capabilities-region-tag-container___3YmWn">
-                                                        <div className="base-tag__layout___cE4JE content-tag__tag___1m9j9" data-tname="RegionTag-0"><span className="text__text___2g-Dv text__small-copy___bgT96 text__truncate___35vOk text__veto-baseline___3-Rqq">All regions</span></div>
-                                                    </div>
-                                                </div> */}
+                                                
                                             </div>
                                             <div className="wrappers__wrapper___1B_Ho field-name__field-name___1rZmV"><span className="text__text___2g-Dv text__medium-copy___1Y01K text__display-block___1CZnH">Drop-shipping yeteneğine sahip</span></div>
                                             <div className="wrappers__wrapper___1B_Ho field-value__field-value___1b1WF"><span className="text__text___2g-Dv text__medium-copy___1Y01K text__display-block___1CZnH">{this.state.data.distribution?this.state.data.distribution.drop_ship===false?"No":"Yes":""}</span></div>
@@ -231,13 +229,13 @@ class Preview extends React.Component {
                                             <div className="wrappers__wrapper___1B_Ho field-value__field-value___1b1WF"><span className="text__text___2g-Dv text__medium-copy___1Y01K text__display-block___1CZnH">{this.state.data.distribution?this.state.data.distribution.private_label===false?"No":"Yes":""}</span></div>
                                             <div className="wrappers__wrapper___1B_Ho field-name__field-name___1rZmV"><span className="text__text___2g-Dv text__medium-copy___1Y01K text__display-block___1CZnH">Distribütörler</span></div>
                                             <div data-tname="TagList">
-                                            {this.state.data.distribution?this.state.data.distribution.name.map(dis=>(
+                                            {/* {this.state.data.distribution?this.state.data.distribution.name.map(dis=>(
                                                 <ul className="tag-list__tags___1ScIL" style={{height: '40px'}}>
                                                     <li className="tag-list__tag___36fRC" data-tname="TagListItem">
                                                         <div className="base-tag__layout___cE4JE content-tag__tag___1m9j9" data-tname="ContentTag"><span className="text__text___2g-Dv text__small-copy___bgT96 text__truncate___35vOk text__veto-baseline___3-Rqq">{dis.name}</span></div>
                                                     </li>
                                                     
-                                                </ul>)):""}
+                                                </ul>)):""} */}
                                                 {/* <button className="tag-list__more-button___3_fbF" type="button" style={{display: 'none'}}>+ undefined more</button> */}
                                             </div>
                                         </div>
@@ -341,6 +339,7 @@ class Preview extends React.Component {
                 </Container>
             </section>
 
+            <InnerFooter/>
 
 
         </>

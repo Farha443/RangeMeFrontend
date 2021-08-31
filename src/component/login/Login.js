@@ -32,16 +32,17 @@ function Loginfunction() {
             else if (res.data.message === "User does not exist"){
               alert("User does not exist");
             }
+            var dt = new Date();
+            dt.setHours(dt.getHours() - 1);
             
-            // console.log(res.data.data.accessToken)
             cookies.set('logintoken', res.data.data.accessToken, { path: '/' });
             cookies.set('uuid', res.data.data.uuid, { path: '/' });
             cookies.set('first_name', res.data.data.user, {path:'/'});
-            // cookies.set('first_name', res.data.data.first_name, { path: '/' });
-            cookies.set('user_pic', res.data.data.user_pic, { path: '/' });
+            cookies.set('bminutes',dt , { path: '/' });
+            cookies.set('mminutes',dt , { path: '/' });
+            cookies.set('iminutes',dt , { path: '/' });
             cookies.set('user_type', res.data.data.user_type, { path: '/' }); 
-            // alert(res.data.data.user_pic)?
-            // debugger
+
             if(res.data.data.supplier){
               cookies.set('sup_uuid',res.data.data.supplier, { path: '/' } )
             }
@@ -53,20 +54,15 @@ function Loginfunction() {
               cookies.set('serviceuuid',res.data.data.uuid, { path: '/' } )
             }
             cookies.set('superuser',res.data.data.superuser,{ path: '/' })
-            
-            // window.location = "/"
+
             if(res.data.data.superuser===true){
               window.location = "/admin/home"
             }
             else if(cookies.get('user_type')==="supplier"){
               window.location = "/admin_home"
-
-            
             }
             else if(cookies.get('user_type')==="service provider"){
               window.location = "/service-dashboard"
-
-            
             }
             else{
               window.location = "/newbuyerhome"

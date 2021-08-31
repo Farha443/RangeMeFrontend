@@ -36,6 +36,7 @@ import $ from "jquery";
 import {CKEditor} from 'ckeditor4-react';
 import Swal from 'sweetalert2';
 import ImageUploader from 'react-images-upload';
+import InnerFooter from './InnerFooter';
 
 const cookies = new Cookies();
 var prox = ""
@@ -189,7 +190,18 @@ function BrandProfile() {
         else{    
         var url = BASE_URL+'product/get_brands/'+ cookies.get("get_brand")   
         }
-        axios.get(url )
+        var token=cookies.get('logintoken');
+        
+        var config= {
+            method: 'get',
+                url: url,
+                headers: {
+                    "Authorization": "Bearer " + token,
+                    "Content-Type": "application/json",
+                  },
+             
+            };
+        axios(config)
         .then(res=>{
             // setProducts(res.data.data.product)
             setDetails(res.data.data)
@@ -597,40 +609,43 @@ function BrandProfile() {
               
                 
                         <Col md="12">
-                            <div className="cover-tab-one-main">
+                            <div className="cover-tab-one-main new-tb">
 
                                 <Row>
                                     <Col md="12 pd-0">
                                     <Tabs >
                                    
                                
-                                        <TabList className="b-tab-list-one">
+                                    <TabList className="b-tab-list-one">
                                         <Container>
-                                        <Col md="12">
+                                            <Col md="12">
 
-                                            <div className="adh-tab-list-d">
-                                            <Tab>
-                                                <div className="tbs-menu">
-                                                    manage products
-                                                </div>
-                                            </Tab>
-                                            <Tab>
-                                                <div className="tbs-menu">
-                                                    Edit your products
-                                                </div>
-                                            </Tab>
-                                            <Tab>
-                                                <div className="tbs-menu">
-                                                    Edit your profile
-                                                </div>
-                                            </Tab>
-                                            </div>
+                                                <div className="b-profile-tabs-inner-d">
+                                                    <div className="adh-tab-list-d">
+                                                        <Tab>
+                                                            <div className="tbs-menu">
+                                                                manage products
+                                                            </div>
+                                                        </Tab>
+                                                        <Tab>
+                                                            <div className="tbs-menu">
+                                                                Edit your products
+                                                            </div>
+                                                        </Tab>
+                                                        <Tab>
+                                                            <div className="tbs-menu">
+                                                                Edit your profile
+                                                            </div>
+                                                        </Tab>
+                                                    </div>
 
-                                        </Col>
-                                   </Container>
-
+                                                    <div className="bprofil-btn-d">
+                                                        <button> MARKA SAYFANIZI <span > ÖNİZLEYİN </span> <i class="fal fa-long-arrow-right"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                        </Container>
                                     </TabList>
-                                    
 
                                    <section className="bg-gr">
                                    <Container >
@@ -1224,6 +1239,7 @@ function BrandProfile() {
           
             </section>
         
+            <InnerFooter/>
 
 {/* Brand Logo uplod modal  */}
 <Modal

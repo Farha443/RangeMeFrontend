@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import { NavLink } from 'react-router-dom';
 import $, { removeData } from 'jquery';
 import BASE_URL from '../base';
+import InnerFooter from '../admin/InnerFooter';
 
 const cookies = new Cookies();
 const axios = require('axios');
@@ -144,6 +145,7 @@ function NewPassword(){
         </div>
       </div>
     </div>
+    <InnerFooter/>
       </>
   );
 }

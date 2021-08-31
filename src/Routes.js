@@ -57,6 +57,7 @@ import ServiceProvidersHome from './component/service-provider/ServiceProvidersH
 import Chat from './component/admin/chat/Chat';
 import BlogDetail from './component/blogs/BlogDetail';
 import Contact from './component/home/Contact';
+import Services from './component/admin/Services';
 
 
 function Routes(){
@@ -121,6 +122,7 @@ function Routes(){
                 <Route exact path="/chat" component={Chat}></Route>
                 <Route exact path="/blog_detail" component={BlogDetail}></Route>
                 <Route exact path="/contact" component={Contact}></Route>
+                <Route exact path="/services" component={Services}></Route>
             </Switch>
         </> 
     )

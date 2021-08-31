@@ -47,8 +47,31 @@ function AdminNavbar(){
   const [show4, setShow4] = useState(false);
   const [isActive, setActive] = useState("false");
   const [isActive1, setActive1] = useState("false");
-  const[brands, setBrands] = useState([])
+  const[brands, setBrands] = useState([]);
+  const[messages, setMessages] = useState([])
+  const[bids, setBids] = useState(0)
+  const[msgs, setMsgCount] = useState(0)
+  const[inqs, setInqs] = useState(0)
+
+
   const handleToggle = () => {
+    var dt = new Date();
+    console.clear();
+    console.log(cookies.get('bminutes'))
+    var config={
+      url:BASE_URL+'authentication/bids/?my_bids=0',
+      method:'get',
+      headers: {
+        "Authorization": "Bearer " + cookies.get('logintoken'),
+        "Content-Type": "application/json",
+    }
+    }
+    axios(config)
+    .then(res=>{
+      setMessages(res.data)   
+    }).catch(err=>{
+        console.log(err)            
+    })
     setActive(!isActive);
   };
   const handleToggle1 = () => {
@@ -56,10 +79,8 @@ function AdminNavbar(){
   };
   const [profilephoto, setProfilephoto]= useState(null)
     useEffect(() => {
-      // debugger
         axios.get(BASE_URL+'authentication/getuser/'+cookies.get("uuid")).then(res=>{
           setProfilephoto(res.data.data.user_pic)
-
         }).catch(err=>{
             console.log(err)            
         })
@@ -68,7 +89,38 @@ function AdminNavbar(){
         .then(res=>{
             setBrands(res.data.data)
         }).catch(err=>{
-            // $(".laoder").hide();
+            console.log(err)            
+        })
+        var curr_dt = new Date();
+        var diff =(new Date(cookies.get('bminutes')).getTime() - curr_dt.getTime()) / 1000;
+        diff /= 60;
+        var bminutes = Math.abs(Math.round(diff));
+        // alert(bminutes)
+        diff =(new Date(cookies.get('iminutes')).getTime() - curr_dt.getTime()) / 1000;
+        diff /= 60;
+        var iminutes = Math.abs(Math.round(diff));
+        // alert(iminutes)
+
+        diff =(new Date(cookies.get('mminutes')).getTime() - curr_dt.getTime()) / 1000;
+        diff /= 60;
+        var mminutes = Math.abs(Math.round(diff));
+        // alert(mminutes)
+        var config={
+          url:BASE_URL+'authentication/header/?bminutes='+bminutes+'&iminutes='+iminutes+'&mminutes='+mminutes,
+          method:'get',
+          headers: {
+            "Authorization": "Bearer " + cookies.get('logintoken'),
+            "Content-Type": "application/json",
+        }
+        }
+        axios(config)
+        .then(res=>{
+          // alert(res.data.bids)
+          // +cookies.get('bminutes')
+          setBids(res.data.bids)
+          setMsgCount(res.data.mcounts)
+          setInqs(res.data.icounts)
+        }).catch(err=>{
             console.log(err)            
         })
         
@@ -98,14 +150,15 @@ function AdminNavbar(){
                       <Nav.Link href="/">Vehicles</Nav.Link>
                       <Nav.Link href="/">Sayuss approval</Nav.Link>
                       <Nav.Link href="/">Submissions</Nav.Link>
-                      <Nav.Link href="/">Services</Nav.Link>
+                      <Nav.Link href="/services">Services</Nav.Link>
                     </Nav>
 
                     <Nav className="navbar-nav">
                       <Nav.Link href="/chat" >
-                        <i class="fas fa-comment-alt-dots"></i></Nav.Link>
+                        <i class="fas fa-comment-alt-dots"></i><p>{msgs}</p></Nav.Link>
                       <Nav.Link onClick={handleToggle}>
                         <i class="fas fa-bell"></i>
+                        <p>{bids}</p>
                         <div className={isActive ? "notifi-d-102 " : "notifi-d-102 open-drop"}>
                           {/* <div className="noti-header">
                   <h5> Notification </h5>
@@ -113,14 +166,17 @@ function AdminNavbar(){
                 </div> */}
                           <ul className="header-notifi-ul">
                             <li>
-                              <div className="notifi-left-img">
+                              {/* <div className="notifi-left-img">
                                 <img src="assets/images/3.jpg" />
-                              </div>
-                              <div className="notifi-right-cont-1">
-                                <h6> Notification Title </h6>
-                                <p> Lorem ipsum dollar site ameat dummy text  Lorem ipsum dollar site ameat dummy text .. </p>
+                              </div> */}
+                              {messages.map(msg=>{
+                                return <div className="notifi-right-cont-1">
+                                <h6> New Bid Created </h6>
+                                <p> {msg.username +' has created bidding for '+msg.quantity+' '+msg.bid_product} </p>
+                                <p>Budget : {msg.budget}</p>
                                 <button className="admin-add-btn f-w-500"> View </button>
                               </div>
+                              })}
                             </li>
                           </ul>
                         </div>

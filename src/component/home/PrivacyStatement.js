@@ -59,7 +59,8 @@ function PrivacyStatement(){
                         <div className="col-md-12">
                        
                             <div className="about-text-md">
-                                <p> {link}</p>
+                                {/* <p> {link}</p> */}
+                                <EditorPreview data={link} />
 
                              
                             </div> 
@@ -68,13 +69,13 @@ function PrivacyStatement(){
                 </div>
             </section>
 
-              <section className="btm-banner-section" style={{backgroundImage: 'url('+(head.image?BASE_URL.slice(0,-5)+head.image :"assets/images/banner-1.jpg")+')'}}> 
+              <section className="btm-banner-section"  style={{backgroundImage: 'url("assets/images/btm-banner.jpg")'}}> 
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl"> {head.content}</span>  </h3>
+                                <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn supplie">
                                  <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>
@@ -94,5 +95,20 @@ function PrivacyStatement(){
         </>
     );
 }
+
+class EditorPreview extends React.Component {
+  render() {
+      return (
+          <div className="editor-preview">
+            
+              <div dangerouslySetInnerHTML={ { __html: this.props.data } }></div>
+          </div>
+      );
+  }
+}
+
+EditorPreview.defaultProps = {
+  data: ''
+};
 
 export default PrivacyStatement

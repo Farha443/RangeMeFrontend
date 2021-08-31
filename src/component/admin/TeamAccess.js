@@ -24,6 +24,7 @@ import {
 } from 'react-bootstrap';
 import Select from 'react-select';
 import CompanyLogo from './CompanyLogo';
+import InnerFooter from './InnerFooter';
 // import useState from 'react-hook-use-state';
 
 
@@ -280,7 +281,7 @@ function TeamAccess() {
                 </Container>
             </section>
 
-
+            <InnerFooter/>
 
 
 

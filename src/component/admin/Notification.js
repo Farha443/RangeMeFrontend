@@ -22,6 +22,7 @@ import context from 'react-bootstrap/esm/AccordionContext';
 import MyEditor from './MyEditor';
 import ImgUploader from './ImgUpload';
 import ProfileUploader from './ProfileUploader';
+import InnerFooter from './InnerFooter';
 
 
 function Notification() {
@@ -244,7 +245,7 @@ function Notification() {
                 </Container>
             </section>
 
-
+            <InnerFooter/>
 
         </>
     );

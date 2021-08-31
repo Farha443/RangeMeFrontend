@@ -26,38 +26,6 @@ const axios = require('axios').default;
 const cookies = new Cookies();
 
 
-// async function AddProduct(){
-//     // debugger
-//     var product_name = document.getElementById("addproduct").value;
-//     var token = cookies.get("logintoken");
-//     var uuid = cookies.get('get_brand');
-//     try {
-//         const resp = await axios({
-//             method: 'post',
-//             url: BASE_URL + 'product/create_product/',
-//             data: {
-//                 p_user : uuid,
-//                 product_name: product_name
-//             },
-//             headers: {
-//                 "Authorization": "Bearer " + token,
-//                 "Content-Type": "application/json",
-//             }
-//         });
-//         if (resp.status === 201) {
-//             // alert(resp.data.data.uuid)
-//             cookies.set('productuuid', resp.data.data.uuid, { path: '/' })
-//             window.location = "/product_form"
-//         }
-//         return resp.data
-        
-//     } catch (err) {
-//         // Handle Error Here
-//         alert("Not authorised")
-//         window.location="/admin_home"
-//         console.error(err);
-//     }
-// }
 
 function AdminHome(){
     const [show2, setShow2] = useState(false);

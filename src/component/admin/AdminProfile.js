@@ -24,6 +24,8 @@ import ImgUploader from './ImgUpload';
 
 import ProfileUploader from './ProfileUploader';
 import BASE_URL from '../base';
+import InnerFooter from './InnerFooter';
+
 const colourOptions=[
     { value: 'Red', label: 'Red' },
     { value: 'Black', label: 'Black' },
@@ -298,6 +300,8 @@ class AdminProfile extends React.Component {
                     </Row>
                 </Container>
             </section>
+
+            <InnerFooter/>
         </>
     );
 }

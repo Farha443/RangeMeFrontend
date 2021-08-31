@@ -29,6 +29,7 @@ import Cookies from 'universal-cookie';
 
 
 const cookies = new Cookies();
+
 const settings = {
   dots: false,
   Nav: true,
@@ -73,6 +74,7 @@ class BlogDetail extends React.Component {
         data:'<p>tayuss</p>',
         blog:{},
         page:[],
+        rec_blog:[],
     };
   } 
   componentDidMount(){
@@ -84,28 +86,35 @@ class BlogDetail extends React.Component {
 
     var url = BASE_URL+'home/blog_detail/'+uuid;
     var url1 = BASE_URL+'home/blog_page/';
+    var url2 = BASE_URL+'home/recent_blog/';
     var config={
       method:'get',
       url:url,
-    }
-
-    axios(config).then(re=>{
+    };axios(config).then(re=>{
         this.setState({blog:re.data});  
-        console.clear()
-        console.log(re.data)
-      
     }).catch(err=>{
       alert(err);
     })
 
-    var config = {
+    var config1 = {
       method: 'get',
       url: url1,
-    };axios(config).then(res => {
+    };axios(config1).then(res => {
   this.setState({page: res.data.blog_page})      
 })
 .catch(err => {
 })
+
+    var config2= {
+      method: 'get',
+      url: url2,
+    };axios(config2).then(res => {
+      console.clear()
+      console.log(res.data.data)
+    this.setState({rec_blog: res.data})      
+    })
+    .catch(err => {
+    })
 
 }
   // const [modalShow, setModalShow] = useState(false);
@@ -130,7 +139,7 @@ class BlogDetail extends React.Component {
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text b-detail-hero">
-                            <p className="p2">{this.state.page.upper_banner_head}</p>
+                            <p className="p2">{this.state.blog.b_title}</p>
                                 {/* <p className="p1"> <NavLink to="" className="bd">  yararlı bilgiler </NavLink> <NavLink className="bd" to="">  anasayfa </NavLink> </p> */}
                                 {/* <h1>Lorem ipsum dolor sit amet, ipsum consetetur  </h1> */}
                              
@@ -146,14 +155,7 @@ class BlogDetail extends React.Component {
                     <div className="row"> 
                         <div className="col-md-6 co-xs-12">
                             <div className="d-one-12423">
-                              {/* <p className="blog-detail-text pt-1"> 
-                              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                              </p> */}
-                              <EditorPreview data={this.state.blog.b_content} />
-                              {/* <p className="blog-detail-text pt-2"> 
-                              It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over.
-                              </p> */}
-
+                              <EditorPreview data={this.state.blog.b_content} /> 
                             </div>
                         </div>
                         <div className="col-md-5 m-auto col-xs-12">
@@ -171,38 +173,30 @@ class BlogDetail extends React.Component {
             
              
               
-              <section className="hm-slider-section pb-0">
+              {/* <section className="hm-slider-section pb-0">
                   <div className="container">
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1>DİĞER <span class="hm-title-h">  YARARLI BİLGİLER </span> </h1>
+                              <h1>DİĞER <span class="hm-title-h">  YARARLI BİLGİLER </span> </h1>
                             </div>
                         </div>
-                          
-                      </div>
+                    </div>
 
                     <div className="row">
                           <div className="col-md-12 col-xs-12 h-slider-slick">
                             <p className="slide-count"> 4/12 </p>
                               <Slider {...settings}>
                                 <div className="col-md-12">
-                          <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
+                                  <div className="slider-box-main">
+                                    <div className="hm-slider-img-d">
+                                      <img src="assets/images/h3.jpg" />
+                                    </div>
+                                    <div className="hm-slider-tect-cont">
+                                      <h5>Lorem ipsum dolor sit amet,  consetetur22222 </h5>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
-
-
-                          
-                        </div>
 
                                 <div className="col-md-12">
                       
@@ -256,31 +250,59 @@ class BlogDetail extends React.Component {
 
                         </div>
 
+
+                               
                         <div className="col-md-12">
-                  
-                            <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
+                          <div className="slider-box-main">
+                            <div className="hm-slider-img-d">
+                                <img src="assets/images/h3.jpg" />
                             </div>
-
-                        </div>
-
+                            <div className="hm-slider-tect-cont">
+                              <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
+                                <p>
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                                </p>
+                                <NavLink to=""> Detaylı İncele </NavLink>
+                            </div>
+                          </div>
+                        </div>))}
                       </Slider>
 
                           </div>
                     </div>
   
                   </div>
-              </section>
+              </section> */}
        
+
+       {/* <section className="blog-n-section" >
+                    <div className="container">
+                        <div className="row">
+                        {this.state.rec_blog.map(blog=>{
+                           return  <div onClick={()=>this.Redirect(blog.uuid)}   className="col-md-4 col-xs-12">
+                            
+                               <div className="blog-n-box">
+                                    <div className="blog-n-img-d">
+                                        <img className="story-item__image" src={BASE_URL.slice(0,-5)+ blog.b_image} width='90%'/>
+                                    </div>
+                                    <div className="blog-n-text">
+                                        <h5>{blog.b_title} </h5>
+                                        <p>
+                                        {blog.b_story}
+                                        </p>
+                                        <NavLink to="" onClick={()=>this.Redirect(blog.uuid)} > Detaylı İncele </NavLink>
+                                    </div>
+                                </div>
+                            </div>})}
+
+                           
+
+                            
+                        </div>
+                    </div>
+              </section> */}
+
+
               <section className="hm-slider-section supplie" >
                   <div className="container">
                     <div className="row">

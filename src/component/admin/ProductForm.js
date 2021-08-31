@@ -34,6 +34,7 @@ import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import context from 'react-bootstrap/esm/AccordionContext';
 import axios from 'axios';
+import InnerFooter from './InnerFooter';
 const cookies = new Cookies();
 
 
@@ -400,6 +401,9 @@ function ProductForm() {
                     </Row>
                 </Container>
             </section>
+
+            <InnerFooter/>
+
             <Modal
                 size="lg"
                 centered
