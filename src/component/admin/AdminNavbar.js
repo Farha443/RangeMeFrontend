@@ -148,7 +148,7 @@ function AdminNavbar(){
                         <NavDropdown.Item href="" className="itm-drop-bt">  <button className="admin-add-btn"  onClick={() => setShow4(true)}> <i class="fa fa-plus" aria-hidden="true"></i> Marka Ekle</button> </NavDropdown.Item>
                       </NavDropdown>
                       <Nav.Link href="/">Vehicles</Nav.Link>
-                      <Nav.Link href="/">Sayuss approval</Nav.Link>
+                      <Nav.Link href="/">Tayuss approval</Nav.Link>
                       <Nav.Link href="/">Submissions</Nav.Link>
                       <Nav.Link href="/services">Services</Nav.Link>
                     </Nav>
