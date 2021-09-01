@@ -7950,7 +7950,7 @@ button.slide-next {
 
 /*--------------- slider css--------------  */
 
-.hm-slider-section .two-sliders {
+.hm-slider-section.slide-first .two-sliders {
     width: 47%;
     display: inline-block;
     margin-bottom: 10px;
@@ -7960,10 +7960,10 @@ button.slide-next {
     margin-left: 15px;
 }
 
-.hm-slider-section .slick-slide.slick-active.slick-current {
+.hm-slider-section.slide-first .slick-slide.slick-active.slick-current {
     width: 100% !important;
 }
-.hm-slider-section .slick-track {
+.hm-slider-section.slide-first .slick-track {
     width: 100% !important;
 }
 

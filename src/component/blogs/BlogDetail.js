@@ -75,6 +75,7 @@ class BlogDetail extends React.Component {
         blog:{},
         page:[],
         rec_blog:[],
+        modalShow : false
     };
   } 
   componentDidMount(){
@@ -117,16 +118,24 @@ class BlogDetail extends React.Component {
     })
 
 }
-  // const [modalShow, setModalShow] = useState(false);
+
+onClickButton = e =>{
+  e.preventDefault()
+  var supplier = "supplier";
+  cookies.set('userType', supplier, { path: '/' });
+  this.setState({modalShow : true})
+}
+
+onCloseModal = ()=>{
+  this.setState({modalShow : false})
+}
     
   
   render() {
     return(
         <>
-        {/* <SignupModal/> */}
-        {/* <SignupModal show={modalShow} onHide={() => setModalShow(false)} /> */}
          <Header/>   
-        
+         <SignupModal show={this.state.modalShow} onHide={this.onCloseModal}></SignupModal>
               
 
           <div className="my-container" >
@@ -171,137 +180,6 @@ class BlogDetail extends React.Component {
                   </div>
               </section>
             
-             
-              
-              {/* <section className="hm-slider-section pb-0">
-                  <div className="container">
-                    <div className="row">
-                        <div className="col-md-12 col-xs-12">
-                            <div className="hm-slider-title">
-                              <h1>DİĞER <span class="hm-title-h">  YARARLI BİLGİLER </span> </h1>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                          <div className="col-md-12 col-xs-12 h-slider-slick">
-                            <p className="slide-count"> 4/12 </p>
-                              <Slider {...settings}>
-                                <div className="col-md-12">
-                                  <div className="slider-box-main">
-                                    <div className="hm-slider-img-d">
-                                      <img src="assets/images/h3.jpg" />
-                                    </div>
-                                    <div className="hm-slider-tect-cont">
-                                      <h5>Lorem ipsum dolor sit amet,  consetetur22222 </h5>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div className="col-md-12">
-                      
-
-                            <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
-                        </div>
-
-                                <div className="col-md-12">
-                      
-
-                            <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
-
-                        </div>
-
-                                <div className="col-md-12">
-                  
-                            <div className="slider-box-main">
-                                <div className="hm-slider-img-d">
-                                    <img src="assets/images/h3.jpg" />
-                                </div>
-                                <div className="hm-slider-tect-cont">
-                                    <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                    </p>
-                                    <NavLink to=""> Detaylı İncele </NavLink>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                               
-                        <div className="col-md-12">
-                          <div className="slider-box-main">
-                            <div className="hm-slider-img-d">
-                                <img src="assets/images/h3.jpg" />
-                            </div>
-                            <div className="hm-slider-tect-cont">
-                              <h5>Lorem ipsum dolor sit amet,  consetetur </h5>
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                </p>
-                                <NavLink to=""> Detaylı İncele </NavLink>
-                            </div>
-                          </div>
-                        </div>))}
-                      </Slider>
-
-                          </div>
-                    </div>
-  
-                  </div>
-              </section> */}
-       
-
-       {/* <section className="blog-n-section" >
-                    <div className="container">
-                        <div className="row">
-                        {this.state.rec_blog.map(blog=>{
-                           return  <div onClick={()=>this.Redirect(blog.uuid)}   className="col-md-4 col-xs-12">
-                            
-                               <div className="blog-n-box">
-                                    <div className="blog-n-img-d">
-                                        <img className="story-item__image" src={BASE_URL.slice(0,-5)+ blog.b_image} width='90%'/>
-                                    </div>
-                                    <div className="blog-n-text">
-                                        <h5>{blog.b_title} </h5>
-                                        <p>
-                                        {blog.b_story}
-                                        </p>
-                                        <NavLink to="" onClick={()=>this.Redirect(blog.uuid)} > Detaylı İncele </NavLink>
-                                    </div>
-                                </div>
-                            </div>})}
-
-                           
-
-                            
-                        </div>
-                    </div>
-              </section> */}
-
 
               <section className="hm-slider-section supplie" >
                   <div className="container">
@@ -362,16 +240,16 @@ class BlogDetail extends React.Component {
 
            
 
-              <section className="btm-banner-section" style={{backgroundImage: 'url('+(this.state.page.btm_ban_img?BASE_URL.slice(0,-5)+this.state.page.btm_ban_img:"assets/images/banner-1.jpg")+')'}}> 
+              <section className="btm-banner-section" style={{backgroundImage: 'url("assets/images/btm-banner.jpg")'}}> 
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                <h3> <span className="btm-banner-text-yl">{this.state.page.btm_ban_heading} </span>  </h3>
+                                <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn supplie">
-                                 <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>
+                              <p onClick={this.onClickButton}> <i class="fal fa-long-arrow-right"></i> </p>
                               </div>
                                 </div>
                             </div>

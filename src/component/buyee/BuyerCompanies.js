@@ -6,6 +6,8 @@ import SignupModal from '../element/SignupModal';
 import Slider from "react-slick";
 import BASE_URL from '../base';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 var mid_b_img = ""
 var tr=""
@@ -77,11 +79,14 @@ function BuyerCompanies(){
     }).catch(err=>{
         console.log(err)            
     })
-    
-
-
 },[])
 
+function onClickButton(e){
+  e.preventDefault()
+  var supplier = "supplier";
+  cookies.set('userType', supplier, { path: '/' });
+  setModalShow(true)
+}
 
     return(
         <>
@@ -387,7 +392,7 @@ Alıcı Sayısı
                                   {/* create account */}
                               </div>
                               <div className="btm-banner-btn supplie">
-                                 <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>
+                              <p onClick={onClickButton}> <i class="fal fa-long-arrow-right"></i> </p>
                               </div>
                                 </div>
                             </div>

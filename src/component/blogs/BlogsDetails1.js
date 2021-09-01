@@ -27,7 +27,8 @@ constructor(props) {
     super(props);
     this.state = {
         data:'<p>tayuss</p>',
-        blog:{}
+        blog:{},
+        modalShow : false
     };
   } 
   componentDidMount(){

@@ -72,23 +72,20 @@ function ServiceProviders(){
       setWorks(res.data.works)
       tr=res.data.btm_banner[0].content
       btmimg=res.data.btm_banner[0].image
-      // tr=res.data.btm_banner[0].content
-      // btmimg=res.data.btm_banner[0].image
-      // setslide(res.data.slider)
-      // setheading(res.data.heading)
-      // mid_b_img = res.data.mid_ban_img[0].bg_image
-      // setmbanner(res.data.midd_banner)
-      // setWorksone(res.data.worksone)
-      // setWorks(res.data.works)
       setlink(res.data.link)
 
     }).catch(err=>{
         console.log(err)            
     })
-    
-
-
 },[])
+
+function onClickButton(e){
+  e.preventDefault()
+  var supplier = "supplier";
+  cookies.set('userType', supplier, { path: '/' });
+  setModalShow(true)
+}
+
 
 
 
@@ -360,7 +357,8 @@ eksik marka kriterleri gibi detayları şeffaf bir şekilde sunar.
                                 <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn supplie">
-                                 <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>
+                              <p onClick={onClickButton}> <i class="fal fa-long-arrow-right"></i> </p>
+
                               </div>
                                 </div>
                             </div>

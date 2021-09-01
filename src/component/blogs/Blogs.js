@@ -24,6 +24,7 @@ class Blogs  extends React.Component{
     data: [],
     message1: "message",
     page:[],
+    modalShow : false
 
   };
   async componentDidMount(){
@@ -55,12 +56,23 @@ class Blogs  extends React.Component{
     window.location='/blog_detail';
 }
 
+onClickButton = e =>{
+  e.preventDefault()
+  var supplier = "supplier";
+  cookies.set('userType', supplier, { path: '/' });
+  this.setState({modalShow : true})
+}
+
+onCloseModal = ()=>{
+  this.setState({modalShow : false})
+}
+
     render() {
     return(
         <>
-
-
+               
          <Header/>   
+         <SignupModal show={this.state.modalShow} onHide={this.onCloseModal}></SignupModal>
         
           <div className="my-container" >
             <main className="content" >
@@ -108,16 +120,17 @@ class Blogs  extends React.Component{
               </section>
 
               
-              <section className="btm-banner-section"  style={{backgroundImage: 'url('+(this.state.page.btm_ban_img?BASE_URL.slice(0,-5)+this.state.page.btm_ban_img:"assets/images/banner-1.jpg")+')'}}> 
+              <section className="btm-banner-section"  style={{backgroundImage: 'url("assets/images/btm-banner.jpg")'}}> 
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
-                                  <h3> <span className="btm-banner-text-yl">{this.state.page.btm_ban_heading} </span>  </h3>
+                                <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn supplie">
-                                 <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>
+                             
+                              <p onClick={this.onClickButton}> <i class="fal fa-long-arrow-right"></i> </p>
                               </div>
                                 </div>
                             </div>

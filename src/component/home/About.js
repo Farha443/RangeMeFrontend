@@ -5,13 +5,14 @@ import { Link,NavLink, withRouter } from "react-router-dom";
 import SignupModal from '../element/SignupModal';
 import BASE_URL from '../base';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 var tr=""
 var btmimg =""
 var mid_b_img = ""
 var first = ""
 var second = ""
-
+const cookies = new Cookies();
 function About(){
 
   const [modalShow, setModalShow] = useState(false);
@@ -20,7 +21,6 @@ function About(){
   const [heading, setheading]= useState([])
 
   useEffect(() => {
-    
     axios.get(BASE_URL+'about/about/')
     .then(res=>{
       setheading(res.data.heading)
@@ -35,10 +35,14 @@ function About(){
     }).catch(err=>{
         console.log(err)            
     })
-    
-
-
 },[])
+
+function onClickButton(e){
+  e.preventDefault()
+  var supplier = "supplier";
+  cookies.set('userType', supplier, { path: '/' });
+  setModalShow(true)
+}
 
     return(
         <>
@@ -155,7 +159,7 @@ function About(){
                                 <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn supplie">
-                                 <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>
+                                 <p onClick={onClickButton}> <i class="fal fa-long-arrow-right"></i> </p>
                               </div>
                                 </div>
                             </div>

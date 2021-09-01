@@ -5,9 +5,8 @@ import { Link,NavLink, withRouter } from "react-router-dom";
 import SignupModal from '../element/SignupModal';
 import BASE_URL from '../base';
 import axios from 'axios';
-
-// var tr=""
-// var btmimg =""
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 function PrivacyStatement(){
 
@@ -29,6 +28,14 @@ function PrivacyStatement(){
         console.log(err)            
     })
   },[])
+
+  function onClickButton(e){
+    e.preventDefault()
+    var supplier = "supplier";
+    cookies.set('userType', supplier, { path: '/' });
+    setModalShow(true)
+  }
+
 
     return(
         <>
@@ -78,7 +85,7 @@ function PrivacyStatement(){
                                 <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn supplie">
-                                 <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>
+                              <p onClick={onClickButton}> <i class="fal fa-long-arrow-right"></i> </p>
                               </div>
                                 </div>
                             </div>

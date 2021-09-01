@@ -38,6 +38,7 @@ class Preview extends React.Component {
         this.state = {
             data:{},
             priceType:"",
+            dis:"",
         };
         this.handleDropdownChange = this.handleDropdownChange.bind(this);
       } 
@@ -67,6 +68,7 @@ class Preview extends React.Component {
             // debugger 
             var a = re.data.distribution.length === 0 ;
             console.log(a);
+            this.setState({dis:a})
             this.setState({data:re.data});  
             console.log("================================");
             console.log(re.data);
@@ -178,12 +180,22 @@ class Preview extends React.Component {
                                             <div data-tname="Distributors"><h4 className="wrappers__wrapper___1B_Ho product-summary__attribute-header___2RkcY">
                                         <span className="text__text___2g-Dv text__micro-copy___3xkfL text__display-block___1CZnH">Distribütörler</span></h4>
                                         <div className="product-summary__tag-list___3di1A" data-tname="TagList">
-                                            
-                                        {this.state.data.distribution?this.state.data.distribution.name.map(dis=>(
+
+                                        {this.state.dis===false? this.state.data.distribution?(this.state.data.distribution.name.map(dis=>(
                                             <ul className="tag-list__tags___1ScIL" style={{height: '40px'}}>
                                             <li className="tag-list__tag___36fRC" data-tname="TagListItem"><div className="base-tag__layout___cE4JE content-tag__tag___1m9j9" data-tname="ContentTag">
                                                 <span className="text__text___2g-Dv text__small-copy___bgT96 text__truncate___35vOk text__veto-baseline___3-Rqq">{dis.name}</span></div></li>
-                                            </ul>)):""}
+                                            </ul>))):(""):""}
+
+                                            {this.state.dis===false? this.state.data.distribution?(this.state.data.distribution.name.map(dis=>(
+                                            <ul className="tag-list__tags___1ScIL" style={{height: '40px'}}>
+                                            <li className="tag-list__tag___36fRC" data-tname="TagListItem"><div className="base-tag__layout___cE4JE content-tag__tag___1m9j9" data-tname="ContentTag">
+                                                <span className="text__text___2g-Dv text__small-copy___bgT96 text__truncate___35vOk text__veto-baseline___3-Rqq">{dis.name}</span></div></li>
+                                            </ul>))):(""):""}
+
+
+
+
                                             <button className="tag-list__more-button___3_fbF" type="button" style={{display: 'none'}}>+ undefined more</button>
                                         </div>
                                     </div>

@@ -22,14 +22,15 @@ import {
   import Cookies from 'universal-cookie';
 import BASE_URL from '../base';
 import Swal from 'sweetalert2';
-  
-const axios = require('axios');
 
+const axios = require('axios');
+const cookies = new Cookies();
 
 
 function Contact(){
  
 const[contact, setContact]=useState([]);
+const [modalShow, setModalShow] = useState(false);
 
 function contactUs(){
     var first_name = document.getElementById('first_name').value;
@@ -68,9 +69,17 @@ function contactUs(){
       })
 }
 
+function onClickButton(e){
+    e.preventDefault()
+    var supplier = "supplier";
+    cookies.set('userType', supplier, { path: '/' });
+    setModalShow(true)
+  }
+
     return(
         <>
-        {/* <SignupModal/> */}
+          <SignupModal show={modalShow} onHide={() => setModalShow(false)} />
+
          <Header/>   
         
               
@@ -152,28 +161,28 @@ function contactUs(){
                                 <Row>
                                     <Col md="6" xs="12">
                                         <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                                            <Form.Label>Adınız</Form.Label>
+                                            <Form.Label>First Name</Form.Label>
                                             <Form.Control type="text" id="first_name" placeholder="Adınız..." />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md="6" xs="12">
                                         <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                                            <Form.Label>Adınız</Form.Label>
+                                            <Form.Label>Last Name</Form.Label>
                                             <Form.Control type="text" id="last_name" placeholder="Soyadınız..." />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md="6" xs="12">
                                         <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                                            <Form.Label>Adınız</Form.Label>
+                                            <Form.Label>Email</Form.Label>
                                             <Form.Control type="email" id='email' placeholder="E-mail Adresiniz..." />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md="6" xs="12">
                                         <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                                            <Form.Label>Adınız</Form.Label>
+                                            <Form.Label>Phone</Form.Label>
                                             <Form.Control type="text" id="phone" placeholder="Telefon Numaranız..." />
                                         </Form.Group>
                                     </Col>
@@ -181,6 +190,7 @@ function contactUs(){
 
                                     <Col md="12" xs="12">
                                         <Form.Group className="signup-f-group" controlId="formBasicEmail" >
+                                        <Form.Label>Message</Form.Label>
                                         <Form.Control placeholder="Mesajınız..." id ="text" as="textarea" rows={3} /></Form.Group>
                                     </Col>
 
@@ -212,7 +222,7 @@ function contactUs(){
                                   <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn supplie">
-                                 <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>
+                              <p onClick={onClickButton}> <i class="fal fa-long-arrow-right"></i> </p>
                               </div>
                                 </div>
                             </div>

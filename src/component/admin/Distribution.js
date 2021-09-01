@@ -663,8 +663,29 @@ class Distribution extends React.Component {
 
                                                     </div>
                                                 </Col>
-         
                                                 <Col md="12" className="" >
+                                                    <div className="step-four-radio">
+                                                        <div>
+                                                        <label htmlFor="basic-url" className="lb">Does your product require cold storage?</label>
+                                                        </div>
+                                                        {this.state.data2.storage_required==="Refrigerated"|| this.state.data2.storage_required==="Frozen"?<Form.Check inline label="yes" name="group3" type="radio" value="true"  defaultChecked onClick={this.storageChange}  />:<Form.Check inline label="Yes" name="group3" type="radio" value="true"  onClick={this.storageChange}  />}
+                                                        {this.state.data2.storage_required===null||this.state.data2.storage_required===""?
+                                                        <Form.Check inline label="No" defaultChecked name="group3" type="radio" value="false"  onClick={this.storageChange}  />:<Form.Check inline label="No" name="group3" type="radio" value="false" onClick={this.storageChange}  />}
+                                                        
+                                                        
+                                                    </div>
+                                                   {this.state.storage === "true"||this.state.data2.storage_required==="Refrigerated"||this.state.data2.storage_required === "Frozen"?<div className="step-four-radio">
+                                                        <div>
+                                                        <label htmlFor="basic-url" className="lb">What type of storage is required?</label>
+                                                        </div>
+                                                        {this.state.data2.storage_required === "Refrigerated" ?
+                                                        <Form.Check inline label="Refrigerated" name="group6" type="radio" defaultChecked value="Refrigerated" onClick={this.storage1}  />:<Form.Check inline label="Refrigerated" name="group6" type="radio"  value="Refrigerated" onClick={this.storage1}  />
+                                                        }
+                                                         {this.state.data2.storage_required === "Frozen" ?<Form.Check inline label="Frozen" defaultChecked name="group6" type="radio" value="Frozen" onClick={this.storage1}  />:
+                                                        <Form.Check inline label="Frozen" name="group6" type="radio" value="Frozen" onClick={this.storage1}  />}
+                                                    </div>:""}
+                                                </Col>
+                                                {/* <Col md="12" className="" >
                                                     <div className="step-four-radio">
                                                         <div>
                                                         <label htmlFor="basic-url" className="lb"> Bu ürün soğuk-zincir taşıması gerektiriyor mu? </label>
@@ -675,6 +696,19 @@ class Distribution extends React.Component {
                                                         <Form.Check inline label="Hayır" name="group3" type="radio" value="false" defaultChecked onClick={this.storageChange}  />:<Form.Check inline label="Hayır" name="group3" type="radio" value="false" onClick={this.storageChange}  />}
 
                                                     </div>
+
+                                                   {this.state.storage === "true" ?<div className="step-four-radio">
+                                                        <div>
+                                                        <label htmlFor="basic-url" className="lb">What type of storage is required?</label>
+                                                       </div>
+                                                         {this.state.data2.storage_required === "Refrigerated" ?
+                                                       <Form.Check inline label="Refrigerated" name="group6" type="radio" defaultchecked value="Refrigerated" onClick={this.storage1}  />:<Form.Check inline label="Refrigerated" name="group6" type="radio"  value="Refrigerated" onClick={this.storage1}  />
+                                                        }
+                                                         {this.state.data2.storage_required === "Frozen" ?<Form.Check inline label="Frozen" defaultchecked name="group6" type="radio" value="Frozen" onClick={this.storage1}  />:
+                                                       <Form.Check inline label="Frozen" name="group6" type="radio" value="Frozen" onClick={this.storage1}  />}
+                                                 </div>:""} 
+
+
                                                    {this.state.storage === "true" || this.state.data2!== null ?<div className="step-four-radio">
                                                         <div>
                                                         <label htmlFor="basic-url" className="lb">Ne tür bir depolama gereklidir?</label>
@@ -685,7 +719,7 @@ class Distribution extends React.Component {
                                                          {this.state.data2.storage_required === "Frozen" ?<Form.Check inline label="Frozen" defaultChecked name="group6" type="radio" value="Frozen" onClick={this.storage1}  />:
                                                         <Form.Check inline label="Frozen" name="group6" type="radio" value="Frozen" onClick={this.storage1}  />}
                                                     </div>:""}
-                                                </Col>
+                                                </Col> */}
                                             </Row>
                                         </div>
                                     </div>

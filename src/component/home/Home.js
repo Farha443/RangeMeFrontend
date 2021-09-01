@@ -46,6 +46,13 @@ function Home(){
   const [smallheading, setsmallheading,]= useState([])
   const [link, setlink,]= useState([])
 
+  function onClickButton(e){
+    e.preventDefault()
+    var supplier = "supplier";
+    cookies.set('userType', supplier, { path: '/' });
+    setModalShow(true)
+}
+
 
 
   function NextList(){
@@ -405,7 +412,7 @@ function Redirect(uuid){
               </section>
              
 
-              <section className="hm-slider-section">
+              <section className="hm-slider-section slide-first">
                   <div className="container">
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
@@ -467,9 +474,9 @@ function Redirect(uuid){
                                 <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn">
-                                  <button className="bt254">
+                                  <p className="bt254" onClick={onClickButton}>
                                   ÜCRETSİZ KAYDOL  <i class="fal fa-long-arrow-right"></i>
-                                  </button>
+                                  </p>
                               </div>
                                 </div>
                             </div>

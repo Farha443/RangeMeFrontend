@@ -107,9 +107,7 @@ class Login extends React.Component {
   render(){
     return(
         <>
-        {/* <SignupModal show={this.state.modalShow} onHide={() => this.state.modalShow(false)} />
-        
-       <SignupModal show={modalShow} onHide={() => setModalShow(false)} /> */}
+       
        <SignupModal show={this.state.modalShow} onHide={this.onCloseModal}></SignupModal>
 
          <div data-tname="SignInContainer" className="w-100">
