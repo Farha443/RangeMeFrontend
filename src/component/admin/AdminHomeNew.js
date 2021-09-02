@@ -19,12 +19,12 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
-// import BrandLogoHome from './BrandLogoHome';
+
 import InnerFooter from './InnerFooter';
 import Cookies from "universal-cookie";
 import BASE_URL from '../base';
 import $ from "jquery";  
-// import BrandLogoHome from './BrandLogoHome';
+
 import ImageUploader from 'react-images-upload';
 
 const axios = require('axios').default;
