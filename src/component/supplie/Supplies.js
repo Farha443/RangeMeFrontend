@@ -109,10 +109,10 @@ function Supplies(){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
-                                <p className="p1"> home page</p>
+                                <p className="p1"> anasayfa </p>
                                 <h1> {heading.heading}</h1>
-                                <p className="p2">{heading.description}<span >exhibiting to thousands of buyers</span> </p>
-                                <NavLink to=""> increase your sales! </NavLink>
+                                <p className="p2">{heading.description}<span > binlerce alıcıya sergileyerek</span> </p>
+                                <NavLink to=""> satışlarınızı arttırın! </NavLink>
                             </div>
                         </div>
                     </div>
@@ -368,7 +368,7 @@ return<li>
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1>BASE <span class="hm-title-h">Alıcılar </span> </h1>
+                            <h1>BAZI <b>ALICI</b><span class="hm-title-h"> FİRMALAR </span> </h1>
                             </div>
                         </div>
 
