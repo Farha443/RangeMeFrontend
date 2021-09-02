@@ -106,10 +106,10 @@ function onClickButton(e){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
-                                <p className="p1"> home page </p>
+                                <p className="p1"> anasayfa </p>
                                 <h1> {heading.heading} </h1>
-                                <p className="p2"> {heading.description}<span > Discover their products and improve your purchasing process.</span> </p>
-                                <NavLink to=""> manage easily! </NavLink>
+                                <p className="p2"> {heading.description}<span > ürünlerini keşfedin ve satınalma sürecinizi</span> </p>
+                                <NavLink to=""> kolayca yönetin! </NavLink>
                             </div>
                         </div>
                     </div>
@@ -357,10 +357,7 @@ function onClickButton(e){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1>
-BASE <span class="hm-title-h"> 
-Alıcı Sayısı
- </span> </h1>
+                            <h1> BAZI <b>ALICI</b> <span class="hm-title-h">FİRMALAR</span> </h1>
                             </div>
                         </div>
 

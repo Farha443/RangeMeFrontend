@@ -7354,10 +7354,6 @@ body{
     font-family: 'Source Sans Pro', sans-serif !important;
 }
 
-.banner-text-left .f-t-1 {
-    font-size: 40pt;
-    color: #0f536d;
-}
 .banner-text-left .f-t-1 span {
     font-weight: 300;
 }
@@ -7645,15 +7641,18 @@ section.mid-banner-section {
 }
 .midd-banner-text .h-01-1 {
     color: #ffc555;
-    font-weight: 700;
+    font-weight: 900;
     text-decoration-line: underline;
     margin-bottom: 1.5rem;
+    font-size: 1.75rem;
 }
 .midd-banner-text h6.h-01-2 span {
     color: #ffc555;
 }
 .midd-banner-text h6.h-01-2 {
     color: white;
+    font-size: 15px;
+    line-height: 24px;
 }
 .midd-banner-text p.p-01-1 {
     margin-top: 0;
@@ -7976,3 +7975,24 @@ button.slide-next {
 }
 
 /*----------------end css-------------  */
+
+
+
+/******************* f css *************/
+
+
+.banner-text-left .f-t-1 {
+    font-size: 40pt;
+    color: #0f536d;
+    font-weight: 900;
+}
+
+.ic-5248.ic-22.hm-icn {
+
+    margin-right: 0rem;
+}
+
+.ic-5248.ic-22.hm-icn img {
+    height: 64px;
+    width: 74px;
+}

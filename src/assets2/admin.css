@@ -3327,15 +3327,23 @@ section.other-banner-section {
 .bg-g{
     background-color: #f5f9fe;
 }
+.ic-text-6254 h5 {
+    margin-bottom: 5px;
+    color: #0f536c;
+    font-weight: 900;
+    font-size:1.25rem
+}
 .ic-text-6254 h6 {
     margin-bottom: 5px;
     color: #0f536c;
     font-weight: 700;
 }
-.r-text-254 h5 {
+.r-text-254 h3 {
     color: #ffc536;
     margin-left: 10px;
     margin-bottom: 25px;
+    font-weight:900;
+    font-size:1.75rem;
 }
 .ic-text-6254 {
     width: 80%;

@@ -109,7 +109,7 @@ function Supplies(){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
-                                <p className="p1"> anasayfa </p>
+                                <NavLink to="" className="p1"> anasayfa </NavLink>
                                 <h1> {heading.heading}</h1>
                                 <p className="p2">{heading.description}<span > binlerce alıcıya sergileyerek</span> </p>
                                 <NavLink to=""> satışlarınızı arttırın! </NavLink>
@@ -167,7 +167,7 @@ return<li>
  
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6> {sub.heading}</h6>
+                                        <h5> {sub.heading}</h5>
                                         <p> {sub.description}</p>
                                       </div>
                                     </div>
@@ -219,7 +219,7 @@ return<li>
                                           {/* <img src={BASE_URL.slice(0,-5)+'/'+'media/'+ sub.logo}/> */}
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6>{sub.heading} </h6>
+                                        <h5>{sub.heading} </h5>
                                         <p> {sub.description}
                                         </p>
                                       </div>
@@ -263,7 +263,7 @@ return<li>
                         <div className="col-md-3 col-xs-12">
                             <div className="supp-mid-banner-bx link">
                                 <div className="supp-link">
-                                  <NavLink to=""> Register Now for Free <i class="fal fa-long-arrow-right"></i> </NavLink>
+                                  <NavLink to=""> Hemen Ücretsiz Kaydol <i class="fal fa-long-arrow-right"></i> </NavLink>
                                 </div>
                             
                             </div>
@@ -301,7 +301,7 @@ return<li>
                                       <img src={BASE_URL.slice(0,-4)+"media/"+sub.icons}/>
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6>{sub.heading}  </h6>
+                                        <h5>{sub.heading}  </h5>
                                         <p>{sub.description}
                                         </p>
                                       </div>
@@ -339,7 +339,7 @@ return<li>
                                       <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icons}/>
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6> {sub.heading} </h6>
+                                        <h5> {sub.heading} </h5>
                                         <p>{sub.description} </p>
                                       </div>
                                     </div>
@@ -368,7 +368,7 @@ return<li>
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1>BAZI <b>ALICI</b><span class="hm-title-h"> FİRMALAR </span> </h1>
+                            <h1 style="color:#0f536d;">BAZI <b>ALICI</b><span class="hm-title-h"> FİRMALAR </span> </h1>
                             </div>
                         </div>
 
