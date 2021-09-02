@@ -357,10 +357,7 @@ function onClickButton(e){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1>
-BASE <span class="hm-title-h"> 
-Alıcı Sayısı
- </span> </h1>
+                            <h1> BAZI <b>ALICI</b> <span class="hm-title-h">FİRMALAR</span> </h1>
                             </div>
                         </div>
 
