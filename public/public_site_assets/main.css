@@ -7354,10 +7354,6 @@ body{
     font-family: 'Source Sans Pro', sans-serif !important;
 }
 
-.banner-text-left .f-t-1 {
-    font-size: 40pt;
-    color: #0f536d;
-}
 .banner-text-left .f-t-1 span {
     font-weight: 300;
 }
@@ -7976,3 +7972,24 @@ button.slide-next {
 }
 
 /*----------------end css-------------  */
+
+
+
+/******************* f css *************/
+
+
+.banner-text-left .f-t-1 {
+    font-size: 40pt;
+    color: #0f536d;
+    font-weight: 900;
+}
+
+.ic-5248.ic-22.hm-icn {
+
+    margin-right: 0rem;
+}
+
+.ic-5248.ic-22.hm-icn img {
+    height: 64px;
+    width: 74px;
+}
