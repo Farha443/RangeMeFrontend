@@ -404,10 +404,12 @@ function SignUp(){
                           <div className="midd-banner-text">
                              
                             {/* <h5 className="h-01-1"> HİZMET SAĞLAYICILAR </h5> */}
-                            <h5 className="h-01-1"> {tt}Servis provider</h5>
+                            <h5 className="h-01-1"> {tt}</h5>
 
                             {/* <h6 className="h-01-2"> Tayuss ile binlerce ürün tedarikçisini keşfet ve <span> hizmetlerini  </span></h6> */}
-                            <h6 className="h-01-2"> {td}</h6>                       
+                            <h6 className="h-01-2"> {td}</h6>
+                            
+                            <h6 className="h-01-2"><b>Tayuss</b>, nitelikli müşteriler ile bir araya getirerek yeni iş fırsatları yakalayabileceğiniz, marka bilinirliği ve <b>satışlarınızı arttırabileceğiniz</b> bir olanak sunar.</h6>
                             <NavLink to="" className="mid-banner-a"> Tüm Özellikler <i class="fal fa-long-arrow-right"></i> </NavLink>
                           </div>  
                       </div>
