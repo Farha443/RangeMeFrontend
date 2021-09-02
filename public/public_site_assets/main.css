@@ -7474,7 +7474,7 @@ p.sect-2-t-2 {
 .logo-main-d ul li:after {
     content: "";
     position: absolute;
-    top: 0;
+    top: 30%;
     right: 0;
     width: 2px;
     height: 30px;
@@ -7502,6 +7502,7 @@ section.lr-title-section {
 .lr-title-mn h1 {
     color: #0f536d;
     font-weight: 700;
+    font-size: 2.8em;
 }
 section.lr-section-main {
     padding: 3rem 0px;
@@ -7524,6 +7525,7 @@ section.lr-section-main {
     float: left;
     color: #ffc536;
     text-decoration-line: underline;
+    font-weight:900;
 }
 .lr-title-mn:after {
     content: "";
@@ -7591,6 +7593,7 @@ span.le-rirle-span:before {
 .ic-text-6254 h5 {
     margin-bottom: 5px;
     color: #0f536c;
+    font-weight:900;
 }
 .ic-5248 {
     width: 70px;
@@ -7683,6 +7686,7 @@ section.hm-slider-section {
 }
 .hm-slider-title h1 {
     font-weight: 400;
+    font-size: 2.8em;
 }
 
 .hm-slider-title h1 span.hm-title-h:after {
@@ -7708,7 +7712,7 @@ section.hm-slider-section {
     float: left;
     width: 100%;
     margin-top: 1.5rem;
-    background: #ffff;
+    background: #f5f9fe;
     box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
     padding: 12px;
 }
@@ -7753,6 +7757,9 @@ section.hm-slider-section {
 
 .hm-slider-tect-cont h5 {
     color: #0f536d;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.4em;
 }
 
 section.btm-banner-section:before {
@@ -7791,7 +7798,7 @@ section.btm-banner-section {
 
 .btm-banner-btn button.bt254 {
     background: #ffff;
-    padding: 5px 15px;
+    padding: 15px 25px;
     border-radius: 3px;
     font-weight: 500;
     color: #0f536d;
@@ -7799,6 +7806,7 @@ section.btm-banner-section {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.4em;
 }
 .btm-banner-btn button.bt254 i {
     padding-left: 1rem;
