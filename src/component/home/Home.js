@@ -150,6 +150,13 @@ function Redirect(uuid){
   cookies.set('blog_id', uuid, { path: '/blog_detail' })
   window.location='/blog_detail';
 }
+
+function SignUp(){
+  var supplier = "supplier";
+  cookies.set('userType', supplier, { path: '/' });
+  setModalShow(true)
+}
+
   const settings = {
     dots: false,
     Nav: true,
@@ -199,12 +206,12 @@ function Redirect(uuid){
                         <div className="col-md-6 col-xs-12">
                             <div className="banner-left-content">
                                 <div className="banner-text-left">
-                                <h6> {heading.heading}</h6>
-                                {/* <h1 className="f-t-1"> TEDARİKÇİLERİ <span> VE </span>  </h1>
+                                <h6>SEKTÖRDE ÖNCÜ</h6>
+                                <h1 className="f-t-1"> TEDARİKÇİLERİ <span> VE </span>  </h1>
                                 <h1 className="f-t-2"> ALICI FİRMALARI   </h1>
                                 <h2 className="f-t-3"> BİR ARAYA GETİRİYORUZ!
-                                </h2> */}
-                                <button className="banner-btn"> ÜCRETSİZ KAYDOL <i class="fal fa-long-arrow-right"></i> </button>
+                                </h2>
+                                <button className="banner-btn" onClick={() => SignUp()}> ÜCRETSİZ KAYDOL <i class="fal fa-long-arrow-right"></i> </button>
                                 </div>
                                 {/* {heading.bg_img && <div className="banner-section" style={{backgroundImage: 'url("'+BASE_URL.slice(0,-5)+ heading.bg_img+'")'}}>
                 </div>}
