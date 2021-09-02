@@ -1,0 +1,70 @@
+{
+  "name": "myfirstreact",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^28.0.0",
+    "@ckeditor/ckeditor5-react": "^3.0.2",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "ckeditor4-react": "^2.0.0-rc.2",
+    "cron": "^1.8.2",
+    "express": "^4.17.1",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "movement": "0.0.13",
+    "node-cron": "^2.0.3",
+    "pascal-case": "^3.1.2",
+    "react": "^17.0.2",
+    "react-avatar-editor": "^11.1.0",
+    "react-bootstrap": "^1.6.0",
+    "react-calendar": "^3.4.0",
+    "react-chat-window": "^1.2.1",
+    "react-country-region-selector": "^3.1.0",
+    "react-datepicker": "^4.1.1",
+    "react-dom": "^17.0.2",
+    "react-hook-use-state": "^1.1.0",
+    "react-image-gallery": "^1.1.1",
+    "react-images-upload": "^1.2.8",
+    "react-input-color": "^4.0.0",
+    "react-rating-stars-component": "^2.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-select": "^4.3.1",
+    "react-select-country-list": "^2.2.3",
+    "react-simple-tree-menu": "^1.1.18",
+    "react-slick": "^0.28.1",
+    "react-tabs": "^3.2.2",
+    "reactjs-tag-input": "^2.0.15",
+    "sweetalert2-react": "^0.8.3",
+    "universal-cookie": "^4.0.4",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
