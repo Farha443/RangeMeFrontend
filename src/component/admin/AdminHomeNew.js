@@ -25,6 +25,8 @@ import Cookies from "universal-cookie";
 import BASE_URL from '../base';
 import $ from "jquery";  
 // import BrandLogoHome from './BrandLogoHome';
+import ImageUploader from 'react-images-upload';
+
 const axios = require('axios').default;
 const cookies = new Cookies();
 
@@ -36,10 +38,13 @@ function AdminHome(){
     const [show3, setShow3] = useState(false);
     const [show2, setShow2] = useState(false);
     const [isActive, setActive] = useState("false");
-    const[brands, setBrands] = useState([])
-    const[Allbrands, setAllbrands] = useState([])
+    const[brands, setBrands] = useState([]);
+    const[Allbrands, setAllbrands] = useState([]);
     const[remove , setRemove] = useState([]);
-
+    const[test , setTest] = useState([]);
+    const [logo, setLogo] = useState(false);
+    const [cover, setCover] = useState(false);
+    const[user, setUser] = useState([])
 
 
     const handleToggle = () => {
@@ -51,6 +56,8 @@ function AdminHome(){
         .then(res=>{
             setBrands(res.data.data[0])
             setRemove(res.data.data)
+            console.log(res.data.data[0])
+            setTest(res.data.data[0].product_name.length)
             var arra = []
             const map1 = res.data.data.map(x => 
                 {
@@ -64,6 +71,16 @@ function AdminHome(){
         }).catch(err=>{
             console.log(err)            
         })
+
+        var url = BASE_URL+'authentication/getuser/'+ user_uuid;
+        axios.get(url).then(res=>{
+            setUser(res.data.data)
+            console.log("user data")
+            console.log(res.data.data)
+        }).catch(err=>{
+            console.log(err)            
+        })
+
     },[])
     
    
@@ -82,7 +99,9 @@ function AdminHome(){
                     }
                 });
             setAllbrands(arra)
-            console.log(res.data.data.length)
+            console.log("brand data")
+            console.log(res.data.data)
+            setTest(res.data.data.product_name.length)
             cookies.set("get_brand", uuid , {path:"/"})
         }).catch(err=>{
             console.log(err)            
@@ -120,6 +139,81 @@ function AdminHome(){
             window.location.reload();
           })  
     }
+
+    function onDrop1(pictureFiles, pictureDataURLs) {
+        // alert(pictureFiles)
+        setLogo({
+            pictureFiles
+        });
+    }
+
+    function AddLogo(){
+        var brand_logo = logo ? (logo.pictureFiles)[0] : "";
+        var uuid = cookies.get('get_brand')
+        var data= new FormData();
+        var url = BASE_URL+"authentication/createsupplier/"
+        data.append('brand_logo', brand_logo);
+        data.append('uuid',uuid)
+        var token = cookies.get('logintoken');
+        var config = {
+            method: 'patch',
+            url: url,
+            headers: {
+                'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                "Authorization": "Bearer " + token,
+              },
+            data:data,
+        };
+       axios(config)
+          .then(res=>{
+                 console.log(res.data.data)
+                 // alert("success")
+                 window.location.reload();
+             }
+             
+             ).catch(err=>{
+                 console.error(err);
+                 window.location.reload();
+             })
+     }
+
+    function onDrop(pictureFiles, pictureDataURLs) {
+        setCover({
+            pictureFiles
+        });
+    }
+
+    function AddCover(){
+        var brand_cover = cover ? (cover.pictureFiles)[0] : "";
+        var uuid = cookies.get('get_brand')
+        var data= new FormData();
+        var url = BASE_URL+"authentication/createsupplier/"
+        data.append('brand_cover', brand_cover);
+        data.append('uuid',uuid)
+        var token = cookies.get('logintoken');
+        var config = {
+            method: 'patch',
+            url: url,
+            headers: {
+                'content-type': `multipart/form-data; boundary=${data._boundary}`,
+                "Authorization": "Bearer " + token,
+              },
+            data:data,
+        };
+        axios(config)
+          .then(res=>{
+                 console.log(res.data.data)
+                 // alert("success")
+                 //
+                 window.location.reload();
+                 setShow(false)
+             }
+             
+             ).catch(err=>{
+                 console.error(err);
+                 window.location.reload();
+             })
+     }
 
 
     return(
@@ -174,6 +268,194 @@ function AdminHome(){
                 </Container>
 
             </section>
+
+
+            <section className="hm-section-2">
+                <Container>
+                    <Row>
+                        <Col md="12">
+                        
+                        <div class="hm-slider-title hm-t2">
+                            <h1>PROFİLİNİZİ <span class="hm-title-h"> TAMAMLAYIN </span> </h1>
+                        </div>
+
+                        <div className="title-right-text">
+                            <p> Profil Durumu: <span> Yayınlanmadı </span> </p>
+                        </div>
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col md="12" xs="12">
+                            <div className="c-card">
+                                <div class="container text-center d-none">
+                            <div class="steps-container">
+                                <div class="steps">
+                                    <div class="steps__item z5">
+                                    1
+                                    </div>
+                                    <div class="steps__item z4">
+                                    2
+                                    </div>
+                                    <div class="steps__item z3 steps__item--active">
+                                    3
+                                    </div>
+                                    <div class="steps__item z2">
+                                    4
+                                    </div>
+                                    <div class="steps__item z1">
+                                    5
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+                                <div className="procces-box-mn-425">
+                                           
+                                           <div className="procc-box-mn-d451 active-b">
+                                                <div className="proc-icn-d">
+                                                    <div className="proc-icn-circle">
+                                                        <i class="fal fa-check"></i>
+                                                    </div>
+                                                </div>
+                                                <div className="proc-content-text">
+                                                    <h5> Create Account </h5>
+                                                    <p>
+                                                    your brand to all buyers to introduce companies create account
+                                                    </p>
+
+                                                    <div className="procbox-btn" style={{visibility:"hidden"}}>
+                                                        <button className="">  ADD PRODUCT </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                {test===0?
+                                            <div className="procc-box-mn-d451">
+                                                <div className="proc-icn-d">
+                                                    <div className="proc-icn-circle">
+                                                        <i class="fas fa-question"></i>
+                                                        <i class="fal fa-check d-none"></i>
+                                                    </div>
+                                                </div>
+                                                <div className="proc-content-text">
+                                                    <h5 > Add Product </h5>
+                                                    <p>
+                                                    Interest of buyers first to draw add your product </p>
+
+                                                    <div className="procbox-btn">
+                                                        <button className="" onClick={() => setShow2(true)}>  ADD PRODUCT </button>
+                                                    </div>
+                                                </div>
+                                            </div>: <div className="procc-box-mn-d451 active-b">
+                                                <div className="proc-icn-d">
+                                                    <div className="proc-icn-circle">
+                                                        <i class="fas fa-question d-none"></i>
+                                                        <i class="fal fa-check "></i>
+                                                    </div>
+                                                </div>
+                                                <div className="proc-content-text">
+                                                    <h5> Add Product </h5>
+                                                    <p>
+                                                    Interest of buyers first to draw add your product </p>
+                                                </div>
+                                            </div>}
+
+
+                                        {user.is_email_validated===false?
+                                            <div className="procc-box-mn-d451">
+                                                <div className="proc-icn-d">
+                                                    <div className="proc-icn-circle">
+                                                    <i class="fas fa-question"></i>
+                                                        <i class="fal fa-check d-none"></i>
+                                                    </div>
+                                                </div>
+                                                <div className="proc-content-text">
+                                                    <h5> E-Mail Confirm </h5>
+                                                    <p> We sent you an email to tunadok@gmail.com ( Change )  </p>
+
+                                                    <div className="procbox-btn">
+                                                        <button className=""> SEND AGAIN </button>
+                                                    </div>
+                                                </div>
+                                            </div>:<div className="procc-box-mn-d451 active-b">
+                                                <div className="proc-icn-d">
+                                                    <div className="proc-icn-circle">
+                                                    <i class="fas fa-question d-none"></i>
+                                                        <i class="fal fa-check"></i>
+                                                    </div>
+                                                </div>
+                                                <div className="proc-content-text">
+                                                    <h5> E-Mail Confirm </h5>
+                                                    <p> We sent you an email to tunadok@gmail.com ( Change )  </p>
+                                                </div>
+                                            </div>}
+
+                                            {brands.brand_logo===null?
+                                            <div className="procc-box-mn-d451">
+                                                <div className="proc-icn-d">
+                                                    <div className="proc-icn-circle">
+                                                    <i class="fas fa-question"></i>
+                                                        <i class="fal fa-check d-none"></i>
+                                                    </div>
+                                                </div>
+                                                <div className="proc-content-text">
+                                                    <h5> Add Logo </h5>
+                                                    <p>Add your logo to your profile to create a truly professional look  </p>
+
+                                                    <div className="procbox-btn">
+                                                        <button className="" onClick={() => setShow3(true)}> ADD LOGO</button>
+                                                    </div>
+                                                </div>
+                                            </div>: <div className="procc-box-mn-d451 active-b">
+                                                <div className="proc-icn-d">
+                                                    <div className="proc-icn-circle">
+                                                    <i class="fas fa-question d-none"></i>
+                                                        <i class="fal fa-check "></i>
+                                                    </div>
+                                                </div>
+                                                <div className="proc-content-text">
+                                                    <h5> Add Logo </h5>
+                                                    <p>Add your logo to your profile to create a truly professional look  </p>
+                                                </div>
+                                            </div>}
+
+                                                {brands.brand_cover===null?
+                                            <div className="procc-box-mn-d451">
+                                                <div className="proc-icn-d">
+                                                    <div className="proc-icn-circle">
+                                                        <i class="fas fa-question"></i>
+                                                        <i class="fal fa-check d-none"></i>
+                                                    </div>
+                                                </div>
+                                                <div className="proc-content-text">
+                                                    <h5> Add Cover Image </h5>
+                                                    <p> Make your profile visually appealing by adding a cover image </p>
+
+                                                    <div className="procbox-btn">
+                                                        <button className="" onClick={() => setShow(true)}> ADD A PICTURE  </button>
+                                                    </div>
+                                                </div>
+                                            </div>: <div className="procc-box-mn-d451 active-b">
+                                                <div className="proc-icn-d">
+                                                    <div className="proc-icn-circle">
+                                                        <i class="fas fa-question d-none"></i>
+                                                        <i class="fal fa-check"></i>
+                                                    </div>
+                                                </div>
+                                                <div className="proc-content-text">
+                                                    <h5> Add Cover Image </h5>
+                                                    <p> Make your profile visually appealing by adding a cover image </p>
+                                                </div>
+                                            </div>}
+                                </div>
+                            
+                            </div>
+                        </Col>
+
+                    </Row>
+                </Container>
+            </section>
+
 
             <section className="information-section-hm">
                 <Container>
@@ -631,6 +913,8 @@ function AdminHome(){
                 </div>
             </Modal.Footer>
       </Modal>
+    
+    
     {/* Brand logo modal  */}
     <Modal
                 size="lg"
@@ -649,8 +933,22 @@ function AdminHome(){
 
                         <Row>
                             <Col xs={12} md={12}>
-
-                              {/* <BrandLogoHome/> */}
+                            <div className="profile-up-main brand-logo">
+                            <div className="upload-imf-direction-text ">
+                            <h6> Marka logosu</h6>
+                            <p>Image must be at least 800 x 800px.
+                                File formats JPG, PNG, GIF, JPEG.</p>
+                            </div>
+                            <ImageUploader
+                            withIcon={true}
+                            buttonText='Choose Profile'
+                            onChange={onDrop1}
+                            imgExtension={['.jpg', '.gif', '.png', '.gif','jpeg']}
+                            maxFileSize={5242880}
+                            withPreview="true"
+                />
+                        </div>
+                              {/* <BrandLogo/> */}
 
                             </Col>
 
@@ -659,11 +957,10 @@ function AdminHome(){
                 </Modal.Body>
                 <Modal.Footer>
                     <div className="col-md-12 text-center">
-                        <button class="admin-add-btn f-w-500">  Save  </button>
+                        <button class="admin-add-btn f-w-500" onClick={AddLogo}>  Kaydet  </button>
                     </div>
                 </Modal.Footer>
             </Modal>
-
 
 {/* add product modal */}
 <Modal
@@ -705,6 +1002,54 @@ function AdminHome(){
                     <div className="col-md-12 text-center">
                         <button className="admin-add-btn" onClick={AddProduct} >ürün ekle
  </button>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+
+
+{/* add brand cover image */}
+            <Modal
+                size="lg"
+                centered
+                show={show}
+                onHide={() => setShow(false)}
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    Upload your cover image
+            </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container>
+
+                        <Row>
+                            <Col xs={12} md={12}>
+                            <div className="profile-up-main cover-photo">
+                                <div className="upload-imf-direction-text ">
+                                <h6> Upload Cover Photo </h6>
+                                <p>Image must be at least 1600 x 400 px.
+                                    File formats: JPG, PNG, GIF, jPEG</p>
+                                </div>
+                                <ImageUploader
+                                withIcon={true}
+                                buttonText='Choose Cover Photo'
+                                onChange={onDrop}
+                                imgExtension={['.jpg', '.gif', '.png', '.gif', 'jpeg']}
+                                maxFileSize={5242880}
+                                withPreview="true"
+                    />
+                            </div>
+                                {/* <CoverPhotoUploader /> */}
+
+                            </Col>
+
+                        </Row>
+                    </Container>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div className="col-md-12 text-center">
+                        <button class="admin-add-btn f-w-500" onClick={AddCover}>  Kaydet  </button>
                     </div>
                 </Modal.Footer>
             </Modal>

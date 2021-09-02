@@ -166,18 +166,12 @@ function BrandProfile() {
         })
         axios.get(BASE_URL+'authentication/singlebrand/'+ cookies.get("get_brand") )
         .then(res=>{
-            // debugger
             setSbrand(res.data.data)
             console.log("data brand")
             console.log(res.data.data)
             name = res.data.data.brand_name;
-            
             capitalize(name);
-            // setCount(res.data.data.product_name.length)
-
-        }).catch(err=>{
-            // $(".laoder").hide();
-            console.log(err)            
+        }).catch(err=>{            
         })     
 
     }
@@ -1287,8 +1281,6 @@ function BrandProfile() {
                     </div>
                 </Modal.Footer>
             </Modal>
-
-
 
 {/* Cover photo uplod modal  */}
 <Modal

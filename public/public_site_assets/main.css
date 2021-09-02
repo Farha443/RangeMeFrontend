@@ -7762,12 +7762,12 @@ section.btm-banner-section:before {
     top: 0;
     width: 100%;
     height: 100%;
-    background: #ffc536a1;
+    background: #ffc536ba;
 }
 
 section.btm-banner-section {
     padding: 1rem 0px;
-    height: 150px;
+    height: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
