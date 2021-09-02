@@ -7641,9 +7641,10 @@ section.mid-banner-section {
 }
 .midd-banner-text .h-01-1 {
     color: #ffc555;
-    font-weight: 700;
+    font-weight: 900;
     text-decoration-line: underline;
     margin-bottom: 1.5rem;
+    font-size: 1.75rem;
 }
 .midd-banner-text h6.h-01-2 span {
     color: #ffc555;
