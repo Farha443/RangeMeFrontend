@@ -140,11 +140,11 @@ function AdminNavbar(){
                     <Nav className="m-auto admin-menu-list">
 
                       <Nav.Link href="/newbuyerhome">Home</Nav.Link>
-                      <Nav.Link href="/">Search product</Nav.Link>
-                      <Nav.Link href="/">My Profile</Nav.Link>
-                      <Nav.Link href="/">Intrested products</Nav.Link>
-                      <Nav.Link href="/services">Submissions</Nav.Link>
-                      <Nav.Link href="/services">Open new add</Nav.Link>
+                      <Nav.Link href="/newbuyerhome">Search product</Nav.Link>
+                      <Nav.Link href="/newbuyerhome">My Profile</Nav.Link>
+                      <Nav.Link href="/newbuyerhome">Intrested products</Nav.Link>
+                      <Nav.Link href="/newbuyerhome">Submissions</Nav.Link>
+                      <Nav.Link href="/newbuyerhome">Open new add</Nav.Link>
                     </Nav>
 
                     <Nav className="navbar-nav">
@@ -185,8 +185,8 @@ function AdminNavbar(){
 
                       <div className={isActive1 ? "dropmenu-profile-img " : "dropmenu-profile-img dropmenu-profile-open"} onClick={handleToggle1}>
                           <ul>
-                            <li> <NavLink to="/admin_profile">{first_name} </NavLink> </li>
-                            <li> <NavLink to="/admin_profile">Ayarlar </NavLink> </li>
+                            <li> <NavLink to="/buyeradmin_prof">{first_name} </NavLink> </li>
+                            <li> <NavLink to="/buyeradmin_prof">Ayarlar </NavLink> </li>
                             <li> <NavLink to="" onClick={logout}> Çıkış </NavLink> </li>
                           </ul>
                       </div>
