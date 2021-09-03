@@ -167,7 +167,7 @@ function onClickButton(e){
                                       <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icons}/>
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6>{sub.heading} </h6>
+                                        <h5>{sub.heading} </h5>
                                         <p>{sub.description}</p>
                                       </div>
                                     </div>
@@ -214,7 +214,7 @@ function onClickButton(e){
                                       </div>
 
                                       <div className="ic-text-6254">
-                                        <h6>{sub.heading}   </h6>
+                                        <h5>{sub.heading}   </h5>
                                         <p>{sub.description} 
                                         </p>
                                       </div>
@@ -288,7 +288,7 @@ function onClickButton(e){
                                     <img src={BASE_URL.slice(0,-4)+"/media/"+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6>{sub.heading}  </h6>
+                                        <h5>{sub.heading}  </h5>
                                         <p> 
                                         {sub.description} 
                                         </p>
@@ -327,7 +327,7 @@ function onClickButton(e){
                                     <img src={BASE_URL.slice(0,-4)+"/media/"+sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6> {sub.heading}</h6>
+                                        <h5> {sub.heading}</h5>
                                         <p>{sub.description}</p>
                                       </div>
                                     </div>
