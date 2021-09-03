@@ -368,7 +368,7 @@ return<li>
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1 style="color:#0f536d;">BAZI <b>ALICI</b><span class="hm-title-h"> FİRMALAR </span> </h1>
+                            <h1 style={{color:"#0f536d"}}>BAZI <b>ALICI</b><span class="hm-title-h"> FİRMALAR </span> </h1>
                             </div>
                         </div>
 
