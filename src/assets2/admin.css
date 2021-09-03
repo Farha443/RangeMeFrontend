@@ -6407,3 +6407,12 @@ section.hm-slider-section.buyer-slide-section-2.pb-0 {
 section.hm-slider-section.by-section-1 {
     padding-top: 1.5rem;
 }
+
+.r-text-254 h5 {
+    color: #ffc536;
+    margin-left: 10px;
+    margin-bottom: 25px;
+    text-decoration-line: underline;
+    font-weight: 900;
+    font-size: 1.75rem;
+}
