@@ -269,8 +269,6 @@ function onClickButton(e){
                     <div className="row"> 
                         <div className="col-md-5 col-xs-12">
                             <div className="frame-main-d">
-                                {/* <img src="assets/images/btn.png" />
-                                 */}
                                   <img src={BASE_URL.slice(0,-5)+ workk.image}/>
                             </div>
                         </div>
