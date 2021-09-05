@@ -78,7 +78,7 @@ onCloseModal = ()=>{
             <main className="content" >
 
               <section className="other-banner-section" 
-              style={{backgroundImage: 'url('+(this.state.page.upper_bg_img?BASE_URL.slice(0,-5)+this.state.page.upper_bg_img:"assets/images/banner-1.jpg")+')'}}>
+              style={{backgroundImage: 'url('+(this.state.page.upper_bg_img?BASE_URL.slice(0,-5)+this.state.page.upper_bg_img:"assets/images/blog-header.jpg")+')'}}>
             
                 <div className="container">
                     <div className="row">
