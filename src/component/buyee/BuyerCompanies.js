@@ -90,15 +90,11 @@ function onClickButton(e){
 
     return(
         <>
-        {/* <SignupModal/> */}
+
         <SignupModal show={modalShow} onHide={() => setModalShow(false)} />
          <Header/>   
-        
-              
 
           <div className="my-container" >
-
-     
             <main className="content" >
 
               <section className="other-banner-section" style={{backgroundImage: 'url('+(heading.bg_img?BASE_URL.slice(0,-5)+heading.bg_img:"assets/images/banner-1.jpg")+')'}}>
@@ -339,7 +335,6 @@ function onClickButton(e){
                         </div>
                         <div className="col-md-5 m-auto col-xs-12">
                             <div className="frame-main-d">
-                                {/* <img src="assets/images/btn.png" /> */}
                                 <img src={BASE_URL.slice(0,-5)+ workk.image}/> 
                             </div>
                         </div>
@@ -384,7 +379,6 @@ function onClickButton(e){
                                 <div className="btm-banner-cont-m"> 
                                 <div className="btm-banner-text">
                                 <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
-                                  {/* create account */}
                               </div>
                               <div className="btm-banner-btn supplie">
                               <p onClick={onClickButton}> <i class="fal fa-long-arrow-right"></i> </p>
