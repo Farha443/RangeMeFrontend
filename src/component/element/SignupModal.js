@@ -708,25 +708,25 @@ axios(config).then(res=>{
                   <Row> 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Adınız/Your name</Form.Label>
+                            <Form.Label>Adınız</Form.Label>
                             <Form.Control type="text" id="first_name" placeholder="Lütfen adınızı yazın..." />
                           </Form.Group>
                         </Col>
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Soyadınız/Your Soyad</Form.Label>
+                            <Form.Label>Soyadınız</Form.Label>
                             <Form.Control type="text" id="last_name" placeholder="Lütfen soyadınızı yazın..." />
                           </Form.Group>
                         </Col>
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>E-mail Adresiniz/email</Form.Label>
+                            <Form.Label>E-mail Adresiniz</Form.Label>
                             <Form.Control type="email"   id="email" placeholder="Lütfen mail adresinizi yazın..." />
                           </Form.Group>
                         </Col>
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Parolanız/password</Form.Label>
+                            <Form.Label>Parolanız</Form.Label>
                             <Form.Control type="password" id="password" placeholder="Lütfen mail adresinizi yazın..." />
                           </Form.Group>
                         </Col>

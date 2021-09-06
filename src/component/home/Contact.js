@@ -123,9 +123,7 @@ function onClickButton(e){
                                                 <p>
                                                 Tayuss GIDA LOJİSTİK SANAYİ VE TİCARET A.Ş. <br/>
                                                 Küçük Çamlıca Mah. Çilahane yolu Cad. 
-                                                Çamlıca Evleri Sitesi No:13/4 Üsküdar/İstanbul
-                                                 
-                                                </p>
+                                                Çamlıca Evleri Sitesi No:13/4 Üsküdar/İstanbul </p>
                                             </div>
                                         </li>
 
@@ -213,7 +211,16 @@ function onClickButton(e){
 
 
              
-            
+              <section className="map-section">
+                <Row>
+                    <Col md="12" xs="12">
+                        <div className="map-area-div">
+                            {/* <img src="assets/images/icons/map.png" /> */}
+                            <div style={{width: '100%'}}><iframe width="100%" height={600} frameBorder={0} scrolling="no" marginHeight={0} marginWidth={0} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.473666108485!2d29.066428815107333!3d41.01489202696722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac80d485e676f%3A0xf48b2b733d6dab79!2zw4dpbGVoYW5lIFlvbHUgQ2QuICYgw4dpw6dlayBTay4sIEvDvMOnw7xrIMOHYW1sxLFjYSwgMzQ2OTYgw5xza8O8ZGFyL8Swc3RhbmJ1bA!5e0!3m2!1str!2str!4v1630936460680!5m2!1str!2str" /><a href="https://www.maps.ie/draw-radius-circle-map/">Easy radius map</a></div>
+                        </div>
+                    </Col>
+                </Row>
+              </section>
         
               <section className="btm-banner-section"  style={{backgroundImage: 'url("assets/images/btm-banner.jpg")'}}> 
                     <div className="container">
