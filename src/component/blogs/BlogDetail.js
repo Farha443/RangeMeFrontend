@@ -148,6 +148,7 @@ onCloseModal = ()=>{
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text b-detail-hero">
+                            <NavLink to="/" className="a11"> anasayfa </NavLink>
                             <p className="p2">{this.state.blog.b_title}</p>
                                 {/* <p className="p1"> <NavLink to="" className="bd">  yararlı bilgiler </NavLink> <NavLink className="bd" to="">  anasayfa </NavLink> </p> */}
                                 {/* <h1>Lorem ipsum dolor sit amet, ipsum consetetur  </h1> */}

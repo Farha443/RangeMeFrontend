@@ -51,6 +51,7 @@ function PrivacyStatement(){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
+                            <NavLink to="/" className="a11"> anasayfa </NavLink>
                                 <h1> {heading.heading} </h1>
                                 <p className="p2">{heading.description}</p>
                                 {/* <NavLink to=""> benimsiyoruz!  </NavLink> */}
