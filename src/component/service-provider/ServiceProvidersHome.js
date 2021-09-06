@@ -191,7 +191,7 @@ function onClickButton(e){
                 </div>
               </section>
             
-              <section className="service-p-section" style={{background: "white"}}>
+              <section className="service-p-section " style={{background: "white"}}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">

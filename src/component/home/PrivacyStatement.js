@@ -62,7 +62,7 @@ function PrivacyStatement(){
                 </div>
               </section>
              
-              <section className="service-p-section">
+              <section className="service-p-section p-3em">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
