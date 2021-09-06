@@ -60,8 +60,10 @@ function onClickButton(e){
                             <div className="supplie-banner-text">
                             <NavLink to="/" className="a11"> anasayfa </NavLink>
                                 <h1>{heading.heading} </h1>
-                                <p className="p2">{heading.description} </p>
-                                {/* <NavLink to=""> sed diam nonumy eirmod.  </NavLink> */}
+                                {/* <p className="p2">{heading.description} </p> */}
+                                <p className="p2">  Yenilikleri takip eden genç ve<span > Tayuss dinamik ekibimiz ile güçlü bir dijital ağ sunuyoruz.</span> </p>
+                                
+                                <p className="p1-add-n"> Hakkımızda  </p>
                             </div>
                         </div>
                     </div>

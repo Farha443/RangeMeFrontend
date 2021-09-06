@@ -78,16 +78,17 @@ onCloseModal = ()=>{
             <main className="content" >
 
               <section className="other-banner-section" 
-              style={{backgroundImage: 'url('+(this.state.page.upper_bg_img?BASE_URL.slice(0,-5)+this.state.page.upper_bg_img:"assets/images/banner-1.jpg")+')'}}>
+              style={{backgroundImage: 'url('+(this.state.page.upper_bg_img?BASE_URL.slice(0,-5)+this.state.page.upper_bg_img:"assets/images/libffmpegso.jpg")+')'}}>
             
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
                             <NavLink to="/" className="a11"> anasayfa </NavLink>
-                                {/* <h1> HAKKIMIZDA </h1> */}
-                                <p className="p2">{this.state.page.upper_banner_head}</p>
-                                {/* <NavLink to=""> sed diam nonumy eirmod.  </NavLink> */}
+                                <h1>  YARARLI BİLGİLER </h1>
+                                {/* <p className="p2">{this.state.page.upper_banner_head}</p> */}
+                                <p className="p2"> Sektörünüz ile alakalı güncel bilgileri ve<span > Tayuss hakkında merak ettiklerinizi</span> </p>
+                                <p className="p1-add-n"> takip edebilirsiniz! </p>
                             </div>
                         </div>
                     </div>

@@ -64,6 +64,13 @@ constructor(props) {
              <section className="section blog-section success-section">
                   <div className="row">
                     <div className="col-md-8 col-xs-12 ">
+                    <div className="supplie-banner-text">
+                            <NavLink to="/" className="a11"> anasayfa </NavLink>
+                                <h1>  YARARLI BİLGİLER </h1>
+                                {/* <p className="p2">{this.state.page.upper_banner_head}</p> */}
+                                <p className="p2"> Sektörünüz ile alakalı güncel bilgileri ve<span > Tayuss hakkında merak ettiklerinizi</span> </p>
+                                <p className="p1-add-n"> takip edebilirsiniz! </p>
+                            </div>
                         {/* <div className="b-details-maind">
                             <div className="b-d-image">
                                 <img src="assets/images/product02.jpg" />
