@@ -133,14 +133,17 @@ function SignUp(){
         </div>
       </div> */}
       {logintoken === undefined ?
-      <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text" >
+      <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text l-icn" >
         GİRİŞ YAP
+        <i class="fal fa-long-arrow-right"></i>
         </NavLink>
         :type==='supplier'?
-        <NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">
+        <NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text l-icn">
           GİRİŞ YAP
-          </NavLink>:type==='buyer'?<NavLink to="/newbuyerhome" className="header-bar__login button button--border button--compact dark-text">
+          <i class="fal fa-long-arrow-right"></i>
+          </NavLink>:type==='buyer'?<NavLink to="/newbuyerhome" className="header-bar__login button button--border button--compact dark-text l-icn">
             GİRİŞ YAP
+            <i class="fal fa-long-arrow-right"></i>
             </NavLink>:""
             }
       {/* {logintoken === undefined ?<button className="header-bar__cta button button--green " onClick={() => SignUp()}>GİRİŞ YAP<i class="fal fa-long-arrow-right"></i></button>

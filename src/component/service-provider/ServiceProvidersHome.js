@@ -109,7 +109,7 @@ function onClickButton(e){
                             <div className="supplie-banner-text">
                             <NavLink to="/" className="p1"> anasayfa </NavLink>
                                 <h1> {heading.heading}</h1>
-                                <p className="p2"> {heading.description} <span > Binlerce tedarikçiye hizmetlerini sergile yeni iş fırsatları yaratmanın anahtarına </span> </p>
+                                <p className="p2"> {heading.description} <span > yeni iş fırsatları yaratmanın anahtarına </span> </p>
                                    <p className="p1-add-n"> sahip ol! </p>
                             </div>
                         </div>
@@ -122,7 +122,7 @@ function onClickButton(e){
                     <div className="row">
                         <div className="col-md-12">
                             <div class="hm-slider-title">
-                                <h1>DON'T MISS THE NEW BUSINESS OPPORTUNITIES! <span class="hm-title-h"> KAÇIRMAYIN!  </span> </h1>
+                                <h1>YENİ İŞ FIRSATLARINI<span class="hm-title-h"> KAÇIRMAYIN!  </span> </h1>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,7 @@ function onClickButton(e){
                     <div className="row">
                         <div className="col-md-12">
                             <div class="hm-slider-title">
-                                <h1>REACH MORE CUSTOMERS! <span class="hm-title-h"> MÜŞTERİYE ULAŞIN!  </span> </h1>
+                                <h1>DAHA FAZLA<span class="hm-title-h"> MÜŞTERİYE ULAŞIN!  </span> </h1>
                             </div>
                         </div>
                         </div>
@@ -226,7 +226,7 @@ function onClickButton(e){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1>base <span class="hm-title-h"> Alıcılar </span> </h1>
+                            <h1>BAZI<span class="hm-title-h"> TEDARİKÇİLER </span> </h1>
                             </div>
                         </div>
 

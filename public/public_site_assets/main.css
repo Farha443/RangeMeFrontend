@@ -8048,3 +8048,12 @@ a.header-bar__link {
     display: flex;
     align-items: center;
 }
+
+a.header-bar__login.button.button--border.button--compact.dark-text.l-icn i {
+    font-size: 26px;
+    margin-left: 1rem;
+}
+a.header-bar__login.button.button--border.button--compact.dark-text.l-icn {
+    display: flex;
+    align-items: center;
+}
