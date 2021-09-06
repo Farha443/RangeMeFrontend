@@ -269,7 +269,7 @@ return<li>
                         <div className="col-md-3 col-xs-12">
                             <div className="supp-mid-banner-bx link">
                                 <div className="supp-link bn2-i">
-                                  <NavLink to=""> Hemen Ücretsiz Kaydol <i class="fal fa-long-arrow-right"></i> </NavLink>
+                                  <p className="p1-add-t"onClick={onClickButton}> Hemen Ücretsiz Kaydol <i class="fal fa-long-arrow-right"></i> </p>
                                  
                                 </div>
                             
