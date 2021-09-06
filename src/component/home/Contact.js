@@ -96,7 +96,7 @@ function onClickButton(e){
                             <div className="supplie-banner-text b-detail-hero">
                                 <p className="p1"> <NavLink to="" className="bd">  anasayfa </NavLink>  </p>
                                 <h1> İLETİŞİM </h1>
-                                <p className="p2"> Sorularınız ve destek almak  <span>istedikleriniz ile ilgili </span> </p>
+                                <p className="p2"> Sorularınız ve destek almak <span>istedikleriniz ile ilgili </span> </p>
                                 <NavLink to=""> bize ulaşın. </NavLink>
                             </div>
                         </div>
@@ -121,8 +121,10 @@ function onClickButton(e){
                                             </div>
                                             <div className="add-text">
                                                 <p>
-                                                Lorem Ipsum is simply dummy text of the 
-                                                printing and typesetting industry.  
+                                                Tayuss GIDA LOJİSTİK SANAYİ VE TİCARET A.Ş. <br>
+                                                Küçük Çamlıca Mah. Çilahane yolu Cad. 
+                                                Çamlıca Evleri Sitesi No:13/4 Üsküdar/İstanbul
+                                                 
                                                 </p>
                                             </div>
                                         </li>
@@ -133,7 +135,7 @@ function onClickButton(e){
                                             </div>
                                             <div className="add-text">
                                                 <p>
-                                               <strong> 0212 356 85 69 </strong>  
+                                               <strong> 0216 547 67 00 </strong>  
                                                 </p>
                                             </div>
                                         </li>
@@ -145,7 +147,7 @@ function onClickButton(e){
                                             </div>
                                             <div className="add-text">
                                                 <p>
-                                                info@tayuss.com 
+                                                destek@tayuss.com 
                                                 </p>
                                             </div>
                                         </li>
@@ -161,37 +163,37 @@ function onClickButton(e){
                                 <Row>
                                     <Col md="6" xs="12">
                                         <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                                            <Form.Label>First Name</Form.Label>
+                                            <Form.Label>Adınız</Form.Label>
                                             <Form.Control type="text" id="first_name" placeholder="Adınız..." />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md="6" xs="12">
                                         <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                                            <Form.Label>Last Name</Form.Label>
+                                            <Form.Label>Soyadınız</Form.Label>
                                             <Form.Control type="text" id="last_name" placeholder="Soyadınız..." />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md="6" xs="12">
                                         <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                                            <Form.Label>Email</Form.Label>
-                                            <Form.Control type="email" id='email' placeholder="E-mail Adresiniz..." />
+                                            <Form.Label>E-posta</Form.Label>
+                                            <Form.Control type="email" id='email' placeholder="E-posta Adresiniz..." />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md="6" xs="12">
                                         <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                                            <Form.Label>Phone</Form.Label>
-                                            <Form.Control type="text" id="phone" placeholder="Telefon Numaranız..." />
+                                            <Form.Label>Cep Telefonu</Form.Label>
+                                            <Form.Control type="text" id="phone" placeholder="Cep Telefon Numaranız..." />
                                         </Form.Group>
                                     </Col>
 
 
                                     <Col md="12" xs="12">
                                         <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                                        <Form.Label>Message</Form.Label>
-                                        <Form.Control placeholder="Mesajınız..." id ="text" as="textarea" rows={3} /></Form.Group>
+                                        <Form.Label>Mesajınız</Form.Label>
+                                        <Form.Control placeholder="Mesajınız ya da sorularınız..." id ="text" as="textarea" rows={3} /></Form.Group>
                                     </Col>
 
                                     <Col md="12" xs="12">

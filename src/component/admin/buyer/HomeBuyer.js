@@ -27,6 +27,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import $ from "jquery"; 
 import BASE_URL from '../../base';
+import BuyerNavbar from '../BuyerNavbar';
 const cookies = new Cookies();
 
 function HomeBuyer(){
@@ -148,7 +149,7 @@ function HomeBuyer(){
   
     return(
         <>
-            <AdminNavbar/>
+            <BuyerNavbar/>
             <section className="hm-slider-section by-section-1 pb-0">
                   <div className="container">
                     <div className="row">

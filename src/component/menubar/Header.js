@@ -96,7 +96,8 @@ function SignUp(){
 
 <div id="header-bar" className="header-bar  with-banner-offset ">
 <div className="header-bar__inner">
-  <nav id="nav" className="header-bar__nav">
+ <div className="container">
+ <nav id="nav" className="header-bar__nav">
     <NavLink to="/" className="header-bar__logo">
       <img src="assets/images/Savas.png" />
      
@@ -158,7 +159,10 @@ function SignUp(){
       </button>
     </div>
   </nav>
-</div>
+
+ </div>
+ 
+ </div>
 <div id="menu" className="menu">
   <div className="menu__inner">
     <nav className="nav nav--menu">

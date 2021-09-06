@@ -2185,7 +2185,7 @@ a.header-bar__link {
     .header-bar__nav{
         width:calc(100% - 48px);
         float:left;
-        margin-left:24px
+        margin-left:5px
     }
 }
 @keyframes header-bar--show{
@@ -7553,6 +7553,7 @@ span.le-rirle-span:before {
     width: 100%;
     float: left;
     margin-bottom: 2rem;
+    text-transform: uppercase;
 }
 
 .d-one-12423 ul {
@@ -7995,4 +7996,14 @@ button.slide-next {
 .ic-5248.ic-22.hm-icn img {
     height: 64px;
     width: 74px;
+}
+
+.r-text-254 h5 {
+    color: #ffc536;
+    margin-left: 10px;
+    margin-bottom: 25px;
+    text-decoration-line: underline;
+    font-weight: 900;
+    font-size: 1.75rem;
+    text-transform: uppercase;
 }

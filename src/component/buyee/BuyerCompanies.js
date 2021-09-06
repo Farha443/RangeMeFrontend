@@ -167,7 +167,7 @@ function onClickButton(e){
                                       <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icons}/>
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6>{sub.heading} </h6>
+                                        <h5>{sub.heading} </h5>
                                         <p>{sub.description}</p>
                                       </div>
                                     </div>
@@ -214,7 +214,7 @@ function onClickButton(e){
                                       </div>
 
                                       <div className="ic-text-6254">
-                                        <h6>{sub.heading}   </h6>
+                                        <h5>{sub.heading}   </h5>
                                         <p>{sub.description} 
                                         </p>
                                       </div>
@@ -269,8 +269,6 @@ function onClickButton(e){
                     <div className="row"> 
                         <div className="col-md-5 col-xs-12">
                             <div className="frame-main-d">
-                                {/* <img src="assets/images/btn.png" />
-                                 */}
                                   <img src={BASE_URL.slice(0,-5)+ workk.image}/>
                             </div>
                         </div>
@@ -286,11 +284,11 @@ function onClickButton(e){
                                 return<li>
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
-                                    {/* <i class={sub.icon}></i> */}
-                                    <img src={BASE_URL.slice(0,-4)+"media/"+ sub.icons}/>
+                                    
+                                    <img src={BASE_URL.slice(0,-4)+"/media/"+ sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6>{sub.heading}  </h6>
+                                        <h5>{sub.heading}  </h5>
                                         <p> 
                                         {sub.description} 
                                         </p>
@@ -326,10 +324,10 @@ function onClickButton(e){
                                     <div className="ic-text-mn">
                                     <div className="ic-5248 ic-22"> 
                                     {/* <i class={sub.icon}></i> */}
-                                    <img src={BASE_URL.slice(0,-4)+"media/"+sub.icons}/>
+                                    <img src={BASE_URL.slice(0,-4)+"/media/"+sub.icon}/>
                                       </div>
                                       <div className="ic-text-6254">
-                                        <h6> {sub.heading}</h6>
+                                        <h5> {sub.heading}</h5>
                                         <p>{sub.description}</p>
                                       </div>
                                     </div>
@@ -357,7 +355,7 @@ function onClickButton(e){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="hm-slider-title">
-                            <h1> BAZI <b>ALICI</b> <span class="hm-title-h">FİRMALAR</span> </h1>
+                            <h1> BAZI <span class="hm-title-h">TEDARİKÇİLER</span> </h1>
                             </div>
                         </div>
 

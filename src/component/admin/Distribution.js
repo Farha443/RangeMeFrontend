@@ -708,7 +708,7 @@ class Distribution extends React.Component {
                                                        <Form.Check inline label="Frozen" name="group6" type="radio" value="Frozen" onClick={this.storage1}  />}
                                                  </div>:""} 
 
-
+country
                                                    {this.state.storage === "true" || this.state.data2!== null ?<div className="step-four-radio">
                                                         <div>
                                                         <label htmlFor="basic-url" className="lb">Ne tür bir depolama gereklidir?</label>
