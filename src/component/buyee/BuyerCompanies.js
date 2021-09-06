@@ -102,7 +102,7 @@ function onClickButton(e){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
-                            <NavLink to="/" className="p1"> anasayfa </NavLink>
+                            <NavLink to="/" className="a11"> anasayfa </NavLink>
                                 <h1> {heading.heading} </h1>
                                 <p className="p2"> {heading.description}<span > ürünlerini keşfedin ve satınalma sürecinizi</span> </p>
                                 <p className="p1-add-n"> kolayca yönetin! </p>
