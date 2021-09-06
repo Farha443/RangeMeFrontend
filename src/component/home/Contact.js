@@ -94,10 +94,10 @@ function onClickButton(e){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text b-detail-hero">
-                                <p className="p1"> <NavLink to="" className="bd">  anasayfa </NavLink>  </p>
+                                <p className="p1"> <NavLink to="/" className="bd">  anasayfa </NavLink>  </p>
                                 <h1> İLETİŞİM </h1>
                                 <p className="p2"> Sorularınız ve destek almak  <span>istedikleriniz ile ilgili </span> </p>
-                                <NavLink to=""> bize ulaşın. </NavLink>
+                                <p className="p1-add-n"> bize ulaşın. </p>
                             </div>
                         </div>
                     </div>

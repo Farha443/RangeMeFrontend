@@ -107,11 +107,10 @@ function onClickButton(e){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
-                                <p className="p1"> anasayfa </p>
+                            <NavLink to="/" className="p1"> anasayfa </NavLink>
                                 <h1> {heading.heading}</h1>
-                                <p className="p2"> {heading.description} <span > Binlerce tedarikçiye hizmetlerini sergile yeni iş fırsatları yaratmanın anahtarına
- </span> </p>
- <NavLink to=""> sahip ol! </NavLink>
+                                <p className="p2"> {heading.description} <span > Binlerce tedarikçiye hizmetlerini sergile yeni iş fırsatları yaratmanın anahtarına </span> </p>
+                                   <p className="p1-add-n"> sahip ol! </p>
                             </div>
                         </div>
                     </div>
@@ -157,21 +156,6 @@ function onClickButton(e){
                                
                             </div>
                         </div> }})}
-
-
-                        {/* <div className="col-md-12 col-xs-12">
-                            <div className="ser-pro-box-d">
-                                <div className="sp-box-text">
-                                    <p>
-                                    Tayuss, satın alma sektörününün ihtiyaçları doğrultusunda alıcı firmalara ürün keşfedebilmesi için ürün resimleri, sigorta, etiketler ve 
-eksik marka kriterleri gibi detayları şeffaf bir şekilde sunar.
-                                    </p>
-                                </div>
-                                <div className="sp-img sp-img-3">
-                                    <img src="assets/images/icons/layer-5@2x.png"></img>
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </section>
@@ -191,31 +175,6 @@ eksik marka kriterleri gibi detayları şeffaf bir şekilde sunar.
                                 </div>
                             </div>
                         </div>})}
-
-                        {/* <div className="col-md-3 col-xs-12">
-                            <div className="supp-mid-banner-bx">
-                                <div className="supp-num">
-                                  <h1> 2 </h1>
-                                </div>
-                                <div className="supp-text">
-                                  <p>HİZMETLERİNİ</p>
-                                  <h1> SERGİLE </h1>
-                                </div>
-                               
-                            </div>
-                        </div>
-
-                        <div className="col-md-3 col-xs-12">
-                            <div className="supp-mid-banner-bx">
-                                <div className="supp-num">
-                                  <h1> 3 </h1>
-                                </div>
-                                <div className="supp-text">
-                                  <p> SATIŞLARINI </p>
-                                  <h1> ARTTIR </h1>
-                                </div>
-                            </div>
-                        </div> */}
 
 
                         <div className="col-md-3 col-xs-12">
@@ -254,33 +213,6 @@ eksik marka kriterleri gibi detayları şeffaf bir şekilde sunar.
                                     </div>
                                     <p>{im.desc}</p>
                                 </li>})}
-
-                                {/* <li>
-                                    <div className="list-icn"> 
-                                        <img src="assets/images/icons/checked.png" />
-                                    </div>
-                                    <p>
-                                    Mesajlaşma ve teklif verme özelliği sayesinde tedarikçiler ile güçlü ilişkiler kurarak gelirinizi büyütün.
-                                    </p>
-                                </li>
-
-                                <li>
-                                    <div className="list-icn"> 
-                                        <img src="assets/images/icons/checked.png" />
-                                    </div>
-                                    <p>
-                                    Özelleştirilebilir promosyonlarla birlikte görünürlüğünü artırın ve ilgi çekin.
-                                    </p>
-                                </li>
-
-                                <li>
-                                    <div className="list-icn"> 
-                                        <img src="assets/images/icons/checked.png" />
-                                    </div>
-                                    <p>
-                                    Daha önce iş birliği sağladığınız müşterilerinizden onay talep edin. Böylelikle güvenirliliğininizi diğer müşterilerinize gösterebilme avantajına sahip olun.
-                                   </p>
-                                </li> */}
                             </ul>
                         </div>
                         </div>
@@ -307,44 +239,9 @@ eksik marka kriterleri gibi detayları şeffaf bir şekilde sunar.
                           <img src={im.link_image?BASE_URL.slice(0,-5)+ im.link_image :"assets/images/640px-MiGROS_Logo.png"}/>
                       </div>
                     </li>})}
-
-                    {/* <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li>
-                    <li>
-                      <div className="log-d-14254">
-                          <img src="assets/images/640px-MiGROS_Logo.png" />
-                      </div>
-                    </li> */}
-
-
                   </ul>
-                </div>
-                          
+                </div>  
                       </div>
-
-                      
-
                   </div>
               </section>
 

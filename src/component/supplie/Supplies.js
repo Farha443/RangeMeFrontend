@@ -6,6 +6,7 @@ import SignupModal from '../element/SignupModal';
 import Slider from "react-slick";
 import BASE_URL from '../base';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 var ban_img =""
 var ban_heading = ""
@@ -14,7 +15,7 @@ var ban_count=""
 var tr=""
 var btmimg =""
 var mid_b_img = ""
-
+const cookies = new Cookies();
 
 function Supplies(){
 
@@ -90,7 +91,12 @@ function Supplies(){
     })
 },[])
   
-
+function onClickButton(e){
+  e.preventDefault()
+  var supplier = "supplier";
+  cookies.set('userType', supplier, { path: '/' });
+  setModalShow(true)
+}
     return(
         <>
         {/* <SignupModal/> */}
@@ -109,10 +115,10 @@ function Supplies(){
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
                             <div className="supplie-banner-text">
-                                <NavLink to="" className="p1"> anasayfa </NavLink>
+                                <NavLink to="/" className="a11"> anasayfa </NavLink>
                                 <h1> {heading.heading}</h1>
                                 <p className="p2">{heading.description}<span > binlerce alıcıya sergileyerek</span> </p>
-                                <NavLink to=""> satışlarınızı arttırın! </NavLink>
+                                <p className="p1-add-n">satışlarınızı arttırın! </p>
                             </div>
                         </div>
                     </div>
@@ -262,8 +268,9 @@ return<li>
 
                         <div className="col-md-3 col-xs-12">
                             <div className="supp-mid-banner-bx link">
-                                <div className="supp-link">
+                                <div className="supp-link bn2-i">
                                   <NavLink to=""> Hemen Ücretsiz Kaydol <i class="fal fa-long-arrow-right"></i> </NavLink>
+                                 
                                 </div>
                             
                             </div>
@@ -399,13 +406,16 @@ return<li>
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">
-                                <div className="btm-banner-cont-m"> 
+                                <div className="btm-banner-cont-m bn-2-add"> 
                                 <div className="btm-banner-text">
                                 <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                                   {/* create account */}
                               </div>
-                              <div className="btm-banner-btn supplie">
-                                 <NavLink to=""> <i class="fal fa-long-arrow-right"></i> </NavLink>
+                              {/* <div className="btm-banner-btn supplie add-supp-icn-2">
+                                 <NavLink to="">  <img src="assets/images/icons/right-arrow-5-copy-3-white.svg"></img> </NavLink>
+                              </div> */}
+                               <div className="btm-banner-btn supplie">
+                              <p onClick={onClickButton}> <i class="fal fa-long-arrow-right"></i> </p>
                               </div>
                                 </div>
                             </div>

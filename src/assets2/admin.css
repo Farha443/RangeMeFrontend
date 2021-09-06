@@ -3357,7 +3357,7 @@ section.hesap-banner-section:before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #0f536dbf;
+    background: #0f536dd9;
 }
 section.hesap-banner-section {
     padding: 4rem 0px;
@@ -3388,6 +3388,7 @@ section.hesap-banner-section {
 }
 .supp-mid-banner-bx .supp-text h1 {
     color: white;
+    font-weight: 900;
 }
 
 .supp-mid-banner-bx .supp-num h1 {
@@ -3397,12 +3398,15 @@ section.hesap-banner-section {
 
 .supp-mid-banner-bx.link a {
     color: #ffc555;
+    font-size: 18px;
+    font-weight: 600;
 }
 .supp-mid-banner-bx.link {
     height: 100%;
 }
 .supp-mid-banner-bx.link a i {
     margin-left: 1rem;
+    font-size: 24px;
 }
 .logo-main-d.spplie {
     margin-top: 0px;
@@ -3420,25 +3424,27 @@ section.hm-slider-section.supplie {
 .supplie-banner-text p.p1 {
     margin: 0;
     color: white;
+    font-size: 18px;
 }
 .supplie-banner-text h1 {
     color: white;
-    font-weight: 700;
+    font-weight: bold;
+    font-size: 54px;
 }
 .supplie-banner-text p.p2 {
     margin-top: 0.3rem;
     color: #0f536d;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.6rem;
 }
 .supplie-banner-text p.p2 span {
     font-weight: 600;
 }
 .supplie-banner-text a {
     color: #ffc555;
-    font-weight: 600;
-    font-size: 22px;
+    font-weight: 900;
+    font-size: 28px;
     text-decoration: none;
 }
 .supplie-banner-text {
@@ -3453,7 +3459,7 @@ section.hm-slider-section.supplie {
 }
 .supplie-logo-slide .slick-slider.slick-initialized {
     background: white;
-    padding: 15px 30px;
+    padding: 15px 0px;
     border-radius: 5px;
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
@@ -3481,7 +3487,7 @@ section.hm-slider-section.supplie {
     margin-top: 0px;
     position: relative;
     color: #0f536d;
-    font-weight: 500;
+    font-weight: bold;
     padding-left: 10px;
     margin-top: -5px;
 }
@@ -5822,7 +5828,7 @@ header.admin-header {
     background: none;
 }
 .men-menu-drop a {
-    color: #485269;
+    color: #95b0ba;
 }
 
 section.information-section-hm {
@@ -6416,4 +6422,18 @@ section.hm-slider-section.by-section-1 {
     font-weight: 900;
     font-size: 1.75rem;
     text-transform: uppercase;
+}
+.supplie-banner-text a.a11 {
+    font-weight: 300;
+    color: white;
+    font-size: 20px;
+    text-decoration-line: underline;
+}
+p.p1-add-n {
+    color: #ffc555;
+    font-weight: 900;
+    font-size: 28px;
+    text-decoration: none;
+    text-decoration-line: underline;
+    margin: 0;
 }

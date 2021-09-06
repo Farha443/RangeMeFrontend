@@ -103,9 +103,9 @@ function SignUp(){
      
     </NavLink>
     <div className="header-bar__actions">
-      <a href="/supplier-home"  className="header-bar__link">tedarikçiler</a>
-      <a href="/buyer-home"  className="header-bar__link">alıcı firmalar</a>
-      <a href="servicehome"  className="header-bar__link">hizmet sağlayıcılar</a>
+      <NavLink to="/supplier-home"  className="header-bar__link"> <img src="assets/images/icons/01.png" />tedarikçiler</NavLink>
+      <NavLink to="/buyer-home"  className="header-bar__link"> <img src="assets/images/icons/01.png" /> alıcı firmalar</NavLink>
+      <NavLink to="servicehome"  className="header-bar__link"> <img src="assets/images/icons/01.png" /> hizmet sağlayıcılar</NavLink>
       {/* <div className="header-bar__divider" /> */}
       <NavDropdown title="kaynaklar" id="basic-nav-dropdown" className="menu-drop-1245 men-menu-drop">
       
@@ -133,19 +133,19 @@ function SignUp(){
         </div>
       </div> */}
       {logintoken === undefined ?
-      <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">
+      <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text" >
         GİRİŞ YAP
-        </NavLink>:type==='supplier'?
+        </NavLink>
+        :type==='supplier'?
         <NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text">
           GİRİŞ YAP
-          </NavLink>:<NavLink to="/newbuyerhome" className="header-bar__login button button--border button--compact dark-text">
+          </NavLink>:type==='buyer'?<NavLink to="/newbuyerhome" className="header-bar__login button button--border button--compact dark-text">
             GİRİŞ YAP
-            </NavLink>
+            </NavLink>:""
             }
-      {/* <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">Log in</NavLink> */}
-      {logintoken === undefined ?<button className="header-bar__cta button button--green " onClick={() => SignUp()}>Ücretsiz Hesap Aç <i class="fal fa-long-arrow-right"></i></button>
+      {/* {logintoken === undefined ?<button className="header-bar__cta button button--green " onClick={() => SignUp()}>GİRİŞ YAP<i class="fal fa-long-arrow-right"></i></button>
       :""}
-  
+   */}
       <button id="menu-toggle" className="menu__button">
         <svg xmlns="http://www.w3.org/2000/svg" className="svg" width={24} height={24}>
           <g className="nc-icon-wrapper svg__fill svg__stroke" strokeLinecap="square" strokeWidth={2} stroke="#000">
@@ -166,18 +166,18 @@ function SignUp(){
 <div id="menu" className="menu">
   <div className="menu__inner">
     <nav className="nav nav--menu">
-      <a href="/supplier-home" className="nav__link">tedarikçiler</a>
-      <a href="/buyer-home" className="nav__link">alıcı firmalar</a>
-      <a href="/servicehome" className="nav__link">hizmet sağlayıcılar</a>
+      <NavLink to="/supplier-home" className="nav__link"> <img src="assets/images/icons/01.png" /> tedarikçiler</NavLink>
+      <NavLink to="/buyer-home" className="nav__link"> <img src="assets/images/icons/01.png" /> alıcı firmalar</NavLink>
+      <NavLink to="/servicehome" className="nav__link"> <img src="assets/images/icons/01.png" /> hizmet sağlayıcılar</NavLink>
       <div className="nav__divider" />
       <div className="nav__link nav__link--sub-nav">
         <span className="sub-nav__toggle">kaynaklar</span>
         <div className="sub-nav">
           <NavLink to="/success" className="sub-nav__link">başarı öyküleri</NavLink>
-          <a href="/blogs" className="sub-nav__link">tayuss blog</a>
-          <a href="#" className="sub-nav__link">haberler</a>
-          <a href="#" className="sub-nav__link">webinarlar</a>
-          <a href="#" className="sub-nav__link">destek</a>
+          <NavLink to="/blogs" className="sub-nav__link">tayuss blog</NavLink>
+          <NavLink to="#" className="sub-nav__link">haberler </NavLink>
+          <NavLink to="#" className="sub-nav__link">webinarlar </NavLink>
+          <NavLink to="#" className="sub-nav__link">destek </NavLink>
         </div>
       </div>
       <div className="nav__link nav__link--sub-nav">

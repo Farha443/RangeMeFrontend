@@ -129,7 +129,6 @@ onCloseModal = ()=>{
                                 <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn supplie">
-                             
                               <p onClick={this.onClickButton}> <i class="fal fa-long-arrow-right"></i> </p>
                               </div>
                                 </div>

@@ -483,9 +483,9 @@ function SignUp(){
                                 <h3> <span className="btm-banner-text-yl">HEMEN ÜCRETSİZ  </span>  HESAP OLUŞTUR!  </h3>
                               </div>
                               <div className="btm-banner-btn">
-                                  <p className="bt254" onClick={onClickButton}>
-                                  ÜCRETSİZ KAYDOL  <i class="fal fa-long-arrow-right"></i>
-                                  </p>
+                                  <button className="bt254" onClick={onClickButton}>
+                                  <span> ÜCRETSİZ </span> KAYDOL  <i class="fal fa-long-arrow-right"></i>
+                                  </button>
                               </div>
                                 </div>
                             </div>
