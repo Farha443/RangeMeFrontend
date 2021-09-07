@@ -3539,7 +3539,7 @@ section.service-p-section {
 .sp-img {
     width: 20%;
     height: 220px;
-    background-color: #ffc536;
+    /* background-color: #ffc536; */
     border-radius: 50%;
     position: relative;
     margin-left: -30px;
@@ -3554,12 +3554,12 @@ section.service-p-section {
     z-index: 10;
     left: 16px;
 }
-.sp-img.sp-img-2 {
+/* .sp-img.sp-img-2 {
     background: #0f536d;
-}
-.sp-img.sp-img-3 {
+} */
+/* .sp-img.sp-img-3 {
     background: #38b5e6;
-}
+} */
 .sp-img.sp-img-2 img {
     top: 7px;
     left: 5px;

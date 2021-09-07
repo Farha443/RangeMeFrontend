@@ -133,10 +133,10 @@ function onClickButton(e){
                         return<div className="col-md-12 col-xs-12">
                             <div className="ser-pro-box-d">
                                 <div className="sp-box-text">
-                                    <p>{work.title}
-                                    </p>
+                                    <p>{work.title} </p>
+                                    {/* <p><EditorPreview data={work.title} /></p> */}
                                 </div>
-                                <div className="sp-img" style={{backgroundImage: 'url(assets/images/icons/shape/vector-smart-object@2x.png)'}}>
+                                <div className="sp-img" >
                                     {/* <img src="assets/images/icons/img-01@2x.png"></img> */}
                                     <img src={BASE_URL.slice(0,-5)+ work.image}/>
                                 </div>
@@ -150,8 +150,8 @@ function onClickButton(e){
                                     <img src={BASE_URL.slice(0,-5)+ work.image}/>
                                 </div>
                                 <div className="sp-box-text">
-                                    <p>{work.title}
-                                    </p>
+                                    <p>{work.title}</p>
+                                   {/* <p> <EditorPreview data={work.title} /></p> */}
                                 </div>
                                
                             </div>
@@ -272,5 +272,20 @@ function onClickButton(e){
         </>
     );
 }
+
+class EditorPreview extends React.Component {
+  render() {
+      return (
+          <div className="editor-preview">
+            
+              <div dangerouslySetInnerHTML={ { __html: this.props.data } }></div>
+          </div>
+      );
+  }
+}
+
+EditorPreview.defaultProps = {
+  data: ''
+};
 
 export default ServiceProviders
