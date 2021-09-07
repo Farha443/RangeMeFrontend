@@ -676,7 +676,7 @@ axios(config).then(res=>{
                                           <p className="d-b"> 1 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>/personal</span> BİLGİLER/info </p>
+                                          <p> <span>KİŞİSEL</span> BİLGİLER </p>
                                         </div>
                                       </li>
                                       <li>
@@ -727,28 +727,27 @@ axios(config).then(res=>{
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Parolanız</Form.Label>
-                            <Form.Control type="password" id="password" placeholder="Lütfen mail adresinizi yazın..." />
+                            <Form.Control type="password" id="password" placeholder="Şifrenizi giriniz Lütfen...." />
                           </Form.Group>
                         </Col>
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>confirm password</Form.Label>
-                            <Form.Control type="password" id="password1" placeholder="Lütfen mail adresinizi yazın..." />
+                            <Form.Label>Parolanız Tekrar</Form.Label>
+                            <Form.Control type="password" id="password1" placeholder="Şifrenizi giriniz Lütfen" />
                           </Form.Group>
                         </Col>
 
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Cep Telefonu</Form.Label>
-                            <Form.Control type="text" id="mobile" placeholder="Lütfen mail adresinizi yazın..." />
+                            <Form.Control type="text" id="mobile" placeholder="Lütfen Cep telefonu numaranızı girin...." />
                           </Form.Group>
                         </Col>
 
                         <Col md="12">
                           <div class="form-group form-check signup-check">
                             <label class="form-check-label signup-lab">
-                              <input class="form-check-input" type="checkbox" /> <span> Privacy Terms</span> ve <span> Kullanım Koşullarını/
-                                  Terms of Use </span> okudum ve kabul ediyorum./I have read and accept.
+                              <input class="form-check-input" type="checkbox" /> <span> Gizlilik Şartları</span> ve <span> Kullanım Koşullarını </span> okudum ve kabul ediyorum./I have read and accept.
                             </label>
                           </div>
                         </Col>
@@ -756,7 +755,7 @@ axios(config).then(res=>{
                         <Col md="12" xs="12">
                           <div className="signup-btn-d">
                               <button className="signup-btn" onClick={Func}> 
-                              <span>  SONRAKİ /NEXT</span> ADIM <i class="fal fa-long-arrow-right"></i>
+                              <span>  SONRAKİ</span> ADIM <i class="fal fa-long-arrow-right"></i>
                               </button>
                           </div>
                         </Col>
@@ -786,7 +785,7 @@ axios(config).then(res=>{
                                           <p className="d-b"> 1 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>PERSONAL</span> INFORMATIONS </p>
+                                          <p> <span>KİŞİSEL</span> BİLGİLER </p>
                                         </div>
                                       </li>
                                       <li className="active-step">
@@ -794,7 +793,7 @@ axios(config).then(res=>{
                                           <p> 2 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>company </span> INFORMATIONS </p>
+                                          <p> <span>company </span> BİLGİLER </p>
                                         </div>
                                       </li>
                                       <li>
@@ -802,7 +801,7 @@ axios(config).then(res=>{
                                           <p> 3 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>Marka Adı/</span> INFORMATIONS </p>
+                                          <p> <span>Marka Adı/</span> BİLGİLER </p>
                                         </div>
                                       </li>
                                     </ul>
@@ -1054,21 +1053,21 @@ axios(config).then(res=>{
                     <Col md="12" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                         <Form.Label>Parolanız</Form.Label>
-                        <Form.Control type="password" id="password" placeholder="Lütfen mail adresinizi yazın..." />
+                        <Form.Control type="password" id="password" placeholder="Şifrenizi giriniz Lütfen...." />
                       </Form.Group>
                     </Col>
 
                     <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>confirm password</Form.Label>
-                            <Form.Control type="password" id="password1" placeholder="Lütfen mail adresinizi yazın..." />
+                            <Form.Label>Parolanız Tekrar</Form.Label>
+                            <Form.Control type="password" id="password1" placeholder="Şifrenizi giriniz Lütfen...." />
                           </Form.Group>
                         </Col>
 
                     <Col md="12" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                         <Form.Label>Telefon Numaranız</Form.Label>
-                        <Form.Control type="text" id="mobile" placeholder="Lütfen mail adresinizi yazın..." />
+                        <Form.Control type="text" id="mobile" placeholder="Lütfen Cep telefonu numaranızı girin...." />
                       </Form.Group>
                     </Col>
 
@@ -1455,21 +1454,21 @@ axios(config).then(res=>{
                       <Col md="12" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                         <Form.Label>Parolanız</Form.Label>
-                        <Form.Control type="password" id="password" placeholder="Lütfen mail adresinizi yazın..." />
+                        <Form.Control type="password" id="password" placeholder="Şifrenizi giriniz Lütfen..." />
                       </Form.Group>
                       </Col>
 
                       <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>confirm password</Form.Label>
-                            <Form.Control type="password" id="password1" placeholder="Lütfen mail adresinizi yazın..." />
+                            <Form.Label>Parolanız Tekrar</Form.Label>
+                            <Form.Control type="password" id="password1" placeholder="Şifrenizi giriniz Lütfen..." />
                           </Form.Group>
                         </Col>
 
                       <Col md="12" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                         <Form.Label>Telefon Numaranız</Form.Label>
-                        <Form.Control type="text" id="mobile" placeholder="Lütfen mail adresinizi yazın..." />
+                        <Form.Control type="text" id="mobile" placeholder="Lütfen Cep telefonu numaranızı girin...." />
                       </Form.Group>
                       </Col>
 

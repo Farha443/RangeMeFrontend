@@ -235,7 +235,6 @@ function onClickButton(e){
                   {link.map(im =>{
                     return<li>
                       <div className="log-d-14254">
-                          {/* <img src="assets/images/640px-MiGROS_Logo.png" /> */}
                           <img src={im.link_image?BASE_URL.slice(0,-5)+ im.link_image :"assets/images/640px-MiGROS_Logo.png"}/>
                       </div>
                     </li>})}
