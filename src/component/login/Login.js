@@ -165,8 +165,8 @@ class Login extends React.Component {
           <div className="with-advertisement__advertisement___3T9yG" style={{backgroundImage: 'url("../../assets/login-img.jpg")'}}>
             <div className="global-markets-advertisement__container___2Vacv" >
                 <div className="lg-right-t t-right">
-                <h5>Ürünlerinizi ve marka profilinizi</h5>
-              <h3> binlerce alıcıya sergileyerek  </h3>
+                <h5 class="h5-lg">Ürünlerinizi ve marka profilinizi</h5>
+              <h3 class="h-lg"> binlerce alıcıya sergileyerek  </h3>
               <a className="login-link" data-tname="CampaignLink" href="#" rel="noreferrer noopener" target="_blank">satışlarınızı arttırın!
               </a>
                 </div>

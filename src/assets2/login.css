@@ -2340,8 +2340,9 @@ h4.tl-tx-hd {
 }
 .lg-right-t a {
     color: #ffc536;
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 25px;
+    font-weight: 900;
+	text-decoration: underline;
 }
 .lg-right-t h5 {
     font-weight: 300;
@@ -2357,3 +2358,12 @@ a.header-bar__logo {
     width: 150px;
 }
 /******************************************************************/
+h3.h-lg {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.lg-right-t h5 {
+    font-weight: 300;
+    font-size: 30px;
+}

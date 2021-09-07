@@ -463,3 +463,4 @@ EditorPreview.defaultProps = {
 };
 
 export default Supplies
+
