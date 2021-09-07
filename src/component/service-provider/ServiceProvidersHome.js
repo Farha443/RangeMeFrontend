@@ -64,7 +64,7 @@ function ServiceProviders(){
     .then(res=>{
      
       
-      console.log(res.data.link)
+      console.log(res.data)
       setService(res.data.service)
       mid_b_img = res.data.mid_ban_img[0].bg_image
       setmbanner(res.data.midd_banner)

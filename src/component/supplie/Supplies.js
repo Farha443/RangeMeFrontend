@@ -67,10 +67,12 @@ function Supplies(){
   };
 
   useEffect(() => {
-    // debugger
+    
     axios.get(BASE_URL+'supplierhome/supplierhomeview/')
     .then(res=>{
+      debugger
       console.clear()
+      console.log(res.data)
       setmbanner(res.data.midd_banner)
       setslide(res.data.slider)
       setbottombanner(res.data.btm_banner)
