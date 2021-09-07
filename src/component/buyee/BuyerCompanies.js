@@ -66,11 +66,11 @@ function BuyerCompanies(){
     axios.get(BASE_URL+'buyerhome/buyerhomeview/')
     .then(res=>{
       console.log(res.data.links)
-      tr=res.data.btm_banner[0].content
-      btmimg=res.data.btm_banner[0].image
+      tr=res.data.btm_banner.content
+      btmimg=res.data.btm_banner.image
       setslide(res.data.slider)
       setheading(res.data.heading)
-      mid_b_img = res.data.mid_ban_img[0].bg_image
+      mid_b_img = res.data.mid_ban_img.bg_image
       setmbanner(res.data.midd_banner)
       setWorksone(res.data.worksone)
       setWorks(res.data.works)
@@ -101,10 +101,10 @@ function onClickButton(e){
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
-                            <div className="supplie-banner-text">
+                            <div className="supplie-banner-text ed2">
                             <NavLink to="/" className="a11"> anasayfa </NavLink>
-                                <h1> {heading.heading} </h1>
-                                <p className="p2"> {heading.description}<span > ürünlerini keşfedin ve satınalma sürecinizi</span> </p>
+                                <h1> <EditorPreview data={heading.heading} /> </h1>
+                                <p className="p2"> <EditorPreview data={heading.description} /><span > ürünlerini keşfedin ve satınalma sürecinizi</span> </p>
                                 <p className="p1-add-n"> kolayca yönetin! </p>
                             </div>
                         </div>
@@ -164,7 +164,7 @@ function onClickButton(e){
                                       </div>
                                       <div className="ic-text-6254">
                                         <h5>{sub.heading} </h5>
-                                        <p>{sub.description}</p>
+                                        <p><EditorPreview data={sub.description} /></p>
                                       </div>
                                     </div>
                                   </li>})}
@@ -211,7 +211,7 @@ function onClickButton(e){
 
                                       <div className="ic-text-6254">
                                         <h5>{sub.heading}   </h5>
-                                        <p>{sub.description} 
+                                        <p><EditorPreview data={sub.description} />
                                         </p>
                                       </div>
                                     </div>
@@ -236,7 +236,7 @@ function onClickButton(e){
                                   <h1> {img.count} </h1>
                                 </div>
                                 <div className="supp-text">
-                                  <p>{img.description}</p>
+                                  <p><EditorPreview data={img.description} /></p>
                                   <h1> {img.heading} </h1>
                                 </div>
                             </div>
@@ -286,7 +286,7 @@ function onClickButton(e){
                                       <div className="ic-text-6254">
                                         <h5>{sub.heading}  </h5>
                                         <p> 
-                                        {sub.description} 
+                                        <EditorPreview data={sub.description} />
                                         </p>
                                       </div>
                                     </div>
@@ -324,7 +324,7 @@ function onClickButton(e){
                                       </div>
                                       <div className="ic-text-6254">
                                         <h5> {sub.heading}</h5>
-                                        <p>{sub.description}</p>
+                                        <p><EditorPreview data={sub.description} /></p>
                                       </div>
                                     </div>
                                   </li>})}
@@ -407,5 +407,18 @@ function onClickButton(e){
         </>
     );
 }
+class EditorPreview extends React.Component {
+  render() {
+      return (
+          <div className="editor-preview">
+            
+              <div dangerouslySetInnerHTML={ { __html: this.props.data } }></div>
+          </div>
+      );
+  }
+}
 
+EditorPreview.defaultProps = {
+  data: ''
+};
 export default BuyerCompanies

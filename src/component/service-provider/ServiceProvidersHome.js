@@ -66,12 +66,12 @@ function ServiceProviders(){
       
       console.log(res.data)
       setService(res.data.service)
-      mid_b_img = res.data.mid_ban_img[0].bg_image
+      mid_b_img = res.data.mid_ban_img.bg_image
       setmbanner(res.data.midd_banner)
       setheading(res.data.heading)
       setWorks(res.data.works)
-      tr=res.data.btm_banner[0].content
-      btmimg=res.data.btm_banner[0].image
+      tr=res.data.btm_banner.content
+      btmimg=res.data.btm_banner.image
       setlink(res.data.link)
 
     }).catch(err=>{
@@ -106,10 +106,10 @@ function onClickButton(e){
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
-                            <div className="supplie-banner-text">
+                            <div className="supplie-banner-text ed2">
                             <NavLink to="/" className="a11"> anasayfa </NavLink>
-                                <h1> {heading.heading}</h1>
-                                <p className="p2"> {heading.description} <span > yeni iş fırsatları yaratmanın anahtarına </span> </p>
+                                <h1><EditorPreview data={heading.heading} /></h1>
+                                <p className="p2"> <EditorPreview data={heading.description} /> <span > yeni iş fırsatları yaratmanın anahtarına </span> </p>
                                    <p className="p1-add-n"> sahip ol! </p>
                             </div>
                         </div>
@@ -133,8 +133,8 @@ function onClickButton(e){
                         return<div className="col-md-12 col-xs-12">
                             <div className="ser-pro-box-d">
                                 <div className="sp-box-text">
-                                    <p>{work.title} </p>
-                                    {/* <p><EditorPreview data={work.title} /></p> */}
+                                    {/* <p>{work.title} </p> */}
+                                    <p><EditorPreview data={work.title} /></p>
                                 </div>
                                 <div className="sp-img" >
                                     {/* <img src="assets/images/icons/img-01@2x.png"></img> */}
@@ -150,8 +150,8 @@ function onClickButton(e){
                                     <img src={BASE_URL.slice(0,-5)+ work.image}/>
                                 </div>
                                 <div className="sp-box-text">
-                                    <p>{work.title}</p>
-                                   {/* <p> <EditorPreview data={work.title} /></p> */}
+                                    {/* <p>{work.title}</p> */}
+                                   <p> <EditorPreview data={work.title} /></p>
                                 </div>
                                
                             </div>
@@ -211,7 +211,7 @@ function onClickButton(e){
                                         {/* <img src="assets/images/icons/checked.png" /> */}
                                         <img src={BASE_URL.slice(0,-5)+ im.icon}/>
                                     </div>
-                                    <p>{im.desc}</p>
+                                    <p><EditorPreview data={im.desc} /></p>
                                 </li>})}
                             </ul>
                         </div>

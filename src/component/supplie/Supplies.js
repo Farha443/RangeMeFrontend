@@ -76,17 +76,20 @@ function Supplies(){
       setmbanner(res.data.midd_banner)
       setslide(res.data.slider)
       setbottombanner(res.data.btm_banner)
-      ban_img =res.data.midd_banner[0].bg_image
-      ban_heading =res.data.midd_banner[0].heading
-      ban_description =res.data.midd_banner[0].description
-      ban_count=res.data.midd_banner[0].count
-      tr=res.data.btm_banner[0].content
-      btmimg=res.data.btm_banner[0].image
-      mid_b_img = res.data.mid_ban_img[0].bg_image
+      ban_img =res.data.midd_banner.bg_image
+      ban_heading =res.data.midd_banner.heading
+      ban_description =res.data.midd_banner.description
+      ban_count=res.data.midd_banner.count
+      tr=res.data.btm_banner.content
+      btmimg=res.data.btm_banner.image
+      mid_b_img =  res.data.mid_ban_img.bg_image
       setlink(res.data.link)
       setWorks(res.data.works)
       setWorksone(res.data.worksone)
+      
       setheading(res.data.heading)
+      
+      
 
     }).catch(err=>{
         console.log(err)            
@@ -99,6 +102,7 @@ function onClickButton(e){
   cookies.set('userType', supplier, { path: '/' });
   setModalShow(true)
 }
+
     return(
         <>
         {/* <SignupModal/> */}
@@ -116,10 +120,10 @@ function onClickButton(e){
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 col-xs-12">
-                            <div className="supplie-banner-text">
+                            <div className="supplie-banner-text ed2">
                                 <NavLink to="/" className="a11"> anasayfa </NavLink>
-                                <h1> {heading.heading}</h1>
-                                <p className="p2">{heading.description}<span > binlerce alıcıya sergileyerek</span> </p>
+                                <h1> <EditorPreview  data={heading.heading} /></h1>
+                                <p className="p2"> <EditorPreview data={heading.description} /><span > binlerce alıcıya sergileyerek</span> </p>
                                 <p className="p1-add-n">satışlarınızı arttırın! </p>
                             </div>
                         </div>
@@ -176,7 +180,7 @@ return<li>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h5> {sub.heading}</h5>
-                                        <p> {sub.description}</p>
+                                        <p> <EditorPreview data={sub.description} /> </p>
                                       </div>
                                     </div>
                                   </li>})}
@@ -259,7 +263,7 @@ return<li>
                                 </div>
                                 
                                 <div className="supp-text">
-                                  <p>{img.description}</p>
+                                  <p><EditorPreview data={img.description} /> </p>
                                   <h1>  {img.heading} </h1>
                                 </div>
                             </div>
@@ -311,8 +315,8 @@ return<li>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h5>{sub.heading}  </h5>
-                                        <p>{sub.description}
-                                        </p>
+                                        <p><EditorPreview data={sub.description} /> </p>
+                                        
                                       </div>
                                     </div>
                                   </li>})}
@@ -349,7 +353,7 @@ return<li>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h5> {sub.heading} </h5>
-                                        <p>{sub.description} </p>
+                                        <p><EditorPreview data={sub.description} /> </p>
                                       </div>
                                     </div>
                                   </li>})}
@@ -443,5 +447,19 @@ return<li>
         </>
     );
 }
+class EditorPreview extends React.Component {
+  render() {
+      return (
+          <div className="editor-preview">
+            
+              <div dangerouslySetInnerHTML={ { __html: this.props.data } }></div>
+          </div>
+      );
+  }
+}
+
+EditorPreview.defaultProps = {
+  data: ''
+};
 
 export default Supplies
