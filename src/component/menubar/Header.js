@@ -54,11 +54,14 @@ function Click2(){
 
 
 function Header(){
+  const [isActive, setActive] = useState("false");
   const [modalShow, setModalShow] = useState(false);
   const[brands, setBrands] = useState([]);
   const [, triggerRender] = useState(0);
 
-
+const handleToggle = () => {
+    setActive(!isActive);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -107,31 +110,29 @@ function SignUp(){
       <NavLink to="/buyer-home"  className="header-bar__link"> <img src="assets/images/icons/01.png" /> alıcı firmalar</NavLink>
       <NavLink to="servicehome"  className="header-bar__link"> <img src="assets/images/icons/01.png" /> hizmet sağlayıcılar</NavLink>
       {/* <div className="header-bar__divider" /> */}
-      <NavDropdown title="kaynaklar" id="basic-nav-dropdown" className="menu-drop-1245 men-menu-drop">
-      
-        <NavDropdown.Item  to="/success">başarı öyküleri</NavDropdown.Item>
-        <NavDropdown.Item  href="/blogs"  >tayuss blog</NavDropdown.Item>
-        <NavDropdown.Item  >haberler</NavDropdown.Item>
-        <NavDropdown.Item  >webinarlar</NavDropdown.Item>
-        {/* <NavLink to="/success" className="sub-nav__link">başarı öyküleri</NavLink>
-          <a href="/blogs" className="sub-nav__link">tayuss blog</a>
-          <a href="#" className="sub-nav__link">haberler</a>
-          <a href="#" className="sub-nav__link">webinarlar</a>
-        */}
-      </NavDropdown>
+      <div className="menu-drop-div">
+      <p>  <p onClick={handleToggle}  className={isActive ? "drop-p" : "drop-p-show"}>
+        <img src="assets/images/icons/01.png" />
+         kaynaklar <i class="fas fa-caret-down"></i> 
+      </p> 
 
-      {/* <div className="header-bar__link sub-nav__toggle">
-        <span>kaynaklar</span>
-        <div className="header-bar__angle">
-        <i class="fa fa-caret-down svg" aria-hidden="true"></i>
+      <div className={isActive ? "drop-d-101 " : "drop-d-101 open-drop"}>
+
+        <ul>
+                <li> <NavLink to="/success">başarı öyküleri </NavLink> </li>
+                <li> <NavLink to="/blogs">tayuss blog </NavLink> </li>
+                <li> <NavLink to="/">haberler </NavLink> </li>
+                <li> <NavLink to="/">webinarlar </NavLink> </li>
+            </ul>
+
+        {/* onClick={() => GetSingleBrand(bt.uuid)} */}
         </div>
-        <div className="sub-nav" id="resources-sub-nav">
-        <NavLink to="/success" className="sub-nav__link">başarı öyküleri</NavLink>
-          <a href="/blogs" className="sub-nav__link">tayuss blog</a>
-          <a href="#" className="sub-nav__link">haberler</a>
-          <a href="#" className="sub-nav__link">webinarlar</a>
-        </div>
-      </div> */}
+
+
+      </p>
+      </div>
+
+
       {logintoken === undefined ?
       <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text l-icn" >
         GİRİŞ YAP

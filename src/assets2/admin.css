@@ -4558,6 +4558,7 @@ button.admin-add-btn.f-w-500 {
 
 .ad-hm-logo-main {
     border: 2px solid #ffffff;
+    background-color: white;
 }
 
 .indfo-d22 a img {
@@ -6460,3 +6461,48 @@ section.service-p-section.p-3em {
     display: flex;
     align-items: center;
 }
+.menu-drop-div p {
+    margin: 0;
+    padding-right: 0.8rem;
+    padding-left: 0rem;
+    color: #95b0ba;
+    font-weight: bold;
+    cursor: pointer;
+}
+.menu-drop-div {
+    position: relative;
+}
+
+p.drop-p img {
+    visibility:hidden;
+}
+
+p.drop-p.show img {
+    visibility: show;
+}
+p.drop-p-show {
+    font-weight: bold;
+    color: #0f536d;
+}
+.menu-drop-div p .drop-d-101 {
+    background: #0f536d;
+    min-width: 10rem;
+}
+
+.menu-drop-div p .drop-d-101 ul li a {
+    font-weight: 500;
+    color: white;
+}
+.menu-drop-div p .drop-d-101 ul li {
+    padding: 3px 0px;
+    font-size: 14px;
+}
+.ad-hm-logo-main.b-img .img-b-tag {
+    width: 65%;
+    height: 65%;
+}
+.ad-hm-logo-main.b-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
