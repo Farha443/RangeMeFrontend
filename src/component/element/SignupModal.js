@@ -67,7 +67,7 @@ function Func() {
 
   if (typeof password !== "undefined" && typeof confirm_password !== "undefined") {
     if (password!= confirm_password) {
-      alert("Passwords do not match.")
+      alert("Girilen şifreler aynı değil")
     }
 } 
 
@@ -75,12 +75,12 @@ function Func() {
     var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
   
     if (!pattern.test(email)) {
-        alert("Enter a valid email")
+        alert("Geçerli bir eposta adresi giriniz")
     }
   
   }
   if(terms==null){
-    alert("Please agree to the terms and conditions first. ");
+    alert("Lütfen ilk önce Kullanım Koşulları ve Gizlilik Politikasını kabul edin. ");
   }
   else{
   axios.post( BASE_URL + "authentication/signup/",
@@ -95,13 +95,13 @@ function Func() {
 
       }).then(res=>{
         if (res.data.message === "Email id is required"){
-          alert("Email id is required");
+          alert("eposta zorunlu bir alandır");
         }
         else if (res.data.message === "Email id already exists"){
-          alert("Email id already exists");
+          alert("Bu eposta adresi ile bir hesap, sitemizde zaten mevcut");
         }
         else if (res.data.message === "Password is required"){
-          alert("Password is required");
+          alert("Şifre girişi zorunlu bir alandır");
         }
         document.getElementById('s2').className='st-two';
         document.getElementById('s1').className='st-one d-none'
@@ -163,7 +163,7 @@ axios(config).then(res=>{
 
 ).catch(err=>{
 document.getElementById('s2').className='st-two';
-alert("something went wrong");
+alert("Üzgünüz, bir şeyler ters gitti");
 })
 
 }
@@ -195,8 +195,8 @@ function brandSubmit(){
       cookies.set('token', res.data.data.access, { path: '/' });
 
       Swal.fire({
-        title: 'Registeration Successfull',
-        text: 'Redirecting...',
+        title: 'Kayıt İşleminiz Başarılı Oldu!',
+        text: 'Giriş sayfasına yönlendiriliyorsunuz...',
         timerProgressBar: true,
         type: 'success',
         timer: 3000,
@@ -213,7 +213,7 @@ function brandSubmit(){
       console.error(err);
       // $(".laoder").hide(); 
       document.getElementById('s3').className='st-three'
-    alert("something went wrong")
+    alert("Üzgünüz, bir şeyler ters gitti")
     })
   // }else{
   //   alert("Please Enter a valid URL");
@@ -235,7 +235,7 @@ function submitBuyer() {
 
   if (typeof password !== "undefined" && typeof confirm_password !== "undefined") {
     if (password!= confirm_password) {
-      alert("Passwords do not match.")
+      alert("Girilen şifreler aynı değil")
     }
 } 
 
@@ -243,12 +243,12 @@ function submitBuyer() {
     var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
   
     if (!pattern.test(email)) {
-        alert("Enter a valid email")
+        alert("Geçerli bir eposta adresi giriniz")
     }
   
   }
   if(terms==null){
-    alert("Please agree to the terms and conditions first. ");
+    alert("Lütfen önce Kullanım Koşulları ve Gizlilik Politikasını kabul edin! ");
   }
   else{
   axios.post( BASE_URL + "authentication/signup/",
@@ -272,7 +272,7 @@ function submitBuyer() {
         
       }).catch(err=>{
         document.getElementById('b2').className='st-one';
-        alert("something went wrong")
+        alert("bir şeyler ters gitti")
       })
     }
 } 
@@ -459,8 +459,8 @@ function BuyerStep2() {
   
     axios(config).then(res=>{
       Swal.fire({
-        title: 'Registeration Successfull',
-        text: 'Redirecting...',
+        title: 'Kayıt İşleminiz Başarılı Oldu!',
+        text: 'Giriş sayfasına yönlendiriliyorsunuz...',
         timerProgressBar: true,
         type: 'success',
         timer: 3000,
@@ -473,7 +473,7 @@ function BuyerStep2() {
     }
     
     ).catch(err=>{
-      alert("something went wrong")
+      alert("Üzgünüz, bir şeyler ters gitti")
     })    
 
 }
@@ -492,7 +492,7 @@ function submitService() {
 
   if (typeof password !== "undefined" && typeof confirm_password !== "undefined") {
     if (password!= confirm_password) {
-      alert("Passwords do not match.")
+      alert("Girilen şifreler aynı değil")
     }
 } 
 
@@ -500,12 +500,12 @@ function submitService() {
     var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
   
     if (!pattern.test(email)) {
-        alert("Enter a valid email")
+        alert("Geçerli bir eposta adresi giriniz")
     }
   
   }
   if(terms==null){
-    alert("Please agree to the terms and conditions first. ");
+    alert("Lütfen önce Kullanım Koşulları ve Gizlilik Politikasını kabul edin");
   }
   else{
   axios.post( BASE_URL + "authentication/signup/",
@@ -529,7 +529,7 @@ function submitService() {
         
       }).catch(err=>{
         document.getElementById('sp2').className='st-one';
-        alert("something went wrong")
+        alert("Üzgünüz, bir şeyler ters gitti")
       })
     }
 }
@@ -613,8 +613,8 @@ function ServiceStep2(){
 console.log(config)
 axios(config).then(res=>{
   Swal.fire({
-    title: 'Registeration Successfull',
-    text: 'Redirecting...',
+    title: 'Kayıt İşlemi Başarılı Oldu!',
+    text: 'Giriş sayfasına yönlendiriliyorsunuz',
     timerProgressBar: true,
     type: 'success',
     timer: 3000,
@@ -626,7 +626,7 @@ axios(config).then(res=>{
 }
 
 ).catch(err=>{
-  alert("something went wrong")
+  alert("bir şeyler ters gitti")
 })  
 }
 
@@ -649,8 +649,8 @@ axios(config).then(res=>{
               <Tabs>
                 <TabList>
                   <Tab onClick={click}> <div  className="sign-tab-menu"> <i class="fas fa-user-tie"></i> Tedarikçi </div> </Tab>
-                  <Tab onClick={Click1}> <div className="sign-tab-menu"> <i class="fas fa-store"></i> Alıcı</div> </Tab>
-                  <Tab onClick={Click2}> <div className="sign-tab-menu"> <i class="fas fa-cog"></i> Servis providers</div> </Tab>
+                  <Tab onClick={Click1}> <div className="sign-tab-menu"> <i class="fas fa-store"></i> Alıcı </div> </Tab>
+                  <Tab onClick={Click2}> <div className="sign-tab-menu"> <i class="fas fa-cog"></i> Hizmet Sağlayıcı </div> </Tab>
                 </TabList>
 
                 <TabPanel>
@@ -692,7 +692,7 @@ axios(config).then(res=>{
                                           <p> 3 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>MARKA</span> BİLGİLER </p>
+                                          <p> <span>MARKA</span> BİLGİLERİ </p>
                                         </div>
                                       </li>
                                     </ul>
@@ -709,45 +709,45 @@ axios(config).then(res=>{
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Adınız</Form.Label>
-                            <Form.Control type="text" id="first_name" placeholder="Lütfen adınızı yazın..." />
+                            <Form.Control type="text" id="first_name" placeholder="Lütfen adınızı giriniz..." />
                           </Form.Group>
                         </Col>
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Soyadınız</Form.Label>
-                            <Form.Control type="text" id="last_name" placeholder="Lütfen soyadınızı yazın..." />
+                            <Form.Control type="text" id="last_name" placeholder="Lütfen soyadınızı giriniz..." />
                           </Form.Group>
                         </Col>
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>E-mail Adresiniz</Form.Label>
-                            <Form.Control type="email"   id="email" placeholder="Lütfen mail adresinizi yazın..." />
+                            <Form.Label>E-posta Adresiniz</Form.Label>
+                            <Form.Control type="email"   id="email" placeholder="Lütfen e-posta adresinizi giriniz..." />
                           </Form.Group>
                         </Col>
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Parolanız</Form.Label>
-                            <Form.Control type="password" id="password" placeholder="Şifrenizi giriniz Lütfen...." />
+                            <Form.Control type="password" id="password" placeholder="Lütfen şifrenizi giriniz..." />
                           </Form.Group>
                         </Col>
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Parolanız Tekrar</Form.Label>
-                            <Form.Control type="password" id="password1" placeholder="Şifrenizi giriniz Lütfen" />
+                            <Form.Control type="password" id="password1" placeholder="Lütfen şifrenizi tekrar giriniz..." />
                           </Form.Group>
                         </Col>
 
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Cep Telefonu</Form.Label>
-                            <Form.Control type="text" id="mobile" placeholder="Lütfen Cep telefonu numaranızı girin...." />
+                            <Form.Control type="text" id="mobile" placeholder="Lütfen Cep telefonu numaranızı giriniz..." />
                           </Form.Group>
                         </Col>
 
                         <Col md="12">
                           <div class="form-group form-check signup-check">
                             <label class="form-check-label signup-lab">
-                              <input class="form-check-input" type="checkbox" /> <span> Gizlilik Şartları</span> ve <span> Kullanım Koşullarını </span> okudum ve kabul ediyorum./I have read and accept.
+                              <input class="form-check-input" type="checkbox" /> <span> Gizlilik Şartları</span> ve <span> Kullanım Koşullarını </span> okudum ve kabul ediyorum.
                             </label>
                           </div>
                         </Col>
@@ -793,7 +793,7 @@ axios(config).then(res=>{
                                           <p> 2 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>company </span> BİLGİLER </p>
+                                          <p> <span>FİRMA </span> BİLGİLERİ </p>
                                         </div>
                                       </li>
                                       <li>
@@ -801,7 +801,7 @@ axios(config).then(res=>{
                                           <p> 3 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>Marka Adı/</span> BİLGİLER </p>
+                                          <p> <span>MARKA </span> BİLGİLERİ </p>
                                         </div>
                                       </li>
                                     </ul>
@@ -817,8 +817,8 @@ axios(config).then(res=>{
                     <Row> 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Şirket Adı</Form.Label>
-                            <Form.Control type="text" id="comp_name" placeholder="Lütfen  firma adınızı yazın..." />
+                            <Form.Label>Firma Adı</Form.Label>
+                            <Form.Control type="text" id="comp_name" placeholder="Lütfen firma adınızı giriniz..." />
                           </Form.Group>
                         </Col>
                         <Col md="6" xs="12">
@@ -841,11 +841,11 @@ axios(config).then(res=>{
                         <Col md="6" xs="12">
                         <div class="form-group signup-f-group">
                         <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label> Annual Gross Yıllık Ciro </Form.Label>
+                                                <Form.Label> Yıllık Ciro </Form.Label>
                                                 <Form.Control as="select" id="revenue">
-                                                <option value="0M$-5M$">0M$-5M$</option>
-                                                <option value="6M$-10M$">6M$-10M$</option>
-                                                <option value="11M$-15M$">11M$-15M$</option>
+                                                <option value="0MTL-5MTL">0MTL-5MTL</option>
+                                                <option value="6MTL-10MTL">6MTL-10MTL</option>
+                                                <option value="11MTL-15MTL">11MTL-15MTL</option>
                                                 </Form.Control>
                           </Form.Group>
                         </div>
@@ -854,7 +854,7 @@ axios(config).then(res=>{
                         <Col md="6" xs="12">
                         <div class="form-group signup-f-group">
                         <Form.Group controlId="exampleForm.ControlSelect1">
-                                                <Form.Label> Select the Department(s) that best describes your industry. </Form.Label>
+                                                <Form.Label> Firma Ürün Kategorisini Seçiniz </Form.Label>
                                                 <Form.Control as="select" multiple="true" id="department">
                                                 {showcat.map(cat=>(
                                                 <option value={cat.uuid}>{cat.name}</option>))}
@@ -867,12 +867,12 @@ axios(config).then(res=>{
                         <Col md="6" xs="12">
                         <div class="form-group signup-f-group">
                         <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Which best describes your business type.</Form.Label>
+                                                <Form.Label> Firma Faaliyet Tipini Seçiniz </Form.Label>
                                                 <Form.Control as="select" id="buss_type">
-                                                <option value="manufacturer">Manufacturer</option>
-                                                <option value="broker">Broker</option>
-                                                <option value="reseller">Reseller</option>
-                                                <option value="other">Other</option>
+                                                <option value="manufacturer">Üretici</option>
+                                                <option value="broker">Aracı</option>
+                                                <option value="reseller">Distribütör-Bayi</option>
+                                                <option value="other">Diğer</option>
                                                 </Form.Control>
 
                                             </Form.Group>
@@ -881,8 +881,8 @@ axios(config).then(res=>{
 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Your Şirket Adresi</Form.Label>
-                            <Form.Control type="text"  id="city" placeholder="Lütfen  firma adınızı yazın..." />
+                            <Form.Label> Firma Adresi </Form.Label>
+                            <Form.Control type="text"  id="city" placeholder="Lütfen firma adresinizi giriniz..." />
                           </Form.Group>
                         </Col>
 
@@ -905,8 +905,8 @@ axios(config).then(res=>{
                         <div className="container">
                             <div className="col-md-12 col-xs-12">
                                 <div className="sig-text-1">
-                                    <p> Your products and Marka Adı profile <span className="sign-text-1-span-2">  exhibiting to thousands of buyers </span> <span className="sign-text-1-span-1"> increase your sales! </span> </p>
-                                    <h6> CREATE YOUR FREE SUPPLIER PROFILE NOW. </h6>
+                                    <p> Ürünlerinizi ve marka profilinizi <span className="sign-text-1-span-2"> binlerce alıcıya sergileyerek </span> <span className="sign-text-1-span-1"> satışlarınızı arttırın! </span> </p>
+                                    <h6> HEMEN ÜCRETSİZ TEDARİKÇİ PROFİLİNİZİ OLUŞTURUN. </h6>
                                 </div>
                             </div>
 
@@ -935,7 +935,7 @@ axios(config).then(res=>{
                                           <p> 3 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>MARKA</span> BİLGİLER </p>
+                                          <p> <span>MARKA</span> BİLGİLERİ </p>
                                         </div>
                                       </li>
                                     </ul>
@@ -950,15 +950,15 @@ axios(config).then(res=>{
                   <Row> 
                         <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Marka Adı name</Form.Label>
-                            <Form.Control type="text" id="brand_name" placeholder="Lütfen  firma adınızı yazın..." />
+                            <Form.Label>Marka Adı</Form.Label>
+                            <Form.Control type="text" id="brand_name" placeholder="Lütfen markanızı giriniz..." />
                           </Form.Group>
                         </Col>
 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Marka Adı website</Form.Label>
-                            <Form.Control type="text" id="brand_website" placeholder="Lütfen  firma adınızı yazın..." />
+                            <Form.Label>Web Siteniz </Form.Label>
+                            <Form.Control type="text" id="brand_website" placeholder="Lütfen websitenizi giriniz (örnek www.abc.com)" />
                           </Form.Group>
                         </Col>
 
@@ -988,7 +988,7 @@ axios(config).then(res=>{
                     <div className="container">
                         <div className="col-md-12 col-xs-12">
                             <div className="sig-text-1">
-                                <p> Ürünlerinizi ve marka profilinizi <span className="sign-text-1-span-2">  binlerce alıcıya sergileyerek </span> <span className="sign-text-1-span-1"> satışlarınızı arttırın! </span> </p>
+                                <p> Ürünlerinizi ve marka profilinizi <span className="sign-text-1-span-2"> binlerce alıcıya sergileyerek </span> <span className="sign-text-1-span-1"> satışlarınızı arttırın! </span> </p>
                                 <h6> HEMEN ÜCRETSİZ TEDARİKÇİ PROFİLİNİZİ OLUŞTURUN. </h6>
                             </div>
                         </div>
@@ -1018,7 +1018,7 @@ axios(config).then(res=>{
                                       <p> 3 </p>
                                     </div>
                                     <div className="step-text">
-                                      <p> <span>MARKA</span> BİLGİLER </p>
+                                      <p> <span>MARKA</span> BİLGİLERİ </p>
                                     </div>
                                   </li>
                                 </ul>
@@ -1035,46 +1035,46 @@ axios(config).then(res=>{
                     <Col md="6" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                         <Form.Label>Adınız</Form.Label>
-                        <Form.Control type="text" id="first_name" placeholder="Lütfen adınızı yazın..." />
+                        <Form.Control type="text" id="first_name" placeholder="Lütfen adınızı giriniz..." />
                       </Form.Group>
                     </Col>
                     <Col md="6" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                         <Form.Label>Soyadınız</Form.Label>
-                        <Form.Control type="text" id="last_name" placeholder="Lütfen soyadınızı yazın..." />
+                        <Form.Control type="text" id="last_name" placeholder="Lütfen soyadınızı giriniz..." />
                       </Form.Group>
                     </Col>
                     <Col md="12" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                        <Form.Label>E-mail Adresiniz</Form.Label>
-                        <Form.Control type="email" id="email" placeholder="Lütfen mail adresinizi yazın..." />
+                        <Form.Label>E-posta Adresiniz</Form.Label>
+                        <Form.Control type="email" id="email" placeholder="Lütfen eposta adresinizi giriniz..." />
                       </Form.Group>
                     </Col>
                     <Col md="12" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                         <Form.Label>Parolanız</Form.Label>
-                        <Form.Control type="password" id="password" placeholder="Şifrenizi giriniz Lütfen...." />
+                        <Form.Control type="password" id="password" placeholder="Lütfen şifrenizi giriniz...." />
                       </Form.Group>
                     </Col>
 
                     <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                             <Form.Label>Parolanız Tekrar</Form.Label>
-                            <Form.Control type="password" id="password1" placeholder="Şifrenizi giriniz Lütfen...." />
+                            <Form.Control type="password" id="password1" placeholder="Lütfen şifrenizi tekrar giriniz..." />
                           </Form.Group>
                         </Col>
 
                     <Col md="12" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                        <Form.Label>Telefon Numaranız</Form.Label>
-                        <Form.Control type="text" id="mobile" placeholder="Lütfen Cep telefonu numaranızı girin...." />
+                        <Form.Label>Cep Telefonu</Form.Label>
+                        <Form.Control type="text" id="mobile" placeholder="Lütfen Cep telefonu numaranızı giriniz..." />
                       </Form.Group>
                     </Col>
 
                     <Col md="12" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Company Name</Form.Label>
-                            <Form.Control type="text" id="comp_name" placeholder="Company name" />
+                            <Form.Label>Firma Adıe</Form.Label>
+                            <Form.Control type="text" id="comp_name" placeholder="Lütfen firma adınızı giriniz..." />
                           </Form.Group>
                         </Col>
 
@@ -1135,7 +1135,7 @@ axios(config).then(res=>{
                                           <p> 3 </p>
                                         </div>
                                         <div className="step-text">
-                                          <p> <span>MARKA</span> BİLGİLER </p>
+                                          <p> <span>MARKA</span> BİLGİLERİ </p>
                                         </div>
                                       </li>
                                     </ul>
@@ -1152,26 +1152,26 @@ axios(config).then(res=>{
                       
                         <Col md="6" xs="12">
                         <div class="form-group signup-f-group">
-                          <label for="comp_type">Company type</label>
+                          <label for="comp_type">Firma Faaliyet Tipie</label>
                           <select class="form-control" id="comp_type">
-                          <option value="company owned">Company Owened</option>
-                          <option value="distributor">Distributor</option>
-                          <option value="franchiser"> Franchiser</option>
-                          <option value="importer">Importer</option>
+                          <option value="company owned">Kendi Şirketiniz</option>
+                          <option value="distributor">Distribütor-Bayi</option>
+                          <option value="franchiser">Franchise Veren</option>
+                          <option value="importer">İthalatçı</option>
                           </select>
                         </div>
                         </Col>
 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Job Title</Form.Label>
-                            <Form.Control type="text" id="job_title" placeholder="Job title" />
+                            <Form.Label>İşyeri Ünvanı</Form.Label>
+                            <Form.Control type="text" id="job_title" placeholder="Lütfen iş yerindeki ünvanınızı giriniz..." />
                           </Form.Group>
                         </Col>
 
                         <Col md="6" xs="12">
                         <div class="form-group signup-f-group">
-                          <label for="buyers">Alıcı Sayısı</label>
+                          <label for="buyers">Mevcut Alıcı Sayısı</label>
                           <select class="form-control" id="buyers">
                           <option value="1-2">1-2</option>
                           <option value="3-10">3-10</option>
@@ -1183,7 +1183,7 @@ axios(config).then(res=>{
 
                         <Col md="6" xs="12">
                         <div class="form-group signup-f-group">
-                          <label for="store_count">Store count</label>
+                          <label for="store_count">Mağaza Sayıcı</label>
                           <select class="form-control" id="store_count">
                           <option value="1-2">1-2</option>
                           <option value="3-10">3-10</option>
@@ -1195,23 +1195,23 @@ axios(config).then(res=>{
 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Company website</Form.Label>
-                            <Form.Control type="text" id="comp_website" placeholder="www.abc.com" />
+                            <Form.Label>Firma Websitesi</Form.Label>
+                            <Form.Control type="text" id="comp_website" placeholder="Lütfen firma websitenizi giriniz (örnek www.abc.com)" />
                           </Form.Group>
                         </Col>
 
                         <Col md="6" xs="12">
                           <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                            <Form.Label>Bussiness address</Form.Label>
-                            <Form.Control type="text" id="buss_address" placeholder="Lütfen  firma adınızı yazın..." />
+                            <Form.Label>Firma Adresi</Form.Label>
+                            <Form.Control type="text" id="buss_address" placeholder="Lütfen firma adresinizi giriniz..." />
                           </Form.Group>
                         </Col>
 
                         <Col md="12" xs="12">
                           
                         <Form.Group className="signup-f-group" controlId="exampleForm.ControlTextarea1">
-                          <Form.Label>Sample instruction</Form.Label>
-                          <Form.Control as="textarea" rows={3} id="sample_instruction"  />
+                          <Form.Label>Numune Koşulları</Form.Label>
+                          <Form.Control as="textarea" rows={3} id="sample_instruction" placeholder="Hangi şekilde numne kabul ettiğinizi yazabilir misiniz?"  />
                         </Form.Group>
                         </Col>
 
@@ -1266,7 +1266,7 @@ axios(config).then(res=>{
                                             <p> 3 </p>
                                           </div>
                                           <div className="step-text">
-                                            <p> <span>MARKA</span> BİLGİLER </p>
+                                            <p> <span>MARKA</span> BİLGİLERİ </p>
                                           </div>
                                         </li>
                                       </ul>
@@ -1281,7 +1281,7 @@ axios(config).then(res=>{
                     <Row> 
                           <Col md="6" xs="12">
                             <Form.Group className="signup-f-group" controlId="formBasicEmail" >
-                              <Form.Label>Choose file</Form.Label>
+                              <Form.Label>Logo Dosyası</Form.Label>
                               <Form.Control type="file" id="comp_logo" />
                             </Form.Group>
                           </Col>
@@ -1289,15 +1289,15 @@ axios(config).then(res=>{
                           <Col md="6" xs="12">
                             <div className="logo-right-text-01">
                                 <div>
-                                <h5> Company Logo</h5>
-                                <p> Images must be at least 800 x 800px file formats JPG,PNG,SVG  </p>
+                                <h5> Firma Logosu</h5>
+                                <p> Logo resmi 800 x 800px boyutlarında ve JPG,PNG,SVG formatlarında olmalıdır </p>
                                 </div>
                             </div>
                           </Col>
 
                           <Col md="12" xs="12">
                             <Form.Group className="signup-f-group" controlId="exampleForm.ControlTextarea1">
-                              <Form.Label>Company Description</Form.Label>
+                              <Form.Label>Şirket Açıklaması</Form.Label>
                               <Form.Control as="textarea" id="comp_desc" rows={3} />
                             </Form.Group>
                           </Col>
@@ -1306,7 +1306,7 @@ axios(config).then(res=>{
                             <Col md="6" className="m-auto">
 
                             <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Ürün Kategorisi seç </Form.Label>
+                            <Form.Label>Ürün Kategorinizi Seçiniz </Form.Label>
                             <Select
                             id="select_category"
                             isMulti
@@ -1322,7 +1322,7 @@ axios(config).then(res=>{
 
                           <Col md="6" xs="12">
                           <div class="form-group signup-f-group">
-                          <Form.Label>Choose your country </Form.Label>
+                          <Form.Label>Ülke Seçiniz </Form.Label>
                             <CountryDropdown id="country" 
                             value={country}
                             defaultOptionLabel="Ülke Seçiniz"
@@ -1333,7 +1333,7 @@ axios(config).then(res=>{
 
                           <Col md="6" >
                               <div className="mb-3 sign-radio">
-                              <label htmlFor="basic-url" className="lb">Do you cover all regions within your country</label>
+                              <label htmlFor="basic-url" className="lb">Tüm şehirlerde faaliyet gösteriyor musunuz?</label>
                                 <Form.Check
                                   inline
                                   value="true"
@@ -1357,7 +1357,7 @@ axios(config).then(res=>{
                           {select==="false"?
                           <Col md="6" xs="12">
                           <div class="form-group signup-f-group">
-                            <label for="sel1">specify state of regions</label>
+                            <label for="sel1">Şehir seçiniz</label>
                             <RegionDropdown
                             country={country}
                             value={region}
@@ -1419,7 +1419,7 @@ axios(config).then(res=>{
                                       <p> 3 </p>
                                     </div>
                                     <div className="step-text">
-                                      <p> <span>MARKA</span> BİLGİLER </p>
+                                      <p> <span>MARKA</span> BİLGİLERİ </p>
                                     </div>
                                   </li>
                                 </ul>
@@ -1436,13 +1436,13 @@ axios(config).then(res=>{
                       <Col md="6" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                         <Form.Label>Adınız</Form.Label>
-                        <Form.Control type="text" id="first_name" placeholder="Lütfen adınızı yazın..." />
+                        <Form.Control type="text" id="first_name" placeholder="Lütfen adınızı giriniz..." />
                       </Form.Group>
                       </Col>
                       <Col md="6" xs="12">
                       <Form.Group className="signup-f-group" controlId="formBasicEmail" >
                         <Form.Label>Soyadınız</Form.Label>
-                        <Form.Control type="text" id="last_name" placeholder="Lütfen soyadınızı yazın..." />
+                        <Form.Control type="text" id="last_name" placeholder="Lütfen soyadınızı giriniz..." />
                       </Form.Group>
                       </Col>
                       <Col md="12" xs="12">
@@ -1614,7 +1614,7 @@ axios(config).then(res=>{
                                             <p> 3 </p>
                                           </div>
                                           <div className="step-text">
-                                            <p> <span>MARKA</span> BİLGİLER </p>
+                                            <p> <span>MARKA</span> BİLGİLERİ </p>
                                           </div>
                                         </li>
                                       </ul>
@@ -1656,21 +1656,21 @@ axios(config).then(res=>{
 
                         <Col md="12" >
                               <div className="mb-3 sign-radio">
-                              <p>what area can you service ? </p>
+                              <p>Nerede Hizmet Sağlıyorsunuz? </p>
                                 <Form.Check
                                   inline
-                                  label="National"
+                                  label="Ülke Bazında"
                                   name="group1"
                                   type="radio"
-                                  value="National" 
+                                  value="Ülke Bazında" 
                                   id="1"
                                   onClick={servicechange}
                                 />
                                 <Form.Check
                                   inline
-                                  label="State"
+                                  label="Şehir Bazında"
                                   name="group1"
-                                  value="true"
+                                  value="Şehir Bazında"
                                   type="radio"
                                   id="2"
                                   onClick={servicechange}
@@ -1678,8 +1678,8 @@ axios(config).then(res=>{
 
                                  <Form.Check
                                   inline
-                                  label="Global"
-                                  value="Global"
+                                  label="Tüm Ülkeler Bazında"
+                                  value="Tüm Ülkeler Bazında"
                                   name="group1"
                                   type="radio"
                                   id="2"
