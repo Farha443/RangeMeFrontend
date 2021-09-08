@@ -121,6 +121,7 @@ function Func() {
 } 
 
 function Submit(){
+// debugger
   var token = cookies.get('token');
   var uuid = cookies.get('uuid');
   var year_founded = document.getElementById('year').value;
@@ -278,7 +279,6 @@ function submitBuyer() {
 } 
 
 function BuyerStep1() {
-  // debugger
   var comp_type = document.getElementById('comp_type').value;
   var job_title = document.getElementById('job_title').value;
   var buyers = document.getElementById('buyers').value;
@@ -653,6 +653,7 @@ axios(config).then(res=>{
                   <Tab onClick={Click2}> <div className="sign-tab-menu"> <i class="fas fa-cog"></i> Hizmet Sağlayıcı </div> </Tab>
                 </TabList>
 
+{/* ------------------------supplier signup----------------------------------- */}
                 <TabPanel>
             
                  <section id="s1" className="st-one ">
@@ -827,10 +828,10 @@ axios(config).then(res=>{
                                                 <Form.Label> Kuruluş Tarihi</Form.Label>
                                                 <Form.Control as="select" id="year">
                                                 {
-       years.reverse().map((year, index) => {
-         return <option key={`year${index}`} value={year}>{year}</option>
-       })
-     }
+                                                    years.reverse().map((year, index) => {
+                                                      return <option key={`year${index}`} value={year}>{year}</option>
+                                                    })
+                                                  }
     
    
                                          </Form.Control>
@@ -869,10 +870,10 @@ axios(config).then(res=>{
                         <Form.Group controlId="formBasicEmail">
                                                 <Form.Label> Firma Faaliyet Tipini Seçiniz </Form.Label>
                                                 <Form.Control as="select" id="buss_type">
-                                                <option value="manufacturer">Üretici</option>
-                                                <option value="broker">Aracı</option>
-                                                <option value="reseller">Distribütör-Bayi</option>
-                                                <option value="other">Diğer</option>
+                                                <option value="Üretici">Üretici</option>
+                                                <option value="Aracı">Aracı</option>
+                                                <option value="Distribütör-Bayi">Distribütör-Bayi</option>
+                                                <option value="Diğer">Diğer</option>
                                                 </Form.Control>
 
                                             </Form.Group>
@@ -979,7 +980,9 @@ axios(config).then(res=>{
 
                 </TabPanel>
                
+
                
+{/* ------------------------buyer signup----------------------------------- */}
                 <TabPanel>
                   <section  id="b1" className="st-one ">
 
@@ -1154,10 +1157,10 @@ axios(config).then(res=>{
                         <div class="form-group signup-f-group">
                           <label for="comp_type">Firma Faaliyet Tipie</label>
                           <select class="form-control" id="comp_type">
-                          <option value="company owned">Kendi Şirketiniz</option>
-                          <option value="distributor">Distribütor-Bayi</option>
-                          <option value="franchiser">Franchise Veren</option>
-                          <option value="importer">İthalatçı</option>
+                          <option value="Kendi Şirketiniz">Kendi Şirketiniz</option>
+                          <option value="Distribütor-Bayi">Distribütor-Bayi</option>
+                          <option value="Franchise Veren">Franchise Veren</option>
+                          <option value="İthalatçı">İthalatçı</option>
                           </select>
                         </div>
                         </Col>
@@ -1381,6 +1384,8 @@ axios(config).then(res=>{
                 </TabPanel>
 
 
+
+{/* ------------------------service signup----------------------------------- */}
                 <TabPanel>
                   <section id="sp1" className="st-one ">
 
