@@ -312,7 +312,7 @@ function SignUp(){
                             <div className="lr-title-1">
 
                               <h3> {work.title}</h3>
-                              <NavLink to=""> Tüm Özellikler <i class="fal fa-long-arrow-right"></i> </NavLink>
+                              <NavLink to="/"> Tüm Özellikler <i class="fal fa-long-arrow-right"></i> </NavLink>
                             </div>
                         </div>
                     </div>
@@ -410,7 +410,7 @@ function SignUp(){
                             <h6 className="h-01-2"> {td}</h6>
                             
                             <h6 className="h-01-2"><b>Tayuss</b>, nitelikli müşteriler ile bir araya getirerek yeni iş fırsatları yakalayabileceğiniz, marka bilinirliği ve <b>satışlarınızı arttırabileceğiniz</b> bir olanak sunar.</h6>
-                            <NavLink to="" className="mid-banner-a"> Tüm Özellikler <i class="fal fa-long-arrow-right"></i> </NavLink>
+                            <NavLink to="/"  className="mid-banner-a"> Tüm Özellikler <i class="fal fa-long-arrow-right"></i> </NavLink>
                           </div>  
                       </div>
                     </div>

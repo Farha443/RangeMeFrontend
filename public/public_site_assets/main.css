@@ -7680,6 +7680,7 @@ section.mid-banner-section {
     margin-top: 1.5rem;
     display: flex;
     align-items: center;
+    font-size: 22px;
 }
 .hm-slider-title h1 span.hm-title-h {
     font-weight: 700;

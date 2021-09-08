@@ -65,7 +65,7 @@ function BuyerCompanies(){
   useEffect(() => {
     axios.get(BASE_URL+'buyerhome/buyerhomeview/')
     .then(res=>{
-      console.log(res.data.links)
+      console.log(res.data)
       tr=res.data.btm_banner.content
       btmimg=res.data.btm_banner.image
       setslide(res.data.slider)
