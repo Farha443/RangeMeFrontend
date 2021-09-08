@@ -70,9 +70,8 @@ function Supplies(){
     
     axios.get(BASE_URL+'supplierhome/supplierhomeview/')
     .then(res=>{
-      debugger
-      console.clear()
-      console.log(res.data)
+      // console.clear()
+      // console.log(res.data)
       setmbanner(res.data.midd_banner)
       setslide(res.data.slider)
       setbottombanner(res.data.btm_banner)
@@ -212,8 +211,7 @@ return<li>
 
                         <div className="col-md-6 co-xs-12 ml-auto">
                             <div className="r-text-254">
-                            <h5> {work.title}<br/>
-                            Grow your business by sharing your Marka Adı profile!</h5>
+                            <h5> {work.title}</h5>
                             </div>
                             <div className="d-one-12423">
                                 <ul>
@@ -232,7 +230,7 @@ return<li>
                                       </div>
                                       <div className="ic-text-6254">
                                         <h5>{sub.heading} </h5>
-                                        <p> {sub.description}
+                                        <p> <EditorPreview data={sub.description} />
                                         </p>
                                       </div>
                                     </div>
