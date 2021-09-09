@@ -634,9 +634,7 @@ axios(config).then(res=>{
          centered
          className="sign-modal-main">
       <Modal.Header  closeButton>
-        {/* <Modal.Title id="contained-modal-title-vcenter">
-        Sign up for Veniver
-        </Modal.Title> */}
+
       </Modal.Header>
       <Modal.Body className="show-grid">
       <div className="signup-modal-main signup-modal__account-types">
@@ -1626,7 +1624,8 @@ axios(config).then(res=>{
                       </div>
 
                       </section>
-                    <section className="signup-form-section">
+                      
+                      <section className="signup-form-section">
                     <Row> 
 
                       
@@ -1687,14 +1686,14 @@ axios(config).then(res=>{
                                   onClick={servicechange}
                                 />     
 
-                                {change === "true" ?<div>
+                                {change === "true" ?<div className='ser-c'>
                                 <CountryDropdown id="country" className="form-control"
-                                value={countryService}
+                                value={"Turkey"}
                                 onChange={(val) => selectCountryService(val)} />
                                 </div> : ""}
-                                {change === "true" ? <div>
+                                {change === "true" ? <div class="mt-2">
                                 <RegionDropdown  id ="state" className = "form-control"
-                                country={countryService}
+                                country={"Turkey"}
                                 value={regionService}
                                 onChange={(val) => selectRegionService(val)} />
                                 </div>:""}

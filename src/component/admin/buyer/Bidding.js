@@ -31,20 +31,24 @@ function BidPlacing(){
     var product = document.getElementById('product').value;
     var quantity = document.getElementById('qty').value;
     var budget = document.getElementById('budget').value;
-    var requirements = document.getElementById('rqs').value;
+    var token = cookies.get('logintoken');
+    // var requirements = document.getElementById('rqs').value;
     var category = document.getElementById('department').value;
-    var notifyurl = BASE_URL+'authentication/send_notifiaction/'
-    var n_user = cookies.get("uuid")
+    var url = BASE_URL+'authentication/bids/'
+    // var n_user = cookies.get("uuid")
     var notifyconfig = {
         method: 'post',
-        url: notifyurl,
+        url: url,
+        headers: {
+          "Authorization": "Bearer " + token,
+        },
         data:{
-            n_user : n_user,
-            product : product,
+            // n_user : n_user,
+            bid_product : product,
             quantity :quantity,
             budget : budget,
-            notification : requirements,
-            category:category,
+            // notification : requirements,
+            bid_category:category,
           }
       };
       // var ws = new WebSocket(wsStart+'tayuss.com/test/')

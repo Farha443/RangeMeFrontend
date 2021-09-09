@@ -77,7 +77,8 @@ function AdminNavbar(){
   const handleToggle1 = () => {
     setActive1(!isActive1);
   };
-  const [profilephoto, setProfilephoto]= useState(null)
+  const [profilephoto, setProfilephoto]= useState(null);
+  
     useEffect(() => {
         axios.get(BASE_URL+'authentication/getuser/'+cookies.get("uuid")).then(res=>{
           setProfilephoto(res.data.data.user_pic)
@@ -117,6 +118,8 @@ function AdminNavbar(){
         .then(res=>{
           // alert(res.data.bids)
           // +cookies.get('bminutes')
+          console.log("bidding data")
+          console.log(res.data)
           setBids(res.data.bids)
           setMsgCount(res.data.mcounts)
           setInqs(res.data.icounts)
@@ -356,7 +359,7 @@ var config = {
 };
 console.log(config)
 axios(config).then(res=>{
-    console.log(res.data.data)
+    // console.log(res.data.data)
   cookies.set('uuid2', res.data.data.uuid, { path: '/' })
 
   $(".laoder").hide(); 

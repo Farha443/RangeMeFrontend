@@ -6506,3 +6506,7 @@ p.drop-p-show {
     align-items: center;
     justify-content: center;
 } 
+
+.ser-c {
+    display: none;
+}
