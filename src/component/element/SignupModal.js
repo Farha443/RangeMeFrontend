@@ -121,7 +121,6 @@ function Func() {
 } 
 
 function Submit(){
-// debugger
   var token = cookies.get('token');
   var uuid = cookies.get('uuid');
   var year_founded = document.getElementById('year').value;
@@ -382,6 +381,8 @@ function SignupModal(props){
 
   axios.get(BASE_URL +'authentication/service-category').then(res=>{
     setServiceCategory(res.data.data)
+    console.log("service categories")
+    console.log(res.data.data)
 }).catch(err=>{
     console.log(err)            
 })
@@ -569,7 +570,6 @@ axios(config).then(res=>{
 }
 
 function ServiceStep2(){
-  // debugger
   var array = []
   var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
   for (var i = 0; i < checkboxes.length; i++) {
@@ -1387,7 +1387,7 @@ axios(config).then(res=>{
 
 {/* ------------------------service signup----------------------------------- */}
                 <TabPanel>
-                  <section id="sp1" className="st-one ">
+                  <section id="sp1" className="st-one d-none">
 
                       <section className="sign-d-1">
                       <div className="row">
@@ -1583,7 +1583,7 @@ axios(config).then(res=>{
                     </section>
                     </section>
 
-                  <section id="sp3" className="st-three d-none" >
+                  <section id="sp3" className="st-three" >
                       <section className="sign-d-1">
                         <div className="row">
                           <div className="container">
@@ -1675,7 +1675,7 @@ axios(config).then(res=>{
                                   inline
                                   label="Şehir Bazında"
                                   name="group1"
-                                  value="Şehir Bazında"
+                                  value="true"
                                   type="radio"
                                   id="2"
                                   onClick={servicechange}
