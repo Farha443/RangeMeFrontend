@@ -405,8 +405,8 @@ const changefunction = e =>{
 
 function servicechange(f){
 var val = f.target.value;
-setChange(val);
-value_tested = change;
+value_tested = (val);
+setChange(value_tested);
 return value_tested
 }
 
@@ -572,8 +572,9 @@ function ServiceStep2(){
   var array = [];
   var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
   for (var i = 0; i < checkboxes.length; i++) {
-      array.push(checkboxes[i].value)
+      array.push(checkboxes[i].value);
   }
+
   if (value_tested === "true"){
     var service_area = country_value+"/"+region_value;
   }
