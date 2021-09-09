@@ -1387,7 +1387,7 @@ axios(config).then(res=>{
 
 {/* ------------------------service signup----------------------------------- */}
                 <TabPanel>
-                  <section id="sp1" className="st-one d-none">
+                  <section id="sp1" className="st-one">
 
                       <section className="sign-d-1">
                       <div className="row">
@@ -1583,7 +1583,7 @@ axios(config).then(res=>{
                     </section>
                     </section>
 
-                  <section id="sp3" className="st-three" >
+                  <section id="sp3" className="st-three d-none" >
                       <section className="sign-d-1">
                         <div className="row">
                           <div className="container">
