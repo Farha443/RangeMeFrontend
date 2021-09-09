@@ -29,9 +29,9 @@ import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-countr
 const axios = require('axios');
 const cookies = new Cookies();
 var userType='';
-var value_tested = '';//global variable  
-var country_value = ''
-var region_value = ''
+var value_tested = '';
+var country_value = '';
+var region_value = '';
 
 function click(){
   cookies.remove("userType");
@@ -390,11 +390,11 @@ function SignupModal(props){
 
 
 const selectCountry  = val => {
-  setCountry(val );
+  setCountry(val);
 }
 
 const selectRegion  = val =>{
-  setRegion(val );
+  setRegion(val);
   
 }
 const changefunction = e =>{
@@ -404,10 +404,9 @@ const changefunction = e =>{
 }
 
 function servicechange(f){
-  // debugger
-var val = f.target.value
+var val = f.target.value;
 setChange(val);
-value_tested = change
+value_tested = change;
 return value_tested
 }
 
@@ -571,11 +570,10 @@ axios(config).then(res=>{
 
 function ServiceStep2(){
   var array = [];
-  var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+  var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
   for (var i = 0; i < checkboxes.length; i++) {
       array.push(checkboxes[i].value)
   }
-
   if (value_tested === "true"){
     var service_area = country_value+"/"+region_value;
   }
@@ -601,7 +599,7 @@ function ServiceStep2(){
     company_logo:"",
     service :uuid,
     user_sv:user_uuid,
-    service_area:service_area,
+    service_area : service_area,
     s_category : array,
       
     }
