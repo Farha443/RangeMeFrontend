@@ -412,14 +412,14 @@ return value_tested
 }
 
 const selectCountryService  = val => {
-  setCountryService(val );
-  country_value = val
+  setCountryService(val);
+  country_value = val;
   return country_value
 }
 
 const selectRegionService  = val =>{
-  setRegionService(val );
-  region_value = val
+  setRegionService(val);
+  region_value = val;
   return region_value
 }
 
@@ -570,20 +570,17 @@ axios(config).then(res=>{
 }
 
 function ServiceStep2(){
-  var array = []
-  var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+  var array = [];
+  var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
   for (var i = 0; i < checkboxes.length; i++) {
       array.push(checkboxes[i].value)
   }
-  // console.log(value_tested)
-  // var service_area = value_tested
-
 
   if (value_tested === "true"){
-    var service_area = country_value+"/"+region_value 
+    var service_area = country_value+"/"+region_value;
   }
   else{
-    var service_area = value_tested
+    var service_area = value_tested;
   }
   var url = BASE_URL + "authentication/createserprovider/";
   var token = cookies.get('token');
