@@ -75,8 +75,8 @@ function AdminHome(){
         var url = BASE_URL+'authentication/getuser/'+ user_uuid;
         axios.get(url).then(res=>{
             setUser(res.data.data)
-            // console.log("user data")
-            // console.log(res.data.data)
+            console.log("user data")
+            console.log(res.data.data)
         }).catch(err=>{
             console.log(err)            
         })

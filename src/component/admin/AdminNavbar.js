@@ -93,19 +93,20 @@ function AdminNavbar(){
             console.log(err)            
         })
         var curr_dt = new Date();
+
         var diff =(new Date(cookies.get('bminutes')).getTime() - curr_dt.getTime()) / 1000;
         diff /= 60;
         var bminutes = Math.abs(Math.round(diff));
-        // alert(bminutes)
+        // alert("b min--- "+bminutes)
         diff =(new Date(cookies.get('iminutes')).getTime() - curr_dt.getTime()) / 1000;
         diff /= 60;
         var iminutes = Math.abs(Math.round(diff));
-        // alert(iminutes)
+        // alert("i min--- "+iminutes)
 
         diff =(new Date(cookies.get('mminutes')).getTime() - curr_dt.getTime()) / 1000;
         diff /= 60;
         var mminutes = Math.abs(Math.round(diff));
-        // alert(mminutes)
+        // alert("m min--- "+mminutes)
         var config={
           url:BASE_URL+'authentication/header/?bminutes='+bminutes+'&iminutes='+iminutes+'&mminutes='+mminutes,
           method:'get',
