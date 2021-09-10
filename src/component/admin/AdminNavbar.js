@@ -58,6 +58,7 @@ function AdminNavbar(){
     var dt = new Date();
     console.clear();
     console.log(cookies.get('bminutes'))
+    cookies.set('bminutes',dt,{path:'/'});
     var config={
       url:BASE_URL+'authentication/bids/?my_bids=0',
       method:'get',
@@ -68,7 +69,8 @@ function AdminNavbar(){
     }
     axios(config)
     .then(res=>{
-      setMessages(res.data)   
+      setMessages(res.data) 
+      setBids(0)  
     }).catch(err=>{
         console.log(err)            
     })
