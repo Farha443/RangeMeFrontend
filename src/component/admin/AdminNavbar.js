@@ -112,7 +112,7 @@ function AdminNavbar(){
         var config={
           url:BASE_URL+'authentication/header/?bminutes='+bminutes+'&iminutes='+iminutes+'&mminutes='+mminutes,
           method:'get',
-          headers: {
+          headers: { 
             "Authorization": "Bearer " + cookies.get('logintoken'),
             "Content-Type": "application/json",
         }
