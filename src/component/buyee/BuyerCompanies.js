@@ -176,7 +176,7 @@ function onClickButton(e){
                         <div className="col-md-5 m-auto col-xs-12">
                             <div className="frame-main-d">
                                 {/* <img src="assets/images/btn.png" /> */}
-                                <img src={BASE_URL.slice(0,-5)+ work.image}/>
+                                <img src={BASE_URL.slice(0,-5)+ work.image} alt="Loading..."/>
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@ function onClickButton(e){
                             <div className="frame-main-d">
                                 {/* <img src="assets/images/btn.png" />
                                  */}
-                                 <img src={BASE_URL.slice(0,-5)+ work.image}/>
+                                 <img src={BASE_URL.slice(0,-5)+ work.image} alt="Loading..."/>
                             </div>
                         </div>
 
@@ -335,7 +335,7 @@ function onClickButton(e){
                         </div>
                         <div className="col-md-5 m-auto col-xs-12">
                             <div className="frame-main-d">
-                                <img src={BASE_URL.slice(0,-5)+ workk.image}/> 
+                                <img src={BASE_URL.slice(0,-5)+ workk.image} alt="Loading..."/> 
                             </div>
                         </div>
                     </div>

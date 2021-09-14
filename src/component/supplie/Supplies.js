@@ -190,7 +190,7 @@ return<li>
                         <div className="col-md-5 m-auto col-xs-12">
                             <div className="frame-main-d">
                                 {/* <img src="assets/images/btn.png" /> */}
-                                <img src={BASE_URL.slice(0,-5)+ work.image}/>
+                                <img src={BASE_URL.slice(0,-5)+ work.image} alt="Loading..."/>
                             </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@ return<li>
                             <div className="frame-main-d">
                                 {/* <img src="assets/images/btn.png" />
                                  */}
-                                 <img src={BASE_URL.slice(0,-5)+ work.image}/>
+                                 <img src={BASE_URL.slice(0,-5)+ work.image}  alt="Loading..."/>
                             </div>
                         </div>
 
@@ -292,7 +292,7 @@ return<li>
                         <div className="col-md-5 col-xs-12">
                             <div className="frame-main-d">
                                 {/* <img src="assets/images/btn.png" /> */}
-                                <img src={BASE_URL.slice(0,-5)+ workk.image}/>
+                                <img src={BASE_URL.slice(0,-5)+ workk.image}  alt="Loading..."/>
                             </div>
                         </div>
 
@@ -364,7 +364,7 @@ return<li>
                             <div className="frame-main-d">
                                 {/* <img src="assets/images/btn.png" />
                                  */}
-                                 <img src={BASE_URL.slice(0,-5)+ workk.image}/> 
+                                 <img src={BASE_URL.slice(0,-5)+ workk.image} alt="Loading..."/> 
                             </div>
                         </div>
                     </div>
