@@ -46,7 +46,7 @@ function BuyerCompanies(){
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 3,
           slidesToScroll: 1,
           initialSlide: 1
         }
@@ -149,7 +149,7 @@ function onClickButton(e){
         
 
                     <div className="row"> 
-                        <div className="col-md-6 co-xs-12">
+                        <div className="col-lg-6 col-md-12 co-xs-12">
                         <div className="r-text-254">
                             <h5>{work.title} </h5>
                             </div>
@@ -173,7 +173,7 @@ function onClickButton(e){
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-md-5 m-auto col-xs-12">
+                        <div className="col-lg-6 col-md-12 co-xs-12">
                             <div className="frame-main-d">
                                 {/* <img src="assets/images/btn.png" /> */}
                                 <img src={BASE_URL.slice(0,-5)+ work.image} alt="Loading..."/>
@@ -187,15 +187,15 @@ function onClickButton(e){
               return<section className="lr-section-main lr-2sec"  style={{background:"white"}}> 
                   <div className="container">
                     <div className="row"> 
-                        <div className="col-md-5  col-xs-12">
-                            <div className="frame-main-d">
+                        <div className="col-lg-6 col-md-12 co-xs-12">
+                            <div className="frame-main-d d2">
                                 {/* <img src="assets/images/btn.png" />
                                  */}
                                  <img src={BASE_URL.slice(0,-5)+ work.image} alt="Loading..."/>
                             </div>
                         </div>
 
-                        <div className="col-md-6 co-xs-12 ml-auto">
+                        <div className="col-lg-6 col-md-12 co-xs-12">
                             <div className="r-text-254">
                             <h5> {work.title}</h5>
                             </div>
@@ -263,13 +263,13 @@ function onClickButton(e){
               return<section className="lr-section-main lr-2sec"  style={{background:"white"}}> 
                   <div className="container">
                     <div className="row"> 
-                        <div className="col-md-5 col-xs-12">
-                            <div className="frame-main-d">
+                        <div className="col-lg-6 col-md-12 co-xs-12">
+                            <div className="frame-main-d d2">
                                   <img src={BASE_URL.slice(0,-5)+ workk.image}/>
                             </div>
                         </div>
 
-                        <div className="col-md-6 ml-auto co-xs-12">
+                        <div className="col-lg-6 col-md-12 co-xs-12">
                             <div className="r-text-254">
                             <h5> {workk.title}
                             </h5>
@@ -307,7 +307,7 @@ function onClickButton(e){
     
 
                     <div className="row"> 
-                        <div className="col-md-6 co-xs-12">
+                        <div className="col-lg-6 col-md-12 co-xs-12">
                         <div className="r-text-254">
                             <h5>
                             {workk.title}
@@ -333,7 +333,7 @@ function onClickButton(e){
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-md-5 m-auto col-xs-12">
+                        <div className="col-lg-6 col-md-12 co-xs-12">
                             <div className="frame-main-d">
                                 <img src={BASE_URL.slice(0,-5)+ workk.image} alt="Loading..."/> 
                             </div>

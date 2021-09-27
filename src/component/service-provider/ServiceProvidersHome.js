@@ -149,7 +149,7 @@ function onClickButton(e){
                                     {/* <img src="assets/images/icons/layer-2@2x.png"></img> */}
                                     <img src={BASE_URL.slice(0,-5)+ work.image}/>
                                 </div>
-                                <div className="sp-box-text">
+                                <div className="sp-box-text sp-box-t2">
                                     {/* <p>{work.title}</p> */}
                                    <p> <EditorPreview data={work.title} /></p>
                                 </div>

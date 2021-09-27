@@ -51,7 +51,7 @@ function Supplies(){
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 3,
           slidesToScroll: 1,
           initialSlide: 1
         }
@@ -155,17 +155,20 @@ function onClickButton(e){
               if(index%2===0){
               return<section className="lr-section-main bg-g"> 
                   <div className="container">
-                    <div className="row"> 
+                    {/* <div className="row"> 
                         <div className="col-md-12 col-xs-12">
                             <div className="lr-title-1">
 
-                              <h3> {work.title}</h3>
+                            
                               </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="row"> 
-                        <div className="col-md-6 co-xs-12">
+                        <div className="col-lg-6 col-md-12 col-xs-12">
+                          <div className="r-text-254">
+                          <h3> {work.title}</h3>
+                          </div>  
                             <div className="d-one-12423">
                                 <ul>
                               {work.sub_works.map(sub=>{
@@ -187,7 +190,7 @@ return<li>
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-md-5 m-auto col-xs-12">
+                        <div className="col-lg-6 col-md-12 col-xs-12">
                             <div className="frame-main-d">
                                 {/* <img src="assets/images/btn.png" /> */}
                                 <img src={BASE_URL.slice(0,-5)+ work.image} alt="Loading..."/>
@@ -201,15 +204,15 @@ return<li>
                 return <section className="lr-section-main lr-2sec"  style={{background:"white"}}> 
                   <div className="container">
                     <div className="row"> 
-                        <div className="col-md-5  col-xs-12">
-                            <div className="frame-main-d">
+                        <div className="col-lg-6 col-md-12 col-xs-12">
+                            <div className="frame-main-d d2">
                                 {/* <img src="assets/images/btn.png" />
                                  */}
                                  <img src={BASE_URL.slice(0,-5)+ work.image}  alt="Loading..."/>
                             </div>
                         </div>
 
-                        <div className="col-md-6 co-xs-12 ml-auto">
+                        <div className="col-lg-6 col-md-12 col-xs-12">
                             <div className="r-text-254">
                             <h5> {work.title}</h5>
                             </div>
@@ -271,7 +274,7 @@ return<li>
 
 
                         <div className="col-md-3 col-xs-12">
-                            <div className="supp-mid-banner-bx link">
+                            <div className="supp-mid-banner-bx link mb-0">
                                 <div className="supp-link bn2-i">
                                   <p className="p1-add-t"onClick={onClickButton}> Hemen Ücretsiz Kaydol <i class="fal fa-long-arrow-right"></i> </p>
                                  
@@ -289,14 +292,14 @@ return<li>
               return<section className="lr-section-main lr-2sec"  style={{background:"white"}}> 
                   <div className="container">
                     <div className="row"> 
-                        <div className="col-md-5 col-xs-12">
-                            <div className="frame-main-d">
+                        <div className="col-lg-6 col-md-12 col-xs-12">
+                            <div className="frame-main-d d2">
                                 {/* <img src="assets/images/btn.png" /> */}
                                 <img src={BASE_URL.slice(0,-5)+ workk.image}  alt="Loading..."/>
                             </div>
                         </div>
 
-                        <div className="col-md-6 ml-auto co-xs-12">
+                        <div className="col-lg-6 col-md-12 col-xs-12">
                             <div className="r-text-254">
                             <h5>{workk.title}<br/>
                                  {/* Strengthen your Sales Potential! */}
@@ -335,7 +338,7 @@ return<li>
     
 
                     <div className="row"> 
-                        <div className="col-md-6 co-xs-12">
+                        <div className="col-lg-6 col-md-12 col-xs-12">
                         <div className="r-text-254">
                             <h5> {workk.title} <br/>
                             </h5>
@@ -360,7 +363,7 @@ return<li>
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-md-5 m-auto col-xs-12">
+                        <div className="col-lg-6 col-md-12 col-xs-12">
                             <div className="frame-main-d">
                                 {/* <img src="assets/images/btn.png" />
                                  */}
