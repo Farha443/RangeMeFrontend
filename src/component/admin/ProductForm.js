@@ -80,9 +80,7 @@ function ProductForm() {
         
 
         axios.get(BASE_URL +'product/get_pdetails/'+cookies.get("productuuid")).then(re=>{
-            // debugger
             setPdetails(re.data.data)
-            // setproductname(cookies.get('product_name'))
             console.log("----product details-----")
             console.log(re.data.data)
             cookies.set('product_name', re.data.data.product_name, { path: '/products_detail' })
@@ -110,14 +108,8 @@ function ProductForm() {
     )
     
 
-    // const colourOptions= category.map(cat=>( [
-    //     { value: cat.val, label:cat.label  },
-    // ]))
-
         function Step1(){
-
-            var product_name = document.getElementById('product_name').value;
-
+            var product_name = document.getElementById('product_name').value; 
             var select_category = Array.from(sO).map(el => el.value);
             const selected = document.querySelectorAll('#approvals_certifications option:checked');
             var approvals_certifications = Array.from(selected).map(el => el.value);

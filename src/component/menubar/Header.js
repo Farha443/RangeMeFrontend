@@ -110,7 +110,7 @@ function SignUp(){
       <NavLink to="/buyer-home"  className="header-bar__link"> <img src="assets/images/icons/01.png" /> alıcı firmalar</NavLink>
       <NavLink to="servicehome"  className="header-bar__link"> <img src="assets/images/icons/01.png" /> hizmet sağlayıcılar</NavLink>
       {/* <div className="header-bar__divider" /> */}
-      <div className="menu-drop-div">
+      <div className="menu-drop-div header-bar__link">
       <p>  <p onClick={handleToggle}  className={isActive ? "drop-p" : "drop-p-show"}>
         <img src="assets/images/icons/01.png" />
          kaynaklar <i class="fas fa-caret-down"></i> 
@@ -134,15 +134,15 @@ function SignUp(){
 
 
       {logintoken === undefined ?
-      <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text l-icn" >
+      <NavLink to="/login" className="header-bar__link header-bar__login button button--border button--compact dark-text l-icn header-bar__link" >
         GİRİŞ YAP
         <i class="fal fa-long-arrow-right"></i>
         </NavLink>
         :type==='supplier'?
-        <NavLink to="/admin_home" className="header-bar__login button button--border button--compact dark-text l-icn">
+        <NavLink to="/admin_home" className="header-bar__link header-bar__login button button--border button--compact dark-text l-icn header-bar__link">
           GİRİŞ YAP
           <i class="fal fa-long-arrow-right"></i>
-          </NavLink>:type==='buyer'?<NavLink to="/newbuyerhome" className="header-bar__login button button--border button--compact dark-text l-icn">
+          </NavLink>:type==='buyer'?<NavLink to="/newbuyerhome" className="header-bar__link header-bar__login button button--border button--compact dark-text l-icn header-bar__link">
             GİRİŞ YAP
             <i class="fal fa-long-arrow-right"></i>
             </NavLink>:""
@@ -170,11 +170,13 @@ function SignUp(){
 <div id="menu" className="menu">
   <div className="menu__inner">
     <nav className="nav nav--menu">
+    
       <NavLink to="/supplier-home" className="nav__link"> <img src="assets/images/icons/01.png" /> tedarikçiler</NavLink>
       <NavLink to="/buyer-home" className="nav__link"> <img src="assets/images/icons/01.png" /> alıcı firmalar</NavLink>
       <NavLink to="/servicehome" className="nav__link"> <img src="assets/images/icons/01.png" /> hizmet sağlayıcılar</NavLink>
       <div className="nav__divider" />
-      <div className="nav__link nav__link--sub-nav">
+
+      {/* <div className="nav__link nav__link--sub-nav">
         <span className="sub-nav__toggle">kaynaklar</span>
         <div className="sub-nav">
           <NavLink to="/success" className="sub-nav__link">başarı öyküleri</NavLink>
@@ -183,18 +185,29 @@ function SignUp(){
           <NavLink to="#" className="sub-nav__link">webinarlar </NavLink>
           <NavLink to="#" className="sub-nav__link">destek </NavLink>
         </div>
-      </div>
-      <div className="nav__link nav__link--sub-nav">
-        <span className="sub-nav__toggle">Kurumsal</span>
-        <div className="sub-nav">
-          <a href="#" className="sub-nav__link">hakkımızda</a>
-          <a href="#" className="sub-nav__link">iletişim</a>
-          <a href="#" className="sub-nav__link">kariyer</a>
-          <a href="#" className="sub-nav__link">gizlilik</a>
-          <a href="#" className="sub-nav__link">kullanım koşulları</a>
+      </div> */}
+      <div className="menu-drop-div mobile">
+      <p>  <p onClick={handleToggle}  className={isActive ? "drop-p" : "drop-p-show"}>
+        <img src="assets/images/icons/01.png" />
+         kaynaklar <i class="fas fa-caret-down"></i> 
+      </p> 
+
+      <div className={isActive ? "drop-d-101 " : "drop-d-101 open-drop"}>
+
+        <ul>
+                <li> <NavLink to="/success">başarı öyküleri </NavLink> </li>
+                <li> <NavLink to="/blogs">tayuss blog </NavLink> </li>
+                <li> <NavLink to="/">haberler </NavLink> </li>
+                <li> <NavLink to="/">webinarlar </NavLink> </li>
+            </ul>
+
+        {/* onClick={() => GetSingleBrand(bt.uuid)} */}
         </div>
+
+
+      </p>
       </div>
-      <a href="#" data-signup="supplier" className="nav__signup button button--blue">Şimdi Başlayın!</a>
+      <a href="#" data-signup="supplier" className="nav__signup button">Şimdi Başlayın!</a>
       {/* <NavLink to="/login"  className="nav__login button button--border">Log in</NavLink> */}
       {logintoken === undefined ?
       <NavLink to="/login" className="header-bar__login button button--border button--compact dark-text">

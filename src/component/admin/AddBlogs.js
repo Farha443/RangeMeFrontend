@@ -158,7 +158,7 @@ Blogs(){
                                             <NavLink to="/admin/home"
                                             inactiveClassName="text-gray-800"
                                             >
-                                                <img src="/assets/images/image-gallery.png" />
+                                                <img src="/assets/images/image-gallery.png" alt="image"/>
                                                 <div className="sidebar-title">Add Banner </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                             </NavLink>
@@ -167,7 +167,7 @@ Blogs(){
                                             <NavLink to="/add-blog"
                                             inactiveClassName="text-gray-800"
                                             activeClassName="rounded-sm text-gray-200 bg-blue-gray-dark">
-                                                <img src="/assets/images/blog.png" />
+                                                <img src="/assets/images/blog.png" alt="image" />
                                                 <div className="sidebar-title"> Add Blogs  </div>
                                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                                               </NavLink>
@@ -205,7 +205,7 @@ Blogs(){
                     placeholder="text"
                 /> */}
                 <div className="pic202">
-                      <img className="" width="180px" height="120px" id="output" src=""/>
+                      <img className="" width="180px" height="120px" id="output" src="" alt="image"/>
                       <input  type="file" id="b_image" onChange={this.handleChange} placeholder="Change"/>
                      
                       </div>

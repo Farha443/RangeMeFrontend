@@ -108,12 +108,12 @@ function Home(){
       setsmallheading(res.data)
       console.log(res.data)
       setBlogs(res.data.blogs)
-      setList(res.data.blogs[0])
+      setList(res.data.blogs)
       setBlogLength(res.data.blogs.length)
       console.clear()
       console.log(res.data.data)
       var indexing=res.data.blogs.length
-      inner_index=res.data.blogs[0].length
+      // inner_index=res.data.blogs[0].length
       console.log(res.data)
       setbottombanner(res.data)
       setserviceprovider(res.data)
@@ -318,13 +318,13 @@ function SignUp(){
                     </div>
 
                     <div className="row"> 
-                        <div className="col-md-6 co-xs-12">
+                        <div className="col-lg-6 col-md-12 co-xs-12">
                             <div className="d-one-12423">
                                 <ul>
                             {work.sub_works.map(sub=>{
                               return<li>
                               <div className="ic-text-mn">
-                                <div className="ic-5248 ic-22"> 
+                                <div className="ic-5248 ic-22 ic-11"> 
                                   {/* <i class={sub.icon}></i> */}
                                   <img src={BASE_URL.slice(0,-4)+"media/"+sub.icon}/>
                                 </div>
@@ -339,7 +339,7 @@ function SignUp(){
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-md-6 col-xs-12">
+                        <div className="col-lg-6 col-md-12 col-xs-12">
                             <div className="frame-main-d">
                                 {/* <img src="assets/images/btn.png" /> */}
                                 <img src={BASE_URL.slice(0,-5)+ work.image}/>
@@ -363,13 +363,13 @@ function SignUp(){
                     </div>
 
                     <div className="row"> 
-                          <div className="col-md-6 col-xs-12">
-                            <div className="frame-main-d">
+                          <div className="col-lg-6 col-md-12 col-xs-12">
+                            <div className="frame-main-d d2">
                                 {/* <img src="assets/images/btn.png" /> */}
                                 <img src={BASE_URL.slice(0,-5)+ work.image}/>
                             </div>
                         </div>
-                        <div className="col-md-6 co-xs-12">
+                        <div className="col-lg-6 col-md-12 col-xs-12">
                             <div className="d-one-12423">
                                 <ul>
                                 {work.sub_works.map(sub=>{
@@ -442,10 +442,9 @@ function SignUp(){
                         
                         </p>
                     <Slider {...settings}>
-                     
-                    {/* {blogs.map(function(wo, inner_index){ */}
+             
                         <div className="">
-                          <div className="slider-box-main">
+                          <div className="slider-box-main" style={{background:"none", paddingLeft:"0px", marginTop:"0px"}}>
                           {list.map((blog) => (  
                             <div className="two-sliders">
                                 <div className="hm-slider-img-d">

@@ -228,10 +228,10 @@ function AdminHome(){
                 <div className="ad-hm-logo-main b-img">
                                     
                                      {brands.brand_logo!= null?
-                                     <img src = {BASE_URL.slice(0,-5)+brands.brand_logo}></img>: <img className="img-b-tag"src="assets/images/no-img-copy.png"/>}
+                                     <img src = {BASE_URL.slice(0,-5)+brands.brand_logo}  alt="image"></img>: <img className="img-b-tag"src="assets/images/no-img-copy.png" alt="image"/>}
                                     <div className="prof-img-btn">
                                         <button className="clickable-cover-image__change-image___JnYhU" type="button" onClick={() => setShow3(true)}>
-                                            <div className="clickable-cover-image__change-image-hint___3NLUs"><img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src="assets/images/no-img-copy.png" />
+                                            <div className="clickable-cover-image__change-image-hint___3NLUs"><img alt="camera" className="clickable-cover-image__change-image-icon___1k392" src="assets/images/no-img-copy.png" alt="image" />
                                                 <div className="clickable-cover-image__change-image-text___1kIxy"></div>
                                             </div>
                                         </button>
@@ -469,7 +469,7 @@ function AdminHome(){
                                         <h5> Information <span> Profile</span> </h5>
                                         </div>
                                         <div className="indfo-d22">
-                                            <NavLink to=""> More <img src="assets/images/icons/right-arrow-5-copy-2.png" /> </NavLink>
+                                            <NavLink to=""> More <img src="assets/images/icons/right-arrow-5-copy-2.png" alt="image" /> </NavLink>
                                         </div>
                                         </div>
 
@@ -478,7 +478,7 @@ function AdminHome(){
                                                     <div className="viewing-box-d">
                                                         <div className="view-box">
                                                             <div className="view-icn-d">
-                                                                <img src="assets/images/icons/eye.svg" />
+                                                                <img src="assets/images/icons/eye.svg" alt="image" />
                                                             </div>
                                                             <div className="view-b-text">
                                                                 <p> viewing </p>
@@ -488,7 +488,7 @@ function AdminHome(){
 
                                                         <div className="view-box">
                                                             <div className="view-icn-d">
-                                                                <img src="assets/images/icons/external-link.svg" />
+                                                                <img src="assets/images/icons/external-link.svg" alt="image" />
                                                             </div>
                                                             <div className="view-b-text">
                                                                 <p> Profile Visit </p>
@@ -498,7 +498,7 @@ function AdminHome(){
 
                                                         <div className="view-box">
                                                             <div className="view-icn-d">
-                                                                <img src="assets/images/icons/recycling.svg" />
+                                                                <img src="assets/images/icons/recycling.svg" alt="image" />
                                                             </div>
                                                             <div className="view-b-text">
                                                                 <p> Conversions </p>
@@ -545,7 +545,7 @@ function AdminHome(){
                                         <li>
                                             <div className="side-br-list-box-mn"> 
                                                 <div className="side-list-img-d">
-                                                    <img src="assets/images/2.jpg" />
+                                                    <img src="assets/images/2.jpg" alt="image" />
                                                 </div>
                                                 <div className="side-list-text">
                                                     <h6> Kroger'den bir alıcı </h6>
@@ -556,19 +556,7 @@ function AdminHome(){
                                         <li>
                                             <div className="side-br-list-box-mn"> 
                                                 <div className="side-list-img-d">
-                                                    <img src="assets/images/2.jpg" />
-                                                </div>
-                                                <div className="side-list-text">
-                                                    <h6> Kroger'den bir alıcı </h6>
-                                                    <p> numune istedi</p>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div className="side-br-list-box-mn"> 
-                                                <div className="side-list-img-d">
-                                                    <img src="assets/images/2.jpg" />
+                                                    <img src="assets/images/2.jpg" alt="image" />
                                                 </div>
                                                 <div className="side-list-text">
                                                     <h6> Kroger'den bir alıcı </h6>
@@ -580,7 +568,19 @@ function AdminHome(){
                                         <li>
                                             <div className="side-br-list-box-mn"> 
                                                 <div className="side-list-img-d">
-                                                    <img src="assets/images/2.jpg" />
+                                                    <img src="assets/images/2.jpg" alt="image" />
+                                                </div>
+                                                <div className="side-list-text">
+                                                    <h6> Kroger'den bir alıcı </h6>
+                                                    <p> numune istedi</p>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div className="side-br-list-box-mn"> 
+                                                <div className="side-list-img-d">
+                                                    <img src="assets/images/2.jpg" alt="image" />
                                                 </div>
                                                 <div className="side-list-text">
                                                     <h6> Kroger'den bir alıcı </h6>
@@ -614,7 +614,7 @@ function AdminHome(){
                             <Col md="3" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
-                                        <img src="assets/images/icons/share.svg"/>
+                                        <img src="assets/images/icons/share.svg" alt="image"/>
                                    </div>
                                    <h5> Profilinizi Paylaşın </h5>
                                    <p>
@@ -630,7 +630,7 @@ function AdminHome(){
                             <Col md="3" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
-                                        <img src="assets/images/icons/received-copy.svg"/>
+                                        <img src="assets/images/icons/received-copy.svg" alt="image"/>
                                    </div>
                                    <h5> Ürün Ekleyin </h5>
                                    <p>
@@ -643,7 +643,7 @@ function AdminHome(){
                             <Col md="3" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
-                                        <img src="assets/images/icons/file.svg"/>
+                                        <img src="assets/images/icons/file.svg" alt="image"/>
                                    </div>
                                    <h5>Satış Sayfası Oluşturun</h5>
                                    <p>
@@ -658,7 +658,7 @@ function AdminHome(){
                             <Col md="3" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
-                                        <img src="assets/images/icons/approval-symbol-in-badge.svg"/>
+                                        <img src="assets/images/icons/approval-symbol-in-badge.svg" alt="image"/>
                                    </div>
                                    <h5> Tayuss Onayı Alın </h5>
                                    <p>
@@ -674,7 +674,7 @@ function AdminHome(){
                             <Col md="3" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
-                                        <img src="assets/images/icons/pie-chart-finances.svg"/>
+                                        <img src="assets/images/icons/pie-chart-finances.svg" alt="image"/>
                                    </div>
                                    <h5> Profilinizi Optimize Edin </h5>
                                    <p>
@@ -688,7 +688,7 @@ function AdminHome(){
                             <Col md="3" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
-                                        <img src="assets/images/icons/paper-plane.svg"/>
+                                        <img src="assets/images/icons/paper-plane.svg" alt="image"/>
                                    </div>
                                    <h5> Gönderim Yapın </h5>
                                    <p>
@@ -702,7 +702,7 @@ function AdminHome(){
                             <Col md="3" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
-                                        <img src="assets/images/icons/contract.svg"/>
+                                        <img src="assets/images/icons/contract.svg" alt="image"/>
                                    </div>
                                    <h5> İhtiyaçlarınızı Karşılayın </h5>
                                    <p>
@@ -718,7 +718,7 @@ function AdminHome(){
                                    <div className="box-banner-content">
                                         <h3 className="h3-1"> ÇOK DAHA FAZLASI İÇİN </h3>
                                         <h4 className="h4-2"> HEMEN HESABINIZI YÜKSELTİN </h4>
-                                       <NavLink to="">  <img src="assets/images/icons/right-arrow-5-copy-3-white.svg" /> </NavLink>
+                                       <NavLink to="">  <img src="assets/images/icons/right-arrow-5-copy-3-white.svg" alt="image" /> </NavLink>
                                    </div>
                                 </div>
                             </Col>
@@ -741,7 +741,7 @@ function AdminHome(){
                                             <h5> Send  <span> Your Brand to Buyers </span> </h5>
                                         </div>
                                         <div className="indfo-d22">
-                                            <NavLink to=""> More <img src="assets/images/icons/right-arrow-5-copy-2.png" /> </NavLink>
+                                            <NavLink to=""> More <img src="assets/images/icons/right-arrow-5-copy-2.png" alt="image" /> </NavLink>
                                         </div>
                                     </div>
                                     </Col>
@@ -752,7 +752,7 @@ function AdminHome(){
                                         <div className="send-buyer-box-d">
                                             <div className="send-box-d1">
                                                 <div className="send-b-img-d">
-                                                    <img src="assets/images/3.jpg" />
+                                                    <img src="assets/images/3.jpg" alt="image" />
                                                 </div>
                                                 <div className="send-b-text-content">
                                                     <h6> UNFI </h6>
@@ -774,7 +774,7 @@ function AdminHome(){
                                         <div className="send-buyer-box-d">
                                             <div className="send-box-d1">
                                                 <div className="send-b-img-d">
-                                                    <img src="assets/images/3.jpg" />
+                                                    <img src="assets/images/3.jpg" alt="image" />
                                                 </div>
                                                 <div className="send-b-text-content">
                                                 <h6> UNFI </h6>
@@ -796,7 +796,7 @@ function AdminHome(){
                                         <div className="send-buyer-box-d">
                                             <div className="send-box-d1">
                                                 <div className="send-b-img-d">
-                                                    <img src="assets/images/3.jpg" />
+                                                    <img src="assets/images/3.jpg"  alt="image"/>
                                                 </div>
                                                 <div className="send-b-text-content">
                                                 <h6> UNFI </h6>
