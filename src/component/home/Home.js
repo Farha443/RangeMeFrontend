@@ -108,12 +108,12 @@ function Home(){
       setsmallheading(res.data)
       console.log(res.data)
       setBlogs(res.data.blogs)
-      setList(res.data.blogs)
+      setList(res.data.blogs[0])
       setBlogLength(res.data.blogs.length)
       console.clear()
       console.log(res.data.data)
       var indexing=res.data.blogs.length
-      // inner_index=res.data.blogs[0].length
+      inner_index=res.data.blogs[0].length
       console.log(res.data)
       setbottombanner(res.data)
       setserviceprovider(res.data)
