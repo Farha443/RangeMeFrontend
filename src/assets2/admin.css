@@ -5766,6 +5766,13 @@ header.admin-header {
     
 
 @media (max-width:768px){
+
+    .menu-drop-1245.inner-menu.nav-item.dropdown {
+        margin: auto;
+    }
+    .inner-menu a:before{
+        display: none;
+    }
     .sign-tab-menu i {
         font-size: 18px;
         margin-right: 5px;

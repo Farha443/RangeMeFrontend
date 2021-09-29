@@ -127,10 +127,10 @@ if (token === undefined){
 
 <div className="layout__layout___2Opq_">
 
-        <div className="signup-layout__layout___39T41">
+        <div className="signup-layout__layout___39T41 bidding">
           <div className="signup-layout__header___IeCtN">
           
-            <a href="/" className="header-bar__logo">
+            <a href="/" className="header-bar__logo" style={{width: "100%"}}>
               {/* <img src="assets/images/Logo.png"> */}
               <h1> Tayuss </h1>
             </a>
@@ -163,7 +163,7 @@ if (token === undefined){
                     <label className="input-with-floating-label__label___4HdSN" htmlFor="email"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Budget</span></label>
                   </div>
                 </div>
-                <Col md="12">  
+             
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label> Select the Department(s) that best describes your industry. </Form.Label>
                     <Form.Control as="select" id="department">
@@ -171,12 +171,12 @@ if (token === undefined){
                     <option value={cat.uuid}>{cat.name}</option>))}
                     </Form.Control>
                 </Form.Group>
-                </Col>
+            
   
                 
                 <div className="validated-field__container___1zNgS">
                   <div className="input-with-floating-label__wrapper___368i9">
-                    <textarea rows="5" cols="40"  placeholder="Enter your Requirements" id="rqs" />
+                    <textarea rows="5" cols="40"  placeholder="Enter your Requirements" id="rqs" className="form-control" />
                     <label className="input-with-floating-label__label___4HdSN" htmlFor="number"><span className="text__text___2g-Dv text__micro-copy___3xkfL text__veto-baseline___3-Rqq">Requirements</span></label>
                   </div>
                 </div>

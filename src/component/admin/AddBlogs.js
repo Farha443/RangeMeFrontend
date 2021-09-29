@@ -149,7 +149,7 @@ Blogs(){
           <Row>
 
        
-          <Col md="3">
+          <Col lg="3" md="4">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <p className="p1"> Hesap Ayarları </p>
@@ -178,15 +178,15 @@ Blogs(){
                             </aside>
                         </Col>              
 
-        <Col md={9}>
+        <Col lg="9" md="8">
           
-          <Card className="mt-4">
+          <Card className="">
             <Card.Header> <h5>Blogs data</h5> </Card.Header>
             <Card.Body>
             <div className="row">
             </div>
               <Row>
-              <Col sm="5">
+              <Col lg="6" md="12">
                     <Form.Label for="exampleEmail">Title</Form.Label>
                 <Form.Control
                     type="text"
@@ -196,7 +196,7 @@ Blogs(){
                 />
                     </Col>
 
-                    <Col sm="4">
+                    <Col lg="6" md="12">
                     <Form.Label for="exampleEmail">Image</Form.Label>
                 {/* <Form.Control
                     type="file"
@@ -211,13 +211,13 @@ Blogs(){
                       </div>
                     </Col>
 
-                    <Col md="3">
+                    <Col lg="6" md="12">
                     {/* <div className="banner-upload-img-show">
                       <img className="img-responsive" src="/assets/images/h3.jpg"/>
                     </div> */}
                 </Col>
 
-                    <Col md="6">
+                    <Col lg="6" md="12">
                         {/* <Form.Label> Category</Form.Label> */}
                         <Form.Label> Kategori</Form.Label>
                         <Form.Control as="select"  id="b_category">
@@ -226,7 +226,7 @@ Blogs(){
                         </Form.Control>
                     </Col>
 
-                    <Col sm="6">
+                    <Col lg="6" md="12">
                     <Form.Label for="exampleEmail">Story</Form.Label>
                 <Form.Control
                     type="text"
@@ -235,7 +235,7 @@ Blogs(){
                     placeholder="text"
                 />
                     </Col>
-                    <Col sm="6">
+                    <Col lg="6" md="12">
                       <div className="cust-rd mt-4">
                             <Form.Check className="custrd "
                               type="radio"
@@ -246,7 +246,7 @@ Blogs(){
                           </div>
                         </Col>
 
-                    <Col sm="12">
+                    <Col lg="12" md="12">
                     
                     <Form.Label for="exampleEmail">Content</Form.Label>
                     <CKEditor
@@ -264,7 +264,7 @@ Blogs(){
                    
                 </Row>
               <Row>
-              <Col sm="6" className="up-right-main">
+              <Col lg="6" md="12" className="up-right-main">
                     <div class="form-group">
                     {/* <Form.Label for="exampleFile" >icon </Form.Label>
                     <Form.Control id="icon" type="file" name="file" /> */}

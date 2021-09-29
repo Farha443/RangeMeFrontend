@@ -401,7 +401,7 @@ function ProductDetail() {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                    <Col md="3">
+                    <Col lg="3" md="4">
                             <aside>
                                 <div className="admin-sidebar-main">
                                     <ul>
@@ -446,7 +446,7 @@ function ProductDetail() {
                                 </div>
                             </aside>
                         </Col>
-                        <Col md="6">
+                    <Col lg="6" md="5">
 
                             <Card>
 
@@ -463,7 +463,7 @@ function ProductDetail() {
 
                                            <Row>      
 
-                                           <Col md="6">
+                                           <Col lg="6" md="12">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Ürün adı</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter email" disabled defaultValue={productname.product_name} id="product_name"/>
@@ -471,7 +471,7 @@ function ProductDetail() {
                                             </Form.Group>
 
                                             </Col>
-                                            <Col md="6">
+                                            <Col lg="6" md="12">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>SKU/ Stok kodu</Form.Label>
                                                 <Form.Control type="text" placeholder="Enter number" id="variant_style_no"
@@ -481,7 +481,7 @@ function ProductDetail() {
 
                                             </Col>
 
-                                            <Col md="6" class="choose_pp">
+                                            <Col lg="6" md="12" class="choose_pp">
                                             <Form.Label> Ürün Resmi</Form.Label>
                                                 {/* <button className="admin-add-btn" onClick={() => setShow4(true)} >  <i class="fa fa-plus" aria-hidden="true"></i> Add Image</button> */}
                                                 <ImageUploader
@@ -515,7 +515,7 @@ function ProductDetail() {
 
                                         <Row>
 
-                                        <Col md="6">
+                                        <Col lg="6" md="12">
                                         <label htmlFor="basic-url" className="lb">Ürün fiyatı
                                             <p>  (Satıcı için önerilen maliyet) </p>
                                         </label>
@@ -535,7 +535,7 @@ function ProductDetail() {
                                         </Col>
 
 
-                                        <Col md="6">
+                                        <Col lg="6" md="12">
                                             <label htmlFor="basic-url" className="lb">Tedarikçinin önerdiği son satış fiyatı
                                                 <p>   (Perakendeciler için önerilen satış fiyatı) </p>
                                             </label>
@@ -554,7 +554,7 @@ function ProductDetail() {
 
                                         </Col>
                                         
-                                        <Col md="6">
+                                        <Col lg="6" md="12">
                                         <label htmlFor="basic-url" className="lb">Kutu başına ürün
                                             {/* <p>  (Default as 1) </p> */}
                                         </label>
@@ -562,7 +562,7 @@ function ProductDetail() {
 
                                         </Col>
 
-                                        <Col md="6">
+                                        <Col lg="6" md="12">
                                         {/* <label htmlFor="basic-url" className="lb">Case Price
                                          <p>  (Default as $10) </p>
                                         </label> */}
@@ -848,7 +848,7 @@ function ProductDetail() {
                         </Col>
 
 
-                        <Col md="3">
+                    <Col lg="3" md="3">
                             <div className="right-bar-main">
                                 <div className="right-cont-img-d">
                                     {/* <img src="assets/images/blog1.jpg" /> */}

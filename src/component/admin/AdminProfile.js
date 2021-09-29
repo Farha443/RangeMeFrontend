@@ -155,7 +155,7 @@ class AdminProfile extends React.Component {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                        <Col md="3">
+                        <Col lg="3" md="4">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <p className="p1"> Hesap Ayarları </p>
@@ -211,7 +211,7 @@ class AdminProfile extends React.Component {
                                 </div>
                             </aside>
                         </Col>
-                        <Col md="8">
+                        <Col lg="8" md="8">
 
                             <Card>
 
@@ -246,8 +246,8 @@ class AdminProfile extends React.Component {
 
                                            
 
-                                           <Col md="6">
-                                            <Form.Group controlId="formBasicEmail">
+                                           <Col lg="6" md="12">
+                                            <Form.Group controlId="formBasicEmail" className="mb-0">
                                                 <Form.Label>Ad</Form.Label>
                                                 <Form.Control defaultValue={this.state.first_name} id='first_name' type="text" placeholder="Enter email" />
 
@@ -255,8 +255,8 @@ class AdminProfile extends React.Component {
 
                                             </Col>
 
-                                            <Col md="6">
-                                            <Form.Group controlId="formBasicEmail">
+                                            <Col lg="6" md="12">
+                                            <Form.Group controlId="formBasicEmail" className="mb-0">
                                                 <Form.Label>Soyad</Form.Label>
                                                 <Form.Control defaultValue={this.state.last_name} id='last_name' type="text" placeholder="Enter email" />
 
@@ -264,8 +264,8 @@ class AdminProfile extends React.Component {
 
                                             </Col>
 
-                                            <Col md="6">
-                                            <Form.Group controlId="formBasicEmail">
+                                            <Col lg="6" md="12">
+                                            <Form.Group controlId="formBasicEmail" className="mb-0">
                                                 <Form.Label>E-posta</Form.Label>
                                                 <Form.Control  defaultValue={this.state.email} type="email" id="email" placeholder="Enter email" />
 
@@ -273,9 +273,9 @@ class AdminProfile extends React.Component {
 
                                             </Col>
 
-                                            <Col md="6">
+                                            <Col lg="6" md="12">
 
-                                            <Form.Group controlId="exampleForm.ControlSelect1">
+                                            <Form.Group controlId="exampleForm.ControlSelect1" className="mb-0">
                                                 <Form.Label>Cep Telefonu</Form.Label>
                                                 <Form.Control defaultValue={this.state.mobile} type="text" id="phone" >
                                                 
@@ -283,7 +283,7 @@ class AdminProfile extends React.Component {
                                             </Form.Group>
                                             </Col>
                                              
-                                            <Col md="12" className="text-center">
+                                            <Col md="12" className="text-center mt-3">
                                             <button class="admin-add-btn" onClick={()=>this.save()}>  Değişiklikleri Kaydet  </button>
                                             </Col>
 

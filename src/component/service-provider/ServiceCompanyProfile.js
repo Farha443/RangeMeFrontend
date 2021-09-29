@@ -413,10 +413,10 @@ useEffect(()=>{
             <ServiceNavbar/>
 
            
-            <div className="admin-container">
+            <div className="container">
             <div className="row">
 
-            <div className="rgm-left-content col-md-9">
+            <div className="rgm-left-content col-md-9 m-auto">
 
                 <section className="service-pro-title-sction">
                     <Row>
@@ -445,7 +445,7 @@ useEffect(()=>{
                         <Row>
                             <Col md="12">    
                             
-                            <div className="change-img-maind">
+                            <div className="change-img-maind d-215">
                             <h6>Şirket Logosu</h6>
                                             {user_pic ?   
                                             <div className="pic-1101">
@@ -456,7 +456,7 @@ useEffect(()=>{
                                                 <div className="pic202">
                                             </div>
                                         </div>
-                                <div>
+                                <div className="text-center cs-pic">
                                 <label for="user_pic" class="btn btn-primary">Choose Picture</label>
                                 <input style={{display:'none'}} type="file"  id="user_pic" onChange={handleChange} placeholder="Change"/>
                                 </div>
@@ -465,7 +465,7 @@ useEffect(()=>{
                             </Col>
 
                                 <Col md="6">
-                                    <Form.Group controlId="formBasicEmail">
+                                    <Form.Group controlId="formBasicEmail" className="mb-0">
                                         <Form.Label>Şirket Adı</Form.Label>
                                         <Form.Control id="company-name"type="text" placeholder="dddd" defaultValue={user.comp_name} />
 
@@ -482,9 +482,9 @@ useEffect(()=>{
 
                                     </Col>
 
-                                    <Col md="6" xs="12">
+                                    <Col md="12" xs="12">
                                         <div className="color-pick-inp-m">
-                                        <Form.Label> Marka Adı Color</Form.Label>
+                                        <Form.Label style={{with:"100%"}}> Marka Adı Color</Form.Label>
                                        
                                          <div className="color-pic-div"
                                           
@@ -540,7 +540,7 @@ useEffect(()=>{
                         <Row>
 
                                 <Col md="12">
-                                    <Form.Group className="abt-tet125" controlId="exampleForm.ControlTextarea1">
+                                    <Form.Group className="abt-tet125 mb-0" controlId="exampleForm.ControlTextarea1">
                                         <Form.Label>Short description</Form.Label>
                                         <p> Provide a short introduction to your company that will be at the top of Profiliniz and visible in Profiliniz preview.
 </p>
@@ -549,7 +549,7 @@ useEffect(()=>{
                                  </Col>
 
                                  <Col md="12">
-                                    <Form.Group className="abt-tet125" controlId="exampleForm.ControlTextarea1">
+                                    <Form.Group className="abt-tet125 mb-0" controlId="exampleForm.ControlTextarea1">
                                         <Form.Label>Full description</Form.Label>
                                         <p> Share details about your company and what you specialize in. </p>
                                         <Form.Control defaultValue={ProfileData.full_des} id="full_des" as="textarea" rows={5} />

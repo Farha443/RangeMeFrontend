@@ -210,7 +210,7 @@ function Marketing() {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                        <Col md="3">
+                        <Col lg="3" md="4">
                             <aside>
                                 <div className="admin-sidebar-main">
                                     <ul>
@@ -254,7 +254,7 @@ function Marketing() {
                                 </div>
                             </aside>
                         </Col>
-                        <Col md="6">
+                        <Col lg="6" md="6">
                             <Card>
                                 <Card.Body>
                                     <div className="product-form-main">
@@ -264,7 +264,7 @@ function Marketing() {
 
                                         <div className="overview-form">
                                            <Row>
-                                           <Col md="6">
+                                           <Col lg="6" md="12">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Reklam Bütçesi </Form.Label>
                                                 <Form.Control as="select" id="promotional_budget" value={market.promotional_budget} onChange={e => handleChange(e)} className=""  >
@@ -278,7 +278,7 @@ function Marketing() {
 
                                             </Col>
 
-                                            <Col md="6" >
+                                            <Col lg="6" md="12" >
                                             <Form.Label> Ürün Resmi</Form.Label>
                                                {/* <img src={BASE_URL.slice(0,-5)+ market.product_images} /> */}
                                                 {/* <ImageUploader
@@ -305,7 +305,7 @@ function Marketing() {
 
                                         </div>
                                             </Col>
-                                            <Col md="6">
+                                            <Col lg="6" md="12">
                                             <Form.Group controlId="formBasicEmail">
                                                
                                             <Form.Label>Ürün video linki  </Form.Label>
@@ -337,7 +337,7 @@ function Marketing() {
                         </Col>
 
 
-                        <Col md="3">
+                        <Col lg="3" md="3">
                             <div className="right-bar-main">
                                 <div className="right-cont-img-d">
                                     <img src="assets/images/blog1.jpg" />

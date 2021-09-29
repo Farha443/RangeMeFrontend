@@ -98,7 +98,7 @@ onCloseModal = ()=>{
                     <div className="container">
                         <div className="row">
                         {this.state.data.map(blog=>{
-                           return  <div onClick={()=>this.Redirect(blog.uuid)}   className="col-md-4 col-xs-12">
+                           return  <div onClick={()=>this.Redirect(blog.uuid)}   className="col-lg-4 col-md-6 col-xs-12">
                             
                                <div className="blog-n-box">
                                     <div className="blog-n-img-d">

@@ -40,7 +40,7 @@ function ServiceProviderDashboard(){
                     
         {/* right sidebar div start  */}
 
-        <div className="col-md-3">
+        <div className="col-md-4 col-lg-3">
             <div className="rgm-right-bar serv-p-side-left">
 
                 <div className="serv-comp-leftbar">
@@ -74,7 +74,8 @@ function ServiceProviderDashboard(){
             </div>
          
         </div>
-                <div className="rgm-left-content col-md-9">
+            <div className="rgm-left-content col-lg-9 col-md-8">
+            
             <section className="admin-home-section">
 
                <Row>
@@ -164,8 +165,6 @@ function ServiceProviderDashboard(){
        
             </section>
 
-
-
             <section className="admin-home-section2"> 
          
                 <Row>
@@ -209,7 +208,6 @@ function ServiceProviderDashboard(){
                 </Row>
         
             </section>
-
 
             <section className="admin-home-section2"> 
          

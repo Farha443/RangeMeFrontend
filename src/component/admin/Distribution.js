@@ -450,7 +450,7 @@ class Distribution extends React.Component {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                        <Col md="3">
+                        <Col lg="3" md="4">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <ul>
@@ -495,7 +495,7 @@ class Distribution extends React.Component {
                                 </div>
                             </aside>
                         </Col>
-                        <Col md="6">
+                        <Col lg="6" md="5">
 
                             <Card>
 
@@ -511,7 +511,7 @@ class Distribution extends React.Component {
                                            <Row>
 
                                            <Col md="12">
-                                           <Form.Group controlId="exampleForm.ControlSelect1">
+                                           <Form.Group controlId="exampleForm.ControlSelect1" className="mb-0">
                                                 <Form.Label>Ürün hangi ülke ve şehirde üretiliyor ?</Form.Label>
                                                 
                                                 <CountryDropdown id="country" 
@@ -525,7 +525,7 @@ class Distribution extends React.Component {
                                             </Col>
 
                                             <Col md="12">
-                                           <Form.Group controlId="exampleForm.ControlSelect1">
+                                           <Form.Group controlId="exampleForm.ControlSelect1" className="mb-0">
                                                 <Form.Label>Ürününüz hangi eyalette üretiliyor?</Form.Label>
                                                 
                                                 <RegionDropdown  id ="state" className = "form-control"
@@ -608,7 +608,7 @@ class Distribution extends React.Component {
                                             <Row> 
 
                                             <Col md="12">
-                                           <Form.Group controlId="exampleForm.ControlSelect1">
+                                           <Form.Group controlId="exampleForm.ControlSelect1" className="mb-0">
                                                 <Form.Label>Ürün tedarik alanı nedir?</Form.Label>
                                                 
                                                 <CountryDropdown  id = "distribution_location" className={isActive ? "form-control " : "form-control inp-disable    "}
@@ -739,7 +739,7 @@ country
                         </Col>
 
 
-                        <Col md="3">
+                        <Col lg="3" md="3">
                             <div className="right-bar-main">
                                 <div className="right-cont-img-d">
                                     {/* <img src="assets/images/blog1.jpg" /> */}

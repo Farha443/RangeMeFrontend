@@ -135,6 +135,7 @@ function BrandProfile() {
             pictureFiles
         });
     }
+    
     function onDrop1(pictureFiles, pictureDataURLs) {
         // alert(pictureFiles)
         setLogo({
@@ -785,7 +786,7 @@ function BrandProfile() {
                                                                 </Row>
                                                             </Col>
 
-                                                            <Col md="3" xs="12">
+                                                            <Col lg="3" md="12" xs="12">
                                                                 <div className="side-b-men-d-5245">
                                                                     <div className="b-profile-sidebar">
                                                                         <div>
@@ -904,7 +905,7 @@ function BrandProfile() {
                                                 </div>
                                                     <div className="b-profile-tab-2-d">
                                                         <Row>
-                                                            <Col md="9" xs="12">
+                                                            <Col lg="9" md="12" xs="12">
                                                                 <Row className="">
 
                                                                     <Col md="12" xs="12">
@@ -950,7 +951,7 @@ function BrandProfile() {
 
                                                             </Col>
 
-                                                            <Col md="3" xs="12">
+                                                            <Col lg="3" md="12" xs="12">
                                                                 <div className="side-b-men-d-5245">
                                                                     <div className="b-profile-sidebar">
                                                                         <div>

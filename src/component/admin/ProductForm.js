@@ -210,7 +210,7 @@ function ProductForm() {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                        <Col md="3">
+                        <Col lg="3" md="4">
                             <aside>
                                 <div className="admin-sidebar-main">
                                     <ul>
@@ -255,7 +255,7 @@ function ProductForm() {
                                 </div>
                             </aside>
                         </Col>
-                    <Col md="6">
+                        <Col lg="6" md="5">
 
                             <Card>
 
@@ -272,8 +272,8 @@ function ProductForm() {
 
                                            <Row>
 
-                                           <Col md="6">
-                                            <Form.Group controlId="formBasicEmail">
+                                           <Col lg="6" md="12">
+                                            <Form.Group controlId="formBasicEmail" className="mb-0">
                                                 <Form.Label>Ürün adı</Form.Label>
                                                 <Form.Control id="product_name" type="text" disabled defaultValue={productname.product_name?productname.product_name:cookies.get('product_name') }/>
                                                 
@@ -295,9 +295,9 @@ function ProductForm() {
                                                 />
                                             </Form.Group>
                                             </Col> */}
-                                            <Col md="6" className="m-auto">
+                                            <Col lg="6" md="12" className="m-auto mb-0">
 
-                                            <Form.Group controlId="exampleForm.ControlSelect1">
+                                            <Form.Group controlId="exampleForm.ControlSelect1" className="mb-0">
                                                 <Form.Label>Ürün Kategorisi seç </Form.Label>
                                                 <Select
                                                 id="select_category"
@@ -323,8 +323,8 @@ function ProductForm() {
 
                                             </Col>
 
-                                            <Col md="6">
-                                            <Form.Group multiple controlId="exampleForm.ControlSelect1">    
+                                            <Col lg="6" md="12">
+                                            <Form.Group multiple controlId="exampleForm.ControlSelect1" className="mb-0">    
                                             <Form.Label>Ürün Sertifikasyonlar</Form.Label>
                                             <Form.Control as="select" defaultValue={productname.approvals_certifications} id="approvals_certifications" multiple="true">
                                             {certi.map(cat=>( 
@@ -334,8 +334,8 @@ function ProductForm() {
                                             </Col> 
             
                                       
-                                            <Col md="6">
-                                            <Form.Group controlId="formBasicEmail">
+                                            <Col lg="6" md="12">
+                                            <Form.Group controlId="formBasicEmail" className="mb-0">
                                                 <Form.Label>Ürün özellikleri (USPs)</Form.Label>
                                                 <Form.Control id="usp" type="text" placeholder="Enter USP" defaultValue={productname.usp} />
 
@@ -343,14 +343,14 @@ function ProductForm() {
 
                                             </Col>
 
-                                            <Col md="6">
-                                            <Form.Group controlId="exampleForm.ControlTextarea1">
+                                            <Col lg="6" md="12">
+                                            <Form.Group controlId="exampleForm.ControlTextarea1" className="mb-0">
                                                 <Form.Label>Ürün Açıklaması</Form.Label>
                                                 <Form.Control id="product_disc" as="textarea" defaultValue={productname.product_disc} rows={3} />
                                             </Form.Group>
                                             </Col>
 
-                                            <Col md="12" className="text-center">
+                                            <Col md="12" className="text-center mt-3">
                                             <button class="admin-add-btn" onClick={Step1}> Sonraki Sayfa  </button>
                                             </Col>
 
@@ -365,8 +365,7 @@ function ProductForm() {
 
                         </Col>
 
-
-                        <Col md="3">
+                        <Col lg="3" md="3">
                             <div className="right-bar-main">
                                 <div className="right-cont-img-d">
                                     {/* <img src="assets/images/blog1.jpg" /> */}

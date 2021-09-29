@@ -218,7 +218,7 @@ Redirect(uuid){
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                        <Col md="3">
+                        <Col lg="3" md="4">
                             <aside>
                                 <div className="admin-sidebar-main">
                                     <ul>
@@ -263,7 +263,7 @@ Redirect(uuid){
                                 </div>
                             </aside>
                         </Col>
-                        <Col md="6">
+                        <Col lg="6" md="6">
                             <Card>
                                 <Card.Body>
                                     <div className="product-form-main">
@@ -273,7 +273,7 @@ Redirect(uuid){
 
                                         <div className="overview-form">
                                            <Row>
-                                           <Col md="6">
+                                           <Col lg="6" md="12">
                                             <Form.Group controlId="formBasicEmail">
                                                 <Form.Label>Reklam Bütçesi </Form.Label>
                                                 <Form.Control as="select" id="promotional_budget" value={this.state.market.promotional_budget} onChange={e => this.handleChange(e)} className=""  >
@@ -287,7 +287,7 @@ Redirect(uuid){
 
                                             </Col>
 
-                                            <Col md="6" >
+                                            <Col lg="6" md="12" >
                                             <Form.Label> Ürün Resmi</Form.Label>
                                                {/* <img src={BASE_URL.slice(0,-5)+ market.product_images} /> */}
                                                 {/* <ImageUploader
@@ -315,7 +315,7 @@ Redirect(uuid){
 
                                         </div>
                                             </Col>
-                                            <Col md="6">
+                                            <Col lg="6" md="12">
                                             <Form.Group controlId="formBasicEmail">
                                                
                                             <Form.Label>Ürün video linki  </Form.Label>
@@ -347,7 +347,7 @@ Redirect(uuid){
                         </Col>
 
 
-                        <Col md="3">
+                        <Col lg="3" md="3">
                             <div className="right-bar-main">
                                 <div className="right-cont-img-d">
                                 <img src={BASE_URL.slice(0,-5)+this.state.p_details.image} />

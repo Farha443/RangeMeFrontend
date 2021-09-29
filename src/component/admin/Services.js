@@ -135,7 +135,7 @@ function Services() {
         </Row>
 
         <Row>
-            <Col md="6" xs="12">
+            <Col lg="6" md="12" xs="12">
                 <div className="slider-box-main">
                     <div className="hm-slider-img-d">
                         <img src="assets/images/h3.jpg" />
@@ -157,7 +157,7 @@ function Services() {
                
             </Col>
 
-            <Col md="6" xs="12">
+            <Col lg="6" md="12" xs="12">
                 <div className="slider-box-main">
                     <div className="hm-slider-img-d">
                         <img src="assets/images/h3.jpg" />

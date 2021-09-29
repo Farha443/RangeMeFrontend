@@ -168,7 +168,7 @@ function TeamAccess() {
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                    <Col md="3">
+                    <Col lg="3" md="4">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <p className="p1"> Hesap Ayarları </p>
@@ -224,7 +224,7 @@ function TeamAccess() {
                                 </div>
                             </aside>
                         </Col>
-                        <Col md="8">
+                    <Col lg="8" md="7">
 
                             <Card>
 

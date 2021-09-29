@@ -460,7 +460,7 @@ function AdminHome(){
             <section className="information-section-hm">
                 <Container>
                     <Row>
-                        <Col md="8" xs="12">
+                        <Col lg="8" md="12" xs="12">
                            <Row>
                                <Col md="12" xs="12">
                                     <div className="c-card">
@@ -528,7 +528,7 @@ function AdminHome(){
                             </Row>
 
                         </Col>
-                        <Col md="4" xs="12">
+                        <Col lg="4" md="12" xs="12">
                             <div className="c-card side-br">
                                 <div className="info-header-d">
                                     <div className="info-d11"> 
@@ -611,7 +611,7 @@ function AdminHome(){
                         </Row>
 
                         <Row>
-                            <Col md="3" xs="12">
+                            <Col col-lg="3"  md="4" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
                                         <img src="assets/images/icons/share.svg" alt="image"/>
@@ -627,7 +627,7 @@ function AdminHome(){
                                 </div>
                             </Col>
 
-                            <Col md="3" xs="12">
+                            <Col col-lg="3"  md="4" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
                                         <img src="assets/images/icons/received-copy.svg" alt="image"/>
@@ -640,7 +640,7 @@ function AdminHome(){
                                 </div>
                             </Col>
 
-                            <Col md="3" xs="12">
+                            <Col col-lg="3"  md="4" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
                                         <img src="assets/images/icons/file.svg" alt="image"/>
@@ -655,7 +655,7 @@ function AdminHome(){
                                 </div>
                             </Col>
 
-                            <Col md="3" xs="12">
+                            <Col col-lg="3"  md="4" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
                                         <img src="assets/images/icons/approval-symbol-in-badge.svg" alt="image"/>
@@ -671,7 +671,7 @@ function AdminHome(){
                             </Col>
 
 
-                            <Col md="3" xs="12">
+                            <Col col-lg="3"  md="4" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
                                         <img src="assets/images/icons/pie-chart-finances.svg" alt="image"/>
@@ -685,7 +685,7 @@ function AdminHome(){
                                 </div>
                             </Col>
 
-                            <Col md="3" xs="12">
+                            <Col col-lg="3"  md="4" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
                                         <img src="assets/images/icons/paper-plane.svg" alt="image"/>
@@ -699,7 +699,7 @@ function AdminHome(){
                                 </div>
                             </Col>
 
-                            <Col md="3" xs="12">
+                            <Col col-lg="3"  md="4" xs="12">
                                 <div className="imp-profile-box">
                                    <div className="imp-pro-icn">
                                         <img src="assets/images/icons/contract.svg" alt="image"/>
@@ -713,7 +713,7 @@ function AdminHome(){
                                 </div>
                             </Col>
 
-                            <Col md="3" xs="12">
+                            <Col col-lg="3"  md="4" xs="12">
                                 <div className="imp-profile-box banner" style={{backgroundImage: 'url(../assets/images/btm-banner.jpg)'}}>
                                    <div className="box-banner-content">
                                         <h3 className="h3-1"> ÇOK DAHA FAZLASI İÇİN </h3>

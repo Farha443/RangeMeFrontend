@@ -38,7 +38,7 @@ function EmailConfirmation(){
                 <Container fluid>
                     <Row className="justify">
                 
-                        <Col md="5">
+                        <Col lg="5" md="8">
 
                             <Card>
 

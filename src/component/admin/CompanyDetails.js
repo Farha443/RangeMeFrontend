@@ -242,11 +242,13 @@ savechange(){
                 alert('Something went wrong')
                 })
     }
-     render() {
+     render() 
+        {
         var token = cookies.get('logintoken');
         if (token === undefined){
         window.location="/login"
         }
+
         return (
         <>
             <AdminNavbar />
@@ -256,7 +258,7 @@ savechange(){
             <section className="product-form-section">
                 <Container fluid>
                     <Row className="justify">
-                    <Col md="3">
+                    <Col lg="3" md="4">
                         <aside>
                                 <div className="admin-sidebar-main">
                                     <p className="p1">Hesap Ayarları</p>
@@ -312,7 +314,7 @@ savechange(){
                                 </div>
                             </aside>
                         </Col>
-                        <Col md="8">
+                    <Col lg="8" md="8">
 
                             <Card>
 
@@ -369,7 +371,7 @@ savechange(){
                                            
 
                                             <Col md="6">
-                                            <Form.Group controlId="formBasicEmail">
+                                            <Form.Group controlId="formBasicEmail" className="mb-0">
                                                 <Form.Label>Şirket Adı</Form.Label>
                                                 <Form.Control id="comp_name" type="text" placeholder="Enter name"
                                                 defaultValue={this.state.comp_name} />
@@ -379,7 +381,7 @@ savechange(){
                                             </Col>
 
                                             <Col md="6">
-                                            <Form.Group controlId="formBasicEmail">
+                                            <Form.Group controlId="formBasicEmail" className="mb-0">
                                                 <Form.Label>Cep Telefonu</Form.Label>
                                                 <Form.Control id="email" type="email"
                                                 defaultValue={this.state.email} placeholder="abc.com" />
@@ -389,7 +391,7 @@ savechange(){
                                             </Col>
 
                                             <Col md="6">
-                                            <Form.Group controlId="exampleForm.ControlSelect1">
+                                            <Form.Group controlId="exampleForm.ControlSelect1" className="mb-0">
                                                 <Form.Label>Cep Telefonu</Form.Label>
                                                 <Form.Control id="comp_location" defaultValue={this.state.mobile}type="text">
                                               
@@ -398,7 +400,7 @@ savechange(){
                                             </Col>
 
                                             <Col md="6">
-                                                <Form.Group controlId="exampleForm.ControlSelect1">
+                                                <Form.Group controlId="exampleForm.ControlSelect1" className="mb-0">
                                                 <Form.Label>Şirket Adresi</Form.Label>
                                                 <Form.Control id="email" type="email"
                                                 defaultValue={this.state.comp_location} placeholder="abc.com" />
@@ -437,7 +439,7 @@ savechange(){
 
                                                 </Col> */}
                                     
-                                            <Col md="12" className="text-center">
+                                            <Col md="12" className="text-center mt-3" >
                                             <button class="admin-add-btn" onClick={cookies.get('sup_uuid')?()=>this.savechange():()=>this.savebuyer()}> Ürünü Kaydet</button>
                                             </Col>
 
