@@ -3776,20 +3776,27 @@ section.blog-n-section {
     justify-content: space-around;
     width: 100%;
 }
+
+
 .chating-box-mn {
     width: 80%;
     position: relative;
     display: grid;
+    background: white;
 }
+
 .card-chat {
     width: 320px;
     background: #fff;
     border-radius: 0px;
     overflow: auto;
-    height: 95vh;
+    height: 85vh;
     border-right: 1px solid #ced4da;
 }
-
+p.timertext {
+    margin: 0;
+    padding: 0;
+}
 .chat-textarea {
     width: 80%;
 }
@@ -3808,7 +3815,7 @@ section.blog-n-section {
     justify-content: space-evenly;
     position: fixed;
     bottom: 0;
-    background: #f2f4f7;
+    background: #ffffff;
     width: 76%;
 }
 .chat-btn button {
