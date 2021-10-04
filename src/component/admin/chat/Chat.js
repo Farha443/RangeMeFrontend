@@ -36,24 +36,39 @@ function Chat(){
     const location = useLocation();
     const history = useHistory();
     const[id,seId]=useState([])
-
-
     function get_params(){
-        var params = window.location.href; //history.location.search;
-        var url = new URL(params);
-        var id= url.searchParams.get('id');
-        const queryParams = new URLSearchParams(location.search);
-        console.log(queryParams)
-        if(id){
-          //   alert(queryParams.id)
-          getChats(id)
-          seId(id)
-          history.replace({
-              search: '',
-            })
-        } 
+      var params = window.location.href; //history.location.search;
+      var url = new URL(params);
+      var id= url.searchParams.get('id');
+      const queryParams = new URLSearchParams(location.search);
+      console.log(queryParams)
+
+      if(id){
+        //   alert(queryParams.id)
+        getChats(id)
+        seId(id)
+        history.replace({
+            search: '',
+          })
+      } 
+    }
+  get_params();
+    useEffect(() => {
+      // var params = window.location.href; //history.location.search;
+      // var url = new URL(params);
+      // var id= url.searchParams.get('id');
+      console.log(id);
+      var interval;
+      if (id.length>0){
+        interval=setInterval(()=>{getChats(id)},2000);
+        // setMsg(messages)
+        // console.log(messages)
+        
       }
-    get_params();
+      return ()=>clearInterval(interval);
+      
+  },[id])
+    
 
     function getChats(id){
         var url = BASE_URL+'messaging/get_chats/?person='+id;
@@ -78,6 +93,8 @@ function Chat(){
         
       
     }
+
+
    
     return(
         <>
@@ -89,9 +106,10 @@ function Chat(){
        
        <div className="chating-box-mn">
            
-          <ChatText messages={msg} recId={id}/>
+          {id.length>0 ? <ChatText messages={msg} recId={id}/>:<h1>Welcome Back. </h1>}
+
           
-          <ChatInput recId={id}/>
+          {id.length>0 && <ChatInput recId={id}/>}
 
        </div>     
 

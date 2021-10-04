@@ -64,13 +64,13 @@ const handleToggle = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      //  console.log('This will run every second!');
-      //  alert(new Date());
-    }, 3000);
+    // const interval = setInterval(() => {
+    //   //  console.log('This will run every second!');
+    //   //  alert(new Date());
+    // }, 3000);
  
     // This is important, you must clear your interval when component unmounts
-    return () => clearInterval(interval);
+    // return () => clearInterval(interval);
  
  }, [])  
 
