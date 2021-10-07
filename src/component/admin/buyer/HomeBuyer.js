@@ -1,6 +1,8 @@
 import React, {useEffect, userEffect, useState} from 'react';
 import '../../../assets2/admin.css';
 import AdminNavbar from '../AdminNavbar'
+import Cookies from 'universal-cookie';
+
 import {
   Jumbotron,
   Button,
@@ -20,108 +22,69 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
-import Slider from "react-slick";
-import ReactStars from "react-rating-stars-component";
-import InnerFooter from '../InnerFooter';
-import Cookies from 'universal-cookie';
-import axios from 'axios';
-import $ from "jquery"; 
-import BASE_URL from '../../base';
 import BuyerNavbar from '../BuyerNavbar';
+import BASE_URL from '../../base';
+import axios from 'axios';
+import $ from "jquery";  
+import {Launcher} from 'react-chat-window'
+import { deprecationHandler } from 'moment';
+
+
 const cookies = new Cookies();
+let input_message = $('.input-message')
+let message_body  = $('.msg_card_body')
+let send_message_form = $('#send-message-form')
 
-function HomeBuyer(){
+let loc = window.location;
+    let wsStart= 'wss://';
+    if (loc.protocol==='https'){
+        wsStart='wss://'
+    }
+function HomeBuyer1(){
 
-    const settings = {
-        dots: false,
-        Nav: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        rows: 1,
-        slidesPerRow: 1,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 1
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-      };
-    
-    
-      const settings2 = {
-        dots: false,
-        Nav: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        rows: 1,
-        slidesPerRow: 1,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 1
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-      };
+    var token = cookies.get('logintoken');
+    if (token === undefined){
+    window.location="/login"
+    }
 
     const [show, setShow] = useState(false);
-    const[products,setProducts]=useState([]);
-    const[list,setList]=useState([]);
+    const [recieverID , setRecieverId] = useState(false)
+    const[products,setProducts]=useState([])
+    const[chatbox,setChatbox]=useState(false)
+    const[fullDetail,setFullDetail]=useState([])
+    const[list,setList]=useState([])
+    const[chat,setChat]=useState([])
+    const[newMessage,setnewMessage]=useState({})
+    const [Id , setId] = useState([])
     const [showcat, setshowcat] = useState([])
+    const[count, setCount] = useState('')
 
-    const ratingChanged = (newRating) => {
-        console.log(newRating);
-      };
+    // var socket = new WebSocket(wsStart+'tayuss.com/chat/')
+    var socket = new WebSocket('ws://localhost:8000/chat/')
+    useEffect(() => {
+       socket.onopen = () => {
+               console.log('connected')
+               }
+            socket.onmessage = evt => {
+                // listen to data sent from the websocket server
+                const message = JSON.parse(evt.data)
+                if (message.payload){var jk = JSON.parse(message.payload.msg)}
+                console.log(jk)
+                if(message.payload){
+                    setnewMessage(jk)
+                        // setMessageCount(message.payload.length)
+                    }
+                }
+                   
+       },[])
 
-
-
-      useEffect(() => {
+    useEffect(() => {
 
         axios.get(BASE_URL+'authentication/GetCategorysignup/')
         .then(res=>{  
+            
+            // console.log(res.data.data)
+
             setshowcat(res.data.data ) 
         }).catch(err=>{
             console.log(err)            
@@ -141,1028 +104,249 @@ function HomeBuyer(){
         axios.get(url)
         .then(res=>{  
             setList(res.data)
+            // console.log(res.data.length)
+            
             }).catch(err=>{
                 console.log(err)            
             })
     },[])
 
-  
+
+
+function openchatbox(uuid,name){
+    setChatbox(true)
+    setRecieverId(uuid) 
+    var toId=cookies.get('uuid');
+      // var recieverId = uuid
+      var url = BASE_URL+'authentication/messagebuyer/?toId=' + toId + '&fromId=' + uuid
+      axios.get(url)
+      .then(res=>{  
+          setChat(res.data)
+          console.log("----my data")
+          console.log(res.data)
+          setId(name)
+        }).catch(err=>{
+            console.log(err)            
+        })
+    
+  }
+
+function Sendmessage(id){
+    var url = BASE_URL+"authentication/messagebuyer/";
+    var msg = document.getElementById('message').value; 
+    var fromId=cookies.get('uuid');
+    var toId = id
+    // message.append($(messageList))
+    var config= {
+        method: 'post',
+            url: url,
+            data: {
+                fromId : fromId,
+                toId: toId,
+                msg : msg
+            },
+        };
+    var wss = new WebSocket('ws://localhost:8000/chat/')
+    // var wss = new WebSocket(wsStart+'tayuss.com/chat/')
+    wss.onclose = () => {
+        console.log('disconnected')
+        }
+    wss.onopen = () => {
+        console.log('connected')
+        }
+    axios(config).then(res=>{
+        wss.onmessage = evt => {
+            // debugger
+            const message = JSON.parse(evt.data)
+            console.log(message)
+            }
+            // debugger
+        console.log(res.data)
+        setChat(res.data) 
+        $(document).ready(function() {
+            $('#message').val('');
+         })
+
+         
+        // $(".laoder").hide();
+       
+      }
+      ).catch(err=>{
+        console.error(err);
+       
+      }) 
+  }
+
+function myfunc(){
+    var cat_name = document.getElementById("category").value
+    axios.get(BASE_URL+'product/getcatwise_product/?search='+cat_name)
+    .then(res=>{  
+        console.log(res.data)  
+        setProducts(res.data) 
+        console.log("search item") 
+        setCount(res.data.length) 
+    }).catch(err=>{
+        console.log(err)            
+    })
+    // console.log(home)
+
+}
+   
+function myfunc1(){
+   
+    var categoryname = document.getElementById("department").value
+    // alert(categoryname)
+    axios.get(BASE_URL+'product/getcatwise_product/?search='+categoryname)
+    .then(res=>{  
+        console.log(res.data)  
+        setProducts(res.data) 
+    }).catch(err=>{
+        console.log(err)            
+    })
+    // console.log(home)
+
+}
+
+function Redirect(uuid){
+    // cookies.set('productuuid',id,{path:'/preview'})
+    window.location='/preview/'+uuid;
+}
+
+
     return(
         <>
-            <BuyerNavbar/>
-            <section className="hm-slider-section by-section-1 pb-0">
-                  <div className="container">
-                    <div className="row">
-                        <div className="col-md-6 col-xs-12">
-                        <div className="buyer-filter-d">
-                                                <div className="buyer-hm-filter">
-                                                    <div className="by-title-top-1">
-                                                        <h4>Kategorilerdeki Ürün ve Markalar</h4>
-                                                        <p>
-                                                        İlgili olduğunuz  ve ihtiyacınız olan kategorileri ekleyin. 
-                                                        </p>
-                                                    </div>
+           <BuyerNavbar/>
 
-                                                    <select class="form-control" id="sel1">
-                                                    {showcat.map(cat=>(
-                                                        <option value={cat.name}>{cat.name}</option>
-                                                        ))}
-                                                    </select>
-                                           
-                                                </div>
-
-                                                
-                                            </div>
-                                            
+           {/* <Col md="4" xs="12">
+                        <div>
+                        <FormControl
+                                    placeholder="requirements "
+                                    id="biddata"
+                                    aria-label="Username"
+                                    aria-describedby="basic-addon1"
+                                    />
+                            <button className="admin-add-btn" onClick={BidPlacing}> Bid place</button> 
+                            
                         </div>
-                          
-                      </div>
-
-                    <div className="row">
-                          <div className="col-md-12 col-xs-12 h-slider-slick buyer-h-slider-1">
-                            <p className="slide-count"> 4/12 </p>
-                              <Slider {...settings}>
+                </Col> */}
+                <div className="container">
+                <Row>
+                    <Col md="12" xs="12">
+                        <div className="buyer-filter-br-m">
+                            <Row>
+                            <div class="col-md-4 col-xs-12">
+                            <div class="form-group">
+                                <label for="sel1" style={{margin:"0px"}} className="mb-1">Ürün Kategorisi seç</label>
                               
-                                    <div className="col-md-12 pl-0">
-                                        <div className="buyer-slider-1-box">
-                                        <div className="buyer-slider-1-box-img-circle">
-                                                <img className="svg-color" src="assets/images/icons/bread.svg" />
-                                        </div>
-                                        <div className="buyer-slider-1-box-h6"> 
-                                            <NavLink to=""> Süt, Yumurta ve Kahvaltılıklar </NavLink>
-                                        </div>
-                                        </div>
-                                    </div>
+                                 <Form.Control  onChange={myfunc1} as="select" id="department">
+                             {showcat.map(cat=>(
+                                                <option value={cat.name}>{cat.name}</option>
+                                                // <option>All</option>
+                                                ))}
+                                                
+                                                </Form.Control>
+                            </div>
+                            </div>
+                            <div class="col-md-4 col-xs-12 ml-auto prod-search-inp">
+                            <Form.Label htmlFor="basic-url" style={{margin:"0px"}} className="mb-1">Ürün adına göre ara</Form.Label>
+                                <InputGroup>
+                                <FormControl
+                                    placeholder="Username"
+                                    id="category"
+                                    aria-label="Username"
+                                    aria-describedby="basic-addon1"
+                                    />
+                                    <InputGroup.Text id="basic-addon1"onClick={()=>myfunc()}><i class="fa fa-search" aria-hidden="true"></i></InputGroup.Text>
+                                  
+                                </InputGroup>
+                            </div>
+                            </Row>
+                        </div>
+                    </Col>
+                </Row>
+                {count===0?
+                <div className="empty-div">
+                <p>Ürün Bulunamadı.</p>
+                </div>:
+                <Row>
+              
+                {products.map(cat=>(
+                    <Col md="4" xs="12">
 
-                                    <div className="col-md-12">
-                                        <div className="buyer-slider-1-box">
-                                        <div className="buyer-slider-1-box-img-circle">
-                                                <img className="svg-color" src="assets/images/icons/healthy-food.svg" />
-                                        </div>
-                                        <div className="buyer-slider-1-box-h6"> 
-                                            <NavLink to="">Meyve, Sebze ve Kuruyemiş </NavLink>
-                                        </div>
-                                        </div>
-                                    </div>
+                        <div className="brand-product-box-d">
+                            <div className="p-img">
+                                {/* <img src="assets/images/blog1.jpg" alt="p-image"/> */}
+                                <img src={cat.images?BASE_URL.slice(0,-5)+ cat.images:"assets/images/blog1.jpg" }alt="p-image"/>
+                                
+                            </div>
+                            <div className="p-text-d-12458">
+                                <h6> {cat.product_name} </h6>
+                                <p style={{margin: "0px"}}> Lorem ipsum dollar </p>
+                                <div className="cost-text by-h-bt">
+                                    <button className="admin-add-btn" onClick={()=>Redirect(cat.uuid)}> Detay</button> 
+                                    {/* <button className="admin-add-btn ml-2"> Contact </button>  */}
+                                    <button class='admin-add-btn ml-2' onClick={()=>openchatbox(cat.user,cat.name)}>Chat</button>
+                                </div>
+                                </div>
+                        </div>
 
-                                    <div className="col-md-12">
-                                        <div className="buyer-slider-1-box">
-                                        <div className="buyer-slider-1-box-img-circle">
-                                                <img className="svg-color" src="assets/images/icons/sausages.svg" />
-                                        </div>
-                                        <div className="buyer-slider-1-box-h6"> 
-                                            <NavLink to="">Et ve Şarküteri </NavLink>
-                                        </div>
-                                        </div>
-                                    </div>
+                    </Col>
+                ))}
+                </Row>}
+                
+    <Modal
+        size="md"
+        show={chatbox}
+        onHide={() => setChatbox(false)}
+        aria-labelledby="example-custom-modal-styling-title"
+        >
+            <Modal.Header closeButton>
+            <Modal.Title id="example-custom-modal-styling-title">
+            {Id}
+            </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            <Container>
+                
+                <Row>
+                   <Col md="12">
+                        <div className="chat-list"> 
+                        <ul>
+                        {chat.map(msg=>(<li>
+                            {msg.msg}
+                    </li>))}
 
-                                    <div className="col-md-12">
-                                        <div className="buyer-slider-1-box">
-                                        <div className="buyer-slider-1-box-img-circle">
-                                                <img className="svg-color" src="assets/images/icons/sweet-food.png" />
-                                        </div>
-                                        <div className="buyer-slider-1-box-h6"> 
-                                            <NavLink to=""> Unlu Mamüller ve Tatlılar </NavLink>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-12">
-                                        <div className="buyer-slider-1-box">
-                                        <div className="buyer-slider-1-box-img-circle">
-                                                <img className="svg-color" src="assets/images/icons/frozen.png" />
-                                        </div>
-                                        <div className="buyer-slider-1-box-h6"> 
-                                            <NavLink to=""> Dondurulmuş Gıdalar </NavLink>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-12">
-                                        <div className="buyer-slider-1-box">
-                                        <div className="buyer-slider-1-box-img-circle">
-                                                <img className="svg-color" src="assets/images/icons/softdrinks.png" />
-                                        </div>
-                                        <div className="buyer-slider-1-box-h6"> 
-                                            <NavLink to=""> İçecekler </NavLink>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-12">
-                                        <div className="buyer-slider-1-box">
-                                        <div className="buyer-slider-1-box-img-circle">
-                                                <img className="svg-color" src="assets/images/icons/bread.svg" />
-                                        </div>
-                                        <div className="buyer-slider-1-box-h6"> 
-                                            <NavLink to=""> Süt, Yumurta ve Kahvaltılıklar </NavLink>
-                                        </div>
-                                        </div>
-                                    </div>
-
+                    <li>{String(newMessage.receiver)===cookies.get("uuid").split('-').join('') && recieverID.split('-').join('')===newMessage.sender?newMessage.msg:''}</li>
                         
-
+                    {/* {chat.msg} */}
+                        </ul>
+                    </div>
+                    </Col>
+                    
+                
+                        
+                <Col xs={12} md={12}>
+                    <div className="chat-input">
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Control type="text"  id="message" placeholder="abc" />
+                        <button type = 'submit' onClick={()=>Sendmessage(recieverID)} class='btn btn-primary'>send</button>
+                    </Form.Group>
+                    </div>
+                </Col>
+            </Row>
+            </Container>
+            </Modal.Body>
+            {/* <Modal.Footer>
+                <div className="col-md-12 text-center">
+                <button class="admin-add-btn f-w-500" > Save </button>
+                </div>
+            </Modal.Footer> */}
+      </Modal>
+            </div>
           
-                      </Slider>
-
-                          </div>
-                    </div>
-  
-                  </div>
-              </section>
             
-            <section className="submission-to-section">
-                <Container>
-                    <Row>
-                        <Col md="12" xs="12">
-                            <div className="submission-to-title">
-                                <div className="sub-d1">
-                                    <h4> Size Yapılan Gönderimler </h4>
-                                    <p>Firmanızda ürünlerinin satılması ile ilgilenen markaların gönderimlerine göz atın.</p>    
-                                </div>
-                                <div className="sub-d2">
-                                    <NavLink to=""> Tüm Gönderimler <i class="fal fa-long-arrow-right"></i></NavLink>
-                                </div>                
-                            </div>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                    <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-                                <div className="n-products-bx-banner-d">
-                                    <img src="assets/images/rest.jpg" />
-                                </div>
-
-                                <div className="n-products-bx-circle-btn">
-                                    <div className="n-products-bx-img-circle">
-                                        <img src="assets/images/banner1.jpg" />
-                                    </div>
-                                    <div className="n-products-bx-img-circle-btn">
-                                        <button className=""> 38 ürün </button>
-                                    </div>
-                                </div>
-
-                                <div className="n-products-bx-text-content">
-                                    <h6> Tua Kahve <img src="assets/images/icons/checked.png" /> </h6>
-                                
-                                <div className="np-inline-t">
-                                <p> Kuruluş Yılı: <strong> 2000 </strong> </p>
-                                    <p>Hasılat: <strong>  500₺ </strong> </p>
-                                </div>
-
-                            
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-
-                                <div className="star-rating-d submission">
-                                    <p>
-                                    <img src="assets/images/icons/clock.svg" />    
-                                    SON 20 GÜN
-                                    </p>
-                                </div>
-
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-                                <div className="n-products-bx-banner-d">
-                                    <img src="assets/images/rest.jpg" />
-                                </div>
-
-                                <div className="n-products-bx-circle-btn">
-                                    <div className="n-products-bx-img-circle">
-                                        <img src="assets/images/banner1.jpg" />
-                                    </div>
-                                    <div className="n-products-bx-img-circle-btn">
-                                        <button className=""> 38 ürün </button>
-                                    </div>
-                                </div>
-
-                                <div className="n-products-bx-text-content">
-                                    <h6> Tua Kahve <img src="assets/images/icons/checked.png" /> </h6>
-                                
-                                <div className="np-inline-t">
-                                <p> Kuruluş Yılı: <strong> 2000 </strong> </p>
-                                    <p>Hasılat: <strong>  500₺ </strong> </p>
-                                </div>
-
-                            
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-
-                                <div className="star-rating-d submission">
-                                    <p>
-                                    <img src="assets/images/icons/clock.svg" />    
-                                    SON 20 GÜN
-                                    </p>
-                                </div>
-
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-
-
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-                                <div className="n-products-bx-banner-d">
-                                    <img src="assets/images/rest.jpg" />
-                                </div>
-
-                                <div className="n-products-bx-circle-btn">
-                                    <div className="n-products-bx-img-circle">
-                                        <img src="assets/images/banner1.jpg" />
-                                    </div>
-                                    <div className="n-products-bx-img-circle-btn">
-                                        <button className=""> 38 ürün </button>
-                                    </div>
-                                </div>
-
-                                <div className="n-products-bx-text-content">
-                                    <h6> Tua Kahve <img src="assets/images/icons/checked.png" /> </h6>
-                                
-                                <div className="np-inline-t">
-                                <p> Kuruluş Yılı: <strong> 2000 </strong> </p>
-                                    <p>Hasılat: <strong>  500₺ </strong> </p>
-                                </div>
-
-                            
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-
-                                <div className="star-rating-d submission">
-                                    <p>
-                                    <img src="assets/images/icons/clock.svg" />    
-                                    SON 20 GÜN
-                                    </p>
-                                </div>
-
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-
-
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-                                <div className="n-products-bx-banner-d">
-                                    <img src="assets/images/rest.jpg" />
-                                </div>
-
-                                <div className="n-products-bx-circle-btn">
-                                    <div className="n-products-bx-img-circle">
-                                        <img src="assets/images/banner1.jpg" />
-                                    </div>
-                                    <div className="n-products-bx-img-circle-btn">
-                                        <button className=""> 38 ürün </button>
-                                    </div>
-                                </div>
-
-                                <div className="n-products-bx-text-content">
-                                    <h6> Tua Kahve <img src="assets/images/icons/checked.png" /> </h6>
-                                
-                                <div className="np-inline-t">
-                                <p> Kuruluş Yılı: <strong> 2000 </strong> </p>
-                                    <p>Hasılat: <strong>  500₺ </strong> </p>
-                                </div>
-
-                            
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-
-                                <div className="star-rating-d submission">
-                                    <p>
-                                    <img src="assets/images/icons/clock.svg" />    
-                                    SON 20 GÜN
-                                    </p>
-                                </div>
-
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-                        
-
-
-                    </Row>
-                </Container>
-            </section>
-
-            <section className="hm-slider-section buyer-slide-section-2 pb-0">
-                  <div className="container">
-                    <div className="row">
-                        <div className="col-md-6 col-xs-12">
-                        <div className="buyer-filter-d">
-                            <div className="buyer-hm-filter buyer-slide-2">
-                                <div className="by-title-top-1">
-                                    <h4>Kategorilerdeki Ürün ve Markalar</h4>
-                                    <p className="mb-0">
-                                    İlgili olduğunuz  ve ihtiyacınız olan kategorileri ekleyin. 
-                                    </p>
-                                </div>
-                            </div>               
-                        </div>
-                                            
-                        </div>
-                          
-                      </div>
-
-                    <div className="row">
-                          <div className="col-md-12 col-xs-12 h-slider-slick buyer-h-slider-2">
-                            <p className="slide-count"> 4/12 </p>
-                              <Slider {...settings2}>
-                                <Col md="12" xs="12" className="pl-0">
-                                        <div className="brand-product-box-d  bu-2">
-                                            <div className="p-img">
-                                                <img src="assets/images/blog1.jpg" alt="p-image" />
-                                            </div>
-                                            <div className="p-text-d-12458">
-                                                <h6> Lorem</h6>
-                                                <div className="box-list">
-                                                    <p>
-                                                        Vejetaryan Dondurma
-                                                    </p>
-                                                    <p>
-                                                        10 Haziran - 30 Ağustos
-                                                    </p>
-                                                    <NavLink to=""> Daha Fazla Bilgi </NavLink>
-                                                </div>
-                                                
-                                            </div>
-                                            <div className="bt-d-subb">
-                                                <button className="btn-bl">
-                                                GELEN <span>CEVAPLAR</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </Col>
-                                    <Col md="12" xs="12" className="pl-0">
-                                        <div className="brand-product-box-d  bu-2">
-                                            <div className="p-img">
-                                                <img src="assets/images/blog1.jpg" alt="p-image" />
-                                            </div>
-                                            <div className="p-text-d-12458">
-                                                <h6> Lorem</h6>
-                                                <div className="box-list">
-                                                    <p>
-                                                        Vejetaryan Dondurma
-                                                    </p>
-                                                    <p>
-                                                        10 Haziran - 30 Ağustos
-                                                    </p>
-                                                    <NavLink to=""> Daha Fazla Bilgi </NavLink>
-                                                </div>
-                                                
-                                            </div>
-                                            <div className="bt-d-subb">
-                                                <button className="btn-bl">
-                                                GELEN <span>CEVAPLAR</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </Col>
-                              
-
-                                    <Col md="12" xs="12" className="pl-0">
-                                        <div className="brand-product-box-d  bu-2">
-                                            <div className="p-img">
-                                                <img src="assets/images/blog1.jpg" alt="p-image" />
-                                            </div>
-                                            <div className="p-text-d-12458">
-                                                <h6> Lorem</h6>
-                                                <div className="box-list">
-                                                    <p>
-                                                        Vejetaryan Dondurma
-                                                    </p>
-                                                    <p>
-                                                        10 Haziran - 30 Ağustos
-                                                    </p>
-                                                    <NavLink to=""> Daha Fazla Bilgi </NavLink>
-                                                </div>
-                                                
-                                            </div>
-                                            <div className="bt-d-subb">
-                                                <button className="btn-bl">
-                                                GELEN <span>CEVAPLAR</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </Col>
-                              
-
-                                    <Col md="12" xs="12" className="pl-0">
-                                        <div className="brand-product-box-d  bu-2">
-                                            <div className="p-img">
-                                                <img src="assets/images/blog1.jpg" alt="p-image" />
-                                            </div>
-                                            <div className="p-text-d-12458">
-                                                <h6> Lorem</h6>
-                                                <div className="box-list">
-                                                    <p>
-                                                        Vejetaryan Dondurma
-                                                    </p>
-                                                    <p>
-                                                        10 Haziran - 30 Ağustos
-                                                    </p>
-                                                    <NavLink to=""> Daha Fazla Bilgi </NavLink>
-                                                </div>
-                                                
-                                            </div>
-                                            <div className="bt-d-subb">
-                                                <button className="btn-bl">
-                                                GELEN <span>CEVAPLAR</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </Col>
-                              
-
-                                    <Col md="12" xs="12" className="pl-0">
-                                        <div className="brand-product-box-d  bu-2">
-                                            <div className="p-img">
-                                                <img src="assets/images/blog1.jpg" alt="p-image" />
-                                            </div>
-                                            <div className="p-text-d-12458">
-                                                <h6> Lorem</h6>
-                                                <div className="box-list">
-                                                    <p>
-                                                        Vejetaryan Dondurma
-                                                    </p>
-                                                    <p>
-                                                        10 Haziran - 30 Ağustos
-                                                    </p>
-                                                    <NavLink to=""> Daha Fazla Bilgi </NavLink>
-                                                </div>
-                                                
-                                            </div>
-                                            <div className="bt-d-subb">
-                                                <button className="btn-bl">
-                                                GELEN <span>CEVAPLAR</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </Col>
-                              
-                              </Slider>
-
-                          </div>
-                    </div>
-  
-                  </div>
-              </section>
-            
-            <section className="submission-to-section">
-                <Container>
-                    <Row>
-                        <Col md="12" xs="12">
-                            <div className="submission-to-title">
-                                <div className="sub-d1">
-                                    <h4> Tayuss Onaylı Markalar </h4>
-                                    <p>Tayuss onaylı perakende satışa hazır markaları inceleyin. </p>    
-                                </div>
-                                <div className="sub-d2">
-                                    <NavLink to=""> Tüm Markalar <i class="fal fa-long-arrow-right"></i></NavLink>
-                                </div>                
-                            </div>
-                        </Col>
-                    </Row>
-
-                    <Row>                 
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-                                <div className="n-products-bx-banner-d">
-                                    <img src="assets/images/rest.jpg" />
-                                </div>
-
-                                <div className="n-products-bx-circle-btn">
-                                    <div className="n-products-bx-img-circle">
-                                        <img src="assets/images/banner1.jpg" />
-                                    </div>
-                                    <div className="n-products-bx-img-circle-btn">
-                                        <button className=""> 38 ürün </button>
-                                    </div>
-                                </div>
-
-                                <div className="n-products-bx-text-content">
-                                    <h6> Tua Kahve <img src="assets/images/icons/checked.png" /> </h6>
-                                
-                                <div className="np-inline-t">
-                                <p> Kuruluş Yılı: <strong> 2000 </strong> </p>
-                                    <p>Hasılat: <strong>  500₺ </strong> </p>
-                                </div>
-
-                                <div className="star-rating-d">
-                                    <ReactStars
-                                            count={5}
-                                            color="#95b0ba"
-                                            onChange={ratingChanged}
-                                            size={24}
-                                            activeColor="#ffd700"
-                                        />
-                                </div>
-
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-                        
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-                                <div className="n-products-bx-banner-d">
-                                    <img src="assets/images/rest.jpg" />
-                                </div>
-
-                                <div className="n-products-bx-circle-btn">
-                                    <div className="n-products-bx-img-circle">
-                                        <img src="assets/images/banner1.jpg" />
-                                    </div>
-                                    <div className="n-products-bx-img-circle-btn">
-                                        <button className=""> 38 ürün </button>
-                                    </div>
-                                </div>
-
-                                <div className="n-products-bx-text-content">
-                                    <h6> Tua Kahve <img src="assets/images/icons/checked.png" /> </h6>
-                                
-                                <div className="np-inline-t">
-                                <p> Kuruluş Yılı: <strong> 2000 </strong> </p>
-                                    <p>Hasılat: <strong>  500₺ </strong> </p>
-                                </div>
-
-                                <div className="star-rating-d">
-                                    <ReactStars
-                                            count={5}
-                                            color="#95b0ba"
-                                            onChange={ratingChanged}
-                                            size={24}
-                                            activeColor="#ffd700"
-                                        />
-                                </div>
-
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-
-
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-                                <div className="n-products-bx-banner-d">
-                                    <img src="assets/images/rest.jpg" />
-                                </div>
-
-                                <div className="n-products-bx-circle-btn">
-                                    <div className="n-products-bx-img-circle">
-                                        <img src="assets/images/banner1.jpg" />
-                                    </div>
-                                    <div className="n-products-bx-img-circle-btn">
-                                        <button className=""> 38 ürün </button>
-                                    </div>
-                                </div>
-
-                                <div className="n-products-bx-text-content">
-                                    <h6> Tua Kahve <img src="assets/images/icons/checked.png" /> </h6>
-                                
-                                <div className="np-inline-t">
-                                <p> Kuruluş Yılı: <strong> 2000 </strong> </p>
-                                    <p>Hasılat: <strong>  500₺ </strong> </p>
-                                </div>
-
-                                <div className="star-rating-d">
-                                    <ReactStars
-                                            count={5}
-                                            color="#95b0ba"
-                                            onChange={ratingChanged}
-                                            size={24}
-                                            activeColor="#ffd700"
-                                        />
-                                </div>
-
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-
-
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-                                <div className="n-products-bx-banner-d">
-                                    <img src="assets/images/rest.jpg" />
-                                </div>
-
-                                <div className="n-products-bx-circle-btn">
-                                    <div className="n-products-bx-img-circle">
-                                        <img src="assets/images/banner1.jpg" />
-                                    </div>
-                                    <div className="n-products-bx-img-circle-btn">
-                                        <button className=""> 38 ürün </button>
-                                    </div>
-                                </div>
-
-                                <div className="n-products-bx-text-content">
-                                    <h6> Tua Kahve <img src="assets/images/icons/checked.png" /> </h6>
-                                
-                                <div className="np-inline-t">
-                                <p> Kuruluş Yılı: <strong> 2000 </strong> </p>
-                                    <p>Hasılat: <strong>  500₺ </strong> </p>
-                                </div>
-
-                                <div className="star-rating-d">
-                                    <ReactStars
-                                            count={5}
-                                            color="#95b0ba"
-                                            onChange={ratingChanged}
-                                            size={24}
-                                            activeColor="#ffd700"
-                                        />
-                                </div>
-
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-
-                    </Row>
-                </Container>
-            </section>
-   
-            <section className="submission-to-section pt-0">
-                <Container>
-                    <Row>
-                        <Col md="12" xs="12">
-                            <div className="submission-to-title">
-                                <div className="sub-d1">
-                                    <h4> Kaydettiğiniz Ürünler </h4>
-                                    <p>Daha önce ilginizi çeken kaydettiğiniz ürünleri inceleyin. </p>    
-                                </div>
-                                <div className="sub-d2">
-                                    <NavLink to=""> Tüm Markalar <i class="fal fa-long-arrow-right"></i></NavLink>
-                                </div>                
-                            </div>
-                        </Col>
-                    </Row>
-
-                    <Row>                 
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-
-                                <div className="n-products-bx-text-content">
-
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-
-                                <div className="star-rating-d brands">
-                                    <ReactStars
-                                            count={5}
-                                            color="#95b0ba"
-                                            onChange={ratingChanged}
-                                            size={24}
-                                            activeColor="#ffd700"
-                                        />
-                                </div>
-                                <h6> Espresso Blend </h6>
-                                <p className="brand-item-p">  Tua Kahve  <img src="assets/images/icons/checked.png" /> </p>
-                                <div className="np-inline-t">
-                                <p> maliyeti : <strong>  2₺ </strong> </p>
-                                    <p>marjı : <strong>   %40 </strong> </p>
-                                </div>
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu brands">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-
-                                <div className="n-products-bx-text-content">
-
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-
-                                <div className="star-rating-d brands">
-                                    <ReactStars
-                                            count={5}
-                                            color="#95b0ba"
-                                            onChange={ratingChanged}
-                                            size={24}
-                                            activeColor="#ffd700"
-                                        />
-                                </div>
-                                <h6> Espresso Blend </h6>
-                                <p className="brand-item-p">  Tua Kahve  <img src="assets/images/icons/checked.png" /> </p>
-                                <div className="np-inline-t">
-                                <p> maliyeti : <strong>  2₺ </strong> </p>
-                                    <p>marjı : <strong>   %40 </strong> </p>
-                                </div>
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu brands">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-
-                                <div className="n-products-bx-text-content">
-
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-
-                                <div className="star-rating-d brands">
-                                    <ReactStars
-                                            count={5}
-                                            color="#95b0ba"
-                                            onChange={ratingChanged}
-                                            size={24}
-                                            activeColor="#ffd700"
-                                        />
-                                </div>
-                                <h6> Espresso Blend </h6>
-                                <p className="brand-item-p">  Tua Kahve  <img src="assets/images/icons/checked.png" /> </p>
-                                <div className="np-inline-t">
-                                <p> maliyeti : <strong>  2₺ </strong> </p>
-                                    <p>marjı : <strong>   %40 </strong> </p>
-                                </div>
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu brands">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-
-                        <Col md="3" xs="12">
-                        <div className="n-products-bx-man">
-
-                                <div className="n-products-bx-text-content">
-
-                                <div className="n-products-pitem">
-                                    <img src="assets/images/p-item.png" />
-                                </div>
-
-                                <div className="star-rating-d brands">
-                                    <ReactStars
-                                            count={5}
-                                            color="#95b0ba"
-                                            onChange={ratingChanged}
-                                            size={24}
-                                            activeColor="#ffd700"
-                                        />
-                                </div>
-                                <h6> Espresso Blend </h6>
-                                <p className="brand-item-p">  Tua Kahve  <img src="assets/images/icons/checked.png" /> </p>
-                                <div className="np-inline-t">
-                                <p> maliyeti : <strong>  2₺ </strong> </p>
-                                    <p>marjı : <strong>   %40 </strong> </p>
-                                </div>
-                                    
-                                </div>
-
-                                <div className="n-products-bt-menu brands">
-                                    <div className="n-products-bt-menu-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        <p> KAYDET </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-archive"></i>
-                                        <p> NUMUNE </p>
-                                    </div>
-
-                                    <div className="n-products-bt-menu-1">
-                                    <i class="fas fa-envelope"></i>
-                                        <p>İLETİŞİM</p>
-                                    </div>
-                                </div>
-
-                        </div>
-                        </Col>
-
-
-                    </Row>
-                </Container>
-            </section>
-
-            <InnerFooter/>
-
         </> 
     );
 }
 
-export default HomeBuyer
+export default HomeBuyer1
